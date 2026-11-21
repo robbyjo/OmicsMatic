@@ -5598,18 +5598,58 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: pre-ranked CAMERA/cameraPR enrichment",
         "evidence_section": "Methods / Comparison of MG AD snTWAS with differential gene expression signatures associated with AD pathology",
         "evidence_paragraph_index": 56,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "ec83d1d3eaa1e66174b77c7ca962ace447c097d0233f4ae8e98057d0e70b39cd",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600940/ (section: Methods / Comparison of MG AD snTWAS with differential gene expression signatures associated with AD pathology)"
+        "use_summary": "Used limma CAMERA/cameraPR on pre-ranked differential-expression and microglial snTWAS z-scores to test enrichment of coexpression modules, with reported default settings.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600940/ (section: Methods / Comparison of MG AD snTWAS with differential gene expression signatures associated with AD pathology)",
+        "implementation_scope_note": "This is competitive ranked-set testing, not generic differential expression or Broad GSEA. The limma edition and complete ranked inputs are unstated. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P019",
+          "pmcid": "PMC13600940",
+          "doi": "10.1038/s41586-026-10836-6",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "pre-ranked CAMERA/cameraPR enrichment"
+          ],
+          "usage_summary": "Used limma CAMERA/cameraPR on pre-ranked differential-expression and microglial snTWAS z-scores to test enrichment of coexpression modules, with reported default settings.",
+          "required_caution": "This is competitive ranked-set testing, not generic differential expression or Broad GSEA. The limma edition and complete ranked inputs are unstated.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 56,
+              "section": "Methods / Comparison of MG AD snTWAS with differential gene expression signatures associated with AD pathology",
+              "paragraph_sha256": "ec83d1d3eaa1e66174b77c7ca962ace447c097d0233f4ae8e98057d0e70b39cd",
+              "matching_text_sha256": "039755f07d531e84530baff8a3e440ef3a5709d5f1a4f38a6836eea2ce7d6dca"
+            }
+          ],
+          "source_xml_sha256": "67a35ac2cd25950973379382addff05cb689b1a4b1424c71ec1e54b7e8b01209",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 56,
+            "character_offset": 877,
+            "matching_text_sha256": "039755f07d531e84530baff8a3e440ef3a5709d5f1a4f38a6836eea2ce7d6dca"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "CAMERAPR"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "magma",
@@ -6473,18 +6513,83 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: voom processing through dreamlet; precision-weighted mixed expression models through dreamlet",
         "evidence_section": "Methods / Age-associated transcriptomic changes",
         "evidence_paragraph_index": 79,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "1b30840c643f8b267a45968ea7eb5971da8ccc3b2bc4c819974bb13116be30fd",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600939/ (section: Methods / Age-associated transcriptomic changes)"
+        "use_summary": "Used dreamlet 1.1.17 processAssays for pseudobulk voom processing and dreamlet-enabled limma precision-weighted mixed models for age-associated expression; replication uses age, dataset batch and sex, with study-wide multiple testing.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600939/ (section: Methods / Age-associated transcriptomic changes)",
+        "implementation_scope_note": "The ordinary prepared limma LM/VOOM adapter does not implement dreamlet mixed models, processAssays filtering or its study-wide cross-subclass workflow. Do not replace that framework with an unblocked fixed-effects model; the limma edition is unstated. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P021",
+          "pmcid": "PMC13600939",
+          "doi": "10.1038/s41586-026-10271-7",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "voom processing through dreamlet",
+            "precision-weighted mixed expression models through dreamlet"
+          ],
+          "usage_summary": "Used dreamlet 1.1.17 processAssays for pseudobulk voom processing and dreamlet-enabled limma precision-weighted mixed models for age-associated expression; replication uses age, dataset batch and sex, with study-wide multiple testing.",
+          "required_caution": "The ordinary prepared limma LM/VOOM adapter does not implement dreamlet mixed models, processAssays filtering or its study-wide cross-subclass workflow. Do not replace that framework with an unblocked fixed-effects model; the limma edition is unstated.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 79,
+              "section": "Methods / Age-associated transcriptomic changes",
+              "paragraph_sha256": "1b30840c643f8b267a45968ea7eb5971da8ccc3b2bc4c819974bb13116be30fd",
+              "matching_text_sha256": "1b30840c643f8b267a45968ea7eb5971da8ccc3b2bc4c819974bb13116be30fd"
+            },
+            {
+              "paragraph_index": 64,
+              "section": "Methods / Pseudobulk data aggregation and covariate selection",
+              "paragraph_sha256": "a4b7bd02438fa403bbb6e7498c5554d207d8178eb95579345ac414ce83aa7dde",
+              "matching_text_sha256": "a4b7bd02438fa403bbb6e7498c5554d207d8178eb95579345ac414ce83aa7dde"
+            },
+            {
+              "paragraph_index": 88,
+              "section": "Methods / Integrated analysis of lifespan replication dataset / Replication of aDEGs",
+              "paragraph_sha256": "6e861865532d2f0e309a72b0f3f0b10d3f8e1c144ff26787bfe8027ec389e291",
+              "matching_text_sha256": "6e861865532d2f0e309a72b0f3f0b10d3f8e1c144ff26787bfe8027ec389e291"
+            }
+          ],
+          "source_xml_sha256": "d6e691fbafe8e1c42b7a5dbfab7d06ad9e456f833141e7d1b54c2cba9107b1cd",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 79,
+            "character_offset": 112,
+            "matching_text_sha256": "1b30840c643f8b267a45968ea7eb5971da8ccc3b2bc4c819974bb13116be30fd"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 64,
+            "section": "Methods / Pseudobulk data aggregation and covariate selection",
+            "paragraph_sha256": "a4b7bd02438fa403bbb6e7498c5554d207d8178eb95579345ac414ce83aa7dde",
+            "matching_text_sha256": "a4b7bd02438fa403bbb6e7498c5554d207d8178eb95579345ac414ce83aa7dde"
+          },
+          {
+            "paragraph_index": 88,
+            "section": "Methods / Integrated analysis of lifespan replication dataset / Replication of aDEGs",
+            "paragraph_sha256": "6e861865532d2f0e309a72b0f3f0b10d3f8e1c144ff26787bfe8027ec389e291",
+            "matching_text_sha256": "6e861865532d2f0e309a72b0f3f0b10d3f8e1c144ff26787bfe8027ec389e291"
+          }
+        ]
       },
       {
         "tool_id": "magma",
@@ -6807,18 +6912,82 @@
       {
         "tool_id": "voom",
         "tool": "voom",
-        "analysis_role": "Mean-variance weights for expression linear models",
+        "analysis_role": "Limma/voom: voom processing through dreamlet processAssays",
         "evidence_section": "Methods / Pseudobulk data aggregation and covariate selection",
         "evidence_paragraph_index": 64,
         "matched_text": "voom",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "a4b7bd02438fa403bbb6e7498c5554d207d8178eb95579345ac414ce83aa7dde",
-        "use_summary": "Mean-variance weights for expression linear models.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600939/ (section: Methods / Pseudobulk data aggregation and covariate selection)"
+        "use_summary": "Used voom normalization through dreamlet 1.1.17 processAssays on age-group/subclass pseudobulk matrices, with donor/subclass sample and gene filters, before dreamlet mixed modelling.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13600939/ (section: Methods / Pseudobulk data aggregation and covariate selection)",
+        "implementation_scope_note": "The ordinary prepared limma LM/VOOM adapter does not implement dreamlet mixed models, processAssays filtering or its study-wide cross-subclass workflow. Do not replace that framework with an unblocked fixed-effects model; the limma edition is unstated. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P021",
+          "pmcid": "PMC13600939",
+          "doi": "10.1038/s41586-026-10271-7",
+          "tool_id": "voom",
+          "catalog_family_id": "limma",
+          "operations": [
+            "voom processing through dreamlet processAssays"
+          ],
+          "usage_summary": "Used voom normalization through dreamlet 1.1.17 processAssays on age-group/subclass pseudobulk matrices, with donor/subclass sample and gene filters, before dreamlet mixed modelling.",
+          "required_caution": "The ordinary prepared limma LM/VOOM adapter does not implement dreamlet mixed models, processAssays filtering or its study-wide cross-subclass workflow. Do not replace that framework with an unblocked fixed-effects model; the limma edition is unstated.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 64,
+              "section": "Methods / Pseudobulk data aggregation and covariate selection",
+              "paragraph_sha256": "a4b7bd02438fa403bbb6e7498c5554d207d8178eb95579345ac414ce83aa7dde",
+              "matching_text_sha256": "a4b7bd02438fa403bbb6e7498c5554d207d8178eb95579345ac414ce83aa7dde"
+            },
+            {
+              "paragraph_index": 79,
+              "section": "Methods / Age-associated transcriptomic changes",
+              "paragraph_sha256": "1b30840c643f8b267a45968ea7eb5971da8ccc3b2bc4c819974bb13116be30fd",
+              "matching_text_sha256": "1b30840c643f8b267a45968ea7eb5971da8ccc3b2bc4c819974bb13116be30fd"
+            },
+            {
+              "paragraph_index": 88,
+              "section": "Methods / Integrated analysis of lifespan replication dataset / Replication of aDEGs",
+              "paragraph_sha256": "6e861865532d2f0e309a72b0f3f0b10d3f8e1c144ff26787bfe8027ec389e291",
+              "matching_text_sha256": "6e861865532d2f0e309a72b0f3f0b10d3f8e1c144ff26787bfe8027ec389e291"
+            }
+          ],
+          "source_xml_sha256": "d6e691fbafe8e1c42b7a5dbfab7d06ad9e456f833141e7d1b54c2cba9107b1cd",
+          "source_name_witness": {
+            "literal": "voom",
+            "paragraph_index": 64,
+            "character_offset": 408,
+            "matching_text_sha256": "a4b7bd02438fa403bbb6e7498c5554d207d8178eb95579345ac414ce83aa7dde"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 79,
+            "section": "Methods / Age-associated transcriptomic changes",
+            "paragraph_sha256": "1b30840c643f8b267a45968ea7eb5971da8ccc3b2bc4c819974bb13116be30fd",
+            "matching_text_sha256": "1b30840c643f8b267a45968ea7eb5971da8ccc3b2bc4c819974bb13116be30fd"
+          },
+          {
+            "paragraph_index": 88,
+            "section": "Methods / Integrated analysis of lifespan replication dataset / Replication of aDEGs",
+            "paragraph_sha256": "6e861865532d2f0e309a72b0f3f0b10d3f8e1c144ff26787bfe8027ec389e291",
+            "matching_text_sha256": "6e861865532d2f0e309a72b0f3f0b10d3f8e1c144ff26787bfe8027ec389e291"
+          }
+        ]
       },
       {
         "tool_id": "facsdiva",
@@ -7132,18 +7301,58 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: limma-trend perturbation expression contrasts",
         "evidence_section": "Methods / Estimation of gene-regulatory effects from Perturb-seq",
         "evidence_paragraph_index": 83,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "62ee1965f35e3e15ee7ff75dc21f1114c050cebd4a86e2d66a4d7dba9641e322",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893915/ (section: Methods / Estimation of gene-regulatory effects from Perturb-seq)"
+        "use_summary": "Compared Perturb-seq knockdown cells with non-targeting controls using log-normalized expression and limma-trend, adjusting for GEM group, detected-gene count and mitochondrial-expression percentage; logFC estimates the perturbation effect.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893915/ (section: Methods / Estimation of gene-regulatory effects from Perturb-seq)",
+        "implementation_scope_note": "Cell/gene filtering and the declared covariate design remain prerequisites. Current limma 3.68.5 trend-model qualification does not establish the unreported author edition or reproduce the Perturb-seq workflow. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P023",
+          "pmcid": "PMC12893915",
+          "doi": "10.1038/s41586-025-09866-3",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "limma-trend perturbation expression contrasts"
+          ],
+          "usage_summary": "Compared Perturb-seq knockdown cells with non-targeting controls using log-normalized expression and limma-trend, adjusting for GEM group, detected-gene count and mitochondrial-expression percentage; logFC estimates the perturbation effect.",
+          "required_caution": "Cell/gene filtering and the declared covariate design remain prerequisites. Current limma 3.68.5 trend-model qualification does not establish the unreported author edition or reproduce the Perturb-seq workflow.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 83,
+              "section": "Methods / Estimation of gene-regulatory effects from Perturb-seq",
+              "paragraph_sha256": "62ee1965f35e3e15ee7ff75dc21f1114c050cebd4a86e2d66a4d7dba9641e322",
+              "matching_text_sha256": "abcfa09bd5c6adf88966417e64d0a3cbec4d7e1b653272941b7e0c3c3276d24e"
+            }
+          ],
+          "source_xml_sha256": "6e73911d0eb7e9d54023ecc3c0d216106778b58c3bc62c8248c9f3232abb4c70",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 83,
+            "character_offset": 455,
+            "matching_text_sha256": "abcfa09bd5c6adf88966417e64d0a3cbec4d7e1b653272941b7e0c3c3276d24e"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "LM"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "loftee",
@@ -8450,18 +8659,65 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: linear empirical-Bayes enrichment testing",
         "evidence_section": "Methods / RIP–seq",
         "evidence_paragraph_index": 37,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "3.62.2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "2615b9d6c2eb11207833cf1bcfbe6a89dc5df7e830351b1ccd2e967699a0ada2",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12779559/ (section: Methods / RIP–seq)"
+        "use_summary": "Used limma 3.62.2 linear modelling with empirical Bayes on log2 normalized RIP-seq enrichment values; upstream read-depth normalization, enrichment ratios and reproducibility filters are separate preparation steps. Reported limma edition: 3.62.2.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12779559/ (section: Methods / RIP–seq)",
+        "implementation_scope_note": "The exact reported 3.62.2 edition is not supplied by the qualified 3.68.5 profile. Do not apply a counts transformation to already prepared enrichment values or silently substitute an author runtime. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P027",
+          "pmcid": "PMC12779559",
+          "doi": "10.1038/s41586-025-09853-8",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "linear empirical-Bayes enrichment testing"
+          ],
+          "usage_summary": "Used limma 3.62.2 linear modelling with empirical Bayes on log2 normalized RIP-seq enrichment values; upstream read-depth normalization, enrichment ratios and reproducibility filters are separate preparation steps.",
+          "required_caution": "The exact reported 3.62.2 edition is not supplied by the qualified 3.68.5 profile. Do not apply a counts transformation to already prepared enrichment values or silently substitute an author runtime.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 37,
+              "section": "Methods / RIP–seq",
+              "paragraph_sha256": "2615b9d6c2eb11207833cf1bcfbe6a89dc5df7e830351b1ccd2e967699a0ada2",
+              "matching_text_sha256": "2615b9d6c2eb11207833cf1bcfbe6a89dc5df7e830351b1ccd2e967699a0ada2"
+            }
+          ],
+          "source_xml_sha256": "5c7736fa8079efb345b09556dc4290f29b89ffc1ea02f7c7026616798b8c6fa1",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 37,
+            "character_offset": 767,
+            "matching_text_sha256": "2615b9d6c2eb11207833cf1bcfbe6a89dc5df7e830351b1ccd2e967699a0ada2"
+          },
+          "reported_editions": [
+            {
+              "operation": "RIP-seq enrichment testing",
+              "literal": "3.62.2",
+              "paragraph_index": 37,
+              "character_offset": 776
+            }
+          ],
+          "qualified_related_current_operations": [
+            "LM"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "minimap2",
@@ -10245,18 +10501,58 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: paired moderated expression tests",
         "evidence_section": "Methods / Gene expression analysis of GDFATHER patient biopsies",
         "evidence_paragraph_index": 60,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "9b6211fe5a2b8f4e7cae096a6b6d2b97d61818447f2027cddff4d027fbfab5b0",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11779642/ (section: Methods / Gene expression analysis of GDFATHER patient biopsies)"
+        "use_summary": "Applied paired moderated t-tests to log2 normalized NanoString expression, comparing treatment day 14 with baseline separately in immune-influx groups. Between-group Wilcoxon testing and pathway Fisher tests are separate analyses.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11779642/ (section: Methods / Gene expression analysis of GDFATHER patient biopsies)",
+        "implementation_scope_note": "Preserve participant pairing, group membership and NanoString normalization/filtering. The article does not state a limma edition or a particular pairing implementation. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P034",
+          "pmcid": "PMC11779642",
+          "doi": "10.1038/s41586-024-08305-z",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "paired moderated expression tests"
+          ],
+          "usage_summary": "Applied paired moderated t-tests to log2 normalized NanoString expression, comparing treatment day 14 with baseline separately in immune-influx groups. Between-group Wilcoxon testing and pathway Fisher tests are separate analyses.",
+          "required_caution": "Preserve participant pairing, group membership and NanoString normalization/filtering. The article does not state a limma edition or a particular pairing implementation.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 60,
+              "section": "Methods / Gene expression analysis of GDFATHER patient biopsies",
+              "paragraph_sha256": "9b6211fe5a2b8f4e7cae096a6b6d2b97d61818447f2027cddff4d027fbfab5b0",
+              "matching_text_sha256": "9b6211fe5a2b8f4e7cae096a6b6d2b97d61818447f2027cddff4d027fbfab5b0"
+            }
+          ],
+          "source_xml_sha256": "2fa4797d9f3f49c8fa17085e25076eb7bc0e73722a979a63e1c9afb15f28a34f",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 60,
+            "character_offset": 1138,
+            "matching_text_sha256": "9b6211fe5a2b8f4e7cae096a6b6d2b97d61818447f2027cddff4d027fbfab5b0"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "LM"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "graphpad_prism",
@@ -14576,18 +14872,65 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: removeBatchEffect before sample-distance clustering",
         "evidence_section": "Methods / RNA-seq library creation and analysis",
         "evidence_paragraph_index": 30,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "3.46.0",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "322d8db8af1e24889e14b163392b5fcc25d406ab15a668fbe5b8f881a02ee52d",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668669/ (section: Methods / RNA-seq library creation and analysis)"
+        "use_summary": "Used limma 3.46.0 removeBatchEffect to remove genotype/individual effects from regularized-log expression before hierarchical sample-distance clustering. Differential expression testing was performed separately with DESeq2. Reported limma edition: 3.46.0.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668669/ (section: Methods / RNA-seq library creation and analysis)",
+        "implementation_scope_note": "Do not credit DESeq2 testing or edgeR normalization to limma. The3.46.0 author edition and prepared regularized-log matrix remain distinct from current 3.68.5 batch-removal qualification. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P046",
+          "pmcid": "PMC13668669",
+          "doi": "10.1038/s41586-026-10987-6",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "removeBatchEffect before sample-distance clustering"
+          ],
+          "usage_summary": "Used limma 3.46.0 removeBatchEffect to remove genotype/individual effects from regularized-log expression before hierarchical sample-distance clustering. Differential expression testing was performed separately with DESeq2.",
+          "required_caution": "Do not credit DESeq2 testing or edgeR normalization to limma. The3.46.0 author edition and prepared regularized-log matrix remain distinct from current 3.68.5 batch-removal qualification.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 30,
+              "section": "Methods / RNA-seq library creation and analysis",
+              "paragraph_sha256": "322d8db8af1e24889e14b163392b5fcc25d406ab15a668fbe5b8f881a02ee52d",
+              "matching_text_sha256": "60ea6747d117c2b8184e1ccd356a35fb48866febdf9b5dadfc93f3c4972be0f9"
+            }
+          ],
+          "source_xml_sha256": "06059f0f86607700494cb0b2477f8a9c03605b8c2089576e3b913baac4036be2",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 30,
+            "character_offset": 931,
+            "matching_text_sha256": "60ea6747d117c2b8184e1ccd356a35fb48866febdf9b5dadfc93f3c4972be0f9"
+          },
+          "reported_editions": [
+            {
+              "operation": "batch removal before clustering",
+              "literal": "3.46.0",
+              "paragraph_index": 30,
+              "character_offset": 950
+            }
+          ],
+          "qualified_related_current_operations": [
+            "BATCH"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "louvain",
@@ -16124,18 +16467,72 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: proteome and interactome testing through ProStaR",
         "evidence_section": "Methods / MS-based quantitative analyses of parasite proteomes and AP2 interactomes / Statistical analyses",
         "evidence_paragraph_index": 40,
         "matched_text": "limma",
         "extraction_score": 15,
-        "usage_context": "benchmark-or-comparison",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "bf0b9c8aaab480cfcd2c855120354c37234b8071b42225d8ce3463489cf2838e",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10781626/ (section: Methods / MS-based quantitative analyses of parasite proteomes and AP2 interactomes / Statistical analyses)"
+        "use_summary": "Used limma through ProStaR for treated-versus-mock proteome and AP2 interactome comparisons after distinct normalization/imputation. Proteome selection used log2FC 1 and P 0.01; interactome FC cutoffs were 5 versus controls and 3 between interactomes, with P 0.01.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10781626/ (section: Methods / MS-based quantitative analyses of parasite proteomes and AP2 interactomes / Statistical analyses)",
+        "implementation_scope_note": "ProStaR normalization, SLSA/DetQuantile imputation and protein/peptide validity filters are not implemented by the prepared-matrix LM adapter. Preserve the reported downstream invalidation to P=1 and iBAQ filters; global ANOVA was performed with Perseus. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P050",
+          "pmcid": "PMC10781626",
+          "doi": "10.1038/s41586-023-06821-y",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "proteome and interactome testing through ProStaR"
+          ],
+          "usage_summary": "Used limma through ProStaR for treated-versus-mock proteome and AP2 interactome comparisons after distinct normalization/imputation. Proteome selection used log2FC 1 and P 0.01; interactome FC cutoffs were 5 versus controls and 3 between interactomes, with P 0.01.",
+          "required_caution": "ProStaR normalization, SLSA/DetQuantile imputation and protein/peptide validity filters are not implemented by the prepared-matrix LM adapter. Preserve the reported downstream invalidation to P=1 and iBAQ filters; global ANOVA was performed with Perseus.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 40,
+              "section": "Methods / MS-based quantitative analyses of parasite proteomes and AP2 interactomes / Statistical analyses",
+              "paragraph_sha256": "bf0b9c8aaab480cfcd2c855120354c37234b8071b42225d8ce3463489cf2838e",
+              "matching_text_sha256": "bdf25e2fe125a7d676c94db1a026021dcc1013fcd18b00fa1c943e40382dd07b"
+            },
+            {
+              "paragraph_index": 41,
+              "section": "Methods / MS-based quantitative analyses of parasite proteomes and AP2 interactomes / Statistical analyses",
+              "paragraph_sha256": "72e10651f1ee97a64fe48944ec82fdc2846d8f2eecaa7b930e67d993ba1bb4bf",
+              "matching_text_sha256": "72e10651f1ee97a64fe48944ec82fdc2846d8f2eecaa7b930e67d993ba1bb4bf"
+            }
+          ],
+          "source_xml_sha256": "2fd4b3123b1b5930fcd5d6e8d5b6bc21edd6f3bcb572a76cbb50e802b77d2cef",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 40,
+            "character_offset": 764,
+            "matching_text_sha256": "bdf25e2fe125a7d676c94db1a026021dcc1013fcd18b00fa1c943e40382dd07b"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "LM"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 41,
+            "section": "Methods / MS-based quantitative analyses of parasite proteomes and AP2 interactomes / Statistical analyses",
+            "paragraph_sha256": "72e10651f1ee97a64fe48944ec82fdc2846d8f2eecaa7b930e67d993ba1bb4bf",
+            "matching_text_sha256": "72e10651f1ee97a64fe48944ec82fdc2846d8f2eecaa7b930e67d993ba1bb4bf"
+          }
+        ]
       },
       {
         "tool_id": "macs",
@@ -16695,18 +17092,66 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: pairwise differential expression with edgeR-prepared counts",
         "evidence_section": "Methods / Bulk RNA sequencing of mice and human-derived neutrophils",
         "evidence_paragraph_index": 79,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "3.32.2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "cf43d68fadb315dbac3c2e655fe5033f94437e1c676b2c9612a1a25801efafb0",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / Bulk RNA sequencing of mice and human-derived neutrophils)"
+        "use_summary": "Used limma 3.32.2 with edgeR 3.20.1 for count processing and pairwise expression comparisons. Global variation across conditions was assessed separately using a DESeq2 likelihood-ratio test. Reported limma edition: 3.32.2.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / Bulk RNA sequencing of mice and human-derived neutrophils)",
+        "implementation_scope_note": "The exact limma/edgeR preparation and callable settings are not stated. Do not attribute DESeq2 LRT or all edgeR normalization to limma, and do not silently substitute3.68.5 for 3.32.2. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P051",
+          "pmcid": "PMC12823425",
+          "doi": "10.1038/s41586-025-09807-0",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "pairwise differential expression with edgeR-prepared counts"
+          ],
+          "usage_summary": "Used limma 3.32.2 with edgeR 3.20.1 for count processing and pairwise expression comparisons. Global variation across conditions was assessed separately using a DESeq2 likelihood-ratio test.",
+          "required_caution": "The exact limma/edgeR preparation and callable settings are not stated. Do not attribute DESeq2 LRT or all edgeR normalization to limma, and do not silently substitute3.68.5 for 3.32.2.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 79,
+              "section": "Methods / Bulk RNA sequencing of mice and human-derived neutrophils",
+              "paragraph_sha256": "cf43d68fadb315dbac3c2e655fe5033f94437e1c676b2c9612a1a25801efafb0",
+              "matching_text_sha256": "edc87e7514fae3e6711f6278f8b21f08b04c8f1df6663c2df5bc6e3707c163bb"
+            }
+          ],
+          "source_xml_sha256": "9182a4004117036e7be71b48cabb34755f397746ef0fe821dfad01f64fa2c129",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 79,
+            "character_offset": 790,
+            "matching_text_sha256": "edc87e7514fae3e6711f6278f8b21f08b04c8f1df6663c2df5bc6e3707c163bb"
+          },
+          "reported_editions": [
+            {
+              "operation": "pairwise expression analysis",
+              "literal": "3.32.2",
+              "paragraph_index": 79,
+              "character_offset": 803
+            }
+          ],
+          "qualified_related_current_operations": [
+            "LM",
+            "VOOM"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "louvain",
@@ -20132,22 +20577,6 @@
         "evidence_paragraph_sha256": "66c06eb71362ed91c50a7339d6a24aadea6e0067f17d0ec657b4e046fedc3df8",
         "use_summary": "Grouped observations into communities using a neighborhood graph.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719114/ (section: Methods / scRNA-seq / Joint clustering 10xv2 and 10xv3 datasets)"
-      },
-      {
-        "tool_id": "limma",
-        "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
-        "evidence_section": "Methods / scRNA-seq / Differential gene expression analysis",
-        "evidence_paragraph_index": 91,
-        "matched_text": "limma",
-        "extraction_score": 15,
-        "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
-        "evidence_paragraph_sha256": "21ef0a321d804d366f73d62103f9b56505e1b94cdf39d0983b93056dc17de5a6",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719114/ (section: Methods / scRNA-seq / Differential gene expression analysis)"
       },
       {
         "tool_id": "scvi",
@@ -27348,18 +27777,86 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: differential CpG testing; reference-population CpG selection",
         "evidence_section": "Methods / Data analysis",
         "evidence_paragraph_index": 34,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "3536fc42f7fcc0f28ddea3ae8fb8659fdee18d4d24b7c82bea82a85cb2d6f776",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12807868/ (section: Methods / Data analysis)"
+        "use_summary": "Used limma 3.58.1 for differential CpGs and limma 3.50.3 to select population-specific CpGs for a deconvolution reference. The latter retains significant sites and selects high delta-beta sites before EpiDISH deconvolution. Reported limma editions: 3.58.1, 3.50.3.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12807868/ (section: Methods / Data analysis)",
+        "implementation_scope_note": "Keep both operation-specific edition witnesses. SeSaMe preprocessing, reference construction and EpiDISH deconvolution are separate; current 3.68.5 prepared-matrix tests supply neither author edition nor the full pipeline. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P086",
+          "pmcid": "PMC12807868",
+          "doi": "10.1038/s41588-025-02419-4",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "differential CpG testing",
+            "reference-population CpG selection"
+          ],
+          "usage_summary": "Used limma 3.58.1 for differential CpGs and limma 3.50.3 to select population-specific CpGs for a deconvolution reference. The latter retains significant sites and selects high delta-beta sites before EpiDISH deconvolution.",
+          "required_caution": "Keep both operation-specific edition witnesses. SeSaMe preprocessing, reference construction and EpiDISH deconvolution are separate; current 3.68.5 prepared-matrix tests supply neither author edition nor the full pipeline.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 34,
+              "section": "Methods / Data analysis",
+              "paragraph_sha256": "3536fc42f7fcc0f28ddea3ae8fb8659fdee18d4d24b7c82bea82a85cb2d6f776",
+              "matching_text_sha256": "3536fc42f7fcc0f28ddea3ae8fb8659fdee18d4d24b7c82bea82a85cb2d6f776"
+            },
+            {
+              "paragraph_index": 37,
+              "section": "Methods / Immune cell deconvolution",
+              "paragraph_sha256": "0f8d6fa7bfc81a961ca84cd5cf3f140cc84daf587a2c29380cdf1b2b5fb6fdbf",
+              "matching_text_sha256": "de1a02933bbf84e0401c2e298a87be061f18f3c50168bf2c4aa945787ec1ba2a"
+            }
+          ],
+          "source_xml_sha256": "128b74558684f7bd74506858cfb8d15baa0ff9db51ac0debef173a96732c5d49",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 34,
+            "character_offset": 320,
+            "matching_text_sha256": "3536fc42f7fcc0f28ddea3ae8fb8659fdee18d4d24b7c82bea82a85cb2d6f776"
+          },
+          "reported_editions": [
+            {
+              "operation": "differential CpG testing",
+              "literal": "3.58.1",
+              "paragraph_index": 34,
+              "character_offset": 337
+            },
+            {
+              "operation": "deconvolution-reference CpG selection",
+              "literal": "3.50.3",
+              "paragraph_index": 37,
+              "character_offset": 466
+            }
+          ],
+          "qualified_related_current_operations": [
+            "LM"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 37,
+            "section": "Methods / Immune cell deconvolution",
+            "paragraph_sha256": "0f8d6fa7bfc81a961ca84cd5cf3f140cc84daf587a2c29380cdf1b2b5fb6fdbf",
+            "matching_text_sha256": "de1a02933bbf84e0401c2e298a87be061f18f3c50168bf2c4aa945787ec1ba2a"
+          }
+        ]
       },
       {
         "tool_id": "minfi",
@@ -28546,6 +29043,81 @@
           "author_runtime_executed": false,
           "whole_paper_reproduced": false
         }
+      },
+      {
+        "tool_id": "limma",
+        "tool": "limma",
+        "matched_text": "limma",
+        "extraction_score": 0,
+        "analysis_role": "Limma/voom: reported cell-type-specific heritability preparation",
+        "use_summary": "Explicitly named limma 3.36.2 among packages used for cell-type-specific heritability analyses alongside edgeR, DESeq2 and stratified LDSC. The statement is duplicated in data availability and counts as one reported use. Reported limma edition: 3.36.2.",
+        "implementation_scope_note": "This is an explicit reported package use with an unspecified processing operation, not evidence that limma estimates heritability or that a particular limma callable was executed. Exact preparation/code and the author edition remain unresolved. This source review is not a complete author workflow or biological reproduction.",
+        "evidence_section": "Code availability",
+        "evidence_paragraph_index": 59,
+        "evidence_paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631763/ (section: Code availability)",
+        "evidence_selection": "individually-reviewed-source-role",
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "3.36.2",
+        "source_role_qualification": {
+          "paper_id": "P088",
+          "pmcid": "PMC11631763",
+          "doi": "10.1038/s41588-024-01975-5",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "reported cell-type-specific heritability preparation"
+          ],
+          "usage_summary": "Explicitly named limma 3.36.2 among packages used for cell-type-specific heritability analyses alongside edgeR, DESeq2 and stratified LDSC. The statement is duplicated in data availability and counts as one reported use.",
+          "required_caution": "This is an explicit reported package use with an unspecified processing operation, not evidence that limma estimates heritability or that a particular limma callable was executed. Exact preparation/code and the author edition remain unresolved.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 59,
+              "section": "Code availability",
+              "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac",
+              "matching_text_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+            },
+            {
+              "paragraph_index": 70,
+              "section": "Associated Data / Data Availability Statement",
+              "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac",
+              "matching_text_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+            }
+          ],
+          "source_xml_sha256": "9a809b741a416b28a354287c263b3662ef5137e6e616b1855b999b9355534623",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 59,
+            "character_offset": 1641,
+            "matching_text_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+          },
+          "reported_editions": [
+            {
+              "operation": "reported cell-type heritability analyses",
+              "literal": "3.36.2",
+              "paragraph_index": 59,
+              "character_offset": 1649
+            }
+          ],
+          "qualified_related_current_operations": [],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": false,
+          "proposed_observation": true,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 70,
+            "section": "Associated Data / Data Availability Statement",
+            "paragraph_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac",
+            "matching_text_sha256": "d899670986e0a999c90da1503e94e761b1f366bd826bef02c289518666aa4cac"
+          }
+        ]
       }
     ],
     "status": "extracted",
@@ -52657,18 +53229,58 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: Proteograph plate-effect removal",
         "evidence_section": "Methods / Proteomic profiling / Seer Proteograph",
         "evidence_paragraph_index": 34,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "bec89fcacae16cd7ff12db603c2527e7e65325f2c98145f66add645032edff0b",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447103/ (section: Methods / Proteomic profiling / Seer Proteograph)"
+        "use_summary": "Used limma removeBatchEffect to correct protein-level Proteograph plate effects after PepCal drift normalization and MaxLFQ aggregation.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447103/ (section: Methods / Proteomic profiling / Seer Proteograph)",
+        "implementation_scope_note": "PepCal smoothing and iq/MaxLFQ aggregation are separate providers. The prepared protein matrix, plate labels and retained biological design must be supplied; the limma edition is unstated. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P168",
+          "pmcid": "PMC13447103",
+          "doi": "10.1038/s41588-026-02697-6",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "Proteograph plate-effect removal"
+          ],
+          "usage_summary": "Used limma removeBatchEffect to correct protein-level Proteograph plate effects after PepCal drift normalization and MaxLFQ aggregation.",
+          "required_caution": "PepCal smoothing and iq/MaxLFQ aggregation are separate providers. The prepared protein matrix, plate labels and retained biological design must be supplied; the limma edition is unstated.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 34,
+              "section": "Methods / Proteomic profiling / Seer Proteograph",
+              "paragraph_sha256": "bec89fcacae16cd7ff12db603c2527e7e65325f2c98145f66add645032edff0b",
+              "matching_text_sha256": "cbb456dfd26579083d650b7c524de4873f864444b5c47613e8602e09a9cc7cbb"
+            }
+          ],
+          "source_xml_sha256": "e68251d7b700b83479ee28f992b07c396ca42e800acfa35436035248b1ffc149",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 34,
+            "character_offset": 869,
+            "matching_text_sha256": "cbb456dfd26579083d650b7c524de4873f864444b5c47613e8602e09a9cc7cbb"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "BATCH"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "picard",
@@ -56148,18 +56760,87 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: limma-voom simulation testing; individual-blocked voom/TREAT expression contrasts; batch removal before WGCNA",
         "evidence_section": "Methods / Power estimation of differential gene expression between osteoarthritis cartilage tissue grades",
         "evidence_paragraph_index": 20,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "7089ba25fa40d73ac4dd52085e5e0bbd9847562f55362de2fde0687e57ffb300",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639091/ (section: Methods / Power estimation of differential gene expression between osteoarthritis cartilage tissue grades)"
+        "use_summary": "Used limma-voom in powsimR power simulations; used individual-blocked voom models followed by TREAT with a 1.2-fold threshold for cartilage expression contrasts; used removeBatchEffect before WGCNA.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639091/ (section: Methods / Power estimation of differential gene expression between osteoarthritis cartilage tissue grades)",
+        "implementation_scope_note": "The source reports blocking but does not name a correlation-estimation callable. Preserve the TREAT log2 threshold log2(1.2), individual IDs and adjustment family. powsimR simulation generation and WGCNA are separate workflows; the author limma edition/settings remain unstated. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P182",
+          "pmcid": "PMC11639091",
+          "doi": "10.1016/j.ajhg.2024.10.019",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "limma-voom simulation testing",
+            "individual-blocked voom/TREAT expression contrasts",
+            "batch removal before WGCNA"
+          ],
+          "usage_summary": "Used limma-voom in powsimR power simulations; used individual-blocked voom models followed by TREAT with a 1.2-fold threshold for cartilage expression contrasts; used removeBatchEffect before WGCNA.",
+          "required_caution": "The source reports blocking but does not name a correlation-estimation callable. Preserve the TREAT log2 threshold log2(1.2), individual IDs and adjustment family. powsimR simulation generation and WGCNA are separate workflows; the author limma edition/settings remain unstated.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 20,
+              "section": "Methods / Power estimation of differential gene expression between osteoarthritis cartilage tissue grades",
+              "paragraph_sha256": "7089ba25fa40d73ac4dd52085e5e0bbd9847562f55362de2fde0687e57ffb300",
+              "matching_text_sha256": "8fac639fbc534a2309e254093726262540e62d5d02e89bcce13d3262fde45cfc"
+            },
+            {
+              "paragraph_index": 21,
+              "section": "Methods / Differential gene expression between osteoarthritis cartilage tissue grades",
+              "paragraph_sha256": "121515a20f365a17fe5ea215dd2a69c9e62597e09ad75694adadfa3a05090412",
+              "matching_text_sha256": "ee0091f0c7d39b74e1fa08e3ca99a2419d4059a3bee8a6823041b90e0b3decf5"
+            },
+            {
+              "paragraph_index": 26,
+              "section": "Methods / Construction of weighted gene co-expression network and module identification in osteoarthritis cartilage",
+              "paragraph_sha256": "1f4c67c73250a9a215087f71e76600207a2a92bee70d68adaf9c854ef782d5e8",
+              "matching_text_sha256": "8ee868cd627ac33499a38d94d104f6d57abd367d4c189f7942959ee603d7f49c"
+            }
+          ],
+          "source_xml_sha256": "a341dce0f9805f735191516ad0178a8a44ec98248dba13a9941f0a2a8178224e",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 20,
+            "character_offset": 1203,
+            "matching_text_sha256": "8fac639fbc534a2309e254093726262540e62d5d02e89bcce13d3262fde45cfc"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "VOOM",
+            "BATCH"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 21,
+            "section": "Methods / Differential gene expression between osteoarthritis cartilage tissue grades",
+            "paragraph_sha256": "121515a20f365a17fe5ea215dd2a69c9e62597e09ad75694adadfa3a05090412",
+            "matching_text_sha256": "ee0091f0c7d39b74e1fa08e3ca99a2419d4059a3bee8a6823041b90e0b3decf5"
+          },
+          {
+            "paragraph_index": 26,
+            "section": "Methods / Construction of weighted gene co-expression network and module identification in osteoarthritis cartilage",
+            "paragraph_sha256": "1f4c67c73250a9a215087f71e76600207a2a92bee70d68adaf9c854ef782d5e8",
+            "matching_text_sha256": "8ee868cd627ac33499a38d94d104f6d57abd367d4c189f7942959ee603d7f49c"
+          }
+        ]
       },
       {
         "tool_id": "louvain",
@@ -56465,18 +57146,72 @@
       {
         "tool_id": "voom",
         "tool": "voom",
-        "analysis_role": "Mean-variance weights for expression linear models",
+        "analysis_role": "Limma/voom: voom weights in simulation and blocked expression models",
         "evidence_section": "Methods / Power estimation of differential gene expression between osteoarthritis cartilage tissue grades",
         "evidence_paragraph_index": 20,
         "matched_text": "voom",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "7089ba25fa40d73ac4dd52085e5e0bbd9847562f55362de2fde0687e57ffb300",
-        "use_summary": "Mean-variance weights for expression linear models.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639091/ (section: Methods / Power estimation of differential gene expression between osteoarthritis cartilage tissue grades)"
+        "use_summary": "Used limma-voom for powsimR simulations and observational-level voom weights for individual-blocked cartilage expression models followed by TREAT.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639091/ (section: Methods / Power estimation of differential gene expression between osteoarthritis cartilage tissue grades)",
+        "implementation_scope_note": "The source reports blocking but does not name a correlation-estimation callable. Preserve the TREAT log2 threshold log2(1.2), individual IDs and adjustment family. powsimR simulation generation and WGCNA are separate workflows; the author limma edition/settings remain unstated. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P182",
+          "pmcid": "PMC11639091",
+          "doi": "10.1016/j.ajhg.2024.10.019",
+          "tool_id": "voom",
+          "catalog_family_id": "limma",
+          "operations": [
+            "voom weights in simulation and blocked expression models"
+          ],
+          "usage_summary": "Used limma-voom for powsimR simulations and observational-level voom weights for individual-blocked cartilage expression models followed by TREAT.",
+          "required_caution": "The source reports blocking but does not name a correlation-estimation callable. Preserve the TREAT log2 threshold log2(1.2), individual IDs and adjustment family. powsimR simulation generation and WGCNA are separate workflows; the author limma edition/settings remain unstated.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 20,
+              "section": "Methods / Power estimation of differential gene expression between osteoarthritis cartilage tissue grades",
+              "paragraph_sha256": "7089ba25fa40d73ac4dd52085e5e0bbd9847562f55362de2fde0687e57ffb300",
+              "matching_text_sha256": "8fac639fbc534a2309e254093726262540e62d5d02e89bcce13d3262fde45cfc"
+            },
+            {
+              "paragraph_index": 21,
+              "section": "Methods / Differential gene expression between osteoarthritis cartilage tissue grades",
+              "paragraph_sha256": "121515a20f365a17fe5ea215dd2a69c9e62597e09ad75694adadfa3a05090412",
+              "matching_text_sha256": "ee0091f0c7d39b74e1fa08e3ca99a2419d4059a3bee8a6823041b90e0b3decf5"
+            }
+          ],
+          "source_xml_sha256": "a341dce0f9805f735191516ad0178a8a44ec98248dba13a9941f0a2a8178224e",
+          "source_name_witness": {
+            "literal": "voom",
+            "paragraph_index": 20,
+            "character_offset": 1209,
+            "matching_text_sha256": "8fac639fbc534a2309e254093726262540e62d5d02e89bcce13d3262fde45cfc"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "VOOM"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 21,
+            "section": "Methods / Differential gene expression between osteoarthritis cartilage tissue grades",
+            "paragraph_sha256": "121515a20f365a17fe5ea215dd2a69c9e62597e09ad75694adadfa3a05090412",
+            "matching_text_sha256": "ee0091f0c7d39b74e1fa08e3ca99a2419d4059a3bee8a6823041b90e0b3decf5"
+          }
+        ]
       },
       {
         "tool_id": "wgcna",
@@ -57039,18 +57774,222 @@
       {
         "tool_id": "voom",
         "tool": "voom",
-        "analysis_role": "Mean-variance weights for expression linear models",
+        "analysis_role": "Limma/voom: circular-junction voom preprocessing",
         "evidence_section": "Material and methods / eQTL mapping analysis",
         "evidence_paragraph_index": 14,
         "matched_text": "voom",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "63092796e34777f13e20d5dde45779e635a54a4924c70b3cba403746dc4108a3",
-        "use_summary": "Mean-variance weights for expression linear models.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12824624/ (section: Material and methods / eQTL mapping analysis)"
+        "use_summary": "Used voom on circular-junction counts before eQTL mapping; linked code obtains log2 expression and precision weights, followed by custom weighted residualization.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12824624/ (section: Material and methods / eQTL mapping analysis)",
+        "implementation_scope_note": "The linked command log contains alternative processing paths, explicit zero-depth median replacement and sample-name rewriting; none is silently selected or reproduced here. Voom-only output/residualization and full author preparation are not independently exposed/qualified by the fitted-model interface. The author edition and executed commit are unproven. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P183",
+          "pmcid": "PMC12824624",
+          "doi": "10.1016/j.ajhg.2025.11.012",
+          "tool_id": "voom",
+          "catalog_family_id": "limma",
+          "operations": [
+            "circular-junction voom preprocessing"
+          ],
+          "usage_summary": "Used voom on circular-junction counts before eQTL mapping; linked code obtains log2 expression and precision weights, followed by custom weighted residualization.",
+          "required_caution": "The linked command log contains alternative processing paths, explicit zero-depth median replacement and sample-name rewriting; none is silently selected or reproduced here. Voom-only output/residualization and full author preparation are not independently exposed/qualified by the fitted-model interface. The author edition and executed commit are unproven.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 14,
+              "section": "Material and methods / eQTL mapping analysis",
+              "paragraph_sha256": "63092796e34777f13e20d5dde45779e635a54a4924c70b3cba403746dc4108a3",
+              "matching_text_sha256": "e0c46792d179fa338f0356b9707ca3f835ff034867d19f3d8c7cda3afc09fa42"
+            }
+          ],
+          "source_xml_sha256": "f712738d2996e5a02826e4d939365bf1889c12ba08f9f65621cecc07798abedc",
+          "source_name_witness": {
+            "literal": "voom",
+            "paragraph_index": 14,
+            "character_offset": 645,
+            "matching_text_sha256": "e0c46792d179fa338f0356b9707ca3f835ff034867d19f3d8c7cda3afc09fa42"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "VOOM"
+          ],
+          "linked_code_source": {
+            "paper_id": "P183",
+            "repository": "https://github.com/LiChen1990/lncRNA_circRNA_eQTL",
+            "commit": "532bb9334753e4c753ca92c5d8afb34ec6215a97",
+            "commit_date": "2025-04-06T13:34:39Z",
+            "file": {
+              "path": "eQTL_mapping/HBCC.circRNA.eQTL.com.txt",
+              "url": "https://raw.githubusercontent.com/LiChen1990/lncRNA_circRNA_eQTL/532bb9334753e4c753ca92c5d8afb34ec6215a97/eQTL_mapping/HBCC.circRNA.eQTL.com.txt",
+              "git_blob_sha": "a96c3350a5ce3e220ff19ff9ce97d3ce0a9a256b",
+              "bytes": 39392,
+              "sha256": "10aafa985000f87cc2e738f23423bfc76213a8f837e1d001ef31dea66758aa28"
+            },
+            "witnesses": [
+              {
+                "label": "limma-import",
+                "line_number": 53,
+                "line_sha256": "a1d2230125ca9d149726794892426f926e8d1bf21ac4e9ce627c29dc0844d3d2",
+                "pattern": "^library\\(limma\\)$"
+              },
+              {
+                "label": "voom-call",
+                "line_number": 178,
+                "line_sha256": "9f8b55e5d599b7f454949adc8d09d9a552197e861a4251618478d4e4e5a6ab5a",
+                "pattern": "=voom\\("
+              },
+              {
+                "label": "weighted-residual-call",
+                "line_number": 182,
+                "line_sha256": "5b6a159ce367902debaebfb28284c09c01245d9fc788d7b04cebdd06a4a962f7",
+                "pattern": "^CIRI[.]JUNCTION[.]PASS[.]voom[.]log[.]Res=calcResiduals\\("
+              },
+              {
+                "label": "zero-depth-median-rule",
+                "line_number": 170,
+                "line_sha256": "17e37975523b8666b6844b9512e0098b3e07887f7e325c6d8c9e5f271abb0eb4",
+                "pattern": "^CIRI[.]JUNCTION[.]depth\\[which\\(.*=median"
+              },
+              {
+                "label": "sample-name-rewrite",
+                "line_number": 168,
+                "line_sha256": "60ee63950cb6202ba587f978be57061c072c121b55f86ea738683bf9d7b5936b",
+                "pattern": "^colnames\\(CIRI[.]JUNCTION[.]mat\\)<-gsub"
+              },
+              {
+                "label": "alternative-untransformed-residual-path",
+                "line_number": 452,
+                "line_sha256": "88952b80606a1a7dc4f72b8ad08745295afe88630e6987c4a051b8ff5cb270e0",
+                "pattern": "^CIRI[.]JUNCTION[.]PASS[.]voom[.]log[.]Res=calcResiduals\\(CIRI[.]JUNCTION[.]mat"
+              }
+            ],
+            "author_pipeline_executed": false,
+            "paper_executed_commit_correspondence_proven": false,
+            "source_only_audit": true,
+            "original_author_code_redistributed": false
+          },
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
+      },
+      {
+        "tool_id": "limma",
+        "tool": "limma",
+        "matched_text": "voom",
+        "extraction_score": 0,
+        "analysis_role": "Limma/voom: circular-junction voom preprocessing before eQTL mapping",
+        "use_summary": "Reported voom preprocessing of circular-junction counts before circRNA eQTL mapping. Linked code imports limma and obtains log2 expression and precision weights from voom before custom weighted covariate residualization.",
+        "implementation_scope_note": "The linked command log contains alternative processing paths, explicit zero-depth median replacement and sample-name rewriting; none is silently selected or reproduced here. Voom-only output/residualization and full author preparation are not independently exposed/qualified by the fitted-model interface. The author edition and executed commit are unproven. This source review is not a complete author workflow or biological reproduction.",
+        "evidence_section": "Material and methods / eQTL mapping analysis",
+        "evidence_paragraph_index": 14,
+        "evidence_paragraph_sha256": "63092796e34777f13e20d5dde45779e635a54a4924c70b3cba403746dc4108a3",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12824624/ (section: Material and methods / eQTL mapping analysis)",
+        "evidence_selection": "individually-reviewed-source-role",
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "source_role_qualification": {
+          "paper_id": "P183",
+          "pmcid": "PMC12824624",
+          "doi": "10.1016/j.ajhg.2025.11.012",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "circular-junction voom preprocessing before eQTL mapping"
+          ],
+          "usage_summary": "Reported voom preprocessing of circular-junction counts before circRNA eQTL mapping. Linked code imports limma and obtains log2 expression and precision weights from voom before custom weighted covariate residualization.",
+          "required_caution": "The linked command log contains alternative processing paths, explicit zero-depth median replacement and sample-name rewriting; none is silently selected or reproduced here. Voom-only output/residualization and full author preparation are not independently exposed/qualified by the fitted-model interface. The author edition and executed commit are unproven.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 14,
+              "section": "Material and methods / eQTL mapping analysis",
+              "paragraph_sha256": "63092796e34777f13e20d5dde45779e635a54a4924c70b3cba403746dc4108a3",
+              "matching_text_sha256": "e0c46792d179fa338f0356b9707ca3f835ff034867d19f3d8c7cda3afc09fa42"
+            }
+          ],
+          "source_xml_sha256": "f712738d2996e5a02826e4d939365bf1889c12ba08f9f65621cecc07798abedc",
+          "source_name_witness": {
+            "literal": "voom",
+            "paragraph_index": 14,
+            "character_offset": 645,
+            "matching_text_sha256": "e0c46792d179fa338f0356b9707ca3f835ff034867d19f3d8c7cda3afc09fa42"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "VOOM"
+          ],
+          "linked_code_source": {
+            "paper_id": "P183",
+            "repository": "https://github.com/LiChen1990/lncRNA_circRNA_eQTL",
+            "commit": "532bb9334753e4c753ca92c5d8afb34ec6215a97",
+            "commit_date": "2025-04-06T13:34:39Z",
+            "file": {
+              "path": "eQTL_mapping/HBCC.circRNA.eQTL.com.txt",
+              "url": "https://raw.githubusercontent.com/LiChen1990/lncRNA_circRNA_eQTL/532bb9334753e4c753ca92c5d8afb34ec6215a97/eQTL_mapping/HBCC.circRNA.eQTL.com.txt",
+              "git_blob_sha": "a96c3350a5ce3e220ff19ff9ce97d3ce0a9a256b",
+              "bytes": 39392,
+              "sha256": "10aafa985000f87cc2e738f23423bfc76213a8f837e1d001ef31dea66758aa28"
+            },
+            "witnesses": [
+              {
+                "label": "limma-import",
+                "line_number": 53,
+                "line_sha256": "a1d2230125ca9d149726794892426f926e8d1bf21ac4e9ce627c29dc0844d3d2",
+                "pattern": "^library\\(limma\\)$"
+              },
+              {
+                "label": "voom-call",
+                "line_number": 178,
+                "line_sha256": "9f8b55e5d599b7f454949adc8d09d9a552197e861a4251618478d4e4e5a6ab5a",
+                "pattern": "=voom\\("
+              },
+              {
+                "label": "weighted-residual-call",
+                "line_number": 182,
+                "line_sha256": "5b6a159ce367902debaebfb28284c09c01245d9fc788d7b04cebdd06a4a962f7",
+                "pattern": "^CIRI[.]JUNCTION[.]PASS[.]voom[.]log[.]Res=calcResiduals\\("
+              },
+              {
+                "label": "zero-depth-median-rule",
+                "line_number": 170,
+                "line_sha256": "17e37975523b8666b6844b9512e0098b3e07887f7e325c6d8c9e5f271abb0eb4",
+                "pattern": "^CIRI[.]JUNCTION[.]depth\\[which\\(.*=median"
+              },
+              {
+                "label": "sample-name-rewrite",
+                "line_number": 168,
+                "line_sha256": "60ee63950cb6202ba587f978be57061c072c121b55f86ea738683bf9d7b5936b",
+                "pattern": "^colnames\\(CIRI[.]JUNCTION[.]mat\\)<-gsub"
+              },
+              {
+                "label": "alternative-untransformed-residual-path",
+                "line_number": 452,
+                "line_sha256": "88952b80606a1a7dc4f72b8ad08745295afe88630e6987c4a051b8ff5cb270e0",
+                "pattern": "^CIRI[.]JUNCTION[.]PASS[.]voom[.]log[.]Res=calcResiduals\\(CIRI[.]JUNCTION[.]mat"
+              }
+            ],
+            "author_pipeline_executed": false,
+            "paper_executed_commit_correspondence_proven": false,
+            "source_only_audit": true,
+            "original_author_code_redistributed": false
+          },
+          "provider_attribution_unresolved": false,
+          "existing_observation": false,
+          "proposed_observation": true,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       }
     ],
     "status": "extracted",
@@ -57268,18 +58207,92 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: M-value differential methylation models; natural-spline developmental contrast",
         "evidence_section": "Methods / Differential methylation and differential methylated region analyses",
         "evidence_paragraph_index": 9,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "3.55.5",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "17f4c0d584dfa6a28594ca6c0f3b48391eceb3294c6b63815e289cddd4baf5e1",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639090/ (section: Methods / Differential methylation and differential methylated region analyses)"
+        "use_summary": "Used limma 3.55.5 on methylation M values for developmental-stage and sex effects with experimental and maternal/sample covariates. A separate five-df natural cubic spline model tests the mean spline-coefficient contrast; linear-model results feed dmrff. Reported limma edition: 3.55.5.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639090/ (section: Methods / Differential methylation and differential methylated region analyses)",
+        "implementation_scope_note": "Preserve Bonferroni correction, the supplied spline basis and coefficient order. The3.55.5 development edition and complete author preparation are unqualified; dmrff region analysis is a separate provider. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P185",
+          "pmcid": "PMC11639090",
+          "doi": "10.1016/j.ajhg.2024.10.017",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "M-value differential methylation models",
+            "natural-spline developmental contrast"
+          ],
+          "usage_summary": "Used limma 3.55.5 on methylation M values for developmental-stage and sex effects with experimental and maternal/sample covariates. A separate five-df natural cubic spline model tests the mean spline-coefficient contrast; linear-model results feed dmrff.",
+          "required_caution": "Preserve Bonferroni correction, the supplied spline basis and coefficient order. The3.55.5 development edition and complete author preparation are unqualified; dmrff region analysis is a separate provider.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 9,
+              "section": "Methods / Differential methylation and differential methylated region analyses",
+              "paragraph_sha256": "17f4c0d584dfa6a28594ca6c0f3b48391eceb3294c6b63815e289cddd4baf5e1",
+              "matching_text_sha256": "17f4c0d584dfa6a28594ca6c0f3b48391eceb3294c6b63815e289cddd4baf5e1"
+            },
+            {
+              "paragraph_index": 10,
+              "section": "Methods / Differential methylation and differential methylated region analyses",
+              "paragraph_sha256": "e184a20988813b78bc3b00bd2bb4eab28d81c785bcf96918ffff3f6ad9e630d0",
+              "matching_text_sha256": "e184a20988813b78bc3b00bd2bb4eab28d81c785bcf96918ffff3f6ad9e630d0"
+            },
+            {
+              "paragraph_index": 11,
+              "section": "Methods / Differential methylation and differential methylated region analyses",
+              "paragraph_sha256": "34d5d80dc378c483d2b971292af4f0f349fb7fa4327cd3d93758a2d0022f5fec",
+              "matching_text_sha256": "6bee9682c5a04b255cae0de8a4f4e3f916b2ebdc68559af3c76cbcf1c3a02c2f"
+            }
+          ],
+          "source_xml_sha256": "48dbc40e346a8d65e1a814b418469c3c669ec7721c44428623df05ba82d85848",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 9,
+            "character_offset": 217,
+            "matching_text_sha256": "17f4c0d584dfa6a28594ca6c0f3b48391eceb3294c6b63815e289cddd4baf5e1"
+          },
+          "reported_editions": [
+            {
+              "operation": "methylation modelling",
+              "literal": "3.55.5",
+              "paragraph_index": 9,
+              "character_offset": 236
+            }
+          ],
+          "qualified_related_current_operations": [
+            "LM"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        },
+        "supporting_evidence": [
+          {
+            "paragraph_index": 10,
+            "section": "Methods / Differential methylation and differential methylated region analyses",
+            "paragraph_sha256": "e184a20988813b78bc3b00bd2bb4eab28d81c785bcf96918ffff3f6ad9e630d0",
+            "matching_text_sha256": "e184a20988813b78bc3b00bd2bb4eab28d81c785bcf96918ffff3f6ad9e630d0"
+          },
+          {
+            "paragraph_index": 11,
+            "section": "Methods / Differential methylation and differential methylated region analyses",
+            "paragraph_sha256": "34d5d80dc378c483d2b971292af4f0f349fb7fa4327cd3d93758a2d0022f5fec",
+            "matching_text_sha256": "6bee9682c5a04b255cae0de8a4f4e3f916b2ebdc68559af3c76cbcf1c3a02c2f"
+          }
+        ]
       },
       {
         "tool_id": "matrixeqtl",
@@ -60047,18 +61060,65 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: voom differential expression on HTSeq counts",
         "evidence_section": "Material and methods / Transcriptome analysis / Differential expression",
         "evidence_paragraph_index": 19,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "3.44",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "8ddda8ff0a0ba20f4446cb7e64b248b42a9603c4399783fc07b9db826593b327",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639096/ (section: Material and methods / Transcriptome analysis / Differential expression)"
+        "use_summary": "Used limma with voom transformation for differential expression on an HTSeq count table, reporting version family 3.44. Reported limma edition: 3.44.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639096/ (section: Material and methods / Transcriptome analysis / Differential expression)",
+        "implementation_scope_note": "The patch edition is not supplied; do not choose3.44.x silently. HISAT2 alignment, SAMtools processing, HTSeq counting and BEDTools intersections are separate providers. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P195",
+          "pmcid": "PMC11639096",
+          "doi": "10.1016/j.ajhg.2024.10.003",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "voom differential expression on HTSeq counts"
+          ],
+          "usage_summary": "Used limma with voom transformation for differential expression on an HTSeq count table, reporting version family 3.44.",
+          "required_caution": "The patch edition is not supplied; do not choose3.44.x silently. HISAT2 alignment, SAMtools processing, HTSeq counting and BEDTools intersections are separate providers.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 19,
+              "section": "Material and methods / Transcriptome analysis / Differential expression",
+              "paragraph_sha256": "8ddda8ff0a0ba20f4446cb7e64b248b42a9603c4399783fc07b9db826593b327",
+              "matching_text_sha256": "20900d9417d77366b0bd0b57b9ba072d6f14af6cc7703c752bddbd80b44309ea"
+            }
+          ],
+          "source_xml_sha256": "4fccad7f6d187f3b1195ea7b65ab9b044a80d33440a548954e6787ac13b95da8",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 19,
+            "character_offset": 392,
+            "matching_text_sha256": "20900d9417d77366b0bd0b57b9ba072d6f14af6cc7703c752bddbd80b44309ea"
+          },
+          "reported_editions": [
+            {
+              "operation": "voom differential expression",
+              "literal": "3.44",
+              "paragraph_index": 19,
+              "character_offset": 431
+            }
+          ],
+          "qualified_related_current_operations": [
+            "VOOM"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "samtools",
@@ -60095,18 +61155,65 @@
       {
         "tool_id": "voom",
         "tool": "voom",
-        "analysis_role": "Mean-variance weights for expression linear models",
+        "analysis_role": "Limma/voom: voom transformation for differential expression",
         "evidence_section": "Material and methods / Transcriptome analysis / Differential expression",
         "evidence_paragraph_index": 19,
         "matched_text": "Voom",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
-        "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "3.44",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "8ddda8ff0a0ba20f4446cb7e64b248b42a9603c4399783fc07b9db826593b327",
-        "use_summary": "Mean-variance weights for expression linear models.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639096/ (section: Material and methods / Transcriptome analysis / Differential expression)"
+        "use_summary": "Applied voom transformation within limma differential expression on HTSeq counts, reporting the incomplete version family 3.44. Reported limma edition: 3.44.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639096/ (section: Material and methods / Transcriptome analysis / Differential expression)",
+        "implementation_scope_note": "The patch edition is not supplied; do not choose3.44.x silently. HISAT2 alignment, SAMtools processing, HTSeq counting and BEDTools intersections are separate providers. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P195",
+          "pmcid": "PMC11639096",
+          "doi": "10.1016/j.ajhg.2024.10.003",
+          "tool_id": "voom",
+          "catalog_family_id": "limma",
+          "operations": [
+            "voom transformation for differential expression"
+          ],
+          "usage_summary": "Applied voom transformation within limma differential expression on HTSeq counts, reporting the incomplete version family 3.44.",
+          "required_caution": "The patch edition is not supplied; do not choose3.44.x silently. HISAT2 alignment, SAMtools processing, HTSeq counting and BEDTools intersections are separate providers.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 19,
+              "section": "Material and methods / Transcriptome analysis / Differential expression",
+              "paragraph_sha256": "8ddda8ff0a0ba20f4446cb7e64b248b42a9603c4399783fc07b9db826593b327",
+              "matching_text_sha256": "20900d9417d77366b0bd0b57b9ba072d6f14af6cc7703c752bddbd80b44309ea"
+            }
+          ],
+          "source_xml_sha256": "4fccad7f6d187f3b1195ea7b65ab9b044a80d33440a548954e6787ac13b95da8",
+          "source_name_witness": {
+            "literal": "Voom",
+            "paragraph_index": 19,
+            "character_offset": 403,
+            "matching_text_sha256": "20900d9417d77366b0bd0b57b9ba072d6f14af6cc7703c752bddbd80b44309ea"
+          },
+          "reported_editions": [
+            {
+              "operation": "voom differential expression",
+              "literal": "3.44",
+              "paragraph_index": 19,
+              "character_offset": 431
+            }
+          ],
+          "qualified_related_current_operations": [
+            "VOOM"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "ggpubr",
@@ -61263,18 +62370,58 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: isoform-abundance covariate removal before DEXSeq",
         "evidence_section": "Subjects, material, and methods / Isoform switching analyses",
         "evidence_paragraph_index": 12,
         "matched_text": "limma",
         "extraction_score": 10,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "d30dfc56247a8da5cc95a3e940944049dda26897aa2f282c2ffd554e7c8cc2e3",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568790/ (section: Subjects, material, and methods / Isoform switching analyses)"
+        "use_summary": "Applied limma removeBatchEffect to the isoform abundance matrix to account for RIN, sequencing batch, age and blood-cell proportions before DEXSeq isoform-switch testing.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568790/ (section: Subjects, material, and methods / Isoform switching analyses)",
+        "implementation_scope_note": "Do not attribute the DEXSeq test, isoform filtering or switch-direction convention to limma. Preserve the stated comparison direction and explicitly supplied covariates/retained design; the limma edition is unstated. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P201",
+          "pmcid": "PMC11568790",
+          "doi": "10.1016/j.ajhg.2024.09.004",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "isoform-abundance covariate removal before DEXSeq"
+          ],
+          "usage_summary": "Applied limma removeBatchEffect to the isoform abundance matrix to account for RIN, sequencing batch, age and blood-cell proportions before DEXSeq isoform-switch testing.",
+          "required_caution": "Do not attribute the DEXSeq test, isoform filtering or switch-direction convention to limma. Preserve the stated comparison direction and explicitly supplied covariates/retained design; the limma edition is unstated.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 12,
+              "section": "Subjects, material, and methods / Isoform switching analyses",
+              "paragraph_sha256": "d30dfc56247a8da5cc95a3e940944049dda26897aa2f282c2ffd554e7c8cc2e3",
+              "matching_text_sha256": "1c31bbd529a88b986ee2214603dde97c5bd6e9af2bf4ccedf2e7870e46dbe052"
+            }
+          ],
+          "source_xml_sha256": "405d53aae833dabbdca2d4dcf82fd0ce5d250102cd27c27f0e707acbb3b4163f",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 12,
+            "character_offset": 688,
+            "matching_text_sha256": "1c31bbd529a88b986ee2214603dde97c5bd6e9af2bf4ccedf2e7870e46dbe052"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "BATCH"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "mashr",
@@ -61808,18 +62955,100 @@
       {
         "tool_id": "voom",
         "tool": "voom",
-        "analysis_role": "Mean-variance weights for expression linear models",
+        "analysis_role": "Limma/voom: voom logCPM preprocessing",
         "evidence_section": "Subjects and methods / Gene expression quantification and quality control",
         "evidence_paragraph_index": 12,
         "matched_text": "VOOM",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "edabe647d70fc77a4bef381d2d245d43f7db351304e54a6e500cf8ecb1824da7",
-        "use_summary": "Mean-variance weights for expression linear models.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568756/ (section: Subjects and methods / Gene expression quantification and quality control)"
+        "use_summary": "Used the E output of limma voom for log2 CPM preprocessing before expression/sample filtering and a separate preprocessCore quantile-normalization step.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568756/ (section: Subjects and methods / Gene expression quantification and quality control)",
+        "implementation_scope_note": "The later quantile normalization is not credited to limma. The linked code does not establish the executed paper commit or limma edition; standalone voom-only and complete QTL preparation remain outside the fitted-model interface. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P203",
+          "pmcid": "PMC11568756",
+          "doi": "10.1016/j.ajhg.2024.09.001",
+          "tool_id": "voom",
+          "catalog_family_id": "limma",
+          "operations": [
+            "voom logCPM preprocessing"
+          ],
+          "usage_summary": "Used the E output of limma voom for log2 CPM preprocessing before expression/sample filtering and a separate preprocessCore quantile-normalization step.",
+          "required_caution": "The later quantile normalization is not credited to limma. The linked code does not establish the executed paper commit or limma edition; standalone voom-only and complete QTL preparation remain outside the fitted-model interface.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 12,
+              "section": "Subjects and methods / Gene expression quantification and quality control",
+              "paragraph_sha256": "edabe647d70fc77a4bef381d2d245d43f7db351304e54a6e500cf8ecb1824da7",
+              "matching_text_sha256": "dffdebf493edb3b14b4afe25a2ca07df89db64b3a0adf0aff3b7388c19108804"
+            }
+          ],
+          "source_xml_sha256": "2d035da198a42fbfd1067cedca09c0fc77b108e5269d02af3481cebd8bd1d644",
+          "source_name_witness": {
+            "literal": "VOOM",
+            "paragraph_index": 12,
+            "character_offset": 189,
+            "matching_text_sha256": "dffdebf493edb3b14b4afe25a2ca07df89db64b3a0adf0aff3b7388c19108804"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "VOOM"
+          ],
+          "linked_code_source": {
+            "paper_id": "P203",
+            "repository": "https://github.com/liusihan/population-compare-pipeline",
+            "commit": "7df0eb9112af0860c2ecb3bf7a5c61aed07bc876",
+            "commit_date": "2024-09-03T00:57:30Z",
+            "file": {
+              "path": "RNA-seq_processing.r",
+              "url": "https://raw.githubusercontent.com/liusihan/population-compare-pipeline/7df0eb9112af0860c2ecb3bf7a5c61aed07bc876/RNA-seq_processing.r",
+              "git_blob_sha": "c1fbf80058a57492623f84b617c9c65746876fa2",
+              "bytes": 15454,
+              "sha256": "5496d5bbc313bb6e35a194bdabd73aaf479a8988d3fac58f6be20e7b47335e5d"
+            },
+            "witnesses": [
+              {
+                "label": "limma-import",
+                "line_number": 77,
+                "line_sha256": "a1d2230125ca9d149726794892426f926e8d1bf21ac4e9ce627c29dc0844d3d2",
+                "pattern": "^library\\(limma\\)$"
+              },
+              {
+                "label": "voom-E-call",
+                "line_number": 78,
+                "line_sha256": "730727803009a087202f1ebe879c02749307e37576d5f0a01f3518674891037d",
+                "pattern": "^log2cpm<-voom\\(count2\\)\\$E"
+              },
+              {
+                "label": "preprocessCore-import",
+                "line_number": 139,
+                "line_sha256": "3eada0f770a02d305f92b0466d685972b42324261a82c84af911d78ba0d76b9f",
+                "pattern": "^library\\(preprocessCore\\)$"
+              },
+              {
+                "label": "separate-quantile-normalization",
+                "line_number": 140,
+                "line_sha256": "c61b310520ec9c6d40e445a8340de61005a1737cd86ef90c9d4ce7e92df8c2dc",
+                "pattern": "^log2cpm[.]fgene[.]fsample[.]qn<-normalize[.]quantiles\\("
+              }
+            ],
+            "author_pipeline_executed": false,
+            "paper_executed_commit_correspondence_proven": false,
+            "source_only_audit": true,
+            "original_author_code_redistributed": false
+          },
+          "provider_attribution_unresolved": false,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "susie",
@@ -61861,6 +63090,104 @@
           "historical_package_parity": false,
           "exact_author_settings_established": false,
           "author_runtime_executed": false,
+          "whole_paper_reproduced": false
+        }
+      },
+      {
+        "tool_id": "limma",
+        "tool": "limma",
+        "matched_text": "VOOM",
+        "extraction_score": 0,
+        "analysis_role": "Limma/voom: voom logCPM preprocessing before QTL mapping",
+        "use_summary": "Reported an R VOOM log-count transformation before expression/sample filtering and quantile normalization. Linked code imports limma for voom(counts)$E and preprocessCore for the later normalize.quantiles step.",
+        "implementation_scope_note": "The later quantile normalization is not credited to limma. The linked code does not establish the executed paper commit or limma edition; standalone voom-only and complete QTL preparation remain outside the fitted-model interface. This source review is not a complete author workflow or biological reproduction.",
+        "evidence_section": "Subjects and methods / Gene expression quantification and quality control",
+        "evidence_paragraph_index": 12,
+        "evidence_paragraph_sha256": "edabe647d70fc77a4bef381d2d245d43f7db351304e54a6e500cf8ecb1824da7",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568756/ (section: Subjects and methods / Gene expression quantification and quality control)",
+        "evidence_selection": "individually-reviewed-source-role",
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "source_role_qualification": {
+          "paper_id": "P203",
+          "pmcid": "PMC11568756",
+          "doi": "10.1016/j.ajhg.2024.09.001",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "voom logCPM preprocessing before QTL mapping"
+          ],
+          "usage_summary": "Reported an R VOOM log-count transformation before expression/sample filtering and quantile normalization. Linked code imports limma for voom(counts)$E and preprocessCore for the later normalize.quantiles step.",
+          "required_caution": "The later quantile normalization is not credited to limma. The linked code does not establish the executed paper commit or limma edition; standalone voom-only and complete QTL preparation remain outside the fitted-model interface.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 12,
+              "section": "Subjects and methods / Gene expression quantification and quality control",
+              "paragraph_sha256": "edabe647d70fc77a4bef381d2d245d43f7db351304e54a6e500cf8ecb1824da7",
+              "matching_text_sha256": "dffdebf493edb3b14b4afe25a2ca07df89db64b3a0adf0aff3b7388c19108804"
+            }
+          ],
+          "source_xml_sha256": "2d035da198a42fbfd1067cedca09c0fc77b108e5269d02af3481cebd8bd1d644",
+          "source_name_witness": {
+            "literal": "VOOM",
+            "paragraph_index": 12,
+            "character_offset": 189,
+            "matching_text_sha256": "dffdebf493edb3b14b4afe25a2ca07df89db64b3a0adf0aff3b7388c19108804"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "VOOM"
+          ],
+          "linked_code_source": {
+            "paper_id": "P203",
+            "repository": "https://github.com/liusihan/population-compare-pipeline",
+            "commit": "7df0eb9112af0860c2ecb3bf7a5c61aed07bc876",
+            "commit_date": "2024-09-03T00:57:30Z",
+            "file": {
+              "path": "RNA-seq_processing.r",
+              "url": "https://raw.githubusercontent.com/liusihan/population-compare-pipeline/7df0eb9112af0860c2ecb3bf7a5c61aed07bc876/RNA-seq_processing.r",
+              "git_blob_sha": "c1fbf80058a57492623f84b617c9c65746876fa2",
+              "bytes": 15454,
+              "sha256": "5496d5bbc313bb6e35a194bdabd73aaf479a8988d3fac58f6be20e7b47335e5d"
+            },
+            "witnesses": [
+              {
+                "label": "limma-import",
+                "line_number": 77,
+                "line_sha256": "a1d2230125ca9d149726794892426f926e8d1bf21ac4e9ce627c29dc0844d3d2",
+                "pattern": "^library\\(limma\\)$"
+              },
+              {
+                "label": "voom-E-call",
+                "line_number": 78,
+                "line_sha256": "730727803009a087202f1ebe879c02749307e37576d5f0a01f3518674891037d",
+                "pattern": "^log2cpm<-voom\\(count2\\)\\$E"
+              },
+              {
+                "label": "preprocessCore-import",
+                "line_number": 139,
+                "line_sha256": "3eada0f770a02d305f92b0466d685972b42324261a82c84af911d78ba0d76b9f",
+                "pattern": "^library\\(preprocessCore\\)$"
+              },
+              {
+                "label": "separate-quantile-normalization",
+                "line_number": 140,
+                "line_sha256": "c61b310520ec9c6d40e445a8340de61005a1737cd86ef90c9d4ce7e92df8c2dc",
+                "pattern": "^log2cpm[.]fgene[.]fsample[.]qn<-normalize[.]quantiles\\("
+              }
+            ],
+            "author_pipeline_executed": false,
+            "paper_executed_commit_correspondence_proven": false,
+            "source_only_audit": true,
+            "original_author_code_redistributed": false
+          },
+          "provider_attribution_unresolved": false,
+          "existing_observation": false,
+          "proposed_observation": true,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
           "whole_paper_reproduced": false
         }
       }
@@ -67978,18 +69305,59 @@
       {
         "tool_id": "limma",
         "tool": "limma",
-        "analysis_role": "Linear modelling and empirical-Bayes differential analysis",
+        "analysis_role": "Limma/voom: authors-reported pseudobulk voomLmFit/lmfit and batch-aware expression testing",
         "evidence_section": "Material and methods / snRNA-seq and data analysis",
         "evidence_paragraph_index": 12,
         "matched_text": "limma",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "99f200462063a6de97989b285539ae6919194c52292e1cd573d3eebba003d5eb",
-        "use_summary": "Linear modelling and empirical-Bayes differential analysis.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696504/ (section: Material and methods / snRNA-seq and data analysis)"
+        "use_summary": "Authors report TMMwsp pseudobulk normalization, attribute voomLmFit to limma, and describe lowercase lmfit with batch effects and BH correction, retaining adjusted P<0.2. Preserve those reported names and attribution as unresolved.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12696504/ (section: Material and methods / snRNA-seq and data analysis)",
+        "implementation_scope_note": "Current checked namespaces place voomLmFit in edgeR 4.10.7 and lmFit in limma 3.68.5; lowercase lmfit is absent. These facts do not prove historical bindings or repair the author script. The repository linked by the Zenodo record returns public 404 at this audit; exact functions, edition and code remain unresolved. This source review is not a complete author workflow or biological reproduction.",
+        "source_role_qualification": {
+          "paper_id": "P228",
+          "pmcid": "PMC12696504",
+          "doi": "10.1016/j.ajhg.2025.07.020",
+          "tool_id": "limma",
+          "catalog_family_id": "limma",
+          "operations": [
+            "authors-reported pseudobulk voomLmFit/lmfit and batch-aware expression testing"
+          ],
+          "usage_summary": "Authors report TMMwsp pseudobulk normalization, attribute voomLmFit to limma, and describe lowercase lmfit with batch effects and BH correction, retaining adjusted P<0.2. Preserve those reported names and attribution as unresolved.",
+          "required_caution": "Current checked namespaces place voomLmFit in edgeR 4.10.7 and lmFit in limma 3.68.5; lowercase lmfit is absent. These facts do not prove historical bindings or repair the author script. The repository linked by the Zenodo record returns public 404 at this audit; exact functions, edition and code remain unresolved.",
+          "primary_evidence": [
+            {
+              "paragraph_index": 12,
+              "section": "Material and methods / snRNA-seq and data analysis",
+              "paragraph_sha256": "99f200462063a6de97989b285539ae6919194c52292e1cd573d3eebba003d5eb",
+              "matching_text_sha256": "9d328f66f0bf8c8b9ae178f5b14c7d5071d858c585dcaef3c107f2c6586cf949"
+            }
+          ],
+          "source_xml_sha256": "c548343d1317fbd6fcf857ffcd429bb3b2cc4bdc89d0f77206c0589eb4c35ee2",
+          "source_name_witness": {
+            "literal": "limma",
+            "paragraph_index": 12,
+            "character_offset": 391,
+            "matching_text_sha256": "9d328f66f0bf8c8b9ae178f5b14c7d5071d858c585dcaef3c107f2c6586cf949"
+          },
+          "reported_editions": [],
+          "qualified_related_current_operations": [
+            "EDGER_VOOM_LMFIT",
+            "LM"
+          ],
+          "linked_code_source": null,
+          "provider_attribution_unresolved": true,
+          "existing_observation": true,
+          "proposed_observation": false,
+          "author_runtime_executed": false,
+          "preparation_and_author_settings_complete": false,
+          "whole_tool_qualified": false,
+          "whole_paper_reproduced": false
+        }
       },
       {
         "tool_id": "nfcore",

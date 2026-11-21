@@ -1,0 +1,7 @@
+# Limma cumulative admission evidence
+
+Exact-before metadata, one implementation/one alias, source-role additions and historical-stock-use removal, qualified unchanged global dispatcher, previous-owner execution and current owner source are retained.
+
+Run `python -B tools/literature/close_limma_catalog.py --verify --out build/NEW-limma-verify`; add both `--primary-cache PATH` and `--author-code-cache PATH` for a fresh all-250 XML and linked-code audit. Old owners and fingerprints remain unchanged.
+
+SKIP3: DEPENDENT ANALYSIS SKIPPED; supply the named exact permitted source, input, runtime or package and retry NEW output, or retain the skip if it cannot be supplied. Downloads and private installation remain authorized where the environment permits; absence is not an installation prohibition. FAIL2: NO COMPLETE RESULT; preserve raw inputs, original model/null/partial objects, warnings and failed attempts, resolve the named source/data/design, numerical/convergence, integrity, capacity or process cause and retry NEW output. Never silently repair identifiers, populations, thresholds, editions, estimators or nonfinite values. Retain valid infinite prior df and negative unconstrained variance components. All three exact R packages are required by this profile; no generic fallback. Original-R Linux execution is not claimed. Cell Ranger stays excluded. Both literature reports stay withheld from Pages. Ignored exact runtimes, JARs, full text and complete private evidence need a separate checksummed transfer.

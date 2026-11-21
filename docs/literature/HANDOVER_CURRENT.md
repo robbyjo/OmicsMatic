@@ -1,5 +1,18 @@
 # Current toolbox handover
 
+**Current: [limma/voom catalog admission and prioritized next work](LIMMA_CATALOG_CHECKPOINT_2026-11-21.md).**
+Limma is one upstream family; voom is a validated alias with zero extra credit.
+The guarded transition preserves all 1,575 earlier reviews and appends 23 source
+roles. Totals are **142 scoped families (26 native +116 upstream), 1,598 reviewed
+uses and 1,119 pending**, with 2,717 observations and 832 clean manifest entries.
+Plan/inspect/apply/fresh verify, 18 model/transaction tests plus 15 source controls
+per Windows/Linux host, six CLI refusals and preview/installed desktop/mobile
+checks pass. Scientific sources and producer remain unchanged. Next: PEER, then
+TwoSampleMR, and remaining individual source reviews. Preserve all **36 worktrees**
+and separately transfer ignored exact runtimes, JARs, full text, linked author
+source and complete private evidence with checksums. Both reports stay off Pages;
+the full goal remains active and unfinished. Lower entries retain history.
+
 **Current: [global limma command and 23 source-role proposals](LIMMA_GLOBAL_CHECKPOINT_2026-11-21.md).**
 The source-built JAR exposes limma-tools RUN/VERIFY/REPLAY, with unchanged science
 payloads. All 78 packaged tests pass per JVM on Windows Java 21/25 and Linux Java 21; six

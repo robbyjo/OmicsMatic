@@ -1,5 +1,21 @@
 # Current literature warnings and required actions
 
+## Limma/voom: one credited family and 23 reviewed labels
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED; supply the named exact permitted source, input, runtime or package and retry NEW output, or retain the skip if it cannot be supplied. Downloads and private installation remain authorized where the environment permits; absence is not an installation prohibition. FAIL2: NO COMPLETE RESULT; preserve raw inputs, original model/null/partial objects, warnings and failed attempts, resolve the named source/data/design, numerical/convergence, integrity, capacity or process cause and retry NEW output. Never silently repair identifiers, populations, thresholds, editions, estimators or nonfinite values. Retain valid infinite prior df and negative unconstrained variance components. All three exact R packages are required by this profile; no generic fallback. Original-R Linux execution is not claimed. Cell Ranger stays excluded. Both literature reports stay withheld from Pages. Ignored exact runtimes, JARs, full text and complete private evidence need a separate checksummed transfer.
+
+250 papers, 446 named tool labels, 2,717 observations, 1,598 individually reviewed positive uses and 1,119 pending. There are 142 scoped integrations (26 native Java and 116 upstream), two validated family aliases with zero extra credit, 259 missing and 31 method-overlap labels; 145 integrations include three existing adapters. All 1,575 earlier reviews remain exact. Full implementation and paper-wide semantic completeness remain unfinished.
+
+Global limma-tools and standalone LimmaWorkflowCli expose prepared-data LM, VOOM, EDGER_VOOM_LMFIT, BATCH, NORMALIZE and CAMERAPR through the exact original limma 3.68.5 / edgeR 4.10.7 / statmod 1.5.2 / R 4.6.1 profile. RUN retains literal inputs, model/null/partial objects, warnings and original failures; VERIFY checks saved integrity and declared structural/selected arithmetic invariants without refitting or authenticating; REPLAY preserves parent lineage. Native Java variance components cover qualified fitFDist, legacy nonrobust squeezeVar, supplied-prior posterior, inverse-trigamma and logmdigamma operations. They add no second family credit.
+
+Limma is one credited upstream family. Voom is a validated-family-alias of limma with zero additional integration credit; COJO remains the separate GCTA alias. The 23 reviewed labels across 18 papers describe source roles, not whole author workflows. Older editions, dreamlet mixed models, ProStaR preparation, standalone voom-only transformation/custom residualization and paper-executed linked commits remain unqualified. P086 retains both methylation editions; P195 retains the reported 3.44 label without an invented patch. P228 retains the author-reported voomLmFit/lmfit spelling and unresolved provider attribution. P203 quantile normalization belongs to preprocessCore, not limma. P059 historical stock limma is excluded from positive use; retain scrattch. P237 remains edgeR-only. Generic native differential/VoomTrend APIs are unchanged and are not stock limma qualifications. Build current source; released 0.4.0 predates limma-tools.
+
+Read [the source crosswalk](../LIMMA_CATALOG_INTEGRATION.md).
+
+<details><summary>Before limma admission (historical)</summary>
+
+# Current literature warnings and required actions
+
 ## GCTA/COJO: one credited family and 27 reviewed labels
 
 **Warnings and required actions:** SKIP3: dependent analysis skipped; supply the named exact permitted source, input, runtime or package, or retain the skip if installation is forbidden. FAIL2: NO COMPLETE RESULT; preserve raw inputs, original model/null objects, partials and logs, correct the named source/data/design, numerical, convergence, integrity, capacity or process cause and retry NEW output. Never silently repair IDs, alleles, populations, thresholds, nonfinite values, editions or algorithms. Retain valid unconstrained variance/h2 outside 0..1. GCTA 1.94.1 mtCOJO has no liability conversion; original GSMR can exit 0 and write NaN, and those results are refused. Read analysis-status.json, WARNINGS.md, manifest.json and every original worker log. Original-model VERIFY does not refit or authenticate. Cell Ranger stays excluded. Both literature reports remain withheld from Pages. Ignored exact runtimes, JARs, full text and complete private evidence need a separate checksummed transfer.
@@ -1642,6 +1658,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 
