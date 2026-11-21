@@ -1,5 +1,21 @@
 # Current toolbox handover
 
+**Start here: [21 November 2026 handover, local-clumping draft and ordered next actions](HANDOVER_2026-11-21_LOCAL_CLUMPING.md).**
+The qualified prepared-data workflows are on main; the newest original local
+clumping work is **unfinished development**, saved outside the compiled source
+tree. The R prototype has 25 controls (21 successful, four expected failures).
+An earlier suite has 53 complete direct-original return/RNG identities; that
+comparison has not been repeated for the latest suite. Three Java classes,
+normal-JAR qualification, historical editions, source attribution, global
+registration and catalog admission remain open. Counts stay **250 papers,
+143 scoped families, 1,616 reviewed uses and 1,104 pending**, with no new credit.
+The linked historical snapshot retains 2,177 Git-visible dirty files from the
+40 predecessor worktrees. Preserve all **41 worktrees**. **Transfer ignored runtimes, JARs, full primary
+text and complete private evidence separately with checksums; GitHub is not
+a machine backup.** The linked handover gives exact paths, recovery instructions
+and priorities. Both literature reports stay off Pages. The full goal is
+unfinished; lower entries retain historical checkpoints.
+
 **Current: [original TwoSampleMR workflows and ordered remaining work](TWOSAMPLEMR_WORKFLOW_CHECKPOINT_2026-11-21.md).**
 The normal JAR now supplies standalone original-package RUN/VERIFY/REPLAY for
 MR, harmonization, four sensitivity stages and multivariable preparation. All
