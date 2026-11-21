@@ -21,7 +21,7 @@ public final class GctaWorkflowCli {
     static int run(String[] args,PrintStream out,PrintStream err) {
         try {
             if(args.length==1&&args[0].equals("--help")) {
-                out.println("GctaWorkflowCli --request UTF8_JSON | --verify COMPLETE_BUNDLE\nRUN: explicit native GRM/sparse conversion or original GRM/PCA/COJO/REML/LD-score/sparse/binary-fastGWA. VERIFY: offline captured-input/export checks. REPLAY: NEW output, preserving parent capture.\n"+ACTION);return 0;
+                out.println("GctaWorkflowCli --request UTF8_JSON | --verify COMPLETE_BUNDLE\nRUN: explicit native GRM/sparse conversion or original GRM/PCA/COJO/REML/LD-score/sparse/binary-fastGWA/MTCOJO. MTCOJO requires declared traits, reference/weight LD shards and GSMR/supplied causal-effect mode; effects stay as supplied. VERIFY: offline captured-input/export checks. REPLAY: NEW output, preserving parent capture.\n"+ACTION);return 0;
             }
             if(args.length==2&&args[0].equals("--verify")){verify(Path.of(args[1]));out.println("Verified saved GCTA capture. "+SCOPE);return 0;}
             if(args.length!=2||!args[0].equals("--request"))throw new IOException("Require --request JSON, --verify BUNDLE or --help");
@@ -135,7 +135,8 @@ public final class GctaWorkflowCli {
         if(result.containsKey("genotypes")){var files=object(result.get("genotypes"),"genotypes");for(String key:List.of("bed","bim","fam"))files.put(key,resolve(root,text(files,key)).toString());result.put("genotypes",files);}
         if(result.containsKey("grms")){var matrices=new ArrayList<Map<String,Object>>();for(Object item:list(result.get("grms"),"grms")){var files=object(item,"GRM");for(String key:new ArrayList<>(files.keySet()))files.put(key,resolve(root,text(files,key)).toString());matrices.add(files);}result.put("grms",matrices);}
         if(result.containsKey("sparse")){var files=object(result.get("sparse"),"sparse");for(String key:List.of("values","ids"))files.put(key,resolve(root,text(files,key)).toString());result.put("sparse",files);}
-        for(String key:List.of("phenotype","qcovar","covar","summary","condition","extract"))if(result.containsKey(key))result.put(key,resolve(root,text(result,key)).toString());return result;
+        for(String key:List.of("phenotype","qcovar","covar","summary","condition","extract"))if(result.containsKey(key))result.put(key,resolve(root,text(result,key)).toString());
+        if("MTCOJO".equals(result.get("model")))GctaMtcojoContracts.paths(result,root);return result;
     }
     private static Path newOutput(Path root) throws IOException {
         if(Files.exists(root,LinkOption.NOFOLLOW_LINKS))throw new IOException("Preserve existing output and choose a NEW directory");
@@ -153,6 +154,7 @@ public final class GctaWorkflowCli {
         if(!Files.exists(source)||!Files.isReadable(source))throw new GctaWorkflowRuntime.Unavailable("Required permitted input is unavailable: "+source);
         if(!Files.isRegularFile(source,LinkOption.NOFOLLOW_LINKS)||Files.size(source)>cap)throw new IOException("Input nonregular or beyond maximum_input_bytes: "+source);
         String before=FollowupSupport.hash(source);long count=0;
+        Files.createDirectories(target.getParent());
         try(var input=Files.newInputStream(source);var output=Files.newOutputStream(target,StandardOpenOption.CREATE_NEW)) {
             byte[] buffer=new byte[65536];for(int n;(n=input.read(buffer))!=-1;){if(Thread.currentThread().isInterrupted())throw new InterruptedIOException("Input capture interrupted");if(n>cap-count)throw new IOException("Input grew beyond capture capacity");output.write(buffer,0,n);count+=n;}
         }
@@ -170,14 +172,16 @@ public final class GctaWorkflowCli {
         var state=new LinkedHashMap<String,Object>();state.put("schema_version",1);state.put("status",status);state.put("results_admitted",admitted);state.put("result_kind",kind);state.put("required_action",ACTION);if(error!=null)state.put("error",error);return state;
     }
     private static String warnings(Path root,String status,String error) {
-        String precision="";
+        String precision="",mtcojo="";
         try {
             if(Files.isRegularFile(root.resolve("model-objects.json"),LinkOption.NOFOLLOW_LINKS)
                     &&Boolean.TRUE.equals(read(root.resolve("model-objects.json")).get("rounded_zero_variance_total")))
                 precision="**SOURCE PRECISION WARNING:** original REML variances/SE use six fixed decimals and can round nonzero internal estimates to zero. These printed values are preserved; do not reinterpret them as exact zeros or replace them. Read the original scientific-notation sampling covariance and source h2 exports. If internal parameter precision is required, retain this capture and obtain a separately qualified higher-precision export.\n\n";
+            if(Files.isRegularFile(root.resolve("effective-request.json"),LinkOption.NOFOLLOW_LINKS)
+                    &&"MTCOJO".equals(read(root.resolve("effective-request.json")).get("model")))mtcojo=GctaMtcojoAudit.WARNING;
         }catch(IOException unavailable){precision="The optional precision note could not be read; retain diagnostics and inspect model-objects.json directly.\n\n";}
         return "# GCTA warnings and required actions\n\nStatus: "+status+"\n\n"+(error==null?"":error+"\n\n")+ACTION+"\n\n"
-            +precision
+            +precision+mtcojo
             +"Original Windows/Linux runtime flavors can yield different stochastic calibration at the same seed. Cross-flavor replay requires explicit approval in the request, and all differences remain retained.\n\n"
             +"Source and native GRM zero/N=0 placeholders are not complete estimates. Valid converged unconstrained variance/heritability estimates are not clamped to 0..1.\n\n"
             +"COJO effective n is an original positive real, not a bounded integer; adjusted LD scores may be negative. Model internal state that the original program does not export is not invented.\n\n"

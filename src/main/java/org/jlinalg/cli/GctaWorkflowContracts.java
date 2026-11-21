@@ -15,7 +15,7 @@ import static org.jlinalg.cli.SeuratDifferentialContracts.*;
 final class GctaWorkflowContracts {
     static final String PROFILE = "GCTA-1.94.1";
     static final Set<String> MODELS = Set.of("GRM", "PCA", "COJO_SELECT", "COJO_JOINT",
-        "COJO_CONDITION", "REML", "LD_SCORE", "LD_SCORE_REGION", "SPARSE_GRM", "FASTGWA_BINARY");
+        "COJO_CONDITION", "REML", "LD_SCORE", "LD_SCORE_REGION", "SPARSE_GRM", "FASTGWA_BINARY", "MTCOJO");
     private static final Set<String> COMMON = Set.of("schema_version", "mode", "profile", "engine",
         "model", "out", "runtime", "preparation_note", "timeout_seconds", "maximum_input_bytes",
         "maximum_output_bytes", "maximum_samples", "maximum_variants", "maximum_metadata_bytes",
@@ -37,7 +37,7 @@ final class GctaWorkflowContracts {
         else if(raw.containsKey("runtime"))throw new IOException("Native GRM has no runtime/fallback setting");
 
         var allowed=new LinkedHashSet<>(COMMON);
-        boolean bed=model.equals("GRM")||model.startsWith("COJO_")||model.startsWith("LD_SCORE")||model.equals("FASTGWA_BINARY");
+        boolean bed=model.equals("GRM")||model.startsWith("COJO_")||model.startsWith("LD_SCORE")||model.equals("FASTGWA_BINARY")||model.equals("MTCOJO");
         if(bed){allowed.add("genotypes");allowed.add("autosome_number");}
         if(model.equals("GRM"))allowed.addAll(Set.of("grm_algorithm","extract"));
         if(Set.of("PCA","REML","SPARSE_GRM").contains(model))allowed.add("grms");
@@ -50,6 +50,7 @@ final class GctaWorkflowContracts {
         if(model.equals("LD_SCORE_REGION"))allowed.add("ld_region_kb");
         if(model.equals("SPARSE_GRM"))allowed.add("sparse_cutoff");
         if(model.equals("FASTGWA_BINARY"))allowed.addAll(Set.of("phenotype","qcovar","covar","sparse","seed","random_vectors","binary_coding"));
+        if(model.equals("MTCOJO"))allowed.addAll(GctaMtcojoContracts.FIELDS);
         keys(raw,allowed);
         var r=new LinkedHashMap<String,Object>(raw);
         if(bed) {
@@ -98,6 +99,7 @@ final class GctaWorkflowContracts {
             if(model.equals("LD_SCORE_REGION"))r.put("ld_region_kb",integer(raw,"ld_region_kb",200,10,2147483));
         }
         if(model.equals("SPARSE_GRM"))r.put("sparse_cutoff",real(raw,"sparse_cutoff",.05,-Float.MAX_VALUE,Float.MAX_VALUE,true));
+        if(model.equals("MTCOJO"))GctaMtcojoContracts.validate(raw,r);
         for(var setting:List.of(
                 new Bound("timeout_seconds",3600,1,604800),
                 new Bound("maximum_input_bytes",1_073_741_824L,1,Long.MAX_VALUE),
@@ -141,6 +143,7 @@ final class GctaWorkflowContracts {
         }
         for(String key:List.of("phenotype","qcovar","covar","summary","condition","extract"))
             if(request.containsKey(key))result.add(new Binding("inputs/"+key,text(request,key)));
+        if("MTCOJO".equals(request.get("model")))GctaMtcojoContracts.bindings(request,result);
         return result;
     }
 
@@ -158,6 +161,7 @@ final class GctaWorkflowContracts {
         }
         if(raw.containsKey("sparse"))r.put("sparse",Map.of("values","inputs/sparse.grm.sp","ids","inputs/sparse.grm.id"));
         for(String key:List.of("phenotype","qcovar","covar","summary","condition","extract"))if(raw.containsKey(key))r.put(key,"inputs/"+key);
+        if("MTCOJO".equals(raw.get("model")))GctaMtcojoContracts.paths(r,null);
         return r;
     }
 }

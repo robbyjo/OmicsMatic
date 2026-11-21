@@ -18,7 +18,7 @@ final class GctaWorkflowFiles {
     record Variant(int chromosome,String id,long position,String a1,String a2,int ordinal) { }
     record Prepared(List<GctaHardcallGrm.SampleId> samples,List<Variant> variants,
             List<List<GctaHardcallGrm.SampleId>> grmSamples,Set<String> extract,
-            Set<String> condition,int fixedColumns,Map<String,List<String>> summary) { }
+            Set<String> condition,int fixedColumns,Map<String,List<String>> summary,GctaMtcojoFiles.Data mtcojo) { }
     @FunctionalInterface interface Row { void accept(String[] fields) throws IOException; }
 
     static Prepared prepare(Path root,Map<String,Object> r,boolean verify) throws IOException {
@@ -83,7 +83,7 @@ final class GctaWorkflowFiles {
         Set<String> condition=r.containsKey("condition")?markers(root.resolve("inputs/condition"),r,names):Set.of();
         var selected=variants.stream().filter(v->extract.isEmpty()||extract.contains(v.id())).toList();
         if(model.equals("PCA")&&number(r,"pca_components")>samples.size())throw new IOException("pca_components exceeds prepared sample count; source clamping is not admitted");
-        int fixedColumns=1;
+        int fixedColumns=model.equals("MTCOJO")?0:1;
         if(r.containsKey("phenotype")) {
             var values=aligned(root.resolve("inputs/phenotype"),r,samples,1,false,retained);
             if(model.equals("FASTGWA_BINARY")) {
@@ -127,12 +127,14 @@ final class GctaWorkflowFiles {
             if(summary.isEmpty())throw new IOException("Summary contains no marker rows");
             if(!summary.keySet().containsAll(condition)||!summary.keySet().containsAll(extract))throw new IOException("Explicit selected/conditioning marker is absent from summary data");
         }
-        var prepared=new Prepared(List.copyOf(samples),List.copyOf(selected),List.copyOf(componentIds),Set.copyOf(extract),Set.copyOf(condition),fixedColumns,Collections.unmodifiableMap(summary));
+        var mtcojo=model.equals("MTCOJO")?GctaMtcojoFiles.prepare(root,r,selected,retained,verify):null;
+        var prepared=new Prepared(List.copyOf(samples),List.copyOf(selected),List.copyOf(componentIds),Set.copyOf(extract),Set.copyOf(condition),fixedColumns,Collections.unmodifiableMap(summary),mtcojo);
         var report=new LinkedHashMap<String,Object>();report.put("sample_count",samples.size());report.put("selected_variant_count",selected.size());report.put("genotype_variant_count",variants.size());report.put("fixed_effect_columns",fixedColumns);
         report.put("samples",samples.stream().map(s->List.of(s.familyId(),s.individualId())).toList());
         report.put("variants",selected.stream().map(v->List.of(v.chromosome(),v.id(),v.position(),v.a1(),v.a2(),v.ordinal())).toList());
         report.put("grm_component_orders",componentIds.stream().map(ids->ids.stream().map(s->List.of(s.familyId(),s.individualId())).toList()).toList());
         report.put("summary_rows",summary.size());report.put("retained_metadata_estimate",retained[0]);
+        if(mtcojo!=null)report.put("mtcojo",mtcojo.intake());
         if(!summary.isEmpty()) {
             var unmatched=summary.keySet().stream().filter(id->!names.contains(id)).toList();
             if(unmatched.size()==summary.size())throw new IOException("Summary and reference panel share no marker identities");
@@ -191,7 +193,7 @@ final class GctaWorkflowFiles {
         try{return new GctaHardcallGrm.SampleId(fid,iid);}catch(IllegalArgumentException e){throw new IOException("Invalid composite sample identity",e);}
     }
     static void width(String[] f,int n,String label) throws IOException {if(f.length!=n)throw new IOException(label+" column count differs");}
-    private static void retain(long[] bytes,long add,Map<String,Object> r) throws IOException {
+    static void retain(long[] bytes,long add,Map<String,Object> r) throws IOException {
         if(add>number(r,"maximum_retained_metadata_bytes")-bytes[0])throw new IOException("maximum_retained_metadata_bytes exceeded");bytes[0]+=add;
     }
     static List<GctaHardcallGrm.SampleId> ids(Path path,Map<String,Object> r,long[] retained) throws IOException {

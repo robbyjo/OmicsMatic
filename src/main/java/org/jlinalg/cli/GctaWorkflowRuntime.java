@@ -90,6 +90,14 @@ final class GctaWorkflowRuntime {
                 if(Boolean.TRUE.equals(r.get("ld_adjusted")))args.add("--ld-score-adj");
             }
             case "SPARSE_GRM" -> Collections.addAll(args,"--grm","../inputs/grm0","--make-bK-sparse",r.get("sparse_cutoff").toString());
+            case "MTCOJO" -> {
+                Collections.addAll(args,"--mtcojo-file","mtcojo-traits.list","--ref-ld-chr","../inputs/mt-ref","--w-ld-chr","../inputs/mt-weight","--gwas-thresh",r.get("gwas_p").toString(),"--diff-freq",r.get("diff_frequency").toString());
+                if(text(r,"causal_effect_mode").equals("supplied"))Collections.addAll(args,"--mtcojo-bxy","mtcojo-bxy.tsv");
+                else {
+                    Collections.addAll(args,"--gsmr-snp-min",r.get("minimum_instruments").toString(),"--clump-kb",r.get("clump_kb").toString(),"--clump-r2",r.get("clump_r2").toString(),"--heidi-thresh",r.get("heidi_p").toString());
+                    if(((Number)r.get("ld_fdr")).doubleValue()!=.05)Collections.addAll(args,"--gsmr-ld-fdr",((Number)r.get("ld_fdr")).intValue()==0?"0":"1");
+                }
+            }
             case "FASTGWA_BINARY" -> Collections.addAll(args,"--grm-sparse","../inputs/sparse","--fastGWA-mlm-binary","--model-only","--seed",Long.toString(number(r,"seed")),"--num-vec",Long.toString(number(r,"random_vectors")));
             default -> throw new IOException("Unsupported GCTA model");
         }

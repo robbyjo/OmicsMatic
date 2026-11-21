@@ -29,6 +29,7 @@ final class GctaWorkflowAudit {
             case "LD_SCORE","LD_SCORE_REGION" -> ld(root,r,input,report);
             case "SPARSE_GRM" -> sparse(root,r,input,report);
             case "FASTGWA_BINARY" -> binary(root,r,input,report,verify);
+            case "MTCOJO" -> GctaMtcojoAudit.outputs(root,r,input,report);
             default -> throw new IOException("Unsupported output model");
         }
         compareOrWrite(root.resolve("model-objects.json"),RsemJson.bytes(report),verify);return report;

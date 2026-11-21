@@ -1,5 +1,18 @@
 # Current toolbox handover
 
+**Start here: [mtCOJO development handover, warnings and exact remaining work](HANDOVER_2026-11-20_MTCOJO.md).**
+The current native conditional component and original-runtime mtCOJO adapter
+are saved with 24 packaged tests and 56 earlier complete capture checks per JVM
+on Windows21/25 and Linux21. Eight normal-JAR compositions match original tables;
+18 additional original controls retain prevalence, option-parsing and failed-GSMR
+behavior. Full mtCOJO qualification, older editions, global registration and
+catalog admission remain open. Totals stay **140 admitted scoped integrations,
+1,548 reviewed uses and 1,166 pending**; the 250-paper cohort is complete.
+Preserve all **27 worktrees** and separately transfer ignored runtimes, exact
+JARs, full text and complete private evidence before moving machines. Both
+reports stay off Pages. This is the current handover; lower checkpoints retain
+history and do not replace its task list. The full goal is unfinished.
+
 **Active goal: [GCTA model-export checks and remaining work](GCTA_MODEL_CHECKPOINT_2026-11-20.md).**
 The source-correct covariance follow-up and 104 export comparisons pass. REML
 summary verification now rejects nine previously admitted invalid controls;
