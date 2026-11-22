@@ -1,5 +1,24 @@
 # Current toolbox handover
 
+**Current: [QTLtools admitted, exact remaining work and private transfer](QTLTOOLS_CATALOG_CHECKPOINT_2026-11-22.md).**
+QTLtools now has one scoped upstream family and nine primary-bound reviews.
+Counts are **146 scoped families (26 native +120 upstream),1639 reviewed uses and
+1083 pending**;250 papers,446 labels,485 definitions and2722 observations remain
+intact. All1630 older reviews,2713 unrelated observations,445 inventory rows and
+484 definitions are preserved. Both Windows/Linux source and installed audits pass
+with the complete844-member manifest.32 model/transaction tests and4 actual source
+refusals pass per host. Styled preview/installed desktop/mobile checks cover all
+nine rows,warnings and counts. Scientific code/JAR is unchanged from qualified
+qt-3;no model refit or extra native family is claimed. P190 supplement now resolves
+the execution use while its edition/adaptive wording stays explicit. Preserve
+the other paper-specific grouping,mode,radius,match,quan/mapping and citation27
+distinctions. All63 preceding owners are preserved(current owner64). **Transfer
+ignored JARs,runtimes,private XML/PDF/renders,reader dependency and complete failed
+evidence separately before machine retirement.** Resume high-impact SKAT/SKAT-O
+and ACAT gap inspection,then remaining methods and1083 individual use reviews.
+Cell Ranger stays excluded;unfinished reports remain off Pages. The full250-paper
+objective remains active and unfinished. Lower entries retain historical counts.
+
 **Current: [qualified QTLtools workflows and exact next work](QTLTOOLS_WORKFLOW_CHECKPOINT_2026-11-21.md).**
 The source-built JAR now provides global qtltools-tools RUN/VERIFY/REPLAY for ten
 prepared operations,exact original1.1/1.2/1.3.1 builds and native1.3.1 fdensity.

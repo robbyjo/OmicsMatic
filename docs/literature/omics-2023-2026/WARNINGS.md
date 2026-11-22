@@ -1,5 +1,21 @@
 # Current literature warnings and required actions
 
+## QTLtools: one scoped family and nine new source reviews
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED. Supply the exact permitted missing executable,libraries,input,index,Linux/WSL/Python utility or named source-audit dependency. Download/private installation is authorized where allowed; if installation is prohibited,retain the skip and identify the affected analysis and exact required item. FAIL2: NO COMPLETE RESULT. Preserve raw/null/partial/failed evidence,logs,signal/exit and ownership/cleanup receipts;correct the named data,numerical,capacity,source/integrity or process cause and retry NEW output. Completed null results carry warnings and are not positive findings. Read analysis-status.json and WARNINGS.md. Preserve original1.1 MBV integer fractions,edition-specific trans-null columns and fdensity input-order guards. Never infer unknown paper settings,repair nonfinite values,overwrite failed evidence or substitute an edition. Cell Ranger remains excluded. Both unfinished reports remain off Pages. Private runtimes,JARs,full text and complete failed evidence need a separate checksummed transfer before machine retirement.
+
+250 papers,446 named labels,485 definitions and2722 observations are preserved. There are1639 reviewed uses and1083 pending,146 scoped families(26 native Java+120 upstream),149 including three existing adapters,258 missing and28 method-overlap labels. Two aliases receive no duplicate family credit. This transition adds nine reviews and one upstream family from the former method-overlap row. The full250-paper implementation objective remains unfinished.
+
+Global qtltools-tools supplies typed RUN, offline VERIFY and actual REPLAY for ten prepared-input operations: nominal/permutation/conditional cis, nominal/permutation/sample/adjust trans, MBV, quan and fdensity. Exact measured original1.1/1.2/1.3.1 Linux builds are qualified; native Java supplies selected1.3.1 fdensity. One upstream family is credited; the native helper adds no duplicate family. Inputs,edition,seed,settings and capacities remain explicit. Not every declared input-format combination is qualified.
+
+Nine newly reviewed QTLtools observations retain their distinct roles and operation-specific edition boundaries. P073 bare--grp is unresolved; P074 mapping mode is unknown; P104 neighborhood wording and annotation/QTL count semantics are not silently equated; P108 HCP selection is separate. P190 publisher supplement explicitly establishes grouped QTLtools execution,without an edition; its adaptive wording remains distinct from fixed-count inspected code. P201 also leaves edition/adaptive behavior unresolved. P203 literal match is retained without an invented historical MBV command. P219 quan edition remains unknown while mapping is explicitly1.2,with distinct residual construction and allele-orientation requirements. P227 reports1.2 followed by citation27,not1.2.27. No author binary/commit,whole-tool or whole-paper reproduction is claimed.
+
+Read [the source crosswalk](../QTLTOOLS_CATALOG_INTEGRATION.md).
+
+<details><summary>Before QTLtools admission (historical)</summary>
+
+# Current literature warnings and required actions
+
 ## Monocle: one scoped family and nine existing role updates
 
 **Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED; supply the named exact permitted runtime, profile, input or path, or retain the skip. Downloads/private installation are authorized where the operating environment permits them; absence alone is not a prohibition. If installation is disallowed, name the affected analysis, reason and exact item the user must supply. FAIL2: NO COMPLETE RESULT; preserve raw/original/null/failed/partial evidence and logs, correct the named data/design, rank, numerical, source/integrity, capacity or process cause, and retry NEW output. Do not silently repair IDs, drop cells/genes, replace nonfinite values, infer roots or substitute editions/providers. Read the selected stage WARNINGS.md, completion and admission flags; preparation/graph/weights do not admit a gene test. Retain finite original R inference from unresolved rounding residuals as source evidence; native refuses the affected complete testing family. Keep numeric-zero probabilities with log-p. Cell Ranger remains excluded. Both unfinished reports remain off Pages. Ignored runtimes, JARs, full text, private author source and complete private evidence require a separate checksummed transfer before machine retirement.
@@ -1706,6 +1722,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

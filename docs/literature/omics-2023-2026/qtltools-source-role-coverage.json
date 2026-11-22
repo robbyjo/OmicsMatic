@@ -1,0 +1,633 @@
+{
+  "schema_version": 1,
+  "status": "PASS_QTLTOOLS_ONE_SCOPED_FAMILY_NINE_NEW_SOURCE_REVIEWS",
+  "source_census": {
+    "bytes": 117788,
+    "sha256": "1cdeb828dc8caefec5a568596e866d6b10789949b85db242813736d981d56804"
+  },
+  "roles": [
+    {
+      "paper_id": "P073",
+      "pmcid": "PMC11631754",
+      "doi": "10.1038/s41588-024-02019-8",
+      "tool_id": "qtltools",
+      "source_xml_sha256": "1c5a9bc6f69280e434474ef1cb19729d0fb6bcbb8977c0daf6a68765553bdfe4",
+      "analysis_role": "Grouped cis-sQTL permutations, conditional mapping and distant trans-sQTL mapping",
+      "usage_summary": "Mapped cell-type-specific splicing QTLs with QTLtools 1.2: grouped cis permutations (1000) in a 1 Mb window, followed by conditional mapping; a separate trans analysis used variants beyond 5 Mb and 50000 permutations.",
+      "implementation_scope_note": "The cis paragraph reports eight splicing PCs, five genotype PCs, sex and age, at least ten cells per donor/cell type, qvalue 2.30.0 and FDR<0.05. The bare --grp spelling does not identify best/pca1/mean: all three inspected original editions reject that ambiguous option. Do not select a grouping silently. The trans paragraph does not restate an edition; its mappability/cross-mapping filters, multiple-intron transformation and BH FDR0.01 are separate preparation/aggregation. Exact binary, grouping, seed, phenotype/group encoding and conditional threshold construction remain unresolved. Prepared original components do not reproduce these author/cohort steps.",
+      "usage_context": "cis-and-trans-splicing-QTL-mapping",
+      "binding": "reported-cis-edition-components;grouping-unresolved;trans-edition-not-restated",
+      "primary_evidence": {
+        "paragraph_index": 40,
+        "section": "Methods / cis-sQTL mapping",
+        "paragraph_sha256": "6d4d5fb1d5152a31ff92291ae57b96be909683cd70b2b65776f3ae57aa307a0f"
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 45,
+          "section": "Methods / trans-sQTL mapping",
+          "paragraph_sha256": "8d0cad4692ce4354d45b807284b4982f0951e15a16a547a70b696043b1828d31"
+        }
+      ],
+      "source_name_witness": {
+        "literal": "QTLtools",
+        "character_offset": 37,
+        "paragraph_index": 40
+      },
+      "reported_edition": {
+        "literal": "1.2",
+        "paragraph_index": 40,
+        "character_offset": 48,
+        "package_and_edition_witness": "QTLtools v.1.2"
+      },
+      "operations": [
+        {
+          "role": "cis",
+          "edition": "1.2",
+          "paragraph": 40,
+          "operations": [
+            "CIS_PERMUTE",
+            "CIS_CONDITIONAL"
+          ],
+          "edition_witness": {
+            "literal": "1.2",
+            "paragraph_index": 40,
+            "character_offset": 48,
+            "package_and_edition_witness": "QTLtools v.1.2"
+          },
+          "paper_command_or_binary_reproduced": false
+        },
+        {
+          "role": "trans",
+          "edition": null,
+          "paragraph": 45,
+          "operations": [
+            "TRANS_NOMINAL",
+            "TRANS_PERMUTE"
+          ],
+          "edition_witness": null,
+          "paper_command_or_binary_reproduced": false
+        }
+      ],
+      "auxiliary_evidence": [],
+      "paper_executed_commit_confirmed": false,
+      "author_pipeline_executed": false,
+      "whole_tool_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P074",
+      "pmcid": "PMC12807872",
+      "doi": "10.1038/s41588-025-02417-6",
+      "tool_id": "qtltools",
+      "source_xml_sha256": "d4b68aa51027857906d62e3b78dd5a1668cfc73303794a8f813059da6613cabb",
+      "analysis_role": "Aortic-valve eQTL generation for subsequent COLOC analysis",
+      "usage_summary": "Generated human aortic-valve eQTLs with QTLtools 1.1 for a subsequent comparison with aortic-stenosis GWAS signals using COLOC 3.2.1; the code-availability list also names QTLtools 1.1.",
+      "implementation_scope_note": "The paragraph assigns QTLtools to eQTL generation; COLOC performs the colocalization and LocusCompareR provides a separate validation/visualization step. Its 1 Mb start/end-site selection and PP4>0.75 criterion describe the colocalization analysis, not a fully specified QTLtools command. Mapping mode, covariates, permutations, seed, inputs and executed build are unstated. Original 1.1 mapping controls establish available prepared components, without assigning a nominal/permutation/conditional mode to this paper or performing COLOC.",
+      "usage_context": "eqtl-generation-before-separate-colocalization",
+      "binding": "reported-edition;mapping-mode-and-settings-unresolved",
+      "primary_evidence": {
+        "paragraph_index": 45,
+        "section": "Methods / Transcriptome-wide association analysis",
+        "paragraph_sha256": "bedb9b2d5ff21168b2f7c9ab9ca72f32691fccc03837e2601257ad010353b99e"
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 68,
+          "section": "Code availability",
+          "paragraph_sha256": "002257e696ef36f9d35543759534a5477765d35d67c2b0d8ce1f35a3b2b0a4a7"
+        }
+      ],
+      "source_name_witness": {
+        "literal": "QTLtools",
+        "character_offset": 247,
+        "paragraph_index": 45
+      },
+      "reported_edition": {
+        "literal": "1.1",
+        "paragraph_index": 45,
+        "character_offset": 258,
+        "package_and_edition_witness": "QTLtools (v1.1"
+      },
+      "operations": [
+        {
+          "role": "eqtl-generation-unspecified-mode",
+          "edition": "1.1",
+          "paragraph": 45,
+          "operations": [],
+          "edition_witness": {
+            "literal": "1.1",
+            "paragraph_index": 45,
+            "character_offset": 258,
+            "package_and_edition_witness": "QTLtools (v1.1"
+          },
+          "paper_command_or_binary_reproduced": false
+        }
+      ],
+      "auxiliary_evidence": [],
+      "paper_executed_commit_confirmed": false,
+      "author_pipeline_executed": false,
+      "whole_tool_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P104",
+      "pmcid": "PMC13649572",
+      "doi": "10.1038/s41588-026-02733-5",
+      "tool_id": "qtltools",
+      "source_xml_sha256": "d92b674fe5e2053354f2693a2409628e5e729bd59cd613a8f76558e48860c248",
+      "analysis_role": "Functional-density summary of cell-type-specific OCRs around cis-eQTLs",
+      "usage_summary": "Used QTLtools 1.3.1 fdensity to summarize cell-type-specific open-chromatin regions in 10 kb bins around cis-eQTLs, describing a 2 Mb neighborhood.",
+      "implementation_scope_note": "Native Java and exact original 1.3.1 fdensity are qualified on valid prepared BED inputs. The inspected source counts QTLs having any annotation overlap per bin, not annotation multiplicity or an enrichment significance test. Preserve its start+1 anchor, strand handling, duplicate-QTL behavior and small-tree input-order guard. The paper does not settle total span versus radius, exact BED/lead-QTL construction, annotation ordering or enrichment background. Require an explicit radius; do not infer it from the 2 Mb wording, silently sort annotations or claim the reported biological enrichment was replicated.",
+      "usage_context": "functional-density-around-cis-eqtls",
+      "binding": "reported-edition-original-and-native-component;paper-coordinate-inputs-unresolved",
+      "primary_evidence": {
+        "paragraph_index": 42,
+        "section": "Methods / Sample selection and preprocessing / Enrichment of OCRs around detected regulatory variants",
+        "paragraph_sha256": "3814011d3072ec5b6be981449f1a453a5babf8924cb595ccdd2e125136e0b5cf"
+      },
+      "supporting_evidence": [],
+      "source_name_witness": {
+        "literal": "QTLtools",
+        "character_offset": 121,
+        "paragraph_index": 42
+      },
+      "reported_edition": {
+        "literal": "1.3.1",
+        "paragraph_index": 42,
+        "character_offset": 132,
+        "package_and_edition_witness": "QTLtools (v1.3.1"
+      },
+      "operations": [
+        {
+          "role": "fdensity",
+          "edition": "1.3.1",
+          "paragraph": 42,
+          "operations": [
+            "FDENSITY"
+          ],
+          "edition_witness": {
+            "literal": "1.3.1",
+            "paragraph_index": 42,
+            "character_offset": 132,
+            "package_and_edition_witness": "QTLtools (v1.3.1"
+          },
+          "paper_command_or_binary_reproduced": false
+        }
+      ],
+      "auxiliary_evidence": [],
+      "paper_executed_commit_confirmed": false,
+      "author_pipeline_executed": false,
+      "whole_tool_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P108",
+      "pmcid": "PMC10703692",
+      "doi": "10.1038/s41588-023-01560-2",
+      "tool_id": "qtltools",
+      "source_xml_sha256": "2b6379547edec29576319cbf8354701af40c7480514415c36d8657075449c182",
+      "analysis_role": "Nominal cis-eQTL and cis-isoQTL counts for HCP selection",
+      "usage_summary": "Used QTLtools 1.3.1 nominal cis-QTL discoveries to select hidden covariates over a 100-300 HCP grid, retaining 200 for gene expression and 175 for isoform expression at the reported Bonferroni criterion.",
+      "implementation_scope_note": "QTLtools supplies nominal cis-eQTL/isoQTL detection; Salmon/tximeta, DESeq2 transformation, WGCNA outlier removal, ComBat and HCP estimation/residualization are distinct steps. The paper reports removal of age, age-squared, sex and ten genotype PCs as well as HCPs, but does not specify the full QTLtools command, cis window, tested family, HCP grid spacing or executed build. The prepared 1.3.1 nominal component does not optimize HCPs, reproduce the preprocessing/2115-sample population or turn discovery-based parameter selection into independent validation.",
+      "usage_context": "nominal-qtl-discovery-for-hidden-covariate-selection",
+      "binding": "reported-edition-nominal-component;external-HCP-selection",
+      "primary_evidence": {
+        "paragraph_index": 51,
+        "section": "Methods / Adult brain reference panel processing and model training",
+        "paragraph_sha256": "a6b9a13816c441d5f6a6eaaa7ff1d33391502003ff0c6ffd8a70cfccdf40459a"
+      },
+      "supporting_evidence": [],
+      "source_name_witness": {
+        "literal": "QTLtools",
+        "character_offset": 1369,
+        "paragraph_index": 51
+      },
+      "reported_edition": {
+        "literal": "1.3.1",
+        "paragraph_index": 51,
+        "character_offset": 1379,
+        "package_and_edition_witness": "QTLtools v1.3.1"
+      },
+      "operations": [
+        {
+          "role": "nominal-cis",
+          "edition": "1.3.1",
+          "paragraph": 51,
+          "operations": [
+            "CIS_NOMINAL"
+          ],
+          "edition_witness": {
+            "literal": "1.3.1",
+            "paragraph_index": 51,
+            "character_offset": 1379,
+            "package_and_edition_witness": "QTLtools v1.3.1"
+          },
+          "paper_command_or_binary_reproduced": false
+        }
+      ],
+      "auxiliary_evidence": [],
+      "paper_executed_commit_confirmed": false,
+      "author_pipeline_executed": false,
+      "whole_tool_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P190",
+      "pmcid": "PMC12626415",
+      "doi": "10.1016/j.ajhg.2025.10.012",
+      "tool_id": "qtltools",
+      "source_xml_sha256": "44f6ab09c1f38e8f26fa9d8f37c3c88fde3a61efa85113a67259d2bb9927fb71",
+      "analysis_role": "Grouped cis-permutation sGene discovery and MaxT method comparison",
+      "usage_summary": "Supplement Note S1.7 explicitly uses QTLtools for baseline sGene discovery: a 1 Mb cis window, --permute 1000 and --grp-best on prepared MAJIQ/LeafCutter BED phenotypes, with no additional QTLtools normalization and BH control across genes at 0.05. The main text also discusses MaxT and compatibility.",
+      "implementation_scope_note": "The supplement establishes execution use beyond the main-text method/compatibility mentions, but gives no QTLtools edition or executed commit. It calls --permute 1000 adaptive; the inspected 1.1/1.2/1.3.1 implementation accepts a fixed integer count. Retain that discrepancy without inventing adaptive stopping or a historical edition. Note S1.7 points to S1.4 for covariates, whereas the confounder description is in S1.5; preserve both locators. GTEx variant selection, pre-normalization, MOCCASIN covariate estimation/selection, BH and simulation comparisons remain separate work. The current exact-edition artificial components do not identify the author binary, reproduce the simulation or refit GTEx.",
+      "usage_context": "original-grouped-sgene-baseline-and-method-comparison",
+      "binding": "supplement-explicit-execution-and-options;edition-unknown;adaptive-wording-unresolved",
+      "primary_evidence": {
+        "paragraph_index": 33,
+        "section": "Results / Analysis of GTEx tissues points to potential improvement for sQTL modeling",
+        "paragraph_sha256": "339562a73968a30b18d9f87934afc920dc3ffbbc309a624996d3f4468710a443"
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 42,
+          "section": "Results / MAJIQTL offers a robust and powerful statistical framework for sQTL discovery and analysis",
+          "paragraph_sha256": "5a227eda1136161fa12fa5c35cf2042ad4dbdc4e88d5d2ae561286ea31ef71d1"
+        },
+        {
+          "paragraph_index": 62,
+          "section": "Discussion",
+          "paragraph_sha256": "209d74e5ebdabcde3f16662058e46432a01ce03e00e8558cae535fe3c2e72f0d"
+        }
+      ],
+      "source_name_witness": {
+        "literal": "QTLTools",
+        "character_offset": 936,
+        "paragraph_index": 33
+      },
+      "reported_edition": null,
+      "operations": [
+        {
+          "role": "grouped-cis-permutation",
+          "edition": null,
+          "paragraph": 33,
+          "supplement": "Note S1.7",
+          "operations": [
+            "CIS_PERMUTE"
+          ],
+          "edition_witness": null,
+          "paper_command_or_binary_reproduced": false
+        }
+      ],
+      "auxiliary_evidence": [
+        {
+          "url": "https://ars.els-cdn.com/content/image/1-s2.0-S0002929725004033-mmc1.pdf",
+          "pdf": {
+            "bytes": 3125933,
+            "sha256": "468d4018f261f438654d873b539952dd157417910844d68de34be68e5d3678f0"
+          },
+          "pages": [
+            21,
+            25
+          ],
+          "sections": [
+            "Note S1.5",
+            "Note S1.7"
+          ],
+          "source_scope": "Explicit QTLtools run in supplement;edition unstated;fixed-count/adaptive-wording discrepancy retained"
+        }
+      ],
+      "paper_executed_commit_confirmed": false,
+      "author_pipeline_executed": false,
+      "whole_tool_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P201",
+      "pmcid": "PMC11568790",
+      "doi": "10.1016/j.ajhg.2024.09.004",
+      "tool_id": "qtltools",
+      "source_xml_sha256": "405d53aae833dabbdca2d4dcf82fd0ce5d250102cd27c27f0e707acbb3b4163f",
+      "analysis_role": "Cis-sQTL mapping, window restriction and effect/SE export for mashr",
+      "usage_summary": "Mapped intron-ratio cis-sQTLs with QTLtools using a reported 10000 adaptive permutations, first within 1 Mb and then a restricted 250 kb window, adjusting for 29 PEER factors and five genotype PCs; effect sizes and standard errors fed a separate mashr comparison.",
+      "implementation_scope_note": "The QTLtools edition, exact adaptive rule, command, seed and grouping are unstated. The inspected editions implement fixed-count permutations, so 10000 fixed permutations cannot be relabelled as the paper adaptive analysis. The observation that 89% of discoveries lay within 250 kb motivates a data-dependent restriction, not an independent prespecified window. The standard-error statement does not establish edition 1.3.1 or authorize reconstruction of an unreported field from a p-value. Keep LeafCutter normalization, European coordinate/filter harmonization and mashr estimation separate. Caller-supplied prepared inputs and declared original operations do not reproduce that workflow.",
+      "usage_context": "cis-sqtl-mapping-and-effect-export",
+      "binding": "execution-reported;edition-adaptive-rule-and-export-settings-unresolved",
+      "primary_evidence": {
+        "paragraph_index": 14,
+        "section": "Subjects, material, and methods / cis-sQTL mapping",
+        "paragraph_sha256": "0da0540228994dcc8e433642a4336c024f65832c719f2e282ac69a16f04a5df7"
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "section": "Subjects, material, and methods / Identifying shared cis-sQTLs and differences in effect sizes",
+          "paragraph_sha256": "e9fbe85a71da9f6b4e608bbf694d921fbb71fa1c282c794e81a28f80b435a4bc"
+        }
+      ],
+      "source_name_witness": {
+        "literal": "QTLTools",
+        "character_offset": 294,
+        "paragraph_index": 14
+      },
+      "reported_edition": null,
+      "operations": [
+        {
+          "role": "cis-permutation-and-nominal",
+          "edition": null,
+          "paragraph": 14,
+          "operations": [
+            "CIS_PERMUTE",
+            "CIS_NOMINAL"
+          ],
+          "edition_witness": null,
+          "paper_command_or_binary_reproduced": false
+        },
+        {
+          "role": "effect-and-standard-error-export",
+          "edition": null,
+          "paragraph": 15,
+          "operations": [],
+          "edition_witness": null,
+          "paper_command_or_binary_reproduced": false
+        }
+      ],
+      "auxiliary_evidence": [],
+      "paper_executed_commit_confirmed": false,
+      "author_pipeline_executed": false,
+      "whole_tool_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P203",
+      "pmcid": "PMC11568756",
+      "doi": "10.1016/j.ajhg.2024.09.001",
+      "tool_id": "qtltools",
+      "source_xml_sha256": "2d035da198a42fbfd1067cedca09c0fc77b108e5269d02af3481cebd8bd1d644",
+      "analysis_role": "Nominal, permutation and conditional cis-eQTL mapping plus sample-match QC",
+      "usage_summary": "Used QTLtools nominal, permutation and conditional cis-eQTL passes with 20 PEER factors and a 1 Mb gene/intron-body window, followed by Storey q-value filtering. A separate QC paragraph reports a QTLtools match function for RNA/DNA sample identity.",
+      "implementation_scope_note": "No QTLtools edition, permutation count, exact command/threshold files or executed build is given. The literal match label is retained: current prepared MBV controls do not prove which historical match command the paper ran or that it is the same implementation. Do not rename it silently, infer a sample identity decision from a raw concordance field or conflate PLINK sex checks with QTLtools. The author-repository URL is a source pointer, not an executed-commit pin. PEER estimation, body-window preparation, sample removal and qvalue thresholds remain distinct declared steps; generic component availability does not reproduce them.",
+      "usage_context": "cis-eqtl-mapping-and-reported-match-qc",
+      "binding": "execution-reported;edition-unknown;literal-match-command-unresolved",
+      "primary_evidence": {
+        "paragraph_index": 14,
+        "section": "Subjects and methods / cis-eQTL mapping",
+        "paragraph_sha256": "7e23824a9fee73c2b12d8265fe8bdb3d631fc3311826644949cf90214e6b91c9"
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 11,
+          "section": "Subjects and methods / Sex check and sample swap identification",
+          "paragraph_sha256": "17e73cd5506b50a66805323b390b8fb8700e34b956a160ba24890cd16833a69c"
+        }
+      ],
+      "source_name_witness": {
+        "literal": "QTLtools",
+        "character_offset": 37,
+        "paragraph_index": 14
+      },
+      "reported_edition": null,
+      "operations": [
+        {
+          "role": "cis",
+          "edition": null,
+          "paragraph": 14,
+          "operations": [
+            "CIS_NOMINAL",
+            "CIS_PERMUTE",
+            "CIS_CONDITIONAL"
+          ],
+          "edition_witness": null,
+          "paper_command_or_binary_reproduced": false
+        },
+        {
+          "role": "literal-match",
+          "edition": null,
+          "paragraph": 11,
+          "operations": [],
+          "edition_witness": null,
+          "paper_command_or_binary_reproduced": false
+        }
+      ],
+      "auxiliary_evidence": [],
+      "paper_executed_commit_confirmed": false,
+      "author_pipeline_executed": false,
+      "whole_tool_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P219",
+      "pmcid": "PMC11393713",
+      "doi": "10.1016/j.ajhg.2024.07.010",
+      "tool_id": "qtltools",
+      "source_xml_sha256": "e4fadb062adf4cc95728affb2ee19c5e59af94b50cce138a693a6dbb5f073112",
+      "analysis_role": "Skin gene quantification and separately versioned cis-eQTL discovery",
+      "usage_summary": "Quantified skin gene expression with QTLtools quan and GENCODE19 without specifying the quan edition. Separate QTLtools 1.2 nominal analyses selected 30 PEER covariates; the final 1 Mb cis-eQTL analysis included BMI and genotyping chip and used 1000 permutations for gene thresholds.",
+      "implementation_scope_note": "Keep quan edition unknown; mapping edition 1.2 does not identify the quantifier. The PEER factors were learned from rank-normal residuals of a family/zygosity mixed model with BMI, while mapping used a second residual set without BMI and then adjusted for BMI/chip. Do not merge the two residual populations or apply an extra normal transformation silently. The paper separates BH5% for covariate selection from Storey-Tibshirani5% for final gene thresholds and reports betas relative to the minor allele; original exports do not automatically establish that orientation. Raw-read QC/alignment, GENCODE19 construction, mixed models, PEER selection, FDR/threshold construction and allele harmonization remain upstream/downstream responsibilities.",
+      "usage_context": "quan-and-separate-cis-eqtl-analysis",
+      "binding": "quantifier-edition-unknown;reported-1.2-mapping-components;distinct-residual-preparation",
+      "primary_evidence": {
+        "paragraph_index": 13,
+        "section": "Material and methods / Skin gene expression profiles",
+        "paragraph_sha256": "8441941f05748bba8f5cc8b9f84fe997ea9b6b2e006eaa9feec0d58ffc2d1a7e"
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 29,
+          "section": "Material and methods / Identification of local skin eQTLs",
+          "paragraph_sha256": "62715c44008fb29f0a9dedbc645583e613b1cdf1d9bab7c7f560fcf515e76b49"
+        },
+        {
+          "paragraph_index": 31,
+          "section": "Material and methods / Identification of local skin eQTLs",
+          "paragraph_sha256": "bb98d42a36ce9b7a4a965979f87fdd1fe715b09fe595e5c971816d971977804b"
+        },
+        {
+          "paragraph_index": 28,
+          "section": "Material and methods / Identification of local skin eQTLs",
+          "paragraph_sha256": "3f7e792a1a352fe2a057f53181eb51287badd95eaff5015aaf74df403db638c9",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "paragraph_index": 29,
+            "section": "Material and methods / Identification of local skin eQTLs",
+            "paragraph_sha256": "62715c44008fb29f0a9dedbc645583e613b1cdf1d9bab7c7f560fcf515e76b49"
+          },
+          "shared_terms": [
+            "PEER",
+            "BMI"
+          ],
+          "relation_note": "The adjacent named QTLtools mapping paragraph distinguishes its residual set from the BMI-adjusted residual set used for PEER construction here."
+        }
+      ],
+      "source_name_witness": {
+        "literal": "QTLtools",
+        "character_offset": 671,
+        "paragraph_index": 13
+      },
+      "reported_edition": null,
+      "operations": [
+        {
+          "role": "quan",
+          "edition": null,
+          "paragraph": 13,
+          "operations": [
+            "QUAN"
+          ],
+          "edition_witness": null,
+          "paper_command_or_binary_reproduced": false
+        },
+        {
+          "role": "nominal-covariate-selection",
+          "edition": "1.2",
+          "paragraph": 29,
+          "operations": [
+            "CIS_NOMINAL"
+          ],
+          "edition_witness": {
+            "literal": "1.2",
+            "paragraph_index": 29,
+            "character_offset": 615,
+            "package_and_edition_witness": "QTLTools version 1.2"
+          },
+          "paper_command_or_binary_reproduced": false
+        },
+        {
+          "role": "final-cis",
+          "edition": "1.2",
+          "paragraph": 31,
+          "operations": [
+            "CIS_NOMINAL",
+            "CIS_PERMUTE"
+          ],
+          "edition_witness": {
+            "literal": "1.2",
+            "paragraph_index": 31,
+            "character_offset": 167,
+            "package_and_edition_witness": "QTLtools version 1.2"
+          },
+          "paper_command_or_binary_reproduced": false
+        }
+      ],
+      "auxiliary_evidence": [],
+      "paper_executed_commit_confirmed": false,
+      "author_pipeline_executed": false,
+      "whole_tool_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P227",
+      "pmcid": "PMC11339615",
+      "doi": "10.1016/j.ajhg.2024.06.017",
+      "tool_id": "qtltools",
+      "source_xml_sha256": "13a02fb8730969fc33caee388001ecaad9df350a92c96439ca7db88ca49636f8",
+      "analysis_role": "MBV checks for sample swaps and RNA-seq/WGS pairing",
+      "usage_summary": "Used QTLtools MBV 1.2 to identify RNA/genotype mismatches during QC and pair RNA-seq with WGS samples; five sample swaps were corrected, and matching sets differed between SNV/indel and structural-variant calls.",
+      "implementation_scope_note": "The raw flattened text joins version1.2 and bibliography label27. JATS citation-pruned text and the xref identify edition1.2, not1.2.27. Mapping/base/genotype quality thresholds, pairing decision rules and exact executed build are unreported. Prepared original1.2 MBV retains complete counters and floating-point fractions but does not automatically relabel donors, correct swaps or perform contamination/relatedness/read-quality filtering. Keep the distinct sample denominators and structural-variant call failures; do not treat a no-covered-site result as a donor match. The legacy1.1 integer-division behavior is a separate warning, not the reported paper edition.",
+      "usage_context": "rna-dna-and-rna-wgs-sample-matching",
+      "binding": "reported-edition-original-MBV-component;matching-decisions-not-reconstructed",
+      "primary_evidence": {
+        "paragraph_index": 10,
+        "section": "Subjects and methods / Quality control of RNA-seq samples",
+        "paragraph_sha256": "4fb32fa5e20cf14774c6d46f8538007ec10ed7e76716f7d726d0891225f89bf2"
+      },
+      "supporting_evidence": [
+        {
+          "paragraph_index": 19,
+          "section": "Subjects and methods / Matching RNA-seq and WGS samples",
+          "paragraph_sha256": "1dfa43d7d5c82b61e8e9c170792bb35e250ba85af989dce6185904328230bcb9"
+        }
+      ],
+      "source_name_witness": {
+        "literal": "QTLtools",
+        "character_offset": 95,
+        "paragraph_index": 10
+      },
+      "reported_edition": {
+        "literal": "1.2",
+        "paragraph_index": 10,
+        "character_offset": 110,
+        "package_and_edition_witness": "QTLtools MBV v.1.2"
+      },
+      "operations": [
+        {
+          "role": "MBV",
+          "edition": "1.2",
+          "paragraph": 10,
+          "operations": [
+            "MBV"
+          ],
+          "edition_witness": {
+            "literal": "1.2",
+            "paragraph_index": 10,
+            "character_offset": 110,
+            "package_and_edition_witness": "QTLtools MBV v.1.2"
+          },
+          "paper_command_or_binary_reproduced": false
+        },
+        {
+          "role": "RNA-WGS-pairing",
+          "edition": "1.2",
+          "paragraph": 19,
+          "operations": [
+            "MBV"
+          ],
+          "edition_witness": {
+            "literal": "1.2",
+            "paragraph_index": 19,
+            "character_offset": 80,
+            "package_and_edition_witness": "QTLtools MBV v.1.2"
+          },
+          "paper_command_or_binary_reproduced": false
+        }
+      ],
+      "auxiliary_evidence": [],
+      "paper_executed_commit_confirmed": false,
+      "author_pipeline_executed": false,
+      "whole_tool_qualified": false,
+      "whole_paper_reproduced": false,
+      "citation_version_distinction": {
+        "raw_flattened": "1.2.27",
+        "citation_pruned_edition": "1.2",
+        "bibliography_label": "27",
+        "xref_witnesses": [
+          {
+            "rid": "bib27",
+            "label": "27"
+          },
+          {
+            "rid": "bib27",
+            "label": "27"
+          }
+        ]
+      }
+    }
+  ],
+  "counts": {
+    "papers": 250,
+    "named_tools": 446,
+    "registry_definitions": 485,
+    "observations": 2722,
+    "reviewed_uses": 1639,
+    "pending_uses": 1083,
+    "unchanged_prior_reviews": 1630,
+    "new_review_records": 9,
+    "unchanged_unrelated_observations": 2713,
+    "observations_added": 0,
+    "observations_removed": 0,
+    "integrations": 146,
+    "native_integrations": 26,
+    "upstream_integrations": 120,
+    "including_existing_adapters": 149,
+    "validated_family_alias_labels": 2,
+    "method_overlap": 28,
+    "missing": 258,
+    "new_scoped_integration_credit": 1,
+    "upstream_family_credit_added": 1,
+    "native_family_credit_added": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
+  },
+  "applied": true,
+  "scope": "Nine individual QTLtools source-role reviews and one prepared upstream family;no observation addition,extra native credit or paper reproduction."
+}
