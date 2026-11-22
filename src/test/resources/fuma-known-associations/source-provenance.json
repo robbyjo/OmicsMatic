@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "reference": {
+    "status": "passed50-complete-R-adjustment-reference-families",
+    "families": 50,
+    "rows": 785,
+    "methods": [
+      "BH",
+      "BY",
+      "holm",
+      "bonferroni",
+      "supplied"
+    ],
+    "encodings": [
+      "P_VALUE",
+      "NATURAL_LOG"
+    ],
+    "R_version": "R version 4.2.3 (2023-03-15) \n 4.2.3",
+    "reference_sha256": "a1fd12e52e7441783e424a4b462a3355e199c25d50efb2c00fb84ee914feb217",
+    "reference_script_sha256": "cfa869d232fb4802d7bf54ef908b8c7bcc313f117ba62c8b41123a829d28f109",
+    "R_p_adjust_source_sha256": "82f3eaae7c5e083569927c55a5d28f085b079284c3480da0334daa6f8da067fa",
+    "scope": "Raw probability references use unmodified R stats::p.adjust (supplied values unchanged). Natural-log references are an independent declared extension,not a claim R p.adjust accepts logs. Complete zero/missing/tie/cutoff-neighbour/underflow/random families; no original-paper method/default inference."
+  },
+  "files": {
+    "input.tsv": "2d19c9bd2ac5028fc5ace2defffcd17cb0acbcbbef9c593ec051a1fc2cd9aacd",
+    "reference.tsv": "a1fd12e52e7441783e424a4b462a3355e199c25d50efb2c00fb84ee914feb217",
+    "reference.R": "cfa869d232fb4802d7bf54ef908b8c7bcc313f117ba62c8b41123a829d28f109"
+  },
+  "scope": "Frozen numeric validation data; tests require only Java/JUnit. To regenerate independently use Rscript --vanilla reference.R DIRECTORY containing input.tsv. Raw probability families use unmodified stats::p.adjust; the log-space script is an explicitly independent extension. Supplied adjusted values are unchanged. No original P019 correction method/family or historical R version parity inferred."
+}

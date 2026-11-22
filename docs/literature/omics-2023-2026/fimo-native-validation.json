@@ -1,0 +1,377 @@
+{
+  "status": "passed-native-dna-pssm-and-probability-scan-subsets",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "recorded_utc": "2026-10-25T23:24:57.944602+00:00",
+  "artifact": "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/sequence/DnaPssm.java": "e2d0195ed7902b2222ab59a562166e2fe7ebd938acd5ea4ee0488be5926116e0",
+    "src/main/java/org/jlinalg/sequence/MemeDnaMotifs.java": "e0edde8d30dd5528f56193b1a874149406ecedbc670ed59c714c2edbb77e5294",
+    "src/main/java/org/jlinalg/sequence/DnaMotifScanner.java": "ffa793d0a7f1787b313b5fe7c901807cea61ad9f3d558d4cc5faefb78aab9e11",
+    "src/main/java/org/jlinalg/cli/MotifScanCli.java": "847f083e232c5ef58724347739a7630ae345c48f9e773af34cf2b2f3b8982ef1",
+    "src/test/java/org/jlinalg/sequence/DnaPssmTest.java": "d352a157b62f110c7308e90fc62e5e9991bcff851d4acd83abadfd24a27f2e10",
+    "src/test/java/org/jlinalg/sequence/MemeDnaMotifsTest.java": "e01e2f6569d1d077151d08034b8d49d00a74bc551702c884d1b019a46effe473",
+    "src/test/java/org/jlinalg/sequence/DnaMotifScannerTest.java": "32e1be112249e0026199b45ddc41008b73d0b19869b0ef07ba6d1d7c5f7b431d",
+    "src/test/java/org/jlinalg/cli/MotifScanCliTest.java": "2a45cf2a4378f30d63ff42fc671f7d261bbabf7f40aca75a1dfb941f5cc1d71e",
+    "src/test/java/org/jlinalg/cli/FimoNativeReferenceTest.java": "3707c81be112a6679b6dc46d8b69a995ea1689ebaeeb4c167c36e2746bb14b55",
+    "tools/literature/verify_motif_scan.py": "5eb03722674be03749e787ed2cb0f09655f474acce8ee70e0f1d055de1ba1b6f",
+    "tools/literature/freeze_fimo_scan_cases.py": "c533c3156216029ac7972f93712229cb938964076b41e476ce4bf96464441216",
+    "tools/literature/test_motif_scan_reference_policy.py": "c0ad08197fd7fb37f54105274f9ba5949cf0d835e7a0ed2b56ed10732fcf092a"
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.sequence.DnaPssmTest": {
+      "suite_name": "org.jlinalg.sequence.DnaPssmTest",
+      "suite": {
+        "tests": 12,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "a02dff6edba7ffaff6adb65a0cc7c2f2936f1ba07b5227122074707d806d7f62",
+      "testcases": [
+        "explicitWorkspaceAndConvolutionBudgetsAreEnforcedBeforeBuildingTheNullTable()",
+        "invalidProbabilitiesSitesPseudocountsAndDimensionsAreRejected()",
+        "zeroCellsNeedPositivePseudocountAndAreNeverFilledWithAnInferredEpsilon()",
+        "originalQuantizedScoreAndContinuousScoreRemainDistinct()",
+        "all118OriginalFunctionModelsAnd24069WordsMatchFrozenIndependentReferences()",
+        "canonicalWordsAreCaseInsensitiveButAmbiguousAndWrongLengthWordsHaveNoCoreScore()",
+        "veryRareFiniteTailIsNotRoundedToZeroByAnAbsoluteErrorTolerance()",
+        "resolvedInputAndReturnedBackgroundArraysCannotMutateTheModel()",
+        "constantModelHasZeroScoreUnitTailAndNonzeroQuantizationScale()",
+        "weightedSinglePositionNullHasKnownTailAndNoImplicitStrandAveraging()",
+        "scanBackgroundPreprocessingIsExplicitAndSeparateFromTheCoreBackground()",
+        "anAttainableTailBelowFloatingPointRangeFailsInsteadOfPublishingAnExactZero()"
+      ]
+    },
+    "org.jlinalg.sequence.MemeDnaMotifsTest": {
+      "suite_name": "org.jlinalg.sequence.MemeDnaMotifsTest",
+      "suite": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "1c3f04736144bb8f756c1d1df02f929d2d126c873dc34bc38450782b775169a9",
+      "testcases": [
+        "zeroBackgroundEmptyMatrixInvalidSitesAndExtraSectionsFail()",
+        "duplicateMotifsCountsLogOddsCustomAlphabetAndMissingWidthAreRejected()",
+        "orderedMotifsDefaultsAndBackgroundAreDefensiveAndDiscoveryStrandsAreMetadata()",
+        "duplicateAndUnknownMatrixFieldsAreNeverSilentlyResolved()",
+        "roundedRowsRequireAnExplicitNormalizationChoiceAndChangesAreCounted()"
+      ]
+    },
+    "org.jlinalg.sequence.DnaMotifScannerTest": {
+      "suite_name": "org.jlinalg.sequence.DnaMotifScannerTest",
+      "suite": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "41cb2ec1fa331e3384dee8faa1882cc830a98288254921f1da1a6cbb2d2c21d4",
+      "testcases": [
+        "malformedAndOversizedHeadersAndCoordinatesFailWithExplicitErrors()",
+        "gzipMagicWrappedWhitespaceAndRecordedAlphabetAliasesWork()",
+        "nativeHitAndDecompressionLimitsFailRatherThanTruncate()",
+        "coordinateLengthMismatchIsCountedAndSequenceModePreservesFullName()",
+        "ambiguityMasksEveryOverlappingWindowAndNeverBridgesRecords()",
+        "streamingWindowsPreserveCaseStrandsCoordinatesHeadersAndDuplicateOrdinals()",
+        "sequenceOnlyInspectionPreservesMetadataAndCountsWithoutScoring()",
+        "unknownResiduesNeedExplicitConversionAndNonAsciiIsAlwaysRejected()"
+      ]
+    },
+    "org.jlinalg.cli.MotifScanCliTest": {
+      "suite_name": "org.jlinalg.cli.MotifScanCliTest",
+      "suite": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "024f32b6e4e80c41c1fe02f753a84f94b66017326e2eacf438c20f6c457e05fa",
+      "testcases": [
+        "invalidConversionAndCoordinateMismatchAreProminentSuccessfulQcWarnings()",
+        "resourceFailureQuarantinesEarlierScientificStreamsWithActionableWarnings()",
+        "unicodeJsonRecipeDispatchWorksAndExistingOutputIsNeverOverwritten()",
+        "scannerPublishesExactOriginalAsymmetricBothStrandScienceAndHashes()",
+        "missingPoliciesQValueOptionsAndPreAveragingInvalidBackgroundFailClearly()",
+        "forwardUsesUnaveragedBackgroundAndSequenceCoordinates()"
+      ]
+    },
+    "org.jlinalg.cli.FimoNativeReferenceTest": {
+      "suite_name": "org.jlinalg.cli.FimoNativeReferenceTest",
+      "suite": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "88a651acf95b9de2351b289e9a9a34599efdced0d252d3b3dafe4ae736caa37b",
+      "testcases": [
+        "all72ActualOriginalScannerWorkflowsAnd6805ReportedSitesMatch()"
+      ]
+    }
+  },
+  "full_gate": {
+    "tests": 1593,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5
+  },
+  "required_suites": 72,
+  "native_api_cli_tests": 32,
+  "original_function_models": 118,
+  "original_matrix_cells": 5340,
+  "original_scored_words": 24069,
+  "independent_short_word_null_enumerations": 5628,
+  "reference_workflows": 72,
+  "compared_sites": 6805,
+  "packaged_java_calls": 86,
+  "external_public_api_example": {
+    "status": "passed-external-public-native-api-example",
+    "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+    "source_sha256": "94ccdd1666751d8d762e79d9bdcf7f955c01be491b2dcbd69a4c77f085e1d9aa",
+    "compile_command": [
+      "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\javac.exe",
+      "--release",
+      "17",
+      "-Xlint:all",
+      "-Werror",
+      "-cp",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+      "-d",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\public-api-example-1\\classes",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\public-api-example-1\\MotifExample.java"
+    ],
+    "compile_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs": [
+      {
+        "runtime": "Temurin21",
+        "command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+          "-cp",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\public-api-example-1\\classes;D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+          "MotifExample",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\public-api-example-1\\motifs.meme",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\public-api-example-1\\seq.fa"
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "6a5998a81a7d94a2aa9f8eeb737ab4b8cdae0405d633c39b050020475570ce4f",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "runtime": "Oracle25",
+        "command": [
+          "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\java.EXE",
+          "-cp",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\public-api-example-1\\classes;D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+          "MotifExample",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\public-api-example-1\\motifs.meme",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\public-api-example-1\\seq.fa"
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "6a5998a81a7d94a2aa9f8eeb737ab4b8cdae0405d633c39b050020475570ce4f",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "scope": "Separately compiled Java17 API consumer exercised native minimal MEME reading, explicit FIMO scan-background resolution, PSSM scoring, exact1/65536uniform null, strand/coordinate/identity scanning and sequence-only inspection on actual Java21and25. No MEME runtime needed;not added to JUnit counts."
+  },
+  "original_reference_provenance": "src/test/resources/org/jlinalg/sequence/pssm/original-5.5.9-provenance.json",
+  "scope": "Independent mathematical Java DNA PSSM1000-point lattice and zero-order tails, explicit scan background regularization, minimal MEME/streaming FASTA/strands/coordinates/identity/counts/resource/warning contracts. Native needs no MEME runtime. No q-values,PSPs,protein/custom alphabets,complete upstream import/historical/full-paper parity. Normalization is explicit;an attainable floating-point tail underflow fails rather than becoming an exact zero.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed-native-dna-pssm-and-probability-scan-subsets",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "recorded_utc": "2026-10-25T23:24:57.944602+00:00",
+      "artifact": "D:\\projects\\JLinAlg\\build\\literature-review\\validated-cli\\jlinalg-0.3.7.jar",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/DnaPssm.java": "e2d0195ed7902b2222ab59a562166e2fe7ebd938acd5ea4ee0488be5926116e0",
+        "src/main/java/org/jlinalg/sequence/MemeDnaMotifs.java": "e0edde8d30dd5528f56193b1a874149406ecedbc670ed59c714c2edbb77e5294",
+        "src/main/java/org/jlinalg/sequence/DnaMotifScanner.java": "ffa793d0a7f1787b313b5fe7c901807cea61ad9f3d558d4cc5faefb78aab9e11",
+        "src/main/java/org/jlinalg/cli/MotifScanCli.java": "847f083e232c5ef58724347739a7630ae345c48f9e773af34cf2b2f3b8982ef1",
+        "src/test/java/org/jlinalg/sequence/DnaPssmTest.java": "d352a157b62f110c7308e90fc62e5e9991bcff851d4acd83abadfd24a27f2e10",
+        "src/test/java/org/jlinalg/sequence/MemeDnaMotifsTest.java": "e01e2f6569d1d077151d08034b8d49d00a74bc551702c884d1b019a46effe473",
+        "src/test/java/org/jlinalg/sequence/DnaMotifScannerTest.java": "32e1be112249e0026199b45ddc41008b73d0b19869b0ef07ba6d1d7c5f7b431d",
+        "src/test/java/org/jlinalg/cli/MotifScanCliTest.java": "2a45cf2a4378f30d63ff42fc671f7d261bbabf7f40aca75a1dfb941f5cc1d71e",
+        "src/test/java/org/jlinalg/cli/FimoNativeReferenceTest.java": "3707c81be112a6679b6dc46d8b69a995ea1689ebaeeb4c167c36e2746bb14b55",
+        "tools/literature/verify_motif_scan.py": "5eb03722674be03749e787ed2cb0f09655f474acce8ee70e0f1d055de1ba1b6f",
+        "tools/literature/freeze_fimo_scan_cases.py": "c533c3156216029ac7972f93712229cb938964076b41e476ce4bf96464441216",
+        "tools/literature/test_motif_scan_reference_policy.py": "c0ad08197fd7fb37f54105274f9ba5949cf0d835e7a0ed2b56ed10732fcf092a"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.DnaPssmTest": {
+          "suite_name": "org.jlinalg.sequence.DnaPssmTest",
+          "suite": {
+            "tests": 12,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "760eeebd1b346701bd906d70c135774cf516cb7c716afc29409afe39f34cea6f",
+          "testcases": [
+            "explicitWorkspaceAndConvolutionBudgetsAreEnforcedBeforeBuildingTheNullTable()",
+            "invalidProbabilitiesSitesPseudocountsAndDimensionsAreRejected()",
+            "zeroCellsNeedPositivePseudocountAndAreNeverFilledWithAnInferredEpsilon()",
+            "originalQuantizedScoreAndContinuousScoreRemainDistinct()",
+            "all118OriginalFunctionModelsAnd24069WordsMatchFrozenIndependentReferences()",
+            "canonicalWordsAreCaseInsensitiveButAmbiguousAndWrongLengthWordsHaveNoCoreScore()",
+            "veryRareFiniteTailIsNotRoundedToZeroByAnAbsoluteErrorTolerance()",
+            "resolvedInputAndReturnedBackgroundArraysCannotMutateTheModel()",
+            "constantModelHasZeroScoreUnitTailAndNonzeroQuantizationScale()",
+            "weightedSinglePositionNullHasKnownTailAndNoImplicitStrandAveraging()",
+            "scanBackgroundPreprocessingIsExplicitAndSeparateFromTheCoreBackground()",
+            "anAttainableTailBelowFloatingPointRangeFailsInsteadOfPublishingAnExactZero()"
+          ]
+        },
+        "org.jlinalg.sequence.MemeDnaMotifsTest": {
+          "suite_name": "org.jlinalg.sequence.MemeDnaMotifsTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "190d58e1c101e925f5c870a2381156cd5bfabe11ed09b5afb445eb2b2e5e3086",
+          "testcases": [
+            "zeroBackgroundEmptyMatrixInvalidSitesAndExtraSectionsFail()",
+            "duplicateMotifsCountsLogOddsCustomAlphabetAndMissingWidthAreRejected()",
+            "orderedMotifsDefaultsAndBackgroundAreDefensiveAndDiscoveryStrandsAreMetadata()",
+            "duplicateAndUnknownMatrixFieldsAreNeverSilentlyResolved()",
+            "roundedRowsRequireAnExplicitNormalizationChoiceAndChangesAreCounted()"
+          ]
+        },
+        "org.jlinalg.sequence.DnaMotifScannerTest": {
+          "suite_name": "org.jlinalg.sequence.DnaMotifScannerTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d83e4401e2fe673b859d265ca9a569fe5dd5cdba520094a3969c7752b0fabc91",
+          "testcases": [
+            "malformedAndOversizedHeadersAndCoordinatesFailWithExplicitErrors()",
+            "gzipMagicWrappedWhitespaceAndRecordedAlphabetAliasesWork()",
+            "nativeHitAndDecompressionLimitsFailRatherThanTruncate()",
+            "coordinateLengthMismatchIsCountedAndSequenceModePreservesFullName()",
+            "ambiguityMasksEveryOverlappingWindowAndNeverBridgesRecords()",
+            "streamingWindowsPreserveCaseStrandsCoordinatesHeadersAndDuplicateOrdinals()",
+            "sequenceOnlyInspectionPreservesMetadataAndCountsWithoutScoring()",
+            "unknownResiduesNeedExplicitConversionAndNonAsciiIsAlwaysRejected()"
+          ]
+        },
+        "org.jlinalg.cli.MotifScanCliTest": {
+          "suite_name": "org.jlinalg.cli.MotifScanCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "487458261ee65d19a5921a0c831d32fb3c35f5704d429e68f73ea553ec128cd1",
+          "testcases": [
+            "invalidConversionAndCoordinateMismatchAreProminentSuccessfulQcWarnings()",
+            "resourceFailureQuarantinesEarlierScientificStreamsWithActionableWarnings()",
+            "unicodeJsonRecipeDispatchWorksAndExistingOutputIsNeverOverwritten()",
+            "scannerPublishesExactOriginalAsymmetricBothStrandScienceAndHashes()",
+            "missingPoliciesQValueOptionsAndPreAveragingInvalidBackgroundFailClearly()",
+            "forwardUsesUnaveragedBackgroundAndSequenceCoordinates()"
+          ]
+        },
+        "org.jlinalg.cli.FimoNativeReferenceTest": {
+          "suite_name": "org.jlinalg.cli.FimoNativeReferenceTest",
+          "suite": {
+            "tests": 1,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4f141e7618bd892fcdb1525d53e1755f86ae921f8e1118efc2d2903e6f4f04b4",
+          "testcases": [
+            "all72ActualOriginalScannerWorkflowsAnd6805ReportedSitesMatch()"
+          ]
+        }
+      },
+      "full_gate": {
+        "tests": 1552,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 68,
+      "native_api_cli_tests": 32,
+      "original_function_models": 118,
+      "original_matrix_cells": 5340,
+      "original_scored_words": 24069,
+      "independent_short_word_null_enumerations": 5628,
+      "reference_workflows": 72,
+      "compared_sites": 6805,
+      "packaged_java_calls": 86,
+      "external_public_api_example": {
+        "status": "passed-external-public-native-api-example",
+        "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+        "source_sha256": "94ccdd1666751d8d762e79d9bdcf7f955c01be491b2dcbd69a4c77f085e1d9aa",
+        "compile_command": [
+          "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\javac.exe",
+          "--release",
+          "17",
+          "-Xlint:all",
+          "-Werror",
+          "-cp",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-candidate\\jlinalg-0.3.7.jar",
+          "-d",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\public-api-example-1\\classes",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\public-api-example-1\\MotifExample.java"
+        ],
+        "compile_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "runs": [
+          {
+            "runtime": "Temurin21",
+            "command": [
+              "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.4.7-hotspot\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\public-api-example-1\\classes;D:\\projects\\JLinAlg\\build\\literature-review\\fimo-candidate\\jlinalg-0.3.7.jar",
+              "MotifExample",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\public-api-example-1\\motifs.meme",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\public-api-example-1\\seq.fa"
+            ],
+            "exit_code": 0,
+            "stdout_sha256": "6a5998a81a7d94a2aa9f8eeb737ab4b8cdae0405d633c39b050020475570ce4f",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "runtime": "Oracle25",
+            "command": [
+              "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\java.EXE",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\public-api-example-1\\classes;D:\\projects\\JLinAlg\\build\\literature-review\\fimo-candidate\\jlinalg-0.3.7.jar",
+              "MotifExample",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\public-api-example-1\\motifs.meme",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\public-api-example-1\\seq.fa"
+            ],
+            "exit_code": 0,
+            "stdout_sha256": "6a5998a81a7d94a2aa9f8eeb737ab4b8cdae0405d633c39b050020475570ce4f",
+            "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "scope": "Separately compiled Java17 API consumer exercised native minimal MEME reading, explicit FIMO scan-background resolution, PSSM scoring, exact1/65536uniform null, strand/coordinate/identity scanning and sequence-only inspection on actual Java21and25. No MEME runtime needed;not added to JUnit counts."
+      },
+      "original_reference_provenance": "src/test/resources/org/jlinalg/sequence/pssm/original-5.5.9-provenance.json",
+      "scope": "Independent mathematical Java DNA PSSM1000-point lattice and zero-order tails, explicit scan background regularization, minimal MEME/streaming FASTA/strands/coordinates/identity/counts/resource/warning contracts. Native needs no MEME runtime. No q-values,PSPs,protein/custom alphabets,complete upstream import/historical/full-paper parity. Normalization is explicit;an attainable floating-point tail underflow fails rather than becoming an exact zero."
+    }
+  ]
+}

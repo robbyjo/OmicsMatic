@@ -1,0 +1,110 @@
+{
+  "status": "passed-native-reference-and-CSI-development-subset;imputation-adapter-still-missing",
+  "recorded_utc": "2026-10-27T21:36:43.946506+00:00",
+  "project_imputation_adapter_available": false,
+  "runtime_admission_available": false,
+  "implementation_status": "missing",
+  "native_apis": [
+    "org.jlinalg.genetics.HaplotypeDosage",
+    "org.jlinalg.genetics.MinimacReferenceAudit",
+    "org.jlinalg.genetics.VcfCsiIndex"
+  ],
+  "candidate": "build/literature-review/minimac-reference-candidate-1/jlinalg-0.3.7.jar",
+  "candidate_sha256": "8ca3828c57258ee7638c7796d47d04c37ef977d725d13a8e94ed013552212d2b",
+  "focused_tests": 471,
+  "focused_suites": 36,
+  "new_tests": 38,
+  "standalone_tests_per_JVM": 471,
+  "standalone_JVMs": [
+    "Java21",
+    "Java25"
+  ],
+  "reference_audits": 15,
+  "reference_genotype_cells": 101520,
+  "reference_haplotype_cells": 177360,
+  "reference_variant_records": 4920,
+  "reference_audit_hosts": [
+    "WindowsJava21",
+    "WindowsJava25",
+    "LinuxJava21"
+  ],
+  "original_invalid_mixed_reference_rows": 350,
+  "original_mixed_reference_failure_controls": 3,
+  "original_conversion_haplotype_ids": 48,
+  "original_conversion_diploid_samples": 24,
+  "CSI_fixture_variants": 47877,
+  "CSI_regions": 60,
+  "CSI_reader_queries": 240,
+  "CSI_Savvy_comparison_policy": "Explicit diagnostic left-bound padding plus independent one-based-inclusive overlap filtering;unadjusted original single-base/bin-boundary failures retained for bothindices. Not a production regionexport policy.",
+  "original_imputation_with_packaged_native_index": {
+    "exit_code": 0,
+    "variants": 120,
+    "target_samples": 6,
+    "genotype_cells": 720,
+    "decoded_output_equals_prior_original_reference": true
+  },
+  "public_example_runs": 3,
+  "unchanged_prior_class_entries": 15071,
+  "public_example_fixture_sha256": "d045dbcf5b7d0a57558eebfcc9fdf9b187b58b55d6310220ef7b5cc83064ca0c",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/genetics/MinimacReferenceAudit.java": "c530a1979bf7c8e8e4283d6be97a2dde22920b2ee9085cfb17c22ae2e46c9503",
+    "src/main/java/org/jlinalg/genetics/VcfCsiIndex.java": "d505fc12503c4767f2d139ee4f6e5d4d573d806f3b47be560b5aab83de383a84",
+    "src/test/java/org/jlinalg/genetics/MinimacReferenceAuditTest.java": "09c734240bb3c4f70aaefe80f58f198f57b397c5bf04bef4cedcfe8b04fc61f5",
+    "src/test/java/org/jlinalg/genetics/VcfCsiIndexTest.java": "9c4ce5eae9e77265477b0dc892acc413ae4ac0a0001b3f3abe00861782c21fd9",
+    "examples/native-minimac-reference/MinimacReferenceExample.java": "437622a76e166907b4b7727818ce7f44cca0059c1e52f12487fb0f21f27feb66",
+    "examples/native-minimac-reference/README.md": "3c77ac546786fcb899003ad688d0f1b4dcfe85091251aa93fd11b23c589529c9",
+    "examples/native-minimac-reference/reference.mvcf": "d045dbcf5b7d0a57558eebfcc9fdf9b187b58b55d6310220ef7b5cc83064ca0c"
+  },
+  "parent_integrity_sha256": "12e92c9dad35064a9b3efc0f02befe1f5c38191a22a0059e5f71f80b84492c75",
+  "proof_sha256": {
+    "build/literature-review/minimac-runtime/savvy-intake-1/observed.json": "14e3ca1f43f6ce074253bf1142741ce0f7ce5daed064dc05f668ecb8e1a48f15",
+    "build/literature-review/minimac-runtime/savvy-original-1/observed.json": "3b97dcf5bb1ec66781d374fa5c1b875bb21b0ed51c86cb55f55cb99cfa5d4ff8",
+    "build/literature-review/minimac-runtime/savvy-probes-1/observed.json": "1bc833777302bc2e6c20ac009c86973b6367a5a39e966f2f8286893f63e6a7b3",
+    "build/literature-review/minimac-runtime/native-csi-probe-2/observed.json": "c1a7895db057bb674e27e26a4dda0c263b23651e4248dbf42e0d3b3c4e28a35e",
+    "build/literature-review/minimac-runtime/native-csi-probe-3/observed.json": "f2e80e0721acdd64b61ea2768a246c90e41811d4e9002d8f98d9399b6c1ac8f9",
+    "build/literature-review/minimac-runtime/reference-original-1/observed.json": "af50b0c758bbfbc7f191c8d001beae6e596de6c0ab5ddfa04de6a252f600f7fd",
+    "build/literature-review/minimac-runtime/converted-reference-truth-1/observed.json": "eb13fa09597bbcd06a0668f49a86489b5b813df68190bc588838e3f04b59a525",
+    "build/literature-review/minimac-runtime/reference-split-1/observed.json": "34c6d9afffeab4588b3bf77bad13e315e7f2274fb547cf5b71274a2d00db4f85",
+    "build/literature-review/minimac-runtime/reference-native-comparison-3/observed.json": "9f23dedbad6e85fdcec314a78706f3d82af996d3a98f0c038cd383d739c0d85e",
+    "build/literature-review/minimac-runtime/native-csi-interop-2/observed.json": "b4de50199e06365bb53318509ac9b042c4df26dd439e3872a0ebae96ffad4b18",
+    "build/literature-review/minimac-runtime/savvy-region-diagnostic-1/observed.json": "273396ffd782671ce3dc5f47eb2ab268e03a0ed640bb923dbfae3686831f239a",
+    "build/literature-review/minimac-runtime/reference-focused-1/observed.json": "8ae0f9b41cf73f516e41c7ef833ee14032e7135104f5009fea766707693f6ce8",
+    "build/literature-review/minimac-runtime/packaged-reference-junit-1/verification.json": "aab993645c703dcc960e8b2311a34c3af706de8c5e377a2b97120211665fca3e",
+    "build/literature-review/minimac-runtime/packaged-reference-science-1/observed.json": "c61d5d6165554bdf00de4eb30ef75294e9600600857d69cb1814f0a0a194905d"
+  },
+  "retained_findings": [
+    {
+      "path": "build/literature-review/minimac-runtime/native-csi-probe-1/stderr",
+      "classification": "Development wrapper double-closed the BGZF output stream;new single-owner transactional writer tested."
+    },
+    {
+      "path": "build/literature-review/minimac-runtime/native-csi-probe-2/observed.json",
+      "classification": "Including emptyEOF BGZF block in finalHTSJDK chunk causedoriginalMin4readfailure;nativebuilderfinalizesbeforeterminator."
+    },
+    {
+      "path": "build/literature-review/minimac-runtime/reference-preflight-1/stdout",
+      "classification": "OriginalHTSJDKIndexFactory leaked inputonunsortedVCFfailure;nativebuildernowownstheinputstream andexplicitlychecksorder/range.38newtests thenpass,includingWindowscleanup."
+    },
+    {
+      "path": "build/literature-review/minimac-runtime/reference-native-comparison-1/converted.stderr",
+      "classification": "Privatehelperinitiallycompared48exportedhaplotypecolumnsagainst24diploidcolumns;explicitfixtureledgercorrectscomparisonwithoutchangingproductionorrawfiles."
+    },
+    {
+      "path": "build/literature-review/minimac-runtime/reference-native-comparison-2/mixed.stderr",
+      "classification": "Nativeaudit correctlyrejectedoriginalmixedreferenceAN48vs40actualcopies.350originalinvalidrowsretained;noautomaticrepair."
+    },
+    {
+      "path": "build/literature-review/minimac-runtime/savvy-region-diagnostic-1/observed.json",
+      "classification": "UnadjustedSavvy2.1.0single-base/bin-boundaryqueriesomitrowswithbothnative/HTSlibindices. NativeCSIgeometryunchanged;diagnosticpadding/filterexplicit."
+    }
+  ],
+  "scope": "Supplied completeMVCFv3 nativeinspection andnativeVCFCSI only. Phase/build/sex/panelnotinferred;IDs/ploidies/rawparameterspreserved,noimputationHMM/cloud/server/historical/fullpaper/realdataaccuracyclaim. Current270missingtools,37upstream12nativecategoriesunchanged. CellRangerexcluded;noinstalledproductionMinruntime orrelease.",
+  "subsequent_runtime_backend": {
+    "validation": "minimac-runtime-validation.json",
+    "validation_sha256": "26a14d85c5e2991c14b96239b9ca55d9f66e28e38379b9730406f43be704f32b",
+    "candidate": "build/literature-review/minimac-runtime-candidate-1/jlinalg-0.3.7.jar",
+    "candidate_sha256": "54a4ef3bc394214ee81fa7e486ede1b8c48ed0384ecc9372eb58c766a83258ca",
+    "runtime_admission_available": true,
+    "project_imputation_adapter_available": false
+  }
+}

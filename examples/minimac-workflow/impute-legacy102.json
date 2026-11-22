@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "operation": "impute",
+  "profile": "linux-x86_64-minimac4-1.0.2-qemu8.2.2",
+  "assembly": "synthetic-chr20-no-real-genome-build",
+  "resource_root": "../..",
+  "reference": {
+    "path": "tools/literature/fixtures/minimac/reference.m3vcf.gz",
+    "identity_ledger": "examples/minimac-workflow/reference-haplotype-identities.tsv",
+    "kind": "m3vcf",
+    "staging": "preserve-compressed-source",
+    "column_semantics": "haplotype-columns"
+  },
+  "target": {
+    "path": "tools/literature/fixtures/minimac/target.vcf.gz",
+    "identity_ledger": "examples/minimac-workflow/target-identities.tsv",
+    "kind": "phased-vcf",
+    "staging": "gt-only-lf-bgzf",
+    "column_semantics": "person-samples"
+  },
+  "region": {
+    "contig": "20",
+    "start": 1000000,
+    "end": 1119000,
+    "scope": "other",
+    "review": "Synthetic ordered region; no biological sex/PAR/assembly inference."
+  },
+  "input_review": {
+    "organism": "Synthetic fixture declaration only; no participant data, real-panel eligibility or accuracy claim. organism",
+    "reference_panel": "Synthetic fixture declaration only; no participant data, real-panel eligibility or accuracy claim. reference_panel",
+    "reference_sample_eligibility": "Synthetic fixture declaration only; no participant data, real-panel eligibility or accuracy claim. reference_sample_eligibility",
+    "target_sample_eligibility": "Synthetic fixture declaration only; no participant data, real-panel eligibility or accuracy claim. target_sample_eligibility",
+    "assembly_region_ploidy": "Synthetic fixture declaration only; no participant data, real-panel eligibility or accuracy claim. assembly_region_ploidy",
+    "phase": "Synthetic fixture declaration only; no participant data, real-panel eligibility or accuracy claim. phase",
+    "allele_harmonization": "Synthetic fixture declaration only; no participant data, real-panel eligibility or accuracy claim. allele_harmonization",
+    "variant_normalization": "Synthetic fixture declaration only; no participant data, real-panel eligibility or accuracy claim. variant_normalization"
+  },
+  "boundary_policy": "REQUIRE_SHARED_KEEP_LATER",
+  "phase_policy": "require-pipe",
+  "target_missing_policy": "exact-phased",
+  "target_only_markers": "error",
+  "sample_overlap": "error",
+  "id_policy": "retain-upstream-id-with-ledger",
+  "observed_call_changes": "retain-with-ledger",
+  "provided_phase_changes": "retain-with-ledger",
+  "engine": {
+    "threads": 1,
+    "parameter_policy": "upstream-defaults",
+    "overrides": {}
+  },
+  "post_imputation_qc": {
+    "kind": "none"
+  },
+  "limits": {
+    "samples": 1000,
+    "variants": 1000000,
+    "genotype_cells": 100000000,
+    "input_bytes": 10000000,
+    "decoded_characters": 100000000,
+    "line_characters": 1048576,
+    "identity_rows": 10000,
+    "retained_bytes": 536870912,
+    "workspace_bytes": 268435456,
+    "output_line_characters": 1048576
+  }
+}

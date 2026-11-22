@@ -1,0 +1,20 @@
+JLinAlg runs original kallisto0.48.0 from a separate private runtime.
+Original authors: Nicolas Bray, Harold Pimentel, Pall Melsted and Lior Pachter.
+https://github.com/pachterlab/kallisto/releases/tag/v0.48.0
+BSD 2-Clause license; see LICENSE-kallisto.txt. No executable is bundled here.
+Cite Bray et al. (2016), https://doi.org/10.1038/nbt.3519 .
+
+0.48.0 retains sequence-specific bias correction used by reviewed papers.
+Newer versions removed legacy options; the separate0.52.0 Cygwin build failed
+and is not silently substituted. Forward-slash Windows executable/argument
+paths are passed explicitly. Because Java normalizes argv0 to Windows form,
+the exact original call is checked against launched arguments and only that
+literal field is re-escaped in a separate run-info-audited.json. Original
+run_info.json bytes remain unchanged; all other JSON fields parse strictly.
+
+Typed index and bulk quantification preserve raw upstream results, explicit
+library/strand/fragment/bias/uncertainty choices and exact target/source/index
+identities. Native audits verify counters, target order/lengths, estimated-count
+totals, TPM arithmetic and bootstrap tables. Quantification is not alignment,
+raw observed counting, UMI/BUS processing, personalized-reference construction,
+fusion analysis, downstream DE, historical or full-paper parity.

@@ -1,0 +1,734 @@
+{
+  "status": "passed-native-subset",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/sequence/QuantileNormalization.java": "7994d0ac6e8661193718d6407d4060471c530ed4c83d18b66a85ee10f7ead4fa",
+    "src/main/java/org/jlinalg/cli/QuantileNormalizeCli.java": "e1f2f2b6f5a06bac9ceedd769fca9624eb29fb15165682b01185fc4d7fd865be"
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.sequence.QuantileNormalizationTest": {
+      "suite_name": "org.jlinalg.sequence.QuantileNormalizationTest",
+      "suite": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "0cb67d63afdd1347487f0aa03e92e847f62e4ff5ee821cc8f29bb3216c6b6511",
+      "testcases": [
+        "fiveHundredActualOriginalFloat64ColumnCases()",
+        "independentlyCalculatedRankMeansAndNonadjacentTies()",
+        "suppliedTargetIsSortedAndInputsAndResultAccessAreIsolated()",
+        "dimensionsMissingValuesAndOverflowFailRatherThanInventingValues()"
+      ]
+    },
+    "org.jlinalg.cli.QuantileNormalizeCliTest": {
+      "suite_name": "org.jlinalg.cli.QuantileNormalizeCliTest",
+      "suite": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "f12229c2160b710c3b9f4bfb5f8b480ac27710dbc9d378db6c0cda5d75d053d7",
+      "testcases": [
+        "rawIntegerTextCannotSilentlyRoundIntoAnIntegerDouble()",
+        "exactIdsSelectedColumnOrderAndScientificWarningsAreRetained()",
+        "resourceLimitsAndOrientationFailExplicitlyAndHelpNamesNativeScope()",
+        "countContractsMissingValuesAndDuplicateIdsRetainFailedBundles()",
+        "suppliedTargetSortsRanksRatherThanMatchingTargetLabels()"
+      ]
+    }
+  },
+  "tests": 9,
+  "actual_original_cases": 500,
+  "actual_original_positions": 61403,
+  "reference_provenance": {
+    "original_version": "0.8.0",
+    "original_wheel_sha256": "bed17f5bf76df9be75d1315e31f6874ffbd360195caa230f1d5c543fde66bc3d",
+    "original_function_sha256": "952d86b8b47a21f312afa9dfa05171627c1201447bb5c78ad10ec8c479c6cfd7",
+    "generator_sha256": "cee4491d67e7b753bebc2b71b16e5c01f69d67d3192cdf5116dc79555deeb7f3",
+    "reference_sha256": "476d259bae964d463713c4521cd171d40ad86e37673722e2cb6d9e121bbd155f",
+    "cases": 500,
+    "positions": 61403,
+    "seed": 2984701,
+    "numpy": "2.5.4",
+    "numba": "0.68.0",
+    "python": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 14 2026, 06:12:50) [MSC v.1942 64 bit (AMD64)]",
+    "invocation": "Actual original qnorm.quantile_normalize ndarray float64 axis=1 ncpus=1; default or explicit target",
+    "scope": "Finite float64 column normalization and tie/target behavior only. No float32/int32 rounding, ndarray axis0 transpose quirk, pandas/incremental/multiprocessing or full-paper parity. Nonfinite upstream inputs are not executed."
+  },
+  "packaged_runs": 20,
+  "packaged_checks": 5,
+  "packaged_original_positions": 381,
+  "packaged_validation": "qnorm-native-packaged-validation.json",
+  "recorded_utc": "2026-10-25T06:53:04.578303+00:00",
+  "scope": "Finite float64 column-wise default/supplied-target quantile normalization, tied rank means, exact IDs/order, integer-text bounds and model/resource/error warnings. No dtype32,ndarray axis0,pandas,incremental,multiprocessing,bitwise or downstream/full-paper parity.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed-native-subset",
+      "jar_sha256": "6ff7cc767bc62f2489947a34fbf3bc99129e4d444242eb217294764587c7e491",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/QuantileNormalization.java": "7994d0ac6e8661193718d6407d4060471c530ed4c83d18b66a85ee10f7ead4fa",
+        "src/main/java/org/jlinalg/cli/QuantileNormalizeCli.java": "e1f2f2b6f5a06bac9ceedd769fca9624eb29fb15165682b01185fc4d7fd865be"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.QuantileNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.QuantileNormalizationTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7a86de56507c2ce577cc769fae13a8d983b87d5d23ff598589b554ab00e99759",
+          "testcases": [
+            "fiveHundredActualOriginalFloat64ColumnCases()",
+            "independentlyCalculatedRankMeansAndNonadjacentTies()",
+            "suppliedTargetIsSortedAndInputsAndResultAccessAreIsolated()",
+            "dimensionsMissingValuesAndOverflowFailRatherThanInventingValues()"
+          ]
+        },
+        "org.jlinalg.cli.QuantileNormalizeCliTest": {
+          "suite_name": "org.jlinalg.cli.QuantileNormalizeCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a608d5154351e62ca38ae87bf9baa8298774c820d4482d5ab21f2a3eedf2ce39",
+          "testcases": [
+            "rawIntegerTextCannotSilentlyRoundIntoAnIntegerDouble()",
+            "exactIdsSelectedColumnOrderAndScientificWarningsAreRetained()",
+            "resourceLimitsAndOrientationFailExplicitlyAndHelpNamesNativeScope()",
+            "countContractsMissingValuesAndDuplicateIdsRetainFailedBundles()",
+            "suppliedTargetSortsRanksRatherThanMatchingTargetLabels()"
+          ]
+        }
+      },
+      "tests": 9,
+      "actual_original_cases": 500,
+      "actual_original_positions": 61403,
+      "reference_provenance": {
+        "original_version": "0.8.0",
+        "original_wheel_sha256": "bed17f5bf76df9be75d1315e31f6874ffbd360195caa230f1d5c543fde66bc3d",
+        "original_function_sha256": "952d86b8b47a21f312afa9dfa05171627c1201447bb5c78ad10ec8c479c6cfd7",
+        "generator_sha256": "cee4491d67e7b753bebc2b71b16e5c01f69d67d3192cdf5116dc79555deeb7f3",
+        "reference_sha256": "476d259bae964d463713c4521cd171d40ad86e37673722e2cb6d9e121bbd155f",
+        "cases": 500,
+        "positions": 61403,
+        "seed": 2984701,
+        "numpy": "2.5.4",
+        "numba": "0.68.0",
+        "python": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 14 2026, 06:12:50) [MSC v.1942 64 bit (AMD64)]",
+        "invocation": "Actual original qnorm.quantile_normalize ndarray float64 axis=1 ncpus=1; default or explicit target",
+        "scope": "Finite float64 column normalization and tie/target behavior only. No float32/int32 rounding, ndarray axis0 transpose quirk, pandas/incremental/multiprocessing or full-paper parity. Nonfinite upstream inputs are not executed."
+      },
+      "packaged_runs": 20,
+      "packaged_checks": 5,
+      "packaged_original_positions": 381,
+      "packaged_validation": "qnorm-native-packaged-validation.json",
+      "recorded_utc": "2026-10-25T06:53:04.578303+00:00",
+      "scope": "Finite float64 column-wise default/supplied-target quantile normalization, tied rank means, exact IDs/order, integer-text bounds and model/resource/error warnings. No dtype32,ndarray axis0,pandas,incremental,multiprocessing,bitwise or downstream/full-paper parity."
+    },
+    {
+      "status": "passed-native-subset",
+      "jar_sha256": "53399f4be52ad5bb882f5acfea53d5a2a037ac80a6e93d1f7d7fdbc118051860",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/QuantileNormalization.java": "7994d0ac6e8661193718d6407d4060471c530ed4c83d18b66a85ee10f7ead4fa",
+        "src/main/java/org/jlinalg/cli/QuantileNormalizeCli.java": "e1f2f2b6f5a06bac9ceedd769fca9624eb29fb15165682b01185fc4d7fd865be"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.QuantileNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.QuantileNormalizationTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8656089fb4396d1f60674f3cb7f64dc168f4d562716ca20083ff61b42af3e4f5",
+          "testcases": [
+            "fiveHundredActualOriginalFloat64ColumnCases()",
+            "independentlyCalculatedRankMeansAndNonadjacentTies()",
+            "suppliedTargetIsSortedAndInputsAndResultAccessAreIsolated()",
+            "dimensionsMissingValuesAndOverflowFailRatherThanInventingValues()"
+          ]
+        },
+        "org.jlinalg.cli.QuantileNormalizeCliTest": {
+          "suite_name": "org.jlinalg.cli.QuantileNormalizeCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ff32220091c7476db7a0a647426724e223ba8b212cce16b036afa37a8d727f9c",
+          "testcases": [
+            "rawIntegerTextCannotSilentlyRoundIntoAnIntegerDouble()",
+            "exactIdsSelectedColumnOrderAndScientificWarningsAreRetained()",
+            "resourceLimitsAndOrientationFailExplicitlyAndHelpNamesNativeScope()",
+            "countContractsMissingValuesAndDuplicateIdsRetainFailedBundles()",
+            "suppliedTargetSortsRanksRatherThanMatchingTargetLabels()"
+          ]
+        }
+      },
+      "tests": 9,
+      "actual_original_cases": 500,
+      "actual_original_positions": 61403,
+      "reference_provenance": {
+        "original_version": "0.8.0",
+        "original_wheel_sha256": "bed17f5bf76df9be75d1315e31f6874ffbd360195caa230f1d5c543fde66bc3d",
+        "original_function_sha256": "952d86b8b47a21f312afa9dfa05171627c1201447bb5c78ad10ec8c479c6cfd7",
+        "generator_sha256": "cee4491d67e7b753bebc2b71b16e5c01f69d67d3192cdf5116dc79555deeb7f3",
+        "reference_sha256": "476d259bae964d463713c4521cd171d40ad86e37673722e2cb6d9e121bbd155f",
+        "cases": 500,
+        "positions": 61403,
+        "seed": 2984701,
+        "numpy": "2.5.4",
+        "numba": "0.68.0",
+        "python": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 14 2026, 06:12:50) [MSC v.1942 64 bit (AMD64)]",
+        "invocation": "Actual original qnorm.quantile_normalize ndarray float64 axis=1 ncpus=1; default or explicit target",
+        "scope": "Finite float64 column normalization and tie/target behavior only. No float32/int32 rounding, ndarray axis0 transpose quirk, pandas/incremental/multiprocessing or full-paper parity. Nonfinite upstream inputs are not executed."
+      },
+      "packaged_runs": 20,
+      "packaged_checks": 5,
+      "packaged_original_positions": 381,
+      "packaged_validation": "qnorm-native-packaged-validation.json",
+      "recorded_utc": "2026-10-25T06:53:04.578303+00:00",
+      "scope": "Finite float64 column-wise default/supplied-target quantile normalization, tied rank means, exact IDs/order, integer-text bounds and model/resource/error warnings. No dtype32,ndarray axis0,pandas,incremental,multiprocessing,bitwise or downstream/full-paper parity.",
+      "refreshed_utc": "2026-10-25T08:02:41.668775+00:00"
+    },
+    {
+      "status": "passed-native-subset",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/QuantileNormalization.java": "7994d0ac6e8661193718d6407d4060471c530ed4c83d18b66a85ee10f7ead4fa",
+        "src/main/java/org/jlinalg/cli/QuantileNormalizeCli.java": "e1f2f2b6f5a06bac9ceedd769fca9624eb29fb15165682b01185fc4d7fd865be"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.QuantileNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.QuantileNormalizationTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "10f2571c731a35dab0b679a5f3e0695f0306c0d6d600441a8cfbecb88ac615c0",
+          "testcases": [
+            "fiveHundredActualOriginalFloat64ColumnCases()",
+            "independentlyCalculatedRankMeansAndNonadjacentTies()",
+            "suppliedTargetIsSortedAndInputsAndResultAccessAreIsolated()",
+            "dimensionsMissingValuesAndOverflowFailRatherThanInventingValues()"
+          ]
+        },
+        "org.jlinalg.cli.QuantileNormalizeCliTest": {
+          "suite_name": "org.jlinalg.cli.QuantileNormalizeCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f3b463230d4b0a139ad16ebfe6668acd88763f481afc8113881479bf1f85e020",
+          "testcases": [
+            "rawIntegerTextCannotSilentlyRoundIntoAnIntegerDouble()",
+            "exactIdsSelectedColumnOrderAndScientificWarningsAreRetained()",
+            "resourceLimitsAndOrientationFailExplicitlyAndHelpNamesNativeScope()",
+            "countContractsMissingValuesAndDuplicateIdsRetainFailedBundles()",
+            "suppliedTargetSortsRanksRatherThanMatchingTargetLabels()"
+          ]
+        }
+      },
+      "tests": 9,
+      "actual_original_cases": 500,
+      "actual_original_positions": 61403,
+      "reference_provenance": {
+        "original_version": "0.8.0",
+        "original_wheel_sha256": "bed17f5bf76df9be75d1315e31f6874ffbd360195caa230f1d5c543fde66bc3d",
+        "original_function_sha256": "952d86b8b47a21f312afa9dfa05171627c1201447bb5c78ad10ec8c479c6cfd7",
+        "generator_sha256": "cee4491d67e7b753bebc2b71b16e5c01f69d67d3192cdf5116dc79555deeb7f3",
+        "reference_sha256": "476d259bae964d463713c4521cd171d40ad86e37673722e2cb6d9e121bbd155f",
+        "cases": 500,
+        "positions": 61403,
+        "seed": 2984701,
+        "numpy": "2.5.4",
+        "numba": "0.68.0",
+        "python": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 14 2026, 06:12:50) [MSC v.1942 64 bit (AMD64)]",
+        "invocation": "Actual original qnorm.quantile_normalize ndarray float64 axis=1 ncpus=1; default or explicit target",
+        "scope": "Finite float64 column normalization and tie/target behavior only. No float32/int32 rounding, ndarray axis0 transpose quirk, pandas/incremental/multiprocessing or full-paper parity. Nonfinite upstream inputs are not executed."
+      },
+      "packaged_runs": 20,
+      "packaged_checks": 5,
+      "packaged_original_positions": 381,
+      "packaged_validation": "qnorm-native-packaged-validation.json",
+      "recorded_utc": "2026-10-25T06:53:04.578303+00:00",
+      "scope": "Finite float64 column-wise default/supplied-target quantile normalization, tied rank means, exact IDs/order, integer-text bounds and model/resource/error warnings. No dtype32,ndarray axis0,pandas,incremental,multiprocessing,bitwise or downstream/full-paper parity.",
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00"
+    },
+    {
+      "status": "passed-native-subset",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/QuantileNormalization.java": "7994d0ac6e8661193718d6407d4060471c530ed4c83d18b66a85ee10f7ead4fa",
+        "src/main/java/org/jlinalg/cli/QuantileNormalizeCli.java": "e1f2f2b6f5a06bac9ceedd769fca9624eb29fb15165682b01185fc4d7fd865be"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.QuantileNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.QuantileNormalizationTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4d42a5b1cb840ffd4888bc36d9e25dba8506039ae97c0251657f83c0457437ed",
+          "testcases": [
+            "fiveHundredActualOriginalFloat64ColumnCases()",
+            "independentlyCalculatedRankMeansAndNonadjacentTies()",
+            "suppliedTargetIsSortedAndInputsAndResultAccessAreIsolated()",
+            "dimensionsMissingValuesAndOverflowFailRatherThanInventingValues()"
+          ]
+        },
+        "org.jlinalg.cli.QuantileNormalizeCliTest": {
+          "suite_name": "org.jlinalg.cli.QuantileNormalizeCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "217be7678b9822c56f9692da32e50d2108ff92afc9eb721ba58329d2575c5c10",
+          "testcases": [
+            "rawIntegerTextCannotSilentlyRoundIntoAnIntegerDouble()",
+            "exactIdsSelectedColumnOrderAndScientificWarningsAreRetained()",
+            "resourceLimitsAndOrientationFailExplicitlyAndHelpNamesNativeScope()",
+            "countContractsMissingValuesAndDuplicateIdsRetainFailedBundles()",
+            "suppliedTargetSortsRanksRatherThanMatchingTargetLabels()"
+          ]
+        }
+      },
+      "tests": 9,
+      "actual_original_cases": 500,
+      "actual_original_positions": 61403,
+      "reference_provenance": {
+        "original_version": "0.8.0",
+        "original_wheel_sha256": "bed17f5bf76df9be75d1315e31f6874ffbd360195caa230f1d5c543fde66bc3d",
+        "original_function_sha256": "952d86b8b47a21f312afa9dfa05171627c1201447bb5c78ad10ec8c479c6cfd7",
+        "generator_sha256": "cee4491d67e7b753bebc2b71b16e5c01f69d67d3192cdf5116dc79555deeb7f3",
+        "reference_sha256": "476d259bae964d463713c4521cd171d40ad86e37673722e2cb6d9e121bbd155f",
+        "cases": 500,
+        "positions": 61403,
+        "seed": 2984701,
+        "numpy": "2.5.4",
+        "numba": "0.68.0",
+        "python": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 14 2026, 06:12:50) [MSC v.1942 64 bit (AMD64)]",
+        "invocation": "Actual original qnorm.quantile_normalize ndarray float64 axis=1 ncpus=1; default or explicit target",
+        "scope": "Finite float64 column normalization and tie/target behavior only. No float32/int32 rounding, ndarray axis0 transpose quirk, pandas/incremental/multiprocessing or full-paper parity. Nonfinite upstream inputs are not executed."
+      },
+      "packaged_runs": 20,
+      "packaged_checks": 5,
+      "packaged_original_positions": 381,
+      "packaged_validation": "qnorm-native-packaged-validation.json",
+      "recorded_utc": "2026-10-25T06:53:04.578303+00:00",
+      "scope": "Finite float64 column-wise default/supplied-target quantile normalization, tied rank means, exact IDs/order, integer-text bounds and model/resource/error warnings. No dtype32,ndarray axis0,pandas,incremental,multiprocessing,bitwise or downstream/full-paper parity.",
+      "refreshed_utc": "2026-10-25T10:07:59.705580+00:00"
+    },
+    {
+      "status": "passed-native-subset",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/QuantileNormalization.java": "7994d0ac6e8661193718d6407d4060471c530ed4c83d18b66a85ee10f7ead4fa",
+        "src/main/java/org/jlinalg/cli/QuantileNormalizeCli.java": "e1f2f2b6f5a06bac9ceedd769fca9624eb29fb15165682b01185fc4d7fd865be"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.QuantileNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.QuantileNormalizationTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "71c56e5fa4135773312422465f660ae47c7310616bbdcce9d47f4323693d1bfa",
+          "testcases": [
+            "fiveHundredActualOriginalFloat64ColumnCases()",
+            "independentlyCalculatedRankMeansAndNonadjacentTies()",
+            "suppliedTargetIsSortedAndInputsAndResultAccessAreIsolated()",
+            "dimensionsMissingValuesAndOverflowFailRatherThanInventingValues()"
+          ]
+        },
+        "org.jlinalg.cli.QuantileNormalizeCliTest": {
+          "suite_name": "org.jlinalg.cli.QuantileNormalizeCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e573d8cdc3da78418c294a9acba9ced0bd6e6810d52cdc863275ae99dded47a1",
+          "testcases": [
+            "rawIntegerTextCannotSilentlyRoundIntoAnIntegerDouble()",
+            "exactIdsSelectedColumnOrderAndScientificWarningsAreRetained()",
+            "resourceLimitsAndOrientationFailExplicitlyAndHelpNamesNativeScope()",
+            "countContractsMissingValuesAndDuplicateIdsRetainFailedBundles()",
+            "suppliedTargetSortsRanksRatherThanMatchingTargetLabels()"
+          ]
+        }
+      },
+      "tests": 9,
+      "actual_original_cases": 500,
+      "actual_original_positions": 61403,
+      "reference_provenance": {
+        "original_version": "0.8.0",
+        "original_wheel_sha256": "bed17f5bf76df9be75d1315e31f6874ffbd360195caa230f1d5c543fde66bc3d",
+        "original_function_sha256": "952d86b8b47a21f312afa9dfa05171627c1201447bb5c78ad10ec8c479c6cfd7",
+        "generator_sha256": "cee4491d67e7b753bebc2b71b16e5c01f69d67d3192cdf5116dc79555deeb7f3",
+        "reference_sha256": "476d259bae964d463713c4521cd171d40ad86e37673722e2cb6d9e121bbd155f",
+        "cases": 500,
+        "positions": 61403,
+        "seed": 2984701,
+        "numpy": "2.5.4",
+        "numba": "0.68.0",
+        "python": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 14 2026, 06:12:50) [MSC v.1942 64 bit (AMD64)]",
+        "invocation": "Actual original qnorm.quantile_normalize ndarray float64 axis=1 ncpus=1; default or explicit target",
+        "scope": "Finite float64 column normalization and tie/target behavior only. No float32/int32 rounding, ndarray axis0 transpose quirk, pandas/incremental/multiprocessing or full-paper parity. Nonfinite upstream inputs are not executed."
+      },
+      "packaged_runs": 20,
+      "packaged_checks": 5,
+      "packaged_original_positions": 381,
+      "packaged_validation": "qnorm-native-packaged-validation.json",
+      "recorded_utc": "2026-10-25T06:53:04.578303+00:00",
+      "scope": "Finite float64 column-wise default/supplied-target quantile normalization, tied rank means, exact IDs/order, integer-text bounds and model/resource/error warnings. No dtype32,ndarray axis0,pandas,incremental,multiprocessing,bitwise or downstream/full-paper parity.",
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00"
+    },
+    {
+      "status": "passed-native-subset",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/QuantileNormalization.java": "7994d0ac6e8661193718d6407d4060471c530ed4c83d18b66a85ee10f7ead4fa",
+        "src/main/java/org/jlinalg/cli/QuantileNormalizeCli.java": "e1f2f2b6f5a06bac9ceedd769fca9624eb29fb15165682b01185fc4d7fd865be"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.QuantileNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.QuantileNormalizationTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "64a4dee4893f5e73242e4d309cceeb32b59545f3bde0e24eded9399c115f8715",
+          "testcases": [
+            "fiveHundredActualOriginalFloat64ColumnCases()",
+            "independentlyCalculatedRankMeansAndNonadjacentTies()",
+            "suppliedTargetIsSortedAndInputsAndResultAccessAreIsolated()",
+            "dimensionsMissingValuesAndOverflowFailRatherThanInventingValues()"
+          ]
+        },
+        "org.jlinalg.cli.QuantileNormalizeCliTest": {
+          "suite_name": "org.jlinalg.cli.QuantileNormalizeCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "539feecb2a11b56a4b13a19b3df5f9d51f2aeb9c6152f0674ce8640ab98d1861",
+          "testcases": [
+            "rawIntegerTextCannotSilentlyRoundIntoAnIntegerDouble()",
+            "exactIdsSelectedColumnOrderAndScientificWarningsAreRetained()",
+            "resourceLimitsAndOrientationFailExplicitlyAndHelpNamesNativeScope()",
+            "countContractsMissingValuesAndDuplicateIdsRetainFailedBundles()",
+            "suppliedTargetSortsRanksRatherThanMatchingTargetLabels()"
+          ]
+        }
+      },
+      "tests": 9,
+      "actual_original_cases": 500,
+      "actual_original_positions": 61403,
+      "reference_provenance": {
+        "original_version": "0.8.0",
+        "original_wheel_sha256": "bed17f5bf76df9be75d1315e31f6874ffbd360195caa230f1d5c543fde66bc3d",
+        "original_function_sha256": "952d86b8b47a21f312afa9dfa05171627c1201447bb5c78ad10ec8c479c6cfd7",
+        "generator_sha256": "cee4491d67e7b753bebc2b71b16e5c01f69d67d3192cdf5116dc79555deeb7f3",
+        "reference_sha256": "476d259bae964d463713c4521cd171d40ad86e37673722e2cb6d9e121bbd155f",
+        "cases": 500,
+        "positions": 61403,
+        "seed": 2984701,
+        "numpy": "2.5.4",
+        "numba": "0.68.0",
+        "python": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 14 2026, 06:12:50) [MSC v.1942 64 bit (AMD64)]",
+        "invocation": "Actual original qnorm.quantile_normalize ndarray float64 axis=1 ncpus=1; default or explicit target",
+        "scope": "Finite float64 column normalization and tie/target behavior only. No float32/int32 rounding, ndarray axis0 transpose quirk, pandas/incremental/multiprocessing or full-paper parity. Nonfinite upstream inputs are not executed."
+      },
+      "packaged_runs": 20,
+      "packaged_checks": 5,
+      "packaged_original_positions": 381,
+      "packaged_validation": "qnorm-native-packaged-validation.json",
+      "recorded_utc": "2026-10-25T06:53:04.578303+00:00",
+      "scope": "Finite float64 column-wise default/supplied-target quantile normalization, tied rank means, exact IDs/order, integer-text bounds and model/resource/error warnings. No dtype32,ndarray axis0,pandas,incremental,multiprocessing,bitwise or downstream/full-paper parity.",
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00"
+    },
+    {
+      "status": "passed-native-subset",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/QuantileNormalization.java": "7994d0ac6e8661193718d6407d4060471c530ed4c83d18b66a85ee10f7ead4fa",
+        "src/main/java/org/jlinalg/cli/QuantileNormalizeCli.java": "e1f2f2b6f5a06bac9ceedd769fca9624eb29fb15165682b01185fc4d7fd865be"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.QuantileNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.QuantileNormalizationTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1e2df5629c7267e0a46bbfd66da403eb377f65ac8fc063a41204ebd99c3485f2",
+          "testcases": [
+            "fiveHundredActualOriginalFloat64ColumnCases()",
+            "independentlyCalculatedRankMeansAndNonadjacentTies()",
+            "suppliedTargetIsSortedAndInputsAndResultAccessAreIsolated()",
+            "dimensionsMissingValuesAndOverflowFailRatherThanInventingValues()"
+          ]
+        },
+        "org.jlinalg.cli.QuantileNormalizeCliTest": {
+          "suite_name": "org.jlinalg.cli.QuantileNormalizeCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "846a82019466206d05cd4c2229aeb6891c9f763f38d3ee5a348e04caafa59a18",
+          "testcases": [
+            "rawIntegerTextCannotSilentlyRoundIntoAnIntegerDouble()",
+            "exactIdsSelectedColumnOrderAndScientificWarningsAreRetained()",
+            "resourceLimitsAndOrientationFailExplicitlyAndHelpNamesNativeScope()",
+            "countContractsMissingValuesAndDuplicateIdsRetainFailedBundles()",
+            "suppliedTargetSortsRanksRatherThanMatchingTargetLabels()"
+          ]
+        }
+      },
+      "tests": 9,
+      "actual_original_cases": 500,
+      "actual_original_positions": 61403,
+      "reference_provenance": {
+        "original_version": "0.8.0",
+        "original_wheel_sha256": "bed17f5bf76df9be75d1315e31f6874ffbd360195caa230f1d5c543fde66bc3d",
+        "original_function_sha256": "952d86b8b47a21f312afa9dfa05171627c1201447bb5c78ad10ec8c479c6cfd7",
+        "generator_sha256": "cee4491d67e7b753bebc2b71b16e5c01f69d67d3192cdf5116dc79555deeb7f3",
+        "reference_sha256": "476d259bae964d463713c4521cd171d40ad86e37673722e2cb6d9e121bbd155f",
+        "cases": 500,
+        "positions": 61403,
+        "seed": 2984701,
+        "numpy": "2.5.4",
+        "numba": "0.68.0",
+        "python": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 14 2026, 06:12:50) [MSC v.1942 64 bit (AMD64)]",
+        "invocation": "Actual original qnorm.quantile_normalize ndarray float64 axis=1 ncpus=1; default or explicit target",
+        "scope": "Finite float64 column normalization and tie/target behavior only. No float32/int32 rounding, ndarray axis0 transpose quirk, pandas/incremental/multiprocessing or full-paper parity. Nonfinite upstream inputs are not executed."
+      },
+      "packaged_runs": 20,
+      "packaged_checks": 5,
+      "packaged_original_positions": 381,
+      "packaged_validation": "qnorm-native-packaged-validation.json",
+      "recorded_utc": "2026-10-25T06:53:04.578303+00:00",
+      "scope": "Finite float64 column-wise default/supplied-target quantile normalization, tied rank means, exact IDs/order, integer-text bounds and model/resource/error warnings. No dtype32,ndarray axis0,pandas,incremental,multiprocessing,bitwise or downstream/full-paper parity.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed-native-subset",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/QuantileNormalization.java": "7994d0ac6e8661193718d6407d4060471c530ed4c83d18b66a85ee10f7ead4fa",
+        "src/main/java/org/jlinalg/cli/QuantileNormalizeCli.java": "e1f2f2b6f5a06bac9ceedd769fca9624eb29fb15165682b01185fc4d7fd865be"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.QuantileNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.QuantileNormalizationTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "77604776da7e6ef6a2be732d87b25df145b9e4a04632771ee6ce31cfad8e141a",
+          "testcases": [
+            "fiveHundredActualOriginalFloat64ColumnCases()",
+            "independentlyCalculatedRankMeansAndNonadjacentTies()",
+            "suppliedTargetIsSortedAndInputsAndResultAccessAreIsolated()",
+            "dimensionsMissingValuesAndOverflowFailRatherThanInventingValues()"
+          ]
+        },
+        "org.jlinalg.cli.QuantileNormalizeCliTest": {
+          "suite_name": "org.jlinalg.cli.QuantileNormalizeCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "754c928e571a981ea1f19ad50472db7545afc3fcd947ff6f0430913252192088",
+          "testcases": [
+            "rawIntegerTextCannotSilentlyRoundIntoAnIntegerDouble()",
+            "exactIdsSelectedColumnOrderAndScientificWarningsAreRetained()",
+            "resourceLimitsAndOrientationFailExplicitlyAndHelpNamesNativeScope()",
+            "countContractsMissingValuesAndDuplicateIdsRetainFailedBundles()",
+            "suppliedTargetSortsRanksRatherThanMatchingTargetLabels()"
+          ]
+        }
+      },
+      "tests": 9,
+      "actual_original_cases": 500,
+      "actual_original_positions": 61403,
+      "reference_provenance": {
+        "original_version": "0.8.0",
+        "original_wheel_sha256": "bed17f5bf76df9be75d1315e31f6874ffbd360195caa230f1d5c543fde66bc3d",
+        "original_function_sha256": "952d86b8b47a21f312afa9dfa05171627c1201447bb5c78ad10ec8c479c6cfd7",
+        "generator_sha256": "cee4491d67e7b753bebc2b71b16e5c01f69d67d3192cdf5116dc79555deeb7f3",
+        "reference_sha256": "476d259bae964d463713c4521cd171d40ad86e37673722e2cb6d9e121bbd155f",
+        "cases": 500,
+        "positions": 61403,
+        "seed": 2984701,
+        "numpy": "2.5.4",
+        "numba": "0.68.0",
+        "python": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 14 2026, 06:12:50) [MSC v.1942 64 bit (AMD64)]",
+        "invocation": "Actual original qnorm.quantile_normalize ndarray float64 axis=1 ncpus=1; default or explicit target",
+        "scope": "Finite float64 column normalization and tie/target behavior only. No float32/int32 rounding, ndarray axis0 transpose quirk, pandas/incremental/multiprocessing or full-paper parity. Nonfinite upstream inputs are not executed."
+      },
+      "packaged_runs": 20,
+      "packaged_checks": 5,
+      "packaged_original_positions": 381,
+      "packaged_validation": "qnorm-native-packaged-validation.json",
+      "recorded_utc": "2026-10-25T06:53:04.578303+00:00",
+      "scope": "Finite float64 column-wise default/supplied-target quantile normalization, tied rank means, exact IDs/order, integer-text bounds and model/resource/error warnings. No dtype32,ndarray axis0,pandas,incremental,multiprocessing,bitwise or downstream/full-paper parity.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed-native-subset",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/QuantileNormalization.java": "7994d0ac6e8661193718d6407d4060471c530ed4c83d18b66a85ee10f7ead4fa",
+        "src/main/java/org/jlinalg/cli/QuantileNormalizeCli.java": "e1f2f2b6f5a06bac9ceedd769fca9624eb29fb15165682b01185fc4d7fd865be"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.QuantileNormalizationTest": {
+          "suite_name": "org.jlinalg.sequence.QuantileNormalizationTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ddf5d5edec449ca3f69418d6cf69d1d4789bdef053e99c60eadff2ed1cb91383",
+          "testcases": [
+            "fiveHundredActualOriginalFloat64ColumnCases()",
+            "independentlyCalculatedRankMeansAndNonadjacentTies()",
+            "suppliedTargetIsSortedAndInputsAndResultAccessAreIsolated()",
+            "dimensionsMissingValuesAndOverflowFailRatherThanInventingValues()"
+          ]
+        },
+        "org.jlinalg.cli.QuantileNormalizeCliTest": {
+          "suite_name": "org.jlinalg.cli.QuantileNormalizeCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7abc50d7afdcfa289bc5c629187b462b8e60598e75ac8a16b022fc9104e2f286",
+          "testcases": [
+            "rawIntegerTextCannotSilentlyRoundIntoAnIntegerDouble()",
+            "exactIdsSelectedColumnOrderAndScientificWarningsAreRetained()",
+            "resourceLimitsAndOrientationFailExplicitlyAndHelpNamesNativeScope()",
+            "countContractsMissingValuesAndDuplicateIdsRetainFailedBundles()",
+            "suppliedTargetSortsRanksRatherThanMatchingTargetLabels()"
+          ]
+        }
+      },
+      "tests": 9,
+      "actual_original_cases": 500,
+      "actual_original_positions": 61403,
+      "reference_provenance": {
+        "original_version": "0.8.0",
+        "original_wheel_sha256": "bed17f5bf76df9be75d1315e31f6874ffbd360195caa230f1d5c543fde66bc3d",
+        "original_function_sha256": "952d86b8b47a21f312afa9dfa05171627c1201447bb5c78ad10ec8c479c6cfd7",
+        "generator_sha256": "cee4491d67e7b753bebc2b71b16e5c01f69d67d3192cdf5116dc79555deeb7f3",
+        "reference_sha256": "476d259bae964d463713c4521cd171d40ad86e37673722e2cb6d9e121bbd155f",
+        "cases": 500,
+        "positions": 61403,
+        "seed": 2984701,
+        "numpy": "2.5.4",
+        "numba": "0.68.0",
+        "python": "3.13.13 | packaged by Anaconda, Inc. | (main, Apr 14 2026, 06:12:50) [MSC v.1942 64 bit (AMD64)]",
+        "invocation": "Actual original qnorm.quantile_normalize ndarray float64 axis=1 ncpus=1; default or explicit target",
+        "scope": "Finite float64 column normalization and tie/target behavior only. No float32/int32 rounding, ndarray axis0 transpose quirk, pandas/incremental/multiprocessing or full-paper parity. Nonfinite upstream inputs are not executed."
+      },
+      "packaged_runs": 20,
+      "packaged_checks": 5,
+      "packaged_original_positions": 381,
+      "packaged_validation": "qnorm-native-packaged-validation.json",
+      "recorded_utc": "2026-10-25T06:53:04.578303+00:00",
+      "scope": "Finite float64 column-wise default/supplied-target quantile normalization, tied rank means, exact IDs/order, integer-text bounds and model/resource/error warnings. No dtype32,ndarray axis0,pandas,incremental,multiprocessing,bitwise or downstream/full-paper parity.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

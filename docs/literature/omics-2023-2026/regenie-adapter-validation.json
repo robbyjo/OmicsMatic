@@ -1,0 +1,2285 @@
+{
+  "status": "passed",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "version": "4.1.3",
+  "native_table_suite": {
+    "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+    "suite": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "0537a9338eaddce683af0c562fd9ba5a1badba6c70650c3a8962c87480ef5d09",
+    "testcases": [
+      "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+      "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+      "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+      "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+    ]
+  },
+  "native_genotype_metadata_suite": {
+    "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+    "suite": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "759e37f81ac6fbd6abb8126b2732adb2d4e20434de04d5455617d9c2262909ec",
+    "testcases": [
+      "sourceFixtureHashesRemainExact()",
+      "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+      "truncatedBedAndAmbiguousPairIdentitiesFail()",
+      "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+    ]
+  },
+  "upstream_suite": {
+    "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+    "suite": {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "ba404cd34b2e0ef95fe9bb815f091d0f00fdba9a5dc230b5817e38aa9f6ea309",
+    "testcases": [
+      "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+      "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+      "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+      "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+      "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+      "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+      "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+      "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+      "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+      "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+      "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+    ]
+  },
+  "source_sha256": {
+    "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+    "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+    "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+    "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+  },
+  "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+  "packaged_validation": "regenie-packaged-validation.json",
+  "packaged_checks": 15,
+  "failed_attempts_retained": [
+    {
+      "location": "build/literature-review/regenie-first-adapter-attempt",
+      "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+    },
+    {
+      "location": "build/literature-review/regenie-sum-export-attempt",
+      "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+    }
+  ],
+  "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_full_gate_suites": {
+    "org.jlinalg.genetics.RegenieTablesTest": {
+      "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+      "suite": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "0537a9338eaddce683af0c562fd9ba5a1badba6c70650c3a8962c87480ef5d09",
+      "testcases": [
+        "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+        "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+        "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+        "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+      ]
+    },
+    "org.jlinalg.genetics.RegenieInputsTest": {
+      "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+      "suite": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "759e37f81ac6fbd6abb8126b2732adb2d4e20434de04d5455617d9c2262909ec",
+      "testcases": [
+        "sourceFixtureHashesRemainExact()",
+        "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+        "truncatedBedAndAmbiguousPairIdentitiesFail()",
+        "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+      ]
+    },
+    "org.jlinalg.cli.RegenieToolsCliTest": {
+      "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+      "suite": {
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "ba404cd34b2e0ef95fe9bb815f091d0f00fdba9a5dc230b5817e38aa9f6ea309",
+      "testcases": [
+        "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+        "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+        "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+        "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+        "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+        "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+        "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+        "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+        "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+        "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+        "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+      ]
+    }
+  },
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed",
+      "jar_sha256": "2f748eb4328a871f339fecc25fe41db7fa38a063718277e4d8eeb81d69e70985",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "a4be4927807ee74968cba788ffd1f07f4092bbe69c35a9a1cf46dd8fa81965fc",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "8442d5ff164b618c95f76d994460b8bf9cdd97186ae67b9923e5f1cbf471544a",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "f5e4f09921bf9f67810f4a191912042ec380e5d708d541d3b5b6ad8516bb86f4",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity."
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "7fc22cd33b22500b0e0360ee93c6e416ce27444f32691fed470e280e95f7f70d",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "a47e149ebb1923738490f327d488e317b1b975d623445585439632054b9ad227",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "6444c4e9cfb5c0ab62bea04999077477523e4d715019aaa9ac2860bd5ebed74f",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "e25850f492af4032357702892bbe4c0123997d7aea99d74963972421de35eb04",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity."
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "19c4ed620c230c4c520c10bcbf3d88cbd1484d640103d2109e25f4db0ee621be",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "5ea60615f7026d94419b2e3ce635b3b9f319b2cfe7d1f8eb2273d9ea449f35e8",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "8cc16aec064f9cdb99e693659948f53320f177b9dc7e7792377b42eda0db1e89",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "50d97e97128ee8911d19cfeaf12b17c49d1f7c38ce96d668f0dfd5d8f1eaed9c",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T00:57:19.120198+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5ea60615f7026d94419b2e3ce635b3b9f319b2cfe7d1f8eb2273d9ea449f35e8",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8cc16aec064f9cdb99e693659948f53320f177b9dc7e7792377b42eda0db1e89",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "50d97e97128ee8911d19cfeaf12b17c49d1f7c38ce96d668f0dfd5d8f1eaed9c",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "095e5fecbb0beaabc2e67134d980d2e1841210c0b92c708b3a21ab0dfb866c61",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "af148325afd6e001bb921320a3683c110da9529f419c6d52f6f820a99db791d5",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "e380da97b73197f493239954bd324197d03c5776fb29dfa23b922fab13881298",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "703a863c7c5515caecd0fb2c89208532609be38d945ea29ea1c80e688e676229",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T02:15:39.832466+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "af148325afd6e001bb921320a3683c110da9529f419c6d52f6f820a99db791d5",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e380da97b73197f493239954bd324197d03c5776fb29dfa23b922fab13881298",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "703a863c7c5515caecd0fb2c89208532609be38d945ea29ea1c80e688e676229",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "fc6c5769770609b38ffd8e5f22e701efcf0aeb13261c594a070ee5b6b777232b",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "05a7e8d3ad0aa85ff02bc85340fd0eb7301994b40c3cc423e8431787184155ea",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "6c9529d5421134653977ab7f36bae06c375a1ec7cc1b2ed4bb91e05d89977041",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "0faf4d372e6304e2affb914c99e6e3ab79dabc1dbb48193c5a3c435d7e475ecb",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T02:57:16.310858+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "05a7e8d3ad0aa85ff02bc85340fd0eb7301994b40c3cc423e8431787184155ea",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6c9529d5421134653977ab7f36bae06c375a1ec7cc1b2ed4bb91e05d89977041",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0faf4d372e6304e2affb914c99e6e3ab79dabc1dbb48193c5a3c435d7e475ecb",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "faa28146756d077aa691977585fd3349c390f49ff609179a94e355cb13cca667",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "feff9f104da66107d5890de3deccdc79fc782cf1258c2e952163682dfa7721a3",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "68bee8ef128ddd11118a8fcf6643319114e53288c183320b02c73af0052ab1ac",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "5416208e6911adead02aca326c4b796e67ee8404833ff887c9d71c95da4258d0",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T03:50:24.675422+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "feff9f104da66107d5890de3deccdc79fc782cf1258c2e952163682dfa7721a3",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "68bee8ef128ddd11118a8fcf6643319114e53288c183320b02c73af0052ab1ac",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5416208e6911adead02aca326c4b796e67ee8404833ff887c9d71c95da4258d0",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "68a623dc455abf0608f50ca5977a44cd3c6d0db6489f8db726569675c46abdc2",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "31dfe4199ed38237d9369811b153f5e08dc39085b482a72f136557077b5920d0",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "89796ee77aa400d281073f29511371869ce8578336f43c904a551b50f74d9edf",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "3260a25208c71ff1079e7221401f24ad31d387426077befe2bf756f6ecc79d85",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T05:28:16.019770+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "31dfe4199ed38237d9369811b153f5e08dc39085b482a72f136557077b5920d0",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "89796ee77aa400d281073f29511371869ce8578336f43c904a551b50f74d9edf",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3260a25208c71ff1079e7221401f24ad31d387426077befe2bf756f6ecc79d85",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "6ff7cc767bc62f2489947a34fbf3bc99129e4d444242eb217294764587c7e491",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "9233b4ba22cf1805530f6d9c49a2f523c542916856ee848d2dedf20a9cb6393c",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "883b258d2d969915919bd2ca8d0c9716ac97f9264d95f179586941ce4f643947",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "4acc7a35d8f4ac7460290cadb7084152b178cbb917740d4eb612bf2f862c5aac",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T06:53:04.578303+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "9233b4ba22cf1805530f6d9c49a2f523c542916856ee848d2dedf20a9cb6393c",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "883b258d2d969915919bd2ca8d0c9716ac97f9264d95f179586941ce4f643947",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4acc7a35d8f4ac7460290cadb7084152b178cbb917740d4eb612bf2f862c5aac",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "53399f4be52ad5bb882f5acfea53d5a2a037ac80a6e93d1f7d7fdbc118051860",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "c401db04a2711c140d9ca58a6fd88f56fb6f9468452af40e3c998bc5b4a0a804",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "9dda6ac1f7fe7727eb3009c57a0c254c0c06954ab0e8df64b37f483760ba1035",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "de3cd4f0dbb74d12eada0abb3d87a94a714528da7c459297b5220f78fd2a6b0d",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T08:02:41.668775+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c401db04a2711c140d9ca58a6fd88f56fb6f9468452af40e3c998bc5b4a0a804",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "9dda6ac1f7fe7727eb3009c57a0c254c0c06954ab0e8df64b37f483760ba1035",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "de3cd4f0dbb74d12eada0abb3d87a94a714528da7c459297b5220f78fd2a6b0d",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "ec4406c5c3792cb808ede572d39825156b0becdf7727e6ff5c282d24203c426b",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "6f938f3329f2d424a693b49b9cea3b7fcc88f60cc4ec65dd38850cfc8c9ab75c",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "f43ec5daf7e9ba420a097dc40753dfa7b04072e9e2d76c5cb501b35d7dbb0342",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ec4406c5c3792cb808ede572d39825156b0becdf7727e6ff5c282d24203c426b",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6f938f3329f2d424a693b49b9cea3b7fcc88f60cc4ec65dd38850cfc8c9ab75c",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f43ec5daf7e9ba420a097dc40753dfa7b04072e9e2d76c5cb501b35d7dbb0342",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "abe7c7aaa92e63cb37f74413d002b7c0cb435445062132e5ac62cd7b32a29f82",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "c73eb242a3ca591f995ff1a00ea6f5760ea3c46e80a8b5abce5718189ea96221",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "807298a50243247afaf0b928651147cc35cbbc3234d1b7fedc8dc29b3afbb382",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T10:07:59.705580+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "abe7c7aaa92e63cb37f74413d002b7c0cb435445062132e5ac62cd7b32a29f82",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c73eb242a3ca591f995ff1a00ea6f5760ea3c46e80a8b5abce5718189ea96221",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "807298a50243247afaf0b928651147cc35cbbc3234d1b7fedc8dc29b3afbb382",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "09549d56afcde73f3e706c821c700c860c4f262d3f672a2be8297245c9821850",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "ff725ee8d47a30ba9fe98fefe81dd2bddd632a87d0fb43c897bb6ddec7505c52",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "57b21e26ac8e222af0ae8e005fe507cabed9d45e21a0f33889dd69509a1b1391",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "09549d56afcde73f3e706c821c700c860c4f262d3f672a2be8297245c9821850",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ff725ee8d47a30ba9fe98fefe81dd2bddd632a87d0fb43c897bb6ddec7505c52",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "57b21e26ac8e222af0ae8e005fe507cabed9d45e21a0f33889dd69509a1b1391",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "dd7a0911f97a165a2bee6c610bdc14e5785a33c7a31408507f30980b10e013cf",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "6e831befc94c5fb40134446a6b3e876d3595c4bd670f673150d540ca8f8a62e4",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "8463c3b72760a6ac5bd889c8504b9b448594cfab1e463cb60a7f63b0eebce11b",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "dd7a0911f97a165a2bee6c610bdc14e5785a33c7a31408507f30980b10e013cf",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6e831befc94c5fb40134446a6b3e876d3595c4bd670f673150d540ca8f8a62e4",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8463c3b72760a6ac5bd889c8504b9b448594cfab1e463cb60a7f63b0eebce11b",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "dabcdacca1fe6e9cbe35cde0016d362e3d7237c7479149bac0f2b7ae17bfca88",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "4acd881b97f0cbd4e92476d8a23e7b8143d2d234b7d8c0d072f24dfa5b7ee529",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "8c4445695a519f4da89a9753be72c952bd78c483d73703b06b5abbb0fbd8c3ec",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "dabcdacca1fe6e9cbe35cde0016d362e3d7237c7479149bac0f2b7ae17bfca88",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4acd881b97f0cbd4e92476d8a23e7b8143d2d234b7d8c0d072f24dfa5b7ee529",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8c4445695a519f4da89a9753be72c952bd78c483d73703b06b5abbb0fbd8c3ec",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "fca62d41691d9c0a3cfc5d0fcf5be9063def23fc8033f39bdf268cda06609453",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "cdcd3f402a85e2bad86ba81f69ac41654b521ce0ef1144e74928c790ed5461c8",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "90b164485205eeb62ba08bda21ff2d4a30c50f55e0a54244e8b1bcb3b939b6c6",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "fca62d41691d9c0a3cfc5d0fcf5be9063def23fc8033f39bdf268cda06609453",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "cdcd3f402a85e2bad86ba81f69ac41654b521ce0ef1144e74928c790ed5461c8",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "90b164485205eeb62ba08bda21ff2d4a30c50f55e0a54244e8b1bcb3b939b6c6",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "version": "4.1.3",
+      "native_table_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "f5e12e86a07536b489cb23f683f39d3d79a9e2b336f70583a01cff93aec8177f",
+        "testcases": [
+          "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+          "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+          "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+          "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+        ]
+      },
+      "native_genotype_metadata_suite": {
+        "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "267345e45a000b66606f29ce7f43b9c318ed2517a10b53b648ded9eab5ddc0e6",
+        "testcases": [
+          "sourceFixtureHashesRemainExact()",
+          "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+          "truncatedBedAndAmbiguousPairIdentitiesFail()",
+          "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+        ]
+      },
+      "upstream_suite": {
+        "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+        "suite": {
+          "tests": 11,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "ce396b285e17520f2a5da77ccbfa03245452069dfc0ea4227f9d43ef8cb560cf",
+        "testcases": [
+          "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+          "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+          "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+          "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+          "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+          "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+          "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+          "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+          "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+          "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+          "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+        ]
+      },
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/RegenieTables.java": "5c883fc2e20ad38c703c49ada8976db9bb475d06df41009b11b6d442c3dfde73",
+        "src/main/java/org/jlinalg/genetics/RegenieInputs.java": "73f7c5dbd48907741326c02eccbe933a969d9d066fa518c505819d1fdc2d3877",
+        "src/main/java/org/jlinalg/cli/RegenieRuntime.java": "5ee111b9506f95e0b205a19cc42959c559a1d65466f37a0b05cda5b43810904b",
+        "src/main/java/org/jlinalg/cli/RegenieToolsCli.java": "48ab2379a4bce2cd5c8f2aa4eb0f6c38eaad745bc06e9d8fa900d64e47570b21"
+      },
+      "fixture_provenance_sha256": "95e6de37678b15f35627004d18fd7c3de13d32ba69a147532edcd6207c473704",
+      "packaged_validation": "regenie-packaged-validation.json",
+      "packaged_checks": 15,
+      "failed_attempts_retained": [
+        {
+          "location": "build/literature-review/regenie-first-adapter-attempt",
+          "cause": "Windows Files.write iterable produced CRLF; upstream list parser retained CR in filename. Fixed explicit LF writing, checked in API/JAR tests."
+        },
+        {
+          "location": "build/literature-review/regenie-sum-export-attempt",
+          "cause": "Upstream forbids sum-mask BED genotype export. Adapter explicitly omits that export and warns, retaining membership lists/results."
+        }
+      ],
+      "scope": "Native exact selected table/sample/model contracts plus actual pinned upstream fits/variant/gene-mask tests. Generated additive truth, six format/model reference comparisons, both binary encodings, allele reversal, dominant/recessive, Firth/SPA, RINT/categories/missingness and max/sum/comphet/RGC tested. No HTP, conditional/interaction/multitrait, old-version/full-package/full-paper parity.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.RegenieTablesTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieTablesTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f5e12e86a07536b489cb23f683f39d3d79a9e2b336f70583a01cff93aec8177f",
+          "testcases": [
+            "quantitativeModeDoesNotInferBinaryStatusAndSelectedCellsKeepOriginalOrderAndPrecision()",
+            "binaryCodingIsExplicitAndCovariateCategoriesAreNotNumericCoercions()",
+            "partialNumericTokensReservedSentinelsAndAmbiguousMissingnessFail()",
+            "pairAndUnderscoreCompositeCollisionsAreRejectedBeforeUpstreamMatching()"
+          ]
+        },
+        "org.jlinalg.genetics.RegenieInputsTest": {
+          "suite_name": "org.jlinalg.genetics.RegenieInputsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "267345e45a000b66606f29ce7f43b9c318ed2517a10b53b648ded9eab5ddc0e6",
+          "testcases": [
+            "sourceFixtureHashesRemainExact()",
+            "pgenIidOnlyAndMultiallelicPvarAreRejectedExplicitly()",
+            "truncatedBedAndAmbiguousPairIdentitiesFail()",
+            "officialGenotypesRetainIdenticalSampleOrderAndCounts()"
+          ]
+        },
+        "org.jlinalg.cli.RegenieToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.RegenieToolsCliTest",
+          "suite": {
+            "tests": 11,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ce396b285e17520f2a5da77ccbfa03245452069dfc0ea4227f9d43ef8cb560cf",
+          "testcases": [
+            "realBurdenMaskRulesAndRecessiveRgcRetainOmissionWarnings()",
+            "realDeclaredQuantitativeBinaryValuesDoNotEnableLogisticFlags()",
+            "unavailableRuntimeSkipsWithRecoveryAndInvalidOptionsDoNotLaunch()",
+            "realIndependentSignalRecoversTheKnownAdditiveEffect()",
+            "realBinaryCodingZeroOneAndOneTwoGiveIdenticalFirthResults()",
+            "realRgcGeneTestsRetainMetadataSkatAcatSbatAndGeneP()",
+            "realQuantitativeFitAndAllThreeFormatsMatchFrozenDirectUpstreamResults()",
+            "realCategoricalCovariatesRintAndMissingPoliciesRetainDifferentSampleUniverses()",
+            "realAlleleReversalAndDominantRecessiveTestsRetainExplicitConventions()",
+            "realBinaryExactFirthAndSpaProduceFiniteTestsAndRetainedFlags()",
+            "realModelTamperingAndWrongBuildFailBeforeAssociationAndPreserveSources()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

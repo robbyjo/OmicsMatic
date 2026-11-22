@@ -1,0 +1,1520 @@
+{
+  "status": "passed",
+  "engine": "Native Java",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "api_suite": {
+    "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+    "suite": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "7cef367f6613ab6a9015e070a1b6286f1653c525f8f5ca89bcfd94f9e3d292b2",
+    "testcases": [
+      "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+      "randomWindowsMatchIndependentPerBaseIntegration()",
+      "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+      "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+    ]
+  },
+  "cli_suite": {
+    "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+    "suite": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "ad00af028a341c906e051ea6796d8ea21d579282c7b25c9fb9e57afd3aa7fde7",
+    "testcases": [
+      "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+      "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+      "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+      "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+    ]
+  },
+  "packaged_validation": "native-genomic-signal-packaged-validation.json",
+  "packaged_checks": 8,
+  "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+    "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+  },
+  "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+  "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_full_gate_suites": {
+    "org.jlinalg.genetics.BedGraphSignalsTest": {
+      "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+      "suite": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "7cef367f6613ab6a9015e070a1b6286f1653c525f8f5ca89bcfd94f9e3d292b2",
+      "testcases": [
+        "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+        "randomWindowsMatchIndependentPerBaseIntegration()",
+        "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+        "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+      ]
+    },
+    "org.jlinalg.cli.GenomicSignalCliTest": {
+      "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+      "suite": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "ad00af028a341c906e051ea6796d8ea21d579282c7b25c9fb9e57afd3aa7fde7",
+      "testcases": [
+        "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+        "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+        "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+        "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+      ]
+    }
+  },
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "5f9ab5d45f20156749fd62dd5bd740dabf1cb9c40649553150a0d7887aac46b6",
+      "api_suite": {
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "840482dde5a9887bdf5d9cb3791bc3c8e50bb4386d6e7ea98bc6b1b15d054d57",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "3693004a44a1a107651f5d04650b39ba1fd596301e4e047a7f46e03acdc598d6",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "fdf62fcc42c363fe2c969cfc54c4bda7f674c010587682ef2f13da8f38e9ee05"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts."
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "06d9ff0a5fa1cacd21c17dac0cb0182b2de10c086f84b51ff92cae969e819e8a",
+      "api_suite": {
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "a02e26fadc41e6ecb832788c51a108beedd6bf5a0ab1b7eb9a6e11bc88176c92",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "90986b4055b16a79e510a13cfdf70bfad24e341ede13ce3dbbd60eb81ccf1518",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts."
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "2f748eb4328a871f339fecc25fe41db7fa38a063718277e4d8eeb81d69e70985",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "ec7b503119a30ee758a4299a05a71977ad8f33826e92129f467bcbe8ec23443b",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "0db39504ce0b88f746b0d9d50a162733a2dfcfce6a84c9f89ed101ce743ea920",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-24T23:03:19.823475+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ec7b503119a30ee758a4299a05a71977ad8f33826e92129f467bcbe8ec23443b",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0db39504ce0b88f746b0d9d50a162733a2dfcfce6a84c9f89ed101ce743ea920",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "7fc22cd33b22500b0e0360ee93c6e416ce27444f32691fed470e280e95f7f70d",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "e07a925e1100f08c299fa26a1602ca9537d7494f4605dedadc51dffa071800e8",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "48fdbb5fc154f8c8aae96d9d74a176e110efc95170df32d31e51a06a99dbfcfb",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-24T23:44:47.238929+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e07a925e1100f08c299fa26a1602ca9537d7494f4605dedadc51dffa071800e8",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "48fdbb5fc154f8c8aae96d9d74a176e110efc95170df32d31e51a06a99dbfcfb",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "19c4ed620c230c4c520c10bcbf3d88cbd1484d640103d2109e25f4db0ee621be",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "9f2fe0fd809d619d9ac54f2719a467f48931fbb2715464ec910a46d231f1b45a",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "1661ada52f7665a51e2f75cf7f3a4f22ecd27462a2b6767ebc886f4e154846cd",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T00:57:19.120198+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "9f2fe0fd809d619d9ac54f2719a467f48931fbb2715464ec910a46d231f1b45a",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1661ada52f7665a51e2f75cf7f3a4f22ecd27462a2b6767ebc886f4e154846cd",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "095e5fecbb0beaabc2e67134d980d2e1841210c0b92c708b3a21ab0dfb866c61",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "7821a0a233d92772214cf11fed0a27ed0b3b41b722c3603bdba279054d4effe3",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "5a3828288e7a0ee8aa1a24d8cbf41d65295b35d0221c57e6fc3906e157309c59",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T02:15:39.832466+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7821a0a233d92772214cf11fed0a27ed0b3b41b722c3603bdba279054d4effe3",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5a3828288e7a0ee8aa1a24d8cbf41d65295b35d0221c57e6fc3906e157309c59",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "fc6c5769770609b38ffd8e5f22e701efcf0aeb13261c594a070ee5b6b777232b",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "f41122e986e9155b85b0c1a606813d673de569fe5cd0dd9b0b70a427b40a9622",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "b463d60ae3fcb0f708d667e69786983c6c77f2a257ba4b7f05ef0cbf278688aa",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T02:57:16.310858+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f41122e986e9155b85b0c1a606813d673de569fe5cd0dd9b0b70a427b40a9622",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b463d60ae3fcb0f708d667e69786983c6c77f2a257ba4b7f05ef0cbf278688aa",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "faa28146756d077aa691977585fd3349c390f49ff609179a94e355cb13cca667",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "7b457e8bf7f75697a50bae3fce45a5d6af8eb20f0205aec7454deb246add276a",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "0875feccbc0abc5b456f4213b726339927f5a771a68f0f29d33b9d74bf4469b4",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T03:50:24.675422+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7b457e8bf7f75697a50bae3fce45a5d6af8eb20f0205aec7454deb246add276a",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0875feccbc0abc5b456f4213b726339927f5a771a68f0f29d33b9d74bf4469b4",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "68a623dc455abf0608f50ca5977a44cd3c6d0db6489f8db726569675c46abdc2",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "f3a152205a21bced9b03cb97f41d446112f695706a4cb299618ffd36b5914c1f",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "309425d5bd49f44fa3d3984d0055a0137edf91c95a0a821bf5aebbc4ca6b2c6c",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T05:28:16.019770+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f3a152205a21bced9b03cb97f41d446112f695706a4cb299618ffd36b5914c1f",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "309425d5bd49f44fa3d3984d0055a0137edf91c95a0a821bf5aebbc4ca6b2c6c",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "6ff7cc767bc62f2489947a34fbf3bc99129e4d444242eb217294764587c7e491",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "18c1cb67ebc3e62cdfdf994d956c7d0f3ca7133221335e4134521f644b6d3ada",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "d5ca395b1667061369e7add6c070d9281de72469bca396363e550fcd558309b4",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T06:53:04.578303+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "18c1cb67ebc3e62cdfdf994d956c7d0f3ca7133221335e4134521f644b6d3ada",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d5ca395b1667061369e7add6c070d9281de72469bca396363e550fcd558309b4",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "53399f4be52ad5bb882f5acfea53d5a2a037ac80a6e93d1f7d7fdbc118051860",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "d7c6733fbec5ac74edab6721e5fda5a9afcce9ab410c36967946a31134685ecf",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "5a59b1f81e215cb9debf7d8458856388027cc2e4712e7bec1c2eb63fdc34e459",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T08:02:41.668775+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d7c6733fbec5ac74edab6721e5fda5a9afcce9ab410c36967946a31134685ecf",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5a59b1f81e215cb9debf7d8458856388027cc2e4712e7bec1c2eb63fdc34e459",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "5dcb98cf016d88b63ed2efa3c5044b55a908151216a57ea51abe9621d643e9af",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "4eb0a8674eeada00c0ef47e40a232514293be001cdcaa00990a2872822147198",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5dcb98cf016d88b63ed2efa3c5044b55a908151216a57ea51abe9621d643e9af",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4eb0a8674eeada00c0ef47e40a232514293be001cdcaa00990a2872822147198",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "90ee0add1bc80ecc599bccba1fb2eac49f3704cd1c596c1c4ad98804d04f57c7",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "ba0383086246d6357cad5c5af24206eeab4252345a95da40f83910eca4785da6",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T10:07:59.705580+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "90ee0add1bc80ecc599bccba1fb2eac49f3704cd1c596c1c4ad98804d04f57c7",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ba0383086246d6357cad5c5af24206eeab4252345a95da40f83910eca4785da6",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "24b9e690a3830f330637a9099beab81c68b5ad4e255c5bbd718dda259276edde",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "fecc59987ac6b004e2446ff1ff8ffe5d21e793f3faa4e2f520ccd3f5f2ef4ba6",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "24b9e690a3830f330637a9099beab81c68b5ad4e255c5bbd718dda259276edde",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "fecc59987ac6b004e2446ff1ff8ffe5d21e793f3faa4e2f520ccd3f5f2ef4ba6",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "674840b9a10a03e9f20c81519d18d01bc71181a09aa26e0ddccaebe0921206d1",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "def31237b164d5fc3cab73f7f3f0d0150b196301300edb5ba13478b56b152d0b",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "674840b9a10a03e9f20c81519d18d01bc71181a09aa26e0ddccaebe0921206d1",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "def31237b164d5fc3cab73f7f3f0d0150b196301300edb5ba13478b56b152d0b",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "dd1fdc68bebaffec179fcdddd022ba5dad76b40fd1f6ce9d811e9f6050d17aed",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "fd81f15effa86e4850e6ff8153e5668556879e79924322a8592776d9bd9044a4",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "dd1fdc68bebaffec179fcdddd022ba5dad76b40fd1f6ce9d811e9f6050d17aed",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "fd81f15effa86e4850e6ff8153e5668556879e79924322a8592776d9bd9044a4",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "99995f555f311c3609f25ba1dfce26eacca157d403e50564baa8c7ad2900abbf",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "af73b59bc97e68020cb7a4da3ae407d6e00f3aae9ff88fff44870f6eae12cd5b",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "99995f555f311c3609f25ba1dfce26eacca157d403e50564baa8c7ad2900abbf",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "af73b59bc97e68020cb7a4da3ae407d6e00f3aae9ff88fff44870f6eae12cd5b",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "engine": "Native Java",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "api_suite": {
+        "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "79ecbd788d40f0b4fa061a916b2d1c34ce44aa3f04b66ce07271b8115b4c5dcf",
+        "testcases": [
+          "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+          "randomWindowsMatchIndependentPerBaseIntegration()",
+          "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+          "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+        ]
+      },
+      "cli_suite": {
+        "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+        "suite": {
+          "tests": 4,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "80a166feb39bd01d842f462c88ec2e81ee16b9358322c4410ff629fd9ef59e75",
+        "testcases": [
+          "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+          "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+          "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+          "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+        ]
+      },
+      "packaged_validation": "native-genomic-signal-packaged-validation.json",
+      "packaged_checks": 8,
+      "packaged_verifier_sha256": "ffa7101f9c52ed3767095b35fb4e186c7e955983f3f86d2f3116a4db3098ae3d",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/genetics/BedGraphSignals.java": "39dd4b8e1266e7977f831a2fe163c459d58c08746e0023261c0000193e94799a",
+        "src/main/java/org/jlinalg/cli/GenomicSignalCli.java": "b81277114bda2c3c10691cf2ec9a2a762215d795c7c35c4811da260e5bd8811f"
+      },
+      "scope": "Explicit exact-reference bedGraph range integrals, coverage/means and base-length-weighted state/genome log2 ratios; compensated local sums, zero/missing/pseudocount decisions, no peak caller, normalization or whole-paper equivalence.",
+      "independent_evidence": "1000 random windows versus per-base integration; huge-prefix and signed cancellation cases; actual executable hand-calculated repeated-state/global-background/gap fixtures and rejected contracts.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_full_gate_suites": {
+        "org.jlinalg.genetics.BedGraphSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.BedGraphSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "79ecbd788d40f0b4fa061a916b2d1c34ce44aa3f04b66ce07271b8115b4c5dcf",
+          "testcases": [
+            "exactLengthWeightingAndZeroCoverageUseExplicitReferenceUniverse()",
+            "randomWindowsMatchIndependentPerBaseIntegration()",
+            "rejectsOverlapsUnknownContigsBoundsAndNonfiniteIntegrals()",
+            "smallLateWindowDoesNotLoseSignalBySubtractingHugeGlobalPrefixes()"
+          ]
+        },
+        "org.jlinalg.cli.GenomicSignalCliTest": {
+          "suite_name": "org.jlinalg.cli.GenomicSignalCliTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "80a166feb39bd01d842f462c88ec2e81ee16b9358322c4410ff629fd9ef59e75",
+          "testcases": [
+            "invalidOverlappingOrSignedDataFailWithActionableDiagnostics()",
+            "nativeSummariesPreserveRegionOrderAndSeparateGapsFromExplicitZeros()",
+            "stateMeansAreWeightedByBasesAndGenomeBackgroundIncludesAbsentContigs()",
+            "emptyTracksAndZeroGenomeAreNotRelabeledAsBiologicalAbsence()"
+          ]
+        }
+      },
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

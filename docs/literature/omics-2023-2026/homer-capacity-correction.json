@@ -1,0 +1,33 @@
+{
+  "status": "corrected-prior-capacity-claim-invalidated",
+  "recorded_utc": "2026-10-28T18:08:04.994697+00:00",
+  "previous_claim": "Incorrectly treated longestSequence as undoubled, excluding11 native protocols per version and skipping dense product find.",
+  "corrected_source": "Each of5.1,4.11,4.11.1 calls optimizeArray from readSequenceFiles; optimizeArray sets longestSequence to2*maximum loaded length. Both-strand site count is <=2*(L-width+1), which fits.",
+  "original_protocols": 555,
+  "matched_hits": 8556,
+  "original_versions": [
+    "5.1",
+    "4.11",
+    "4.11.1"
+  ],
+  "original_exclusions": 0,
+  "original_crash_demonstrated": false,
+  "earlier_false_dense_product_skips": 3,
+  "raw_proof": "build/literature-review/homer-runtime/capacity-correction-1/observed.json",
+  "raw_proof_sha256": "ae962d313b04b49ee0d3d9fcd3c5008f1c572d59b5a40c0f83e5efb34ce966ba",
+  "source_sha256": {
+    "5.1": "65d2486e3c01b2948ed2263b38f5186fba62e71fa2b9aaf8b3ae4f2101f37d45",
+    "4.11": "b185e1ddb5ac9cc58afe81dc4d3093332085c3bb411c346e1b0ffa461498e112",
+    "4.11.1": "ec10cf0b4a278854f4e13d549386dd08efdf186dc403fffdbe95ff1dd4087bcc"
+  },
+  "historical_public_bytes_before_correction": {
+    "homer-native-validation.json": "c27ecfb841e3a16913cd16fbb53e7d27728f3490a1f0387b2119e03f9b181a66",
+    "homer-core-validation.json": "1e9f5614a7cba114acf0e491c69556882b2d46b3dc14cc97ed4fabc3846665a5",
+    "HOMER_NATIVE_SCANNING.md": "9519229382f7bcab0dff065542f29bc290e1696015b6f6d614f5d5bbfe7ca534",
+    "HOMER_CORE_WORKFLOWS.md": "46c81c105d631ae53cd834c2fb867665abbc5197ba188eaecdd5e70d9f3ee890",
+    "HOMER_SOURCE_REVIEW.md": "67cd67f7f1ea646b9e89eb72892e00ac498c423caaf6b2bdafbbcdfb738dc7d8"
+  },
+  "historical_before_directory": "build/literature-review/homer-runtime/capacity-correction-1/public-before",
+  "current_validation": "homer-discovery-validation.json",
+  "scope": "Withdraws the earlier unsafe-case classification. All original/numeric evidence and historical failures remain retained. No binary/source patch, compiler installation, engine swap or input exclusion was needed."
+}

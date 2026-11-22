@@ -8,3 +8,28 @@
 *.R text eol=lf
 gradlew text eol=lf
 *.bat text eol=crlf
+
+# RNA admission locks must retain the bytes hashed by Python and packaged Java.
+tools/literature/homer-rna-lock.json -text whitespace=cr-at-eol
+src/main/resources/org/jlinalg/omics/homer-rna-lock.json -text whitespace=cr-at-eol
+
+# Synthetic cell-type data and captured original numerical reference tables.
+examples/fuma-celltype-workflow/synthetic-inputs.zip -text
+
+# Synthetic supplied SNP annotation data and captured original numerical reference tables.
+examples/fuma-variant-annotation-workflow/synthetic-inputs.zip -text
+
+# Synthetic supplied MAGMA report data and captured original numerical reference tables.
+examples/fuma-magma-report-workflow/synthetic-inputs.zip -text
+
+# Synthetic supplied tissue properties and captured original numerical reference tables.
+examples/fuma-tissue-workflow/synthetic-inputs.zip -text
+
+# Synthetic supplied-reference locus novelty inputs and independent integer references.
+examples/fuma-novelty-workflow/synthetic-inputs.zip -text
+
+# Synthetic complete association families and independent R/union evidence references.
+examples/fuma-known-association-workflow/synthetic-inputs.zip -text
+
+# Synthetic complete Fisher count/group inputs and independent R/set references.
+examples/fuma-fisher-workflow/synthetic-inputs.zip -text

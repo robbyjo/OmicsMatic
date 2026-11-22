@@ -1,0 +1,302 @@
+[
+  {
+    "paper_id": "P006",
+    "primary_paragraph": 81,
+    "observed_role": "docking-visualization",
+    "review": {
+      "pmcid": "PMC12222023",
+      "doi": "10.1038/s41586-024-08348-2",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "4e11620a1e7568f7d76c1d9146ce12528b7adabbb40c4a1a229b8c006eb42a63",
+      "use_summary": "Illustrated AutoDock Vina docking results for LCA and AlphaFold-predicted TULP3 using PyMOL v2.5.",
+      "implementation_scope_note": "Docking and structure prediction were separate programs. Structural alignments are mentioned as performed earlier, but the paragraph does not identify their exact PyMOL command or establish a docking calculation within PyMOL.",
+      "version_reported_near_name": "2.5"
+    }
+  },
+  {
+    "paper_id": "P013",
+    "primary_paragraph": 122,
+    "observed_role": "visualization-alignment-APBS",
+    "review": {
+      "pmcid": "PMC11798873",
+      "doi": "10.1038/s41586-024-08333-9",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "2b6f80099c32e4890a76869ff328244d450e0da712f7db1fbbd6bb68c45a75ec",
+      "use_summary": "Visualized a mononucleosome based on PDB5NL0 with PyMOL v3.0; separately aligned the predicted MYC/MAX-TFAP2C complex to PDB8J0K with align and calculated electrostatic surface charge using the APBS plugin.",
+      "implementation_scope_note": "AlphaFold-Multimer/COSMIC2 prediction is separate. PyMOL align performs correspondence/refinement beyond a supplied-pair rigid fit; APBS electrostatics requires its own solver,charge/protonation and grid settings. Rendering a coloured surface alone does not reproduce APBS.",
+      "version_reported_near_name": "3.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 124,
+          "section": "Methods / Bioinformatics / Protein structure visualization",
+          "paragraph_sha256": "82aa951f83cc39513fb773065ca7bf4cd52cf7ad63bad8c266adfa8bf2ca7672"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P016",
+    "primary_paragraph": 28,
+    "observed_role": "Dip-C-models",
+    "review": {
+      "pmcid": "PMC10765522",
+      "doi": "10.1038/s41586-023-06845-4",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "23918e998c3c0e4556f5017f5ca784b53b04c7ea882274a5cc5d1556e6b6ccd7",
+      "use_summary": "Reported three-dimensional reconstruction of Dip-C models in PyMOL v2.5.3, following a cited prior procedure.",
+      "implementation_scope_note": "Dip-C/hickit generated haplotype-imputed contacts in a separate pipeline. The named paragraph does not supply the PyMOL reconstruction script,coordinate representation or rendering settings; do not infer contact phasing or coordinate reconstruction algorithms from the program name.",
+      "version_reported_near_name": "2.5.3"
+    }
+  },
+  {
+    "paper_id": "P022",
+    "primary_paragraph": 33,
+    "observed_role": "bond-building",
+    "review": {
+      "pmcid": "PMC11779638",
+      "doi": "10.1038/s41586-024-07559-x",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "802804ed2575c1b11af38b4a24d7b0b0473336a8529b76f1be8256f012db7635",
+      "use_summary": "Linked two Pep-Fold ARM structural models in parallel using PyMOL v2.0 bond building before coarse-grained simulation.",
+      "implementation_scope_note": "CafeMol generated the molecular-dynamics trajectory and distance distribution. Adding an explicitly requested bond is distinct from peptide prediction,energy minimization or trajectory simulation.",
+      "version_reported_near_name": "2.0"
+    }
+  },
+  {
+    "paper_id": "P026",
+    "primary_paragraph": 39,
+    "observed_role": "manual-editing-visualization-APBS",
+    "review": {
+      "pmcid": "PMC11946911",
+      "doi": "10.1038/s41586-024-08493-8",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "c3f3eda6c3511d6333cc9f6f7d34fca32457c99d98ea0141232b111dcef13ce0",
+      "use_summary": "Manually adjusted ZorA-tail conformations in PyMOL v2.5, inspected predicted structures with v2.5.4 to identify tail starts, prepared figures with v2.5.4/v3.0.2 and calculated electrostatic maps with the APBS plugin.",
+      "implementation_scope_note": "GROMACS/CHARMM27 minimized the structures; ColabFold predicted them, MUSCLE transferred tail boundaries, and MOLEonline analysed pathways/hydrophobicity. These are separate operations. Manual conformations,colour/view settings and APBS parameters are not fully specified by these paragraphs.",
+      "version_reported_near_name": "2.5; 2.5.4; 3.0.2",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 53,
+          "section": "Methods / Bioinformatic analyses of ZorA motor and tail lengths",
+          "paragraph_sha256": "01c61918d887b2cd5f147dedf9a4ac0130bce39e8cacf4619e504859e69eb4ec"
+        },
+        {
+          "paragraph_index": 54,
+          "section": "Methods / Figure preparation",
+          "paragraph_sha256": "236df53a46a378a1d26627d7c7764a75502678240538d6aea88e9e01c1f0b06b"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P027",
+    "primary_paragraph": 58,
+    "observed_role": "prediction-visualization",
+    "review": {
+      "pmcid": "PMC12779559",
+      "doi": "10.1038/s41586-025-09853-8",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "3fede74c465c12d75816b778528ce2b18e0c722cfbd40f2d986884cd2be8369b",
+      "use_summary": "Illustrated the selected highest-scoring AlphaFold3 multimer/docking prediction using PyMOL v2.5.8.",
+      "implementation_scope_note": "AlphaFold Server generated and ranked the predicted structures. PyMOL visualization does not establish protein interaction or docking accuracy; exact reported build/settings remain separate from the tested open-source edition.",
+      "version_reported_near_name": "2.5.8"
+    }
+  },
+  {
+    "paper_id": "P038",
+    "primary_paragraph": 63,
+    "observed_role": "software-list",
+    "review": {
+      "pmcid": "PMC13581589",
+      "doi": "10.1038/s41586-026-10993-8",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "ed3d8806c6a5c9adbea830688193b8848c260aee2ff54847c54ef8f969300e14",
+      "use_summary": "Listed PyMOL v3.4.19 among the software used in the study.",
+      "implementation_scope_note": "The only named paragraph is a software list. It does not establish a particular rendering,alignment,measurement or modelling command. Retain the literal version rather than silently converting it to a known open-source tag or inventing a paper-specific operation.",
+      "version_reported_near_name": "3.4.19",
+      "usage_context": "software-list-operation-unspecified"
+    }
+  },
+  {
+    "paper_id": "P052",
+    "primary_paragraph": 25,
+    "observed_role": "super-alignment",
+    "review": {
+      "pmcid": "PMC13668671",
+      "doi": "10.1038/s41586-026-10952-3",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "a0d825eccfdfba5fdd50b98ea56bbdddb9e09014fbd013e56db8e28ac1deab3c",
+      "use_summary": "Aligned extracted predicted membrane-binding-domain structures to the rat PHPLCdelta crystal structure PDB1MAI and calculated RMSD with the PyMOL super alignment tool.",
+      "implementation_scope_note": "MAFFT handled sequence alignment, while AlphaFold2/ESMFold supplied structures. super establishes structural correspondences/refinement and must not be replaced silently by align or a rigid fit of supplied pairs. Version and exact super/refinement parameters are unstated here.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P057",
+    "primary_paragraph": 51,
+    "observed_role": "figure-rendering",
+    "review": {
+      "pmcid": "PMC13645618",
+      "doi": "10.1038/s41586-026-10937-2",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "337b50846346cf144e6aa52534c90e6193b182807bfb2f05556193bc2d510c20",
+      "use_summary": "Generated replisome structural figures with PyMOL v2.5.4 alongside UCSF ChimeraX.",
+      "implementation_scope_note": "Coot/PHENIX model adjustment and real-space refinement are separate. One figure used an additional four-base-pair segment whose density was too poor for deposition; a deposited PDB alone does not reproduce that figure.",
+      "version_reported_near_name": "2.5.4"
+    }
+  },
+  {
+    "paper_id": "P103",
+    "primary_paragraph": 86,
+    "observed_role": "distance-measurement",
+    "review": {
+      "pmcid": "PMC12695638",
+      "doi": "10.1038/s41588-025-02400-1",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "4052b148e28d4f522d0a8bfb456ba33eca593a68b5936887fe081421fd558192",
+      "use_summary": "Calculated listed distances with the PyMOL distance function during manual inspection of resolved experimental structures for highly deleterious popEVE mutations.",
+      "implementation_scope_note": "The paper restricted inspection to resolved mutation sites and prioritized interacting structures. Exact atom selections,states,measurement mode and version are unstated here. Distances are geometric observations,not mutation pathogenicity or binding-energy estimates.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P119",
+    "primary_paragraph": 50,
+    "observed_role": "crystal-structure-visualization",
+    "review": {
+      "pmcid": "PMC11549056",
+      "doi": "10.1038/s41588-024-01948-8",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "207bc459501bd95fbfe9b3785f3621c5457b356ce9189c50fdf19a05b2d0c35c",
+      "use_summary": "Visualized crystal structures using PyMOL v2.4.1 in the PARP-trapping study.",
+      "implementation_scope_note": "The same paragraph primarily describes wet-lab fractionation/immunoblotting. Those assays and trapping measurements were not performed by PyMOL; it supplies the stated structure visualization only.",
+      "version_reported_near_name": "2.4.1"
+    }
+  },
+  {
+    "paper_id": "P133",
+    "primary_paragraph": 34,
+    "observed_role": "alignment-rendering",
+    "review": {
+      "pmcid": "PMC12695660",
+      "doi": "10.1038/s41588-025-02388-8",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "f03b23bd4e1e17e15c34a7b48104779383829e419d2fcef5fe7bd31cc36473b4",
+      "use_summary": "Performed structural alignments and figure rendering of experimental/AlphaFold3 AR-PTGES3 complex models with PyMOL.",
+      "implementation_scope_note": "The alignment command/version is unstated. The paper explicitly colours AlphaFold confidence red for very high and blue for very low; retain that mapping rather than automatically applying a different pLDDT palette. Confidence is not experimental validation.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P136",
+    "primary_paragraph": 40,
+    "observed_role": "PDB-visualization",
+    "review": {
+      "pmcid": "PMC11525193",
+      "doi": "10.1038/s41588-024-01913-5",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "1d7d4d0d6fc33660ed56e38e181cf53b63f5ca463d74c649202695d47db00aca",
+      "use_summary": "Visualized protein structures from PDB6KN8,5LGD and5DO7 with PyMOL for Troponin-T,CD36 and ABCG5/ABCG8.",
+      "implementation_scope_note": "The URL ending pymol.org/2 is not a software build/version declaration. Accession,assembly,chain,atom/state selection and view choices remain explicit requirements; no prediction or alignment command is specified.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P172",
+    "primary_paragraph": 9,
+    "observed_role": "rotamer-and-torsion-modelling",
+    "review": {
+      "pmcid": "PMC10806738",
+      "doi": "10.1016/j.ajhg.2023.11.010",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "c1d92f6cd2b9aa0aa265acef34de4de0420b24337b532a9d4427927288d45e06",
+      "use_summary": "Used explicitly open-source PyMOL v1.7.6.0 for molecular modelling/rendering of a c-Myc/Max heterodimer,choosing a Gln60 rotamer and manually setting K392 chi1-chi4 to gauche+,trans,gauche-,trans.",
+      "implementation_scope_note": "The chosen rotamer and torsions were manually selected for packing/clash considerations. A new-version default rotamer or a generic point-set fit does not reproduce those choices or establish an energy-minimized model.",
+      "version_reported_near_name": "1.7.6.0"
+    }
+  },
+  {
+    "paper_id": "P178",
+    "primary_paragraph": 10,
+    "observed_role": "alignment-and-local-RMSD",
+    "review": {
+      "pmcid": "PMC13439524",
+      "doi": "10.1016/j.ajhg.2026.06.016",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "083c6ef398c1fabf3886e689a7bcec92636e1abafbad4f7aa764702600ff1205",
+      "use_summary": "Aligned AlphaFold2 wild-type/mutant JAG1 residues31-333 in PyMOL v2.5.4 and quantified local C-alpha RMSD within plus/minus15 residues of each variant.",
+      "implementation_scope_note": "The paragraph does not specify whether each local window was refitted or measured in the global alignment frame; that must remain explicit before replay. FoldX and Rosetta separately estimated stability changes; RMSD is not delta-delta-G.",
+      "version_reported_near_name": "2.5.4"
+    }
+  },
+  {
+    "paper_id": "P188",
+    "primary_paragraph": 10,
+    "observed_role": "figure-rendering",
+    "review": {
+      "pmcid": "PMC12808985",
+      "doi": "10.1016/j.ajhg.2025.10.014",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "7ab45086bee7fe5bd6808b5f3eb0a26cf40fe8cd8922b181033d11ac8a509b77",
+      "use_summary": "Prepared images of the determined apo-PRMT9 structure in PyMOL.",
+      "implementation_scope_note": "XDS,MR-Rosetta,Coot,Buster and MolProbity performed separate processing,model-building,refinement and validation tasks. PyMOL version,representations and view parameters are unstated here.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P222",
+    "primary_paragraph": 13,
+    "observed_role": "rotamer-modelling-and-measurement",
+    "review": {
+      "pmcid": "PMC12510259",
+      "doi": "10.1016/j.ajhg.2025.08.008",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "9759b05dfaca5802ad3a9dce720e4e45ee6cc1a6e9fc691ed63ea3de0d28b77e",
+      "use_summary": "Modelled PRKCI variants from PDB1ZRZ with a backbone-independent rotamer in PyMOL and measured them with the Wizard Measurement tool.",
+      "implementation_scope_note": "The exact rotamer,state/atom selections,measurement types and software version are unstated. Explicit distance/angle/torsion arithmetic does not by itself reproduce the mutagenesis wizard or a manually chosen conformation.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P226",
+    "primary_paragraph": 8,
+    "observed_role": "structure-overlays",
+    "review": {
+      "pmcid": "PMC12440709",
+      "doi": "10.1016/j.ajhg.2025.08.004",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "e63ee845de4b0cad12b48d37365d67498a51de1a9e635afc790cfa76fa8badf9",
+      "use_summary": "Created native/variant TMEM184B structure visualizations and overlays using PyMOL v2.6.",
+      "implementation_scope_note": "AlphaFold/MMseqs2 generated structures; pLDDT/PAE and Ramachandran criteria informed quality selection,and GPS6.0 predicted phosphorylation sites. Loop truncation and model selection are separate explicit choices,not automatic consequences of PyMOL rendering.",
+      "version_reported_near_name": "2.6"
+    }
+  },
+  {
+    "paper_id": "P230",
+    "primary_paragraph": 7,
+    "observed_role": "structural-adjustment-and-visualization",
+    "review": {
+      "pmcid": "PMC11339613",
+      "doi": "10.1016/j.ajhg.2024.06.015",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "f5ab80404321c21f4fe5dd72b3823c005ab17220b2ca22d277a97cc13308f74e",
+      "use_summary": "Adjusted and visualized the PDB4A69 NCoR2 DAD-domain/HDAC3 structure in PyMOL v2.5.5.",
+      "implementation_scope_note": "The exact adjustment operations,conformer choices and rendering settings are unstated. Retain the reported build label and do not invent a mutation,refinement or energy method.",
+      "version_reported_near_name": "2.5.5"
+    }
+  },
+  {
+    "paper_id": "P232",
+    "primary_paragraph": 25,
+    "observed_role": "structural-figures",
+    "review": {
+      "pmcid": "PMC11339624",
+      "doi": "10.1016/j.ajhg.2024.06.011",
+      "tool_id": "pymol",
+      "evidence_paragraph_sha256": "4c94a69998e064ce6d49049d1688ea3f84dc35881602d28d0e4ca3e2f4a6d182",
+      "use_summary": "Generated structural figures using PyMOL v2.5.4 for the human JAG1/NOTCH2 modelling analysis.",
+      "implementation_scope_note": "The paragraph also describes alignment to rat JAG1/NOTCH1 PDB5UK5,but does not explicitly name that alignment command as PyMOL align or super. AlphaFold2/ColabFold,SignalP,PDBsum and PDBePISA have distinct prediction/annotation/interface roles.",
+      "version_reported_near_name": "2.5.4"
+    }
+  }
+]

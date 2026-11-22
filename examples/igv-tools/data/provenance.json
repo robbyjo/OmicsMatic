@@ -1,0 +1,38 @@
+{
+  "scope": "Entirely synthetic fixture. Native HTSJDK5 writes valid coordinate-sorted BAM and index;original IGV2.19.8/HTSJDK4.3 independently reads it and native code verifies every selected identity/CIGAR/tag/base count. Reference ACGT repeat1000bp;BED boundary-touching features;signed bedGraph;explicit one-based SEG. Ramp is the retained original pyBigWig fixture.",
+  "files": {
+    "reference.fa": "1a2fc95d51e75f3712380f034a84aa3a9cc25a33a7494894e7be01d6888bb63b",
+    "features.bed": "07eebfa6eab04d975799f1f7dbcaef4f9563de85990959f447c6094adc122468",
+    "signal.bedgraph": "ec78856d0c90484354ce005f60bed2c252f92593e21977bcfeaef4a0b5a58d16",
+    "segments.seg": "d56432cd856a54e2db03d07df707fa1e41e6feb8b5d5b4c6b11211df46eb6be0",
+    "reads.bam": "f25de36dce44c7b145924807ba5cb72a831bbeec4e704f046132e88867e9bdd4",
+    "reads.bam.bai": "6f7e65ed5a94979d01dee5d0ba73daff85355fd6244e3d92158c35b797b99893",
+    "ramp.bw": "381086ee61c31bca34f2748109ac6db2a89a0e6308465cbab52ea7acbc589089"
+  },
+  "fixture_generator_sha256": "3e8d1228172dd67367a520656a7c6a4d7e262592eaa265ca8b1da21b247ba251",
+  "original_ramp_provenance": {
+    "schema": "jlinalg-synthetic-bigwig-fixtures-v1",
+    "reference": {
+      "chr1": 1000
+    },
+    "coordinates": "zero-based half-open",
+    "bin_size": 10,
+    "values": {
+      "ramp.bw": "bins1..100",
+      "two.bw": "constant2",
+      "gapped.bw": "constant2, except missing [10,20)",
+      "negative-two.bw": "constant-2"
+    },
+    "generator": "tools/literature/verify_deeptools_original.py",
+    "generator_sha256": "a0c5b129a60b331c378a8a9ce73036b9bca91180e5336993395e23b7cb02e318",
+    "engine": "Original pyBigWig0.3.26 writes float32 signal; exact integer fixture values",
+    "files": {
+      "ramp.bw": "381086ee61c31bca34f2748109ac6db2a89a0e6308465cbab52ea7acbc589089",
+      "two.bw": "67c9e7747fd9cc8acc60bbf7e88ccb6292999bad8fade6ffe89630bf8d83775b",
+      "gapped.bw": "c145cb9d532d3f752f9b6886f40343cd582ea82400752403b2bbbafb669bcbbf",
+      "negative-two.bw": "242fcdc4e95cbe1b9346880d9677b0920ef4a1fc613cae24fe9b16fbbb49f420"
+    },
+    "additional_generator": "tools/literature/generate_deeptools_binary_fixtures.py",
+    "additional_generator_sha256": "c6df41f97e2067d81efcc9536c05e3ed0a1505a3bd6550c2080d7af2dad157f3"
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "build": "GRCh37",
+  "out": "../../../build/fuma-workflow-example-NEW",
+  "loci": {
+    "gwas": "../loci/gwas.tsv",
+    "reference": "../loci/ref.tsv",
+    "ld": "../loci/ld.tsv",
+    "reference-id": "synthetic-GRCh37-independent-LD-groups-v1",
+    "ld-floor": ".01",
+    "lead-p": "5e-08",
+    "candidate-p": "0.05",
+    "maf": "0",
+    "independent-r2": "0.6",
+    "lead-r2": "0.1",
+    "merge-distance-bp": "100",
+    "merge-boundary": "strict",
+    "include-reference": "true",
+    "mhc": "none",
+    "add-independent": "true",
+    "ties": "position",
+    "unmatched-reference": "error",
+    "empty": "error"
+  },
+  "variant_resources": {
+    "annotations": "variant-annotations.tsv",
+    "candidate_score_source": "annotations",
+    "extra_rows": "exclude-with-audit"
+  },
+  "mapping": {
+    "genes": "genes.tsv",
+    "annotation-id": "synthetic-GRCh37-v1",
+    "biotypes": "all",
+    "mhc": "keep",
+    "mhc-extension": "none",
+    "positional": "window",
+    "window-bp": "0",
+    "eqtl": "none",
+    "pos-cadd": "0",
+    "pos-rdb": "none",
+    "pos-states": "none",
+    "pos-binary": "none",
+    "gene-scores": "gene-scores.tsv",
+    "gene-score-id": "synthetic-scores-v1",
+    "score-duplicates": "error",
+    "score-missing": "error",
+    "empty": "retain"
+  },
+  "gene_set_query_policy": "actual-links",
+  "gene_set": {
+    "annotations": "genes.tsv",
+    "biotypes": "all",
+    "exclude-mhc": "false",
+    "gmt-manifest": "collections.tsv",
+    "annotation-id": "synthetic-GRCh37-v1",
+    "correction": "fdr_bh",
+    "adjusted-cutoff": "1",
+    "min-overlap": "1",
+    "duplicates": "error"
+  }
+}

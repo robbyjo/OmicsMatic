@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "operation": "fit-null",
+  "genotypes": "cohort",
+  "genotype_coding": "diploid-autosomal-plink-bed",
+  "assembly": "GRCh38",
+  "phenotypes": {
+    "file": "phenotypes.tsv",
+    "delimiter": "tab",
+    "id": "sample",
+    "response": "case",
+    "control": "0",
+    "case": "1",
+    "covariates": [
+      {
+        "column": "age",
+        "kind": "numeric"
+      },
+      {
+        "column": "chromosome_complement",
+        "kind": "categorical",
+        "levels": [
+          "XX",
+          "XY"
+        ]
+      }
+    ],
+    "missing": [
+      "NA"
+    ],
+    "missing_policy": "exclude-with-ledger"
+  },
+  "model": {
+    "trait_type": "binary",
+    "inverse_normalize": false,
+    "loco": true,
+    "relationship": "full",
+    "sparse_variance_ratio": false,
+    "covariate_offset": true
+  },
+  "parameters": {
+    "min_maf": 0.01,
+    "max_missing": 0.15,
+    "relatedness_cutoff": 0.125,
+    "seed": 1,
+    "diagonal": "observed",
+    "variance_ratio": {
+      "kind": "single",
+      "minimum_mac": 20,
+      "num_markers": 30,
+      "coefficient_variation": 0.001
+    },
+    "fit_tolerance": 0.02,
+    "max_iterations": 20,
+    "pcg_tolerance": 1e-05,
+    "max_pcg_iterations": 500,
+    "trace_cv": 0.0025,
+    "trace_runs": 30,
+    "spa_cutoff": 2,
+    "tau_initial": [
+      0,
+      0
+    ]
+  },
+  "resources": {
+    "threads": 1,
+    "memory_chunk_gib": 0.1,
+    "max_samples": 1000000,
+    "max_variants": 1000000,
+    "max_input_bytes": 4294967296,
+    "max_genotype_cells": 1000000000,
+    "max_matrix_entries": 20000000,
+    "max_model_cells": 2000000
+  }
+}

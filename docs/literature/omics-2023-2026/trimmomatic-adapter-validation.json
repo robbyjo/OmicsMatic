@@ -1,0 +1,2802 @@
+{
+  "status": "passed",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/sequence/ReadQualityTrimmer.java": "3e1ddf7e5390fa72a49c980d8ce41d1072df09a6b749b27def6cbd187d63b2a1",
+    "src/main/java/org/jlinalg/cli/TrimmomaticToolsCli.java": "2f74354575291462e53c53ded02ffbad69a0490e66d7d0575688894b0fe38039",
+    "src/main/java/org/jlinalg/cli/TrimmomaticRuntime.java": "9584b3741b71e2afd1dec7e4d7da5c57e4b4bfb3b47ba6138ad1a937c4ffdef0"
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.sequence.ReadQualityTrimmerTest": {
+      "suite_name": "org.jlinalg.sequence.ReadQualityTrimmerTest",
+      "suite": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "415df9c60dfb5dd7354a27052f526ce427802aadee6670348389825c2ff81c2f",
+      "testcases": [
+        "invalidParametersEncodingAndUnsupportedLongMaxinfoFailWithoutGuessing()",
+        "nativeResultsMatch4236ActualOriginalStepAndPipelineReferences()",
+        "documentedQualityAndOrderedWindowBoundariesHaveIndependentKnownValues()",
+        "explicitCropCapsAndMateSpecificSettingsUseOriginalCoordinateSpans()"
+      ]
+    },
+    "org.jlinalg.cli.TrimmomaticToolsCliTest": {
+      "suite_name": "org.jlinalg.cli.TrimmomaticToolsCliTest",
+      "suite": {
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "8ff37f373a4641d075cffbd8dde62bb05360cf09b4ebc6ccf6cdf0c3d1bf2a8e",
+      "testcases": [
+        "nativePairsPreserveAllFourFatesAndWarnAboutOrphans()",
+        "original039And041MatchNativePairsHeadersSpansAndSummary()",
+        "missingRuntimeSkipsBeforeOpeningInputsWithActionableRecovery()",
+        "singleEndHeadCropThenPhredConversionMatchesBothProgramsAndRetainsAllFilteredWarning()",
+        "maxinfoPipelineMatchesBothActualProgramsAndDoesNotReduceLongInputsSilently()",
+        "duplicateHeadersRemainDistinctAndPairSlotEncodingPipelineMistakesFail()",
+        "outputEncodingRangeAndOldJavaVersionGivePreciseFailureOrSkip()",
+        "originalSimpleAdapterAndPalindromeModesRecoverIndependentSyntheticInsertTruth()"
+      ]
+    }
+  },
+  "tests": 12,
+  "native_operations": 13,
+  "actual_original_step_cases": 4236,
+  "versions": [
+    "0.39",
+    "0.41"
+  ],
+  "reference_reproduction": {
+    "status": "passed",
+    "error": null,
+    "steps": [
+      {
+        "name": "compile",
+        "command": [
+          "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\javac.EXE",
+          "--release",
+          "17",
+          "-d",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+          "D:\\projects\\JLinAlg\\tools\\literature\\TrimmomaticReference.java"
+        ],
+        "exit_code": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "0.39",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+          "-cp",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+          "TrimmomaticReference",
+          "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.39\\trimmomatic-0.39.jar",
+          "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.39.tsv"
+        ],
+        "exit_code": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "name": "0.41",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+          "-cp",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+          "TrimmomaticReference",
+          "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.41\\trimmomatic-0.41.jar",
+          "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.41.tsv"
+        ],
+        "exit_code": 0,
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "results": {
+      "0.39": {
+        "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3",
+        "case_count": 2118,
+        "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+      },
+      "0.41": {
+        "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f",
+        "case_count": 2118,
+        "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+      }
+    },
+    "writer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+    "java_executable": "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+    "java_executable_sha256": "5808527e3dfc4eb285c7664ba356bc267055ef906e83ed4660d9f7976da7349b",
+    "recorded_utc": "2026-10-25T03:43:31.214024+00:00",
+    "scope": "Actual original step objects and frozen synthetic cases; no JLinAlg expected-output formula, adapters or patient data. A missing runtime/compiler skips reproduction until supplied; no scientific success inferred."
+  },
+  "reproducer_sha256": "d2150071961c80ff99868381a64002389d1e5f42f1bb831842e70c36eb6862af",
+  "reference_provenance": {
+    "cases": 2118,
+    "observed_cases_across_two_versions": 4236,
+    "case_seed": 18743,
+    "source": "Original unmodified Trimmomatic step objects through tools/literature/TrimmomaticReference.java; no JLinAlg result formula used for expected outputs",
+    "reproducer_java": "tools/literature/TrimmomaticReference.java",
+    "reproducer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+    "original_versions": {
+      "0.39": {
+        "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3"
+      },
+      "0.41": {
+        "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f"
+      }
+    },
+    "logical_phred_offsets": [
+      33,
+      64
+    ],
+    "scope": "Synthetic positive-length DNA/IUPAC reads, native quality/length/MAXINFO subset and ordered pipelines including mate-specific crop,Phred conversion,upper/lowercase N and1000-base boundaries. No adapter sequences or patient data bundled.",
+    "files": {
+      "cases-provenance.json": "54efd10d05b9287f3dca5a73cfd63f781598ca353c73a98f04ec30f51e1985d2",
+      "cases.tsv": "59fd259ce4654ccf3d25fd7e73af0fed52dc5086e02399298ed33479ed04b2e0",
+      "reference-0.39.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf",
+      "reference-0.41.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+    }
+  },
+  "upstream_source_retrievals": [
+    {
+      "name": "LeadingTrimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/LeadingTrimmer.java",
+      "sha256": "b9a85ddd89ec1bd232c56ce27b0bc27314b9ceb1e9359ec786b8c3a201428184"
+    },
+    {
+      "name": "TrailingTrimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TrailingTrimmer.java",
+      "sha256": "1b7c3776405b7cbe2f0cfa6df5a90e4b2de14a1ef56fdc53b1302a7feea174fb"
+    },
+    {
+      "name": "SlidingWindowTrimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/SlidingWindowTrimmer.java",
+      "sha256": "3437e406dac246fdda363576f84b606eefa87602898d8c0c8169c674a2a1e350"
+    },
+    {
+      "name": "HeadCropTrimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/HeadCropTrimmer.java",
+      "sha256": "ba2b3c2eeb6f0b95c25df777b58e93357879e677f777a7b6f70a2b71a9eac40a"
+    },
+    {
+      "name": "TailCropTrimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TailCropTrimmer.java",
+      "sha256": "c2ced8d1b7d7139b4ea33d280dbb2d980ad4c42422b437e718c1672d02c9246c"
+    },
+    {
+      "name": "CropTrimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/CropTrimmer.java",
+      "sha256": "3fcbae9c1f95d372c16d175709381aea1a1719067a77c99b3716bd032a2a990a"
+    },
+    {
+      "name": "MinLenTrimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MinLenTrimmer.java",
+      "sha256": "a79e8fdefdeeebab3049e198319b7ea1483902c615d338c6031facea4d796ad0"
+    },
+    {
+      "name": "MaxLenTrimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaxLenTrimmer.java",
+      "sha256": "e8ac77af979d47ca9dac0580844084fc0df3f8d61208f64b2c925fafa9d26ca7"
+    },
+    {
+      "name": "AvgQualTrimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/AvgQualTrimmer.java",
+      "sha256": "79455a1abdfcb54aba2d78f4d291ee8496cb4a8cd67d212e3d776e20bb5fe13d"
+    },
+    {
+      "name": "BaseCountTrimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/BaseCountTrimmer.java",
+      "sha256": "01bbc9d2fc2efbc1f08901f8d4fa47dbf0595990f9ff5164f5acc26bf8513c8d"
+    },
+    {
+      "name": "MaxInfoTrimmer",
+      "error": "<HTTPError 404: 'Not Found'>"
+    },
+    {
+      "name": "ToPhred33Trimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred33Trimmer.java",
+      "sha256": "5881e6538596f40f8d6233001e7721be3636efeb3d5a7dde570eae4e0ddce3d5"
+    },
+    {
+      "name": "ToPhred64Trimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred64Trimmer.java",
+      "sha256": "b32842063fb2f86fe7e6b9b780142a21b14689b872ff97007cdd1e0ab06462d3"
+    },
+    {
+      "name": "FastqRecord",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/fastq/FastqRecord.java",
+      "sha256": "a29f12ab129a1a983e461ba96e1fc5dcea715e7a234b131c10ba650dd543b148"
+    },
+    {
+      "name": "MaximumInformationTrimmer",
+      "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaximumInformationTrimmer.java",
+      "sha256": "b199595ebc2a2e5ad91722ef340ca59d053058c5295a60113fba120aad9812b8"
+    }
+  ],
+  "packaged_runs": 20,
+  "packaged_checks": 11,
+  "packaged_validation": "trimmomatic-packaged-validation.json",
+  "dependency_evidence": "trimmomatic-dependency-status.json",
+  "recorded_utc": "2026-10-25T03:50:24.675422+00:00",
+  "scope": "Native adapted GPL3-only quality/length/MAXINFO subset; actual original0.39/0.41SE/PE/simple/palindrome clipping, exact read fates/content/logs/summary and missing/old JVM failures. Stock Illumina sequences stay private. No FLASH, quantification,0.32/0.36 or whole-paper parity.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed",
+      "jar_sha256": "faa28146756d077aa691977585fd3349c390f49ff609179a94e355cb13cca667",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/ReadQualityTrimmer.java": "3e1ddf7e5390fa72a49c980d8ce41d1072df09a6b749b27def6cbd187d63b2a1",
+        "src/main/java/org/jlinalg/cli/TrimmomaticToolsCli.java": "2f74354575291462e53c53ded02ffbad69a0490e66d7d0575688894b0fe38039",
+        "src/main/java/org/jlinalg/cli/TrimmomaticRuntime.java": "9584b3741b71e2afd1dec7e4d7da5c57e4b4bfb3b47ba6138ad1a937c4ffdef0"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.ReadQualityTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.ReadQualityTrimmerTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4caf9d539557e24fd438a33327aaebaa4872324b5af710ca6377d0da6719edb4",
+          "testcases": [
+            "invalidParametersEncodingAndUnsupportedLongMaxinfoFailWithoutGuessing()",
+            "nativeResultsMatch4236ActualOriginalStepAndPipelineReferences()",
+            "documentedQualityAndOrderedWindowBoundariesHaveIndependentKnownValues()",
+            "explicitCropCapsAndMateSpecificSettingsUseOriginalCoordinateSpans()"
+          ]
+        },
+        "org.jlinalg.cli.TrimmomaticToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimmomaticToolsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b017ac5115b51fb9a339da452f6440a6ec81e200d0f6de821c64a572c4c9c2ed",
+          "testcases": [
+            "nativePairsPreserveAllFourFatesAndWarnAboutOrphans()",
+            "original039And041MatchNativePairsHeadersSpansAndSummary()",
+            "missingRuntimeSkipsBeforeOpeningInputsWithActionableRecovery()",
+            "singleEndHeadCropThenPhredConversionMatchesBothProgramsAndRetainsAllFilteredWarning()",
+            "maxinfoPipelineMatchesBothActualProgramsAndDoesNotReduceLongInputsSilently()",
+            "duplicateHeadersRemainDistinctAndPairSlotEncodingPipelineMistakesFail()",
+            "outputEncodingRangeAndOldJavaVersionGivePreciseFailureOrSkip()",
+            "originalSimpleAdapterAndPalindromeModesRecoverIndependentSyntheticInsertTruth()"
+          ]
+        }
+      },
+      "tests": 12,
+      "native_operations": 13,
+      "actual_original_step_cases": 4236,
+      "versions": [
+        "0.39",
+        "0.41"
+      ],
+      "reference_reproduction": {
+        "status": "passed",
+        "error": null,
+        "steps": [
+          {
+            "name": "compile",
+            "command": [
+              "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\javac.EXE",
+              "--release",
+              "17",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\TrimmomaticReference.java"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.39",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.39\\trimmomatic-0.39.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.39.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.41",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.41\\trimmomatic-0.41.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.41.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "results": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          }
+        },
+        "writer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "java_executable": "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+        "java_executable_sha256": "5808527e3dfc4eb285c7664ba356bc267055ef906e83ed4660d9f7976da7349b",
+        "recorded_utc": "2026-10-25T03:43:31.214024+00:00",
+        "scope": "Actual original step objects and frozen synthetic cases; no JLinAlg expected-output formula, adapters or patient data. A missing runtime/compiler skips reproduction until supplied; no scientific success inferred."
+      },
+      "reproducer_sha256": "d2150071961c80ff99868381a64002389d1e5f42f1bb831842e70c36eb6862af",
+      "reference_provenance": {
+        "cases": 2118,
+        "observed_cases_across_two_versions": 4236,
+        "case_seed": 18743,
+        "source": "Original unmodified Trimmomatic step objects through tools/literature/TrimmomaticReference.java; no JLinAlg result formula used for expected outputs",
+        "reproducer_java": "tools/literature/TrimmomaticReference.java",
+        "reproducer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "original_versions": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f"
+          }
+        },
+        "logical_phred_offsets": [
+          33,
+          64
+        ],
+        "scope": "Synthetic positive-length DNA/IUPAC reads, native quality/length/MAXINFO subset and ordered pipelines including mate-specific crop,Phred conversion,upper/lowercase N and1000-base boundaries. No adapter sequences or patient data bundled.",
+        "files": {
+          "cases-provenance.json": "54efd10d05b9287f3dca5a73cfd63f781598ca353c73a98f04ec30f51e1985d2",
+          "cases.tsv": "59fd259ce4654ccf3d25fd7e73af0fed52dc5086e02399298ed33479ed04b2e0",
+          "reference-0.39.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf",
+          "reference-0.41.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+        }
+      },
+      "upstream_source_retrievals": [
+        {
+          "name": "LeadingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/LeadingTrimmer.java",
+          "sha256": "b9a85ddd89ec1bd232c56ce27b0bc27314b9ceb1e9359ec786b8c3a201428184"
+        },
+        {
+          "name": "TrailingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TrailingTrimmer.java",
+          "sha256": "1b7c3776405b7cbe2f0cfa6df5a90e4b2de14a1ef56fdc53b1302a7feea174fb"
+        },
+        {
+          "name": "SlidingWindowTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/SlidingWindowTrimmer.java",
+          "sha256": "3437e406dac246fdda363576f84b606eefa87602898d8c0c8169c674a2a1e350"
+        },
+        {
+          "name": "HeadCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/HeadCropTrimmer.java",
+          "sha256": "ba2b3c2eeb6f0b95c25df777b58e93357879e677f777a7b6f70a2b71a9eac40a"
+        },
+        {
+          "name": "TailCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TailCropTrimmer.java",
+          "sha256": "c2ced8d1b7d7139b4ea33d280dbb2d980ad4c42422b437e718c1672d02c9246c"
+        },
+        {
+          "name": "CropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/CropTrimmer.java",
+          "sha256": "3fcbae9c1f95d372c16d175709381aea1a1719067a77c99b3716bd032a2a990a"
+        },
+        {
+          "name": "MinLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MinLenTrimmer.java",
+          "sha256": "a79e8fdefdeeebab3049e198319b7ea1483902c615d338c6031facea4d796ad0"
+        },
+        {
+          "name": "MaxLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaxLenTrimmer.java",
+          "sha256": "e8ac77af979d47ca9dac0580844084fc0df3f8d61208f64b2c925fafa9d26ca7"
+        },
+        {
+          "name": "AvgQualTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/AvgQualTrimmer.java",
+          "sha256": "79455a1abdfcb54aba2d78f4d291ee8496cb4a8cd67d212e3d776e20bb5fe13d"
+        },
+        {
+          "name": "BaseCountTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/BaseCountTrimmer.java",
+          "sha256": "01bbc9d2fc2efbc1f08901f8d4fa47dbf0595990f9ff5164f5acc26bf8513c8d"
+        },
+        {
+          "name": "MaxInfoTrimmer",
+          "error": "<HTTPError 404: 'Not Found'>"
+        },
+        {
+          "name": "ToPhred33Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred33Trimmer.java",
+          "sha256": "5881e6538596f40f8d6233001e7721be3636efeb3d5a7dde570eae4e0ddce3d5"
+        },
+        {
+          "name": "ToPhred64Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred64Trimmer.java",
+          "sha256": "b32842063fb2f86fe7e6b9b780142a21b14689b872ff97007cdd1e0ab06462d3"
+        },
+        {
+          "name": "FastqRecord",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/fastq/FastqRecord.java",
+          "sha256": "a29f12ab129a1a983e461ba96e1fc5dcea715e7a234b131c10ba650dd543b148"
+        },
+        {
+          "name": "MaximumInformationTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaximumInformationTrimmer.java",
+          "sha256": "b199595ebc2a2e5ad91722ef340ca59d053058c5295a60113fba120aad9812b8"
+        }
+      ],
+      "packaged_runs": 20,
+      "packaged_checks": 11,
+      "packaged_validation": "trimmomatic-packaged-validation.json",
+      "dependency_evidence": "trimmomatic-dependency-status.json",
+      "recorded_utc": "2026-10-25T03:50:24.675422+00:00",
+      "scope": "Native adapted GPL3-only quality/length/MAXINFO subset; actual original0.39/0.41SE/PE/simple/palindrome clipping, exact read fates/content/logs/summary and missing/old JVM failures. Stock Illumina sequences stay private. No FLASH, quantification,0.32/0.36 or whole-paper parity."
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "68a623dc455abf0608f50ca5977a44cd3c6d0db6489f8db726569675c46abdc2",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/ReadQualityTrimmer.java": "3e1ddf7e5390fa72a49c980d8ce41d1072df09a6b749b27def6cbd187d63b2a1",
+        "src/main/java/org/jlinalg/cli/TrimmomaticToolsCli.java": "2f74354575291462e53c53ded02ffbad69a0490e66d7d0575688894b0fe38039",
+        "src/main/java/org/jlinalg/cli/TrimmomaticRuntime.java": "9584b3741b71e2afd1dec7e4d7da5c57e4b4bfb3b47ba6138ad1a937c4ffdef0"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.ReadQualityTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.ReadQualityTrimmerTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d31c580148d44dad6e19ec1ef8043f0e1463f23915d4585b49276e62819b7b81",
+          "testcases": [
+            "invalidParametersEncodingAndUnsupportedLongMaxinfoFailWithoutGuessing()",
+            "nativeResultsMatch4236ActualOriginalStepAndPipelineReferences()",
+            "documentedQualityAndOrderedWindowBoundariesHaveIndependentKnownValues()",
+            "explicitCropCapsAndMateSpecificSettingsUseOriginalCoordinateSpans()"
+          ]
+        },
+        "org.jlinalg.cli.TrimmomaticToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimmomaticToolsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a42846f1637ecc5616a4661ddb06c25b1fd48629c53b92c46e254274302027c3",
+          "testcases": [
+            "nativePairsPreserveAllFourFatesAndWarnAboutOrphans()",
+            "original039And041MatchNativePairsHeadersSpansAndSummary()",
+            "missingRuntimeSkipsBeforeOpeningInputsWithActionableRecovery()",
+            "singleEndHeadCropThenPhredConversionMatchesBothProgramsAndRetainsAllFilteredWarning()",
+            "maxinfoPipelineMatchesBothActualProgramsAndDoesNotReduceLongInputsSilently()",
+            "duplicateHeadersRemainDistinctAndPairSlotEncodingPipelineMistakesFail()",
+            "outputEncodingRangeAndOldJavaVersionGivePreciseFailureOrSkip()",
+            "originalSimpleAdapterAndPalindromeModesRecoverIndependentSyntheticInsertTruth()"
+          ]
+        }
+      },
+      "tests": 12,
+      "native_operations": 13,
+      "actual_original_step_cases": 4236,
+      "versions": [
+        "0.39",
+        "0.41"
+      ],
+      "reference_reproduction": {
+        "status": "passed",
+        "error": null,
+        "steps": [
+          {
+            "name": "compile",
+            "command": [
+              "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\javac.EXE",
+              "--release",
+              "17",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\TrimmomaticReference.java"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.39",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.39\\trimmomatic-0.39.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.39.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.41",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.41\\trimmomatic-0.41.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.41.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "results": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          }
+        },
+        "writer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "java_executable": "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+        "java_executable_sha256": "5808527e3dfc4eb285c7664ba356bc267055ef906e83ed4660d9f7976da7349b",
+        "recorded_utc": "2026-10-25T03:43:31.214024+00:00",
+        "scope": "Actual original step objects and frozen synthetic cases; no JLinAlg expected-output formula, adapters or patient data. A missing runtime/compiler skips reproduction until supplied; no scientific success inferred."
+      },
+      "reproducer_sha256": "d2150071961c80ff99868381a64002389d1e5f42f1bb831842e70c36eb6862af",
+      "reference_provenance": {
+        "cases": 2118,
+        "observed_cases_across_two_versions": 4236,
+        "case_seed": 18743,
+        "source": "Original unmodified Trimmomatic step objects through tools/literature/TrimmomaticReference.java; no JLinAlg result formula used for expected outputs",
+        "reproducer_java": "tools/literature/TrimmomaticReference.java",
+        "reproducer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "original_versions": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f"
+          }
+        },
+        "logical_phred_offsets": [
+          33,
+          64
+        ],
+        "scope": "Synthetic positive-length DNA/IUPAC reads, native quality/length/MAXINFO subset and ordered pipelines including mate-specific crop,Phred conversion,upper/lowercase N and1000-base boundaries. No adapter sequences or patient data bundled.",
+        "files": {
+          "cases-provenance.json": "54efd10d05b9287f3dca5a73cfd63f781598ca353c73a98f04ec30f51e1985d2",
+          "cases.tsv": "59fd259ce4654ccf3d25fd7e73af0fed52dc5086e02399298ed33479ed04b2e0",
+          "reference-0.39.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf",
+          "reference-0.41.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+        }
+      },
+      "upstream_source_retrievals": [
+        {
+          "name": "LeadingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/LeadingTrimmer.java",
+          "sha256": "b9a85ddd89ec1bd232c56ce27b0bc27314b9ceb1e9359ec786b8c3a201428184"
+        },
+        {
+          "name": "TrailingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TrailingTrimmer.java",
+          "sha256": "1b7c3776405b7cbe2f0cfa6df5a90e4b2de14a1ef56fdc53b1302a7feea174fb"
+        },
+        {
+          "name": "SlidingWindowTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/SlidingWindowTrimmer.java",
+          "sha256": "3437e406dac246fdda363576f84b606eefa87602898d8c0c8169c674a2a1e350"
+        },
+        {
+          "name": "HeadCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/HeadCropTrimmer.java",
+          "sha256": "ba2b3c2eeb6f0b95c25df777b58e93357879e677f777a7b6f70a2b71a9eac40a"
+        },
+        {
+          "name": "TailCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TailCropTrimmer.java",
+          "sha256": "c2ced8d1b7d7139b4ea33d280dbb2d980ad4c42422b437e718c1672d02c9246c"
+        },
+        {
+          "name": "CropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/CropTrimmer.java",
+          "sha256": "3fcbae9c1f95d372c16d175709381aea1a1719067a77c99b3716bd032a2a990a"
+        },
+        {
+          "name": "MinLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MinLenTrimmer.java",
+          "sha256": "a79e8fdefdeeebab3049e198319b7ea1483902c615d338c6031facea4d796ad0"
+        },
+        {
+          "name": "MaxLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaxLenTrimmer.java",
+          "sha256": "e8ac77af979d47ca9dac0580844084fc0df3f8d61208f64b2c925fafa9d26ca7"
+        },
+        {
+          "name": "AvgQualTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/AvgQualTrimmer.java",
+          "sha256": "79455a1abdfcb54aba2d78f4d291ee8496cb4a8cd67d212e3d776e20bb5fe13d"
+        },
+        {
+          "name": "BaseCountTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/BaseCountTrimmer.java",
+          "sha256": "01bbc9d2fc2efbc1f08901f8d4fa47dbf0595990f9ff5164f5acc26bf8513c8d"
+        },
+        {
+          "name": "MaxInfoTrimmer",
+          "error": "<HTTPError 404: 'Not Found'>"
+        },
+        {
+          "name": "ToPhred33Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred33Trimmer.java",
+          "sha256": "5881e6538596f40f8d6233001e7721be3636efeb3d5a7dde570eae4e0ddce3d5"
+        },
+        {
+          "name": "ToPhred64Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred64Trimmer.java",
+          "sha256": "b32842063fb2f86fe7e6b9b780142a21b14689b872ff97007cdd1e0ab06462d3"
+        },
+        {
+          "name": "FastqRecord",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/fastq/FastqRecord.java",
+          "sha256": "a29f12ab129a1a983e461ba96e1fc5dcea715e7a234b131c10ba650dd543b148"
+        },
+        {
+          "name": "MaximumInformationTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaximumInformationTrimmer.java",
+          "sha256": "b199595ebc2a2e5ad91722ef340ca59d053058c5295a60113fba120aad9812b8"
+        }
+      ],
+      "packaged_runs": 20,
+      "packaged_checks": 11,
+      "packaged_validation": "trimmomatic-packaged-validation.json",
+      "dependency_evidence": "trimmomatic-dependency-status.json",
+      "recorded_utc": "2026-10-25T03:50:24.675422+00:00",
+      "scope": "Native adapted GPL3-only quality/length/MAXINFO subset; actual original0.39/0.41SE/PE/simple/palindrome clipping, exact read fates/content/logs/summary and missing/old JVM failures. Stock Illumina sequences stay private. No FLASH, quantification,0.32/0.36 or whole-paper parity.",
+      "refreshed_utc": "2026-10-25T05:28:16.019770+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "6ff7cc767bc62f2489947a34fbf3bc99129e4d444242eb217294764587c7e491",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/ReadQualityTrimmer.java": "3e1ddf7e5390fa72a49c980d8ce41d1072df09a6b749b27def6cbd187d63b2a1",
+        "src/main/java/org/jlinalg/cli/TrimmomaticToolsCli.java": "2f74354575291462e53c53ded02ffbad69a0490e66d7d0575688894b0fe38039",
+        "src/main/java/org/jlinalg/cli/TrimmomaticRuntime.java": "9584b3741b71e2afd1dec7e4d7da5c57e4b4bfb3b47ba6138ad1a937c4ffdef0"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.ReadQualityTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.ReadQualityTrimmerTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d7f7b7a500a62133a5f4dd8e4ca7f77f5ed95b1a29f9a08823bbc57b9cef3170",
+          "testcases": [
+            "invalidParametersEncodingAndUnsupportedLongMaxinfoFailWithoutGuessing()",
+            "nativeResultsMatch4236ActualOriginalStepAndPipelineReferences()",
+            "documentedQualityAndOrderedWindowBoundariesHaveIndependentKnownValues()",
+            "explicitCropCapsAndMateSpecificSettingsUseOriginalCoordinateSpans()"
+          ]
+        },
+        "org.jlinalg.cli.TrimmomaticToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimmomaticToolsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "acee2c515db81e97a6924b7980f4e0a46d46f17adcf65971e4226e3182da7854",
+          "testcases": [
+            "nativePairsPreserveAllFourFatesAndWarnAboutOrphans()",
+            "original039And041MatchNativePairsHeadersSpansAndSummary()",
+            "missingRuntimeSkipsBeforeOpeningInputsWithActionableRecovery()",
+            "singleEndHeadCropThenPhredConversionMatchesBothProgramsAndRetainsAllFilteredWarning()",
+            "maxinfoPipelineMatchesBothActualProgramsAndDoesNotReduceLongInputsSilently()",
+            "duplicateHeadersRemainDistinctAndPairSlotEncodingPipelineMistakesFail()",
+            "outputEncodingRangeAndOldJavaVersionGivePreciseFailureOrSkip()",
+            "originalSimpleAdapterAndPalindromeModesRecoverIndependentSyntheticInsertTruth()"
+          ]
+        }
+      },
+      "tests": 12,
+      "native_operations": 13,
+      "actual_original_step_cases": 4236,
+      "versions": [
+        "0.39",
+        "0.41"
+      ],
+      "reference_reproduction": {
+        "status": "passed",
+        "error": null,
+        "steps": [
+          {
+            "name": "compile",
+            "command": [
+              "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\javac.EXE",
+              "--release",
+              "17",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\TrimmomaticReference.java"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.39",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.39\\trimmomatic-0.39.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.39.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.41",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.41\\trimmomatic-0.41.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.41.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "results": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          }
+        },
+        "writer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "java_executable": "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+        "java_executable_sha256": "5808527e3dfc4eb285c7664ba356bc267055ef906e83ed4660d9f7976da7349b",
+        "recorded_utc": "2026-10-25T03:43:31.214024+00:00",
+        "scope": "Actual original step objects and frozen synthetic cases; no JLinAlg expected-output formula, adapters or patient data. A missing runtime/compiler skips reproduction until supplied; no scientific success inferred."
+      },
+      "reproducer_sha256": "d2150071961c80ff99868381a64002389d1e5f42f1bb831842e70c36eb6862af",
+      "reference_provenance": {
+        "cases": 2118,
+        "observed_cases_across_two_versions": 4236,
+        "case_seed": 18743,
+        "source": "Original unmodified Trimmomatic step objects through tools/literature/TrimmomaticReference.java; no JLinAlg result formula used for expected outputs",
+        "reproducer_java": "tools/literature/TrimmomaticReference.java",
+        "reproducer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "original_versions": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f"
+          }
+        },
+        "logical_phred_offsets": [
+          33,
+          64
+        ],
+        "scope": "Synthetic positive-length DNA/IUPAC reads, native quality/length/MAXINFO subset and ordered pipelines including mate-specific crop,Phred conversion,upper/lowercase N and1000-base boundaries. No adapter sequences or patient data bundled.",
+        "files": {
+          "cases-provenance.json": "54efd10d05b9287f3dca5a73cfd63f781598ca353c73a98f04ec30f51e1985d2",
+          "cases.tsv": "59fd259ce4654ccf3d25fd7e73af0fed52dc5086e02399298ed33479ed04b2e0",
+          "reference-0.39.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf",
+          "reference-0.41.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+        }
+      },
+      "upstream_source_retrievals": [
+        {
+          "name": "LeadingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/LeadingTrimmer.java",
+          "sha256": "b9a85ddd89ec1bd232c56ce27b0bc27314b9ceb1e9359ec786b8c3a201428184"
+        },
+        {
+          "name": "TrailingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TrailingTrimmer.java",
+          "sha256": "1b7c3776405b7cbe2f0cfa6df5a90e4b2de14a1ef56fdc53b1302a7feea174fb"
+        },
+        {
+          "name": "SlidingWindowTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/SlidingWindowTrimmer.java",
+          "sha256": "3437e406dac246fdda363576f84b606eefa87602898d8c0c8169c674a2a1e350"
+        },
+        {
+          "name": "HeadCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/HeadCropTrimmer.java",
+          "sha256": "ba2b3c2eeb6f0b95c25df777b58e93357879e677f777a7b6f70a2b71a9eac40a"
+        },
+        {
+          "name": "TailCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TailCropTrimmer.java",
+          "sha256": "c2ced8d1b7d7139b4ea33d280dbb2d980ad4c42422b437e718c1672d02c9246c"
+        },
+        {
+          "name": "CropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/CropTrimmer.java",
+          "sha256": "3fcbae9c1f95d372c16d175709381aea1a1719067a77c99b3716bd032a2a990a"
+        },
+        {
+          "name": "MinLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MinLenTrimmer.java",
+          "sha256": "a79e8fdefdeeebab3049e198319b7ea1483902c615d338c6031facea4d796ad0"
+        },
+        {
+          "name": "MaxLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaxLenTrimmer.java",
+          "sha256": "e8ac77af979d47ca9dac0580844084fc0df3f8d61208f64b2c925fafa9d26ca7"
+        },
+        {
+          "name": "AvgQualTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/AvgQualTrimmer.java",
+          "sha256": "79455a1abdfcb54aba2d78f4d291ee8496cb4a8cd67d212e3d776e20bb5fe13d"
+        },
+        {
+          "name": "BaseCountTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/BaseCountTrimmer.java",
+          "sha256": "01bbc9d2fc2efbc1f08901f8d4fa47dbf0595990f9ff5164f5acc26bf8513c8d"
+        },
+        {
+          "name": "MaxInfoTrimmer",
+          "error": "<HTTPError 404: 'Not Found'>"
+        },
+        {
+          "name": "ToPhred33Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred33Trimmer.java",
+          "sha256": "5881e6538596f40f8d6233001e7721be3636efeb3d5a7dde570eae4e0ddce3d5"
+        },
+        {
+          "name": "ToPhred64Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred64Trimmer.java",
+          "sha256": "b32842063fb2f86fe7e6b9b780142a21b14689b872ff97007cdd1e0ab06462d3"
+        },
+        {
+          "name": "FastqRecord",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/fastq/FastqRecord.java",
+          "sha256": "a29f12ab129a1a983e461ba96e1fc5dcea715e7a234b131c10ba650dd543b148"
+        },
+        {
+          "name": "MaximumInformationTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaximumInformationTrimmer.java",
+          "sha256": "b199595ebc2a2e5ad91722ef340ca59d053058c5295a60113fba120aad9812b8"
+        }
+      ],
+      "packaged_runs": 20,
+      "packaged_checks": 11,
+      "packaged_validation": "trimmomatic-packaged-validation.json",
+      "dependency_evidence": "trimmomatic-dependency-status.json",
+      "recorded_utc": "2026-10-25T03:50:24.675422+00:00",
+      "scope": "Native adapted GPL3-only quality/length/MAXINFO subset; actual original0.39/0.41SE/PE/simple/palindrome clipping, exact read fates/content/logs/summary and missing/old JVM failures. Stock Illumina sequences stay private. No FLASH, quantification,0.32/0.36 or whole-paper parity.",
+      "refreshed_utc": "2026-10-25T06:53:04.578303+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "53399f4be52ad5bb882f5acfea53d5a2a037ac80a6e93d1f7d7fdbc118051860",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/ReadQualityTrimmer.java": "3e1ddf7e5390fa72a49c980d8ce41d1072df09a6b749b27def6cbd187d63b2a1",
+        "src/main/java/org/jlinalg/cli/TrimmomaticToolsCli.java": "2f74354575291462e53c53ded02ffbad69a0490e66d7d0575688894b0fe38039",
+        "src/main/java/org/jlinalg/cli/TrimmomaticRuntime.java": "9584b3741b71e2afd1dec7e4d7da5c57e4b4bfb3b47ba6138ad1a937c4ffdef0"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.ReadQualityTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.ReadQualityTrimmerTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ac7e96a5a5d4a78885d473e4a37ae868305d44807af624b1362e4bd799e015ac",
+          "testcases": [
+            "invalidParametersEncodingAndUnsupportedLongMaxinfoFailWithoutGuessing()",
+            "nativeResultsMatch4236ActualOriginalStepAndPipelineReferences()",
+            "documentedQualityAndOrderedWindowBoundariesHaveIndependentKnownValues()",
+            "explicitCropCapsAndMateSpecificSettingsUseOriginalCoordinateSpans()"
+          ]
+        },
+        "org.jlinalg.cli.TrimmomaticToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimmomaticToolsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "af8f0eb7b8b0da7d48ac075257676c2b15ea95ee08e8108acbfc035c77dcd8a7",
+          "testcases": [
+            "nativePairsPreserveAllFourFatesAndWarnAboutOrphans()",
+            "original039And041MatchNativePairsHeadersSpansAndSummary()",
+            "missingRuntimeSkipsBeforeOpeningInputsWithActionableRecovery()",
+            "singleEndHeadCropThenPhredConversionMatchesBothProgramsAndRetainsAllFilteredWarning()",
+            "maxinfoPipelineMatchesBothActualProgramsAndDoesNotReduceLongInputsSilently()",
+            "duplicateHeadersRemainDistinctAndPairSlotEncodingPipelineMistakesFail()",
+            "outputEncodingRangeAndOldJavaVersionGivePreciseFailureOrSkip()",
+            "originalSimpleAdapterAndPalindromeModesRecoverIndependentSyntheticInsertTruth()"
+          ]
+        }
+      },
+      "tests": 12,
+      "native_operations": 13,
+      "actual_original_step_cases": 4236,
+      "versions": [
+        "0.39",
+        "0.41"
+      ],
+      "reference_reproduction": {
+        "status": "passed",
+        "error": null,
+        "steps": [
+          {
+            "name": "compile",
+            "command": [
+              "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\javac.EXE",
+              "--release",
+              "17",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\TrimmomaticReference.java"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.39",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.39\\trimmomatic-0.39.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.39.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.41",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.41\\trimmomatic-0.41.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.41.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "results": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          }
+        },
+        "writer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "java_executable": "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+        "java_executable_sha256": "5808527e3dfc4eb285c7664ba356bc267055ef906e83ed4660d9f7976da7349b",
+        "recorded_utc": "2026-10-25T03:43:31.214024+00:00",
+        "scope": "Actual original step objects and frozen synthetic cases; no JLinAlg expected-output formula, adapters or patient data. A missing runtime/compiler skips reproduction until supplied; no scientific success inferred."
+      },
+      "reproducer_sha256": "d2150071961c80ff99868381a64002389d1e5f42f1bb831842e70c36eb6862af",
+      "reference_provenance": {
+        "cases": 2118,
+        "observed_cases_across_two_versions": 4236,
+        "case_seed": 18743,
+        "source": "Original unmodified Trimmomatic step objects through tools/literature/TrimmomaticReference.java; no JLinAlg result formula used for expected outputs",
+        "reproducer_java": "tools/literature/TrimmomaticReference.java",
+        "reproducer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "original_versions": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f"
+          }
+        },
+        "logical_phred_offsets": [
+          33,
+          64
+        ],
+        "scope": "Synthetic positive-length DNA/IUPAC reads, native quality/length/MAXINFO subset and ordered pipelines including mate-specific crop,Phred conversion,upper/lowercase N and1000-base boundaries. No adapter sequences or patient data bundled.",
+        "files": {
+          "cases-provenance.json": "54efd10d05b9287f3dca5a73cfd63f781598ca353c73a98f04ec30f51e1985d2",
+          "cases.tsv": "59fd259ce4654ccf3d25fd7e73af0fed52dc5086e02399298ed33479ed04b2e0",
+          "reference-0.39.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf",
+          "reference-0.41.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+        }
+      },
+      "upstream_source_retrievals": [
+        {
+          "name": "LeadingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/LeadingTrimmer.java",
+          "sha256": "b9a85ddd89ec1bd232c56ce27b0bc27314b9ceb1e9359ec786b8c3a201428184"
+        },
+        {
+          "name": "TrailingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TrailingTrimmer.java",
+          "sha256": "1b7c3776405b7cbe2f0cfa6df5a90e4b2de14a1ef56fdc53b1302a7feea174fb"
+        },
+        {
+          "name": "SlidingWindowTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/SlidingWindowTrimmer.java",
+          "sha256": "3437e406dac246fdda363576f84b606eefa87602898d8c0c8169c674a2a1e350"
+        },
+        {
+          "name": "HeadCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/HeadCropTrimmer.java",
+          "sha256": "ba2b3c2eeb6f0b95c25df777b58e93357879e677f777a7b6f70a2b71a9eac40a"
+        },
+        {
+          "name": "TailCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TailCropTrimmer.java",
+          "sha256": "c2ced8d1b7d7139b4ea33d280dbb2d980ad4c42422b437e718c1672d02c9246c"
+        },
+        {
+          "name": "CropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/CropTrimmer.java",
+          "sha256": "3fcbae9c1f95d372c16d175709381aea1a1719067a77c99b3716bd032a2a990a"
+        },
+        {
+          "name": "MinLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MinLenTrimmer.java",
+          "sha256": "a79e8fdefdeeebab3049e198319b7ea1483902c615d338c6031facea4d796ad0"
+        },
+        {
+          "name": "MaxLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaxLenTrimmer.java",
+          "sha256": "e8ac77af979d47ca9dac0580844084fc0df3f8d61208f64b2c925fafa9d26ca7"
+        },
+        {
+          "name": "AvgQualTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/AvgQualTrimmer.java",
+          "sha256": "79455a1abdfcb54aba2d78f4d291ee8496cb4a8cd67d212e3d776e20bb5fe13d"
+        },
+        {
+          "name": "BaseCountTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/BaseCountTrimmer.java",
+          "sha256": "01bbc9d2fc2efbc1f08901f8d4fa47dbf0595990f9ff5164f5acc26bf8513c8d"
+        },
+        {
+          "name": "MaxInfoTrimmer",
+          "error": "<HTTPError 404: 'Not Found'>"
+        },
+        {
+          "name": "ToPhred33Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred33Trimmer.java",
+          "sha256": "5881e6538596f40f8d6233001e7721be3636efeb3d5a7dde570eae4e0ddce3d5"
+        },
+        {
+          "name": "ToPhred64Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred64Trimmer.java",
+          "sha256": "b32842063fb2f86fe7e6b9b780142a21b14689b872ff97007cdd1e0ab06462d3"
+        },
+        {
+          "name": "FastqRecord",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/fastq/FastqRecord.java",
+          "sha256": "a29f12ab129a1a983e461ba96e1fc5dcea715e7a234b131c10ba650dd543b148"
+        },
+        {
+          "name": "MaximumInformationTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaximumInformationTrimmer.java",
+          "sha256": "b199595ebc2a2e5ad91722ef340ca59d053058c5295a60113fba120aad9812b8"
+        }
+      ],
+      "packaged_runs": 20,
+      "packaged_checks": 11,
+      "packaged_validation": "trimmomatic-packaged-validation.json",
+      "dependency_evidence": "trimmomatic-dependency-status.json",
+      "recorded_utc": "2026-10-25T03:50:24.675422+00:00",
+      "scope": "Native adapted GPL3-only quality/length/MAXINFO subset; actual original0.39/0.41SE/PE/simple/palindrome clipping, exact read fates/content/logs/summary and missing/old JVM failures. Stock Illumina sequences stay private. No FLASH, quantification,0.32/0.36 or whole-paper parity.",
+      "refreshed_utc": "2026-10-25T08:02:41.668775+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/ReadQualityTrimmer.java": "3e1ddf7e5390fa72a49c980d8ce41d1072df09a6b749b27def6cbd187d63b2a1",
+        "src/main/java/org/jlinalg/cli/TrimmomaticToolsCli.java": "2f74354575291462e53c53ded02ffbad69a0490e66d7d0575688894b0fe38039",
+        "src/main/java/org/jlinalg/cli/TrimmomaticRuntime.java": "9584b3741b71e2afd1dec7e4d7da5c57e4b4bfb3b47ba6138ad1a937c4ffdef0"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.ReadQualityTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.ReadQualityTrimmerTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4c4d02f1d8496a23c5ca50b0d01c8e177376f87f56ab5a43a6565434d3e0949e",
+          "testcases": [
+            "invalidParametersEncodingAndUnsupportedLongMaxinfoFailWithoutGuessing()",
+            "nativeResultsMatch4236ActualOriginalStepAndPipelineReferences()",
+            "documentedQualityAndOrderedWindowBoundariesHaveIndependentKnownValues()",
+            "explicitCropCapsAndMateSpecificSettingsUseOriginalCoordinateSpans()"
+          ]
+        },
+        "org.jlinalg.cli.TrimmomaticToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimmomaticToolsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "00c237788c64ee97d9b7b2944e030e50e4d3d07464f29d9d799a45d0113c2dd6",
+          "testcases": [
+            "nativePairsPreserveAllFourFatesAndWarnAboutOrphans()",
+            "original039And041MatchNativePairsHeadersSpansAndSummary()",
+            "missingRuntimeSkipsBeforeOpeningInputsWithActionableRecovery()",
+            "singleEndHeadCropThenPhredConversionMatchesBothProgramsAndRetainsAllFilteredWarning()",
+            "maxinfoPipelineMatchesBothActualProgramsAndDoesNotReduceLongInputsSilently()",
+            "duplicateHeadersRemainDistinctAndPairSlotEncodingPipelineMistakesFail()",
+            "outputEncodingRangeAndOldJavaVersionGivePreciseFailureOrSkip()",
+            "originalSimpleAdapterAndPalindromeModesRecoverIndependentSyntheticInsertTruth()"
+          ]
+        }
+      },
+      "tests": 12,
+      "native_operations": 13,
+      "actual_original_step_cases": 4236,
+      "versions": [
+        "0.39",
+        "0.41"
+      ],
+      "reference_reproduction": {
+        "status": "passed",
+        "error": null,
+        "steps": [
+          {
+            "name": "compile",
+            "command": [
+              "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\javac.EXE",
+              "--release",
+              "17",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\TrimmomaticReference.java"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.39",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.39\\trimmomatic-0.39.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.39.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.41",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.41\\trimmomatic-0.41.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.41.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "results": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          }
+        },
+        "writer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "java_executable": "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+        "java_executable_sha256": "5808527e3dfc4eb285c7664ba356bc267055ef906e83ed4660d9f7976da7349b",
+        "recorded_utc": "2026-10-25T03:43:31.214024+00:00",
+        "scope": "Actual original step objects and frozen synthetic cases; no JLinAlg expected-output formula, adapters or patient data. A missing runtime/compiler skips reproduction until supplied; no scientific success inferred."
+      },
+      "reproducer_sha256": "d2150071961c80ff99868381a64002389d1e5f42f1bb831842e70c36eb6862af",
+      "reference_provenance": {
+        "cases": 2118,
+        "observed_cases_across_two_versions": 4236,
+        "case_seed": 18743,
+        "source": "Original unmodified Trimmomatic step objects through tools/literature/TrimmomaticReference.java; no JLinAlg result formula used for expected outputs",
+        "reproducer_java": "tools/literature/TrimmomaticReference.java",
+        "reproducer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "original_versions": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f"
+          }
+        },
+        "logical_phred_offsets": [
+          33,
+          64
+        ],
+        "scope": "Synthetic positive-length DNA/IUPAC reads, native quality/length/MAXINFO subset and ordered pipelines including mate-specific crop,Phred conversion,upper/lowercase N and1000-base boundaries. No adapter sequences or patient data bundled.",
+        "files": {
+          "cases-provenance.json": "54efd10d05b9287f3dca5a73cfd63f781598ca353c73a98f04ec30f51e1985d2",
+          "cases.tsv": "59fd259ce4654ccf3d25fd7e73af0fed52dc5086e02399298ed33479ed04b2e0",
+          "reference-0.39.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf",
+          "reference-0.41.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+        }
+      },
+      "upstream_source_retrievals": [
+        {
+          "name": "LeadingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/LeadingTrimmer.java",
+          "sha256": "b9a85ddd89ec1bd232c56ce27b0bc27314b9ceb1e9359ec786b8c3a201428184"
+        },
+        {
+          "name": "TrailingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TrailingTrimmer.java",
+          "sha256": "1b7c3776405b7cbe2f0cfa6df5a90e4b2de14a1ef56fdc53b1302a7feea174fb"
+        },
+        {
+          "name": "SlidingWindowTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/SlidingWindowTrimmer.java",
+          "sha256": "3437e406dac246fdda363576f84b606eefa87602898d8c0c8169c674a2a1e350"
+        },
+        {
+          "name": "HeadCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/HeadCropTrimmer.java",
+          "sha256": "ba2b3c2eeb6f0b95c25df777b58e93357879e677f777a7b6f70a2b71a9eac40a"
+        },
+        {
+          "name": "TailCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TailCropTrimmer.java",
+          "sha256": "c2ced8d1b7d7139b4ea33d280dbb2d980ad4c42422b437e718c1672d02c9246c"
+        },
+        {
+          "name": "CropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/CropTrimmer.java",
+          "sha256": "3fcbae9c1f95d372c16d175709381aea1a1719067a77c99b3716bd032a2a990a"
+        },
+        {
+          "name": "MinLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MinLenTrimmer.java",
+          "sha256": "a79e8fdefdeeebab3049e198319b7ea1483902c615d338c6031facea4d796ad0"
+        },
+        {
+          "name": "MaxLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaxLenTrimmer.java",
+          "sha256": "e8ac77af979d47ca9dac0580844084fc0df3f8d61208f64b2c925fafa9d26ca7"
+        },
+        {
+          "name": "AvgQualTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/AvgQualTrimmer.java",
+          "sha256": "79455a1abdfcb54aba2d78f4d291ee8496cb4a8cd67d212e3d776e20bb5fe13d"
+        },
+        {
+          "name": "BaseCountTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/BaseCountTrimmer.java",
+          "sha256": "01bbc9d2fc2efbc1f08901f8d4fa47dbf0595990f9ff5164f5acc26bf8513c8d"
+        },
+        {
+          "name": "MaxInfoTrimmer",
+          "error": "<HTTPError 404: 'Not Found'>"
+        },
+        {
+          "name": "ToPhred33Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred33Trimmer.java",
+          "sha256": "5881e6538596f40f8d6233001e7721be3636efeb3d5a7dde570eae4e0ddce3d5"
+        },
+        {
+          "name": "ToPhred64Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred64Trimmer.java",
+          "sha256": "b32842063fb2f86fe7e6b9b780142a21b14689b872ff97007cdd1e0ab06462d3"
+        },
+        {
+          "name": "FastqRecord",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/fastq/FastqRecord.java",
+          "sha256": "a29f12ab129a1a983e461ba96e1fc5dcea715e7a234b131c10ba650dd543b148"
+        },
+        {
+          "name": "MaximumInformationTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaximumInformationTrimmer.java",
+          "sha256": "b199595ebc2a2e5ad91722ef340ca59d053058c5295a60113fba120aad9812b8"
+        }
+      ],
+      "packaged_runs": 20,
+      "packaged_checks": 11,
+      "packaged_validation": "trimmomatic-packaged-validation.json",
+      "dependency_evidence": "trimmomatic-dependency-status.json",
+      "recorded_utc": "2026-10-25T03:50:24.675422+00:00",
+      "scope": "Native adapted GPL3-only quality/length/MAXINFO subset; actual original0.39/0.41SE/PE/simple/palindrome clipping, exact read fates/content/logs/summary and missing/old JVM failures. Stock Illumina sequences stay private. No FLASH, quantification,0.32/0.36 or whole-paper parity.",
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/ReadQualityTrimmer.java": "3e1ddf7e5390fa72a49c980d8ce41d1072df09a6b749b27def6cbd187d63b2a1",
+        "src/main/java/org/jlinalg/cli/TrimmomaticToolsCli.java": "2f74354575291462e53c53ded02ffbad69a0490e66d7d0575688894b0fe38039",
+        "src/main/java/org/jlinalg/cli/TrimmomaticRuntime.java": "9584b3741b71e2afd1dec7e4d7da5c57e4b4bfb3b47ba6138ad1a937c4ffdef0"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.ReadQualityTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.ReadQualityTrimmerTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "bf24e8a015df17d8e6389181bd6c818dfdbbfcc049325b272535728f43b89223",
+          "testcases": [
+            "invalidParametersEncodingAndUnsupportedLongMaxinfoFailWithoutGuessing()",
+            "nativeResultsMatch4236ActualOriginalStepAndPipelineReferences()",
+            "documentedQualityAndOrderedWindowBoundariesHaveIndependentKnownValues()",
+            "explicitCropCapsAndMateSpecificSettingsUseOriginalCoordinateSpans()"
+          ]
+        },
+        "org.jlinalg.cli.TrimmomaticToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimmomaticToolsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e184bba9c9ff0b4848c26ae32ddd20c293cbf4764da98f7cececc4434d809db9",
+          "testcases": [
+            "nativePairsPreserveAllFourFatesAndWarnAboutOrphans()",
+            "original039And041MatchNativePairsHeadersSpansAndSummary()",
+            "missingRuntimeSkipsBeforeOpeningInputsWithActionableRecovery()",
+            "singleEndHeadCropThenPhredConversionMatchesBothProgramsAndRetainsAllFilteredWarning()",
+            "maxinfoPipelineMatchesBothActualProgramsAndDoesNotReduceLongInputsSilently()",
+            "duplicateHeadersRemainDistinctAndPairSlotEncodingPipelineMistakesFail()",
+            "outputEncodingRangeAndOldJavaVersionGivePreciseFailureOrSkip()",
+            "originalSimpleAdapterAndPalindromeModesRecoverIndependentSyntheticInsertTruth()"
+          ]
+        }
+      },
+      "tests": 12,
+      "native_operations": 13,
+      "actual_original_step_cases": 4236,
+      "versions": [
+        "0.39",
+        "0.41"
+      ],
+      "reference_reproduction": {
+        "status": "passed",
+        "error": null,
+        "steps": [
+          {
+            "name": "compile",
+            "command": [
+              "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\javac.EXE",
+              "--release",
+              "17",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\TrimmomaticReference.java"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.39",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.39\\trimmomatic-0.39.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.39.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.41",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.41\\trimmomatic-0.41.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.41.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "results": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          }
+        },
+        "writer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "java_executable": "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+        "java_executable_sha256": "5808527e3dfc4eb285c7664ba356bc267055ef906e83ed4660d9f7976da7349b",
+        "recorded_utc": "2026-10-25T03:43:31.214024+00:00",
+        "scope": "Actual original step objects and frozen synthetic cases; no JLinAlg expected-output formula, adapters or patient data. A missing runtime/compiler skips reproduction until supplied; no scientific success inferred."
+      },
+      "reproducer_sha256": "d2150071961c80ff99868381a64002389d1e5f42f1bb831842e70c36eb6862af",
+      "reference_provenance": {
+        "cases": 2118,
+        "observed_cases_across_two_versions": 4236,
+        "case_seed": 18743,
+        "source": "Original unmodified Trimmomatic step objects through tools/literature/TrimmomaticReference.java; no JLinAlg result formula used for expected outputs",
+        "reproducer_java": "tools/literature/TrimmomaticReference.java",
+        "reproducer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "original_versions": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f"
+          }
+        },
+        "logical_phred_offsets": [
+          33,
+          64
+        ],
+        "scope": "Synthetic positive-length DNA/IUPAC reads, native quality/length/MAXINFO subset and ordered pipelines including mate-specific crop,Phred conversion,upper/lowercase N and1000-base boundaries. No adapter sequences or patient data bundled.",
+        "files": {
+          "cases-provenance.json": "54efd10d05b9287f3dca5a73cfd63f781598ca353c73a98f04ec30f51e1985d2",
+          "cases.tsv": "59fd259ce4654ccf3d25fd7e73af0fed52dc5086e02399298ed33479ed04b2e0",
+          "reference-0.39.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf",
+          "reference-0.41.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+        }
+      },
+      "upstream_source_retrievals": [
+        {
+          "name": "LeadingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/LeadingTrimmer.java",
+          "sha256": "b9a85ddd89ec1bd232c56ce27b0bc27314b9ceb1e9359ec786b8c3a201428184"
+        },
+        {
+          "name": "TrailingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TrailingTrimmer.java",
+          "sha256": "1b7c3776405b7cbe2f0cfa6df5a90e4b2de14a1ef56fdc53b1302a7feea174fb"
+        },
+        {
+          "name": "SlidingWindowTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/SlidingWindowTrimmer.java",
+          "sha256": "3437e406dac246fdda363576f84b606eefa87602898d8c0c8169c674a2a1e350"
+        },
+        {
+          "name": "HeadCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/HeadCropTrimmer.java",
+          "sha256": "ba2b3c2eeb6f0b95c25df777b58e93357879e677f777a7b6f70a2b71a9eac40a"
+        },
+        {
+          "name": "TailCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TailCropTrimmer.java",
+          "sha256": "c2ced8d1b7d7139b4ea33d280dbb2d980ad4c42422b437e718c1672d02c9246c"
+        },
+        {
+          "name": "CropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/CropTrimmer.java",
+          "sha256": "3fcbae9c1f95d372c16d175709381aea1a1719067a77c99b3716bd032a2a990a"
+        },
+        {
+          "name": "MinLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MinLenTrimmer.java",
+          "sha256": "a79e8fdefdeeebab3049e198319b7ea1483902c615d338c6031facea4d796ad0"
+        },
+        {
+          "name": "MaxLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaxLenTrimmer.java",
+          "sha256": "e8ac77af979d47ca9dac0580844084fc0df3f8d61208f64b2c925fafa9d26ca7"
+        },
+        {
+          "name": "AvgQualTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/AvgQualTrimmer.java",
+          "sha256": "79455a1abdfcb54aba2d78f4d291ee8496cb4a8cd67d212e3d776e20bb5fe13d"
+        },
+        {
+          "name": "BaseCountTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/BaseCountTrimmer.java",
+          "sha256": "01bbc9d2fc2efbc1f08901f8d4fa47dbf0595990f9ff5164f5acc26bf8513c8d"
+        },
+        {
+          "name": "MaxInfoTrimmer",
+          "error": "<HTTPError 404: 'Not Found'>"
+        },
+        {
+          "name": "ToPhred33Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred33Trimmer.java",
+          "sha256": "5881e6538596f40f8d6233001e7721be3636efeb3d5a7dde570eae4e0ddce3d5"
+        },
+        {
+          "name": "ToPhred64Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred64Trimmer.java",
+          "sha256": "b32842063fb2f86fe7e6b9b780142a21b14689b872ff97007cdd1e0ab06462d3"
+        },
+        {
+          "name": "FastqRecord",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/fastq/FastqRecord.java",
+          "sha256": "a29f12ab129a1a983e461ba96e1fc5dcea715e7a234b131c10ba650dd543b148"
+        },
+        {
+          "name": "MaximumInformationTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaximumInformationTrimmer.java",
+          "sha256": "b199595ebc2a2e5ad91722ef340ca59d053058c5295a60113fba120aad9812b8"
+        }
+      ],
+      "packaged_runs": 20,
+      "packaged_checks": 11,
+      "packaged_validation": "trimmomatic-packaged-validation.json",
+      "dependency_evidence": "trimmomatic-dependency-status.json",
+      "recorded_utc": "2026-10-25T03:50:24.675422+00:00",
+      "scope": "Native adapted GPL3-only quality/length/MAXINFO subset; actual original0.39/0.41SE/PE/simple/palindrome clipping, exact read fates/content/logs/summary and missing/old JVM failures. Stock Illumina sequences stay private. No FLASH, quantification,0.32/0.36 or whole-paper parity.",
+      "refreshed_utc": "2026-10-25T10:07:59.705580+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/ReadQualityTrimmer.java": "3e1ddf7e5390fa72a49c980d8ce41d1072df09a6b749b27def6cbd187d63b2a1",
+        "src/main/java/org/jlinalg/cli/TrimmomaticToolsCli.java": "2f74354575291462e53c53ded02ffbad69a0490e66d7d0575688894b0fe38039",
+        "src/main/java/org/jlinalg/cli/TrimmomaticRuntime.java": "9584b3741b71e2afd1dec7e4d7da5c57e4b4bfb3b47ba6138ad1a937c4ffdef0"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.ReadQualityTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.ReadQualityTrimmerTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a5ac5adf9b45238fcf19b52b6bc6de92089e3b99cce9c628bb1facd5a7def7d2",
+          "testcases": [
+            "invalidParametersEncodingAndUnsupportedLongMaxinfoFailWithoutGuessing()",
+            "nativeResultsMatch4236ActualOriginalStepAndPipelineReferences()",
+            "documentedQualityAndOrderedWindowBoundariesHaveIndependentKnownValues()",
+            "explicitCropCapsAndMateSpecificSettingsUseOriginalCoordinateSpans()"
+          ]
+        },
+        "org.jlinalg.cli.TrimmomaticToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimmomaticToolsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3afdadf7432d29b7dd990ea466b764f8bc582a9cf2a06b6a140b1abaf03fff6c",
+          "testcases": [
+            "nativePairsPreserveAllFourFatesAndWarnAboutOrphans()",
+            "original039And041MatchNativePairsHeadersSpansAndSummary()",
+            "missingRuntimeSkipsBeforeOpeningInputsWithActionableRecovery()",
+            "singleEndHeadCropThenPhredConversionMatchesBothProgramsAndRetainsAllFilteredWarning()",
+            "maxinfoPipelineMatchesBothActualProgramsAndDoesNotReduceLongInputsSilently()",
+            "duplicateHeadersRemainDistinctAndPairSlotEncodingPipelineMistakesFail()",
+            "outputEncodingRangeAndOldJavaVersionGivePreciseFailureOrSkip()",
+            "originalSimpleAdapterAndPalindromeModesRecoverIndependentSyntheticInsertTruth()"
+          ]
+        }
+      },
+      "tests": 12,
+      "native_operations": 13,
+      "actual_original_step_cases": 4236,
+      "versions": [
+        "0.39",
+        "0.41"
+      ],
+      "reference_reproduction": {
+        "status": "passed",
+        "error": null,
+        "steps": [
+          {
+            "name": "compile",
+            "command": [
+              "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\javac.EXE",
+              "--release",
+              "17",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\TrimmomaticReference.java"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.39",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.39\\trimmomatic-0.39.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.39.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.41",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.41\\trimmomatic-0.41.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.41.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "results": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          }
+        },
+        "writer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "java_executable": "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+        "java_executable_sha256": "5808527e3dfc4eb285c7664ba356bc267055ef906e83ed4660d9f7976da7349b",
+        "recorded_utc": "2026-10-25T03:43:31.214024+00:00",
+        "scope": "Actual original step objects and frozen synthetic cases; no JLinAlg expected-output formula, adapters or patient data. A missing runtime/compiler skips reproduction until supplied; no scientific success inferred."
+      },
+      "reproducer_sha256": "d2150071961c80ff99868381a64002389d1e5f42f1bb831842e70c36eb6862af",
+      "reference_provenance": {
+        "cases": 2118,
+        "observed_cases_across_two_versions": 4236,
+        "case_seed": 18743,
+        "source": "Original unmodified Trimmomatic step objects through tools/literature/TrimmomaticReference.java; no JLinAlg result formula used for expected outputs",
+        "reproducer_java": "tools/literature/TrimmomaticReference.java",
+        "reproducer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "original_versions": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f"
+          }
+        },
+        "logical_phred_offsets": [
+          33,
+          64
+        ],
+        "scope": "Synthetic positive-length DNA/IUPAC reads, native quality/length/MAXINFO subset and ordered pipelines including mate-specific crop,Phred conversion,upper/lowercase N and1000-base boundaries. No adapter sequences or patient data bundled.",
+        "files": {
+          "cases-provenance.json": "54efd10d05b9287f3dca5a73cfd63f781598ca353c73a98f04ec30f51e1985d2",
+          "cases.tsv": "59fd259ce4654ccf3d25fd7e73af0fed52dc5086e02399298ed33479ed04b2e0",
+          "reference-0.39.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf",
+          "reference-0.41.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+        }
+      },
+      "upstream_source_retrievals": [
+        {
+          "name": "LeadingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/LeadingTrimmer.java",
+          "sha256": "b9a85ddd89ec1bd232c56ce27b0bc27314b9ceb1e9359ec786b8c3a201428184"
+        },
+        {
+          "name": "TrailingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TrailingTrimmer.java",
+          "sha256": "1b7c3776405b7cbe2f0cfa6df5a90e4b2de14a1ef56fdc53b1302a7feea174fb"
+        },
+        {
+          "name": "SlidingWindowTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/SlidingWindowTrimmer.java",
+          "sha256": "3437e406dac246fdda363576f84b606eefa87602898d8c0c8169c674a2a1e350"
+        },
+        {
+          "name": "HeadCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/HeadCropTrimmer.java",
+          "sha256": "ba2b3c2eeb6f0b95c25df777b58e93357879e677f777a7b6f70a2b71a9eac40a"
+        },
+        {
+          "name": "TailCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TailCropTrimmer.java",
+          "sha256": "c2ced8d1b7d7139b4ea33d280dbb2d980ad4c42422b437e718c1672d02c9246c"
+        },
+        {
+          "name": "CropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/CropTrimmer.java",
+          "sha256": "3fcbae9c1f95d372c16d175709381aea1a1719067a77c99b3716bd032a2a990a"
+        },
+        {
+          "name": "MinLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MinLenTrimmer.java",
+          "sha256": "a79e8fdefdeeebab3049e198319b7ea1483902c615d338c6031facea4d796ad0"
+        },
+        {
+          "name": "MaxLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaxLenTrimmer.java",
+          "sha256": "e8ac77af979d47ca9dac0580844084fc0df3f8d61208f64b2c925fafa9d26ca7"
+        },
+        {
+          "name": "AvgQualTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/AvgQualTrimmer.java",
+          "sha256": "79455a1abdfcb54aba2d78f4d291ee8496cb4a8cd67d212e3d776e20bb5fe13d"
+        },
+        {
+          "name": "BaseCountTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/BaseCountTrimmer.java",
+          "sha256": "01bbc9d2fc2efbc1f08901f8d4fa47dbf0595990f9ff5164f5acc26bf8513c8d"
+        },
+        {
+          "name": "MaxInfoTrimmer",
+          "error": "<HTTPError 404: 'Not Found'>"
+        },
+        {
+          "name": "ToPhred33Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred33Trimmer.java",
+          "sha256": "5881e6538596f40f8d6233001e7721be3636efeb3d5a7dde570eae4e0ddce3d5"
+        },
+        {
+          "name": "ToPhred64Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred64Trimmer.java",
+          "sha256": "b32842063fb2f86fe7e6b9b780142a21b14689b872ff97007cdd1e0ab06462d3"
+        },
+        {
+          "name": "FastqRecord",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/fastq/FastqRecord.java",
+          "sha256": "a29f12ab129a1a983e461ba96e1fc5dcea715e7a234b131c10ba650dd543b148"
+        },
+        {
+          "name": "MaximumInformationTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaximumInformationTrimmer.java",
+          "sha256": "b199595ebc2a2e5ad91722ef340ca59d053058c5295a60113fba120aad9812b8"
+        }
+      ],
+      "packaged_runs": 20,
+      "packaged_checks": 11,
+      "packaged_validation": "trimmomatic-packaged-validation.json",
+      "dependency_evidence": "trimmomatic-dependency-status.json",
+      "recorded_utc": "2026-10-25T03:50:24.675422+00:00",
+      "scope": "Native adapted GPL3-only quality/length/MAXINFO subset; actual original0.39/0.41SE/PE/simple/palindrome clipping, exact read fates/content/logs/summary and missing/old JVM failures. Stock Illumina sequences stay private. No FLASH, quantification,0.32/0.36 or whole-paper parity.",
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/ReadQualityTrimmer.java": "3e1ddf7e5390fa72a49c980d8ce41d1072df09a6b749b27def6cbd187d63b2a1",
+        "src/main/java/org/jlinalg/cli/TrimmomaticToolsCli.java": "2f74354575291462e53c53ded02ffbad69a0490e66d7d0575688894b0fe38039",
+        "src/main/java/org/jlinalg/cli/TrimmomaticRuntime.java": "9584b3741b71e2afd1dec7e4d7da5c57e4b4bfb3b47ba6138ad1a937c4ffdef0"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.ReadQualityTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.ReadQualityTrimmerTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "262d0add6e4f5a8972c53eb3916e19f884af24d51959cbffee9510d73d4e74a2",
+          "testcases": [
+            "invalidParametersEncodingAndUnsupportedLongMaxinfoFailWithoutGuessing()",
+            "nativeResultsMatch4236ActualOriginalStepAndPipelineReferences()",
+            "documentedQualityAndOrderedWindowBoundariesHaveIndependentKnownValues()",
+            "explicitCropCapsAndMateSpecificSettingsUseOriginalCoordinateSpans()"
+          ]
+        },
+        "org.jlinalg.cli.TrimmomaticToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimmomaticToolsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "80f46ea91097baade46ec6ebd2c68fb7e11fb4abc331e14a40574a81f0dd7818",
+          "testcases": [
+            "nativePairsPreserveAllFourFatesAndWarnAboutOrphans()",
+            "original039And041MatchNativePairsHeadersSpansAndSummary()",
+            "missingRuntimeSkipsBeforeOpeningInputsWithActionableRecovery()",
+            "singleEndHeadCropThenPhredConversionMatchesBothProgramsAndRetainsAllFilteredWarning()",
+            "maxinfoPipelineMatchesBothActualProgramsAndDoesNotReduceLongInputsSilently()",
+            "duplicateHeadersRemainDistinctAndPairSlotEncodingPipelineMistakesFail()",
+            "outputEncodingRangeAndOldJavaVersionGivePreciseFailureOrSkip()",
+            "originalSimpleAdapterAndPalindromeModesRecoverIndependentSyntheticInsertTruth()"
+          ]
+        }
+      },
+      "tests": 12,
+      "native_operations": 13,
+      "actual_original_step_cases": 4236,
+      "versions": [
+        "0.39",
+        "0.41"
+      ],
+      "reference_reproduction": {
+        "status": "passed",
+        "error": null,
+        "steps": [
+          {
+            "name": "compile",
+            "command": [
+              "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\javac.EXE",
+              "--release",
+              "17",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\TrimmomaticReference.java"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.39",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.39\\trimmomatic-0.39.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.39.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.41",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.41\\trimmomatic-0.41.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.41.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "results": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          }
+        },
+        "writer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "java_executable": "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+        "java_executable_sha256": "5808527e3dfc4eb285c7664ba356bc267055ef906e83ed4660d9f7976da7349b",
+        "recorded_utc": "2026-10-25T03:43:31.214024+00:00",
+        "scope": "Actual original step objects and frozen synthetic cases; no JLinAlg expected-output formula, adapters or patient data. A missing runtime/compiler skips reproduction until supplied; no scientific success inferred."
+      },
+      "reproducer_sha256": "d2150071961c80ff99868381a64002389d1e5f42f1bb831842e70c36eb6862af",
+      "reference_provenance": {
+        "cases": 2118,
+        "observed_cases_across_two_versions": 4236,
+        "case_seed": 18743,
+        "source": "Original unmodified Trimmomatic step objects through tools/literature/TrimmomaticReference.java; no JLinAlg result formula used for expected outputs",
+        "reproducer_java": "tools/literature/TrimmomaticReference.java",
+        "reproducer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "original_versions": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f"
+          }
+        },
+        "logical_phred_offsets": [
+          33,
+          64
+        ],
+        "scope": "Synthetic positive-length DNA/IUPAC reads, native quality/length/MAXINFO subset and ordered pipelines including mate-specific crop,Phred conversion,upper/lowercase N and1000-base boundaries. No adapter sequences or patient data bundled.",
+        "files": {
+          "cases-provenance.json": "54efd10d05b9287f3dca5a73cfd63f781598ca353c73a98f04ec30f51e1985d2",
+          "cases.tsv": "59fd259ce4654ccf3d25fd7e73af0fed52dc5086e02399298ed33479ed04b2e0",
+          "reference-0.39.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf",
+          "reference-0.41.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+        }
+      },
+      "upstream_source_retrievals": [
+        {
+          "name": "LeadingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/LeadingTrimmer.java",
+          "sha256": "b9a85ddd89ec1bd232c56ce27b0bc27314b9ceb1e9359ec786b8c3a201428184"
+        },
+        {
+          "name": "TrailingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TrailingTrimmer.java",
+          "sha256": "1b7c3776405b7cbe2f0cfa6df5a90e4b2de14a1ef56fdc53b1302a7feea174fb"
+        },
+        {
+          "name": "SlidingWindowTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/SlidingWindowTrimmer.java",
+          "sha256": "3437e406dac246fdda363576f84b606eefa87602898d8c0c8169c674a2a1e350"
+        },
+        {
+          "name": "HeadCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/HeadCropTrimmer.java",
+          "sha256": "ba2b3c2eeb6f0b95c25df777b58e93357879e677f777a7b6f70a2b71a9eac40a"
+        },
+        {
+          "name": "TailCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TailCropTrimmer.java",
+          "sha256": "c2ced8d1b7d7139b4ea33d280dbb2d980ad4c42422b437e718c1672d02c9246c"
+        },
+        {
+          "name": "CropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/CropTrimmer.java",
+          "sha256": "3fcbae9c1f95d372c16d175709381aea1a1719067a77c99b3716bd032a2a990a"
+        },
+        {
+          "name": "MinLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MinLenTrimmer.java",
+          "sha256": "a79e8fdefdeeebab3049e198319b7ea1483902c615d338c6031facea4d796ad0"
+        },
+        {
+          "name": "MaxLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaxLenTrimmer.java",
+          "sha256": "e8ac77af979d47ca9dac0580844084fc0df3f8d61208f64b2c925fafa9d26ca7"
+        },
+        {
+          "name": "AvgQualTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/AvgQualTrimmer.java",
+          "sha256": "79455a1abdfcb54aba2d78f4d291ee8496cb4a8cd67d212e3d776e20bb5fe13d"
+        },
+        {
+          "name": "BaseCountTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/BaseCountTrimmer.java",
+          "sha256": "01bbc9d2fc2efbc1f08901f8d4fa47dbf0595990f9ff5164f5acc26bf8513c8d"
+        },
+        {
+          "name": "MaxInfoTrimmer",
+          "error": "<HTTPError 404: 'Not Found'>"
+        },
+        {
+          "name": "ToPhred33Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred33Trimmer.java",
+          "sha256": "5881e6538596f40f8d6233001e7721be3636efeb3d5a7dde570eae4e0ddce3d5"
+        },
+        {
+          "name": "ToPhred64Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred64Trimmer.java",
+          "sha256": "b32842063fb2f86fe7e6b9b780142a21b14689b872ff97007cdd1e0ab06462d3"
+        },
+        {
+          "name": "FastqRecord",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/fastq/FastqRecord.java",
+          "sha256": "a29f12ab129a1a983e461ba96e1fc5dcea715e7a234b131c10ba650dd543b148"
+        },
+        {
+          "name": "MaximumInformationTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaximumInformationTrimmer.java",
+          "sha256": "b199595ebc2a2e5ad91722ef340ca59d053058c5295a60113fba120aad9812b8"
+        }
+      ],
+      "packaged_runs": 20,
+      "packaged_checks": 11,
+      "packaged_validation": "trimmomatic-packaged-validation.json",
+      "dependency_evidence": "trimmomatic-dependency-status.json",
+      "recorded_utc": "2026-10-25T03:50:24.675422+00:00",
+      "scope": "Native adapted GPL3-only quality/length/MAXINFO subset; actual original0.39/0.41SE/PE/simple/palindrome clipping, exact read fates/content/logs/summary and missing/old JVM failures. Stock Illumina sequences stay private. No FLASH, quantification,0.32/0.36 or whole-paper parity.",
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00"
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/ReadQualityTrimmer.java": "3e1ddf7e5390fa72a49c980d8ce41d1072df09a6b749b27def6cbd187d63b2a1",
+        "src/main/java/org/jlinalg/cli/TrimmomaticToolsCli.java": "2f74354575291462e53c53ded02ffbad69a0490e66d7d0575688894b0fe38039",
+        "src/main/java/org/jlinalg/cli/TrimmomaticRuntime.java": "9584b3741b71e2afd1dec7e4d7da5c57e4b4bfb3b47ba6138ad1a937c4ffdef0"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.ReadQualityTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.ReadQualityTrimmerTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "2473b8fed94aca4e0c0560ad11bf3b7a9e5e64f9ad1b3503cf005cd13bc7ba2a",
+          "testcases": [
+            "invalidParametersEncodingAndUnsupportedLongMaxinfoFailWithoutGuessing()",
+            "nativeResultsMatch4236ActualOriginalStepAndPipelineReferences()",
+            "documentedQualityAndOrderedWindowBoundariesHaveIndependentKnownValues()",
+            "explicitCropCapsAndMateSpecificSettingsUseOriginalCoordinateSpans()"
+          ]
+        },
+        "org.jlinalg.cli.TrimmomaticToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimmomaticToolsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "11281d7df80c9922da362c0a29ce18224e5677df9705e4b9f32b55b569a66158",
+          "testcases": [
+            "nativePairsPreserveAllFourFatesAndWarnAboutOrphans()",
+            "original039And041MatchNativePairsHeadersSpansAndSummary()",
+            "missingRuntimeSkipsBeforeOpeningInputsWithActionableRecovery()",
+            "singleEndHeadCropThenPhredConversionMatchesBothProgramsAndRetainsAllFilteredWarning()",
+            "maxinfoPipelineMatchesBothActualProgramsAndDoesNotReduceLongInputsSilently()",
+            "duplicateHeadersRemainDistinctAndPairSlotEncodingPipelineMistakesFail()",
+            "outputEncodingRangeAndOldJavaVersionGivePreciseFailureOrSkip()",
+            "originalSimpleAdapterAndPalindromeModesRecoverIndependentSyntheticInsertTruth()"
+          ]
+        }
+      },
+      "tests": 12,
+      "native_operations": 13,
+      "actual_original_step_cases": 4236,
+      "versions": [
+        "0.39",
+        "0.41"
+      ],
+      "reference_reproduction": {
+        "status": "passed",
+        "error": null,
+        "steps": [
+          {
+            "name": "compile",
+            "command": [
+              "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\javac.EXE",
+              "--release",
+              "17",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\TrimmomaticReference.java"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.39",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.39\\trimmomatic-0.39.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.39.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.41",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.41\\trimmomatic-0.41.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.41.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "results": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          }
+        },
+        "writer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "java_executable": "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+        "java_executable_sha256": "5808527e3dfc4eb285c7664ba356bc267055ef906e83ed4660d9f7976da7349b",
+        "recorded_utc": "2026-10-25T03:43:31.214024+00:00",
+        "scope": "Actual original step objects and frozen synthetic cases; no JLinAlg expected-output formula, adapters or patient data. A missing runtime/compiler skips reproduction until supplied; no scientific success inferred."
+      },
+      "reproducer_sha256": "d2150071961c80ff99868381a64002389d1e5f42f1bb831842e70c36eb6862af",
+      "reference_provenance": {
+        "cases": 2118,
+        "observed_cases_across_two_versions": 4236,
+        "case_seed": 18743,
+        "source": "Original unmodified Trimmomatic step objects through tools/literature/TrimmomaticReference.java; no JLinAlg result formula used for expected outputs",
+        "reproducer_java": "tools/literature/TrimmomaticReference.java",
+        "reproducer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "original_versions": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f"
+          }
+        },
+        "logical_phred_offsets": [
+          33,
+          64
+        ],
+        "scope": "Synthetic positive-length DNA/IUPAC reads, native quality/length/MAXINFO subset and ordered pipelines including mate-specific crop,Phred conversion,upper/lowercase N and1000-base boundaries. No adapter sequences or patient data bundled.",
+        "files": {
+          "cases-provenance.json": "54efd10d05b9287f3dca5a73cfd63f781598ca353c73a98f04ec30f51e1985d2",
+          "cases.tsv": "59fd259ce4654ccf3d25fd7e73af0fed52dc5086e02399298ed33479ed04b2e0",
+          "reference-0.39.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf",
+          "reference-0.41.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+        }
+      },
+      "upstream_source_retrievals": [
+        {
+          "name": "LeadingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/LeadingTrimmer.java",
+          "sha256": "b9a85ddd89ec1bd232c56ce27b0bc27314b9ceb1e9359ec786b8c3a201428184"
+        },
+        {
+          "name": "TrailingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TrailingTrimmer.java",
+          "sha256": "1b7c3776405b7cbe2f0cfa6df5a90e4b2de14a1ef56fdc53b1302a7feea174fb"
+        },
+        {
+          "name": "SlidingWindowTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/SlidingWindowTrimmer.java",
+          "sha256": "3437e406dac246fdda363576f84b606eefa87602898d8c0c8169c674a2a1e350"
+        },
+        {
+          "name": "HeadCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/HeadCropTrimmer.java",
+          "sha256": "ba2b3c2eeb6f0b95c25df777b58e93357879e677f777a7b6f70a2b71a9eac40a"
+        },
+        {
+          "name": "TailCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TailCropTrimmer.java",
+          "sha256": "c2ced8d1b7d7139b4ea33d280dbb2d980ad4c42422b437e718c1672d02c9246c"
+        },
+        {
+          "name": "CropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/CropTrimmer.java",
+          "sha256": "3fcbae9c1f95d372c16d175709381aea1a1719067a77c99b3716bd032a2a990a"
+        },
+        {
+          "name": "MinLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MinLenTrimmer.java",
+          "sha256": "a79e8fdefdeeebab3049e198319b7ea1483902c615d338c6031facea4d796ad0"
+        },
+        {
+          "name": "MaxLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaxLenTrimmer.java",
+          "sha256": "e8ac77af979d47ca9dac0580844084fc0df3f8d61208f64b2c925fafa9d26ca7"
+        },
+        {
+          "name": "AvgQualTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/AvgQualTrimmer.java",
+          "sha256": "79455a1abdfcb54aba2d78f4d291ee8496cb4a8cd67d212e3d776e20bb5fe13d"
+        },
+        {
+          "name": "BaseCountTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/BaseCountTrimmer.java",
+          "sha256": "01bbc9d2fc2efbc1f08901f8d4fa47dbf0595990f9ff5164f5acc26bf8513c8d"
+        },
+        {
+          "name": "MaxInfoTrimmer",
+          "error": "<HTTPError 404: 'Not Found'>"
+        },
+        {
+          "name": "ToPhred33Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred33Trimmer.java",
+          "sha256": "5881e6538596f40f8d6233001e7721be3636efeb3d5a7dde570eae4e0ddce3d5"
+        },
+        {
+          "name": "ToPhred64Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred64Trimmer.java",
+          "sha256": "b32842063fb2f86fe7e6b9b780142a21b14689b872ff97007cdd1e0ab06462d3"
+        },
+        {
+          "name": "FastqRecord",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/fastq/FastqRecord.java",
+          "sha256": "a29f12ab129a1a983e461ba96e1fc5dcea715e7a234b131c10ba650dd543b148"
+        },
+        {
+          "name": "MaximumInformationTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaximumInformationTrimmer.java",
+          "sha256": "b199595ebc2a2e5ad91722ef340ca59d053058c5295a60113fba120aad9812b8"
+        }
+      ],
+      "packaged_runs": 20,
+      "packaged_checks": 11,
+      "packaged_validation": "trimmomatic-packaged-validation.json",
+      "dependency_evidence": "trimmomatic-dependency-status.json",
+      "recorded_utc": "2026-10-25T03:50:24.675422+00:00",
+      "scope": "Native adapted GPL3-only quality/length/MAXINFO subset; actual original0.39/0.41SE/PE/simple/palindrome clipping, exact read fates/content/logs/summary and missing/old JVM failures. Stock Illumina sequences stay private. No FLASH, quantification,0.32/0.36 or whole-paper parity.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/ReadQualityTrimmer.java": "3e1ddf7e5390fa72a49c980d8ce41d1072df09a6b749b27def6cbd187d63b2a1",
+        "src/main/java/org/jlinalg/cli/TrimmomaticToolsCli.java": "2f74354575291462e53c53ded02ffbad69a0490e66d7d0575688894b0fe38039",
+        "src/main/java/org/jlinalg/cli/TrimmomaticRuntime.java": "9584b3741b71e2afd1dec7e4d7da5c57e4b4bfb3b47ba6138ad1a937c4ffdef0"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.ReadQualityTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.ReadQualityTrimmerTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7e0803301082dfa0ef6d6f46eacc748797198ff40f68e0dfe04938ac058ae0b0",
+          "testcases": [
+            "invalidParametersEncodingAndUnsupportedLongMaxinfoFailWithoutGuessing()",
+            "nativeResultsMatch4236ActualOriginalStepAndPipelineReferences()",
+            "documentedQualityAndOrderedWindowBoundariesHaveIndependentKnownValues()",
+            "explicitCropCapsAndMateSpecificSettingsUseOriginalCoordinateSpans()"
+          ]
+        },
+        "org.jlinalg.cli.TrimmomaticToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimmomaticToolsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "2b65aec65baa0f5e7e6b79b8348c2d0c0128a2274d054a632d82e97505647885",
+          "testcases": [
+            "nativePairsPreserveAllFourFatesAndWarnAboutOrphans()",
+            "original039And041MatchNativePairsHeadersSpansAndSummary()",
+            "missingRuntimeSkipsBeforeOpeningInputsWithActionableRecovery()",
+            "singleEndHeadCropThenPhredConversionMatchesBothProgramsAndRetainsAllFilteredWarning()",
+            "maxinfoPipelineMatchesBothActualProgramsAndDoesNotReduceLongInputsSilently()",
+            "duplicateHeadersRemainDistinctAndPairSlotEncodingPipelineMistakesFail()",
+            "outputEncodingRangeAndOldJavaVersionGivePreciseFailureOrSkip()",
+            "originalSimpleAdapterAndPalindromeModesRecoverIndependentSyntheticInsertTruth()"
+          ]
+        }
+      },
+      "tests": 12,
+      "native_operations": 13,
+      "actual_original_step_cases": 4236,
+      "versions": [
+        "0.39",
+        "0.41"
+      ],
+      "reference_reproduction": {
+        "status": "passed",
+        "error": null,
+        "steps": [
+          {
+            "name": "compile",
+            "command": [
+              "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\javac.EXE",
+              "--release",
+              "17",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\TrimmomaticReference.java"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.39",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.39\\trimmomatic-0.39.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.39.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.41",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.41\\trimmomatic-0.41.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.41.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "results": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          }
+        },
+        "writer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "java_executable": "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+        "java_executable_sha256": "5808527e3dfc4eb285c7664ba356bc267055ef906e83ed4660d9f7976da7349b",
+        "recorded_utc": "2026-10-25T03:43:31.214024+00:00",
+        "scope": "Actual original step objects and frozen synthetic cases; no JLinAlg expected-output formula, adapters or patient data. A missing runtime/compiler skips reproduction until supplied; no scientific success inferred."
+      },
+      "reproducer_sha256": "d2150071961c80ff99868381a64002389d1e5f42f1bb831842e70c36eb6862af",
+      "reference_provenance": {
+        "cases": 2118,
+        "observed_cases_across_two_versions": 4236,
+        "case_seed": 18743,
+        "source": "Original unmodified Trimmomatic step objects through tools/literature/TrimmomaticReference.java; no JLinAlg result formula used for expected outputs",
+        "reproducer_java": "tools/literature/TrimmomaticReference.java",
+        "reproducer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "original_versions": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f"
+          }
+        },
+        "logical_phred_offsets": [
+          33,
+          64
+        ],
+        "scope": "Synthetic positive-length DNA/IUPAC reads, native quality/length/MAXINFO subset and ordered pipelines including mate-specific crop,Phred conversion,upper/lowercase N and1000-base boundaries. No adapter sequences or patient data bundled.",
+        "files": {
+          "cases-provenance.json": "54efd10d05b9287f3dca5a73cfd63f781598ca353c73a98f04ec30f51e1985d2",
+          "cases.tsv": "59fd259ce4654ccf3d25fd7e73af0fed52dc5086e02399298ed33479ed04b2e0",
+          "reference-0.39.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf",
+          "reference-0.41.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+        }
+      },
+      "upstream_source_retrievals": [
+        {
+          "name": "LeadingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/LeadingTrimmer.java",
+          "sha256": "b9a85ddd89ec1bd232c56ce27b0bc27314b9ceb1e9359ec786b8c3a201428184"
+        },
+        {
+          "name": "TrailingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TrailingTrimmer.java",
+          "sha256": "1b7c3776405b7cbe2f0cfa6df5a90e4b2de14a1ef56fdc53b1302a7feea174fb"
+        },
+        {
+          "name": "SlidingWindowTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/SlidingWindowTrimmer.java",
+          "sha256": "3437e406dac246fdda363576f84b606eefa87602898d8c0c8169c674a2a1e350"
+        },
+        {
+          "name": "HeadCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/HeadCropTrimmer.java",
+          "sha256": "ba2b3c2eeb6f0b95c25df777b58e93357879e677f777a7b6f70a2b71a9eac40a"
+        },
+        {
+          "name": "TailCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TailCropTrimmer.java",
+          "sha256": "c2ced8d1b7d7139b4ea33d280dbb2d980ad4c42422b437e718c1672d02c9246c"
+        },
+        {
+          "name": "CropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/CropTrimmer.java",
+          "sha256": "3fcbae9c1f95d372c16d175709381aea1a1719067a77c99b3716bd032a2a990a"
+        },
+        {
+          "name": "MinLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MinLenTrimmer.java",
+          "sha256": "a79e8fdefdeeebab3049e198319b7ea1483902c615d338c6031facea4d796ad0"
+        },
+        {
+          "name": "MaxLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaxLenTrimmer.java",
+          "sha256": "e8ac77af979d47ca9dac0580844084fc0df3f8d61208f64b2c925fafa9d26ca7"
+        },
+        {
+          "name": "AvgQualTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/AvgQualTrimmer.java",
+          "sha256": "79455a1abdfcb54aba2d78f4d291ee8496cb4a8cd67d212e3d776e20bb5fe13d"
+        },
+        {
+          "name": "BaseCountTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/BaseCountTrimmer.java",
+          "sha256": "01bbc9d2fc2efbc1f08901f8d4fa47dbf0595990f9ff5164f5acc26bf8513c8d"
+        },
+        {
+          "name": "MaxInfoTrimmer",
+          "error": "<HTTPError 404: 'Not Found'>"
+        },
+        {
+          "name": "ToPhred33Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred33Trimmer.java",
+          "sha256": "5881e6538596f40f8d6233001e7721be3636efeb3d5a7dde570eae4e0ddce3d5"
+        },
+        {
+          "name": "ToPhred64Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred64Trimmer.java",
+          "sha256": "b32842063fb2f86fe7e6b9b780142a21b14689b872ff97007cdd1e0ab06462d3"
+        },
+        {
+          "name": "FastqRecord",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/fastq/FastqRecord.java",
+          "sha256": "a29f12ab129a1a983e461ba96e1fc5dcea715e7a234b131c10ba650dd543b148"
+        },
+        {
+          "name": "MaximumInformationTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaximumInformationTrimmer.java",
+          "sha256": "b199595ebc2a2e5ad91722ef340ca59d053058c5295a60113fba120aad9812b8"
+        }
+      ],
+      "packaged_runs": 20,
+      "packaged_checks": 11,
+      "packaged_validation": "trimmomatic-packaged-validation.json",
+      "dependency_evidence": "trimmomatic-dependency-status.json",
+      "recorded_utc": "2026-10-25T03:50:24.675422+00:00",
+      "scope": "Native adapted GPL3-only quality/length/MAXINFO subset; actual original0.39/0.41SE/PE/simple/palindrome clipping, exact read fates/content/logs/summary and missing/old JVM failures. Stock Illumina sequences stay private. No FLASH, quantification,0.32/0.36 or whole-paper parity.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/ReadQualityTrimmer.java": "3e1ddf7e5390fa72a49c980d8ce41d1072df09a6b749b27def6cbd187d63b2a1",
+        "src/main/java/org/jlinalg/cli/TrimmomaticToolsCli.java": "2f74354575291462e53c53ded02ffbad69a0490e66d7d0575688894b0fe38039",
+        "src/main/java/org/jlinalg/cli/TrimmomaticRuntime.java": "9584b3741b71e2afd1dec7e4d7da5c57e4b4bfb3b47ba6138ad1a937c4ffdef0"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.ReadQualityTrimmerTest": {
+          "suite_name": "org.jlinalg.sequence.ReadQualityTrimmerTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f382b66ee5c44cf5d02bb452f162237b4e25548cfc8197ebeb026a15eee863a5",
+          "testcases": [
+            "invalidParametersEncodingAndUnsupportedLongMaxinfoFailWithoutGuessing()",
+            "nativeResultsMatch4236ActualOriginalStepAndPipelineReferences()",
+            "documentedQualityAndOrderedWindowBoundariesHaveIndependentKnownValues()",
+            "explicitCropCapsAndMateSpecificSettingsUseOriginalCoordinateSpans()"
+          ]
+        },
+        "org.jlinalg.cli.TrimmomaticToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.TrimmomaticToolsCliTest",
+          "suite": {
+            "tests": 8,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "986483ba6979527d5a8ac19d66bb94df24f17d77427b7e021f1e5aac4bf4e3d5",
+          "testcases": [
+            "nativePairsPreserveAllFourFatesAndWarnAboutOrphans()",
+            "original039And041MatchNativePairsHeadersSpansAndSummary()",
+            "missingRuntimeSkipsBeforeOpeningInputsWithActionableRecovery()",
+            "singleEndHeadCropThenPhredConversionMatchesBothProgramsAndRetainsAllFilteredWarning()",
+            "maxinfoPipelineMatchesBothActualProgramsAndDoesNotReduceLongInputsSilently()",
+            "duplicateHeadersRemainDistinctAndPairSlotEncodingPipelineMistakesFail()",
+            "outputEncodingRangeAndOldJavaVersionGivePreciseFailureOrSkip()",
+            "originalSimpleAdapterAndPalindromeModesRecoverIndependentSyntheticInsertTruth()"
+          ]
+        }
+      },
+      "tests": 12,
+      "native_operations": 13,
+      "actual_original_step_cases": 4236,
+      "versions": [
+        "0.39",
+        "0.41"
+      ],
+      "reference_reproduction": {
+        "status": "passed",
+        "error": null,
+        "steps": [
+          {
+            "name": "compile",
+            "command": [
+              "C:\\Program Files\\Common Files\\Oracle\\Java\\javapath\\javac.EXE",
+              "--release",
+              "17",
+              "-d",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "D:\\projects\\JLinAlg\\tools\\literature\\TrimmomaticReference.java"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.39",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.39\\trimmomatic-0.39.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.39.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "name": "0.41",
+            "command": [
+              "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+              "-cp",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\classes",
+              "TrimmomaticReference",
+              "D:\\projects\\JLinAlg\\build\\omics-trimmomatic\\0.41\\trimmomatic-0.41.jar",
+              "D:\\projects\\JLinAlg\\src\\test\\resources\\trimmomatic\\cases.tsv",
+              "D:\\projects\\JLinAlg\\build\\literature-review\\track-trimming-runtime\\reproduced-references\\reference-0.41.tsv"
+            ],
+            "exit_code": 0,
+            "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "results": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f",
+            "case_count": 2118,
+            "output_sha256": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+          }
+        },
+        "writer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "java_executable": "D:\\projects\\JLinAlg\\build\\omics-java25\\bin\\java.exe",
+        "java_executable_sha256": "5808527e3dfc4eb285c7664ba356bc267055ef906e83ed4660d9f7976da7349b",
+        "recorded_utc": "2026-10-25T03:43:31.214024+00:00",
+        "scope": "Actual original step objects and frozen synthetic cases; no JLinAlg expected-output formula, adapters or patient data. A missing runtime/compiler skips reproduction until supplied; no scientific success inferred."
+      },
+      "reproducer_sha256": "d2150071961c80ff99868381a64002389d1e5f42f1bb831842e70c36eb6862af",
+      "reference_provenance": {
+        "cases": 2118,
+        "observed_cases_across_two_versions": 4236,
+        "case_seed": 18743,
+        "source": "Original unmodified Trimmomatic step objects through tools/literature/TrimmomaticReference.java; no JLinAlg result formula used for expected outputs",
+        "reproducer_java": "tools/literature/TrimmomaticReference.java",
+        "reproducer_sha256": "a8814a2bc99f9671d11c35620ea84a2e4e2432779efcba4c973412c9cc84142e",
+        "original_versions": {
+          "0.39": {
+            "jar_sha256": "95681299ca2099a24095103c7d9b52041f2c1cab87e7f73735be3560c2e967a3"
+          },
+          "0.41": {
+            "jar_sha256": "63382643321833f844ebe6099cfd95d9cb653832d9624d793b8643d6bb56793f"
+          }
+        },
+        "logical_phred_offsets": [
+          33,
+          64
+        ],
+        "scope": "Synthetic positive-length DNA/IUPAC reads, native quality/length/MAXINFO subset and ordered pipelines including mate-specific crop,Phred conversion,upper/lowercase N and1000-base boundaries. No adapter sequences or patient data bundled.",
+        "files": {
+          "cases-provenance.json": "54efd10d05b9287f3dca5a73cfd63f781598ca353c73a98f04ec30f51e1985d2",
+          "cases.tsv": "59fd259ce4654ccf3d25fd7e73af0fed52dc5086e02399298ed33479ed04b2e0",
+          "reference-0.39.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf",
+          "reference-0.41.tsv": "a6d5b1010143f526150bc1f441e9bfe00d2cf9db610b044158263d00c42306bf"
+        }
+      },
+      "upstream_source_retrievals": [
+        {
+          "name": "LeadingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/LeadingTrimmer.java",
+          "sha256": "b9a85ddd89ec1bd232c56ce27b0bc27314b9ceb1e9359ec786b8c3a201428184"
+        },
+        {
+          "name": "TrailingTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TrailingTrimmer.java",
+          "sha256": "1b7c3776405b7cbe2f0cfa6df5a90e4b2de14a1ef56fdc53b1302a7feea174fb"
+        },
+        {
+          "name": "SlidingWindowTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/SlidingWindowTrimmer.java",
+          "sha256": "3437e406dac246fdda363576f84b606eefa87602898d8c0c8169c674a2a1e350"
+        },
+        {
+          "name": "HeadCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/HeadCropTrimmer.java",
+          "sha256": "ba2b3c2eeb6f0b95c25df777b58e93357879e677f777a7b6f70a2b71a9eac40a"
+        },
+        {
+          "name": "TailCropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/TailCropTrimmer.java",
+          "sha256": "c2ced8d1b7d7139b4ea33d280dbb2d980ad4c42422b437e718c1672d02c9246c"
+        },
+        {
+          "name": "CropTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/CropTrimmer.java",
+          "sha256": "3fcbae9c1f95d372c16d175709381aea1a1719067a77c99b3716bd032a2a990a"
+        },
+        {
+          "name": "MinLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MinLenTrimmer.java",
+          "sha256": "a79e8fdefdeeebab3049e198319b7ea1483902c615d338c6031facea4d796ad0"
+        },
+        {
+          "name": "MaxLenTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaxLenTrimmer.java",
+          "sha256": "e8ac77af979d47ca9dac0580844084fc0df3f8d61208f64b2c925fafa9d26ca7"
+        },
+        {
+          "name": "AvgQualTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/AvgQualTrimmer.java",
+          "sha256": "79455a1abdfcb54aba2d78f4d291ee8496cb4a8cd67d212e3d776e20bb5fe13d"
+        },
+        {
+          "name": "BaseCountTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/BaseCountTrimmer.java",
+          "sha256": "01bbc9d2fc2efbc1f08901f8d4fa47dbf0595990f9ff5164f5acc26bf8513c8d"
+        },
+        {
+          "name": "MaxInfoTrimmer",
+          "error": "<HTTPError 404: 'Not Found'>"
+        },
+        {
+          "name": "ToPhred33Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred33Trimmer.java",
+          "sha256": "5881e6538596f40f8d6233001e7721be3636efeb3d5a7dde570eae4e0ddce3d5"
+        },
+        {
+          "name": "ToPhred64Trimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/ToPhred64Trimmer.java",
+          "sha256": "b32842063fb2f86fe7e6b9b780142a21b14689b872ff97007cdd1e0ab06462d3"
+        },
+        {
+          "name": "FastqRecord",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/fastq/FastqRecord.java",
+          "sha256": "a29f12ab129a1a983e461ba96e1fc5dcea715e7a234b131c10ba650dd543b148"
+        },
+        {
+          "name": "MaximumInformationTrimmer",
+          "url": "https://raw.githubusercontent.com/usadellab/Trimmomatic/v0.41/src/main/java/org/usadellab/trimmomatic/trim/MaximumInformationTrimmer.java",
+          "sha256": "b199595ebc2a2e5ad91722ef340ca59d053058c5295a60113fba120aad9812b8"
+        }
+      ],
+      "packaged_runs": 20,
+      "packaged_checks": 11,
+      "packaged_validation": "trimmomatic-packaged-validation.json",
+      "dependency_evidence": "trimmomatic-dependency-status.json",
+      "recorded_utc": "2026-10-25T03:50:24.675422+00:00",
+      "scope": "Native adapted GPL3-only quality/length/MAXINFO subset; actual original0.39/0.41SE/PE/simple/palindrome clipping, exact read fates/content/logs/summary and missing/old JVM failures. Stock Illumina sequences stay private. No FLASH, quantification,0.32/0.36 or whole-paper parity.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

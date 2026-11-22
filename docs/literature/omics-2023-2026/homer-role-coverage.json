@@ -1,0 +1,348 @@
+{
+  "status": "validated-catalogued-HOMER-development-role-coverage",
+  "reviewed_roles": 12,
+  "software_roles": 11,
+  "motif_resource_only_roles": 1,
+  "all_catalogued_roles_addressed_by_code": true,
+  "whole_HOMER_package_implemented": false,
+  "whole_paper_reproduction": false,
+  "whole_goal_complete": false,
+  "candidate_sha256": "fe05465a847f1f5d8fad2e94135236d1cfa2c167d32e9e321197e6f034cc5da1",
+  "source_revalidation": {
+    "path": "build/literature-review/homer-runtime/rna-role-source-audit-1/verification.json",
+    "sha256": "b2d2284c5c0ad0e62b85bb22d54b0b4e1c2f24cdc705f07ef233581d96924b87"
+  },
+  "source_review_sha256": "e9cc4ee9f1d1e21b4b1bbf7ea8d66867db68c6304cfc415bd0a34c857e4ab213",
+  "papers_sha256": "a8c8ec4b1677935ba223a1fb178c1e196a102afa29ae5094bafaad836aaa7d2f",
+  "proofs": {
+    "homer-atac-validation.json": {
+      "path": "docs\\literature\\omics-2023-2026\\homer-atac-validation.json",
+      "sha256": "0371e53d773f276a79fdb4067fe25f0b5584e7ca95adad6f14c877c0e189bdd1",
+      "status": "validated-ATAC-development-workflows"
+    },
+    "homer-genome-validation.json": {
+      "path": "docs\\literature\\omics-2023-2026\\homer-genome-validation.json",
+      "sha256": "846f7e0297fa9c16d78801ea20396ee71abe3801ae234f105f77cb87c9019d5d",
+      "status": "passed-bounded-original-HOMER-supplied-background-genomic-workflow"
+    },
+    "homer-discovery-validation.json": {
+      "path": "docs\\literature\\omics-2023-2026\\homer-discovery-validation.json",
+      "sha256": "ac5552288b84bb7f07b95c6121d50185fd5b0c9a48d5a9c9c8197053fe33527d",
+      "status": "passed-bounded-original-HOMER-discovery-and-fixed-core"
+    },
+    "homer-generated-validation.json": {
+      "path": "docs\\literature\\omics-2023-2026\\homer-generated-validation.json",
+      "sha256": "985c9e265d4d3b99f1c362353c0060eedbac691d9266527235c0d97145bf3ae8",
+      "status": "validated-generated-genomic-development-workflows"
+    },
+    "homer-annotation-validation.json": {
+      "path": "docs\\literature\\omics-2023-2026\\homer-annotation-validation.json",
+      "sha256": "fb733ce4abf9e0ddc1025cb6d95432b61f43a2c7ceb5f4f1ffdf643aa0966826",
+      "status": "passed-bounded-original-HOMER-supplied-GTF-annotation"
+    },
+    "homer-named-validation.json": {
+      "path": "docs\\literature\\omics-2023-2026\\homer-named-validation.json",
+      "sha256": "e10a104a2e98afad7c4bad0c16ac2d1559167f5c037f6058590eb146ad7e67c1",
+      "status": "validated-named-annotation-development-workflows"
+    },
+    "homer-genome-phase-validation.json": {
+      "path": "docs\\literature\\omics-2023-2026\\homer-genome-phase-validation.json",
+      "sha256": "15f7d92850962795803d02395addf1ff3b70af160ffca8c3b7bb33019702280b",
+      "status": "passed-bounded-original-HOMER-genomic-phase-selection"
+    },
+    "homer-rna-validation.json": {
+      "path": "docs/literature/omics-2023-2026/homer-rna-validation.json",
+      "sha256": "d6b29bc138fda9b24835ea9fcb8af54d7b3b0f228d3f46a230f47e73cf0cf0a8",
+      "status": "validated-original-RefSeq-RNA-development-workflows"
+    }
+  },
+  "roles": [
+    {
+      "paper_id": "P016",
+      "doi": "10.1038/s41586-023-06845-4",
+      "observed_role": "atac-region-peaks-and-coverage",
+      "primary_paragraph": 27,
+      "paragraph_sha256": "e6b9a5addbea997bd8c8e393ce30362bb8606cd72b519d5c4af617479b892e79",
+      "reported_version": "unstated",
+      "kind": "software-role",
+      "commands": [
+        "homer-tools atac"
+      ],
+      "profiles": [
+        "5.1/UCSC2.10"
+      ],
+      "guides": [
+        "HOMER_ATAC_WORKFLOWS.md"
+      ],
+      "proofs": [
+        "homer-atac-validation.json"
+      ],
+      "qualifications": "Explicit selected editions,plain SAM,upstream alignment/deduplication,peak filters/denominator/coverage choices remain separate. The source leaves editions and full commands unstated."
+    },
+    {
+      "paper_id": "P040",
+      "doi": "10.1038/s41586-026-10954-1",
+      "observed_role": "refseq-exon-rna-quantification",
+      "primary_paragraph": 49,
+      "paragraph_sha256": "cf5e717c148917f5cb6f9ef14860d8162ad66088099b42dfef4bbdac84d68d5e",
+      "reported_version": "5.1",
+      "kind": "software-role",
+      "commands": [
+        "homer-tools rna"
+      ],
+      "profiles": [
+        "5.1/v7.0 hg38 or mm10"
+      ],
+      "guides": [
+        "HOMER_RNA_WORKFLOWS.md"
+      ],
+      "proofs": [
+        "homer-rna-validation.json"
+      ],
+      "qualifications": "Original5.1 exon raw/RPKM implemented with native all-part/row audits. Assembly/RefSeqedition/filtering/mate/strand choices explicit;DESeq2 and expression eligibility/filtering are downstream. Both packaged full-reference recipes match fresh complete originals; unreported study choices remain explicit."
+    },
+    {
+      "paper_id": "P044",
+      "doi": "10.1038/s41586-024-08307-x",
+      "observed_role": "differential-atac-peak-motif-analysis",
+      "primary_paragraph": 51,
+      "paragraph_sha256": "df9c621ac10926c44e81517531b9a0399a085d52a62d812dd672fa26eab5d4ca",
+      "reported_version": "4.11",
+      "kind": "software-role",
+      "commands": [
+        "homer-tools genome",
+        "homer-tools known",
+        "homer-tools denovo"
+      ],
+      "profiles": [
+        "4.11"
+      ],
+      "guides": [
+        "HOMER_GENOMIC_WORKFLOWS.md",
+        "HOMER_CORE_WORKFLOWS.md",
+        "HOMER_DISCOVERY_WORKFLOWS.md"
+      ],
+      "proofs": [
+        "homer-genome-validation.json",
+        "homer-discovery-validation.json"
+      ],
+      "qualifications": "Supports known/de-novo motif analysis with explicit windows,models/backgrounds and normalization. Do not infer which unreported mode/database/background the paper used. Summit expansion and DESeq2 selection remain upstream."
+    },
+    {
+      "paper_id": "P046",
+      "doi": "10.1038/s41586-026-10987-6",
+      "observed_role": "ccre-dar-genomic-motif-enrichment",
+      "primary_paragraph": 39,
+      "paragraph_sha256": "ae2ddd5a92f43c7375d0c33a4219eb2e23595d719994c4018b172c1b0cb8b9cf",
+      "reported_version": "unstated",
+      "kind": "software-role",
+      "commands": [
+        "homer-tools genome --size given"
+      ],
+      "profiles": [
+        "selected5.1,or4.11/4.11.1"
+      ],
+      "guides": [
+        "HOMER_GENOMIC_WORKFLOWS.md",
+        "HOMER_GENERATED_WORKFLOWS.md"
+      ],
+      "proofs": [
+        "homer-genome-validation.json",
+        "homer-generated-validation.json"
+      ],
+      "qualifications": "Preserve source region widths with size given;explicit supplied/generated backgrounds and known/discovery phase choices. Software/database edition and background are unstated;matching-cell TF RPKM>10 and TOBIAS are separate."
+    },
+    {
+      "paper_id": "P050",
+      "doi": "10.1038/s41586-023-06821-y",
+      "observed_role": "chip-and-atac-gene-feature-annotation",
+      "primary_paragraph": 44,
+      "paragraph_sha256": "7c82ee1cdcd75de24dc88a845a82d71b4343a5d28abfa3fbfe76d9a1852c88fa",
+      "reported_version": "unstated",
+      "kind": "software-role",
+      "commands": [
+        "homer-tools annotate --gtf GTF9 --gtf-id transcript"
+      ],
+      "profiles": [
+        "selected5.1,or4.11/4.11.1"
+      ],
+      "guides": [
+        "HOMER_ANNOTATION_WORKFLOWS.md"
+      ],
+      "proofs": [
+        "homer-annotation-validation.json"
+      ],
+      "qualifications": "Use explicit ME49 reference/GTF edition and supplied peak files;genome none/size given admits declared nonmammalian GTF annotation. MACS2,featureCounts,DESeq2 and nf-core orchestration are separate;no source database/version is inferred."
+    },
+    {
+      "paper_id": "P053",
+      "doi": "10.1038/s41586-023-06819-6",
+      "observed_role": "te-association-and-tss-proximity",
+      "primary_paragraph": 70,
+      "paragraph_sha256": "c3b96d553eb4dad9f77c73f39e26baed7ac86891c044e2d0895ac03697734626",
+      "reported_version": "unstated",
+      "kind": "software-role",
+      "commands": [
+        "homer-tools named-annotate"
+      ],
+      "profiles": [
+        "selected5.1/v7.0 hg38/mm10"
+      ],
+      "guides": [
+        "HOMER_NAMED_ANNOTATION_WORKFLOWS.md"
+      ],
+      "proofs": [
+        "homer-named-validation.json"
+      ],
+      "qualifications": "Named region/TE/TSS annotation covers declared DMR/peak/loop/boundary populations,not just peaks. Exact database/software editions are unstated. Source irregularities,ties,raw/collapsed IDs and original metadata/statistics remain explicit."
+    },
+    {
+      "paper_id": "P124",
+      "doi": "10.1038/s41588-023-01554-0",
+      "observed_role": "batf3-accessibility-motif-analysis",
+      "primary_paragraph": 55,
+      "paragraph_sha256": "9da5cf123f884f9c7a732f03d64e8a75cbd3ae28a3b3cda287b5eed08f511941",
+      "reported_version": "4.11",
+      "kind": "software-role",
+      "commands": [
+        "homer-tools genome",
+        "homer-tools known",
+        "homer-tools denovo"
+      ],
+      "profiles": [
+        "4.11"
+      ],
+      "guides": [
+        "HOMER_GENOMIC_WORKFLOWS.md",
+        "HOMER_CORE_WORKFLOWS.md",
+        "HOMER_DISCOVERY_WORKFLOWS.md"
+      ],
+      "proofs": [
+        "homer-genome-validation.json",
+        "homer-discovery-validation.json"
+      ],
+      "qualifications": "Known/de-novo motif modes supplied;unstated mode/background/database requires explicit study choice. ChIPSeeker,MACS2,featureCounts and DESeq2 remain other tools."
+    },
+    {
+      "paper_id": "P126",
+      "doi": "10.1038/s41588-024-01947-9",
+      "observed_role": "motif-model-resource-reuse",
+      "primary_paragraph": 54,
+      "paragraph_sha256": "bc4dbb3acf2fee9e6607332c2633bcf9f0e5bb01fd60704d5bd20849e62e9b2c",
+      "reported_version": "motif collection; HOMER release unstated",
+      "kind": "motif-resource-reuse;no-HOMER-execution-reported",
+      "commands": [
+        "homer-scan/model input interface only"
+      ],
+      "profiles": [
+        "supplied DNA models;source HOMER release unstated"
+      ],
+      "guides": [
+        "HOMER_NATIVE_SCANNING.md"
+      ],
+      "proofs": [
+        "homer-discovery-validation.json"
+      ],
+      "qualifications": "Retain HOMER as motif provenance. This row does not require or credit a HOMER executable run. MotifDB1.42.0 import/export and motifbreakR2.13.7 weighted-sum disruption are separate tools/roles;their versions are not HOMER versions."
+    },
+    {
+      "paper_id": "P133",
+      "doi": "10.1038/s41588-025-02388-8",
+      "observed_role": "known-motif-analysis-chip-peaks",
+      "primary_paragraph": 38,
+      "paragraph_sha256": "e60a4991640aa1e1f8a6baf8e44e6e22b35fc660bab56d02928d4696e8b2fb05",
+      "reported_version": "4.11",
+      "kind": "software-role",
+      "commands": [
+        "homer-tools genome --analysis known",
+        "homer-tools known"
+      ],
+      "profiles": [
+        "4.11"
+      ],
+      "guides": [
+        "HOMER_GENOMIC_WORKFLOWS.md",
+        "HOMER_CORE_WORKFLOWS.md"
+      ],
+      "proofs": [
+        "homer-genome-phase-validation.json",
+        "homer-discovery-validation.json"
+      ],
+      "qualifications": "Known-motif analysis implemented;Known Motif Discovery is not relabelled de-novo discovery. Exact motif edition/window/background unstated;MACS3 and deepTools remain upstream/downstream."
+    },
+    {
+      "paper_id": "P163",
+      "doi": "10.1038/s41588-024-01911-7",
+      "observed_role": "cuttag-motif-and-peak-annotation",
+      "primary_paragraph": 65,
+      "paragraph_sha256": "b7c4273d16d9c388e975990c42dd98f2966f691674eca94a1b99786ea0834757",
+      "reported_version": "4.11.1",
+      "kind": "software-role",
+      "commands": [
+        "homer-tools genome",
+        "homer-tools annotate"
+      ],
+      "profiles": [
+        "4.11.1"
+      ],
+      "guides": [
+        "HOMER_GENOMIC_WORKFLOWS.md",
+        "HOMER_ANNOTATION_WORKFLOWS.md"
+      ],
+      "proofs": [
+        "homer-genome-validation.json",
+        "homer-annotation-validation.json"
+      ],
+      "qualifications": "Exact reported patch release supported for motif and supplied-GTF feature/TSS annotation. Distinguish CUT&Tag from DB2115 ATAC populations. Canonical PU.1 scoring,MACS2,DiffBind and coverage are separate;unreported resources/settings require explicit choices."
+    },
+    {
+      "paper_id": "P187",
+      "doi": "10.1016/j.ajhg.2025.11.009",
+      "observed_role": "marker-peak-known-motif-enrichment",
+      "primary_paragraph": 16,
+      "paragraph_sha256": "9375703648833ca55a6583408e12b99bc095f3d34b8fa7d51bb93b5bc55da53a",
+      "reported_version": "4.11",
+      "kind": "software-role",
+      "commands": [
+        "homer-tools genome --analysis known --size 200 --background-mode supplied"
+      ],
+      "profiles": [
+        "4.11"
+      ],
+      "guides": [
+        "HOMER_GENOMIC_WORKFLOWS.md"
+      ],
+      "proofs": [
+        "homer-genome-phase-validation.json",
+        "homer-genome-validation.json"
+      ],
+      "qualifications": "Pass original size200 parameter unchanged and retain its inclusive N+1 geometry. Use all merged cell-type peaks as supplied background with explicit overlap retention. GREAT/GO is a separate source role,not a missing HOMER component."
+    },
+    {
+      "paper_id": "P215",
+      "doi": "10.1016/j.ajhg.2024.07.022",
+      "observed_role": "fasta-motif-analysis-shuffled-background",
+      "primary_paragraph": 21,
+      "paragraph_sha256": "1337721e46591bcb0eea3afb4ffe48a6ffcd1ff531a45306bcc2b1604884a80a",
+      "reported_version": "unstated",
+      "kind": "software-role",
+      "commands": [
+        "homer-tools known",
+        "homer-tools denovo"
+      ],
+      "profiles": [
+        "selected5.1,or4.11/4.11.1"
+      ],
+      "guides": [
+        "HOMER_CORE_WORKFLOWS.md",
+        "HOMER_DISCOVERY_WORKFLOWS.md"
+      ],
+      "proofs": [
+        "homer-discovery-validation.json"
+      ],
+      "qualifications": "Accept BEDTools-derived FASTA and independently supplied shuffled background with explicit populations. Preserve source E-value<0.001 wording as ambiguous;do not invent a HOMER E value or rename it P/q. Edition,mode and shuffle algorithm/seed are unstated. Downstream FIMO is separate."
+    }
+  ],
+  "scope": "Requirement is the actual HOMER software/resource roles in these12papers,not all unreported HOMER modules. GO/GREAT,MotifDB/motifbreakR,FIMO,DESeq2,alignment/deduplication and paper preprocessing are separate integrations. Unreported scientific choices remain explicit qualifications,not reconstructed defaults. Operational adapter coverage is not exact historical/full-paper/biological parity. Both RNA packaged recipes and fresh original comparisons pass;paper-wide semanticreview remains open andCellRangerexcluded.",
+  "RNA_public_closure_pending": false
+}

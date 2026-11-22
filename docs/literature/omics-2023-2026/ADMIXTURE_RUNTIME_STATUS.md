@@ -1,0 +1,25 @@
+# ADMIXTURE runtime status and required actions
+
+**Bounded development fitting workflow available through `admixture-tools`.** Native Q/P likelihood and K=1 audits complement typed original fitting, supervision, projection, CV/bootstrap, penalty, global ploidy and EM controls. The permission-aware installer admits exact private profiles after an actual scientific health check. Read [workflow and recovery instructions](ADMIXTURE_WORKFLOWS.md) and `admixture-adapter-validation.json` for current validation. AdmixturePlotter and CLUMPP remain missing, and historical/full-paper reconstruction remains open.
+
+The official site provides current 1.4.0 and unsupported legacy 1.3.0 Linux binaries. Both were downloaded from the official URLs, hashed and used unchanged in private controlled fixtures. The reviewed archives contain binaries and documentation; no upstream source code or open-source license file was found in them. Original copyright notices are retained. These upstream binaries are not redistributed by this project.
+
+## Verified runtime problems and recovery
+
+**Legacy 1.3.0 crashes when executed directly on this WSL kernel.** Help exits 0, but actual K=1 and K3 fits terminate with signal 11 / exit 139. The kernel log identifies an attempted legacy `vsyscall` while `vsyscall=none`. Help alone is therefore insufficient runtime admission evidence. Use a compatible host or an explicitly validated emulation profile; do not assume the current binary reproduces an older paper version.
+
+A private QEMU 8.2.2 Ubuntu static-user binary successfully ran the unchanged 1.3.0 program with CPU model `qemu64`. It was extracted from a hash-verified official Ubuntu package without installing OS packages, registering binary-format handlers, changing global WSL settings or restarting WSL. Ten legacy scientific fixtures passed through that profile. Emulation adds its own dependency and can be slower; it is explicit and hash-bound in the typed adapter. It is not a silent runtime fallback.
+
+**Current 1.4.0 bootstrap crashed with an oversized default block on the small controlled dataset.** The program selected 100,000 markers per block for 1,200 retained markers and exited 139 at the first replicate. Retrying as a separate, explicitly declared experiment with `--blockSize=100` completed ten replicates. Required action: choose and record an appropriate block length for the retained, ordered marker set and its linkage structure. The typed wrapper rejects an unsafe block size before launch and never silently chooses a new scientific parameter after a crash. Original failed output is retained and is not an admitted analysis result.
+
+**Versions have different penalized-output filenames.** The validated 1.4.0 profile writes `.P.lambda.2.000000`/`.Q.lambda.2.000000` for lambda 2, while 1.3.0 writes `.P.lambda.2`/`.Q.lambda.2`. The objective and unpenalized log-likelihood are separate original scalar reports. Supervised reference Q rows use a numerical floor of 0.000010 for other components rather than exact zeros; the native audit checks supplied-label consistency without inventing an ethnicity/region label or assuming alphabetical component order.
+
+## Limits that remain open
+
+The controlled references cover 20 actual runs, including a projection onto 20 new target samples and ten-replicate bootstrap outputs. Original CV scalars and bootstrap SE/bias estimates are retained; native arithmetic checks of the full fitted Q/P matrix do not independently reproduce held-out predictions or certify bootstrap uncertainty. A fixed-iteration EM stop is distinct from a likelihood-delta stop even when the original log says “Converged”.
+
+The papers include reported versions 1.23,1.3 and1.3.0. These strings are retained separately; 1.3 is not silently rewritten as 1.3.0, and current 1.4.0/legacy 1.3.0 validation does not establish 1.23 parity. Source-specific LD pruning, unrelated-sample selection, marker/allele/build harmonization, missingness, reference eligibility, K/seed grids, result alignment and biological interpretation remain necessary explicit choices. Ancient pseudohaploid and crop-ploidy contexts require particular care about genotype coding and likelihood weights.
+
+Where required installation or execution is forbidden or dependencies are absent, unsupported or changed, **skip the dependent analysis and retain a prominent warning naming the dependency and recovery action**. Use the current typed development command with an explicitly admitted exact runtime; unmanaged raw binaries are not an admitted project dependency. Existing failures and earlier verifier corrections remain retained with exact evidence scope. Cell Ranger remains user-excluded.
+
+Primary runtime references: [official ADMIXTURE downloads and manual](https://dalexander.github.io/admixture/download.html), [official release repository](https://github.com/NovembreLab/admixture), and [QEMU userspace system-call translation documentation](https://www.qemu.org/docs/master/user/main.html). Exact archives, executable hashes, Ubuntu package provenance and private proof paths are recorded in `admixture-runtime-intake.json`.

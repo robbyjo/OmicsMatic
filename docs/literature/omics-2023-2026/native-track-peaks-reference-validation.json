@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "reference": "Actual MACS3 3.1.0 bdgpeakcall,129 separate process runs",
+  "cases": 129,
+  "source_archive_sha256": "aae548b86ab652717dca281fa2e33645fc1dc8091264ccbf7ce09cf8a13532e0",
+  "unchanged_source_module_sha256": {
+    "MACS3/Signal/BedGraph.py": "afddee3662dc0266c67601c095aaefe5719a8af38b17d67575480d7c5e39d778",
+    "MACS3/IO/BedGraphIO.py": "d1ed272f7562642acc0ed8563f81c9778bae2ef1acf89312b656dc29555d3a87",
+    "MACS3/IO/PeakIO.py": "ddbd674dc6da6e2efe36b7d6f2621ebaffd34b05afda55c39c1033ed33dca4ea",
+    "MACS3/Commands/bdgpeakcall_cmd.py": "1d2de7d608197c85c0fa5f41630754ea32ddb0c0cac6a28667ed0c8524e8b549"
+  },
+  "runtime_python_sha256": "cb4400b7ca17a8075d043dec11198ed8aad8d05ae351c3094222118bb052f27f",
+  "macs_script_sha256": "5481978351f1c45ee3b591d7294c209825aa3235886ad0a439f454ae271b6e17",
+  "reference_fixture_sha256": "1e3dd6a597dc4683971e58a8585c53536b1e14ebe7b86c48ee5359fed3ce8c40",
+  "reference_generator_sha256": "e8ec9aad19093ea54a031d5313374991d0c544e90a111e8d6a14b5b41c85b4ad",
+  "retained_commands_logs": "D:\\projects\\JLinAlg\\build\\literature-review\\track-peak-reference-20261024T211658Z",
+  "retained_verification_sha256": "bcf44a7f7231253f66f34a242e39ce914650cf0126a14b3e127f5d0729a77785",
+  "native_suite": {
+    "suite": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "4da19bd701528708bdcb24e689187683694cab62a11348673e37d378937d1e1d",
+    "testcases": [
+      "geometryAndSummitsMatch129ActualUpstreamCallsIncludingTiesAndBoundaryRounding()",
+      "float32ChangesBoundaryMembershipBeforeCoalescingButFloat64RetainsInput()",
+      "longCoordinatesAndLargeFiniteScoresDoNotRequireGenomeSizeArraysOrIntegrals()",
+      "ambiguousInvalidAndNonfiniteContractsAreRejected()",
+      "spanGapInclusionAndPlateauCoalescingHaveIndependentKnownAnswers()",
+      "sparseUniverseIsExplicitAndZeroSignedSummitsUseTheMathematicalMaximum()"
+    ]
+  },
+  "scope": "Real upstream positive-cutoff float32 geometry and summit offsets on complete continuous tracks, tie/gap/span/rounding boundaries and120 seeded random cases. Private Windows build has disclosed portability patches outside these source modules; callpeak/HDF5 failures remain failed, and no full MACS, old-version, zero/signed-summit or paper parity is claimed."
+}

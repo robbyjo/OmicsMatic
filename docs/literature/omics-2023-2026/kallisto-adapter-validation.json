@@ -1,0 +1,3330 @@
+{
+  "status": "passed-original-kallisto-048-bulk-plaintext-subset",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "recorded_utc": "2026-10-25T11:27:56.771609+00:00",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/sequence/KallistoTables.java": "57092d75b9dd8fb2d73b15e69f5f379f2f8cc1333502579b44e8ed320c4a1f85",
+    "src/main/java/org/jlinalg/cli/KallistoRuntime.java": "3431266fad9d2b1724588562e810fb68eab310aff052e4d2c09e0064bd77986d",
+    "src/main/java/org/jlinalg/cli/KallistoToolsCli.java": "5d6c05a181dff8bf5738508d100711dc9d9615771050ab606bb426d48978f721",
+    "src/main/resources/org/jlinalg/omics/kallisto-runtime-lock.json": "825f7b5dbe33c3a6422f763f8b26e0726ced87ce7c67d0d88726bff26a4eb209",
+    "src/main/resources/META-INF/NOTICE-kallisto.txt": "e31768a7b870f93540f5e69bce575bfda979e550e34370f67bad3ad257e155d7",
+    "src/main/resources/META-INF/LICENSE-kallisto.txt": "efd8a2f8f2b64a250a9ecebe8a2b09d5c1bf0aff21f51e3f24d1a31ad1221310",
+    "src/test/java/org/jlinalg/sequence/KallistoTablesTest.java": "c317d107301ab42e07c751ab89979557d100e6238421a5d62c55c34872ccd68d",
+    "src/test/java/org/jlinalg/cli/KallistoToolsCliTest.java": "352a98b7b5324613c2b957f4e2fbc24e544c4261507d8de91bd83d1b726e55fd",
+    "tools/literature/install_kallisto.py": "160b5bb4df4e2eaa3abb14c459085b023255d36aa8bac8b4f9c8249f41e95d49",
+    "tools/literature/kallisto-runtime-lock.json": "825f7b5dbe33c3a6422f763f8b26e0726ced87ce7c67d0d88726bff26a4eb209",
+    "tools/literature/generate_kallisto_references.py": "29687da935ec74275433b591a2e6b5178ac2555e03f3478835955930ca4462c4",
+    "tools/literature/verify_kallisto_workflows.py": "fd039543716f500be3bccb10f79f90f55ca6de7f2b11affc8890533fdaf96cf9",
+    "tools/literature/curate_kallisto_uses.py": "07e73879764601cb2dca37ff95f92da3720db1d5881711da92c41a0251540c59"
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.sequence.KallistoTablesTest": {
+      "suite_name": "org.jlinalg.sequence.KallistoTablesTest",
+      "suite": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "9d70facd17561772698b484112bacd074fc79e1462d427f1124e5555504883b0",
+      "testcases": [
+        "independentFractionalCountsAndEffectiveLengthTpmMath()",
+        "outputIdentityDomainsTotalsAndArithmeticAreCheckedIndependently()",
+        "invalidReferenceAndResourceBoundsFailRatherThanRenameOrDrop()",
+        "referenceIdsRawLengthsAndUpstreamTransformCountsAreLiteral()",
+        "originalSevenPositiveTwoRejectedAndThreeBootstrapTables()"
+      ]
+    },
+    "org.jlinalg.cli.KallistoToolsCliTest": {
+      "suite_name": "org.jlinalg.cli.KallistoToolsCliTest",
+      "suite": {
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "a4499d93d2780c79083067988144cef1e2c97b40fa5612392ab7d3337e8c7771",
+      "testcases": [
+        "referenceProcessingIsAnExplicitAuditedChoice()",
+        "pairMismatchAndResourceBoundsFailBeforePublishingCounts()",
+        "optionsRejectIgnoredOrInapplicableChoicesAndHelpNamesFormatLimitation()",
+        "wrongStrandAndChangedIndexFailAndPreserveUpstreamDiagnostics()",
+        "singleAndBiasModesRetainActualOriginalEffectiveLengthsAndCounters()",
+        "missingRuntimeSkipsWithExactRecoveryAndNoSuccessfulOutput()",
+        "actualIndexPairedCountsAndEverySeededBootstrapMatchOriginal()"
+      ]
+    }
+  },
+  "api_cli_tests": 12,
+  "original_upstream_reference": {
+    "status": "passed-original-Windows-point-and-plaintext-reference-generation",
+    "version": "0.48.0",
+    "archive_sha256": "2590d87e507c9b48a5b76e17c0c788ba9054a2fa3c4c3ed96ce06e8cfc2370b0",
+    "executable_sha256": "5c8bcc2e430a59734f12fe4c153ead32000573dc043db06a3f007e4dc63b6358",
+    "generator_sha256": "29687da935ec74275433b591a2e6b5178ac2555e03f3478835955930ca4462c4",
+    "input_sha256": {
+      "transcripts.fa": "ebbea1ac7d6e08f27509b76620c95acccd4e8bff4a664613810a9f030fe4f76f",
+      "read1.fastq.gz": "2c4bc23a46a46fab6ae9d60627c0cbe48d807c900157ce48c3aa957dd6a43ad2",
+      "read2.fastq.gz": "821511801d8847cdb3ad0ee4016e39c33391a3b3525814a57ce6ce669ccd9b4b"
+    },
+    "truth": {
+      "processed_records_or_pairs": 170,
+      "pseudoaligned_unstranded": 160,
+      "estimated_counts": {
+        "001": 40,
+        "txB": 120,
+        "txZero": 0
+      },
+      "fragment_mean": 200,
+      "fragment_sd": 20,
+      "raw_lengths": {
+        "001": 1000,
+        "txB": 1600,
+        "txZero": 1200
+      }
+    },
+    "cases": [
+      {
+        "name": "paired",
+        "reference_file": "paired.tsv",
+        "run_info": {
+          "n_targets": 3,
+          "n_bootstraps": 0,
+          "n_processed": 170,
+          "n_pseudoaligned": 160,
+          "n_unique": 160,
+          "p_pseudoaligned": 94.1,
+          "p_unique": 94.1,
+          "kallisto_version": "0.48.0",
+          "index_version": 10,
+          "start_time": "Sun Oct 25 06:36:28 2026",
+          "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/paired -l 200 -s 20 -t 1 D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+        },
+        "expected_exit": 0,
+        "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+      },
+      {
+        "name": "bootstrap17",
+        "reference_file": "bootstrap17.tsv",
+        "run_info": {
+          "n_targets": 3,
+          "n_bootstraps": 3,
+          "n_processed": 170,
+          "n_pseudoaligned": 160,
+          "n_unique": 160,
+          "p_pseudoaligned": 94.1,
+          "p_unique": 94.1,
+          "kallisto_version": "0.48.0",
+          "index_version": 10,
+          "start_time": "Sun Oct 25 06:36:28 2026",
+          "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bootstrap17 -l 200 -s 20 -t 1 -b 3 --seed 17 D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+        },
+        "expected_exit": 0,
+        "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+      },
+      {
+        "name": "bias",
+        "reference_file": "bias.tsv",
+        "run_info": {
+          "n_targets": 3,
+          "n_bootstraps": 0,
+          "n_processed": 170,
+          "n_pseudoaligned": 160,
+          "n_unique": 160,
+          "p_pseudoaligned": 94.1,
+          "p_unique": 94.1,
+          "kallisto_version": "0.48.0",
+          "index_version": 10,
+          "start_time": "Sun Oct 25 06:36:28 2026",
+          "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bias -l 200 -s 20 -t 1 --bias D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+        },
+        "expected_exit": 0,
+        "reference_sha256": "0e761bb2ecc1f62cf070f06a528b814d82168d3b7cc7af3ccbaf9543269de9a3"
+      },
+      {
+        "name": "fr",
+        "reference_file": "fr.tsv",
+        "run_info": {
+          "n_targets": 3,
+          "n_bootstraps": 0,
+          "n_processed": 170,
+          "n_pseudoaligned": 160,
+          "n_unique": 160,
+          "p_pseudoaligned": 94.1,
+          "p_unique": 94.1,
+          "kallisto_version": "0.48.0",
+          "index_version": 10,
+          "start_time": "Sun Oct 25 06:36:28 2026",
+          "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/fr -l 200 -s 20 -t 1 --fr-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+        },
+        "expected_exit": 0,
+        "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+      },
+      {
+        "name": "rf",
+        "reference_file": "rf.tsv",
+        "run_info": {
+          "n_targets": 3,
+          "n_bootstraps": 0,
+          "n_processed": 170,
+          "n_pseudoaligned": 0,
+          "n_unique": 0,
+          "p_pseudoaligned": 0.0,
+          "p_unique": 0.0,
+          "kallisto_version": "0.48.0",
+          "index_version": 10,
+          "start_time": "Sun Oct 25 06:36:28 2026",
+          "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/rf -l 200 -s 20 -t 1 --rf-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+        },
+        "expected_exit": 1,
+        "reference_sha256": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0"
+      },
+      {
+        "name": "single",
+        "reference_file": "single.tsv",
+        "run_info": {
+          "n_targets": 3,
+          "n_bootstraps": 0,
+          "n_processed": 170,
+          "n_pseudoaligned": 160,
+          "n_unique": 160,
+          "p_pseudoaligned": 94.1,
+          "p_unique": 94.1,
+          "kallisto_version": "0.48.0",
+          "index_version": 10,
+          "start_time": "Sun Oct 25 06:36:28 2026",
+          "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single -l 200 -s 20 -t 1 --single D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+        },
+        "expected_exit": 0,
+        "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+      },
+      {
+        "name": "single-fr",
+        "reference_file": "single-fr.tsv",
+        "run_info": {
+          "n_targets": 3,
+          "n_bootstraps": 0,
+          "n_processed": 170,
+          "n_pseudoaligned": 160,
+          "n_unique": 160,
+          "p_pseudoaligned": 94.1,
+          "p_unique": 94.1,
+          "kallisto_version": "0.48.0",
+          "index_version": 10,
+          "start_time": "Sun Oct 25 06:36:28 2026",
+          "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-fr -l 200 -s 20 -t 1 --single --fr-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+        },
+        "expected_exit": 0,
+        "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+      },
+      {
+        "name": "single-rf",
+        "reference_file": "single-rf.tsv",
+        "run_info": {
+          "n_targets": 3,
+          "n_bootstraps": 0,
+          "n_processed": 170,
+          "n_pseudoaligned": 0,
+          "n_unique": 0,
+          "p_pseudoaligned": 0.0,
+          "p_unique": 0.0,
+          "kallisto_version": "0.48.0",
+          "index_version": 10,
+          "start_time": "Sun Oct 25 06:36:28 2026",
+          "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-rf -l 200 -s 20 -t 1 --single --rf-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+        },
+        "expected_exit": 1,
+        "reference_sha256": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0"
+      },
+      {
+        "name": "single-overhang",
+        "reference_file": "single-overhang.tsv",
+        "run_info": {
+          "n_targets": 3,
+          "n_bootstraps": 0,
+          "n_processed": 170,
+          "n_pseudoaligned": 160,
+          "n_unique": 160,
+          "p_pseudoaligned": 94.1,
+          "p_unique": 94.1,
+          "kallisto_version": "0.48.0",
+          "index_version": 10,
+          "start_time": "Sun Oct 25 06:36:28 2026",
+          "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-overhang -l 200 -s 20 -t 1 --single --single-overhang D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+        },
+        "expected_exit": 0,
+        "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+      }
+    ],
+    "steps": [
+      {
+        "name": "index",
+        "command": [
+          "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+          "index",
+          "-i",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+          "-k",
+          "31",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/transcripts.fa"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "log_sha256": "ce6fc752888f95d08d2f87674a6c0dbf1f1b5c131e3a07b7cc8904137e1730a5"
+      },
+      {
+        "name": "paired",
+        "command": [
+          "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+          "quant",
+          "--plaintext",
+          "-i",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+          "-o",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/paired",
+          "-l",
+          "200",
+          "-s",
+          "20",
+          "-t",
+          "1",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "log_sha256": "1e93eb51c9da42f0ed7c0624db76e49009dd6e32159024e8ff05855b42924d42"
+      },
+      {
+        "name": "bootstrap17",
+        "command": [
+          "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+          "quant",
+          "--plaintext",
+          "-i",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+          "-o",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bootstrap17",
+          "-l",
+          "200",
+          "-s",
+          "20",
+          "-t",
+          "1",
+          "-b",
+          "3",
+          "--seed",
+          "17",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "log_sha256": "31b0592a3e79a42ce230662b4bce700915185a6d87e64bb79a14bb3fb014ed62"
+      },
+      {
+        "name": "bias",
+        "command": [
+          "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+          "quant",
+          "--plaintext",
+          "-i",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+          "-o",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bias",
+          "-l",
+          "200",
+          "-s",
+          "20",
+          "-t",
+          "1",
+          "--bias",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "log_sha256": "ce7ca39af8bdebbc99face2f637ef164fa7fc55702cade04c5f56b40af7a5914"
+      },
+      {
+        "name": "fr",
+        "command": [
+          "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+          "quant",
+          "--plaintext",
+          "-i",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+          "-o",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/fr",
+          "-l",
+          "200",
+          "-s",
+          "20",
+          "-t",
+          "1",
+          "--fr-stranded",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "log_sha256": "1e93eb51c9da42f0ed7c0624db76e49009dd6e32159024e8ff05855b42924d42"
+      },
+      {
+        "name": "rf",
+        "command": [
+          "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+          "quant",
+          "--plaintext",
+          "-i",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+          "-o",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/rf",
+          "-l",
+          "200",
+          "-s",
+          "20",
+          "-t",
+          "1",
+          "--rf-stranded",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+        ],
+        "exit_code": 1,
+        "expected_exit": 1,
+        "log_sha256": "daf3d805e6b2d1197933453b7b1065b0773ac688e3c23efb8502c5b1535ebda3"
+      },
+      {
+        "name": "single",
+        "command": [
+          "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+          "quant",
+          "--plaintext",
+          "-i",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+          "-o",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single",
+          "-l",
+          "200",
+          "-s",
+          "20",
+          "-t",
+          "1",
+          "--single",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+      },
+      {
+        "name": "single-fr",
+        "command": [
+          "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+          "quant",
+          "--plaintext",
+          "-i",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+          "-o",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-fr",
+          "-l",
+          "200",
+          "-s",
+          "20",
+          "-t",
+          "1",
+          "--single",
+          "--fr-stranded",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+      },
+      {
+        "name": "single-rf",
+        "command": [
+          "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+          "quant",
+          "--plaintext",
+          "-i",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+          "-o",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-rf",
+          "-l",
+          "200",
+          "-s",
+          "20",
+          "-t",
+          "1",
+          "--single",
+          "--rf-stranded",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+        ],
+        "exit_code": 1,
+        "expected_exit": 1,
+        "log_sha256": "99a4a5a1f168d9c99bd022db24827cd5c32d5506036d53afe568cfb9ea4cd3c9"
+      },
+      {
+        "name": "single-overhang",
+        "command": [
+          "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+          "quant",
+          "--plaintext",
+          "-i",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+          "-o",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-overhang",
+          "-l",
+          "200",
+          "-s",
+          "20",
+          "-t",
+          "1",
+          "--single",
+          "--single-overhang",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+      },
+      {
+        "name": "hdf5-capability",
+        "command": [
+          "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+          "quant",
+          "-i",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+          "-o",
+          "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/hdf5-capability",
+          "-l",
+          "200",
+          "-s",
+          "20",
+          "-b",
+          "3",
+          "--seed",
+          "17",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+          "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+        ],
+        "exit_code": 0,
+        "expected_exit": 0,
+        "log_sha256": "0661ae7684f258fffd207becc742bf69d9bcebe49eceba6465c85ffc27ed5669"
+      }
+    ],
+    "negative_hdf5_capability": "Exit0 and n_bootstraps3 but no HDF5/draw files without --plaintext. Adapter must always request plaintext and verify every draw.",
+    "directory": "D:\\projects\\JLinAlg\\build\\literature-review\\kallisto-runtime\\references-20261025T103628.341300Z",
+    "recorded_utc": "2026-10-25T10:36:28.754808+00:00",
+    "output_sha256": {
+      "bias.tsv": "0e761bb2ecc1f62cf070f06a528b814d82168d3b7cc7af3ccbaf9543269de9a3",
+      "bootstrap17-draw0.tsv": "f417387f045593c92fea155f5316aeae276b0c5a9ac8310b4435dd569952fce4",
+      "bootstrap17-draw1.tsv": "b92f5dab2f4a0bb39c1c871977677a023d5bd09f697d0db1f5a929a9be1e97ed",
+      "bootstrap17-draw2.tsv": "b92f5dab2f4a0bb39c1c871977677a023d5bd09f697d0db1f5a929a9be1e97ed",
+      "bootstrap17.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+      "fr.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+      "paired.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+      "rf.tsv": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0",
+      "single-fr.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+      "single-overhang.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+      "single-rf.tsv": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0",
+      "single.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+    }
+  },
+  "full_gate": {
+    "tests": 1593,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5
+  },
+  "required_suites": 72,
+  "packaged_workflow_calls": 27,
+  "packaged_independent_checks": 8,
+  "scope": "Original unmodified official0.48.0 Windows x86_64 index and bulk single/paired quantification with plaintext bootstraps,bias,strand/fragment/reference contracts. Known point counts,seeded draws,effective-length TPM and actual fractional EM20.5+20.5 checked. Original raw run_info retained; derived metadata reescapes only verified launched call string. Negative HDF5 capability retained; no HDF5/Sleuth,BUS/UMI,kb count,reference generation,DE,historical or full-paper parity.0.52.0 Cygwin source build failed separately and is not validated.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed-original-kallisto-048-bulk-plaintext-subset",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "recorded_utc": "2026-10-25T11:27:56.771609+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/KallistoTables.java": "57092d75b9dd8fb2d73b15e69f5f379f2f8cc1333502579b44e8ed320c4a1f85",
+        "src/main/java/org/jlinalg/cli/KallistoRuntime.java": "3431266fad9d2b1724588562e810fb68eab310aff052e4d2c09e0064bd77986d",
+        "src/main/java/org/jlinalg/cli/KallistoToolsCli.java": "5d6c05a181dff8bf5738508d100711dc9d9615771050ab606bb426d48978f721",
+        "src/main/resources/org/jlinalg/omics/kallisto-runtime-lock.json": "825f7b5dbe33c3a6422f763f8b26e0726ced87ce7c67d0d88726bff26a4eb209",
+        "src/main/resources/META-INF/NOTICE-kallisto.txt": "e31768a7b870f93540f5e69bce575bfda979e550e34370f67bad3ad257e155d7",
+        "src/main/resources/META-INF/LICENSE-kallisto.txt": "efd8a2f8f2b64a250a9ecebe8a2b09d5c1bf0aff21f51e3f24d1a31ad1221310",
+        "src/test/java/org/jlinalg/sequence/KallistoTablesTest.java": "c317d107301ab42e07c751ab89979557d100e6238421a5d62c55c34872ccd68d",
+        "src/test/java/org/jlinalg/cli/KallistoToolsCliTest.java": "352a98b7b5324613c2b957f4e2fbc24e544c4261507d8de91bd83d1b726e55fd",
+        "tools/literature/install_kallisto.py": "160b5bb4df4e2eaa3abb14c459085b023255d36aa8bac8b4f9c8249f41e95d49",
+        "tools/literature/kallisto-runtime-lock.json": "825f7b5dbe33c3a6422f763f8b26e0726ced87ce7c67d0d88726bff26a4eb209",
+        "tools/literature/generate_kallisto_references.py": "29687da935ec74275433b591a2e6b5178ac2555e03f3478835955930ca4462c4",
+        "tools/literature/verify_kallisto_workflows.py": "fd039543716f500be3bccb10f79f90f55ca6de7f2b11affc8890533fdaf96cf9",
+        "tools/literature/curate_kallisto_uses.py": "07e73879764601cb2dca37ff95f92da3720db1d5881711da92c41a0251540c59"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.KallistoTablesTest": {
+          "suite_name": "org.jlinalg.sequence.KallistoTablesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1106c29199277fa97f62e3e64c26a68fdf81f27e90e9990f474defe75cc35a0b",
+          "testcases": [
+            "independentFractionalCountsAndEffectiveLengthTpmMath()",
+            "outputIdentityDomainsTotalsAndArithmeticAreCheckedIndependently()",
+            "invalidReferenceAndResourceBoundsFailRatherThanRenameOrDrop()",
+            "referenceIdsRawLengthsAndUpstreamTransformCountsAreLiteral()",
+            "originalSevenPositiveTwoRejectedAndThreeBootstrapTables()"
+          ]
+        },
+        "org.jlinalg.cli.KallistoToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.KallistoToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a12538e4500b51a73ba3f96a16196034ec1aaee3114f276dc73de1f3dcb5e9c4",
+          "testcases": [
+            "referenceProcessingIsAnExplicitAuditedChoice()",
+            "pairMismatchAndResourceBoundsFailBeforePublishingCounts()",
+            "optionsRejectIgnoredOrInapplicableChoicesAndHelpNamesFormatLimitation()",
+            "wrongStrandAndChangedIndexFailAndPreserveUpstreamDiagnostics()",
+            "singleAndBiasModesRetainActualOriginalEffectiveLengthsAndCounters()",
+            "missingRuntimeSkipsWithExactRecoveryAndNoSuccessfulOutput()",
+            "actualIndexPairedCountsAndEverySeededBootstrapMatchOriginal()"
+          ]
+        }
+      },
+      "api_cli_tests": 12,
+      "original_upstream_reference": {
+        "status": "passed-original-Windows-point-and-plaintext-reference-generation",
+        "version": "0.48.0",
+        "archive_sha256": "2590d87e507c9b48a5b76e17c0c788ba9054a2fa3c4c3ed96ce06e8cfc2370b0",
+        "executable_sha256": "5c8bcc2e430a59734f12fe4c153ead32000573dc043db06a3f007e4dc63b6358",
+        "generator_sha256": "29687da935ec74275433b591a2e6b5178ac2555e03f3478835955930ca4462c4",
+        "input_sha256": {
+          "transcripts.fa": "ebbea1ac7d6e08f27509b76620c95acccd4e8bff4a664613810a9f030fe4f76f",
+          "read1.fastq.gz": "2c4bc23a46a46fab6ae9d60627c0cbe48d807c900157ce48c3aa957dd6a43ad2",
+          "read2.fastq.gz": "821511801d8847cdb3ad0ee4016e39c33391a3b3525814a57ce6ce669ccd9b4b"
+        },
+        "truth": {
+          "processed_records_or_pairs": 170,
+          "pseudoaligned_unstranded": 160,
+          "estimated_counts": {
+            "001": 40,
+            "txB": 120,
+            "txZero": 0
+          },
+          "fragment_mean": 200,
+          "fragment_sd": 20,
+          "raw_lengths": {
+            "001": 1000,
+            "txB": 1600,
+            "txZero": 1200
+          }
+        },
+        "cases": [
+          {
+            "name": "paired",
+            "reference_file": "paired.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/paired -l 200 -s 20 -t 1 D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "bootstrap17",
+            "reference_file": "bootstrap17.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 3,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bootstrap17 -l 200 -s 20 -t 1 -b 3 --seed 17 D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "bias",
+            "reference_file": "bias.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bias -l 200 -s 20 -t 1 --bias D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "0e761bb2ecc1f62cf070f06a528b814d82168d3b7cc7af3ccbaf9543269de9a3"
+          },
+          {
+            "name": "fr",
+            "reference_file": "fr.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/fr -l 200 -s 20 -t 1 --fr-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "rf",
+            "reference_file": "rf.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 0,
+              "n_unique": 0,
+              "p_pseudoaligned": 0.0,
+              "p_unique": 0.0,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/rf -l 200 -s 20 -t 1 --rf-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 1,
+            "reference_sha256": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0"
+          },
+          {
+            "name": "single",
+            "reference_file": "single.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single -l 200 -s 20 -t 1 --single D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "single-fr",
+            "reference_file": "single-fr.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-fr -l 200 -s 20 -t 1 --single --fr-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "single-rf",
+            "reference_file": "single-rf.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 0,
+              "n_unique": 0,
+              "p_pseudoaligned": 0.0,
+              "p_unique": 0.0,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-rf -l 200 -s 20 -t 1 --single --rf-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 1,
+            "reference_sha256": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0"
+          },
+          {
+            "name": "single-overhang",
+            "reference_file": "single-overhang.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-overhang -l 200 -s 20 -t 1 --single --single-overhang D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          }
+        ],
+        "steps": [
+          {
+            "name": "index",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "index",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-k",
+              "31",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/transcripts.fa"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "ce6fc752888f95d08d2f87674a6c0dbf1f1b5c131e3a07b7cc8904137e1730a5"
+          },
+          {
+            "name": "paired",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/paired",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "1e93eb51c9da42f0ed7c0624db76e49009dd6e32159024e8ff05855b42924d42"
+          },
+          {
+            "name": "bootstrap17",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bootstrap17",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "-b",
+              "3",
+              "--seed",
+              "17",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "31b0592a3e79a42ce230662b4bce700915185a6d87e64bb79a14bb3fb014ed62"
+          },
+          {
+            "name": "bias",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bias",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--bias",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "ce7ca39af8bdebbc99face2f637ef164fa7fc55702cade04c5f56b40af7a5914"
+          },
+          {
+            "name": "fr",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/fr",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--fr-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "1e93eb51c9da42f0ed7c0624db76e49009dd6e32159024e8ff05855b42924d42"
+          },
+          {
+            "name": "rf",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/rf",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--rf-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 1,
+            "expected_exit": 1,
+            "log_sha256": "daf3d805e6b2d1197933453b7b1065b0773ac688e3c23efb8502c5b1535ebda3"
+          },
+          {
+            "name": "single",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "single-fr",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-fr",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--fr-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "single-rf",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-rf",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--rf-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 1,
+            "expected_exit": 1,
+            "log_sha256": "99a4a5a1f168d9c99bd022db24827cd5c32d5506036d53afe568cfb9ea4cd3c9"
+          },
+          {
+            "name": "single-overhang",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-overhang",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--single-overhang",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "hdf5-capability",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/hdf5-capability",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-b",
+              "3",
+              "--seed",
+              "17",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "0661ae7684f258fffd207becc742bf69d9bcebe49eceba6465c85ffc27ed5669"
+          }
+        ],
+        "negative_hdf5_capability": "Exit0 and n_bootstraps3 but no HDF5/draw files without --plaintext. Adapter must always request plaintext and verify every draw.",
+        "directory": "D:\\projects\\JLinAlg\\build\\literature-review\\kallisto-runtime\\references-20261025T103628.341300Z",
+        "recorded_utc": "2026-10-25T10:36:28.754808+00:00",
+        "output_sha256": {
+          "bias.tsv": "0e761bb2ecc1f62cf070f06a528b814d82168d3b7cc7af3ccbaf9543269de9a3",
+          "bootstrap17-draw0.tsv": "f417387f045593c92fea155f5316aeae276b0c5a9ac8310b4435dd569952fce4",
+          "bootstrap17-draw1.tsv": "b92f5dab2f4a0bb39c1c871977677a023d5bd09f697d0db1f5a929a9be1e97ed",
+          "bootstrap17-draw2.tsv": "b92f5dab2f4a0bb39c1c871977677a023d5bd09f697d0db1f5a929a9be1e97ed",
+          "bootstrap17.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "fr.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "paired.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "rf.tsv": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0",
+          "single-fr.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "single-overhang.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "single-rf.tsv": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0",
+          "single.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+        }
+      },
+      "full_gate": {
+        "tests": 1445,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 53,
+      "packaged_workflow_calls": 27,
+      "packaged_independent_checks": 8,
+      "scope": "Original unmodified official0.48.0 Windows x86_64 index and bulk single/paired quantification with plaintext bootstraps,bias,strand/fragment/reference contracts. Known point counts,seeded draws,effective-length TPM and actual fractional EM20.5+20.5 checked. Original raw run_info retained; derived metadata reescapes only verified launched call string. Negative HDF5 capability retained; no HDF5/Sleuth,BUS/UMI,kb count,reference generation,DE,historical or full-paper parity.0.52.0 Cygwin source build failed separately and is not validated."
+    },
+    {
+      "status": "passed-original-kallisto-048-bulk-plaintext-subset",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "recorded_utc": "2026-10-25T11:27:56.771609+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/KallistoTables.java": "57092d75b9dd8fb2d73b15e69f5f379f2f8cc1333502579b44e8ed320c4a1f85",
+        "src/main/java/org/jlinalg/cli/KallistoRuntime.java": "3431266fad9d2b1724588562e810fb68eab310aff052e4d2c09e0064bd77986d",
+        "src/main/java/org/jlinalg/cli/KallistoToolsCli.java": "5d6c05a181dff8bf5738508d100711dc9d9615771050ab606bb426d48978f721",
+        "src/main/resources/org/jlinalg/omics/kallisto-runtime-lock.json": "825f7b5dbe33c3a6422f763f8b26e0726ced87ce7c67d0d88726bff26a4eb209",
+        "src/main/resources/META-INF/NOTICE-kallisto.txt": "e31768a7b870f93540f5e69bce575bfda979e550e34370f67bad3ad257e155d7",
+        "src/main/resources/META-INF/LICENSE-kallisto.txt": "efd8a2f8f2b64a250a9ecebe8a2b09d5c1bf0aff21f51e3f24d1a31ad1221310",
+        "src/test/java/org/jlinalg/sequence/KallistoTablesTest.java": "c317d107301ab42e07c751ab89979557d100e6238421a5d62c55c34872ccd68d",
+        "src/test/java/org/jlinalg/cli/KallistoToolsCliTest.java": "352a98b7b5324613c2b957f4e2fbc24e544c4261507d8de91bd83d1b726e55fd",
+        "tools/literature/install_kallisto.py": "160b5bb4df4e2eaa3abb14c459085b023255d36aa8bac8b4f9c8249f41e95d49",
+        "tools/literature/kallisto-runtime-lock.json": "825f7b5dbe33c3a6422f763f8b26e0726ced87ce7c67d0d88726bff26a4eb209",
+        "tools/literature/generate_kallisto_references.py": "29687da935ec74275433b591a2e6b5178ac2555e03f3478835955930ca4462c4",
+        "tools/literature/verify_kallisto_workflows.py": "fd039543716f500be3bccb10f79f90f55ca6de7f2b11affc8890533fdaf96cf9",
+        "tools/literature/curate_kallisto_uses.py": "07e73879764601cb2dca37ff95f92da3720db1d5881711da92c41a0251540c59"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.KallistoTablesTest": {
+          "suite_name": "org.jlinalg.sequence.KallistoTablesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "cdfced2550466b568cefc9c51d3ef6f7359ec2a380f0dcf3eff92ffd1b42dc52",
+          "testcases": [
+            "independentFractionalCountsAndEffectiveLengthTpmMath()",
+            "outputIdentityDomainsTotalsAndArithmeticAreCheckedIndependently()",
+            "invalidReferenceAndResourceBoundsFailRatherThanRenameOrDrop()",
+            "referenceIdsRawLengthsAndUpstreamTransformCountsAreLiteral()",
+            "originalSevenPositiveTwoRejectedAndThreeBootstrapTables()"
+          ]
+        },
+        "org.jlinalg.cli.KallistoToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.KallistoToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "57781bcc7f2e5f44444e54d5c255d9179d93325bf674222df13bc13ecfc3dde3",
+          "testcases": [
+            "referenceProcessingIsAnExplicitAuditedChoice()",
+            "pairMismatchAndResourceBoundsFailBeforePublishingCounts()",
+            "optionsRejectIgnoredOrInapplicableChoicesAndHelpNamesFormatLimitation()",
+            "wrongStrandAndChangedIndexFailAndPreserveUpstreamDiagnostics()",
+            "singleAndBiasModesRetainActualOriginalEffectiveLengthsAndCounters()",
+            "missingRuntimeSkipsWithExactRecoveryAndNoSuccessfulOutput()",
+            "actualIndexPairedCountsAndEverySeededBootstrapMatchOriginal()"
+          ]
+        }
+      },
+      "api_cli_tests": 12,
+      "original_upstream_reference": {
+        "status": "passed-original-Windows-point-and-plaintext-reference-generation",
+        "version": "0.48.0",
+        "archive_sha256": "2590d87e507c9b48a5b76e17c0c788ba9054a2fa3c4c3ed96ce06e8cfc2370b0",
+        "executable_sha256": "5c8bcc2e430a59734f12fe4c153ead32000573dc043db06a3f007e4dc63b6358",
+        "generator_sha256": "29687da935ec74275433b591a2e6b5178ac2555e03f3478835955930ca4462c4",
+        "input_sha256": {
+          "transcripts.fa": "ebbea1ac7d6e08f27509b76620c95acccd4e8bff4a664613810a9f030fe4f76f",
+          "read1.fastq.gz": "2c4bc23a46a46fab6ae9d60627c0cbe48d807c900157ce48c3aa957dd6a43ad2",
+          "read2.fastq.gz": "821511801d8847cdb3ad0ee4016e39c33391a3b3525814a57ce6ce669ccd9b4b"
+        },
+        "truth": {
+          "processed_records_or_pairs": 170,
+          "pseudoaligned_unstranded": 160,
+          "estimated_counts": {
+            "001": 40,
+            "txB": 120,
+            "txZero": 0
+          },
+          "fragment_mean": 200,
+          "fragment_sd": 20,
+          "raw_lengths": {
+            "001": 1000,
+            "txB": 1600,
+            "txZero": 1200
+          }
+        },
+        "cases": [
+          {
+            "name": "paired",
+            "reference_file": "paired.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/paired -l 200 -s 20 -t 1 D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "bootstrap17",
+            "reference_file": "bootstrap17.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 3,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bootstrap17 -l 200 -s 20 -t 1 -b 3 --seed 17 D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "bias",
+            "reference_file": "bias.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bias -l 200 -s 20 -t 1 --bias D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "0e761bb2ecc1f62cf070f06a528b814d82168d3b7cc7af3ccbaf9543269de9a3"
+          },
+          {
+            "name": "fr",
+            "reference_file": "fr.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/fr -l 200 -s 20 -t 1 --fr-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "rf",
+            "reference_file": "rf.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 0,
+              "n_unique": 0,
+              "p_pseudoaligned": 0.0,
+              "p_unique": 0.0,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/rf -l 200 -s 20 -t 1 --rf-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 1,
+            "reference_sha256": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0"
+          },
+          {
+            "name": "single",
+            "reference_file": "single.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single -l 200 -s 20 -t 1 --single D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "single-fr",
+            "reference_file": "single-fr.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-fr -l 200 -s 20 -t 1 --single --fr-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "single-rf",
+            "reference_file": "single-rf.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 0,
+              "n_unique": 0,
+              "p_pseudoaligned": 0.0,
+              "p_unique": 0.0,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-rf -l 200 -s 20 -t 1 --single --rf-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 1,
+            "reference_sha256": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0"
+          },
+          {
+            "name": "single-overhang",
+            "reference_file": "single-overhang.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-overhang -l 200 -s 20 -t 1 --single --single-overhang D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          }
+        ],
+        "steps": [
+          {
+            "name": "index",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "index",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-k",
+              "31",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/transcripts.fa"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "ce6fc752888f95d08d2f87674a6c0dbf1f1b5c131e3a07b7cc8904137e1730a5"
+          },
+          {
+            "name": "paired",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/paired",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "1e93eb51c9da42f0ed7c0624db76e49009dd6e32159024e8ff05855b42924d42"
+          },
+          {
+            "name": "bootstrap17",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bootstrap17",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "-b",
+              "3",
+              "--seed",
+              "17",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "31b0592a3e79a42ce230662b4bce700915185a6d87e64bb79a14bb3fb014ed62"
+          },
+          {
+            "name": "bias",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bias",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--bias",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "ce7ca39af8bdebbc99face2f637ef164fa7fc55702cade04c5f56b40af7a5914"
+          },
+          {
+            "name": "fr",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/fr",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--fr-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "1e93eb51c9da42f0ed7c0624db76e49009dd6e32159024e8ff05855b42924d42"
+          },
+          {
+            "name": "rf",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/rf",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--rf-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 1,
+            "expected_exit": 1,
+            "log_sha256": "daf3d805e6b2d1197933453b7b1065b0773ac688e3c23efb8502c5b1535ebda3"
+          },
+          {
+            "name": "single",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "single-fr",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-fr",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--fr-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "single-rf",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-rf",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--rf-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 1,
+            "expected_exit": 1,
+            "log_sha256": "99a4a5a1f168d9c99bd022db24827cd5c32d5506036d53afe568cfb9ea4cd3c9"
+          },
+          {
+            "name": "single-overhang",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-overhang",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--single-overhang",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "hdf5-capability",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/hdf5-capability",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-b",
+              "3",
+              "--seed",
+              "17",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "0661ae7684f258fffd207becc742bf69d9bcebe49eceba6465c85ffc27ed5669"
+          }
+        ],
+        "negative_hdf5_capability": "Exit0 and n_bootstraps3 but no HDF5/draw files without --plaintext. Adapter must always request plaintext and verify every draw.",
+        "directory": "D:\\projects\\JLinAlg\\build\\literature-review\\kallisto-runtime\\references-20261025T103628.341300Z",
+        "recorded_utc": "2026-10-25T10:36:28.754808+00:00",
+        "output_sha256": {
+          "bias.tsv": "0e761bb2ecc1f62cf070f06a528b814d82168d3b7cc7af3ccbaf9543269de9a3",
+          "bootstrap17-draw0.tsv": "f417387f045593c92fea155f5316aeae276b0c5a9ac8310b4435dd569952fce4",
+          "bootstrap17-draw1.tsv": "b92f5dab2f4a0bb39c1c871977677a023d5bd09f697d0db1f5a929a9be1e97ed",
+          "bootstrap17-draw2.tsv": "b92f5dab2f4a0bb39c1c871977677a023d5bd09f697d0db1f5a929a9be1e97ed",
+          "bootstrap17.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "fr.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "paired.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "rf.tsv": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0",
+          "single-fr.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "single-overhang.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "single-rf.tsv": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0",
+          "single.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+        }
+      },
+      "full_gate": {
+        "tests": 1461,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 55,
+      "packaged_workflow_calls": 27,
+      "packaged_independent_checks": 8,
+      "scope": "Original unmodified official0.48.0 Windows x86_64 index and bulk single/paired quantification with plaintext bootstraps,bias,strand/fragment/reference contracts. Known point counts,seeded draws,effective-length TPM and actual fractional EM20.5+20.5 checked. Original raw run_info retained; derived metadata reescapes only verified launched call string. Negative HDF5 capability retained; no HDF5/Sleuth,BUS/UMI,kb count,reference generation,DE,historical or full-paper parity.0.52.0 Cygwin source build failed separately and is not validated.",
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00"
+    },
+    {
+      "status": "passed-original-kallisto-048-bulk-plaintext-subset",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "recorded_utc": "2026-10-25T11:27:56.771609+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/KallistoTables.java": "57092d75b9dd8fb2d73b15e69f5f379f2f8cc1333502579b44e8ed320c4a1f85",
+        "src/main/java/org/jlinalg/cli/KallistoRuntime.java": "3431266fad9d2b1724588562e810fb68eab310aff052e4d2c09e0064bd77986d",
+        "src/main/java/org/jlinalg/cli/KallistoToolsCli.java": "5d6c05a181dff8bf5738508d100711dc9d9615771050ab606bb426d48978f721",
+        "src/main/resources/org/jlinalg/omics/kallisto-runtime-lock.json": "825f7b5dbe33c3a6422f763f8b26e0726ced87ce7c67d0d88726bff26a4eb209",
+        "src/main/resources/META-INF/NOTICE-kallisto.txt": "e31768a7b870f93540f5e69bce575bfda979e550e34370f67bad3ad257e155d7",
+        "src/main/resources/META-INF/LICENSE-kallisto.txt": "efd8a2f8f2b64a250a9ecebe8a2b09d5c1bf0aff21f51e3f24d1a31ad1221310",
+        "src/test/java/org/jlinalg/sequence/KallistoTablesTest.java": "c317d107301ab42e07c751ab89979557d100e6238421a5d62c55c34872ccd68d",
+        "src/test/java/org/jlinalg/cli/KallistoToolsCliTest.java": "352a98b7b5324613c2b957f4e2fbc24e544c4261507d8de91bd83d1b726e55fd",
+        "tools/literature/install_kallisto.py": "160b5bb4df4e2eaa3abb14c459085b023255d36aa8bac8b4f9c8249f41e95d49",
+        "tools/literature/kallisto-runtime-lock.json": "825f7b5dbe33c3a6422f763f8b26e0726ced87ce7c67d0d88726bff26a4eb209",
+        "tools/literature/generate_kallisto_references.py": "29687da935ec74275433b591a2e6b5178ac2555e03f3478835955930ca4462c4",
+        "tools/literature/verify_kallisto_workflows.py": "fd039543716f500be3bccb10f79f90f55ca6de7f2b11affc8890533fdaf96cf9",
+        "tools/literature/curate_kallisto_uses.py": "07e73879764601cb2dca37ff95f92da3720db1d5881711da92c41a0251540c59"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.KallistoTablesTest": {
+          "suite_name": "org.jlinalg.sequence.KallistoTablesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "126532eb6176afb16b8c71ca4b6f5e62f015bf9a11f6064a71d6185cd0850bfd",
+          "testcases": [
+            "independentFractionalCountsAndEffectiveLengthTpmMath()",
+            "outputIdentityDomainsTotalsAndArithmeticAreCheckedIndependently()",
+            "invalidReferenceAndResourceBoundsFailRatherThanRenameOrDrop()",
+            "referenceIdsRawLengthsAndUpstreamTransformCountsAreLiteral()",
+            "originalSevenPositiveTwoRejectedAndThreeBootstrapTables()"
+          ]
+        },
+        "org.jlinalg.cli.KallistoToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.KallistoToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "597a13ab249525b51435cc5849ec9f47e6acc9d31bc429f682410411438cb485",
+          "testcases": [
+            "referenceProcessingIsAnExplicitAuditedChoice()",
+            "pairMismatchAndResourceBoundsFailBeforePublishingCounts()",
+            "optionsRejectIgnoredOrInapplicableChoicesAndHelpNamesFormatLimitation()",
+            "wrongStrandAndChangedIndexFailAndPreserveUpstreamDiagnostics()",
+            "singleAndBiasModesRetainActualOriginalEffectiveLengthsAndCounters()",
+            "missingRuntimeSkipsWithExactRecoveryAndNoSuccessfulOutput()",
+            "actualIndexPairedCountsAndEverySeededBootstrapMatchOriginal()"
+          ]
+        }
+      },
+      "api_cli_tests": 12,
+      "original_upstream_reference": {
+        "status": "passed-original-Windows-point-and-plaintext-reference-generation",
+        "version": "0.48.0",
+        "archive_sha256": "2590d87e507c9b48a5b76e17c0c788ba9054a2fa3c4c3ed96ce06e8cfc2370b0",
+        "executable_sha256": "5c8bcc2e430a59734f12fe4c153ead32000573dc043db06a3f007e4dc63b6358",
+        "generator_sha256": "29687da935ec74275433b591a2e6b5178ac2555e03f3478835955930ca4462c4",
+        "input_sha256": {
+          "transcripts.fa": "ebbea1ac7d6e08f27509b76620c95acccd4e8bff4a664613810a9f030fe4f76f",
+          "read1.fastq.gz": "2c4bc23a46a46fab6ae9d60627c0cbe48d807c900157ce48c3aa957dd6a43ad2",
+          "read2.fastq.gz": "821511801d8847cdb3ad0ee4016e39c33391a3b3525814a57ce6ce669ccd9b4b"
+        },
+        "truth": {
+          "processed_records_or_pairs": 170,
+          "pseudoaligned_unstranded": 160,
+          "estimated_counts": {
+            "001": 40,
+            "txB": 120,
+            "txZero": 0
+          },
+          "fragment_mean": 200,
+          "fragment_sd": 20,
+          "raw_lengths": {
+            "001": 1000,
+            "txB": 1600,
+            "txZero": 1200
+          }
+        },
+        "cases": [
+          {
+            "name": "paired",
+            "reference_file": "paired.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/paired -l 200 -s 20 -t 1 D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "bootstrap17",
+            "reference_file": "bootstrap17.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 3,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bootstrap17 -l 200 -s 20 -t 1 -b 3 --seed 17 D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "bias",
+            "reference_file": "bias.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bias -l 200 -s 20 -t 1 --bias D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "0e761bb2ecc1f62cf070f06a528b814d82168d3b7cc7af3ccbaf9543269de9a3"
+          },
+          {
+            "name": "fr",
+            "reference_file": "fr.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/fr -l 200 -s 20 -t 1 --fr-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "rf",
+            "reference_file": "rf.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 0,
+              "n_unique": 0,
+              "p_pseudoaligned": 0.0,
+              "p_unique": 0.0,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/rf -l 200 -s 20 -t 1 --rf-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 1,
+            "reference_sha256": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0"
+          },
+          {
+            "name": "single",
+            "reference_file": "single.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single -l 200 -s 20 -t 1 --single D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "single-fr",
+            "reference_file": "single-fr.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-fr -l 200 -s 20 -t 1 --single --fr-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "single-rf",
+            "reference_file": "single-rf.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 0,
+              "n_unique": 0,
+              "p_pseudoaligned": 0.0,
+              "p_unique": 0.0,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-rf -l 200 -s 20 -t 1 --single --rf-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 1,
+            "reference_sha256": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0"
+          },
+          {
+            "name": "single-overhang",
+            "reference_file": "single-overhang.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-overhang -l 200 -s 20 -t 1 --single --single-overhang D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          }
+        ],
+        "steps": [
+          {
+            "name": "index",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "index",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-k",
+              "31",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/transcripts.fa"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "ce6fc752888f95d08d2f87674a6c0dbf1f1b5c131e3a07b7cc8904137e1730a5"
+          },
+          {
+            "name": "paired",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/paired",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "1e93eb51c9da42f0ed7c0624db76e49009dd6e32159024e8ff05855b42924d42"
+          },
+          {
+            "name": "bootstrap17",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bootstrap17",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "-b",
+              "3",
+              "--seed",
+              "17",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "31b0592a3e79a42ce230662b4bce700915185a6d87e64bb79a14bb3fb014ed62"
+          },
+          {
+            "name": "bias",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bias",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--bias",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "ce7ca39af8bdebbc99face2f637ef164fa7fc55702cade04c5f56b40af7a5914"
+          },
+          {
+            "name": "fr",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/fr",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--fr-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "1e93eb51c9da42f0ed7c0624db76e49009dd6e32159024e8ff05855b42924d42"
+          },
+          {
+            "name": "rf",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/rf",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--rf-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 1,
+            "expected_exit": 1,
+            "log_sha256": "daf3d805e6b2d1197933453b7b1065b0773ac688e3c23efb8502c5b1535ebda3"
+          },
+          {
+            "name": "single",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "single-fr",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-fr",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--fr-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "single-rf",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-rf",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--rf-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 1,
+            "expected_exit": 1,
+            "log_sha256": "99a4a5a1f168d9c99bd022db24827cd5c32d5506036d53afe568cfb9ea4cd3c9"
+          },
+          {
+            "name": "single-overhang",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-overhang",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--single-overhang",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "hdf5-capability",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/hdf5-capability",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-b",
+              "3",
+              "--seed",
+              "17",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "0661ae7684f258fffd207becc742bf69d9bcebe49eceba6465c85ffc27ed5669"
+          }
+        ],
+        "negative_hdf5_capability": "Exit0 and n_bootstraps3 but no HDF5/draw files without --plaintext. Adapter must always request plaintext and verify every draw.",
+        "directory": "D:\\projects\\JLinAlg\\build\\literature-review\\kallisto-runtime\\references-20261025T103628.341300Z",
+        "recorded_utc": "2026-10-25T10:36:28.754808+00:00",
+        "output_sha256": {
+          "bias.tsv": "0e761bb2ecc1f62cf070f06a528b814d82168d3b7cc7af3ccbaf9543269de9a3",
+          "bootstrap17-draw0.tsv": "f417387f045593c92fea155f5316aeae276b0c5a9ac8310b4435dd569952fce4",
+          "bootstrap17-draw1.tsv": "b92f5dab2f4a0bb39c1c871977677a023d5bd09f697d0db1f5a929a9be1e97ed",
+          "bootstrap17-draw2.tsv": "b92f5dab2f4a0bb39c1c871977677a023d5bd09f697d0db1f5a929a9be1e97ed",
+          "bootstrap17.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "fr.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "paired.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "rf.tsv": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0",
+          "single-fr.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "single-overhang.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "single-rf.tsv": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0",
+          "single.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+        }
+      },
+      "full_gate": {
+        "tests": 1486,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 59,
+      "packaged_workflow_calls": 27,
+      "packaged_independent_checks": 8,
+      "scope": "Original unmodified official0.48.0 Windows x86_64 index and bulk single/paired quantification with plaintext bootstraps,bias,strand/fragment/reference contracts. Known point counts,seeded draws,effective-length TPM and actual fractional EM20.5+20.5 checked. Original raw run_info retained; derived metadata reescapes only verified launched call string. Negative HDF5 capability retained; no HDF5/Sleuth,BUS/UMI,kb count,reference generation,DE,historical or full-paper parity.0.52.0 Cygwin source build failed separately and is not validated.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed-original-kallisto-048-bulk-plaintext-subset",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "recorded_utc": "2026-10-25T11:27:56.771609+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/KallistoTables.java": "57092d75b9dd8fb2d73b15e69f5f379f2f8cc1333502579b44e8ed320c4a1f85",
+        "src/main/java/org/jlinalg/cli/KallistoRuntime.java": "3431266fad9d2b1724588562e810fb68eab310aff052e4d2c09e0064bd77986d",
+        "src/main/java/org/jlinalg/cli/KallistoToolsCli.java": "5d6c05a181dff8bf5738508d100711dc9d9615771050ab606bb426d48978f721",
+        "src/main/resources/org/jlinalg/omics/kallisto-runtime-lock.json": "825f7b5dbe33c3a6422f763f8b26e0726ced87ce7c67d0d88726bff26a4eb209",
+        "src/main/resources/META-INF/NOTICE-kallisto.txt": "e31768a7b870f93540f5e69bce575bfda979e550e34370f67bad3ad257e155d7",
+        "src/main/resources/META-INF/LICENSE-kallisto.txt": "efd8a2f8f2b64a250a9ecebe8a2b09d5c1bf0aff21f51e3f24d1a31ad1221310",
+        "src/test/java/org/jlinalg/sequence/KallistoTablesTest.java": "c317d107301ab42e07c751ab89979557d100e6238421a5d62c55c34872ccd68d",
+        "src/test/java/org/jlinalg/cli/KallistoToolsCliTest.java": "352a98b7b5324613c2b957f4e2fbc24e544c4261507d8de91bd83d1b726e55fd",
+        "tools/literature/install_kallisto.py": "160b5bb4df4e2eaa3abb14c459085b023255d36aa8bac8b4f9c8249f41e95d49",
+        "tools/literature/kallisto-runtime-lock.json": "825f7b5dbe33c3a6422f763f8b26e0726ced87ce7c67d0d88726bff26a4eb209",
+        "tools/literature/generate_kallisto_references.py": "29687da935ec74275433b591a2e6b5178ac2555e03f3478835955930ca4462c4",
+        "tools/literature/verify_kallisto_workflows.py": "fd039543716f500be3bccb10f79f90f55ca6de7f2b11affc8890533fdaf96cf9",
+        "tools/literature/curate_kallisto_uses.py": "07e73879764601cb2dca37ff95f92da3720db1d5881711da92c41a0251540c59"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.KallistoTablesTest": {
+          "suite_name": "org.jlinalg.sequence.KallistoTablesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "6be4e6bc062ecd67f2372f04c281e222c091d644fde109408ba4c79d920d1367",
+          "testcases": [
+            "independentFractionalCountsAndEffectiveLengthTpmMath()",
+            "outputIdentityDomainsTotalsAndArithmeticAreCheckedIndependently()",
+            "invalidReferenceAndResourceBoundsFailRatherThanRenameOrDrop()",
+            "referenceIdsRawLengthsAndUpstreamTransformCountsAreLiteral()",
+            "originalSevenPositiveTwoRejectedAndThreeBootstrapTables()"
+          ]
+        },
+        "org.jlinalg.cli.KallistoToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.KallistoToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "16fe38ee5ccc8da456cb4d8a453e17087fc2e107b6ba37114f4cbd40d035c18a",
+          "testcases": [
+            "referenceProcessingIsAnExplicitAuditedChoice()",
+            "pairMismatchAndResourceBoundsFailBeforePublishingCounts()",
+            "optionsRejectIgnoredOrInapplicableChoicesAndHelpNamesFormatLimitation()",
+            "wrongStrandAndChangedIndexFailAndPreserveUpstreamDiagnostics()",
+            "singleAndBiasModesRetainActualOriginalEffectiveLengthsAndCounters()",
+            "missingRuntimeSkipsWithExactRecoveryAndNoSuccessfulOutput()",
+            "actualIndexPairedCountsAndEverySeededBootstrapMatchOriginal()"
+          ]
+        }
+      },
+      "api_cli_tests": 12,
+      "original_upstream_reference": {
+        "status": "passed-original-Windows-point-and-plaintext-reference-generation",
+        "version": "0.48.0",
+        "archive_sha256": "2590d87e507c9b48a5b76e17c0c788ba9054a2fa3c4c3ed96ce06e8cfc2370b0",
+        "executable_sha256": "5c8bcc2e430a59734f12fe4c153ead32000573dc043db06a3f007e4dc63b6358",
+        "generator_sha256": "29687da935ec74275433b591a2e6b5178ac2555e03f3478835955930ca4462c4",
+        "input_sha256": {
+          "transcripts.fa": "ebbea1ac7d6e08f27509b76620c95acccd4e8bff4a664613810a9f030fe4f76f",
+          "read1.fastq.gz": "2c4bc23a46a46fab6ae9d60627c0cbe48d807c900157ce48c3aa957dd6a43ad2",
+          "read2.fastq.gz": "821511801d8847cdb3ad0ee4016e39c33391a3b3525814a57ce6ce669ccd9b4b"
+        },
+        "truth": {
+          "processed_records_or_pairs": 170,
+          "pseudoaligned_unstranded": 160,
+          "estimated_counts": {
+            "001": 40,
+            "txB": 120,
+            "txZero": 0
+          },
+          "fragment_mean": 200,
+          "fragment_sd": 20,
+          "raw_lengths": {
+            "001": 1000,
+            "txB": 1600,
+            "txZero": 1200
+          }
+        },
+        "cases": [
+          {
+            "name": "paired",
+            "reference_file": "paired.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/paired -l 200 -s 20 -t 1 D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "bootstrap17",
+            "reference_file": "bootstrap17.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 3,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bootstrap17 -l 200 -s 20 -t 1 -b 3 --seed 17 D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "bias",
+            "reference_file": "bias.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bias -l 200 -s 20 -t 1 --bias D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "0e761bb2ecc1f62cf070f06a528b814d82168d3b7cc7af3ccbaf9543269de9a3"
+          },
+          {
+            "name": "fr",
+            "reference_file": "fr.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/fr -l 200 -s 20 -t 1 --fr-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "rf",
+            "reference_file": "rf.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 0,
+              "n_unique": 0,
+              "p_pseudoaligned": 0.0,
+              "p_unique": 0.0,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/rf -l 200 -s 20 -t 1 --rf-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 1,
+            "reference_sha256": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0"
+          },
+          {
+            "name": "single",
+            "reference_file": "single.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single -l 200 -s 20 -t 1 --single D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "single-fr",
+            "reference_file": "single-fr.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-fr -l 200 -s 20 -t 1 --single --fr-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "single-rf",
+            "reference_file": "single-rf.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 0,
+              "n_unique": 0,
+              "p_pseudoaligned": 0.0,
+              "p_unique": 0.0,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-rf -l 200 -s 20 -t 1 --single --rf-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 1,
+            "reference_sha256": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0"
+          },
+          {
+            "name": "single-overhang",
+            "reference_file": "single-overhang.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-overhang -l 200 -s 20 -t 1 --single --single-overhang D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          }
+        ],
+        "steps": [
+          {
+            "name": "index",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "index",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-k",
+              "31",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/transcripts.fa"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "ce6fc752888f95d08d2f87674a6c0dbf1f1b5c131e3a07b7cc8904137e1730a5"
+          },
+          {
+            "name": "paired",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/paired",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "1e93eb51c9da42f0ed7c0624db76e49009dd6e32159024e8ff05855b42924d42"
+          },
+          {
+            "name": "bootstrap17",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bootstrap17",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "-b",
+              "3",
+              "--seed",
+              "17",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "31b0592a3e79a42ce230662b4bce700915185a6d87e64bb79a14bb3fb014ed62"
+          },
+          {
+            "name": "bias",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bias",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--bias",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "ce7ca39af8bdebbc99face2f637ef164fa7fc55702cade04c5f56b40af7a5914"
+          },
+          {
+            "name": "fr",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/fr",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--fr-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "1e93eb51c9da42f0ed7c0624db76e49009dd6e32159024e8ff05855b42924d42"
+          },
+          {
+            "name": "rf",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/rf",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--rf-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 1,
+            "expected_exit": 1,
+            "log_sha256": "daf3d805e6b2d1197933453b7b1065b0773ac688e3c23efb8502c5b1535ebda3"
+          },
+          {
+            "name": "single",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "single-fr",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-fr",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--fr-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "single-rf",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-rf",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--rf-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 1,
+            "expected_exit": 1,
+            "log_sha256": "99a4a5a1f168d9c99bd022db24827cd5c32d5506036d53afe568cfb9ea4cd3c9"
+          },
+          {
+            "name": "single-overhang",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-overhang",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--single-overhang",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "hdf5-capability",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/hdf5-capability",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-b",
+              "3",
+              "--seed",
+              "17",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "0661ae7684f258fffd207becc742bf69d9bcebe49eceba6465c85ffc27ed5669"
+          }
+        ],
+        "negative_hdf5_capability": "Exit0 and n_bootstraps3 but no HDF5/draw files without --plaintext. Adapter must always request plaintext and verify every draw.",
+        "directory": "D:\\projects\\JLinAlg\\build\\literature-review\\kallisto-runtime\\references-20261025T103628.341300Z",
+        "recorded_utc": "2026-10-25T10:36:28.754808+00:00",
+        "output_sha256": {
+          "bias.tsv": "0e761bb2ecc1f62cf070f06a528b814d82168d3b7cc7af3ccbaf9543269de9a3",
+          "bootstrap17-draw0.tsv": "f417387f045593c92fea155f5316aeae276b0c5a9ac8310b4435dd569952fce4",
+          "bootstrap17-draw1.tsv": "b92f5dab2f4a0bb39c1c871977677a023d5bd09f697d0db1f5a929a9be1e97ed",
+          "bootstrap17-draw2.tsv": "b92f5dab2f4a0bb39c1c871977677a023d5bd09f697d0db1f5a929a9be1e97ed",
+          "bootstrap17.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "fr.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "paired.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "rf.tsv": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0",
+          "single-fr.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "single-overhang.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "single-rf.tsv": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0",
+          "single.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+        }
+      },
+      "full_gate": {
+        "tests": 1504,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 61,
+      "packaged_workflow_calls": 27,
+      "packaged_independent_checks": 8,
+      "scope": "Original unmodified official0.48.0 Windows x86_64 index and bulk single/paired quantification with plaintext bootstraps,bias,strand/fragment/reference contracts. Known point counts,seeded draws,effective-length TPM and actual fractional EM20.5+20.5 checked. Original raw run_info retained; derived metadata reescapes only verified launched call string. Negative HDF5 capability retained; no HDF5/Sleuth,BUS/UMI,kb count,reference generation,DE,historical or full-paper parity.0.52.0 Cygwin source build failed separately and is not validated.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed-original-kallisto-048-bulk-plaintext-subset",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "recorded_utc": "2026-10-25T11:27:56.771609+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/KallistoTables.java": "57092d75b9dd8fb2d73b15e69f5f379f2f8cc1333502579b44e8ed320c4a1f85",
+        "src/main/java/org/jlinalg/cli/KallistoRuntime.java": "3431266fad9d2b1724588562e810fb68eab310aff052e4d2c09e0064bd77986d",
+        "src/main/java/org/jlinalg/cli/KallistoToolsCli.java": "5d6c05a181dff8bf5738508d100711dc9d9615771050ab606bb426d48978f721",
+        "src/main/resources/org/jlinalg/omics/kallisto-runtime-lock.json": "825f7b5dbe33c3a6422f763f8b26e0726ced87ce7c67d0d88726bff26a4eb209",
+        "src/main/resources/META-INF/NOTICE-kallisto.txt": "e31768a7b870f93540f5e69bce575bfda979e550e34370f67bad3ad257e155d7",
+        "src/main/resources/META-INF/LICENSE-kallisto.txt": "efd8a2f8f2b64a250a9ecebe8a2b09d5c1bf0aff21f51e3f24d1a31ad1221310",
+        "src/test/java/org/jlinalg/sequence/KallistoTablesTest.java": "c317d107301ab42e07c751ab89979557d100e6238421a5d62c55c34872ccd68d",
+        "src/test/java/org/jlinalg/cli/KallistoToolsCliTest.java": "352a98b7b5324613c2b957f4e2fbc24e544c4261507d8de91bd83d1b726e55fd",
+        "tools/literature/install_kallisto.py": "160b5bb4df4e2eaa3abb14c459085b023255d36aa8bac8b4f9c8249f41e95d49",
+        "tools/literature/kallisto-runtime-lock.json": "825f7b5dbe33c3a6422f763f8b26e0726ced87ce7c67d0d88726bff26a4eb209",
+        "tools/literature/generate_kallisto_references.py": "29687da935ec74275433b591a2e6b5178ac2555e03f3478835955930ca4462c4",
+        "tools/literature/verify_kallisto_workflows.py": "fd039543716f500be3bccb10f79f90f55ca6de7f2b11affc8890533fdaf96cf9",
+        "tools/literature/curate_kallisto_uses.py": "07e73879764601cb2dca37ff95f92da3720db1d5881711da92c41a0251540c59"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.KallistoTablesTest": {
+          "suite_name": "org.jlinalg.sequence.KallistoTablesTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8ec6961d4696c73264f4a0aa1ff2ec764b3914f2b94346cb52099685a2f9243f",
+          "testcases": [
+            "independentFractionalCountsAndEffectiveLengthTpmMath()",
+            "outputIdentityDomainsTotalsAndArithmeticAreCheckedIndependently()",
+            "invalidReferenceAndResourceBoundsFailRatherThanRenameOrDrop()",
+            "referenceIdsRawLengthsAndUpstreamTransformCountsAreLiteral()",
+            "originalSevenPositiveTwoRejectedAndThreeBootstrapTables()"
+          ]
+        },
+        "org.jlinalg.cli.KallistoToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.KallistoToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7b277d0fc932ce2bd803a98133a244cec94f553a429d4baf76385d12b4e53dea",
+          "testcases": [
+            "referenceProcessingIsAnExplicitAuditedChoice()",
+            "pairMismatchAndResourceBoundsFailBeforePublishingCounts()",
+            "optionsRejectIgnoredOrInapplicableChoicesAndHelpNamesFormatLimitation()",
+            "wrongStrandAndChangedIndexFailAndPreserveUpstreamDiagnostics()",
+            "singleAndBiasModesRetainActualOriginalEffectiveLengthsAndCounters()",
+            "missingRuntimeSkipsWithExactRecoveryAndNoSuccessfulOutput()",
+            "actualIndexPairedCountsAndEverySeededBootstrapMatchOriginal()"
+          ]
+        }
+      },
+      "api_cli_tests": 12,
+      "original_upstream_reference": {
+        "status": "passed-original-Windows-point-and-plaintext-reference-generation",
+        "version": "0.48.0",
+        "archive_sha256": "2590d87e507c9b48a5b76e17c0c788ba9054a2fa3c4c3ed96ce06e8cfc2370b0",
+        "executable_sha256": "5c8bcc2e430a59734f12fe4c153ead32000573dc043db06a3f007e4dc63b6358",
+        "generator_sha256": "29687da935ec74275433b591a2e6b5178ac2555e03f3478835955930ca4462c4",
+        "input_sha256": {
+          "transcripts.fa": "ebbea1ac7d6e08f27509b76620c95acccd4e8bff4a664613810a9f030fe4f76f",
+          "read1.fastq.gz": "2c4bc23a46a46fab6ae9d60627c0cbe48d807c900157ce48c3aa957dd6a43ad2",
+          "read2.fastq.gz": "821511801d8847cdb3ad0ee4016e39c33391a3b3525814a57ce6ce669ccd9b4b"
+        },
+        "truth": {
+          "processed_records_or_pairs": 170,
+          "pseudoaligned_unstranded": 160,
+          "estimated_counts": {
+            "001": 40,
+            "txB": 120,
+            "txZero": 0
+          },
+          "fragment_mean": 200,
+          "fragment_sd": 20,
+          "raw_lengths": {
+            "001": 1000,
+            "txB": 1600,
+            "txZero": 1200
+          }
+        },
+        "cases": [
+          {
+            "name": "paired",
+            "reference_file": "paired.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/paired -l 200 -s 20 -t 1 D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "bootstrap17",
+            "reference_file": "bootstrap17.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 3,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bootstrap17 -l 200 -s 20 -t 1 -b 3 --seed 17 D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "bias",
+            "reference_file": "bias.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bias -l 200 -s 20 -t 1 --bias D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "0e761bb2ecc1f62cf070f06a528b814d82168d3b7cc7af3ccbaf9543269de9a3"
+          },
+          {
+            "name": "fr",
+            "reference_file": "fr.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/fr -l 200 -s 20 -t 1 --fr-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "rf",
+            "reference_file": "rf.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 0,
+              "n_unique": 0,
+              "p_pseudoaligned": 0.0,
+              "p_unique": 0.0,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/rf -l 200 -s 20 -t 1 --rf-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            },
+            "expected_exit": 1,
+            "reference_sha256": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0"
+          },
+          {
+            "name": "single",
+            "reference_file": "single.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single -l 200 -s 20 -t 1 --single D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "single-fr",
+            "reference_file": "single-fr.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-fr -l 200 -s 20 -t 1 --single --fr-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          },
+          {
+            "name": "single-rf",
+            "reference_file": "single-rf.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 0,
+              "n_unique": 0,
+              "p_pseudoaligned": 0.0,
+              "p_unique": 0.0,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-rf -l 200 -s 20 -t 1 --single --rf-stranded D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 1,
+            "reference_sha256": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0"
+          },
+          {
+            "name": "single-overhang",
+            "reference_file": "single-overhang.tsv",
+            "run_info": {
+              "n_targets": 3,
+              "n_bootstraps": 0,
+              "n_processed": 170,
+              "n_pseudoaligned": 160,
+              "n_unique": 160,
+              "p_pseudoaligned": 94.1,
+              "p_unique": 94.1,
+              "kallisto_version": "0.48.0",
+              "index_version": 10,
+              "start_time": "Sun Oct 25 06:36:28 2026",
+              "call": "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe quant --plaintext -i D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx -o D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-overhang -l 200 -s 20 -t 1 --single --single-overhang D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            },
+            "expected_exit": 0,
+            "reference_sha256": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+          }
+        ],
+        "steps": [
+          {
+            "name": "index",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "index",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-k",
+              "31",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/transcripts.fa"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "ce6fc752888f95d08d2f87674a6c0dbf1f1b5c131e3a07b7cc8904137e1730a5"
+          },
+          {
+            "name": "paired",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/paired",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "1e93eb51c9da42f0ed7c0624db76e49009dd6e32159024e8ff05855b42924d42"
+          },
+          {
+            "name": "bootstrap17",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bootstrap17",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "-b",
+              "3",
+              "--seed",
+              "17",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "31b0592a3e79a42ce230662b4bce700915185a6d87e64bb79a14bb3fb014ed62"
+          },
+          {
+            "name": "bias",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/bias",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--bias",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "ce7ca39af8bdebbc99face2f637ef164fa7fc55702cade04c5f56b40af7a5914"
+          },
+          {
+            "name": "fr",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/fr",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--fr-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "1e93eb51c9da42f0ed7c0624db76e49009dd6e32159024e8ff05855b42924d42"
+          },
+          {
+            "name": "rf",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/rf",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--rf-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 1,
+            "expected_exit": 1,
+            "log_sha256": "daf3d805e6b2d1197933453b7b1065b0773ac688e3c23efb8502c5b1535ebda3"
+          },
+          {
+            "name": "single",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "single-fr",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-fr",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--fr-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "single-rf",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-rf",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--rf-stranded",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 1,
+            "expected_exit": 1,
+            "log_sha256": "99a4a5a1f168d9c99bd022db24827cd5c32d5506036d53afe568cfb9ea4cd3c9"
+          },
+          {
+            "name": "single-overhang",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "--plaintext",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/single-overhang",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-t",
+              "1",
+              "--single",
+              "--single-overhang",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "661e78a146f5a2594c12a918c0c83285abb9320ae678e74470a68ac21bd3a747"
+          },
+          {
+            "name": "hdf5-capability",
+            "command": [
+              "D:/projects/JLinAlg/build/omics-kallisto-0.48.0/kallisto.exe",
+              "quant",
+              "-i",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/targets.idx",
+              "-o",
+              "D:/projects/JLinAlg/build/literature-review/kallisto-runtime/references-20261025T103628.341300Z/hdf5-capability",
+              "-l",
+              "200",
+              "-s",
+              "20",
+              "-b",
+              "3",
+              "--seed",
+              "17",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read1.fastq.gz",
+              "D:/projects/JLinAlg/src/test/resources/kallisto/read2.fastq.gz"
+            ],
+            "exit_code": 0,
+            "expected_exit": 0,
+            "log_sha256": "0661ae7684f258fffd207becc742bf69d9bcebe49eceba6465c85ffc27ed5669"
+          }
+        ],
+        "negative_hdf5_capability": "Exit0 and n_bootstraps3 but no HDF5/draw files without --plaintext. Adapter must always request plaintext and verify every draw.",
+        "directory": "D:\\projects\\JLinAlg\\build\\literature-review\\kallisto-runtime\\references-20261025T103628.341300Z",
+        "recorded_utc": "2026-10-25T10:36:28.754808+00:00",
+        "output_sha256": {
+          "bias.tsv": "0e761bb2ecc1f62cf070f06a528b814d82168d3b7cc7af3ccbaf9543269de9a3",
+          "bootstrap17-draw0.tsv": "f417387f045593c92fea155f5316aeae276b0c5a9ac8310b4435dd569952fce4",
+          "bootstrap17-draw1.tsv": "b92f5dab2f4a0bb39c1c871977677a023d5bd09f697d0db1f5a929a9be1e97ed",
+          "bootstrap17-draw2.tsv": "b92f5dab2f4a0bb39c1c871977677a023d5bd09f697d0db1f5a929a9be1e97ed",
+          "bootstrap17.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "fr.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "paired.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "rf.tsv": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0",
+          "single-fr.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "single-overhang.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632",
+          "single-rf.tsv": "93211934e6e8f274238d9115d16a22bc7d7a71f38d37b1c4ac998c10654a21b0",
+          "single.tsv": "ad7cbeb8bb2699250c9e503de86e31cbc68bee8bd950e80f73af15f5bf964632"
+        }
+      },
+      "full_gate": {
+        "tests": 1552,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 68,
+      "packaged_workflow_calls": 27,
+      "packaged_independent_checks": 8,
+      "scope": "Original unmodified official0.48.0 Windows x86_64 index and bulk single/paired quantification with plaintext bootstraps,bias,strand/fragment/reference contracts. Known point counts,seeded draws,effective-length TPM and actual fractional EM20.5+20.5 checked. Original raw run_info retained; derived metadata reescapes only verified launched call string. Negative HDF5 capability retained; no HDF5/Sleuth,BUS/UMI,kb count,reference generation,DE,historical or full-paper parity.0.52.0 Cygwin source build failed separately and is not validated.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

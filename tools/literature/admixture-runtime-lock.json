@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "tool": "ADMIXTURE",
+  "profiles": {
+    "linux-x86_64-1.4.0": {
+      "version": "1.4.0",
+      "emulated": false,
+      "members": {
+        "bin/admixture": {
+          "archive": "admixture_linux-1.4.0.tar.gz",
+          "member": "admixture_linux-1.4.0/admixture",
+          "bytes": 49923792,
+          "sha256": "dbab7f695dc159bddd72a1137f11cb2888ca2939565e6123fbb80e001c4e613f"
+        },
+        "share/admixture-manual.pdf": {
+          "archive": "admixture_linux-1.4.0.tar.gz",
+          "member": "admixture_linux-1.4.0/admixture-manual.pdf",
+          "bytes": 313208,
+          "sha256": "7a5c460157e4ee23b5208e4c738e099bcc2768f27bcccb0ddd899fa50e230a47"
+        }
+      }
+    },
+    "linux-x86_64-1.3.0-qemu8.2.2": {
+      "version": "1.3.0",
+      "emulated": true,
+      "members": {
+        "bin/admixture": {
+          "archive": "admixture_linux-1.3.0.tar.gz",
+          "member": "dist/admixture_linux-1.3.0/admixture",
+          "bytes": 2270195,
+          "sha256": "3e3f2fdb605d33d3ba3c732cd24a16ebc68e0a2b631022b13d825dbf04cc52ee"
+        },
+        "share/admixture-manual.pdf": {
+          "archive": "admixture_linux-1.3.0.tar.gz",
+          "member": "dist/admixture_linux-1.3.0/admixture-manual.pdf",
+          "bytes": 237023,
+          "sha256": "cde64e6d8fc402bbac0a2d5ded264f4e3420f39f4b40068a05d1a500b59da51c"
+        },
+        "bin/qemu-x86_64-static": {
+          "archive": "qemu-user-static_8.2.2+ds-0ubuntu1.18_amd64.deb",
+          "member": "./usr/bin/qemu-x86_64-static",
+          "bytes": 3751320,
+          "sha256": "90181b5552cd1a0b60d8edcc9f1cf8e38647579ef697d3155e2b6150e8fbcee0"
+        },
+        "share/qemu-copyright": {
+          "archive": "qemu-user-static_8.2.2+ds-0ubuntu1.18_amd64.deb",
+          "member": "./usr/share/doc/qemu-user-static/copyright",
+          "bytes": 31159,
+          "sha256": "38ed9e4ca12a9c52ff69079d7098672b2c9eb5a1f728cae402b57b268ec49767"
+        }
+      }
+    }
+  },
+  "archives": {
+    "admixture_linux-1.4.0.tar.gz": {
+      "url": "https://dalexander.github.io/admixture/binaries/admixture_linux-1.4.0.tar.gz",
+      "bytes": 8289585,
+      "sha256": "5520c4f18525f49ab2c715d711b40f4a0818ef1485361a94ec8954d1364e6f19"
+    },
+    "admixture_linux-1.3.0.tar.gz": {
+      "url": "https://dalexander.github.io/admixture/binaries/admixture_linux-1.3.0.tar.gz",
+      "bytes": 1916705,
+      "sha256": "353e8b170c81f8d95946bf18bc78afda5d6bd32645b2a68658bd6781ff35703c"
+    },
+    "qemu-user-static_8.2.2+ds-0ubuntu1.18_amd64.deb": {
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/q/qemu/qemu-user-static_8.2.2+ds-0ubuntu1.18_amd64.deb",
+      "bytes": 14709858,
+      "sha256": "5bb397f66063efa349f6fd5cb3b68cd96f29edd0994e4ba5115cf0859a716bf0"
+    }
+  },
+  "scope": "Private original binary profiles only;retain upstream copyright. Current1.4.0 is native Linux x86_64;unsupported legacy1.3.0 uses explicit QEMU8.2.2 CPUqemu64. Scientific installer health required;help alone is insufficient. No upstream binaries redistributed and no automatic kernel/globalOS configuration changes."
+}

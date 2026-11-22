@@ -1,0 +1,222 @@
+{
+  "status": "original-current-and-explicit-legacy-QEMU-runtime-with-validated-typed-development-adapter",
+  "project_adapter_available": true,
+  "project_installer_available": true,
+  "admitted_runtime_available": true,
+  "native_component_available": true,
+  "native_component": "AncestryMixtureLikelihood",
+  "original_runtime_scientific_cases": 20,
+  "upstream_source_modified": false,
+  "binary_distribution_only_in_reviewed_archives": true,
+  "upstream_binaries_redistributed": false,
+  "official_archives": [
+    {
+      "name": "admixture_linux-1.4.0.tar.gz",
+      "url": "https://dalexander.github.io/admixture/binaries/admixture_linux-1.4.0.tar.gz",
+      "bytes": 8289585,
+      "sha256": "5520c4f18525f49ab2c715d711b40f4a0818ef1485361a94ec8954d1364e6f19",
+      "members": [
+        {
+          "name": "admixture_linux-1.4.0",
+          "bytes": 0,
+          "type": "directory"
+        },
+        {
+          "name": "admixture_linux-1.4.0/admixture",
+          "bytes": 49923792,
+          "type": "file",
+          "sha256": "dbab7f695dc159bddd72a1137f11cb2888ca2939565e6123fbb80e001c4e613f",
+          "magic_hex": "7f454c4602010103"
+        },
+        {
+          "name": "admixture_linux-1.4.0/admixture-manual.pdf",
+          "bytes": 313208,
+          "type": "file",
+          "sha256": "7a5c460157e4ee23b5208e4c738e099bcc2768f27bcccb0ddd899fa50e230a47",
+          "magic_hex": "255044462d312e37"
+        }
+      ]
+    },
+    {
+      "name": "admixture_linux-1.3.0.tar.gz",
+      "url": "https://dalexander.github.io/admixture/binaries/admixture_linux-1.3.0.tar.gz",
+      "bytes": 1916705,
+      "sha256": "353e8b170c81f8d95946bf18bc78afda5d6bd32645b2a68658bd6781ff35703c",
+      "members": [
+        {
+          "name": "dist/admixture_linux-1.3.0",
+          "bytes": 0,
+          "type": "directory"
+        },
+        {
+          "name": "dist/admixture_linux-1.3.0/README.32.txt",
+          "bytes": 149,
+          "type": "file",
+          "sha256": "0d6d15dbf3dd2382d409605ff7d02a39d34ba2eb8879507bf9bcd5e54e51f9be",
+          "magic_hex": "0a4173206f662076",
+          "text": "\nAs of version 1.2, admixture is compiled as a 64-bit binary.\nadmixture32 is a 32-bit version provided for compatibility with older\nsystems.\n\n--Dave\n"
+        },
+        {
+          "name": "dist/admixture_linux-1.3.0/admixture",
+          "bytes": 2270195,
+          "type": "file",
+          "sha256": "3e3f2fdb605d33d3ba3c732cd24a16ebc68e0a2b631022b13d825dbf04cc52ee",
+          "magic_hex": "7f454c4602010103"
+        },
+        {
+          "name": "dist/admixture_linux-1.3.0/admixture32",
+          "bytes": 2016299,
+          "type": "file",
+          "sha256": "58fcd6d0e47f3ed0df8118346172f40795df395890fb97ad208bbf246185a923",
+          "magic_hex": "7f454c4601010103"
+        },
+        {
+          "name": "dist/admixture_linux-1.3.0/admixture-manual.pdf",
+          "bytes": 237023,
+          "type": "file",
+          "sha256": "cde64e6d8fc402bbac0a2d5ded264f4e3420f39f4b40068a05d1a500b59da51c",
+          "magic_hex": "255044462d312e34"
+        }
+      ]
+    },
+    {
+      "name": "admixture-manual-1.4.pdf",
+      "url": "https://dalexander.github.io/admixture/admixture-manual.pdf",
+      "bytes": 313315,
+      "sha256": "0c0ec5899d822b5edd68ca848b864bec88b7014f5b5ec0815947a0f147b33649"
+    }
+  ],
+  "private_QEMU": {
+    "status": "passed-private-static-QEMU-legacy-ADMIXTURE-smoke",
+    "official_package_url": "https://archive.ubuntu.com/ubuntu/pool/universe/q/qemu/qemu-user-static_8.2.2+ds-0ubuntu1.18_amd64.deb",
+    "package_sha256": "5bb397f66063efa349f6fd5cb3b68cd96f29edd0994e4ba5115cf0859a716bf0",
+    "qemu_sha256": "90181b5552cd1a0b60d8edcc9f1cf8e38647579ef697d3155e2b6150e8fbcee0",
+    "copyright_sha256": "38ed9e4ca12a9c52ff69079d7098672b2c9eb5a1f728cae402b57b268ec49767",
+    "command": [
+      "wsl.exe",
+      "--distribution",
+      "JLinAlg-Omics-SAIGE-20261026",
+      "--user",
+      "root",
+      "--exec",
+      "/usr/bin/env",
+      "-i",
+      "--chdir=/mnt/d/projects/JLinAlg/build/literature-review/admixture-runtime/qemu-legacy-smoke-1",
+      "PATH=/usr/bin:/bin",
+      "LANG=C",
+      "LC_ALL=C",
+      "HOME=/mnt/d/projects/JLinAlg/build/literature-review/admixture-runtime/qemu-legacy-smoke-1",
+      "TMPDIR=/mnt/d/projects/JLinAlg/build/literature-review/admixture-runtime/qemu-legacy-smoke-1",
+      "OMP_NUM_THREADS=1",
+      "/mnt/d/projects/JLinAlg/build/literature-review/admixture-runtime/qemu-intake-1/qemu-x86_64-static",
+      "-cpu",
+      "qemu64",
+      "/mnt/d/projects/JLinAlg/build/literature-review/admixture-runtime/official-intake-1/extracted/1.3.0/admixture",
+      "--seed=11",
+      "-j1",
+      "-C",
+      "0.000001",
+      "-c",
+      "3",
+      "cohort.bed",
+      "3"
+    ],
+    "exit_code": 0,
+    "seconds": 4.094000000040978,
+    "OS_packages_installed": false,
+    "system_binary_format_handlers_changed": false,
+    "WSL_global_configuration_changed": false
+  },
+  "native_legacy_host_failure": "Two earlier direct 1.3.0 fits returned139. A new bounded diagnostic returned11 through timeout/WSL; its retained kernel lines confirm a signal11 segfault at the disabled vsyscall entry. Help exits0 and does not prove admission.",
+  "bootstrap_failure": "Original1.4.0defaultblock100000 exceedscontrolled1200markers;exit139atfirstbootstrap.Explicit--blockSize=100 completes10replicates.",
+  "native_workflow_validation": "admixture-native-validation.json",
+  "required_action": "Read workflow guide and each run WARNINGS.md. Use Linux Java with an explicitly admitted exact profile. Setup requires separate installation/download flags; missing/forbidden/unsupported/initially changed dependencies SKIP3. Input/process/timeout/numerical or mid-analysis integrity failures fail2 with quarantined partials. Correct the named cause and rerun to a new output directory;never silently change scientific parameters or overwrite prior attempts.",
+  "proofs": [
+    {
+      "path": "build/literature-review/admixture-runtime/original-help-1/observed.json",
+      "sha256": "953f68b2d09a1ea3e70f6c8d9d0dab3a910c366d7ec9a5534b0e2cdbf01b3464"
+    },
+    {
+      "path": "build/literature-review/admixture-runtime/original-matrix-1/observed.json",
+      "sha256": "904f856c9e44ee02295e36825099e804d3ced66ccd813526c4527062fcba41cc"
+    },
+    {
+      "path": "build/literature-review/admixture-runtime/original-matrix-2/observed.json",
+      "sha256": "a237020d78502a751d8bf1b7c5abd96409ca480188eccacbe44fb69cedfa2db1"
+    },
+    {
+      "path": "build/literature-review/admixture-runtime/original-matrix-4/observed.json",
+      "sha256": "1a662ad540170ef045235763c0b6627aced3b2464bdbde369b69a22afb4247a3",
+      "prior_intermediate_sha256": "a5d5f5ae6e3b30fb3a8b018976ac6e93dde329c64642c144e0014aa015125130",
+      "terminal_classification": "six successful current cases;one direct legacy failure retained"
+    },
+    {
+      "path": "build/literature-review/admixture-runtime/legacy-modes-5/observed.json",
+      "sha256": "863b8831f467b22c7d9f4263ce79d76d635a996703c4ec33e669c830e84a8a08"
+    },
+    {
+      "path": "build/literature-review/admixture-runtime/qemu-intake-1/observed.json",
+      "sha256": "57033a12cdd7bff8ad4d6df8062d7fdc0cf717e55e8fc469e6eee4fa8d5833f5"
+    },
+    {
+      "path": "build/literature-review/admixture-runtime/qemu-legacy-matrix-1/observed.json",
+      "sha256": "7bf087ee7016b22032ec93ae49518bd55d26871390260b66637fe72ae7cbd00d"
+    },
+    {
+      "path": "build/literature-review/admixture-runtime/native-original-audit-2/observed.json",
+      "sha256": "59151348ace2047c2331c43faf9271a7c13cb6478228d313fb330ac47170caa2"
+    },
+    {
+      "path": "build/literature-review/admixture-runtime/legacy-host-diagnostic-1/observed.json",
+      "sha256": "cd499d2ed00c7f70e1a93e852ddb16e825638aa855db864897476c07524f7344"
+    },
+    {
+      "path": "build/literature-review/admixture-runtime/public-preflight-3/kernel-evidence.json",
+      "sha256": "bbacec1648095bb3ba01a0c5f80e7254e6e3767b458a27af6a8048c1cc50b8b7"
+    }
+  ],
+  "kernel_failure_evidence": "build/literature-review/admixture-runtime/legacy-host-diagnostic-1/admixture-kernel-lines.txt",
+  "current_workflow_validation": "admixture-adapter-validation.json",
+  "canonical_adapter_available": false,
+  "admitted_profiles": [
+    {
+      "profile": "linux-x86_64-1.4.0",
+      "version": "1.4.0",
+      "marker_path": "build/literature-review/admixture-runtime/admitted-native-1/.jlinalg-admixture.json",
+      "marker_sha256": "239d35f4623df4fbae97eb594e2ef6d82eebad83c1a275aeb041a9fad4dd42b0",
+      "host": {
+        "os": "Linux",
+        "architecture": "x86_64",
+        "kernel": "6.18.54.1-microsoft-standard-WSL2"
+      },
+      "files": {
+        "bin/admixture": "dbab7f695dc159bddd72a1137f11cb2888ca2939565e6123fbb80e001c4e613f",
+        "share/admixture-manual.pdf": "7a5c460157e4ee23b5208e4c738e099bcc2768f27bcccb0ddd899fa50e230a47"
+      },
+      "actual_scientific_health": "passed-original-K1-likelihood-and-matrix-health"
+    },
+    {
+      "profile": "linux-x86_64-1.3.0-qemu8.2.2",
+      "version": "1.3.0",
+      "marker_path": "build/literature-review/admixture-runtime/admitted-legacy-1/.jlinalg-admixture.json",
+      "marker_sha256": "fac7ab970688fa2f82df124e8955eccfb812d472e16458b3a9f483fe44b03d96",
+      "host": {
+        "os": "Linux",
+        "architecture": "x86_64",
+        "kernel": "6.18.54.1-microsoft-standard-WSL2"
+      },
+      "files": {
+        "bin/admixture": "3e3f2fdb605d33d3ba3c732cd24a16ebc68e0a2b631022b13d825dbf04cc52ee",
+        "share/admixture-manual.pdf": "cde64e6d8fc402bbac0a2d5ded264f4e3420f39f4b40068a05d1a500b59da51c",
+        "bin/qemu-x86_64-static": "90181b5552cd1a0b60d8edcc9f1cf8e38647579ef697d3155e2b6150e8fbcee0",
+        "share/qemu-copyright": "38ed9e4ca12a9c52ff69079d7098672b2c9eb5a1f728cae402b57b268ec49767"
+      },
+      "actual_scientific_health": "passed-original-K1-likelihood-and-matrix-health"
+    }
+  ],
+  "typed_current_candidate_workflows": 20,
+  "known_unsupported_historical_versions": [
+    "1.23",
+    "1.3-as-reported-without-an-exact-admitted-binary"
+  ]
+}

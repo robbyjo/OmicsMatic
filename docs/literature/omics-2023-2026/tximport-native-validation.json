@@ -1,0 +1,683 @@
+{
+  "status": "passed-native-dense-point-estimate-subset",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "recorded_utc": "2026-10-25T10:07:59.705580+00:00",
+  "source_sha256": {
+    "src/main/java/org/jlinalg/sequence/TranscriptImport.java": "94da472d5a3657495d99b2ead04cd95871c379db99cff6c49767f29e25280971",
+    "src/main/java/org/jlinalg/cli/TranscriptImportCli.java": "783deea1e820416e4594562f09f20e52d78009fa21e2c63dcfb5c52671120838",
+    "src/main/resources/META-INF/NOTICE-tximport.txt": "88ebfc78f8a23273c7af174ef503826c627d13fffdfe98bcc47135974c3c3a8f",
+    "src/test/java/org/jlinalg/sequence/TranscriptImportTest.java": "d4c88a7175ccea507ea3f9da71172989e83aab574e3b26a9874f675220429bef",
+    "src/test/java/org/jlinalg/cli/TranscriptImportCliTest.java": "ffb5690a20b9f7feb9333320e3558d388e783a7a1918e47f228eca9f778f4ff7",
+    "tools/literature/generate_tximport_references.py": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+    "tools/literature/tximport_reference.R": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+    "tools/literature/verify_tximport_native.py": "0eb3a292e5bf0ce5876831d705d33539ec3f736809b368ae63bc34e62089ff36",
+    "tools/literature/curate_tximport_uses.py": "27a16a7a462846011b7c8d4b4f71461702d87095248592ddb95fc287af5ebd31",
+    "tools/literature/expand_tximport_context_tools.py": "43fb26220125811fad9d92bb97c7679ae7ec610b8ee8d97fe50bf0dc84067ea1",
+    "tools/literature/refresh_reviewed_catalog.py": "0d66716a613547047ac6964b9158f500f72ca6d05e8ee54cda4ae839e8444d0f"
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.sequence.TranscriptImportTest": {
+      "suite_name": "org.jlinalg.sequence.TranscriptImportTest",
+      "suite": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "4e7fbd19bfb2af1ab92589227391a179948e9ec903051ab8c5a6ea87d7879b20",
+      "testcases": [
+        "invalidDimensionsDomainsMappingsAndZeroDenominatorsFail()",
+        "independentGeneSumsLengthsAndZeroExpressionFallbacks()",
+        "defensiveCopiesKeepCallerAndResultIsolated()",
+        "twoHundredFourActualOriginalRImportsAcrossAllFormatsAndModes()",
+        "countsScaleToRetainedLibraryAndDtuUsesCommonGeneMedian()"
+      ]
+    },
+    "org.jlinalg.cli.TranscriptImportCliTest": {
+      "suite_name": "org.jlinalg.cli.TranscriptImportCliTest",
+      "suite": {
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "2c41626aae929f472a0dc7192ee54007fc833f4ddc03e7ba8785e87eb16b48c2",
+      "testcases": [
+        "relativeManifestNumericIdsFractionsAndReferenceAuditAreRetained()",
+        "formatsAndGzipProduceActualFractionalGeneCounts()",
+        "conflictingMapOrderCollisionsAndNonfiniteInputsFailWithoutSuccessfulOutput()",
+        "transcriptDtuAndBarOutputPreserveExplicitIdentityContract()",
+        "resourceCapsZeroScalingAndRequiredUncertaintyChoiceAreActionable()",
+        "unannotatedDropIsExplicitAndLibraryTotalsReflectOmission()"
+      ]
+    }
+  },
+  "api_cli_tests": 11,
+  "original_R_reference": {
+    "status": "passed-original-reference-generation",
+    "package": "tximport",
+    "version": "1.40.0",
+    "archive_url": "https://bioconductor.org/packages/3.23/bioc/src/contrib/tximport_1.40.0.tar.gz",
+    "archive_sha256": "72841a6b2ac1f64ccb05af2d9fba4eea781596771798cefcb3a9327f9dc929f9",
+    "original_R_sources_sha256": {
+      "tximport/R/alevin.R": "9d5fe0936e2899129f92f3eb2386825a5a961ddd7545ee3bbdb4354f8ff6a082",
+      "tximport/R/helper.R": "f7a54ebab58e77226879133629f9e791ab3b68c44a1101a5440b43cf77853155",
+      "tximport/R/infReps.R": "257b7a113eb4127cd1366e4a762c58e7c1504b4ac8d2ba0d3f0ce81f2a7e05fc",
+      "tximport/R/summarizeToGene.R": "3040d16a27aa79a0b2323344e699ccf9e22265891cb91ab002db69941f0ac3d6",
+      "tximport/R/tximport.R": "44df6e42cc76fb43e960e64ccfc8a6f0894294bb3831f8c2dac90b2ab5081388"
+    },
+    "generator_sha256": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+    "R_generator_sha256": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+    "reference_sha256": "54317811d7522ea0427a0546fcdf7e18927f3c083492b8bb8d21c7c6d10ed0bc",
+    "cases": 204,
+    "reference_scalar_values": 15615,
+    "original_run_log": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z\\original-R.log",
+    "original_run_log_sha256": "82f65e243472f43f4028ac2d20bbfa840db91ef7ee39f914834f2141333305e2",
+    "fixture_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z",
+    "scope": "Actual unmodified original R API with character-ID importer and dropInfReps TRUE. Dense point estimates; values compared by exact identities, not host-locale gene order. RSEM lengths below1 clamped by original. No all-zero scaled denominator,uncertainty,HDF5 or downstream DE parity."
+  },
+  "full_gate": {
+    "tests": 1593,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 5
+  },
+  "required_suites": 72,
+  "packaged_workflow_calls": 44,
+  "scope": "Salmon/kallisto/RSEM isoform/canonical TSV dense point estimates;four scaling modes,exact identities,annotation/omission,zero-expression fallback and failure recovery. No R/quantifier runtime needed; RSEM gene files,uncertainty/HDF5/sparse,quantification,DE,historical and full-paper parity remain open.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "refreshed_source_note": "Source-snapshot guard now preserves the first hash of repeated physical paths and rejects a changed repeat; all6CLI and5API tests plus44actual import calls passed.",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "validation_history": [
+    {
+      "status": "passed-native-dense-point-estimate-subset",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "recorded_utc": "2026-10-25T10:07:59.705580+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/TranscriptImport.java": "94da472d5a3657495d99b2ead04cd95871c379db99cff6c49767f29e25280971",
+        "src/main/java/org/jlinalg/cli/TranscriptImportCli.java": "10aa1b9862a1d5dc5bba30c38da3e67345decd7c1b15b435832bc1fea4c5e863",
+        "src/main/resources/META-INF/NOTICE-tximport.txt": "88ebfc78f8a23273c7af174ef503826c627d13fffdfe98bcc47135974c3c3a8f",
+        "src/test/java/org/jlinalg/sequence/TranscriptImportTest.java": "d4c88a7175ccea507ea3f9da71172989e83aab574e3b26a9874f675220429bef",
+        "src/test/java/org/jlinalg/cli/TranscriptImportCliTest.java": "ffb5690a20b9f7feb9333320e3558d388e783a7a1918e47f228eca9f778f4ff7",
+        "tools/literature/generate_tximport_references.py": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+        "tools/literature/tximport_reference.R": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+        "tools/literature/verify_tximport_native.py": "0eb3a292e5bf0ce5876831d705d33539ec3f736809b368ae63bc34e62089ff36",
+        "tools/literature/curate_tximport_uses.py": "27a16a7a462846011b7c8d4b4f71461702d87095248592ddb95fc287af5ebd31",
+        "tools/literature/expand_tximport_context_tools.py": "43fb26220125811fad9d92bb97c7679ae7ec610b8ee8d97fe50bf0dc84067ea1",
+        "tools/literature/refresh_reviewed_catalog.py": "0d66716a613547047ac6964b9158f500f72ca6d05e8ee54cda4ae839e8444d0f"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.TranscriptImportTest": {
+          "suite_name": "org.jlinalg.sequence.TranscriptImportTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "e9d616197f251acc3b668afe987a9248cdd0ea8cc9b0945d6a6a06f17cb97564",
+          "testcases": [
+            "invalidDimensionsDomainsMappingsAndZeroDenominatorsFail()",
+            "independentGeneSumsLengthsAndZeroExpressionFallbacks()",
+            "defensiveCopiesKeepCallerAndResultIsolated()",
+            "twoHundredFourActualOriginalRImportsAcrossAllFormatsAndModes()",
+            "countsScaleToRetainedLibraryAndDtuUsesCommonGeneMedian()"
+          ]
+        },
+        "org.jlinalg.cli.TranscriptImportCliTest": {
+          "suite_name": "org.jlinalg.cli.TranscriptImportCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ebd53bb557ede0dcf0c9b65d58d16cec08420b893c6fe2eb7767b8bb18f2be5d",
+          "testcases": [
+            "relativeManifestNumericIdsFractionsAndReferenceAuditAreRetained()",
+            "formatsAndGzipProduceActualFractionalGeneCounts()",
+            "conflictingMapOrderCollisionsAndNonfiniteInputsFailWithoutSuccessfulOutput()",
+            "transcriptDtuAndBarOutputPreserveExplicitIdentityContract()",
+            "resourceCapsZeroScalingAndRequiredUncertaintyChoiceAreActionable()",
+            "unannotatedDropIsExplicitAndLibraryTotalsReflectOmission()"
+          ]
+        }
+      },
+      "api_cli_tests": 11,
+      "original_R_reference": {
+        "status": "passed-original-reference-generation",
+        "package": "tximport",
+        "version": "1.40.0",
+        "archive_url": "https://bioconductor.org/packages/3.23/bioc/src/contrib/tximport_1.40.0.tar.gz",
+        "archive_sha256": "72841a6b2ac1f64ccb05af2d9fba4eea781596771798cefcb3a9327f9dc929f9",
+        "original_R_sources_sha256": {
+          "tximport/R/alevin.R": "9d5fe0936e2899129f92f3eb2386825a5a961ddd7545ee3bbdb4354f8ff6a082",
+          "tximport/R/helper.R": "f7a54ebab58e77226879133629f9e791ab3b68c44a1101a5440b43cf77853155",
+          "tximport/R/infReps.R": "257b7a113eb4127cd1366e4a762c58e7c1504b4ac8d2ba0d3f0ce81f2a7e05fc",
+          "tximport/R/summarizeToGene.R": "3040d16a27aa79a0b2323344e699ccf9e22265891cb91ab002db69941f0ac3d6",
+          "tximport/R/tximport.R": "44df6e42cc76fb43e960e64ccfc8a6f0894294bb3831f8c2dac90b2ab5081388"
+        },
+        "generator_sha256": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+        "R_generator_sha256": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+        "reference_sha256": "54317811d7522ea0427a0546fcdf7e18927f3c083492b8bb8d21c7c6d10ed0bc",
+        "cases": 204,
+        "reference_scalar_values": 15615,
+        "original_run_log": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z\\original-R.log",
+        "original_run_log_sha256": "82f65e243472f43f4028ac2d20bbfa840db91ef7ee39f914834f2141333305e2",
+        "fixture_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z",
+        "scope": "Actual unmodified original R API with character-ID importer and dropInfReps TRUE. Dense point estimates; values compared by exact identities, not host-locale gene order. RSEM lengths below1 clamped by original. No all-zero scaled denominator,uncertainty,HDF5 or downstream DE parity."
+      },
+      "full_gate": {
+        "tests": 1433,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 51,
+      "packaged_workflow_calls": 44,
+      "scope": "Salmon/kallisto/RSEM isoform/canonical TSV dense point estimates;four scaling modes,exact identities,annotation/omission,zero-expression fallback and failure recovery. No R/quantifier runtime needed; RSEM gene files,uncertainty/HDF5/sparse,quantification,DE,historical and full-paper parity remain open."
+    },
+    {
+      "status": "passed-native-dense-point-estimate-subset",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "recorded_utc": "2026-10-25T10:07:59.705580+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/TranscriptImport.java": "94da472d5a3657495d99b2ead04cd95871c379db99cff6c49767f29e25280971",
+        "src/main/java/org/jlinalg/cli/TranscriptImportCli.java": "783deea1e820416e4594562f09f20e52d78009fa21e2c63dcfb5c52671120838",
+        "src/main/resources/META-INF/NOTICE-tximport.txt": "88ebfc78f8a23273c7af174ef503826c627d13fffdfe98bcc47135974c3c3a8f",
+        "src/test/java/org/jlinalg/sequence/TranscriptImportTest.java": "d4c88a7175ccea507ea3f9da71172989e83aab574e3b26a9874f675220429bef",
+        "src/test/java/org/jlinalg/cli/TranscriptImportCliTest.java": "ffb5690a20b9f7feb9333320e3558d388e783a7a1918e47f228eca9f778f4ff7",
+        "tools/literature/generate_tximport_references.py": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+        "tools/literature/tximport_reference.R": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+        "tools/literature/verify_tximport_native.py": "0eb3a292e5bf0ce5876831d705d33539ec3f736809b368ae63bc34e62089ff36",
+        "tools/literature/curate_tximport_uses.py": "27a16a7a462846011b7c8d4b4f71461702d87095248592ddb95fc287af5ebd31",
+        "tools/literature/expand_tximport_context_tools.py": "43fb26220125811fad9d92bb97c7679ae7ec610b8ee8d97fe50bf0dc84067ea1",
+        "tools/literature/refresh_reviewed_catalog.py": "0d66716a613547047ac6964b9158f500f72ca6d05e8ee54cda4ae839e8444d0f"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.TranscriptImportTest": {
+          "suite_name": "org.jlinalg.sequence.TranscriptImportTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c693904d71ba5000d7fd08499ce2f821668bdfe5d8df35217d660a569d6f8bb7",
+          "testcases": [
+            "invalidDimensionsDomainsMappingsAndZeroDenominatorsFail()",
+            "independentGeneSumsLengthsAndZeroExpressionFallbacks()",
+            "defensiveCopiesKeepCallerAndResultIsolated()",
+            "twoHundredFourActualOriginalRImportsAcrossAllFormatsAndModes()",
+            "countsScaleToRetainedLibraryAndDtuUsesCommonGeneMedian()"
+          ]
+        },
+        "org.jlinalg.cli.TranscriptImportCliTest": {
+          "suite_name": "org.jlinalg.cli.TranscriptImportCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "63bd93af67c6bba669fd2a03ab59e45c5c090bb0c34d49c8689926bdf87fac94",
+          "testcases": [
+            "relativeManifestNumericIdsFractionsAndReferenceAuditAreRetained()",
+            "formatsAndGzipProduceActualFractionalGeneCounts()",
+            "conflictingMapOrderCollisionsAndNonfiniteInputsFailWithoutSuccessfulOutput()",
+            "transcriptDtuAndBarOutputPreserveExplicitIdentityContract()",
+            "resourceCapsZeroScalingAndRequiredUncertaintyChoiceAreActionable()",
+            "unannotatedDropIsExplicitAndLibraryTotalsReflectOmission()"
+          ]
+        }
+      },
+      "api_cli_tests": 11,
+      "original_R_reference": {
+        "status": "passed-original-reference-generation",
+        "package": "tximport",
+        "version": "1.40.0",
+        "archive_url": "https://bioconductor.org/packages/3.23/bioc/src/contrib/tximport_1.40.0.tar.gz",
+        "archive_sha256": "72841a6b2ac1f64ccb05af2d9fba4eea781596771798cefcb3a9327f9dc929f9",
+        "original_R_sources_sha256": {
+          "tximport/R/alevin.R": "9d5fe0936e2899129f92f3eb2386825a5a961ddd7545ee3bbdb4354f8ff6a082",
+          "tximport/R/helper.R": "f7a54ebab58e77226879133629f9e791ab3b68c44a1101a5440b43cf77853155",
+          "tximport/R/infReps.R": "257b7a113eb4127cd1366e4a762c58e7c1504b4ac8d2ba0d3f0ce81f2a7e05fc",
+          "tximport/R/summarizeToGene.R": "3040d16a27aa79a0b2323344e699ccf9e22265891cb91ab002db69941f0ac3d6",
+          "tximport/R/tximport.R": "44df6e42cc76fb43e960e64ccfc8a6f0894294bb3831f8c2dac90b2ab5081388"
+        },
+        "generator_sha256": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+        "R_generator_sha256": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+        "reference_sha256": "54317811d7522ea0427a0546fcdf7e18927f3c083492b8bb8d21c7c6d10ed0bc",
+        "cases": 204,
+        "reference_scalar_values": 15615,
+        "original_run_log": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z\\original-R.log",
+        "original_run_log_sha256": "82f65e243472f43f4028ac2d20bbfa840db91ef7ee39f914834f2141333305e2",
+        "fixture_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z",
+        "scope": "Actual unmodified original R API with character-ID importer and dropInfReps TRUE. Dense point estimates; values compared by exact identities, not host-locale gene order. RSEM lengths below1 clamped by original. No all-zero scaled denominator,uncertainty,HDF5 or downstream DE parity."
+      },
+      "full_gate": {
+        "tests": 1445,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 53,
+      "packaged_workflow_calls": 44,
+      "scope": "Salmon/kallisto/RSEM isoform/canonical TSV dense point estimates;four scaling modes,exact identities,annotation/omission,zero-expression fallback and failure recovery. No R/quantifier runtime needed; RSEM gene files,uncertainty/HDF5/sparse,quantification,DE,historical and full-paper parity remain open.",
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00",
+      "refreshed_source_note": "Source-snapshot guard now preserves the first hash of repeated physical paths and rejects a changed repeat; all6CLI and5API tests plus44actual import calls passed."
+    },
+    {
+      "status": "passed-native-dense-point-estimate-subset",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "recorded_utc": "2026-10-25T10:07:59.705580+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/TranscriptImport.java": "94da472d5a3657495d99b2ead04cd95871c379db99cff6c49767f29e25280971",
+        "src/main/java/org/jlinalg/cli/TranscriptImportCli.java": "783deea1e820416e4594562f09f20e52d78009fa21e2c63dcfb5c52671120838",
+        "src/main/resources/META-INF/NOTICE-tximport.txt": "88ebfc78f8a23273c7af174ef503826c627d13fffdfe98bcc47135974c3c3a8f",
+        "src/test/java/org/jlinalg/sequence/TranscriptImportTest.java": "d4c88a7175ccea507ea3f9da71172989e83aab574e3b26a9874f675220429bef",
+        "src/test/java/org/jlinalg/cli/TranscriptImportCliTest.java": "ffb5690a20b9f7feb9333320e3558d388e783a7a1918e47f228eca9f778f4ff7",
+        "tools/literature/generate_tximport_references.py": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+        "tools/literature/tximport_reference.R": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+        "tools/literature/verify_tximport_native.py": "0eb3a292e5bf0ce5876831d705d33539ec3f736809b368ae63bc34e62089ff36",
+        "tools/literature/curate_tximport_uses.py": "27a16a7a462846011b7c8d4b4f71461702d87095248592ddb95fc287af5ebd31",
+        "tools/literature/expand_tximport_context_tools.py": "43fb26220125811fad9d92bb97c7679ae7ec610b8ee8d97fe50bf0dc84067ea1",
+        "tools/literature/refresh_reviewed_catalog.py": "0d66716a613547047ac6964b9158f500f72ca6d05e8ee54cda4ae839e8444d0f"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.TranscriptImportTest": {
+          "suite_name": "org.jlinalg.sequence.TranscriptImportTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a1845f9ffdfc04afd51def8650b52d6d059cb1f2b3bfa51b37cd6c3929c73609",
+          "testcases": [
+            "invalidDimensionsDomainsMappingsAndZeroDenominatorsFail()",
+            "independentGeneSumsLengthsAndZeroExpressionFallbacks()",
+            "defensiveCopiesKeepCallerAndResultIsolated()",
+            "twoHundredFourActualOriginalRImportsAcrossAllFormatsAndModes()",
+            "countsScaleToRetainedLibraryAndDtuUsesCommonGeneMedian()"
+          ]
+        },
+        "org.jlinalg.cli.TranscriptImportCliTest": {
+          "suite_name": "org.jlinalg.cli.TranscriptImportCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1f9509760f680a5c8135f3d2bfeab04895a6958aa3a8b7401886f63ba7f16e06",
+          "testcases": [
+            "relativeManifestNumericIdsFractionsAndReferenceAuditAreRetained()",
+            "formatsAndGzipProduceActualFractionalGeneCounts()",
+            "conflictingMapOrderCollisionsAndNonfiniteInputsFailWithoutSuccessfulOutput()",
+            "transcriptDtuAndBarOutputPreserveExplicitIdentityContract()",
+            "resourceCapsZeroScalingAndRequiredUncertaintyChoiceAreActionable()",
+            "unannotatedDropIsExplicitAndLibraryTotalsReflectOmission()"
+          ]
+        }
+      },
+      "api_cli_tests": 11,
+      "original_R_reference": {
+        "status": "passed-original-reference-generation",
+        "package": "tximport",
+        "version": "1.40.0",
+        "archive_url": "https://bioconductor.org/packages/3.23/bioc/src/contrib/tximport_1.40.0.tar.gz",
+        "archive_sha256": "72841a6b2ac1f64ccb05af2d9fba4eea781596771798cefcb3a9327f9dc929f9",
+        "original_R_sources_sha256": {
+          "tximport/R/alevin.R": "9d5fe0936e2899129f92f3eb2386825a5a961ddd7545ee3bbdb4354f8ff6a082",
+          "tximport/R/helper.R": "f7a54ebab58e77226879133629f9e791ab3b68c44a1101a5440b43cf77853155",
+          "tximport/R/infReps.R": "257b7a113eb4127cd1366e4a762c58e7c1504b4ac8d2ba0d3f0ce81f2a7e05fc",
+          "tximport/R/summarizeToGene.R": "3040d16a27aa79a0b2323344e699ccf9e22265891cb91ab002db69941f0ac3d6",
+          "tximport/R/tximport.R": "44df6e42cc76fb43e960e64ccfc8a6f0894294bb3831f8c2dac90b2ab5081388"
+        },
+        "generator_sha256": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+        "R_generator_sha256": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+        "reference_sha256": "54317811d7522ea0427a0546fcdf7e18927f3c083492b8bb8d21c7c6d10ed0bc",
+        "cases": 204,
+        "reference_scalar_values": 15615,
+        "original_run_log": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z\\original-R.log",
+        "original_run_log_sha256": "82f65e243472f43f4028ac2d20bbfa840db91ef7ee39f914834f2141333305e2",
+        "fixture_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z",
+        "scope": "Actual unmodified original R API with character-ID importer and dropInfReps TRUE. Dense point estimates; values compared by exact identities, not host-locale gene order. RSEM lengths below1 clamped by original. No all-zero scaled denominator,uncertainty,HDF5 or downstream DE parity."
+      },
+      "full_gate": {
+        "tests": 1461,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 55,
+      "packaged_workflow_calls": 44,
+      "scope": "Salmon/kallisto/RSEM isoform/canonical TSV dense point estimates;four scaling modes,exact identities,annotation/omission,zero-expression fallback and failure recovery. No R/quantifier runtime needed; RSEM gene files,uncertainty/HDF5/sparse,quantification,DE,historical and full-paper parity remain open.",
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00",
+      "refreshed_source_note": "Source-snapshot guard now preserves the first hash of repeated physical paths and rejects a changed repeat; all6CLI and5API tests plus44actual import calls passed."
+    },
+    {
+      "status": "passed-native-dense-point-estimate-subset",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "recorded_utc": "2026-10-25T10:07:59.705580+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/TranscriptImport.java": "94da472d5a3657495d99b2ead04cd95871c379db99cff6c49767f29e25280971",
+        "src/main/java/org/jlinalg/cli/TranscriptImportCli.java": "783deea1e820416e4594562f09f20e52d78009fa21e2c63dcfb5c52671120838",
+        "src/main/resources/META-INF/NOTICE-tximport.txt": "88ebfc78f8a23273c7af174ef503826c627d13fffdfe98bcc47135974c3c3a8f",
+        "src/test/java/org/jlinalg/sequence/TranscriptImportTest.java": "d4c88a7175ccea507ea3f9da71172989e83aab574e3b26a9874f675220429bef",
+        "src/test/java/org/jlinalg/cli/TranscriptImportCliTest.java": "ffb5690a20b9f7feb9333320e3558d388e783a7a1918e47f228eca9f778f4ff7",
+        "tools/literature/generate_tximport_references.py": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+        "tools/literature/tximport_reference.R": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+        "tools/literature/verify_tximport_native.py": "0eb3a292e5bf0ce5876831d705d33539ec3f736809b368ae63bc34e62089ff36",
+        "tools/literature/curate_tximport_uses.py": "27a16a7a462846011b7c8d4b4f71461702d87095248592ddb95fc287af5ebd31",
+        "tools/literature/expand_tximport_context_tools.py": "43fb26220125811fad9d92bb97c7679ae7ec610b8ee8d97fe50bf0dc84067ea1",
+        "tools/literature/refresh_reviewed_catalog.py": "0d66716a613547047ac6964b9158f500f72ca6d05e8ee54cda4ae839e8444d0f"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.TranscriptImportTest": {
+          "suite_name": "org.jlinalg.sequence.TranscriptImportTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "745247b60a63cad657c2dd777052423ad0ab8e8dff40984bbe28732450c9a831",
+          "testcases": [
+            "invalidDimensionsDomainsMappingsAndZeroDenominatorsFail()",
+            "independentGeneSumsLengthsAndZeroExpressionFallbacks()",
+            "defensiveCopiesKeepCallerAndResultIsolated()",
+            "twoHundredFourActualOriginalRImportsAcrossAllFormatsAndModes()",
+            "countsScaleToRetainedLibraryAndDtuUsesCommonGeneMedian()"
+          ]
+        },
+        "org.jlinalg.cli.TranscriptImportCliTest": {
+          "suite_name": "org.jlinalg.cli.TranscriptImportCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "d8199c559a1170cb6560cc502ebfde6a4caed8cf346dbd4f3e66e6cf87cc8e67",
+          "testcases": [
+            "relativeManifestNumericIdsFractionsAndReferenceAuditAreRetained()",
+            "formatsAndGzipProduceActualFractionalGeneCounts()",
+            "conflictingMapOrderCollisionsAndNonfiniteInputsFailWithoutSuccessfulOutput()",
+            "transcriptDtuAndBarOutputPreserveExplicitIdentityContract()",
+            "resourceCapsZeroScalingAndRequiredUncertaintyChoiceAreActionable()",
+            "unannotatedDropIsExplicitAndLibraryTotalsReflectOmission()"
+          ]
+        }
+      },
+      "api_cli_tests": 11,
+      "original_R_reference": {
+        "status": "passed-original-reference-generation",
+        "package": "tximport",
+        "version": "1.40.0",
+        "archive_url": "https://bioconductor.org/packages/3.23/bioc/src/contrib/tximport_1.40.0.tar.gz",
+        "archive_sha256": "72841a6b2ac1f64ccb05af2d9fba4eea781596771798cefcb3a9327f9dc929f9",
+        "original_R_sources_sha256": {
+          "tximport/R/alevin.R": "9d5fe0936e2899129f92f3eb2386825a5a961ddd7545ee3bbdb4354f8ff6a082",
+          "tximport/R/helper.R": "f7a54ebab58e77226879133629f9e791ab3b68c44a1101a5440b43cf77853155",
+          "tximport/R/infReps.R": "257b7a113eb4127cd1366e4a762c58e7c1504b4ac8d2ba0d3f0ce81f2a7e05fc",
+          "tximport/R/summarizeToGene.R": "3040d16a27aa79a0b2323344e699ccf9e22265891cb91ab002db69941f0ac3d6",
+          "tximport/R/tximport.R": "44df6e42cc76fb43e960e64ccfc8a6f0894294bb3831f8c2dac90b2ab5081388"
+        },
+        "generator_sha256": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+        "R_generator_sha256": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+        "reference_sha256": "54317811d7522ea0427a0546fcdf7e18927f3c083492b8bb8d21c7c6d10ed0bc",
+        "cases": 204,
+        "reference_scalar_values": 15615,
+        "original_run_log": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z\\original-R.log",
+        "original_run_log_sha256": "82f65e243472f43f4028ac2d20bbfa840db91ef7ee39f914834f2141333305e2",
+        "fixture_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z",
+        "scope": "Actual unmodified original R API with character-ID importer and dropInfReps TRUE. Dense point estimates; values compared by exact identities, not host-locale gene order. RSEM lengths below1 clamped by original. No all-zero scaled denominator,uncertainty,HDF5 or downstream DE parity."
+      },
+      "full_gate": {
+        "tests": 1486,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 59,
+      "packaged_workflow_calls": 44,
+      "scope": "Salmon/kallisto/RSEM isoform/canonical TSV dense point estimates;four scaling modes,exact identities,annotation/omission,zero-expression fallback and failure recovery. No R/quantifier runtime needed; RSEM gene files,uncertainty/HDF5/sparse,quantification,DE,historical and full-paper parity remain open.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "refreshed_source_note": "Source-snapshot guard now preserves the first hash of repeated physical paths and rejects a changed repeat; all6CLI and5API tests plus44actual import calls passed.",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed-native-dense-point-estimate-subset",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "recorded_utc": "2026-10-25T10:07:59.705580+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/TranscriptImport.java": "94da472d5a3657495d99b2ead04cd95871c379db99cff6c49767f29e25280971",
+        "src/main/java/org/jlinalg/cli/TranscriptImportCli.java": "783deea1e820416e4594562f09f20e52d78009fa21e2c63dcfb5c52671120838",
+        "src/main/resources/META-INF/NOTICE-tximport.txt": "88ebfc78f8a23273c7af174ef503826c627d13fffdfe98bcc47135974c3c3a8f",
+        "src/test/java/org/jlinalg/sequence/TranscriptImportTest.java": "d4c88a7175ccea507ea3f9da71172989e83aab574e3b26a9874f675220429bef",
+        "src/test/java/org/jlinalg/cli/TranscriptImportCliTest.java": "ffb5690a20b9f7feb9333320e3558d388e783a7a1918e47f228eca9f778f4ff7",
+        "tools/literature/generate_tximport_references.py": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+        "tools/literature/tximport_reference.R": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+        "tools/literature/verify_tximport_native.py": "0eb3a292e5bf0ce5876831d705d33539ec3f736809b368ae63bc34e62089ff36",
+        "tools/literature/curate_tximport_uses.py": "27a16a7a462846011b7c8d4b4f71461702d87095248592ddb95fc287af5ebd31",
+        "tools/literature/expand_tximport_context_tools.py": "43fb26220125811fad9d92bb97c7679ae7ec610b8ee8d97fe50bf0dc84067ea1",
+        "tools/literature/refresh_reviewed_catalog.py": "0d66716a613547047ac6964b9158f500f72ca6d05e8ee54cda4ae839e8444d0f"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.TranscriptImportTest": {
+          "suite_name": "org.jlinalg.sequence.TranscriptImportTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7508be093c9ea18fe543c2f5e9dcbd2d3dc5d76adb02c3ca1eb881c02c6675ff",
+          "testcases": [
+            "invalidDimensionsDomainsMappingsAndZeroDenominatorsFail()",
+            "independentGeneSumsLengthsAndZeroExpressionFallbacks()",
+            "defensiveCopiesKeepCallerAndResultIsolated()",
+            "twoHundredFourActualOriginalRImportsAcrossAllFormatsAndModes()",
+            "countsScaleToRetainedLibraryAndDtuUsesCommonGeneMedian()"
+          ]
+        },
+        "org.jlinalg.cli.TranscriptImportCliTest": {
+          "suite_name": "org.jlinalg.cli.TranscriptImportCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ed9d2f479c6a20d2cc63b2a7a8911766aa2ab24e2d0ca3314446f9fd60290a76",
+          "testcases": [
+            "relativeManifestNumericIdsFractionsAndReferenceAuditAreRetained()",
+            "formatsAndGzipProduceActualFractionalGeneCounts()",
+            "conflictingMapOrderCollisionsAndNonfiniteInputsFailWithoutSuccessfulOutput()",
+            "transcriptDtuAndBarOutputPreserveExplicitIdentityContract()",
+            "resourceCapsZeroScalingAndRequiredUncertaintyChoiceAreActionable()",
+            "unannotatedDropIsExplicitAndLibraryTotalsReflectOmission()"
+          ]
+        }
+      },
+      "api_cli_tests": 11,
+      "original_R_reference": {
+        "status": "passed-original-reference-generation",
+        "package": "tximport",
+        "version": "1.40.0",
+        "archive_url": "https://bioconductor.org/packages/3.23/bioc/src/contrib/tximport_1.40.0.tar.gz",
+        "archive_sha256": "72841a6b2ac1f64ccb05af2d9fba4eea781596771798cefcb3a9327f9dc929f9",
+        "original_R_sources_sha256": {
+          "tximport/R/alevin.R": "9d5fe0936e2899129f92f3eb2386825a5a961ddd7545ee3bbdb4354f8ff6a082",
+          "tximport/R/helper.R": "f7a54ebab58e77226879133629f9e791ab3b68c44a1101a5440b43cf77853155",
+          "tximport/R/infReps.R": "257b7a113eb4127cd1366e4a762c58e7c1504b4ac8d2ba0d3f0ce81f2a7e05fc",
+          "tximport/R/summarizeToGene.R": "3040d16a27aa79a0b2323344e699ccf9e22265891cb91ab002db69941f0ac3d6",
+          "tximport/R/tximport.R": "44df6e42cc76fb43e960e64ccfc8a6f0894294bb3831f8c2dac90b2ab5081388"
+        },
+        "generator_sha256": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+        "R_generator_sha256": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+        "reference_sha256": "54317811d7522ea0427a0546fcdf7e18927f3c083492b8bb8d21c7c6d10ed0bc",
+        "cases": 204,
+        "reference_scalar_values": 15615,
+        "original_run_log": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z\\original-R.log",
+        "original_run_log_sha256": "82f65e243472f43f4028ac2d20bbfa840db91ef7ee39f914834f2141333305e2",
+        "fixture_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z",
+        "scope": "Actual unmodified original R API with character-ID importer and dropInfReps TRUE. Dense point estimates; values compared by exact identities, not host-locale gene order. RSEM lengths below1 clamped by original. No all-zero scaled denominator,uncertainty,HDF5 or downstream DE parity."
+      },
+      "full_gate": {
+        "tests": 1504,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 61,
+      "packaged_workflow_calls": 44,
+      "scope": "Salmon/kallisto/RSEM isoform/canonical TSV dense point estimates;four scaling modes,exact identities,annotation/omission,zero-expression fallback and failure recovery. No R/quantifier runtime needed; RSEM gene files,uncertainty/HDF5/sparse,quantification,DE,historical and full-paper parity remain open.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "refreshed_source_note": "Source-snapshot guard now preserves the first hash of repeated physical paths and rejects a changed repeat; all6CLI and5API tests plus44actual import calls passed.",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed-native-dense-point-estimate-subset",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "recorded_utc": "2026-10-25T10:07:59.705580+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/sequence/TranscriptImport.java": "94da472d5a3657495d99b2ead04cd95871c379db99cff6c49767f29e25280971",
+        "src/main/java/org/jlinalg/cli/TranscriptImportCli.java": "783deea1e820416e4594562f09f20e52d78009fa21e2c63dcfb5c52671120838",
+        "src/main/resources/META-INF/NOTICE-tximport.txt": "88ebfc78f8a23273c7af174ef503826c627d13fffdfe98bcc47135974c3c3a8f",
+        "src/test/java/org/jlinalg/sequence/TranscriptImportTest.java": "d4c88a7175ccea507ea3f9da71172989e83aab574e3b26a9874f675220429bef",
+        "src/test/java/org/jlinalg/cli/TranscriptImportCliTest.java": "ffb5690a20b9f7feb9333320e3558d388e783a7a1918e47f228eca9f778f4ff7",
+        "tools/literature/generate_tximport_references.py": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+        "tools/literature/tximport_reference.R": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+        "tools/literature/verify_tximport_native.py": "0eb3a292e5bf0ce5876831d705d33539ec3f736809b368ae63bc34e62089ff36",
+        "tools/literature/curate_tximport_uses.py": "27a16a7a462846011b7c8d4b4f71461702d87095248592ddb95fc287af5ebd31",
+        "tools/literature/expand_tximport_context_tools.py": "43fb26220125811fad9d92bb97c7679ae7ec610b8ee8d97fe50bf0dc84067ea1",
+        "tools/literature/refresh_reviewed_catalog.py": "0d66716a613547047ac6964b9158f500f72ca6d05e8ee54cda4ae839e8444d0f"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.sequence.TranscriptImportTest": {
+          "suite_name": "org.jlinalg.sequence.TranscriptImportTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "c23ec516e3b29a285bd51124e6165fbab820d68455a80b61d3684cae97805062",
+          "testcases": [
+            "invalidDimensionsDomainsMappingsAndZeroDenominatorsFail()",
+            "independentGeneSumsLengthsAndZeroExpressionFallbacks()",
+            "defensiveCopiesKeepCallerAndResultIsolated()",
+            "twoHundredFourActualOriginalRImportsAcrossAllFormatsAndModes()",
+            "countsScaleToRetainedLibraryAndDtuUsesCommonGeneMedian()"
+          ]
+        },
+        "org.jlinalg.cli.TranscriptImportCliTest": {
+          "suite_name": "org.jlinalg.cli.TranscriptImportCliTest",
+          "suite": {
+            "tests": 6,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "abfed4780f07e57b3275412ba8f5231e6b84d11bf9b9e01536cdcbf1f9bf2185",
+          "testcases": [
+            "relativeManifestNumericIdsFractionsAndReferenceAuditAreRetained()",
+            "formatsAndGzipProduceActualFractionalGeneCounts()",
+            "conflictingMapOrderCollisionsAndNonfiniteInputsFailWithoutSuccessfulOutput()",
+            "transcriptDtuAndBarOutputPreserveExplicitIdentityContract()",
+            "resourceCapsZeroScalingAndRequiredUncertaintyChoiceAreActionable()",
+            "unannotatedDropIsExplicitAndLibraryTotalsReflectOmission()"
+          ]
+        }
+      },
+      "api_cli_tests": 11,
+      "original_R_reference": {
+        "status": "passed-original-reference-generation",
+        "package": "tximport",
+        "version": "1.40.0",
+        "archive_url": "https://bioconductor.org/packages/3.23/bioc/src/contrib/tximport_1.40.0.tar.gz",
+        "archive_sha256": "72841a6b2ac1f64ccb05af2d9fba4eea781596771798cefcb3a9327f9dc929f9",
+        "original_R_sources_sha256": {
+          "tximport/R/alevin.R": "9d5fe0936e2899129f92f3eb2386825a5a961ddd7545ee3bbdb4354f8ff6a082",
+          "tximport/R/helper.R": "f7a54ebab58e77226879133629f9e791ab3b68c44a1101a5440b43cf77853155",
+          "tximport/R/infReps.R": "257b7a113eb4127cd1366e4a762c58e7c1504b4ac8d2ba0d3f0ce81f2a7e05fc",
+          "tximport/R/summarizeToGene.R": "3040d16a27aa79a0b2323344e699ccf9e22265891cb91ab002db69941f0ac3d6",
+          "tximport/R/tximport.R": "44df6e42cc76fb43e960e64ccfc8a6f0894294bb3831f8c2dac90b2ab5081388"
+        },
+        "generator_sha256": "1d0372b2a88fe3061811ed30951c895af659b5676bfdec643965e775c96259c7",
+        "R_generator_sha256": "8a9f1a87ed3f59ec16e8351336ddf655bccf3196838ca68d60dbd77ba48d6311",
+        "reference_sha256": "54317811d7522ea0427a0546fcdf7e18927f3c083492b8bb8d21c7c6d10ed0bc",
+        "cases": 204,
+        "reference_scalar_values": 15615,
+        "original_run_log": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z\\original-R.log",
+        "original_run_log_sha256": "82f65e243472f43f4028ac2d20bbfa840db91ef7ee39f914834f2141333305e2",
+        "fixture_directory": "D:\\projects\\JLinAlg\\build\\literature-review\\tximport-runtime\\references-20261025T092432Z",
+        "scope": "Actual unmodified original R API with character-ID importer and dropInfReps TRUE. Dense point estimates; values compared by exact identities, not host-locale gene order. RSEM lengths below1 clamped by original. No all-zero scaled denominator,uncertainty,HDF5 or downstream DE parity."
+      },
+      "full_gate": {
+        "tests": 1552,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 68,
+      "packaged_workflow_calls": 44,
+      "scope": "Salmon/kallisto/RSEM isoform/canonical TSV dense point estimates;four scaling modes,exact identities,annotation/omission,zero-expression fallback and failure recovery. No R/quantifier runtime needed; RSEM gene files,uncertainty/HDF5/sparse,quantification,DE,historical and full-paper parity remain open.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "refreshed_source_note": "Source-snapshot guard now preserves the first hash of repeated physical paths and rejects a changed repeat; all6CLI and5API tests plus44actual import calls passed.",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

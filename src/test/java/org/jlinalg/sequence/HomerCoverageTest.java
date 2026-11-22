@@ -1,0 +1,21 @@
+package org.jlinalg.sequence;
+
+import java.util.List;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+class HomerCoverageTest {
+    private static HomerCoverage.Tag tag(int pos,char strand,int length,float weight){return new HomerCoverage.Tag(pos,strand,length,weight);}
+    private static HomerCoverage.Controls control(int adjust,int fragment,boolean last,double norm,double length){return new HomerCoverage.Controls(adjust,fragment,'.',last,norm,length);}
+    private static HomerCoverage.Replay run(List<HomerCoverage.Tag> tags,HomerCoverage.Controls control)throws Exception{return HomerCoverage.replay(tags,100000,2,control,100,()->{});}
+    @Test void plusAndMinusAnchorsKeepSourceHalfOpenOffset()throws Exception{var r=run(List.of(tag(100,'+',10,1),tag(200,'-',10,1)),control(0,0,false,0,0));assertEquals(List.of(new HomerCoverage.Bin(99,109,1,"1.00"),new HomerCoverage.Bin(190,200,1,"1.00")),r.bins());assertEquals(0,r.terminalResidue());}
+    @Test void adjustmentAlwaysClampsToOriginalTagAnchorRange()throws Exception{var r=run(List.of(tag(100,'+',10,1),tag(200,'-',10,1)),control(-4,0,false,0,0));assertEquals(99,r.bins().get(0).start0());assertEquals(200,r.bins().get(1).end());}
+    @Test void lastTagFlagOnlyCapsEventsAfterAdjustment()throws Exception{var tags=List.of(tag(100,'+',10,1),tag(200,'+',50,1));var clamped=run(tags,control(-4,0,true,0,0));var extended=run(tags,control(-4,0,false,0,0));assertEquals(196,clamped.bins().get(1).end());assertEquals(245,extended.bins().get(1).end());assertEquals(99,extended.bins().get(0).start0());}
+    @Test void rawWeightsStillReceiveExplicitLengthScaling()throws Exception{var tags=List.of(tag(100,'+',10,0.5f),tag(1000,'+',100,0.5f));var r=run(tags,control(0,0,false,0,100));assertEquals("2.00",r.bins().get(0).printedValue());assertEquals("0.50",r.bins().get(1).printedValue());assertEquals("0.50",run(tags,control(0,0,false,0,0)).bins().get(0).printedValue());}
+    @Test void normalizedCoverageUsesWholeDirectoryMassAndFloat32()throws Exception{var r=HomerCoverage.replay(List.of(tag(100,'+',10,1)),100000,8.5,control(0,0,false,10000000,0),100,()->{});assertEquals("1176470.62",r.bins().get(0).printedValue());assertEquals(1176470.625f,r.bins().get(0).value());}
+    @Test void fixedExtensionAndStoredLengthRemainSeparate()throws Exception{var r=run(List.of(tag(100,'+',10,1),tag(1000,'-',300,1)),control(0,150,false,0,0));assertEquals(249,r.bins().get(0).end());assertEquals(850,r.bins().get(1).start0());}
+    @Test void negativeReverseEndpointUsesSourceOneAndOverrunsRemainVisible()throws Exception{var r=run(List.of(tag(5,'-',10,1),tag(99999,'+',10,1)),control(0,0,false,0,0));assertEquals(1,r.bins().get(0).start0());assertEquals(100008,r.bins().get(1).end());assertEquals(1,r.outOfReferenceBins());}
+    @Test void floatThresholdAndPrintfNearestEvenAreNotGenericDecimalRounding()throws Exception{assertTrue(run(List.of(tag(100,'+',10,0.05f)),control(0,0,false,0,0)).bins().size()==1);assertEquals("1.12",run(List.of(tag(100,'+',10,1.125f)),control(0,0,false,0,0)).bins().get(0).printedValue());assertTrue(run(List.of(tag(100,'+',10,0.049f)),control(0,0,false,0,0)).bins().isEmpty());}
+    @Test void equalComparatorGroupsExposeFloatOrderRiskInsteadOfClaimingCrossLibcIdentity()throws Exception{var r=run(List.of(tag(100,'+',100,1),tag(200,'+',356,0.5f)),control(0,100,false,0,0));assertTrue(r.tiedComparatorGroups()>0);assertTrue(r.mixedValueComparatorGroups()>0);assertThrows(UnsupportedOperationException.class,()->r.bins().clear());}
+    @Test void zeroEventStrandUnsortedRowsCapacityAndCallerFailuresAreExplicit()throws Exception{var tags=List.of(tag(100,'+',10,1));assertThrows(IllegalArgumentException.class,()->run(List.of(tag(200,'+',10,1),tag(100,'+',10,1)),control(0,0,false,0,0)));assertThrows(IllegalArgumentException.class,()->HomerCoverage.replay(tags,100000,1,new HomerCoverage.Controls(0,0,'-',false,0,0),100,()->{}));assertThrows(IllegalArgumentException.class,()->HomerCoverage.replay(tags,100000,1,control(0,0,false,0,0),0,()->{}));assertThrows(java.io.IOException.class,()->HomerCoverage.replay(tags,100000,1,control(0,0,false,0,0),100,()->{throw new java.io.IOException("deadline");}));}
+}

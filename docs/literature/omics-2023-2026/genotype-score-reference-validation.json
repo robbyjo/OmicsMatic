@@ -1,0 +1,237 @@
+{
+  "status": "passed-frozen-actual-original-scoring-references",
+  "recorded_utc": "2026-10-26T02:01:51.919373+00:00",
+  "provenance": {
+    "status": "frozen-actual-original-score-fields;Java-validation-separate",
+    "producer_sha256": "389293b1b579d7c9e513e01f663f37c1afc2e308139f3256f9de8c6f83e93f9f",
+    "python": "3.12.14",
+    "reference_campaign_sha256": "f49a97f883a1f93e404595b71c28d76efca56e523d09dd574cc6a80c74ec3039",
+    "reference_input_sha256": "ad460c502d7c23bdf64034cf9b86c780b7def1559c6c30563e134bd7f68159bb",
+    "samples": 97,
+    "score_variants": 16,
+    "original_rows": 388,
+    "original_sum_fields": 291,
+    "original_average_fields": 291,
+    "source_table_sha256": {
+      "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\plink1-score-mean\\result.profile": "215b1feef96bf96c7d3e24113fca02de2d69a436fbc4c4332e7542ef18cce783",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\plink1-score-omit\\result.profile": "9dc5d34de3efa4ea8f03a07febf3cb86466694a1987b3536670473d865a4b78a",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\plink2-score-mean\\result.sscore": "7d659dbed6c1f26f15d9ff96efd5240085a09aa9da69318d30929eed3ccb1aa6",
+      "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\plink2-score-omit\\result.sscore": "99ffbe6f74eb745a30d5cf473474f721b6cf6ce4e1955006d6814c6f09d3389c"
+    },
+    "resource_sha256": {
+      "samples.tsv.gz": "f792ed4cb3e52c664a53db2b348f2117d6e5837435cef52b492ce4bc9b1490bf",
+      "variants.tsv.gz": "76f76dc1759a66186ae18b20d702e1567f9d2e1de8823d192aa4848f4c4e0f18",
+      "reference.tsv.gz": "522a6a84c554cf87de2d6fad65dc32d6c353e4030d9cfa4cb5357024fb405945"
+    },
+    "original_commands": [
+      {
+        "label": "statistics",
+        "tool": "plink1",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\downloaded-reference-1\\plink1\\plink.exe",
+          "--bfile",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\known",
+          "--threads",
+          "1",
+          "--memory",
+          "128",
+          "--seed",
+          "20261025",
+          "--keep-allele-order",
+          "--freq",
+          "--missing",
+          "--hardy",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\plink1-statistics\\result"
+        ],
+        "exit_code": 0,
+        "seconds": 0.031000000017229468,
+        "binary_sha256": "efc55270aba7216e4fcebdf781ee04e9fa556c2fe5be1f71c836ba73930a6b6b",
+        "output_sha256": {
+          "result.frq": "3e8e9c7c44d25c59a4c531b489479aed458eadd10778e81c563225b7037ba19b",
+          "result.hwe": "953a1fe123b54104d9b29080f5f2b78ed4d8355623c19161db23e4d68ce51f68",
+          "result.imiss": "f7bf90276bb17ce6031a30375837d562fc162b6ff1f81ecc289cc45fc45e908d",
+          "result.lmiss": "98f3f990e863f860f6ef0c2bec9c7e5948acc8fd249b781eee6ce447681d020a",
+          "result.log": "cfd6d3618e778141856035172deb7b6f9468c4f5b849fa8b18dee3b687208d8d",
+          "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout.txt": "dc7543a03a90f8c78517ecb01a5d1947cf8d5686607d76b1cfffd4b38add3aac"
+        }
+      },
+      {
+        "label": "score-mean",
+        "tool": "plink1",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\downloaded-reference-1\\plink1\\plink.exe",
+          "--bfile",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\known",
+          "--threads",
+          "1",
+          "--memory",
+          "128",
+          "--seed",
+          "20261025",
+          "--keep-allele-order",
+          "--score",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\weights.tsv",
+          "1",
+          "2",
+          "3",
+          "header",
+          "sum",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\plink1-score-mean\\result"
+        ],
+        "exit_code": 0,
+        "seconds": 0.030999999988125637,
+        "binary_sha256": "efc55270aba7216e4fcebdf781ee04e9fa556c2fe5be1f71c836ba73930a6b6b",
+        "output_sha256": {
+          "result.log": "c00fba04233e970401cc8773a5cc9194992f4f3bf632fc069e32d4cf4b49aebd",
+          "result.profile": "215b1feef96bf96c7d3e24113fca02de2d69a436fbc4c4332e7542ef18cce783",
+          "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout.txt": "1e8efcf9f6456ff9abdc6ec05c2f93ef3aaa150a33e4c7bbb8846ad05fc09aa8"
+        }
+      },
+      {
+        "label": "score-omit",
+        "tool": "plink1",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\downloaded-reference-1\\plink1\\plink.exe",
+          "--bfile",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\known",
+          "--threads",
+          "1",
+          "--memory",
+          "128",
+          "--seed",
+          "20261025",
+          "--keep-allele-order",
+          "--score",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\weights.tsv",
+          "1",
+          "2",
+          "3",
+          "header",
+          "no-mean-imputation",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\plink1-score-omit\\result"
+        ],
+        "exit_code": 0,
+        "seconds": 0.015000000013969839,
+        "binary_sha256": "efc55270aba7216e4fcebdf781ee04e9fa556c2fe5be1f71c836ba73930a6b6b",
+        "output_sha256": {
+          "result.log": "a638855825988e01ffea5873cc916aef5ce76d6467e43a755489936a8b279732",
+          "result.profile": "9dc5d34de3efa4ea8f03a07febf3cb86466694a1987b3536670473d865a4b78a",
+          "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout.txt": "df4fb4656412c9fdf97cfbe212a8ceeb565e199d1fbbfcc84fbe5e726033b3e2"
+        }
+      },
+      {
+        "label": "statistics",
+        "tool": "plink2",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\downloaded-reference-1\\plink2\\plink2.exe",
+          "--bfile",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\known",
+          "--threads",
+          "1",
+          "--memory",
+          "640",
+          "--seed",
+          "20261025",
+          "--freq",
+          "--missing",
+          "--hardy",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\plink2-statistics\\result"
+        ],
+        "exit_code": 0,
+        "seconds": 0.030999999988125637,
+        "binary_sha256": "f498c754dd97b0010ae907fb92561f9cf5e2bca6fa15e0c527375077985f8105",
+        "output_sha256": {
+          "result.afreq": "1e02cd5487f9a377d6f9865735f8f8111b8b475138e15b85b2f6b0d91bcd95fe",
+          "result.hardy": "9e1d30ab9502698ae15e48ce97d066de35077f73c2d717febb4ed69ca5e97d39",
+          "result.log": "6c0cb49f91b220391c784f16f655e2be043ff5487315b00b783abfb55e74dc77",
+          "result.smiss": "460cd33a35fba819102e07bda98ad3eb48d8eeace66f7c464fd34d2d531f567a",
+          "result.vmiss": "9529dbd375af7d0abd3cd1821d1e5940f6879b36fccfa9541cd0136dddda6b2c",
+          "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout.txt": "41ecc13821f59002aa6a8e45428d6def00ad923cbf3873c90369e0b1cc12c3a4"
+        }
+      },
+      {
+        "label": "score-mean",
+        "tool": "plink2",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\downloaded-reference-1\\plink2\\plink2.exe",
+          "--bfile",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\known",
+          "--threads",
+          "1",
+          "--memory",
+          "640",
+          "--seed",
+          "20261025",
+          "--score",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\weights.tsv",
+          "1",
+          "2",
+          "3",
+          "header-read",
+          "cols=+scoresums",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\plink2-score-mean\\result"
+        ],
+        "exit_code": 0,
+        "seconds": 0.031000000017229468,
+        "binary_sha256": "f498c754dd97b0010ae907fb92561f9cf5e2bca6fa15e0c527375077985f8105",
+        "output_sha256": {
+          "result.log": "23f76c0f80ef11085b25af60d4b9324a36f3ae5241d32c414ba346f1ef7697f8",
+          "result.sscore": "7d659dbed6c1f26f15d9ff96efd5240085a09aa9da69318d30929eed3ccb1aa6",
+          "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout.txt": "7aabfb4c034938dd7bdc31aa15e4b545a94ae2612da9bbe75571b4216e4b7891"
+        }
+      },
+      {
+        "label": "score-omit",
+        "tool": "plink2",
+        "command": [
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\downloaded-reference-1\\plink2\\plink2.exe",
+          "--bfile",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\known",
+          "--threads",
+          "1",
+          "--memory",
+          "640",
+          "--seed",
+          "20261025",
+          "--score",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\weights.tsv",
+          "1",
+          "2",
+          "3",
+          "header-read",
+          "cols=+scoresums",
+          "no-mean-imputation",
+          "--out",
+          "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\reference-math-5\\plink2-score-omit\\result"
+        ],
+        "exit_code": 0,
+        "seconds": 0.030999999988125637,
+        "binary_sha256": "f498c754dd97b0010ae907fb92561f9cf5e2bca6fa15e0c527375077985f8105",
+        "output_sha256": {
+          "result.log": "9e2b869f21565e60795dced88e96c78e8c3051d241e18285d2a7fd66c94e0c92",
+          "result.sscore": "99ffbe6f74eb745a30d5cf473474f721b6cf6ce4e1955006d6814c6f09d3389c",
+          "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout.txt": "308c8476385a63df2ac425665c287fc7950259baa58d9b3ab9dd8f66cab30fcb"
+        }
+      }
+    ],
+    "scope": "Actual official original1.9.0/2.0.0-b.1.2 scoring fields,including original2averages not independently checked by the earlier sum-focused campaign. Derived core input is counted-allele oriented from independently generated known genotypes and explicit weights;frequency is the observed founder frequency in that fixture. Mean-imputed denominators differ from reported observed-allele counts. Original1.9sum+no-mean-imputation is unsupported,so that sum field stays blank. No Java result,average field or missing original statistic is invented."
+  },
+  "reference_files_sha256": {
+    "provenance.json": "3441db38a28c7bb83069ea2875c3dd2517f6abc5001bda48d82063317d2a45d3",
+    "reference.tsv.gz": "522a6a84c554cf87de2d6fad65dc32d6c353e4030d9cfa4cb5357024fb405945",
+    "samples.tsv.gz": "f792ed4cb3e52c664a53db2b348f2117d6e5837435cef52b492ce4bc9b1490bf",
+    "variants.tsv.gz": "76f76dc1759a66186ae18b20d702e1567f9d2e1de8823d192aa4848f4c4e0f18"
+  },
+  "scope": "Actual original scoring tables and generated known-call input lineage;Java and packaged execution evidence are separate. Earlier reference retries remain retained."
+}

@@ -77,6 +77,104 @@ public final class JLinAlgCli {
 
     private static int dispatch(String[] arguments, PrintStream output,
             PrintStream errorOutput) {
+        if (arguments.length > 0 && arguments[0].equals("signature-score"))
+            return SignatureScoreCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("intervals"))
+            return GenomicIntervalCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("cell-embed"))
+            return CellEmbeddingCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("sequence-qc"))
+            return SequenceToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("sequence-tools"))
+            return SequenceUtilsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("alignment-tools"))
+            return AlignmentToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("hts-tools"))
+            return HtsToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("read-align"))
+            return ReadAlignmentCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("gatk-tools"))
+            return GatkToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("star-tools"))
+            return StarToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("genomic-signal"))
+            return GenomicSignalCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("track-peaks"))
+            return TrackPeakCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("regenie-tools"))
+            return RegenieToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("coordinate-lift"))
+            return CoordinateLiftCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("feature-counts"))
+            return FeatureCountsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("minimap-tools"))
+            return MinimapToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("hisat-tools"))
+            return HisatToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("trimmomatic-tools"))
+            return TrimmomaticToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("enrichment-tools"))
+            return EnrichmentToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("fuma-tools"))
+            return FumaToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("trim-galore-reads"))
+            return TrimGaloreReadsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("flash-reads"))
+            return FlashReadsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("motif-scan"))
+            return MotifScanCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("fimo-tools"))
+            return FimoToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("genotype-score"))
+            return GenotypeScoreCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("beagle-tools"))
+            return BeagleToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("prs-cs-tools"))
+            return PrsCsToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("molecular-geometry"))
+            return MolecularGeometryCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("electrostatic-grid"))
+            return ElectrostaticGridCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("apbs-tools"))
+            return ApbsToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("igv-tools"))
+            return IgvToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("unrelated-select"))
+            return UnrelatedSelectCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("saige-tools"))
+            return SaigeToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("admixture-tools"))
+            return AdmixtureToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("minimac-tools"))
+            return MinimacToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("homer-scan"))
+            return HomerScanCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("homer-tools"))
+            return HomerToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("pdb2pqr-tools"))
+            return Pdb2pqrToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("potential-surface"))
+            return PymolPotentialCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("pymol-tools"))
+            return PymolToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("plink-tools"))
+            return PlinkToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("trim-galore-tools"))
+            return TrimGaloreToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("kallisto-tools"))
+            return KallistoToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("transcript-import"))
+            return TranscriptImportCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("quantile-normalize"))
+            return QuantileNormalizeCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("deep-tools"))
+            return DeepToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("magma-tools"))
+            return MagmaToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("single-cell-qc"))
+            return SingleCellQcCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("cellbender-tools"))
+            return CellBenderToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("plot"))
             try {
                 return PlotCli.run(Arrays.copyOfRange(
@@ -249,6 +347,55 @@ public final class JLinAlgCli {
             Usage:
               java -jar jlinalg-<version>.jar plot --help
               java -jar jlinalg-<version>.jar study --help
+              java -jar jlinalg-<version>.jar signature-score --help
+              java -jar jlinalg-<version>.jar intervals --help
+              java -jar jlinalg-<version>.jar cell-embed --help
+              java -jar jlinalg-<version>.jar sequence-qc --help
+              java -jar jlinalg-<version>.jar sequence-tools --help
+              java -jar jlinalg-<version>.jar alignment-tools --help
+              java -jar jlinalg-<version>.jar hts-tools --help
+              java -jar jlinalg-<version>.jar read-align --help
+              java -jar jlinalg-<version>.jar gatk-tools --help
+              java -jar jlinalg-<version>.jar star-tools --help
+              java -jar jlinalg-<version>.jar genomic-signal --help
+              java -jar jlinalg-<version>.jar track-peaks --help
+              java -jar jlinalg-<version>.jar regenie-tools --help
+              java -jar jlinalg-<version>.jar coordinate-lift --help
+              java -jar jlinalg-<version>.jar feature-counts --help
+              java -jar jlinalg-<version>.jar minimap-tools --help
+              java -jar jlinalg-<version>.jar hisat-tools --help
+              java -jar jlinalg-<version>.jar single-cell-qc --help
+              java -jar jlinalg-<version>.jar cellbender-tools --help
+              java -jar jlinalg-<version>.jar magma-tools --help
+              java -jar jlinalg-<version>.jar trimmomatic-tools --help
+              java -jar jlinalg-<version>.jar deep-tools --help
+              java -jar jlinalg-<version>.jar enrichment-tools --help
+              java -jar jlinalg-<version>.jar fuma-tools --help
+              java -jar jlinalg-<version>.jar trim-galore-reads --help
+              java -jar jlinalg-<version>.jar flash-reads --help
+              java -jar jlinalg-<version>.jar motif-scan --help
+              java -jar jlinalg-<version>.jar fimo-tools --help
+              java -jar jlinalg-<version>.jar genotype-score --help
+              java -jar jlinalg-<version>.jar beagle-tools --help
+              java -jar jlinalg-<version>.jar prs-cs-tools --help
+              java -jar jlinalg-<version>.jar molecular-geometry --help
+              java -jar jlinalg-<version>.jar electrostatic-grid --help
+              java -jar jlinalg-<version>.jar apbs-tools --help
+              java -jar jlinalg-<version>.jar igv-tools --help
+              java -jar jlinalg-<version>.jar unrelated-select --help
+              java -jar jlinalg-<version>.jar saige-tools --help
+              java -jar jlinalg-<version>.jar admixture-tools --help
+              java -jar jlinalg-<version>.jar minimac-tools --help
+              java -jar jlinalg-<version>.jar homer-scan --help
+              java -jar jlinalg-<version>.jar homer-tools --help
+              java -jar jlinalg-<version>.jar pdb2pqr-tools --help
+              java -jar jlinalg-<version>.jar potential-surface --help
+              java -jar jlinalg-<version>.jar pymol-tools --help
+              java -jar jlinalg-<version>.jar plink-tools --help
+              java -jar jlinalg-<version>.jar trim-galore-tools --help
+              java -jar jlinalg-<version>.jar kallisto-tools --help
+              java -jar jlinalg-<version>.jar transcript-import --help
+              java -jar jlinalg-<version>.jar quantile-normalize --help
               java -jar jlinalg-<version>.jar config --command COMMAND
               java -jar jlinalg-<version>.jar variant-db --help
               java -jar jlinalg-<version>.jar variant-annotate --help

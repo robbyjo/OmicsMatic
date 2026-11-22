@@ -1,0 +1,1997 @@
+{
+  "status": "passed-original-upstream-subset",
+  "jar": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+  "jar_sha256": "a104651636deb59493cddc92ce433629d4ef7b0c755f6ee065a3e0c75365c5e2",
+  "verifier_sha256": "8ec29b94487bc0b0e025a24697d78430caf82c0d8aa8c0fbb4e4a8ea5e1545db",
+  "directory": "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z",
+  "steps": [
+    {
+      "stage": "unpaired-prepare",
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\omics-hts\\ucrt64\\bin\\samtools.exe",
+        "sort",
+        "-o",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.bam",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.sam"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "stage": "unpaired-index",
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\omics-hts\\ucrt64\\bin\\samtools.exe",
+        "index",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.bam"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "stage": "paired-prepare",
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\omics-hts\\ucrt64\\bin\\samtools.exe",
+        "sort",
+        "-o",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\paired.bam",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\paired.sam"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "stage": "paired-index",
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\omics-hts\\ucrt64\\bin\\samtools.exe",
+        "index",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\paired.bam"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "stage": "coverage-NONE",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bam-coverage",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.bam",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\coverage-NONE",
+        "--no-config",
+        "--bin-size",
+        "10",
+        "--normalization",
+        "NONE",
+        "--exact-scaling",
+        "true",
+        "--uncovered",
+        "zero"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "a6f0405ea0f890857689e16f9de0281076d9377025731416b93c5809d85b2679"
+    },
+    {
+      "stage": "coverage-CPM",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bam-coverage",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.bam",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\coverage-CPM",
+        "--no-config",
+        "--bin-size",
+        "10",
+        "--normalization",
+        "CPM",
+        "--exact-scaling",
+        "true",
+        "--uncovered",
+        "zero"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "9c8bff780f34150500cef7d1a3a486276ce2c57c0ce12d129c8f8690b3a48d05"
+    },
+    {
+      "stage": "coverage-RPKM",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bam-coverage",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.bam",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\coverage-RPKM",
+        "--no-config",
+        "--bin-size",
+        "10",
+        "--normalization",
+        "RPKM",
+        "--exact-scaling",
+        "true",
+        "--uncovered",
+        "zero"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "fcb39e6a2de53b017501f4070ad6a80022d441b772dba054855375232fac77e7"
+    },
+    {
+      "stage": "coverage-BPM",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bam-coverage",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.bam",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\coverage-BPM",
+        "--no-config",
+        "--bin-size",
+        "10",
+        "--normalization",
+        "BPM",
+        "--exact-scaling",
+        "true",
+        "--uncovered",
+        "zero"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "fcb4913108b33a732b341ef34142ca18c05eea69d04e86369195105221fed397"
+    },
+    {
+      "stage": "coverage-RPGC",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bam-coverage",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.bam",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\coverage-RPGC",
+        "--no-config",
+        "--bin-size",
+        "10",
+        "--normalization",
+        "RPGC",
+        "--exact-scaling",
+        "true",
+        "--uncovered",
+        "zero",
+        "--effective-genome-size",
+        "100"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "d736d2a29684a0a4c94ed8d7d1efc302b488e780d18a37af93260a6f3196e126"
+    },
+    {
+      "stage": "compare-ratio",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\ramp.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\compare-ratio",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "ratio",
+        "--scale1",
+        "1",
+        "--scale2",
+        "2",
+        "--pseudo1",
+        "1",
+        "--pseudo2",
+        "1",
+        "--missing",
+        "error",
+        "--invalid",
+        "error"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "65fae3a21106fbdbd397a7dda742a1f360b94da188e09874ab7f327558bc599a"
+    },
+    {
+      "stage": "compare-log2",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\ramp.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\compare-log2",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "log2",
+        "--scale1",
+        "1",
+        "--scale2",
+        "2",
+        "--pseudo1",
+        "1",
+        "--pseudo2",
+        "1",
+        "--missing",
+        "error",
+        "--invalid",
+        "error"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "2336fc829ef33e70b657134b03705245e19c98fb2f1fbbd85408791e776f2636"
+    },
+    {
+      "stage": "compare-reciprocal_ratio",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\ramp.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\compare-reciprocal_ratio",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "reciprocal_ratio",
+        "--scale1",
+        "1",
+        "--scale2",
+        "2",
+        "--pseudo1",
+        "1",
+        "--pseudo2",
+        "1",
+        "--missing",
+        "error",
+        "--invalid",
+        "error"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "16989377162cd3f9157e844eec0492351a1b931074422bd791c909d008ae75cc"
+    },
+    {
+      "stage": "compare-subtract",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\ramp.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\compare-subtract",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "subtract",
+        "--scale1",
+        "1",
+        "--scale2",
+        "2",
+        "--pseudo1",
+        "1",
+        "--pseudo2",
+        "1",
+        "--missing",
+        "error",
+        "--invalid",
+        "error"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "f6f0d9e9677d31dff1aff44720efcdf2b69ae4e66b8636c8337a7f13b5cf64fc"
+    },
+    {
+      "stage": "compare-add",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\ramp.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\compare-add",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "add",
+        "--scale1",
+        "1",
+        "--scale2",
+        "2",
+        "--pseudo1",
+        "1",
+        "--pseudo2",
+        "1",
+        "--missing",
+        "error",
+        "--invalid",
+        "error"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "8e3322753b94f1e28e78c977c4194969dae5a50af9d90132d56cc24e9bb9d87f"
+    },
+    {
+      "stage": "compare-first",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\ramp.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\compare-first",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "first",
+        "--scale1",
+        "1",
+        "--scale2",
+        "2",
+        "--pseudo1",
+        "1",
+        "--pseudo2",
+        "1",
+        "--missing",
+        "error",
+        "--invalid",
+        "error"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "ec18692e04645a2b685c21b4007415951258079ac800d4fd6070d07c8b55a716"
+    },
+    {
+      "stage": "compare-second",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\ramp.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\compare-second",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "second",
+        "--scale1",
+        "1",
+        "--scale2",
+        "2",
+        "--pseudo1",
+        "1",
+        "--pseudo2",
+        "1",
+        "--missing",
+        "error",
+        "--invalid",
+        "error"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "878131dc7ef72705fafc925acb7c24b0ff2e8de7c0ebc5d36bb24ea57d2c9591"
+    },
+    {
+      "stage": "compare-mean",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\ramp.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\compare-mean",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "mean",
+        "--scale1",
+        "1",
+        "--scale2",
+        "2",
+        "--pseudo1",
+        "1",
+        "--pseudo2",
+        "1",
+        "--missing",
+        "error",
+        "--invalid",
+        "error"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "ca41a15aef18f2f9ec5f05a79f15c55a21392168b15ff8a4eaa1e61aaf6bb38b"
+    },
+    {
+      "stage": "gap-zero",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\gapped.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\gap-zero",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "subtract",
+        "--missing",
+        "zero",
+        "--invalid",
+        "retain"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "bdd62bab43346f5d2fc8aa89f8fd8630f7cb34e3e9dd41b6b2cb1da4e7717b85"
+    },
+    {
+      "stage": "gap-retain",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\gapped.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\gap-retain",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "subtract",
+        "--missing",
+        "retain",
+        "--invalid",
+        "retain"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "7b12135a7dd2d86085c5ecc4f245a6dd07476001223a9a390be88c00038145af"
+    },
+    {
+      "stage": "gap-error",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\gapped.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\gap-error",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "subtract",
+        "--missing",
+        "error",
+        "--invalid",
+        "error"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2,
+      "console_sha256": "ee39bee10e5ca5cfce5b49b7bf4d8ac5970227cd71a11fe1fb0398740092b362"
+    },
+    {
+      "stage": "signed-cancellation-filter",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\signed-cancellation-filter",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\negative-two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "subtract",
+        "--missing",
+        "error",
+        "--invalid",
+        "error",
+        "--skip-zero-zero",
+        "true"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "7ffd8d1bf293f32bc7e71b2853c7ee87cb2fe1f299b4ad183def13a58afae138"
+    },
+    {
+      "stage": "negative-scale",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\negative-scale",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "first",
+        "--scale1",
+        "-1",
+        "--missing",
+        "error",
+        "--invalid",
+        "error"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "92fad968f6361743b94a2e796e1892cd860dd994400c0862c2782d3d094796b3"
+    },
+    {
+      "stage": "undefined-retained",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\ramp.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\undefined-retained",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "ratio",
+        "--scale1",
+        "0",
+        "--scale2",
+        "0",
+        "--missing",
+        "error",
+        "--invalid",
+        "retain"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "6a8cf82379b3e34cff58cd0ff92766a371b8d4aed83140347b0c2c217254fbf4"
+    },
+    {
+      "stage": "undefined-error",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bigwig-compare",
+        "--input",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\ramp.bw",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\undefined-error",
+        "--no-config",
+        "--input2",
+        "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw",
+        "--bin-size",
+        "10",
+        "--operation",
+        "ratio",
+        "--scale1",
+        "0",
+        "--scale2",
+        "0",
+        "--missing",
+        "error",
+        "--invalid",
+        "error"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2,
+      "console_sha256": "3b187a2fe8b8e987ed459c4392835679d8c44c94fea05fde65faa429ddaf4d67"
+    },
+    {
+      "stage": "atac-shift",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "atac-shift",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\paired.bam",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\atac-shift",
+        "--no-config",
+        "--accept-sequence-tag-loss",
+        "true",
+        "--cigar-policy",
+        "match-only"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "7ad122868fe3135aa54b2f65d6c2fb3ddb84a7dd2f33037ae1845641c25830b8"
+    },
+    {
+      "stage": "inspect-shift",
+      "command": [
+        "D:\\projects\\JLinAlg\\build\\omics-hts\\ucrt64\\bin\\samtools.exe",
+        "view",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\atac-shift\\shifted.bam"
+      ],
+      "exit_code": 0,
+      "expected_exit": 0,
+      "console_sha256": "fac8243348ad9c9858419a94f25da1878e477f56ff9453228c973d05fbd79591"
+    },
+    {
+      "stage": "wrong-reference",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bam-coverage",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.bam",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\wrong.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\wrong-reference",
+        "--no-config",
+        "--bin-size",
+        "10",
+        "--normalization",
+        "NONE",
+        "--exact-scaling",
+        "true",
+        "--uncovered",
+        "zero"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2,
+      "console_sha256": "9049a1719c4c05a34cc9188b7ddd67dc3443362104b6e7b6a3aac2143d15c62b"
+    },
+    {
+      "stage": "resource-limit",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bam-coverage",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.bam",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\omics-deeptools-runtime-v2",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\resource-limit",
+        "--no-config",
+        "--bin-size",
+        "10",
+        "--normalization",
+        "NONE",
+        "--exact-scaling",
+        "true",
+        "--uncovered",
+        "zero",
+        "--max-records",
+        "2"
+      ],
+      "exit_code": 2,
+      "expected_exit": 2,
+      "console_sha256": "54cdb646e133d8cd56626bd6519b5dfb682606001d0f8370384e9f1a74c6fe3f"
+    },
+    {
+      "stage": "missing-runtime",
+      "command": [
+        "java",
+        "-jar",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\plink-native-candidate\\jlinalg-0.3.7.jar",
+        "deep-tools",
+        "--method",
+        "bam-coverage",
+        "--input",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.bam",
+        "--sizes",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes",
+        "--genome-build",
+        "SYNTHETIC",
+        "--runtime-home",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\missing-runtime",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\missing-runtime",
+        "--no-config",
+        "--bin-size",
+        "10",
+        "--normalization",
+        "NONE",
+        "--exact-scaling",
+        "true",
+        "--uncovered",
+        "zero"
+      ],
+      "exit_code": 3,
+      "expected_exit": 3,
+      "console_sha256": "d0990dd28c54eae831214373a97afee4c1533eb2dd60b44099c8abd55d36a3fa"
+    }
+  ],
+  "checks": [
+    "Actual JAR packages the exact typed adapter, inspector, original bridge and source lock",
+    "Five original BAM normalizations match hand-calculated overlap counts and depth/read-length denominators",
+    "All eight original fixed-step BigWig operations match independent scale-then-pseudocount calculations",
+    "Missing zero/retain/error, signed-cancellation filtering and negative scale-factor argument routing match actual original behavior",
+    "Undefined original ratios remain explicit NA and cannot silently become zeros or successful error-policy results",
+    "Actual tagged proper pairs have exact Tn5 geometry and original SEQ/QUAL/optional-tag loss, with a prominent recovery warning",
+    "Reference/resource failures quarantine partials; absent managed dependencies skip3 with exact setup and no output claim"
+  ],
+  "samtools_executable_sha256": "03c6765324b36632e605838914fe743542cda28313bac5ba799473ef673a51f8",
+  "source_sha256": {
+    "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\exact.sizes": "b52521d37f5929b00afbf5de9e8dda3acee1f83770eecdfed4c180c4a16b116d",
+    "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.sam": "51221c84ad7ba23ffde28860d197f61be1e898368a6f69226768d7d051721024",
+    "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\paired.sam": "7bb2277ffb2226283e6091a8d8d02fa2d56b92c3603112d5fc24f72d311fa0a7",
+    "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.bam": "68adb4cecb3fc37a336f1dda1015157a320b1a7a1c5ba5817e66654c2ddb761d",
+    "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\unpaired.bam.bai": "e36956b48d73bd5a2c46d1cf2451073b8b9b342bec062186972d744e243de19c",
+    "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\paired.bam": "7526bd6d0ca5a457a99f87a7e4efb70d49fdcfaedf1129559c114f1de97fe468",
+    "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\paired.bam.bai": "21f2b89e680c980330f6c8c2864b7e5f2dbaf1f1316c4482aa2c92d54125ac6c",
+    "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\ramp.bw": "381086ee61c31bca34f2748109ac6db2a89a0e6308465cbab52ea7acbc589089",
+    "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\two.bw": "67c9e7747fd9cc8acc60bbf7e88ccb6292999bad8fade6ffe89630bf8d83775b",
+    "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\gapped.bw": "c145cb9d532d3f752f9b6886f40343cd582ea82400752403b2bbbafb669bcbbf",
+    "D:\\projects\\JLinAlg\\src\\test\\resources\\deeptools\\negative-two.bw": "242fcdc4e95cbe1b9346880d9677b0920ef4a1fc613cae24fe9b16fbbb49f420",
+    "D:\\projects\\JLinAlg\\build\\literature-review\\deeptools-upstream-packaged-20261026T012036.595332Z\\wrong.sizes": "2407c8d8b717c57ca513871bbad75bfa6e4e2d334766528faeb9f255a8cfeac5"
+  },
+  "scope": "Typed BAM coverage,BigWig comparison and simple-M-CIGAR ATAC shifts only. Actual original deepTools3.5.6 through Java; no matrices,plots,correlation/full-package or full-paper parity.",
+  "refreshed_utc": "2026-10-26T02:01:51.919373+00:00",
+  "current_validation": {
+    "full_gate": {
+      "tests": 1593,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 5
+    },
+    "required_suites": 72,
+    "all_required_without_skips": true,
+    "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\configured-native-full-gate-1",
+    "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\prior-packaged-regressions-1\\verification.json",
+    "original_trim_rechecks": "D:\\projects\\JLinAlg\\build\\literature-review\\plink-runtime\\original-trim-rechecks-1\\verification.json",
+    "scope": "This exact candidate was executed. All prior owned compiled method sources are unchanged and retested. Historical reference-generation/version scopes remain in their original fields and validation_history;no full-paper parity is inferred."
+  },
+  "current_full_gate_suites": {
+    "org.jlinalg.cli.DeepToolsMatrixCliTest": {
+      "suite_name": "org.jlinalg.cli.DeepToolsMatrixCliTest",
+      "suite": {
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "8eea2de81b9f5289cb7d9548cce326f31b9d25284c2de591f76767e69a639726",
+      "testcases": [
+        "actualConstantSampleFailsWithNamedRecoveryAndNoFigure()",
+        "actualBamSummaryAndSpearmanHaveExactLabelsCountsAndIndependentReference()",
+        "actualStrandedMatrixProfileHeatmapAndChangedModelPreserveIdentities()",
+        "actualObjectArrayHeaderIsRejectedBeforeAnyPickleLoading()",
+        "typedPoliciesRejectAmbiguousModesAndDependencySkipHasExplicitRecovery()"
+      ]
+    },
+    "org.jlinalg.cli.DeepToolsUpstreamCliTest": {
+      "suite_name": "org.jlinalg.cli.DeepToolsUpstreamCliTest",
+      "suite": {
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "37005ba256a7d20631acb109dae7c3703b52d8f5d5aeb1473d34037781f1248c",
+      "testcases": [
+        "actualAtacShiftReplacesGeometryAndExplicitlyDropsOriginalTagsAndSequence()",
+        "typedOptionsRejectInapplicablePoliciesAndUnacknowledgedTagLoss()",
+        "actualBamCoverageMatchesIndependentCountsAndCpmWithoutChangingInputs()",
+        "dependencySkipPrecedesInputAccessAndHasCopyableRecovery()",
+        "actualBigwigComparisonKeepsTerminalZeroAndRetainsUndefinedRatiosExplicitly()",
+        "actualInputFailuresAreAuditableAndPublishNoSuccessfulOutputs()",
+        "changedOrUnmanagedRuntimeIsSkippedWithoutLaunchingPython()"
+      ]
+    },
+    "org.jlinalg.cli.DeepToolsCliTest": {
+      "suite_name": "org.jlinalg.cli.DeepToolsCliTest",
+      "suite": {
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "a7f063cbe91407f050481eb0abe7c353801f604bd78ef8bad6360d4126c63631",
+      "testcases": [
+        "exactWeightedBinsAndExplicitMissingEstimandsPreserveAllReferencePositions()",
+        "zeroFilterPrecedesScaleAndPseudocountAndNeverHidesOmissions()",
+        "suppliedRawBinCountsUseNominalWidthIncludingShortTerminalBins()",
+        "fractionalRawCountsAndBadGridRequireExplicitRepair()",
+        "undefinedArithmeticIsRetainedAsNaRatherThanZero()",
+        "longReferenceGeometryDoesNotNarrowToInt()",
+        "globalAndCommandHelpExposeNativeScopeAndExistingPrivateTools()"
+      ]
+    },
+    "org.jlinalg.genetics.DeepToolsSignalsTest": {
+      "suite_name": "org.jlinalg.genetics.DeepToolsSignalsTest",
+      "suite": {
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "44c01123333b375efe4eec011b2a6f67a155414060b3ed7545063ad83280251d",
+      "testcases": [
+        "invalidDeclarationsAndNonfiniteResultsAreNotHidden()",
+        "declaredAlignmentNormalizationHasIndependentKnownUnits()",
+        "scaleThenPseudocountAndReciprocalEqualityAreExplicit()",
+        "everyActualOriginalComparisonReferenceMatches()"
+      ]
+    }
+  },
+  "validation_history": [
+    {
+      "status": "passed-original-upstream-subset",
+      "jar_sha256": "53399f4be52ad5bb882f5acfea53d5a2a037ac80a6e93d1f7d7fdbc118051860",
+      "recorded_utc": "2026-10-25T08:02:41.668775+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/DeepToolsUpstreamCli.java": "4b6ef9fae2a9c38f8e4c208a9ef15ddf69b1b1ee8f14b12aa437cebb5344866c",
+        "src/main/java/org/jlinalg/cli/DeepToolsRuntime.java": "53b9818920ac0c26d0d03613479a34e25f7a1e8c15a4ddc338d48489aeb6a164",
+        "src/main/java/org/jlinalg/cli/DeepToolsCli.java": "b78e363a83425cc3a8c7b2a18b07f74ba260c3cd13ba3249ecceea19a0fa726a",
+        "src/main/resources/org/jlinalg/omics/deeptools_bridge.py": "20c64c09290fa31075002b25312b4dc1f3bc0e1fd3e01131332946f6d5552827",
+        "src/main/resources/org/jlinalg/omics/deeptools_inspect.py": "55ecbb485bfe229080ea3dcfc53b8920ff6b0eb12be1534927ab95d3137aa558",
+        "src/main/resources/org/jlinalg/omics/deeptools-runtime-lock.json": "5d6f62dff054c8c9f72e5139257bfe3698d0a3bd89d02274828be3a55cdad05f"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.DeepToolsUpstreamCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsUpstreamCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "2dc4b8c106a6ca66230b06a012396b17182e5b0ca2b3917b727843c1170a9bc8",
+          "testcases": [
+            "actualAtacShiftReplacesGeometryAndExplicitlyDropsOriginalTagsAndSequence()",
+            "typedOptionsRejectInapplicablePoliciesAndUnacknowledgedTagLoss()",
+            "actualBamCoverageMatchesIndependentCountsAndCpmWithoutChangingInputs()",
+            "dependencySkipPrecedesInputAccessAndHasCopyableRecovery()",
+            "actualBigwigComparisonKeepsTerminalZeroAndRetainsUndefinedRatiosExplicitly()",
+            "actualInputFailuresAreAuditableAndPublishNoSuccessfulOutputs()",
+            "changedOrUnmanagedRuntimeIsSkippedWithoutLaunchingPython()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3b49ba8e1a61080ec75c4e37499a75d91e0b27701bbe187aa2ccf24d29664c20",
+          "testcases": [
+            "exactWeightedBinsAndExplicitMissingEstimandsPreserveAllReferencePositions()",
+            "zeroFilterPrecedesScaleAndPseudocountAndNeverHidesOmissions()",
+            "suppliedRawBinCountsUseNominalWidthIncludingShortTerminalBins()",
+            "fractionalRawCountsAndBadGridRequireExplicitRepair()",
+            "undefinedArithmeticIsRetainedAsNaRatherThanZero()",
+            "longReferenceGeometryDoesNotNarrowToInt()",
+            "globalAndCommandHelpExposeNativeScopeAndExistingPrivateTools()"
+          ]
+        },
+        "org.jlinalg.genetics.DeepToolsSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.DeepToolsSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "a7e99e731845ee414c2787b2c23fea81c6dbc65a747769c767cdaff9b02bf5e6",
+          "testcases": [
+            "invalidDeclarationsAndNonfiniteResultsAreNotHidden()",
+            "declaredAlignmentNormalizationHasIndependentKnownUnits()",
+            "scaleThenPseudocountAndReciprocalEqualityAreExplicit()",
+            "everyActualOriginalComparisonReferenceMatches()"
+          ]
+        }
+      },
+      "api_cli_tests": 18,
+      "full_gate": {
+        "tests": 1417,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 48,
+      "workflow_calls": 30,
+      "independent_checks": 13,
+      "packaged_validation": "deeptools-upstream-packaged-validation.json",
+      "scope": "Native eight-operation supplied-signal helper plus typed original3.5.6 BAM coverage,BigWig comparison and simple-M-CIGAR ATAC shifts. Actual filters,spliced blocks,exact depth denominator,extension,missing data,signed cancellation,NaN,geometry/tag loss and failure/skip policies verified. Matrix/plot/summary/correlation,unexposed options,old-version and full-paper parity remain pending."
+    },
+    {
+      "status": "passed-original-upstream-subset",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "recorded_utc": "2026-10-25T08:02:41.668775+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/DeepToolsUpstreamCli.java": "4b6ef9fae2a9c38f8e4c208a9ef15ddf69b1b1ee8f14b12aa437cebb5344866c",
+        "src/main/java/org/jlinalg/cli/DeepToolsRuntime.java": "53b9818920ac0c26d0d03613479a34e25f7a1e8c15a4ddc338d48489aeb6a164",
+        "src/main/java/org/jlinalg/cli/DeepToolsCli.java": "4ee8d99133d91718bb7004ef64047f7505110dd43688f2f3765faf2226fb7602",
+        "src/main/resources/org/jlinalg/omics/deeptools_bridge.py": "20c64c09290fa31075002b25312b4dc1f3bc0e1fd3e01131332946f6d5552827",
+        "src/main/resources/org/jlinalg/omics/deeptools_inspect.py": "97b9dd19e34fbc3b97d646a058a6809d7a197bd835c85fb9b6a7fa8a0e06fefc",
+        "src/main/resources/org/jlinalg/omics/deeptools-runtime-lock.json": "5d6f62dff054c8c9f72e5139257bfe3698d0a3bd89d02274828be3a55cdad05f"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.DeepToolsUpstreamCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsUpstreamCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "73862cf4e6e4071decbe72bd317c2e27e16ce5513b743e79862e9021a7e1d10e",
+          "testcases": [
+            "actualAtacShiftReplacesGeometryAndExplicitlyDropsOriginalTagsAndSequence()",
+            "typedOptionsRejectInapplicablePoliciesAndUnacknowledgedTagLoss()",
+            "actualBamCoverageMatchesIndependentCountsAndCpmWithoutChangingInputs()",
+            "dependencySkipPrecedesInputAccessAndHasCopyableRecovery()",
+            "actualBigwigComparisonKeepsTerminalZeroAndRetainsUndefinedRatiosExplicitly()",
+            "actualInputFailuresAreAuditableAndPublishNoSuccessfulOutputs()",
+            "changedOrUnmanagedRuntimeIsSkippedWithoutLaunchingPython()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b94bf70949d181b692d290a24805b4877f5b26e1b937f5c1ea178776948e51ac",
+          "testcases": [
+            "exactWeightedBinsAndExplicitMissingEstimandsPreserveAllReferencePositions()",
+            "zeroFilterPrecedesScaleAndPseudocountAndNeverHidesOmissions()",
+            "suppliedRawBinCountsUseNominalWidthIncludingShortTerminalBins()",
+            "fractionalRawCountsAndBadGridRequireExplicitRepair()",
+            "undefinedArithmeticIsRetainedAsNaRatherThanZero()",
+            "longReferenceGeometryDoesNotNarrowToInt()",
+            "globalAndCommandHelpExposeNativeScopeAndExistingPrivateTools()"
+          ]
+        },
+        "org.jlinalg.genetics.DeepToolsSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.DeepToolsSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5693632743bf35354c51514aa38d7e15501b06af18a513578a37d2a9e49a932a",
+          "testcases": [
+            "invalidDeclarationsAndNonfiniteResultsAreNotHidden()",
+            "declaredAlignmentNormalizationHasIndependentKnownUnits()",
+            "scaleThenPseudocountAndReciprocalEqualityAreExplicit()",
+            "everyActualOriginalComparisonReferenceMatches()"
+          ]
+        }
+      },
+      "api_cli_tests": 18,
+      "full_gate": {
+        "tests": 1417,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 48,
+      "workflow_calls": 30,
+      "independent_checks": 13,
+      "packaged_validation": "deeptools-upstream-packaged-validation.json",
+      "scope": "Native eight-operation supplied-signal helper plus typed original3.5.6 BAM coverage,BigWig comparison and simple-M-CIGAR ATAC shifts. Actual filters,spliced blocks,exact depth denominator,extension,missing data,signed cancellation,NaN,geometry/tag loss and failure/skip policies verified. Matrix/plot/summary/correlation,unexposed options,old-version and full-paper parity remain pending.",
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00"
+    },
+    {
+      "status": "passed-eight-original-upstream-workflow-subset",
+      "jar_sha256": "9650afd13cf486aba84285ba6d2f1a0a06eca8f08d3e33b4c2338567f5372de2",
+      "recorded_utc": "2026-10-25T09:04:26.213216+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/DeepToolsUpstreamCli.java": "4b6ef9fae2a9c38f8e4c208a9ef15ddf69b1b1ee8f14b12aa437cebb5344866c",
+        "src/main/java/org/jlinalg/cli/DeepToolsRuntime.java": "53b9818920ac0c26d0d03613479a34e25f7a1e8c15a4ddc338d48489aeb6a164",
+        "src/main/java/org/jlinalg/cli/DeepToolsCli.java": "4ee8d99133d91718bb7004ef64047f7505110dd43688f2f3765faf2226fb7602",
+        "src/main/resources/org/jlinalg/omics/deeptools_bridge.py": "20c64c09290fa31075002b25312b4dc1f3bc0e1fd3e01131332946f6d5552827",
+        "src/main/resources/org/jlinalg/omics/deeptools_inspect.py": "97b9dd19e34fbc3b97d646a058a6809d7a197bd835c85fb9b6a7fa8a0e06fefc",
+        "src/main/resources/org/jlinalg/omics/deeptools-runtime-lock.json": "5d6f62dff054c8c9f72e5139257bfe3698d0a3bd89d02274828be3a55cdad05f",
+        "src/main/java/org/jlinalg/cli/DeepToolsMatrixCli.java": "cbfa5d4fc61942cf77b9046f9755a29ca2633b7da19ac78d58c5d914f44dd338",
+        "src/test/java/org/jlinalg/cli/DeepToolsMatrixCliTest.java": "c15a9dd2d98d0c6c7b91f7a19870be962b5d26f8fcfafef93d19cec60ced4d8e",
+        "tools/literature/verify_deeptools_matrices.py": "065067cd5c17153578b6e73286ddccaa5557785ffd41bcd5a3d55d1ae3bb64d4"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.DeepToolsMatrixCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsMatrixCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5c4a73b3f68ded2ce377f5c3c7c9310431977cad12313cc47ef9a665a32ba462",
+          "testcases": [
+            "actualConstantSampleFailsWithNamedRecoveryAndNoFigure()",
+            "actualBamSummaryAndSpearmanHaveExactLabelsCountsAndIndependentReference()",
+            "actualStrandedMatrixProfileHeatmapAndChangedModelPreserveIdentities()",
+            "actualObjectArrayHeaderIsRejectedBeforeAnyPickleLoading()",
+            "typedPoliciesRejectAmbiguousModesAndDependencySkipHasExplicitRecovery()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsUpstreamCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsUpstreamCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "73862cf4e6e4071decbe72bd317c2e27e16ce5513b743e79862e9021a7e1d10e",
+          "testcases": [
+            "actualAtacShiftReplacesGeometryAndExplicitlyDropsOriginalTagsAndSequence()",
+            "typedOptionsRejectInapplicablePoliciesAndUnacknowledgedTagLoss()",
+            "actualBamCoverageMatchesIndependentCountsAndCpmWithoutChangingInputs()",
+            "dependencySkipPrecedesInputAccessAndHasCopyableRecovery()",
+            "actualBigwigComparisonKeepsTerminalZeroAndRetainsUndefinedRatiosExplicitly()",
+            "actualInputFailuresAreAuditableAndPublishNoSuccessfulOutputs()",
+            "changedOrUnmanagedRuntimeIsSkippedWithoutLaunchingPython()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "b94bf70949d181b692d290a24805b4877f5b26e1b937f5c1ea178776948e51ac",
+          "testcases": [
+            "exactWeightedBinsAndExplicitMissingEstimandsPreserveAllReferencePositions()",
+            "zeroFilterPrecedesScaleAndPseudocountAndNeverHidesOmissions()",
+            "suppliedRawBinCountsUseNominalWidthIncludingShortTerminalBins()",
+            "fractionalRawCountsAndBadGridRequireExplicitRepair()",
+            "undefinedArithmeticIsRetainedAsNaRatherThanZero()",
+            "longReferenceGeometryDoesNotNarrowToInt()",
+            "globalAndCommandHelpExposeNativeScopeAndExistingPrivateTools()"
+          ]
+        },
+        "org.jlinalg.genetics.DeepToolsSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.DeepToolsSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "5693632743bf35354c51514aa38d7e15501b06af18a513578a37d2a9e49a932a",
+          "testcases": [
+            "invalidDeclarationsAndNonfiniteResultsAreNotHidden()",
+            "declaredAlignmentNormalizationHasIndependentKnownUnits()",
+            "scaleThenPseudocountAndReciprocalEqualityAreExplicit()",
+            "everyActualOriginalComparisonReferenceMatches()"
+          ]
+        }
+      },
+      "api_cli_tests": 23,
+      "full_gate": {
+        "tests": 1422,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 49,
+      "workflow_calls": 58,
+      "independent_checks": 20,
+      "packaged_validation": "deeptools-upstream-packaged-validation.json",
+      "scope": "Eight typed original3.5.6 methods: BAM coverage,BigWig comparison,simple-M-CIGAR ATAC shifts,one-group BED6 region matrices,profiles/heatmaps,BAM bins/regions summaries and Pearson/Spearman correlation. Explicit reference/labels/units/missing/zero/resource/model/pickle/constant/tag-loss contracts. No GTF/BED12,multiple region groups,clustering,multiBigwigSummary,plotPCA,interactive Plotly,historical or full-paper parity.",
+      "refreshed_utc": "2026-10-25T09:04:26.213216+00:00"
+    },
+    {
+      "status": "passed-eight-original-upstream-workflow-subset",
+      "jar_sha256": "938e928161f850a7f23d38ced10b6ed53c15392b16f79c3d6caeab2ae8906c84",
+      "recorded_utc": "2026-10-25T09:04:26.213216+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/DeepToolsUpstreamCli.java": "4b6ef9fae2a9c38f8e4c208a9ef15ddf69b1b1ee8f14b12aa437cebb5344866c",
+        "src/main/java/org/jlinalg/cli/DeepToolsRuntime.java": "53b9818920ac0c26d0d03613479a34e25f7a1e8c15a4ddc338d48489aeb6a164",
+        "src/main/java/org/jlinalg/cli/DeepToolsCli.java": "4ee8d99133d91718bb7004ef64047f7505110dd43688f2f3765faf2226fb7602",
+        "src/main/resources/org/jlinalg/omics/deeptools_bridge.py": "20c64c09290fa31075002b25312b4dc1f3bc0e1fd3e01131332946f6d5552827",
+        "src/main/resources/org/jlinalg/omics/deeptools_inspect.py": "97b9dd19e34fbc3b97d646a058a6809d7a197bd835c85fb9b6a7fa8a0e06fefc",
+        "src/main/resources/org/jlinalg/omics/deeptools-runtime-lock.json": "5d6f62dff054c8c9f72e5139257bfe3698d0a3bd89d02274828be3a55cdad05f",
+        "src/main/java/org/jlinalg/cli/DeepToolsMatrixCli.java": "cbfa5d4fc61942cf77b9046f9755a29ca2633b7da19ac78d58c5d914f44dd338",
+        "src/test/java/org/jlinalg/cli/DeepToolsMatrixCliTest.java": "c15a9dd2d98d0c6c7b91f7a19870be962b5d26f8fcfafef93d19cec60ced4d8e",
+        "tools/literature/verify_deeptools_matrices.py": "065067cd5c17153578b6e73286ddccaa5557785ffd41bcd5a3d55d1ae3bb64d4"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.DeepToolsMatrixCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsMatrixCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f76af2387286dc8fe4640184353f9e83942ed8e0d5be007171ad595142c9cbc2",
+          "testcases": [
+            "actualConstantSampleFailsWithNamedRecoveryAndNoFigure()",
+            "actualBamSummaryAndSpearmanHaveExactLabelsCountsAndIndependentReference()",
+            "actualStrandedMatrixProfileHeatmapAndChangedModelPreserveIdentities()",
+            "actualObjectArrayHeaderIsRejectedBeforeAnyPickleLoading()",
+            "typedPoliciesRejectAmbiguousModesAndDependencySkipHasExplicitRecovery()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsUpstreamCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsUpstreamCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "40e5b8b85fa78ce9aa28c3df853f84992526c7c08be52ba0f87b3f892bf9c701",
+          "testcases": [
+            "actualAtacShiftReplacesGeometryAndExplicitlyDropsOriginalTagsAndSequence()",
+            "typedOptionsRejectInapplicablePoliciesAndUnacknowledgedTagLoss()",
+            "actualBamCoverageMatchesIndependentCountsAndCpmWithoutChangingInputs()",
+            "dependencySkipPrecedesInputAccessAndHasCopyableRecovery()",
+            "actualBigwigComparisonKeepsTerminalZeroAndRetainsUndefinedRatiosExplicitly()",
+            "actualInputFailuresAreAuditableAndPublishNoSuccessfulOutputs()",
+            "changedOrUnmanagedRuntimeIsSkippedWithoutLaunchingPython()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "96ae0ddaa5f0d607b39e09e90dd1e08683bd3eb81424cc3668b038f9afd7ccac",
+          "testcases": [
+            "exactWeightedBinsAndExplicitMissingEstimandsPreserveAllReferencePositions()",
+            "zeroFilterPrecedesScaleAndPseudocountAndNeverHidesOmissions()",
+            "suppliedRawBinCountsUseNominalWidthIncludingShortTerminalBins()",
+            "fractionalRawCountsAndBadGridRequireExplicitRepair()",
+            "undefinedArithmeticIsRetainedAsNaRatherThanZero()",
+            "longReferenceGeometryDoesNotNarrowToInt()",
+            "globalAndCommandHelpExposeNativeScopeAndExistingPrivateTools()"
+          ]
+        },
+        "org.jlinalg.genetics.DeepToolsSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.DeepToolsSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "8192ae0826a94a97c80de84fc681245a06525faa8067fa90d054071413343d76",
+          "testcases": [
+            "invalidDeclarationsAndNonfiniteResultsAreNotHidden()",
+            "declaredAlignmentNormalizationHasIndependentKnownUnits()",
+            "scaleThenPseudocountAndReciprocalEqualityAreExplicit()",
+            "everyActualOriginalComparisonReferenceMatches()"
+          ]
+        }
+      },
+      "api_cli_tests": 23,
+      "full_gate": {
+        "tests": 1433,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 51,
+      "workflow_calls": 58,
+      "independent_checks": 20,
+      "packaged_validation": "deeptools-upstream-packaged-validation.json",
+      "scope": "Eight typed original3.5.6 methods: BAM coverage,BigWig comparison,simple-M-CIGAR ATAC shifts,one-group BED6 region matrices,profiles/heatmaps,BAM bins/regions summaries and Pearson/Spearman correlation. Explicit reference/labels/units/missing/zero/resource/model/pickle/constant/tag-loss contracts. No GTF/BED12,multiple region groups,clustering,multiBigwigSummary,plotPCA,interactive Plotly,historical or full-paper parity.",
+      "refreshed_utc": "2026-10-25T10:07:59.705580+00:00"
+    },
+    {
+      "status": "passed-eight-original-upstream-workflow-subset",
+      "jar_sha256": "baaacad03f35a01f7d53aba9568e0ce03a89d37f2169ab89e25628f38b8b3b44",
+      "recorded_utc": "2026-10-25T09:04:26.213216+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/DeepToolsUpstreamCli.java": "4b6ef9fae2a9c38f8e4c208a9ef15ddf69b1b1ee8f14b12aa437cebb5344866c",
+        "src/main/java/org/jlinalg/cli/DeepToolsRuntime.java": "53b9818920ac0c26d0d03613479a34e25f7a1e8c15a4ddc338d48489aeb6a164",
+        "src/main/java/org/jlinalg/cli/DeepToolsCli.java": "4ee8d99133d91718bb7004ef64047f7505110dd43688f2f3765faf2226fb7602",
+        "src/main/resources/org/jlinalg/omics/deeptools_bridge.py": "20c64c09290fa31075002b25312b4dc1f3bc0e1fd3e01131332946f6d5552827",
+        "src/main/resources/org/jlinalg/omics/deeptools_inspect.py": "97b9dd19e34fbc3b97d646a058a6809d7a197bd835c85fb9b6a7fa8a0e06fefc",
+        "src/main/resources/org/jlinalg/omics/deeptools-runtime-lock.json": "5d6f62dff054c8c9f72e5139257bfe3698d0a3bd89d02274828be3a55cdad05f",
+        "src/main/java/org/jlinalg/cli/DeepToolsMatrixCli.java": "cbfa5d4fc61942cf77b9046f9755a29ca2633b7da19ac78d58c5d914f44dd338",
+        "src/test/java/org/jlinalg/cli/DeepToolsMatrixCliTest.java": "c15a9dd2d98d0c6c7b91f7a19870be962b5d26f8fcfafef93d19cec60ced4d8e",
+        "tools/literature/verify_deeptools_matrices.py": "065067cd5c17153578b6e73286ddccaa5557785ffd41bcd5a3d55d1ae3bb64d4"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.DeepToolsMatrixCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsMatrixCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "bfbad724908c2c60dd609d6b28d95e010142646bb5d189ac1097b70879a946d1",
+          "testcases": [
+            "actualConstantSampleFailsWithNamedRecoveryAndNoFigure()",
+            "actualBamSummaryAndSpearmanHaveExactLabelsCountsAndIndependentReference()",
+            "actualStrandedMatrixProfileHeatmapAndChangedModelPreserveIdentities()",
+            "actualObjectArrayHeaderIsRejectedBeforeAnyPickleLoading()",
+            "typedPoliciesRejectAmbiguousModesAndDependencySkipHasExplicitRecovery()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsUpstreamCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsUpstreamCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "0a1abdf548488760a3390cb5fc48300c4db4e723358b9d1e82f842a2322935f5",
+          "testcases": [
+            "actualAtacShiftReplacesGeometryAndExplicitlyDropsOriginalTagsAndSequence()",
+            "typedOptionsRejectInapplicablePoliciesAndUnacknowledgedTagLoss()",
+            "actualBamCoverageMatchesIndependentCountsAndCpmWithoutChangingInputs()",
+            "dependencySkipPrecedesInputAccessAndHasCopyableRecovery()",
+            "actualBigwigComparisonKeepsTerminalZeroAndRetainsUndefinedRatiosExplicitly()",
+            "actualInputFailuresAreAuditableAndPublishNoSuccessfulOutputs()",
+            "changedOrUnmanagedRuntimeIsSkippedWithoutLaunchingPython()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "85a48413bf20c6c74d9f4c36aa86ded47007f55a7b416bdf87186a472a296151",
+          "testcases": [
+            "exactWeightedBinsAndExplicitMissingEstimandsPreserveAllReferencePositions()",
+            "zeroFilterPrecedesScaleAndPseudocountAndNeverHidesOmissions()",
+            "suppliedRawBinCountsUseNominalWidthIncludingShortTerminalBins()",
+            "fractionalRawCountsAndBadGridRequireExplicitRepair()",
+            "undefinedArithmeticIsRetainedAsNaRatherThanZero()",
+            "longReferenceGeometryDoesNotNarrowToInt()",
+            "globalAndCommandHelpExposeNativeScopeAndExistingPrivateTools()"
+          ]
+        },
+        "org.jlinalg.genetics.DeepToolsSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.DeepToolsSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "f2dc4b9b4b5416b935148d7898dd8c6c1167a0e35a4d940419ad40f6086bfd99",
+          "testcases": [
+            "invalidDeclarationsAndNonfiniteResultsAreNotHidden()",
+            "declaredAlignmentNormalizationHasIndependentKnownUnits()",
+            "scaleThenPseudocountAndReciprocalEqualityAreExplicit()",
+            "everyActualOriginalComparisonReferenceMatches()"
+          ]
+        }
+      },
+      "api_cli_tests": 23,
+      "full_gate": {
+        "tests": 1445,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 53,
+      "workflow_calls": 58,
+      "independent_checks": 20,
+      "packaged_validation": "deeptools-upstream-packaged-validation.json",
+      "scope": "Eight typed original3.5.6 methods: BAM coverage,BigWig comparison,simple-M-CIGAR ATAC shifts,one-group BED6 region matrices,profiles/heatmaps,BAM bins/regions summaries and Pearson/Spearman correlation. Explicit reference/labels/units/missing/zero/resource/model/pickle/constant/tag-loss contracts. No GTF/BED12,multiple region groups,clustering,multiBigwigSummary,plotPCA,interactive Plotly,historical or full-paper parity.",
+      "refreshed_utc": "2026-10-25T11:27:56.771609+00:00"
+    },
+    {
+      "status": "passed-eight-original-upstream-workflow-subset",
+      "jar_sha256": "5680cbc4e457007f8903d1d4db3e74ecc890a150b350870f0b82d5650bdc0fec",
+      "recorded_utc": "2026-10-25T09:04:26.213216+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/DeepToolsUpstreamCli.java": "4b6ef9fae2a9c38f8e4c208a9ef15ddf69b1b1ee8f14b12aa437cebb5344866c",
+        "src/main/java/org/jlinalg/cli/DeepToolsRuntime.java": "53b9818920ac0c26d0d03613479a34e25f7a1e8c15a4ddc338d48489aeb6a164",
+        "src/main/java/org/jlinalg/cli/DeepToolsCli.java": "4ee8d99133d91718bb7004ef64047f7505110dd43688f2f3765faf2226fb7602",
+        "src/main/resources/org/jlinalg/omics/deeptools_bridge.py": "20c64c09290fa31075002b25312b4dc1f3bc0e1fd3e01131332946f6d5552827",
+        "src/main/resources/org/jlinalg/omics/deeptools_inspect.py": "97b9dd19e34fbc3b97d646a058a6809d7a197bd835c85fb9b6a7fa8a0e06fefc",
+        "src/main/resources/org/jlinalg/omics/deeptools-runtime-lock.json": "5d6f62dff054c8c9f72e5139257bfe3698d0a3bd89d02274828be3a55cdad05f",
+        "src/main/java/org/jlinalg/cli/DeepToolsMatrixCli.java": "cbfa5d4fc61942cf77b9046f9755a29ca2633b7da19ac78d58c5d914f44dd338",
+        "src/test/java/org/jlinalg/cli/DeepToolsMatrixCliTest.java": "c15a9dd2d98d0c6c7b91f7a19870be962b5d26f8fcfafef93d19cec60ced4d8e",
+        "tools/literature/verify_deeptools_matrices.py": "065067cd5c17153578b6e73286ddccaa5557785ffd41bcd5a3d55d1ae3bb64d4"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.DeepToolsMatrixCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsMatrixCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "4f43c6bee77004e0b07da7eac156cfff8161c01a67d0d0444380f08fe5a4a15c",
+          "testcases": [
+            "actualConstantSampleFailsWithNamedRecoveryAndNoFigure()",
+            "actualBamSummaryAndSpearmanHaveExactLabelsCountsAndIndependentReference()",
+            "actualStrandedMatrixProfileHeatmapAndChangedModelPreserveIdentities()",
+            "actualObjectArrayHeaderIsRejectedBeforeAnyPickleLoading()",
+            "typedPoliciesRejectAmbiguousModesAndDependencySkipHasExplicitRecovery()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsUpstreamCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsUpstreamCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1ca0adcabed21b80bcbd3d023cf16010f1b05c065035d27532247e4f1209d270",
+          "testcases": [
+            "actualAtacShiftReplacesGeometryAndExplicitlyDropsOriginalTagsAndSequence()",
+            "typedOptionsRejectInapplicablePoliciesAndUnacknowledgedTagLoss()",
+            "actualBamCoverageMatchesIndependentCountsAndCpmWithoutChangingInputs()",
+            "dependencySkipPrecedesInputAccessAndHasCopyableRecovery()",
+            "actualBigwigComparisonKeepsTerminalZeroAndRetainsUndefinedRatiosExplicitly()",
+            "actualInputFailuresAreAuditableAndPublishNoSuccessfulOutputs()",
+            "changedOrUnmanagedRuntimeIsSkippedWithoutLaunchingPython()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "2e25a62e199038b98f436c2e887e834071e4ef00fa60d02da5b6aab2b8513eb5",
+          "testcases": [
+            "exactWeightedBinsAndExplicitMissingEstimandsPreserveAllReferencePositions()",
+            "zeroFilterPrecedesScaleAndPseudocountAndNeverHidesOmissions()",
+            "suppliedRawBinCountsUseNominalWidthIncludingShortTerminalBins()",
+            "fractionalRawCountsAndBadGridRequireExplicitRepair()",
+            "undefinedArithmeticIsRetainedAsNaRatherThanZero()",
+            "longReferenceGeometryDoesNotNarrowToInt()",
+            "globalAndCommandHelpExposeNativeScopeAndExistingPrivateTools()"
+          ]
+        },
+        "org.jlinalg.genetics.DeepToolsSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.DeepToolsSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ec08796bec4cc178d8945bfc157702911697a2591dee644959064024d173b420",
+          "testcases": [
+            "invalidDeclarationsAndNonfiniteResultsAreNotHidden()",
+            "declaredAlignmentNormalizationHasIndependentKnownUnits()",
+            "scaleThenPseudocountAndReciprocalEqualityAreExplicit()",
+            "everyActualOriginalComparisonReferenceMatches()"
+          ]
+        }
+      },
+      "api_cli_tests": 23,
+      "full_gate": {
+        "tests": 1461,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 55,
+      "workflow_calls": 58,
+      "independent_checks": 20,
+      "packaged_validation": "deeptools-upstream-packaged-validation.json",
+      "scope": "Eight typed original3.5.6 methods: BAM coverage,BigWig comparison,simple-M-CIGAR ATAC shifts,one-group BED6 region matrices,profiles/heatmaps,BAM bins/regions summaries and Pearson/Spearman correlation. Explicit reference/labels/units/missing/zero/resource/model/pickle/constant/tag-loss contracts. No GTF/BED12,multiple region groups,clustering,multiBigwigSummary,plotPCA,interactive Plotly,historical or full-paper parity.",
+      "refreshed_utc": "2026-10-25T14:18:39.170849+00:00"
+    },
+    {
+      "status": "passed-eight-original-upstream-workflow-subset",
+      "jar_sha256": "c7e5fc6412ef02a82e409b43f344bff506f873ff5ebea92bc055d498ebda8dae",
+      "recorded_utc": "2026-10-25T09:04:26.213216+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/DeepToolsUpstreamCli.java": "4b6ef9fae2a9c38f8e4c208a9ef15ddf69b1b1ee8f14b12aa437cebb5344866c",
+        "src/main/java/org/jlinalg/cli/DeepToolsRuntime.java": "53b9818920ac0c26d0d03613479a34e25f7a1e8c15a4ddc338d48489aeb6a164",
+        "src/main/java/org/jlinalg/cli/DeepToolsCli.java": "4ee8d99133d91718bb7004ef64047f7505110dd43688f2f3765faf2226fb7602",
+        "src/main/resources/org/jlinalg/omics/deeptools_bridge.py": "20c64c09290fa31075002b25312b4dc1f3bc0e1fd3e01131332946f6d5552827",
+        "src/main/resources/org/jlinalg/omics/deeptools_inspect.py": "97b9dd19e34fbc3b97d646a058a6809d7a197bd835c85fb9b6a7fa8a0e06fefc",
+        "src/main/resources/org/jlinalg/omics/deeptools-runtime-lock.json": "5d6f62dff054c8c9f72e5139257bfe3698d0a3bd89d02274828be3a55cdad05f",
+        "src/main/java/org/jlinalg/cli/DeepToolsMatrixCli.java": "cbfa5d4fc61942cf77b9046f9755a29ca2633b7da19ac78d58c5d914f44dd338",
+        "src/test/java/org/jlinalg/cli/DeepToolsMatrixCliTest.java": "c15a9dd2d98d0c6c7b91f7a19870be962b5d26f8fcfafef93d19cec60ced4d8e",
+        "tools/literature/verify_deeptools_matrices.py": "065067cd5c17153578b6e73286ddccaa5557785ffd41bcd5a3d55d1ae3bb64d4"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.DeepToolsMatrixCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsMatrixCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "eb8361743dfa9e89a28446260afcfc9e26bb5304002e1a8eab6229f5cacf15c9",
+          "testcases": [
+            "actualConstantSampleFailsWithNamedRecoveryAndNoFigure()",
+            "actualBamSummaryAndSpearmanHaveExactLabelsCountsAndIndependentReference()",
+            "actualStrandedMatrixProfileHeatmapAndChangedModelPreserveIdentities()",
+            "actualObjectArrayHeaderIsRejectedBeforeAnyPickleLoading()",
+            "typedPoliciesRejectAmbiguousModesAndDependencySkipHasExplicitRecovery()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsUpstreamCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsUpstreamCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "ce805f845f38de04371b0e0bf867b2cd9b0d83386bdc006c48b041cb6d507cbb",
+          "testcases": [
+            "actualAtacShiftReplacesGeometryAndExplicitlyDropsOriginalTagsAndSequence()",
+            "typedOptionsRejectInapplicablePoliciesAndUnacknowledgedTagLoss()",
+            "actualBamCoverageMatchesIndependentCountsAndCpmWithoutChangingInputs()",
+            "dependencySkipPrecedesInputAccessAndHasCopyableRecovery()",
+            "actualBigwigComparisonKeepsTerminalZeroAndRetainsUndefinedRatiosExplicitly()",
+            "actualInputFailuresAreAuditableAndPublishNoSuccessfulOutputs()",
+            "changedOrUnmanagedRuntimeIsSkippedWithoutLaunchingPython()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "040fc04d8a375d2dc7928df011e199f80c4dfcefcec28648a5d24c0769a3d06e",
+          "testcases": [
+            "exactWeightedBinsAndExplicitMissingEstimandsPreserveAllReferencePositions()",
+            "zeroFilterPrecedesScaleAndPseudocountAndNeverHidesOmissions()",
+            "suppliedRawBinCountsUseNominalWidthIncludingShortTerminalBins()",
+            "fractionalRawCountsAndBadGridRequireExplicitRepair()",
+            "undefinedArithmeticIsRetainedAsNaRatherThanZero()",
+            "longReferenceGeometryDoesNotNarrowToInt()",
+            "globalAndCommandHelpExposeNativeScopeAndExistingPrivateTools()"
+          ]
+        },
+        "org.jlinalg.genetics.DeepToolsSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.DeepToolsSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "af5320311a76e6b0d732b639dd287e1a81df9b5f26fb7a5fb5633e9e9354a479",
+          "testcases": [
+            "invalidDeclarationsAndNonfiniteResultsAreNotHidden()",
+            "declaredAlignmentNormalizationHasIndependentKnownUnits()",
+            "scaleThenPseudocountAndReciprocalEqualityAreExplicit()",
+            "everyActualOriginalComparisonReferenceMatches()"
+          ]
+        }
+      },
+      "api_cli_tests": 23,
+      "full_gate": {
+        "tests": 1486,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 59,
+      "workflow_calls": 58,
+      "independent_checks": 20,
+      "packaged_validation": "deeptools-upstream-packaged-validation.json",
+      "scope": "Eight typed original3.5.6 methods: BAM coverage,BigWig comparison,simple-M-CIGAR ATAC shifts,one-group BED6 region matrices,profiles/heatmaps,BAM bins/regions summaries and Pearson/Spearman correlation. Explicit reference/labels/units/missing/zero/resource/model/pickle/constant/tag-loss contracts. No GTF/BED12,multiple region groups,clustering,multiBigwigSummary,plotPCA,interactive Plotly,historical or full-paper parity.",
+      "refreshed_utc": "2026-10-25T18:28:13.412726+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1486,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 59,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\trimgalore-runtime\\original-warning-full-gate-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\trim-galore-warning-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed-eight-original-upstream-workflow-subset",
+      "jar_sha256": "2bfb8abfea10e53ce7b0e1035b0a7954feb9bed990d63578e817882a6d0541c0",
+      "recorded_utc": "2026-10-25T09:04:26.213216+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/DeepToolsUpstreamCli.java": "4b6ef9fae2a9c38f8e4c208a9ef15ddf69b1b1ee8f14b12aa437cebb5344866c",
+        "src/main/java/org/jlinalg/cli/DeepToolsRuntime.java": "53b9818920ac0c26d0d03613479a34e25f7a1e8c15a4ddc338d48489aeb6a164",
+        "src/main/java/org/jlinalg/cli/DeepToolsCli.java": "4ee8d99133d91718bb7004ef64047f7505110dd43688f2f3765faf2226fb7602",
+        "src/main/resources/org/jlinalg/omics/deeptools_bridge.py": "20c64c09290fa31075002b25312b4dc1f3bc0e1fd3e01131332946f6d5552827",
+        "src/main/resources/org/jlinalg/omics/deeptools_inspect.py": "97b9dd19e34fbc3b97d646a058a6809d7a197bd835c85fb9b6a7fa8a0e06fefc",
+        "src/main/resources/org/jlinalg/omics/deeptools-runtime-lock.json": "5d6f62dff054c8c9f72e5139257bfe3698d0a3bd89d02274828be3a55cdad05f",
+        "src/main/java/org/jlinalg/cli/DeepToolsMatrixCli.java": "cbfa5d4fc61942cf77b9046f9755a29ca2633b7da19ac78d58c5d914f44dd338",
+        "src/test/java/org/jlinalg/cli/DeepToolsMatrixCliTest.java": "c15a9dd2d98d0c6c7b91f7a19870be962b5d26f8fcfafef93d19cec60ced4d8e",
+        "tools/literature/verify_deeptools_matrices.py": "065067cd5c17153578b6e73286ddccaa5557785ffd41bcd5a3d55d1ae3bb64d4"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.DeepToolsMatrixCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsMatrixCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "79e1fe8caf9368d0b62343ec1e3810e648b81dfcbbe855d21319e1cb478245dc",
+          "testcases": [
+            "actualConstantSampleFailsWithNamedRecoveryAndNoFigure()",
+            "actualBamSummaryAndSpearmanHaveExactLabelsCountsAndIndependentReference()",
+            "actualStrandedMatrixProfileHeatmapAndChangedModelPreserveIdentities()",
+            "actualObjectArrayHeaderIsRejectedBeforeAnyPickleLoading()",
+            "typedPoliciesRejectAmbiguousModesAndDependencySkipHasExplicitRecovery()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsUpstreamCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsUpstreamCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7798b5efdafece7516a3be10f076f993d76695e2fdc50e396ead50109de98e42",
+          "testcases": [
+            "actualAtacShiftReplacesGeometryAndExplicitlyDropsOriginalTagsAndSequence()",
+            "typedOptionsRejectInapplicablePoliciesAndUnacknowledgedTagLoss()",
+            "actualBamCoverageMatchesIndependentCountsAndCpmWithoutChangingInputs()",
+            "dependencySkipPrecedesInputAccessAndHasCopyableRecovery()",
+            "actualBigwigComparisonKeepsTerminalZeroAndRetainsUndefinedRatiosExplicitly()",
+            "actualInputFailuresAreAuditableAndPublishNoSuccessfulOutputs()",
+            "changedOrUnmanagedRuntimeIsSkippedWithoutLaunchingPython()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7f4ebee45c6441fa7fbed7342e9f673b58996366043ae08fab22fd22ec06ebe6",
+          "testcases": [
+            "exactWeightedBinsAndExplicitMissingEstimandsPreserveAllReferencePositions()",
+            "zeroFilterPrecedesScaleAndPseudocountAndNeverHidesOmissions()",
+            "suppliedRawBinCountsUseNominalWidthIncludingShortTerminalBins()",
+            "fractionalRawCountsAndBadGridRequireExplicitRepair()",
+            "undefinedArithmeticIsRetainedAsNaRatherThanZero()",
+            "longReferenceGeometryDoesNotNarrowToInt()",
+            "globalAndCommandHelpExposeNativeScopeAndExistingPrivateTools()"
+          ]
+        },
+        "org.jlinalg.genetics.DeepToolsSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.DeepToolsSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "7e0c2987a38bd969da6f838c3ec29fd8ab99606457d3027564079e375d06e8f7",
+          "testcases": [
+            "invalidDeclarationsAndNonfiniteResultsAreNotHidden()",
+            "declaredAlignmentNormalizationHasIndependentKnownUnits()",
+            "scaleThenPseudocountAndReciprocalEqualityAreExplicit()",
+            "everyActualOriginalComparisonReferenceMatches()"
+          ]
+        }
+      },
+      "api_cli_tests": 23,
+      "full_gate": {
+        "tests": 1504,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 61,
+      "workflow_calls": 58,
+      "independent_checks": 20,
+      "packaged_validation": "deeptools-upstream-packaged-validation.json",
+      "scope": "Eight typed original3.5.6 methods: BAM coverage,BigWig comparison,simple-M-CIGAR ATAC shifts,one-group BED6 region matrices,profiles/heatmaps,BAM bins/regions summaries and Pearson/Spearman correlation. Explicit reference/labels/units/missing/zero/resource/model/pickle/constant/tag-loss contracts. No GTF/BED12,multiple region groups,clustering,multiBigwigSummary,plotPCA,interactive Plotly,historical or full-paper parity.",
+      "refreshed_utc": "2026-10-25T20:32:57.454823+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1504,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 61,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-runtime\\full-gate-2-snapshot",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\flash-packaged-regressions\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    },
+    {
+      "status": "passed-eight-original-upstream-workflow-subset",
+      "jar_sha256": "66be181d854806d9ae64d6f060e8defba8af5bdf594d3d352c9c76097a2a8d2e",
+      "recorded_utc": "2026-10-25T09:04:26.213216+00:00",
+      "source_sha256": {
+        "src/main/java/org/jlinalg/cli/DeepToolsUpstreamCli.java": "4b6ef9fae2a9c38f8e4c208a9ef15ddf69b1b1ee8f14b12aa437cebb5344866c",
+        "src/main/java/org/jlinalg/cli/DeepToolsRuntime.java": "53b9818920ac0c26d0d03613479a34e25f7a1e8c15a4ddc338d48489aeb6a164",
+        "src/main/java/org/jlinalg/cli/DeepToolsCli.java": "4ee8d99133d91718bb7004ef64047f7505110dd43688f2f3765faf2226fb7602",
+        "src/main/resources/org/jlinalg/omics/deeptools_bridge.py": "20c64c09290fa31075002b25312b4dc1f3bc0e1fd3e01131332946f6d5552827",
+        "src/main/resources/org/jlinalg/omics/deeptools_inspect.py": "97b9dd19e34fbc3b97d646a058a6809d7a197bd835c85fb9b6a7fa8a0e06fefc",
+        "src/main/resources/org/jlinalg/omics/deeptools-runtime-lock.json": "5d6f62dff054c8c9f72e5139257bfe3698d0a3bd89d02274828be3a55cdad05f",
+        "src/main/java/org/jlinalg/cli/DeepToolsMatrixCli.java": "cbfa5d4fc61942cf77b9046f9755a29ca2633b7da19ac78d58c5d914f44dd338",
+        "src/test/java/org/jlinalg/cli/DeepToolsMatrixCliTest.java": "c15a9dd2d98d0c6c7b91f7a19870be962b5d26f8fcfafef93d19cec60ced4d8e",
+        "tools/literature/verify_deeptools_matrices.py": "065067cd5c17153578b6e73286ddccaa5557785ffd41bcd5a3d55d1ae3bb64d4"
+      },
+      "current_full_gate_suites": {
+        "org.jlinalg.cli.DeepToolsMatrixCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsMatrixCliTest",
+          "suite": {
+            "tests": 5,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "df57f8efdcbed79c8d4f7341769f7545ecfd6ccf823bf18137b4a4f91a7966cc",
+          "testcases": [
+            "actualConstantSampleFailsWithNamedRecoveryAndNoFigure()",
+            "actualBamSummaryAndSpearmanHaveExactLabelsCountsAndIndependentReference()",
+            "actualStrandedMatrixProfileHeatmapAndChangedModelPreserveIdentities()",
+            "actualObjectArrayHeaderIsRejectedBeforeAnyPickleLoading()",
+            "typedPoliciesRejectAmbiguousModesAndDependencySkipHasExplicitRecovery()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsUpstreamCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsUpstreamCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "852de43cec36ccfedce8ba66f38f4eea24ea495f87aaaf158940d5b672e6546a",
+          "testcases": [
+            "actualAtacShiftReplacesGeometryAndExplicitlyDropsOriginalTagsAndSequence()",
+            "typedOptionsRejectInapplicablePoliciesAndUnacknowledgedTagLoss()",
+            "actualBamCoverageMatchesIndependentCountsAndCpmWithoutChangingInputs()",
+            "dependencySkipPrecedesInputAccessAndHasCopyableRecovery()",
+            "actualBigwigComparisonKeepsTerminalZeroAndRetainsUndefinedRatiosExplicitly()",
+            "actualInputFailuresAreAuditableAndPublishNoSuccessfulOutputs()",
+            "changedOrUnmanagedRuntimeIsSkippedWithoutLaunchingPython()"
+          ]
+        },
+        "org.jlinalg.cli.DeepToolsCliTest": {
+          "suite_name": "org.jlinalg.cli.DeepToolsCliTest",
+          "suite": {
+            "tests": 7,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "3391841cb8a5530733616b37099659533073dc73fb424d589cc0b354eab424ca",
+          "testcases": [
+            "exactWeightedBinsAndExplicitMissingEstimandsPreserveAllReferencePositions()",
+            "zeroFilterPrecedesScaleAndPseudocountAndNeverHidesOmissions()",
+            "suppliedRawBinCountsUseNominalWidthIncludingShortTerminalBins()",
+            "fractionalRawCountsAndBadGridRequireExplicitRepair()",
+            "undefinedArithmeticIsRetainedAsNaRatherThanZero()",
+            "longReferenceGeometryDoesNotNarrowToInt()",
+            "globalAndCommandHelpExposeNativeScopeAndExistingPrivateTools()"
+          ]
+        },
+        "org.jlinalg.genetics.DeepToolsSignalsTest": {
+          "suite_name": "org.jlinalg.genetics.DeepToolsSignalsTest",
+          "suite": {
+            "tests": 4,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1ff5d8b9c6a649042e452386e7729b6afcfe72e3251fb669a9222b4ded6bf4a8",
+          "testcases": [
+            "invalidDeclarationsAndNonfiniteResultsAreNotHidden()",
+            "declaredAlignmentNormalizationHasIndependentKnownUnits()",
+            "scaleThenPseudocountAndReciprocalEqualityAreExplicit()",
+            "everyActualOriginalComparisonReferenceMatches()"
+          ]
+        }
+      },
+      "api_cli_tests": 23,
+      "full_gate": {
+        "tests": 1552,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 5
+      },
+      "required_suites": 68,
+      "workflow_calls": 58,
+      "independent_checks": 20,
+      "packaged_validation": "deeptools-upstream-packaged-validation.json",
+      "scope": "Eight typed original3.5.6 methods: BAM coverage,BigWig comparison,simple-M-CIGAR ATAC shifts,one-group BED6 region matrices,profiles/heatmaps,BAM bins/regions summaries and Pearson/Spearman correlation. Explicit reference/labels/units/missing/zero/resource/model/pickle/constant/tag-loss contracts. No GTF/BED12,multiple region groups,clustering,multiBigwigSummary,plotPCA,interactive Plotly,historical or full-paper parity.",
+      "refreshed_utc": "2026-10-25T23:24:57.944602+00:00",
+      "current_validation": {
+        "full_gate": {
+          "tests": 1552,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 5
+        },
+        "required_suites": 68,
+        "all_required_without_skips": true,
+        "raw_snapshot": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\configured-full-gate-1",
+        "prior_packaged_regressions": "D:\\projects\\JLinAlg\\build\\literature-review\\fimo-runtime\\prior-packaged-regressions-1\\verification.json",
+        "scope": "Current unchanged owned method sources retested on this JAR. Historical reference-generation counts/options remain scoped to their original fixtures;prior reports remain in validation_history."
+      }
+    }
+  ]
+}

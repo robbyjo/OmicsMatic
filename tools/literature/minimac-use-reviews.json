@@ -1,0 +1,243 @@
+[
+  {
+    "paper_id": "P019",
+    "primary_paragraph": 59,
+    "observed_role": "cohort-core-imputation",
+    "review": {
+      "pmcid": "PMC13600940",
+      "doi": "10.1038/s41586-026-10836-6",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "41d6355a30dda16812b341a0151e6c85bffb9aa61a6d48667278080a18067d8f",
+      "use_summary": "Used MVP Release 4 genotypes whose core processing imputed against TOPMed using SHAPEIT4 4.1.3 and Minimac4 before ancestry-specific GWAS/TWAS genotype QC.",
+      "implementation_scope_note": "The MVP data core supplied the imputed genotypes. Release 4 is the MVP data release; 4.1.3 is the SHAPEIT4 version, and EIGENSOFT6 is separate; none specifies a Minimac patch release. TOPMed panel access, phasing, ancestry assignment, QC and GReX estimation are separate.",
+      "version_reported_near_name": "4; patch unstated",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P072",
+    "primary_paragraph": 17,
+    "observed_role": "minimac3-array-imputation",
+    "review": {
+      "pmcid": "PMC10786718",
+      "doi": "10.1038/s41588-023-01584-8",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "2ac8b9104011353f67062a22da968cdaf440266a2c2fdde45a5f1041686d70fa",
+      "use_summary": "The 23andMe data pipeline phased array genotypes using Finch or Eagle2, then imputed with Minimac3 using a combined 1000 Genomes Phase III/UK10K reference described on GRCh38 before ancestry-stratified Parkinson disease association.",
+      "implementation_scope_note": "Minimac3 is the reported family; do not silently substitute Minimac4. The proprietary cohort pipeline, combined reference construction, prephasing and logistic association are separate. No Minimac3 patch release or fitting options are stated.",
+      "version_reported_near_name": "3; patch unstated",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P084",
+    "primary_paragraph": 38,
+    "observed_role": "local-server-and-batch-imputation",
+    "review": {
+      "pmcid": "PMC10786715",
+      "doi": "10.1038/s41588-023-01600-x",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "2004d3dfe2b8afc6970cc43601d7d0e0179f3afdcd454b9d95d027bfc694fedb",
+      "use_summary": "Imputed the screening cohort through a local Michigan Imputation Server 1.5.7 using Eagle2, Minimac4 and 1000G Phase3 v5; MGB Biobank batches were separately imputed through the server with that reference.",
+      "implementation_scope_note": "Server 1.5.7 is not a Minimac release. Screening post-imputation MAF filtering and batch intersection/QC are separate. The UKBB paragraph instead describes SHAPEIT/IMPUTE2 but labels its QC score Minimac r2<0.4; retain this attribution tension and do not invent an additional Minimac run or repair the stated MAC inequality.",
+      "version_reported_near_name": "4; patch unstated; server1.5.7",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 39,
+          "section": "Methods / Genotyping, quality control and imputation in MGB Biobank cohort",
+          "paragraph_sha256": "9bb77ee20c101e335cb02668ba10553e1be70b27145186c782b6d45057edb668",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "paragraph_index": 38,
+            "section": "Methods / Genotyping, quality control and imputation in screening cohort",
+            "paragraph_sha256": "2004d3dfe2b8afc6970cc43601d7d0e0179f3afdcd454b9d95d027bfc694fedb"
+          },
+          "shared_terms": [
+            "Michigan Imputation Server",
+            "1000G Phase3 v5"
+          ],
+          "relation_note": "Adjacent screening/MGB genotype-imputation sections use the same named server and reference panel. Minimac4 is named in the screening paragraph; the MGB paragraph supports a separate server/batch role without restating a Minimac executable version."
+        },
+        {
+          "paragraph_index": 40,
+          "section": "Methods / Genotyping, quality control and imputation in UKBB cohort",
+          "paragraph_sha256": "788a227d8e5886f3064cbaa0b6ce3ddf496b515f546459304f91e11aba23c2f7"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P097",
+    "primary_paragraph": 32,
+    "observed_role": "received-minimac3-imputed-data",
+    "review": {
+      "pmcid": "PMC12695657",
+      "doi": "10.1038/s41588-025-02413-w",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "c100ba29c458b9dc8835dcae695a3a00a06ab6d096236cdc52cd02f9e0fbe7cc",
+      "use_summary": "Received chromosome-wise GRCh37 VCF genotypes for1, 980 Tarkin participants previously imputed using Minimac3 without indels, and performed subsequent biallelic selection, BCFtools naming and PLINK2 sample/variant QC.",
+      "implementation_scope_note": "This is receipt/reuse of already imputed genotypes, not evidence of a new Minimac execution in this study. The reference panel, Minimac3 patch release and fitting settings are unstated; the separate QMDiab imputation description does not supply them.",
+      "version_reported_near_name": "3; patch unstated",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P105",
+    "primary_paragraph": 36,
+    "observed_role": "legacy-minimac4-autosome-and-X-imputation",
+    "review": {
+      "pmcid": "PMC10703676",
+      "doi": "10.1038/s41588-023-01569-7",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "4749264432f1fc14f835c61c2b0917852da936d8f095071b936a758f1b0a449d",
+      "use_summary": "Prephased with Eagle2 2.4.1 and imputed using Minimac4 1.0.2 against1000 Genomes Phase3 v5 ALL; BBJ1-12K/BBJ2-42K also used the GRCh38 high-coverage 1000 Genomes panel. Chromosome X was phased and imputed separately in men and women; association excluded R2 < 0.3.",
+      "implementation_scope_note": "Retain the historical executable1.0.2 and separate panel/build analyses. Male/female and chromosome X/PAR ploidy choices must be explicit; do not infer them from sex labels or force diploid calls. Eagle2 is separate. The R2 filter is not a P-value or a measured per-person genotype accuracy.",
+      "version_reported_near_name": "1.0.2",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P108",
+    "primary_paragraph": 47,
+    "observed_role": "developmental-and-server-batch-imputation",
+    "review": {
+      "pmcid": "PMC10703692",
+      "doi": "10.1038/s41588-023-01560-2",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "5885d1aff6d0c385cd4aef8d4c88f5d6e2d56fce26b3023508ce02e5c6604195",
+      "use_summary": "Imputed developmental-brain genotypes to TOPMed Freeze5 using Minimac4 and Eagle 2.4, retaining biallelic rsID SNPs with R2 > 0.8. Adult-brain array batches were sent to the TOPMed server, phased with Eagle 2.4 and imputed with Minimac4/TOPMed before cross-array intersection and further QC.",
+      "implementation_scope_note": "TOPMed Freeze5 is a panel edition, not a Minimac release. Developmental and adult/batch workflows remain distinct; their exact panel resources, phasing, MAF/HWE/missingness QC, HapMap3 selection and TWAS model training are not supplied by imputation alone. Preserve strict R2 > 0.8.",
+      "version_reported_near_name": "4; patch unstated",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 50,
+          "section": "Methods / Adult brain reference panel processing and model training",
+          "paragraph_sha256": "6c0b9a45df9fa2061912cfc06d72d36f69220ff241514b3b84717af398b4ba62"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P112",
+    "primary_paragraph": 25,
+    "observed_role": "cohort-and-cross-panel-imputation",
+    "review": {
+      "pmcid": "PMC10703690",
+      "doi": "10.1038/s41588-023-01563-z",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "a21c84b37df17d86d2f2ab1585acf58195a5af027c167e88767277a1b88c7d43",
+      "use_summary": "MVP biallelic SNPs were imputed using Minimac4 with the African Genome Resources panel; indels/complex variants were imputed independently with 1000 Genomes Phase3 then merged. Separately, iPSYCH used Eagle 2.3.5/Minimac and HRC v1.0 in a phased imputation pipeline.",
+      "implementation_scope_note": "Do not transfer the MVP Minimac4 label to the unversioned iPSYCH Minimac run. The statement does not identify the indel imputer or executable patches. Panel-specific merging, batch handling, best-guess genotype conversion and post-imputation cohort-specific filters are distinct.",
+      "version_reported_near_name": "4 for MVP; iPSYCH release unstated",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 26,
+          "section": "Methods / MVP genotyping, imputation, quality control, and GWAS and meta-analysis",
+          "paragraph_sha256": "07fecd5d35e5fb2d4f9e20ff0ad336f302c9ac89b831d768a06982f87cf02edb"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P123",
+    "primary_paragraph": 33,
+    "observed_role": "in-house-Japanese-panel-imputation",
+    "review": {
+      "pmcid": "PMC13553293",
+      "doi": "10.1038/s41588-026-02741-5",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "a5933db9454467762013970a30dc1e624419cb04818c04bfe082ea11228968de",
+      "use_summary": "Estimated haplotypes using SHAPEIT4 and imputed untyped variants using Minimac4 with an in-house Japanese whole-genome reference panel of 11, 754 individuals.",
+      "implementation_scope_note": "The 11, 754 count belongs to the reference panel. No Minimac patch release, compression format or fitted options are stated. SHAPEIT4 phasing and access/preparation of the private reference are separate; no reference download or participant upload is implied.",
+      "version_reported_near_name": "4; patch unstated",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P130",
+    "primary_paragraph": 47,
+    "observed_role": "TOPMed-server-and-received-cohort-imputation",
+    "review": {
+      "pmcid": "PMC11549054",
+      "doi": "10.1038/s41588-024-01939-9",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "771cbda6deab4176e5328380dbc7cca3b3c89478fd63d5f137e183756043c47b",
+      "use_summary": "Cohort genotype imputation used TOPMed Imputation Server 1.7.3 and a TOPMed reference through Minimac4; the paper also identifies ROSMAP pre-imputed genotypes received from collaborators. Subsequent filtering removed MAF < 0.1% and imputation quality < 0.8 variants.",
+      "implementation_scope_note": "Server 1.7.3 is not the Minimac release. Preserve the distinction between cohort imputation and received ROSMAP data; the source does not give a Minimac patch or exact reference freeze. BCFtools/SAMtools/PLINK/R processing and downstream GWAS are separate.",
+      "version_reported_near_name": "4; patch unstated; server1.7.3",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P136",
+    "primary_paragraph": 30,
+    "observed_role": "legacy-minimac4-multicohort-imputation",
+    "review": {
+      "pmcid": "PMC11525193",
+      "doi": "10.1038/s41588-024-01913-5",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "786ac8379a0b3c4ecb697c4bf1b35666ab9d89591dc2c47dcce0643e2416a52f",
+      "use_summary": "Separately prephased BBJ first cohort with SHAPEIT2 2.837 and BBJ second/NCGG cohorts with EAGLE2 2.39, then performed genome-wide imputation using Minimac4 1.0.0 after sample overlap and variant concordance/QC exclusions.",
+      "implementation_scope_note": "Retain the historical 1.0.0 executable and cohort-specific phasing versions; do not label modern 4.1.6 as its reproduction. Reference-panel construction, overlap removal, palindromic exclusion and QC are separate; this paragraph does not name a specific panel.",
+      "version_reported_near_name": "1.0.0",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P192",
+    "primary_paragraph": 11,
+    "observed_role": "HRC-and-TOPMed-server-imputation",
+    "review": {
+      "pmcid": "PMC11568758",
+      "doi": "10.1016/j.ajhg.2024.10.001",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "8317d370692c35ef01d05b1fa4eae4391eb060e3e1a417ab488f750edc48b3f6",
+      "use_summary": "Used Michigan Imputation Server/Eagle 2.4/Minimac4 with HRC r1.1 (2016) for KOBS genotype imputation after allele/duplicate checks; separate METSIM data usedTOPMed server/Eagle 2.4/Minimac4 with TOPMed r2. Post-imputation QC excluded R2 < 0.3.",
+      "implementation_scope_note": "Keep HRC and TOPMed panel/version pipelines distinct. Server-managed allele switches/strand flips are not implicit local corrections. The Minimac patch release is unstated; downstream demultiplexing, relatedness/HWE QC and association remain separate.",
+      "version_reported_near_name": "4; patch unstated",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 13,
+          "section": "Methods / Genotype quality control and imputation in KOBS, RYSA, and METSIM",
+          "paragraph_sha256": "d7db0f79be83c7962eb7e48135d8203cda7101de3bd4afdaec305fde04a833ae"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P213",
+    "primary_paragraph": 6,
+    "observed_role": "reused-cohort-and-X-region-imputation",
+    "review": {
+      "pmcid": "PMC13277697",
+      "doi": "10.1016/j.ajhg.2026.04.003",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "8394716b245ee7f6b6e1e88d9aa129b0850412b4a89cc3ca73477efe9cd0d032",
+      "use_summary": "OneK1K cohort data were imputed through Michigan Imputation Server/Minimac4 with HRC. The study separately imputed chromosome X non-PAR and PAR1/PAR2 segments through that server; Y haplogroup assignment used yhaplo instead of genotype imputation.",
+      "implementation_scope_note": "Preserve the reuse of previously described cohort genotypes and the separate regionalX analysis. PAR/non-PAR and per-sample haploid/diploid interpretation must be explicitly declared; do not infer genome build from the quoted coordinates or silently correct the source description of male non-PAR Y. Y haplogroup assignment is a different tool, not Minimac imputation. No Minimac patch release stated.",
+      "version_reported_near_name": "4; patch unstated",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 31,
+          "section": "Methods / Imputation of the sex chromosomes",
+          "paragraph_sha256": "bcc5fd68cf229c5d007df75d8ebea9e606b0fb944f7bca06498192711a858ac4"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P243",
+    "primary_paragraph": 12,
+    "observed_role": "server-per-cohort-imputation-with-filter",
+    "review": {
+      "pmcid": "PMC11267522",
+      "doi": "10.1016/j.ajhg.2024.05.017",
+      "tool_id": "minimac",
+      "evidence_paragraph_sha256": "570fc10d4cfaf9a3f483134f5df3d5245103b87ea1176ffef2bb70b6196d9ad5",
+      "use_summary": "Imputed three cohorts separately through Michigan server using Minimac4, HRC/GRCh37, Eagle 2.4, EUR population and an imputation rsq filter 0.3; cohortI was lifted from hg18 to hg19 beforehand.",
+      "implementation_scope_note": "The server imputation filter 0.3 is stated without an explicit strict/inclusive boundary; do not invent one. HRC edition and Minimac patch release are unstated. LiftOver, server panel/population selection and post-imputation multiallelic/palindromic filtering are separate; unequal cohort marker counts reflect the described input arrays.",
+      "version_reported_near_name": "4; patch unstated",
+      "supporting_evidence": []
+    }
+  }
+]

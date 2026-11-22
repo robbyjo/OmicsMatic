@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "status": "fresh-original-R-fisher-and-complete-family-adjustment-reference",
+  "families": 40,
+  "rows": 8480,
+  "available_Fisher_rows": 8440,
+  "explicit_missing_rows": 40,
+  "methods": [
+    "NONE",
+    "BH",
+    "BY",
+    "HOLM",
+    "BONFERRONI"
+  ],
+  "encodings": [
+    "P_VALUE",
+    "NATURAL_LOG"
+  ],
+  "pseudocounts": [
+    0,
+    1
+  ],
+  "R_version": "R version 4.2.3 (2023-03-15) \n 4.2.3",
+  "source_workbook": {
+    "article": "Venkatesh,S.,Kosoy,R.,Wu,Z.,et al. Single-nucleus transcriptome-wide association study of human brain disorders. Nature657,1016-1026(2026).",
+    "doi": "10.1038/s41586-026-10836-6",
+    "url": "https://www.nature.com/articles/s41586-026-10836-6",
+    "supplement_url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-026-10836-6/MediaObjects/41586_2026_10836_MOESM3_ESM.zip",
+    "license": "CC-BY-4.0;https://creativecommons.org/licenses/by/4.0/",
+    "workbook_member": "2024-09-19723C-s3/TableS15-20.xlsx",
+    "workbook_sha256": "498a8f80d1cf8a3070c3ad2204bd96b801e96cf307d25a07dd8ed7024d0b3e64",
+    "sheets": [
+      "TableS16",
+      "TableS17"
+    ],
+    "changes": "Four original integer counts extracted and reordered as finer novel/known,comparator novel/known;original counts unchanged. Each source row is tested with explicitly declared pseudocount0 and1. The 40 complete correction families reuse all 422 source count tables;each family also contains one explicit missing-count placeholder. No synthetic count table is included in this reference population."
+  },
+  "files": {
+    "source-counts.tsv": "40ada23e38813ec4a253ec9447ac0bab629d39c1fd9fbe848aed5a5fd295dc8e",
+    "reference.R": "0e1dca576234050a1d2e6cb5accb42e875d733eff837c6d940b9b2176b68422d",
+    "families.tsv": "8f96fd7e5f34772113d68a033c62748df126062f8a701a54c620861820380740",
+    "input.tsv": "2158914d6de6f4dbc92b95a7f39a94ddea3cb85a44c3ef3b793d5cb92bd637be",
+    "reference.tsv": "533eab2f9d7aa94cefcd598b86daf88415c708c60e03234de65392cbbc39c6e6"
+  },
+  "scope": "Every source table16/17 row in full26/396-test families,plus one explicitly missing table per family. Rawprobability correction uses unmodifiedRstats::p.adjust;finite-log correction is an independent R extension. No historical method or group-membership inference;rawsourcecounts and attribution retained."
+}

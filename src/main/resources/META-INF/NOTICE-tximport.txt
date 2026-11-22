@@ -1,0 +1,22 @@
+Native Java TranscriptImport implements point-estimate import/summarization
+semantics checked against original tximport 1.40.0, by Michael Love,
+Charlotte Soneson, Mark Robinson and contributors.
+https://bioconductor.org/packages/3.23/bioc/html/tximport.html
+https://github.com/thelovelab/tximport
+Original package license: LGPL (>= 2).
+Source archive SHA256:
+72841a6b2ac1f64ccb05af2d9fba4eea781596771798cefcb3a9327f9dc929f9
+
+JLinAlg supplies its own Java implementation, input contracts and audits.
+No R package or quantifier is bundled. Reference generation uses an unchanged
+original R package in a private, optional validation library. Native execution
+needs no R, Python, Salmon, kallisto or RSEM runtime.
+
+The scientific method is described in Soneson, Love and Robinson (2015),
+Differential analyses for RNA-seq: transcript-level estimates improve gene-level
+inferences. https://doi.org/10.12688/f1000research.7563.2
+
+Scope: dense point estimates, transcript/gene levels, three count scaling modes
+and transcript DTU scaling. Not inferential replicates, HDF5, sparse/alevin,
+StringTie coverage conversion, quantification, annotation discovery, DE testing,
+tximeta provenance or full historical/paper-pipeline parity.

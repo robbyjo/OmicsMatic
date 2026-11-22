@@ -1,0 +1,39 @@
+{
+  "source": {
+    "accession": "1CRN",
+    "url": "https://files.rcsb.org/download/1CRN.pdb",
+    "sha256": "42199a30a0701864a2a5cc76cd7f35cc544cd0e65fbcf63e03c166543249b811",
+    "usage": "https://www.wwpdb.org/about/usage-policies",
+    "license": "CC0"
+  },
+  "preparation": {
+    "program": "original PDB2PQR3.8.0",
+    "arguments": [
+      "--ff",
+      "PARSE",
+      "--nodebump",
+      "--noopt",
+      "--keep-chain",
+      "1CRN.pdb",
+      "1CRN.pqr"
+    ],
+    "private_execution_verification_sha256": "12540e7c98800afe01717f3a2ab15bd6f11eb681086790654b744b5fe3223cbe",
+    "pqr_sha256": "9fac1bd44b0708bdf0fce21d031160f6b0e032e56884197d0daabb9b7776a889",
+    "atoms": 642,
+    "total_charge_e": 0,
+    "zero_radius_atoms": 236,
+    "scope": "Unchanged original output;charged zero-radius hydrogens retained. No declared-pH/PROPKA titration was requested;debumping/hydrogen optimization disabled. These fixture choices do not establish a preferred biological model."
+  },
+  "license_url": "https://github.com/Electrostatics/pdb2pqr/blob/v3.8.0/LICENSE.md",
+  "typed_workflow": {
+    "candidate_sha256": "b1c26fa467769d265115e9d5101f91eaa432da2df906e3a679086f68bfeb49ea",
+    "source_PDB_local_file": "1CRN.pdb",
+    "preparation_recipe": "prepare-parse.json",
+    "solver_recipe": "protein.json",
+    "surface_recipe": "surface.json",
+    "validated_public_runner": "run-workflow.py",
+    "prepared_whitespace_pqr_sha256": "52e647b448458f68ce1f1c0cfe5ab55994039b787852c80454e9ef8258f897d2",
+    "source_PQR_numeric_values_unchanged": true,
+    "scope": "Earlier raw1CRN-PARSE.pqr fixture remains unchanged;typed preparation adds whitespace/preparedPDB output but preserves every atom identity/coordinate/charge/radius. Example does not infer a pH or source-paper settings."
+  }
+}

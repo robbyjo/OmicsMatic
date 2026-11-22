@@ -1,0 +1,180 @@
+{
+  "status": "bounded-original-SAIGE-PLINK-single-association-development-workflow-validated;wider-tool-expansion-active",
+  "validated_operations": [
+    "sparse-grm",
+    "fit-null",
+    "single"
+  ],
+  "candidate": "build/literature-review/saige-single-candidate-3/jlinalg-0.3.7.jar",
+  "candidate_sha256": "97f757268e3d4220919b6be51abd1e7d3e6612726f5bfca8d4c192717b49f81c",
+  "canonical_or_release_changed": false,
+  "focused_tests": 112,
+  "focused_suites": 11,
+  "new_association_tests": 24,
+  "standalone_tests_per_JVM": 112,
+  "standalone_JVMs": [
+    21,
+    25
+  ],
+  "language_release": 17,
+  "runtime_profile": "saige-1.5.2-original-ubuntu24-x64-R4.5.2-pixi-locked-v1",
+  "original_source_modified": false,
+  "original_source_files_verified": 481,
+  "full_scientific_matrix_candidate": "build/literature-review/saige-single-candidate-2/jlinalg-0.3.7.jar",
+  "full_scientific_matrix_candidate_sha256": "8db97e099175a64ef9f1e63d0176c0e7c71bf725796707158d8df5db5e91156a",
+  "full_scientific_matrix_workflows": 13,
+  "exact_prior_original_reference_workflows": 9,
+  "exact_prior_original_reference_rows": 285,
+  "additional_low_MAC_cleanup_postQC_resampling_workflows": 4,
+  "additional_boundary_rows": 241,
+  "scientific_totals": {
+    "returned_variants": 526,
+    "exact_integer_fields_checked": 2996,
+    "rounded_count_AF_missing_fields_checked": 2566,
+    "normal_P_print_precision_intervals_checked": 526,
+    "independent_nonsparse_variances_checked": 96,
+    "unreportable_rows_statistics_withheld": 0,
+    "efficient_resampling_eligible_rows": 25
+  },
+  "native_score_paths": {
+    "centered-fast": 61,
+    "covariate-projected": 465
+  },
+  "current_candidate_positive_reference_rows": 32,
+  "current_candidate_additional_postQC_reference_rows": 31,
+  "changed_class_from_full_scientific_candidate": [
+    "org/jlinalg/cli/SaigeSingleInputs.class"
+  ],
+  "unchanged_numerical_audit_model_runtime_and_genotype_classes": true,
+  "current_ledger_additions": [
+    "post_imputation_MAC",
+    "post_imputation_AF",
+    "missing_minor_dosage_fill"
+  ],
+  "production_native_audit_controls": 16,
+  "deliberate_corruption_or_nonfinite_rejections": 14,
+  "positive_native_audit_controls": 2,
+  "current_packaged_CLI_controls": 6,
+  "packaged_Windows_cases": 8,
+  "model_samples": 1000,
+  "source_genotype_samples": 10000,
+  "extra_genotyped_samples_not_analyzed": 9000,
+  "binary_cases": 98,
+  "binary_controls": 902,
+  "missing_methods": [
+    "best_guess",
+    "mean",
+    "major-homozygote"
+  ],
+  "allele_orders": [
+    "alt-first",
+    "ref-first"
+  ],
+  "extreme_probability_reference": {
+    "reference_rows_per_JVM": 5,
+    "corrupt_P_and_SE_rejections_per_JVM": 10,
+    "JVMs": [
+      21,
+      25
+    ],
+    "smallest_probability": "1.2E-10000",
+    "scope": "Original admitted R4.5.2 qnorm(log.p=TRUE) primitive plus exact packaged native interval checks;separate from full GWAS fixtures."
+  },
+  "public_recipe_validation": {
+    "recipes": 6,
+    "JVMs": [
+      21,
+      25
+    ],
+    "scope": "Unchanged public JSON parsed by exact packaged typed readers;caller inputs are needed for scientific execution."
+  },
+  "previous_GRM_null_validation": "saige-workflow-validation.json",
+  "complete_pair_coverage_certified": false,
+  "remaining_operations": [
+    "BGEN/VCF dosage association",
+    "conditional association",
+    "gene tests",
+    "LD export",
+    "Meta-SAIGE"
+  ],
+  "source_findings": [
+    "Single-marker initial missingness/MAF/MAC QC is followed by post-imputation/cleanup MAF/MAC QC.",
+    "Inclusive source dosage cleanup may change mean-imputed hard calls;source trigger and operation order are preserved.",
+    "Original Armadillo summation and reported-AF centering/sign choices are preserved;exact integer observed MAC does not replace original floating QC.",
+    "Final P does not independently identify centered-fast versus projected-retest paths.",
+    "Original aggregate Firth convergence cannot identify individual failed rows;all potentially affected rows are withheld."
+  ],
+  "warnings": [
+    "Missing/forbidden/unsupported/changed initial runtime dependencies skip3 with named Required action;invalid input/process/timeout/audit failures return2 and retain partials.",
+    "Unreportable retained rows have canonical statistical fields blank;original output stays unchanged.",
+    "Sparse-PCG,SPA,approximate Firth,efficient resampling and GLMM/LMM fitting remain original computations;native audits do not certify scientific calibration.",
+    "Single common variance-ratio calibration belowMAC20 is extrapolation and warns.",
+    "Decimal P text belowbinary64 range must be read with decimal/log-aware downstream software.",
+    "Java25 existing libdeflate native-access notice retained;all112packaged tests passed."
+  ],
+  "proofs": [
+    {
+      "path": "build/literature-review/saige-runtime/single-focused-3/observed.json",
+      "sha256": "3446bff813831b0cec8e08b3ec5ac004831d7b0ff839e8464bf11eee53b9f8c7"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/packaged-single-junit-1/verification.json",
+      "sha256": "12b39cf1f086d42d2f2f8fbf210fa78e057a4436481b2a578b4859f497d1dfa7"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/single-matrix-1/observed.json",
+      "sha256": "724ac11c5f3fc9533689e097af8138f237083c0c939e216aca129b913505047a"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/single-boundary-science-1/observed.json",
+      "sha256": "c6c1dc8483bf75039cfd38aa9ce2ea62591d9420325d504fde6d666c27a84be9"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/single-current-controls-1/observed.json",
+      "sha256": "8507213ab8f8b27bd2e78cd70e92386c20a203b37a57b7576d1a0226e1cbabca"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/single-current-boundary-1/observed.json",
+      "sha256": "5b6f72688229d159ee3fca66b25bec71590ea1b6814046b8e54d1f9e2ec25cb1"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/single-audit-controls-1/observed.json",
+      "sha256": "af6cac8a66fcdbb10131d1883cc8b6bd60668460061e5812f0e3a1619d6c3841"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/single-audit-controls-1/run/verification.json",
+      "sha256": "f67165ac6eefc64417706c8ecfab545666012c28282110b243e5d6e8c6c0563d"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/single-underflow-2/observed.json",
+      "sha256": "2572002904456e1e2fa9e0d51281288dc3e052bd83f1a5bdffca1a4ac4c506f0"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/single-underflow-2/java21.json",
+      "sha256": "ebce99d1f389900c6b0b84ec8b3b901b3d80d3a3abdd2f2ba16a126cc2058b2b"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/single-underflow-2/java25.json",
+      "sha256": "ebce99d1f389900c6b0b84ec8b3b901b3d80d3a3abdd2f2ba16a126cc2058b2b"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/windows-single-controls-1/observed.json",
+      "sha256": "c1c7b0a15193334ba0e6ed47f641e162626ec8bf677d466e69f1f39150509413"
+    },
+    {
+      "path": "build/literature-review/saige-runtime/public-recipes-2/verification.json",
+      "sha256": "92e14be0e479e45deabdb62a47b866c4193cd02a31829ab2fc1b3372f084a7fb"
+    }
+  ],
+  "scope": "Bounded current-version original PLINK autosomal hard-call development integration. No full-paper/historical/other-format parity,independent estimator re-fitting,whole-current-shared-ROOT Java gate or release. Gene/conditional/LD/Meta and wider implementation remain active.",
+  "browser_validation": {
+    "check_groups": 131,
+    "screenshots": 46,
+    "new_panels_visually_reviewed": 4,
+    "proof_path": "build/literature-review/saige-runtime/ui-8/ui-validation.json",
+    "proof_sha256": "f6463a97ec8ea7b2eb7fcb870340962ae2b86152f6ca76cb57bd3a3625888f4e"
+  },
+  "historical_stage": true,
+  "current_numerical_validation": "saige-numerical-validation.json",
+  "current_scope_note": "This preserves the exact112-test candidate and13scientific workflows. The122-test current candidate adds original-PCG reportability guards and sparse-storage warnings. No conditional command is enabled."
+}

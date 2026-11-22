@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "operation": "single",
+  "model_bundle": "binary-null-run",
+  "genotypes": "association-cohort",
+  "genotype_coding": "diploid-autosomal-plink-bed",
+  "assembly": "GRCh38",
+  "chromosome": "1",
+  "allele_order": "alt-first",
+  "cohort": {
+    "extra_genotyped_samples": "allow-with-ledger"
+  },
+  "qc": {
+    "min_maf": 0,
+    "min_mac": 20,
+    "max_missing": 0.15,
+    "imputation": "best_guess",
+    "invalid_marker_policy": "exclude-with-ledger",
+    "dosage_zero_cutoff": 0.2,
+    "dosage_zero_max_mac": 10
+  },
+  "method": {
+    "firth_beta": true,
+    "firth_p_cutoff": 0.05,
+    "spa_cutoff": 2,
+    "fast_test": true,
+    "genotype_adjustment": "center-only-fast",
+    "resampling_max_mac": 4,
+    "non_estimable": "error"
+  },
+  "resources": {
+    "threads": 1,
+    "variants_per_chunk": 10000,
+    "max_samples": 1000000,
+    "max_variants": 1000000,
+    "max_input_bytes": 4294967296,
+    "max_genotype_cells": 1000000000,
+    "max_model_cells": 2000000,
+    "max_result_bytes": 1073741824
+  }
+}

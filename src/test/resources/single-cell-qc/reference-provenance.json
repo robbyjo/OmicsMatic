@@ -1,0 +1,31 @@
+{
+  "scope": "Original upstream scientific outputs from frozen synthetic counts; no cohort or patient data. Native scalar residuals do not fit SCT models; native Bayesian scores do not construct neighbors.",
+  "r_packages": {
+    "sctransform": "0.4.3",
+    "Seurat": "5.6.0",
+    "SeuratObject": "5.4.0",
+    "glmGamPoi": "1.24.0",
+    "R": "4.6.1"
+  },
+  "standalone_model_seed": 42,
+  "scalar_position_seed": 61,
+  "seurat_position_seed": 912,
+  "reproduce_r": "src/test/R/single-cell-qc-reference.R PRIVATE_LIBRARY FIXTURE_DIRECTORY NEW_OUTPUT_DIRECTORY",
+  "reproduce_scrublet": "src/test/python/scrublet_reference.py FIXTURE_DIRECTORY NEW_OUTPUT_DIRECTORY",
+  "upstream_sources": [
+    "https://github.com/swolock/scrublet",
+    "https://github.com/satijalab/sctransform/tree/v0.4.3",
+    "https://github.com/satijalab/seurat/tree/v5.6.0"
+  ],
+  "fixture_sha256": {
+    "sctransform-residuals.tsv": "e3f286286e9d07c13c70c1d1ca77665a3c48ce9128d1d86f2fa6095b8c303f82",
+    "seurat-regressed-residuals.tsv": "c6a601055417ca7ba9904da56384a96df32d079833315da945fb167e20f00fd7",
+    "phase-covariates.tsv": "2f4ff80b75b5a56ec2101a9c5be9bc0d5d597f646c3a86895f9f88a68a0fbe86",
+    "scrublet-neighbor-scores.tsv": "6900da3b4c28a64a30e88ecdd8c54766589345553615431189113be3c4de627a"
+  },
+  "scrublet_license_sha256": "542d94ae09d6d98b9aec48152a2189069b9b03ee4c7ef6206b82bccacb287417",
+  "warnings": [
+    "Scrublet upstream variance-fitting RuntimeWarning: invalid value encountered in sqrt is retained; all exported scores and uncertainties are finite."
+  ],
+  "limitations": "Current package versions on this host; no claimed parity with historical paper pipelines or general cell/doublet identification accuracy."
+}

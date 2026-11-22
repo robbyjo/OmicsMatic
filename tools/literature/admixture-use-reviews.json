@@ -1,0 +1,335 @@
+[
+  {
+    "paper_id": "P002",
+    "primary_paragraph": 35,
+    "observed_role": "global-ancestry-CV-two-panels",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC11964931",
+      "doi": "10.1038/s41586-024-08515-5",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "34e6b95ab672c361f43f6c066fb422f71c57167f83be6c63f1f47311f421fe6c",
+      "use_summary": "Estimated ancestry-component proportions for ancient human individuals using continental reference populations and, separately, Indigenous American reference populations; both panel analyses selected K=5 by minimum cross-validation error.",
+      "implementation_scope_note": "This describes human DNA, not the Treponema pathogen genomes. AdmixturePlotter is a separate named helper; the paragraph does not specify supervised mode, seeds, bootstrap settings or genotype ploidy coding. Subsequent F-statistics are separate analyses.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 11,
+          "paragraph_sha256": "e089a968f56d031a44e22f83f2d6de8c3593f7d98daea2599189184c81a7c7d4",
+          "section": "Diversity of T. pallidum genomes that predate 1492"
+        },
+        {
+          "paragraph_index": 36,
+          "paragraph_sha256": "4769120f0392c9a2110f0db580c095254388d9642559773b85df3df0533b41a9",
+          "section": "Methods / Human ancestry analyses"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P041",
+    "primary_paragraph": 54,
+    "observed_role": "global-ancestry-and-masked-population-structure",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC10733150",
+      "doi": "10.1038/s41586-023-06831-w",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "0351fb16dbe68ea997ed06600b741838185c97cf7b480cc24a15a8bcca5059ae",
+      "use_summary": "Estimated global ancestry after merging with low-coverage 1000 Genomes and LD thinning, testing K=2..12 with CV and reporting K=6. Separately analyzed ancestry-masked data with K=2..8, with CV supporting K=4/5, and compared structure in other continental cohorts.",
+      "implementation_scope_note": "The paper uses multiple datasets and K choices; the displayed seven-cluster plot is not a universal selected K. RFMIX performs local ancestry masking; PCA/F4 comparisons and geographic labels applied after clustering remain distinct. Exact 1.3 is reported; do not infer 1.3.0 or a historical seed.",
+      "version_reported_near_name": "1.3",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 20,
+          "paragraph_sha256": "65da0509fed3678a818e3293bcdc62d0faedbebdaf7c720fab55d40448c74840",
+          "section": "Population structure"
+        },
+        {
+          "paragraph_index": 21,
+          "paragraph_sha256": "af1fff2ffbae4aea33c8ce01e339c2ddb9b31e8d49627cc57836d5e28e7a61f9",
+          "section": "Population structure"
+        },
+        {
+          "paragraph_index": 55,
+          "paragraph_sha256": "bc1c6dc9a6179fcf15d189bf5d014b8580519f7c1f6ab821cdc58fe6abf79133",
+          "section": "Methods / Ancestry inference"
+        },
+        {
+          "paragraph_index": 70,
+          "paragraph_sha256": "4cf987aad2cd98f49556c0461e0858b2d2743d8b6f35b6be56aca22c6e759f46",
+          "section": "Methods / Population structure"
+        },
+        {
+          "paragraph_index": 75,
+          "paragraph_sha256": "5820dcff4fe5be33f4be4ac7c1111c1476876f7e9cfd042fc2114e03579ceae3",
+          "section": "Methods / Population structure"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P045",
+    "primary_paragraph": 36,
+    "observed_role": "pseudohaploid-unsupervised-components",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12872451",
+      "doi": "10.1038/s41586-025-09811-4",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "922084936f54248ab4f37ae4890d9b93192c1f8a18e6987610ce1db388b4df9c",
+      "use_summary": "Used unsupervised ADMIXTURE 1.3.0 to estimate ancestry components from pseudohaploidized data for K=2..10, reporting 25 iterations for each K.",
+      "implementation_scope_note": "The wording does not resolve whether 25 means optimizer iterations or repeated starts. Haploid likelihood flags, conversion details, seeds and CV settings are unstated. Do not infer diploid or haploid model weighting from a homozygously coded input alone; PCA and f-statistics are separate.",
+      "version_reported_near_name": "1.3.0"
+    }
+  },
+  {
+    "paper_id": "P071",
+    "primary_paragraph": 22,
+    "observed_role": "seed-replicates-CV-after-LD-pruning",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12711557",
+      "doi": "10.1038/s41586-025-09799-x",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "5cd46a280dfcf0357371ffdc839d279716c06b3dfbdc9aab2f20117b42fad9b8",
+      "use_summary": "Estimated individual ancestry using selected present-day comparison populations and 597,573 LD-pruned SNPs. Tested K=2..10 with ten different-seed runs per K and chose K by the lowest CV error.",
+      "implementation_scope_note": "The ADMIXTURE version, exact seeds, fold count and how errors were aggregated across starts are unstated. PCA projection and PLINK pruning are separate steps; the ADMIXTURE routine itself is not an ancient-sample PCA projector.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P101",
+    "primary_paragraph": 31,
+    "observed_role": "millet-population-components-method-comparison",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC10703678",
+      "doi": "10.1038/s41588-023-01571-z",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "6d69501e516d976d542a3eee50f5ae85b918cca544bf063586893c419a0a6190",
+      "use_summary": "Ran ADMIXTURE 1.3.0 for K=2..15 on 57,930 LD-pruned broomcorn-millet SNPs and compared inferred groups with DAPC, fastSTRUCTURE and STRUCTURE before summarizing four population clusters.",
+      "implementation_scope_note": "The four-cluster conclusion combines multiple methods; the paragraph does not state an ADMIXTURE CV criterion, seeds, replicate count or bootstrap settings. Crop genotype coding and biological ploidy must be declared rather than inferred by an adapter.",
+      "version_reported_near_name": "1.3.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 4,
+          "paragraph_sha256": "2f0db2e1c8a51f24d4e890c7791c94719423ab420e498c35ac536bb47cabf186",
+          "section": "Results / Genome sequence, genetic diversity and population structure"
+        },
+        {
+          "paragraph_index": 5,
+          "paragraph_sha256": "d1c6046bb010a68f20507a2a39add4886358929acc38c05e8fa04a45ba7ff625",
+          "section": "Results / Genome sequence, genetic diversity and population structure"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P109",
+    "primary_paragraph": 33,
+    "observed_role": "grape-structure-CV",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC11631756",
+      "doi": "10.1038/s41588-024-01967-5",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "4d0e8a5075ed923e59070566a045512db61f3a8a3758b82e793f9ada1d003d73",
+      "use_summary": "Analyzed population structure in 466 grape accessions with ADMIXTURE 1.3 using block relaxation and cross-validation over K=2..8; Results compare cultivar groups with PHATE.",
+      "implementation_scope_note": "No optimal K, fold count, seeds or repeat count is specified here. IQ-TREE, PLINK PCA and PHATE are distinct analyses; source 1.3 is not silently treated as 1.3.0.",
+      "version_reported_near_name": "1.3",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 9,
+          "paragraph_sha256": "84ba8c42a6c64a102e031527ec38334b504e555811e52ce300abe09d6fc52fbf",
+          "section": "Results / Grapepan v.1.0-based population structure of grapevine"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P116",
+    "primary_paragraph": 21,
+    "observed_role": "supervised-reference-ancestry-filter",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12695626",
+      "doi": "10.1038/s41588-025-02398-6",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "504a3b114c3f4c7eaa1b04a1d394a985bbe2b2ca89c4c39f4990f825889e6223",
+      "use_summary": "Ran supervised ADMIXTURE 1.23 with CEU, CHB, ITU, PEL and YRI 1000 Genomes training populations. Selected participants with YRI-like proportion>90%, or YRI-like>30%, CEU-like>2% and their sum>90%, for the study subset.",
+      "implementation_scope_note": "These are study-specific genomic-ancestry criteria, not inferred social identities or universal filters. Exact reference eligibility, marker harmonization, LD handling, seeds and fitting settings require separate inputs. Code availability corroborates 1.23; current binaries do not establish historical 1.23 parity.",
+      "version_reported_near_name": "1.23",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 45,
+          "paragraph_sha256": "e04f92478c2e47e2c6da4c3596f501548430be08f2f659df572d9b934a71a1c6",
+          "section": "Code availability"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P149",
+    "primary_paragraph": 43,
+    "observed_role": "cohort-specific-supervised-reference-filter",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC10632135",
+      "doi": "10.1038/s41588-023-01538-0",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "a096be674e31e622a0970cf65b45bedf0607d7965e198c4d6e3d6fd6de58b51a",
+      "use_summary": "Performed supervised ADMIXTURE 1.23 ancestry inference separately for Danish, Intermountain and Norwegian datasets using five 1000 Genomes reference populations; training samples had first been checked for ancestry outliers with PCA and unsupervised ADMIXTURE.",
+      "implementation_scope_note": "Previously defined UKBiobank, FinnGen and Icelandic ancestry handling is distinct. The paragraph does not give a universal target-ancestry cutoff, seed, marker filter or convergence rule. Version 1.23 is retained as reported.",
+      "version_reported_near_name": "1.23",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 63,
+          "paragraph_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19",
+          "section": "Code availability"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P171",
+    "primary_paragraph": 53,
+    "observed_role": "wheat-population-coefficients",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC13447107",
+      "doi": "10.1038/s41588-026-02678-9",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "778e3ad5d8fc7399b8285a0d6d69f4767dab53102d53afb2743493919d36b875",
+      "use_summary": "Estimated ancestry coefficients with ADMIXTURE 1.3.0 in the wheat pangenome study, initially testing K=2..20 and subsequently choosing K=10.",
+      "implementation_scope_note": "The K-selection rule, replicate/seed/CV settings and encoding of tetraploid biological variation are not specified. LD pruning precedes analysis; the 100,000 random-marker statement belongs to phylogeny construction and is not automatically an ADMIXTURE marker count.",
+      "version_reported_near_name": "1.3.0"
+    }
+  },
+  {
+    "paper_id": "P180",
+    "primary_paragraph": 15,
+    "observed_role": "unsupervised-ancient-modern-replicates",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC11739871",
+      "doi": "10.1016/j.ajhg.2024.10.022",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "62d9f1b1cfcafc09efadfebf831fd3aa5b41d3755bffe0f26e8ca8483ece52e4",
+      "use_summary": "Estimated ancestry proportions with ADMIXTURE 1.3 after LD pruning in Armenian-only, comparative-modern and combined-ancient/modern datasets, using 199,955, 203,863 and 289,247 SNPs respectively. Ran each analysis five times and passed membership-coefficient matrices to CLUMPP.",
+      "implementation_scope_note": "The trailing 48 is a citation, not version 1.3.48. Exact seeds, K grid, CV, bootstrap and ancient genotype coding are unstated. CLUMPP processing is separate; the paper also cautions about drift/bottlenecks when interpreting components.",
+      "version_reported_near_name": "1.3",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 11,
+          "paragraph_sha256": "f414442b8d0961d332c5391bdcf493cfc5746298389a4ee54ef8cb0ba5ab7cf0",
+          "section": "Material and methods / Merging with ancient and modern reference datasets"
+        },
+        {
+          "paragraph_index": 33,
+          "paragraph_sha256": "ff9d731df5c3afe733e6460249f15b605a00e7ea67c833c4fdba7322dc39c126",
+          "section": "Results / Population structure within modern Armenians"
+        },
+        {
+          "paragraph_index": 39,
+          "paragraph_sha256": "5db5a242a99c12b2223b75cd9cc836b1eeacb9b137ee7c3774251bb1de317b65",
+          "section": "Results / Armenians in relation to other modern and ancient populations: Testing the Balkan theory"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P209",
+    "primary_paragraph": 32,
+    "observed_role": "reuse-of-previous-ADMIXTURE-validated-groups",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC12668784",
+      "doi": "10.1016/j.ajhg.2025.09.004",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "59b3f2818e1d93a934bcc351f5c6659166c1401540711894b4c9707283fb06a0",
+      "use_summary": "Reused TOPMed ancestry groups defined in prior work by PCA and validated with ADMIXTURE; the cited validation supplies YRI-reference ancestry summaries for the AFR subset.",
+      "implementation_scope_note": "This is reuse of previously validated cohort grouping, not evidence of a new ADMIXTURE fit in this paper. Version, training inputs, seed and fit settings are not reported here; YRI-reference proportions do not establish social identity.",
+      "version_reported_near_name": "",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 34,
+          "paragraph_sha256": "eb674510df8ecc719cc5c911ea6d3459b3e2239db1305f7153aa3fb921a3f82e",
+          "section": "Material and methods / Pre-processing genetic data / TOPMed"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P229",
+    "primary_paragraph": 11,
+    "observed_role": "CV-bootstrap-global-ancestry-and-downstream-statistics",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC13078719",
+      "doi": "10.1016/j.ajhg.2026.02.023",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "ffeaba8b2fa3bd1aef09476b7ba5d90fc39f4ba2550b078b911343359df1a66f",
+      "use_summary": "Ran ADMIXTURE 1.3.0 for K=4..11 with 10-fold CV and 100 bootstrap replicates after reference merging, complete-genotype filtering and LD pruning. CV favored K=8, with K=5 having similar error; component outputs also supplied downstream summary statistics for ABC.",
+      "implementation_scope_note": "Reference-panel exclusions and exact position/allele matching matter. Seeds, bootstrap block length and minor-refit termination are unstated. RFMix local ancestry, ABC and biological interpretation are separate; do not infer a uniquely true K or restore missing paper parameters silently.",
+      "version_reported_near_name": "1.3.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 18,
+          "paragraph_sha256": "40b684130e04d97a870ba55c069bdf826f21c024b7f7514a792d9a9b3e475769",
+          "section": "Subjects and methods / Inferring the selection coefficient and initial AFR ancestry"
+        },
+        {
+          "paragraph_index": 21,
+          "paragraph_sha256": "81ada8704227e8627505c815954eea2500844fc5e1e65477362f494631c1e1a8",
+          "section": "Results / Genomic evidence for recent East African and South Asian admixture in Oman"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P248",
+    "primary_paragraph": 52,
+    "observed_role": "cucumber-4DTv-population-structure",
+    "new_source_role": false,
+    "review": {
+      "pmcid": "PMC13447089",
+      "doi": "10.1038/s41588-026-02682-z",
+      "tool_id": "admixture",
+      "evidence_paragraph_sha256": "4ee70823595ae60b5270e6a6cd4c1168fe0b9d8760936b639a76e0b43b3e9467",
+      "use_summary": "Assessed cucumber population structure with ADMIXTURE 1.3.0 for K=2..12 using 18,600 fourfold-degenerate third-codon transversion sites from 422 accessions.",
+      "implementation_scope_note": "The paragraph does not specify CV, selected K, seeds, replicate count or bootstrap settings. degenotate extraction, IQ-TREE phylogeny and GCTA PCA remain separate operations; the input set is the stated 4DTv sites, not all variants.",
+      "version_reported_near_name": "1.3.0"
+    }
+  },
+  {
+    "paper_id": "P002",
+    "primary_paragraph": 35,
+    "observed_role": "joint-CV-component-result-helper",
+    "new_source_role": true,
+    "review": {
+      "pmcid": "PMC11964931",
+      "doi": "10.1038/s41586-024-08515-5",
+      "tool_id": "admixtureplotter",
+      "evidence_paragraph_sha256": "34e6b95ab672c361f43f6c066fb422f71c57167f83be6c63f1f47311f421fe6c",
+      "use_summary": "Used AdmixturePlotter alongside ADMIXTURE to compare cross-validation errors and handle ancestry-component results for continental and Indigenous-American panels, both reporting K=5.",
+      "implementation_scope_note": "The paragraph assigns the workflow jointly and does not separate this helper's fitting, run-orchestration or plotting responsibilities. No version, commands or exact helper settings are provided; it is not treated as the ADMIXTURE optimization engine.",
+      "version_reported_near_name": ""
+    }
+  },
+  {
+    "paper_id": "P180",
+    "primary_paragraph": 15,
+    "observed_role": "replicate-membership-matrix-processing",
+    "new_source_role": true,
+    "review": {
+      "pmcid": "PMC11739871",
+      "doi": "10.1016/j.ajhg.2024.10.022",
+      "tool_id": "clumpp",
+      "evidence_paragraph_sha256": "62d9f1b1cfcafc09efadfebf831fd3aa5b41d3755bffe0f26e8ca8483ece52e4",
+      "use_summary": "Analyzed cluster-membership coefficient matrices from five ADMIXTURE runs with CLUMPP.",
+      "implementation_scope_note": "CLUMPP is a separate replicate-result processing step; no version, alignment algorithm, permutation search, repetition or similarity settings are reported. ADMIXTURE fitting and label processing are not interchangeable implementations.",
+      "version_reported_near_name": ""
+    }
+  }
+]

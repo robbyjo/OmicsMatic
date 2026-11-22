@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "operation": "fit",
+  "version": "1.4.0",
+  "plink_prefix": "input/cohort",
+  "assembly": "REPLACE_WITH_EXACT_INPUT_ASSEMBLY",
+  "input_review": {
+    "organism": "REPLACE_WITH_STUDY_ORGANISM",
+    "marker_scope": "REPLACE_WITH_REVIEWED_NUMERIC_CONTIG_MARKER_SET",
+    "allele_harmonization": "REPLACE_WITH_REVIEWED_BIM_ALLELE_AND_ORDER_HARMONIZATION",
+    "ld_pruning": "REPLACE_WITH_PRUNING_PROTOCOL_OR_EXPLICIT_JUSTIFIED_CHOICE",
+    "sample_eligibility": "REPLACE_WITH_REVIEWED_UNRELATED_TRAINING_COHORT_CRITERIA",
+    "reference_eligibility": "REPLACE_WITH_REFERENCE_ELIGIBILITY_OR_EXPLICIT_NONE",
+    "ploidy_coding": "REPLACE_WITH_VERIFIED_DIPLOID_HARDCALL_CODING"
+  },
+  "k": 3,
+  "seed": 11,
+  "threads": 1,
+  "model_ploidy": 2,
+  "genotype_coding": "diploid-hardcalls",
+  "method": "block",
+  "acceleration": "qn3",
+  "major_stop": {
+    "kind": "delta",
+    "value": 1e-06
+  },
+  "minor_stop": {
+    "kind": "iterations",
+    "value": 3
+  },
+  "cv_folds": 0,
+  "bootstrap_replicates": 0,
+  "bootstrap_block_markers": 0,
+  "epsilon": 0.1,
+  "printed_precision_policy": "error-if-unbounded",
+  "limits": {
+    "samples": 100000,
+    "markers": 1000000,
+    "genotype_cells": 1000000000,
+    "parameter_cells": 100000000,
+    "input_bytes": 2147483648,
+    "retained_bytes": 536870912,
+    "line_bytes": 65536,
+    "output_bytes": 4294967296
+  },
+  "lambda": 0
+}

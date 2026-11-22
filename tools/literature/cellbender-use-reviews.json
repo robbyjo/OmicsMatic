@@ -1,0 +1,219 @@
+[
+  {
+    "paper_id": "P008",
+    "primary_paragraph": 69,
+    "observed_role": "background-correction",
+    "review": {
+      "pmcid": "PMC12893920",
+      "doi": "10.1038/s41586-025-09875-2",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "e618fddb7cadf8878d9449a2f3fc241ecf62f2e72679dc026770f098df054dda",
+      "use_summary": "Inferred and subtracted ambient RNA contamination from each scRNA-seq expression matrix using CellBender after STARsolo alignment and quantification.",
+      "implementation_scope_note": "The CellBender release and fitting parameters are unstated. Souporcell donor assignment, Scrublet doublet calling and gene/cell QC are separate downstream steps; STARsolo rather than Cell Ranger supplied the counts.",
+      "version_reported_near_name": "",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P024",
+    "primary_paragraph": 42,
+    "observed_role": "contamination-assessment",
+    "review": {
+      "pmcid": "PMC13600946",
+      "doi": "10.1038/s41586-025-09573-z",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "ef268dfcf2bcabd4881279c841b1b65fe001095636f7860c545677da10f68d7f",
+      "use_summary": "Checked possible ambient RNA contamination with CellBender within the snRNA-seq quality-control pipeline.",
+      "implementation_scope_note": "The paragraph reports a contamination check, without a CellBender release, fitting options or an explicit statement that corrected counts replaced all input counts. Gene/UMI/MALAT1 and donor QC thresholds are separate operations.",
+      "version_reported_near_name": "",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P039",
+    "primary_paragraph": 40,
+    "observed_role": "background-correction-and-cell-calling",
+    "review": {
+      "pmcid": "PMC10764288",
+      "doi": "10.1038/s41586-023-06837-4",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "bbf1cfc8474da80b9e2cc28e63fcafcd827b36662211335a3e87dbbacbf24ab6",
+      "use_summary": "Used CellBender 0.2.0 for background correction and cell calling in mouse embryo, human brain, tonsil and melanoma; expected cells followed Cell Ranger calls and 40,000 droplets were included, with learning rate 0.00005 when default cell probabilities were inadequate. The same processing was applied to multiome gene-expression counts.",
+      "implementation_scope_note": "This is the reported historical 0.2.0 algorithm and a conditional learning-rate adjustment, not a current-runtime equivalence claim. Downstream spatial barcode matching and inferCNV reuse corrected counts/cell calls; Cell Ranger read processing, Seurat and spatial analysis remain separate.",
+      "version_reported_near_name": "0.2.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 41,
+          "section": "Methods / Slide-tags data preprocessing / Multiomic snATAC-seq and snRNA-seq data",
+          "paragraph_sha256": "d5bc963c06fc96dd778f1fcdab60364b8d62932fd7621eaccc7ac88ddecb486b"
+        },
+        {
+          "paragraph_index": 42,
+          "section": "Methods / Slide-tags data preprocessing / Spatial barcode data",
+          "paragraph_sha256": "8deb9375269447ba1293128f3373b17607c394c1825ff18334eaf18b3dfcaa8b"
+        },
+        {
+          "paragraph_index": 76,
+          "section": "Methods / Melanoma analysis / Inferring CNV",
+          "paragraph_sha256": "034a81b5831bfba4ee59a73ae2c0aa0bbbea36e4d03860642011afd29cdfd111"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P046",
+    "primary_paragraph": 47,
+    "observed_role": "background-correction",
+    "review": {
+      "pmcid": "PMC13668669",
+      "doi": "10.1038/s41586-026-10987-6",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "8c5b65f79b06cb4c8d9972f73bd83ef339594c2c353cc74a74c44e380f7f3b6b",
+      "use_summary": "Removed ambient RNA from pooled gel bead-in-emulsions with CellBender 0.3.2 remove-background before downstream oRG scRNA-seq analysis.",
+      "implementation_scope_note": "Cell Ranger multi alignment/quantification, scDblFinder doublet scoring and Seurat normalization, cell-cycle regression and clustering are distinct. The CellBender fitting parameters are not reported here.",
+      "version_reported_near_name": "0.3.2",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P048",
+    "primary_paragraph": 15,
+    "observed_role": "background-correction",
+    "review": {
+      "pmcid": "PMC11779626",
+      "doi": "10.1038/s41586-024-08290-3",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "37aa8e3a444db74b088259a6ef098cdee9021497bc23bf63d8f4622928d06eb5",
+      "use_summary": "Processed raw human scRNA-seq gene-expression matrices with CellBender 0.1.0 to remove ambient RNA before DoubletDetection and SCANPY analysis.",
+      "implementation_scope_note": "The historical 0.1.0 release is explicit; modern CellBender execution cannot be labeled reproduction of this older algorithm. Doublet removal, QC, Harmony, Leiden, expression testing and gene scores are downstream tools.",
+      "version_reported_near_name": "0.1.0",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P049",
+    "primary_paragraph": 34,
+    "observed_role": "background-correction",
+    "review": {
+      "pmcid": "PMC13668678",
+      "doi": "10.1038/s41586-026-10981-y",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "8f03c054c747e967ac5f6ed3f4e0fff7b8f812598175b5d6614490432f358ea7",
+      "use_summary": "Removed ambient RNA and other background from Cell Ranger count matrices with CellBender 0.3.0 using 150 epochs, false-positive rate 0.01 and learning rate 0.0001.",
+      "implementation_scope_note": "Seurat integration, scDblFinder doublet detection and subsequent nucleus/gene/mitochondrial filters are separate. These parameters describe CellBender 0.3.0; exact sample matrices and runtime dependencies are additional inputs.",
+      "version_reported_near_name": "0.3.0",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P055",
+    "primary_paragraph": 33,
+    "observed_role": "background-contamination-processing",
+    "review": {
+      "pmcid": "PMC10719111",
+      "doi": "10.1038/s41586-023-06818-7",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "46ed356a262b86b6f99abb449aaa6da467e7cb9894d269b047ef0431fd9934b2",
+      "use_summary": "Used the reported CellBender v.3-alpha during brain-wide snRNA-seq preprocessing after intron-inclusive Cell Ranger alignment, described as removing cells contaminated with ambient RNA.",
+      "implementation_scope_note": "Retain the literal 3-alpha version label and the authors' cell-removal wording. The exact alpha commit, options and distinction between corrected counts and cell exclusion are unstated; do not normalize this to stable 0.3.0 or infer an independent contamination-cell threshold.",
+      "version_reported_near_name": "3-alpha",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P058",
+    "primary_paragraph": 45,
+    "observed_role": "background-correction",
+    "review": {
+      "pmcid": "PMC10719099",
+      "doi": "10.1038/s41586-023-06817-8",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "966ce6d437f6caa97336263121118ae90fbb0706f9de202642541e87aca8fe24",
+      "use_summary": "Removed ambient RNA from each snRNA-seq sample with CellBender 0.2.1 remove-background using reported default parameters, before merging and downstream Seurat processing.",
+      "implementation_scope_note": "The historical release is explicit. Mitochondrial/gene-count filtering, normalization, PCA, Louvain and UMAP belong to downstream Seurat steps and are not CellBender options.",
+      "version_reported_near_name": "0.2.1",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P085",
+    "primary_paragraph": 30,
+    "observed_role": "background-correction-with-reprocessing",
+    "review": {
+      "pmcid": "PMC11631771",
+      "doi": "10.1038/s41588-024-01961-x",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "49ba3bf3fe59a11cb146e8c756baf95298604ff56be626ea59df4c768a31b893",
+      "use_summary": "Quantified and corrected ambient RNA with CellBender 0.2.0 remove-background in Parse-derived snRNA-seq count matrices; also corrected ambient RNA per sample while uniformly reprocessing three published datasets quantified with kallisto bustools.",
+      "implementation_scope_note": "Input quantification differs between new and reprocessed data. The new-data release is 0.2.0, while the reprocessing paragraph does not restate a release or full options. Scrublet, percentile QC and downstream SCANPY/Harmony are separate steps.",
+      "version_reported_near_name": "0.2.0",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 33,
+          "section": "Methods / Reprocessing publicly available single-nucleus gene expression datasets",
+          "paragraph_sha256": "88e9de5ba53dbdfd71b23673969dd1e224b8164b4321527b0880b26d183ad290"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P088",
+    "primary_paragraph": 41,
+    "observed_role": "reused-published-differential-expression",
+    "review": {
+      "pmcid": "PMC11631763",
+      "doi": "10.1038/s41588-024-01975-5",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "ca73da3366c42e108fc5d2dea1101a2355301c42742888d0c2c96ac77385e033",
+      "use_summary": "Reused published DCM-versus-control differential-expression results derived from CellBender-adjusted counts, requiring adjusted two-sided P below 0.05 and absence of the published background-contamination flag for that source dataset.",
+      "implementation_scope_note": "This paragraph establishes reuse of previously analyzed results, not a new CellBender run. The contamination flag and transcriptome-wide P threshold govern published DE-result selection, not CellBender false-positive rate. The release and original fitting parameters are unstated.",
+      "version_reported_near_name": "",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P104",
+    "primary_paragraph": 30,
+    "observed_role": "contamination-assessment-with-null-finding",
+    "review": {
+      "pmcid": "PMC13649572",
+      "doi": "10.1038/s41588-026-02733-5",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "839ad763ce25a4128054b729506dd4d35e62970526d8200a40c178672c757684",
+      "use_summary": "Initially assessed ambient RNA and random barcode-swapping contamination with CellBender 0.4.0 and reported no significant ambient contamination; a separate SoupX analysis supported that assessment.",
+      "implementation_scope_note": "The source reports a null contamination assessment, not evidence that all matrices were denoised with CellBender. SoupX 1.6.2 is a distinct validation method; CellBender fitting options are unstated.",
+      "version_reported_near_name": "0.4.0",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P123",
+    "primary_paragraph": 46,
+    "observed_role": "background-correction-and-cell-calling",
+    "review": {
+      "pmcid": "PMC13553293",
+      "doi": "10.1038/s41588-026-02741-5",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "54250e2bfee44782c6e2f74e8119aa8d6d73151c5a7cac353341b9e5e4d7c95a",
+      "use_summary": "Applied CellBender 0.1.0 remove-background to raw PBMC droplet count matrices to remove cell-free ambient RNA and call cells before per-cell filtering and doublet removal.",
+      "implementation_scope_note": "Cell Ranger/STAR quantification, UMI/gene/mitochondrial/hemoglobin QC and Scrublet/scds doublet detection remain separate. The historical CellBender version is explicit but its fit parameters are not given.",
+      "version_reported_near_name": "0.1.0",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P161",
+    "primary_paragraph": 64,
+    "observed_role": "background-correction-with-manual-fit-review",
+    "review": {
+      "pmcid": "PMC13447095",
+      "doi": "10.1038/s41588-026-02665-0",
+      "tool_id": "cellbender",
+      "evidence_paragraph_sha256": "81f0565071304ccccd7b7f39837da81e1d7e62f4a04798c1ab6c16e78dd43184",
+      "use_summary": "Removed ambient RNA using CellBender 0.2.0 with expected cells 10,000, 50,000 included droplets, false-positive rate 0.01, 150 epochs and default learning rate; manually inspected per-sample learning curves.",
+      "implementation_scope_note": "The reported fit uses a historical release and requires the original unfiltered count matrices. Cell Ranger expression quantification and STARsolo spliced/unspliced/ambiguous matrices are distinct upstream products; no automatic convergence certificate is implied by manual review.",
+      "version_reported_near_name": "0.2.0",
+      "supporting_evidence": []
+    }
+  }
+]

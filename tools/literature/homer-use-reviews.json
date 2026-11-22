@@ -1,0 +1,231 @@
+[
+  {
+    "paper_id": "P016",
+    "primary_paragraph": 27,
+    "observed_role": "atac-region-peaks-and-coverage",
+    "review": {
+      "pmcid": "PMC10765522",
+      "doi": "10.1038/s41586-023-06845-4",
+      "tool_id": "homer",
+      "evidence_paragraph_sha256": "e6b9a5addbea997bd8c8e393ce30362bb8606cd72b519d5c4af617479b892e79",
+      "use_summary": "Called mm10 ATAC open-chromatin regions with HOMER region mode, a 150-bp fragment size and 300-bp peak size; generated replicate-merged 1-bp signal tracks normalized to ten million reads, with the reported 4-bp upstream Tn5 shift and paired-end fragment extension.",
+      "implementation_scope_note": "Peak calling, normalized coverage, read shifting and full-fragment extension are separate operations. The paragraph does not name a HOMER release or exact executable/track commands. Alignment, MAPQ30 filtering and duplicate removal are upstream steps, not supplied by a motif scanner.",
+      "version_reported_near_name": "unstated",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P040",
+    "primary_paragraph": 49,
+    "observed_role": "refseq-exon-rna-quantification",
+    "review": {
+      "pmcid": "PMC13645638",
+      "doi": "10.1038/s41586-026-10954-1",
+      "tool_id": "homer",
+      "evidence_paragraph_sha256": "cf5e717c148917f5cb6f9ef14860d8162ad66088099b42dfef4bbdac84d68d5e",
+      "use_summary": "Used HOMER 5.1 analyzeRepeats.pl to calculate raw exon counts and RPKM for RefSeq genes in stimulated CD8 T-cell bulk RNA-seq before DESeq2 1.48.2 differential expression.",
+      "implementation_scope_note": "This is exon-level gene quantification, not motif discovery. The RPKM eligibility rule and DESeq2 model, scaling and adjusted-P/fold-change criteria are downstream choices; RefSeq edition, read-strand and paired-fragment assignment details are unstated.",
+      "version_reported_near_name": "5.1",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P044",
+    "primary_paragraph": 51,
+    "observed_role": "differential-atac-peak-motif-analysis",
+    "review": {
+      "pmcid": "PMC11711094",
+      "doi": "10.1038/s41586-024-08307-x",
+      "tool_id": "homer",
+      "evidence_paragraph_sha256": "df9c621ac10926c44e81517531b9a0399a085d52a62d812dd672fa26eab5d4ca",
+      "use_summary": "Analysed DNA-binding-factor motifs in differential fetal-hepatocyte ATAC peaks using HOMER 4.11 after the peak atlas was expanded 500 bp on each side of the summit and differential peaks were selected with DESeq2.",
+      "implementation_scope_note": "The source does not identify the HOMER command, motif database, known-versus-de-novo mode or background. The summit expansion, differential analysis and heatmap are separate; do not infer motif-window defaults or a genome build from this paragraph.",
+      "version_reported_near_name": "4.11",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P046",
+    "primary_paragraph": 39,
+    "observed_role": "ccre-dar-genomic-motif-enrichment",
+    "review": {
+      "pmcid": "PMC13668669",
+      "doi": "10.1038/s41586-026-10987-6",
+      "tool_id": "homer",
+      "evidence_paragraph_sha256": "ae2ddd5a92f43c7375d0c33a4219eb2e23595d719994c4018b172c1b0cb8b9cf",
+      "use_summary": "Ran HOMER findMotifsGenome.pl on cell-type-specific cCREs and differentially accessible regions with -size given and otherwise stated defaults, then retained significant-motif TFs with matching-cell-type RPKM greater than 10.",
+      "implementation_scope_note": "Preserve actual region widths and the separate TF-expression filter. HOMER motif enrichment corroborates ASCL1/LHX2 accessibility associations; TOBIAS footprinting and its TF-binding differences are a separate analysis. No HOMER release, motif-set edition or explicit background is stated.",
+      "version_reported_near_name": "unstated",
+      "supporting_evidence": [
+        {
+          "section": "Regulatory landscapes of vRG and oRG",
+          "paragraph_index": 11,
+          "paragraph_sha256": "b61bff4df9acb07034737304f5800755bea77abc9f74d00979c4c3c583e7f244"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P050",
+    "primary_paragraph": 44,
+    "observed_role": "chip-and-atac-gene-feature-annotation",
+    "review": {
+      "pmcid": "PMC10781626",
+      "doi": "10.1038/s41586-023-06821-y",
+      "tool_id": "homer",
+      "evidence_paragraph_sha256": "7c82ee1cdcd75de24dc88a845a82d71b4343a5d28abfa3fbfe76d9a1852c88fa",
+      "use_summary": "Used HOMER annotatePeaks in nf-core analyses to classify Toxoplasma gondii ME49 ChIP-seq and ATAC-seq peak distributions relative to gene features.",
+      "implementation_scope_note": "The ChIP workflow and ATAC workflow are distinct. MACS2 calls peaks; featureCounts and DESeq2 quantify and compare annotated ATAC peaks. Do not relabel annotation as HOMER peak calling or motif analysis. The exact HOMER version, feature annotation edition and annotation flags are unstated.",
+      "version_reported_near_name": "unstated",
+      "supporting_evidence": [
+        {
+          "section": "Methods / ATAC–seq",
+          "paragraph_index": 47,
+          "paragraph_sha256": "e12f052ce57697b8e37d8ec7c8a80fa989609538f6306ff7fa68796b68b05b62"
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P053",
+    "primary_paragraph": 70,
+    "observed_role": "te-association-and-tss-proximity",
+    "review": {
+      "pmcid": "PMC10719095",
+      "doi": "10.1038/s41586-023-06819-6",
+      "tool_id": "homer",
+      "evidence_paragraph_sha256": "c3b96d553eb4dad9f77c73f39e26baed7ac86891c044e2d0895ac03697734626",
+      "use_summary": "Used HOMER annotatePeaks.pl with hg38 to annotate transposable-element association and TSS proximity for human DMRs, peaks, loops and boundaries, and repeated TE annotation for mouse ATAC peaks with mm10.",
+      "implementation_scope_note": "The source includes several region classes, not just peaks. Species/build-specific TE annotations and transcript/TSS resources must remain explicit. It does not report HOMER version, exact annotation database editions or motif discovery.",
+      "version_reported_near_name": "unstated",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P124",
+    "primary_paragraph": 55,
+    "observed_role": "batf3-accessibility-motif-analysis",
+    "review": {
+      "pmcid": "PMC10703699",
+      "doi": "10.1038/s41588-023-01554-0",
+      "tool_id": "homer",
+      "evidence_paragraph_sha256": "9da5cf123f884f9c7a732f03d64e8a75cbd3ae28a3b3cda287b5eed08f511941",
+      "use_summary": "Used HOMER 4.11 to identify TF-binding motifs associated with chromatin-accessibility changes in BATF3-overexpressing versus control CD8 T cells.",
+      "implementation_scope_note": "The paragraph delegates extra detail to Supplementary Method 2 and does not specify a HOMER command, motif mode or background. ChIPSeeker supplies nearest-gene/genomic-region annotation, while MACS2, featureCounts and DESeq2 supply peak calling, counting and differential analysis.",
+      "version_reported_near_name": "4.11",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P126",
+    "primary_paragraph": 54,
+    "observed_role": "motif-model-resource-reuse",
+    "review": {
+      "pmcid": "PMC11549050",
+      "doi": "10.1038/s41588-024-01947-9",
+      "tool_id": "homer",
+      "evidence_paragraph_sha256": "bc4dbb3acf2fee9e6607332c2633bcf9f0e5bb01fd60704d5bd20849e62e9b2c",
+      "use_summary": "Used HOMER-origin TF motif models alongside ENCODE, HOCOMOCO and FactorBook models obtained through MotifDB 1.42.0 for motifbreakR 2.13.7 weighted-sum disruption analysis of noncoding diabetes variants.",
+      "implementation_scope_note": "HOMER is a motif collection here; the paper does not report running a HOMER program. MotifDB 1.42.0 and motifbreakR 2.13.7 are not HOMER releases. The dbSNP/GRCh38 resources, motifbreakR probability/strong-effect rule and tissue-expression filtering remain separate.",
+      "version_reported_near_name": "motif collection; HOMER release unstated",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P133",
+    "primary_paragraph": 38,
+    "observed_role": "known-motif-analysis-chip-peaks",
+    "review": {
+      "pmcid": "PMC12695660",
+      "doi": "10.1038/s41588-025-02388-8",
+      "tool_id": "homer",
+      "evidence_paragraph_sha256": "e60a4991640aa1e1f8a6baf8e44e6e22b35fc660bab56d02928d4696e8b2fb05",
+      "use_summary": "Applied the HOMER 4.11 Known Motif Discovery approach to motifs in prostate-cancer ChIP-seq analyses after separately defined alignment, filtering and MACS3 peak calling.",
+      "implementation_scope_note": "Known Motif Discovery is the source label and does not establish de-novo motif discovery. The exact HOMER command, known-motif database edition, window and target/background sets are unstated. DeepTools normalization and heatmaps are separate.",
+      "version_reported_near_name": "4.11",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P163",
+    "primary_paragraph": 65,
+    "observed_role": "cuttag-motif-and-peak-annotation",
+    "review": {
+      "pmcid": "PMC11525197",
+      "doi": "10.1038/s41588-024-01911-7",
+      "tool_id": "homer",
+      "evidence_paragraph_sha256": "b7c4273d16d9c388e975990c42dd98f2966f691674eca94a1b99786ea0834757",
+      "use_summary": "Used HOMER 4.11.1 for motif analysis and peak annotation of PU.1 CUT&Tag data; the results also describe motif enrichment in changing ATAC regions during the DB2115 time course.",
+      "implementation_scope_note": "Retain the exact 4.11.1 patch release and distinguish the CUT&Tag and time-course ATAC region sets. Canonical PU.1 log-odds scoring is described alongside HOMER, so do not assume HOMER supplied every affinity score. Alignment, coverage, MACS2 peak calling and DiffBind differential selection are separate.",
+      "version_reported_near_name": "4.11.1",
+      "supporting_evidence": [
+        {
+          "section": "Results / Pharmacological binding site restriction repositions PU.1",
+          "paragraph_index": 5,
+          "paragraph_sha256": "890e971127f14bf7805c6b75ba047f17c40bc1b2ab036b466571ff720d9f202e",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "section": "Methods / Data processing",
+            "paragraph_index": 65,
+            "paragraph_sha256": "b7c4273d16d9c388e975990c42dd98f2966f691674eca94a1b99786ea0834757"
+          },
+          "shared_terms": [
+            "motif"
+          ],
+          "relation_note": "The results explicitly describe lowercase Homer motif analyses; methods paragraph65 names the Homer package4.11.1 and motif analysis. This checked same-paper link preserves the registry homonym guard. The time-course ATAC result has no separately stated HOMER release;do not transfer a version or reinterpret canonical PU.1 log-odds scoring as necessarily produced by HOMER."
+        },
+        {
+          "section": "Results / Temporally resolved consequences of redistributed PU.1",
+          "paragraph_index": 23,
+          "paragraph_sha256": "abccb05500bbd5285ce50ba7c6a72d3929a01adf64d9e5cc2037b11fdfcbc42e",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "section": "Methods / Data processing",
+            "paragraph_index": 65,
+            "paragraph_sha256": "b7c4273d16d9c388e975990c42dd98f2966f691674eca94a1b99786ea0834757"
+          },
+          "shared_terms": [
+            "motif"
+          ],
+          "relation_note": "The results explicitly describe lowercase Homer motif analyses; methods paragraph65 names the Homer package4.11.1 and motif analysis. This checked same-paper link preserves the registry homonym guard. The time-course ATAC result has no separately stated HOMER release;do not transfer a version or reinterpret canonical PU.1 log-odds scoring as necessarily produced by HOMER."
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "P187",
+    "primary_paragraph": 16,
+    "observed_role": "marker-peak-known-motif-enrichment",
+    "review": {
+      "pmcid": "PMC12805840",
+      "doi": "10.1016/j.ajhg.2025.11.009",
+      "tool_id": "homer",
+      "evidence_paragraph_sha256": "9375703648833ca55a6583408e12b99bc095f3d34b8fa7d51bb93b5bc55da53a",
+      "use_summary": "Tested liver cell-type marker ATAC peaks for enrichment of known TF motifs with HOMER 4.11, using -size 200 and all merged cell-type peaks as the background.",
+      "implementation_scope_note": "Preserve the specified 200-bp window and merged-peak background, including any target/background overlap; do not silently remove targets or substitute random genomic background. GREAT/GO gene-function enrichment is a separate test. Other HOMER options and motif-set edition are unstated.",
+      "version_reported_near_name": "4.11",
+      "supporting_evidence": []
+    }
+  },
+  {
+    "paper_id": "P215",
+    "primary_paragraph": 21,
+    "observed_role": "fasta-motif-analysis-shuffled-background",
+    "review": {
+      "pmcid": "PMC11480806",
+      "doi": "10.1016/j.ajhg.2024.07.022",
+      "tool_id": "homer",
+      "evidence_paragraph_sha256": "1337721e46591bcb0eea3afb4ffe48a6ffcd1ff531a45306bcc2b1604884a80a",
+      "use_summary": "Analysed lost ARID1A-bound regions, bound promoters, gained ARID1A regions and relocated ZIC2 regions with HOMER using BEDTools-derived FASTA and shuffled-input background; motif presence in lost regions was subsequently quantified with FIMO.",
+      "implementation_scope_note": "Retain the source E-value <0.001 wording without relabeling it a HOMER P/q value. HOMER version, exact command, known/de-novo mode and shuffle algorithm/seed are unstated. FIMO motif quantification is a separate downstream program; the reported ZIC-family motif presence does not identify a new motif-discovery algorithm.",
+      "version_reported_near_name": "unstated",
+      "supporting_evidence": [
+        {
+          "section": "Results / ARID1A-BAF regulates the accessibility at enhancers of EMT genes to coordinate ZIC2 binding",
+          "paragraph_index": 40,
+          "paragraph_sha256": "5a4af8fdf46156fac83c9ad7909738419de75d9d044fc2d8bb28f1155ac634f6"
+        }
+      ]
+    }
+  }
+]
