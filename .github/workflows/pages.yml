@@ -18,11 +18,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
+    outputs:
+      artifact_name: ${{ steps.artifact-name.outputs.name }}
     steps:
       - name: Check out repository
         uses: actions/checkout@v6
@@ -43,10 +42,28 @@ jobs:
               ignore=ignore_patterns("literature-review.html", "literature-warnings.html"),
           )
           PYTHON
+      - name: Name this build's artifact
+        id: artifact-name
+        shell: bash
+        run: echo "name=github-pages-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" >> "$GITHUB_OUTPUT"
       - name: Upload static site
         uses: actions/upload-pages-artifact@v4
         with:
+          # Re-running a build must not leave two artifacts with the same name.
+          name: ${{ steps.artifact-name.outputs.name }}
           path: ${{ runner.temp }}/omicsmatic-site
+
+  deploy:
+    # A separate job also allows the artifact lookup service to see the upload.
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          # Keep the completed build's name when only deployment is re-run.
+          artifact_name: ${{ needs.build.outputs.artifact_name }}
