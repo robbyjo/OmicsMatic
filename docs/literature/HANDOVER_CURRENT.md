@@ -1,5 +1,13 @@
 # Current toolbox handover
 
+**Latest development: [Java g:GOSt API and seven-paper source audit](GPROFILER_API_COMPONENT_CHECKPOINT_2026-11-22.md).**
+The API component passes 13 normal-build tests and four packaged live-service
+cases. The exact P052 archive-build mismatch is retained as SKIP3 with no result.
+The global file workflow, complete saved-bundle VERIFY/REPLAY and catalog
+admission remain pending: **zero new family credit or canonical reviews**.
+Counts stay 149 scoped families, 1,666 reviewed uses and 1,057 pending.
+The checkpoint records private producer/evidence paths and the next steps.
+
 **Start here: [published checkpoint and work to resume](HANDOVER_PUBLICATION_2026-11-22.md).**
 The qualified implementation is pushed to GitHub main at `19c4612a90dc`.
 That handover records the next implementation priorities, remaining reviews,

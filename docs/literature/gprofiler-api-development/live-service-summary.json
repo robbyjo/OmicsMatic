@@ -1,0 +1,65 @@
+{
+  "status": "PASS_PACKAGED_JAVA_SERVICE_CONTROLS_AND_EXACT_BUILD_SKIP",
+  "producer": {
+    "bytes": 197959229,
+    "sha256": "4a00173a9c1926eaf68921ed0310d116c2789a75923e8c92b155bb61d1cd46b3"
+  },
+  "probe_source": {
+    "bytes": 2960,
+    "sha256": "0e71c351eb8d8871152fc1244afde6e1dc80f875e012e310274151493941bcdd"
+  },
+  "cases": [
+    {
+      "case": "highlight",
+      "exit_code": 0,
+      "expected_skip": false,
+      "result": {
+        "terms": 42,
+        "build": "e114_eg62_p19_9dc92ac8",
+        "status": "PASS_ORIGINAL_SERVICE_RESULT"
+      }
+    },
+    {
+      "case": "ranked-custom",
+      "exit_code": 0,
+      "expected_skip": false,
+      "result": {
+        "status": "PASS_ORIGINAL_SERVICE_RESULT",
+        "build": "e114_eg62_p19_9dc92ac8",
+        "terms": 986
+      }
+    },
+    {
+      "case": "underrepresented-hp",
+      "exit_code": 0,
+      "expected_skip": false,
+      "result": {
+        "terms": 919,
+        "build": "e114_eg62_p19_9dc92ac8",
+        "status": "PASS_ORIGINAL_SERVICE_RESULT"
+      }
+    },
+    {
+      "case": "combined-fdr",
+      "exit_code": 0,
+      "expected_skip": false,
+      "result": {
+        "status": "PASS_ORIGINAL_SERVICE_RESULT",
+        "build": "e114_eg62_p19_9dc92ac8",
+        "terms": 1081
+      }
+    },
+    {
+      "case": "paper-build-mismatch",
+      "exit_code": 0,
+      "expected_skip": true,
+      "failure": {
+        "admitted_result": false,
+        "message": "Exact required g:Profiler build unavailable: required e111_eg58_p18_30541362, observed e111_eg58_p18_28c0ce60. Dependent analysis skipped; restore the exact archive or retain SKIP3; no build substituted",
+        "exit_code": 3
+      }
+    }
+  ],
+  "whole_tool_qualified": false,
+  "new_family_credit": 0
+}

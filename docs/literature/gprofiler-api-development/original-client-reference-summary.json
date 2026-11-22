@@ -1,0 +1,75 @@
+{
+  "status": "PASS_ORIGINAL_PYTHON100_SOURCE_ON_RECORDED_JAVA_REPLIES",
+  "sources": {
+    "gprofiler/__init__.py": {
+      "bytes": 85,
+      "sha256": "e92e42a24e14186da821d78d61680ba9086e9054539e8446575283e87513c701"
+    },
+    "gprofiler/version.py": {
+      "bytes": 21,
+      "sha256": "747ba863abe82bb9e9d40ee8473c35c72072ec22bdfca040738142296dbdb914"
+    },
+    "gprofiler/gprofiler.py": {
+      "bytes": 13580,
+      "sha256": "74b3b421815af8a0d5ca162eab66090d7e018cddd14e23f46cf05d8733eafb29"
+    },
+    "LICENSE.txt": {
+      "bytes": 1521,
+      "sha256": "17ea0eddd2faa3ce19a39587f9e3ff0e4fdb46b48651fa58a59aead54eeeb072"
+    }
+  },
+  "cases": [
+    {
+      "case": "highlight",
+      "returned_rows": 42,
+      "same_row_order_and_all_original_retained_fields": true,
+      "metadata_equal": true,
+      "protocol_differences_retained": [
+        "Original Python 1.0.0 has no highlight/output arguments; native Java submits both explicitly",
+        "Original Python serializes absent background as empty string; native Java retains explicit null"
+      ],
+      "native_highlight": true
+    },
+    {
+      "case": "ranked-custom",
+      "returned_rows": 986,
+      "same_row_order_and_all_original_retained_fields": true,
+      "metadata_equal": true,
+      "protocol_differences_retained": [
+        "Original Python 1.0.0 has no highlight/output arguments; native Java submits both explicitly",
+        "Original Python forces custom scope when background supplied; direct API preserves explicit caller scope"
+      ],
+      "native_highlight": false
+    },
+    {
+      "case": "underrepresented-hp",
+      "returned_rows": 919,
+      "same_row_order_and_all_original_retained_fields": true,
+      "metadata_equal": true,
+      "protocol_differences_retained": [
+        "Original Python 1.0.0 has no highlight/output arguments; native Java submits both explicitly",
+        "Original Python forces custom scope when background supplied; direct API preserves explicit caller scope"
+      ],
+      "native_highlight": false
+    },
+    {
+      "case": "combined-fdr",
+      "returned_rows": 1081,
+      "same_row_order_and_all_original_retained_fields": true,
+      "metadata_equal": true,
+      "protocol_differences_retained": [
+        "Original Python 1.0.0 has no highlight/output arguments; native Java submits both explicitly",
+        "Original Python serializes absent background as empty string; native Java retains explicit null"
+      ],
+      "native_highlight": false
+    }
+  ],
+  "original_distribution_source_unchanged": true,
+  "transport": "injected offline requests.post stub; no installed requests library",
+  "new_network_execution": false,
+  "R_client_parity_claimed": false,
+  "highlight_supported_by_original_Python100": false,
+  "full_client_runtime_qualification": false,
+  "whole_tool_qualified": false,
+  "new_family_credit": 0
+}
