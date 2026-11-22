@@ -68,6 +68,8 @@ public final class JLinAlgCli {
                 return ChromVarToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("gcta-tools"))
                 return GctaWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("acat-tools"))
+                return AcatToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("qtltools-tools"))
                 return QtltoolsWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("broad-gsea-tools"))
@@ -533,6 +535,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar tomtom-tools --help
               java -jar omicsmatic-<version>.jar chromvar-tools --help
               java -jar omicsmatic-<version>.jar gcta-tools --help
+              java -jar omicsmatic-<version>.jar acat-tools --help
               java -jar omicsmatic-<version>.jar qtltools-tools --help
               java -jar omicsmatic-<version>.jar broad-gsea-tools --help
               java -jar omicsmatic-<version>.jar twosamplemr-tools --help

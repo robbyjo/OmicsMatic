@@ -1,5 +1,27 @@
 # Current toolbox handover
 
+**HANDOVER: [native ACAT checkpoint, transfer paths and exact next work](HANDOVER_2026-11-22_ACAT_SKAT.md).**
+The new global acat-tools command provides native ACAT0.91 matrix combination
+and RUN/VERIFY/REPLAY captures. The final normal build and packaged Windows21,
+Windows25 and Linux21 JVMs each pass500 focused tests, including274 original
+ACAT cases,192 R column sum/mean pairs and the actual directory-alias replay
+regression. All22440 unchanged preceding JAR payloads are exact;the dispatcher
+is the sole modified preceding payload,with ten new payloads. The earlier
+499-test build and failed alias probe remain labelled historical/unadmitted.
+**Catalog totals stay146 scoped families,1639 reviewed/1083 pending;zero new
+family credit.** The full250-paper objective remains unfinished. Finish the
+ACAT/SKAT/SKAT-O source review,implement a typed standalone SKAT upstream adapter,
+then continue FUSION,GenomicRanges,g:Profiler and other high-impact gaps.
+SKAT2.2.5 is privately installed and eight direct synthetic fits completed;
+these are probes,not an execution adapter. All64 preceding worktrees are
+preserved(current owner65). The23 older shared-root variants are archived
+without replacing current main files. **Transfer ignored JARs,runtimes,private
+primary text and complete scientific/failed evidence separately before machine
+retirement;handle retained test junctions/symlinks explicitly.** Read the
+handover's prominent SKIP3/FAIL2 remedies. Cell Ranger stays excluded. No release,
+explicit Pages publication,whole-paper or full-goal completion is claimed.
+Lower entries preserve historical checkpoints and their then-current counts.
+
 **Current: [QTLtools admitted, exact remaining work and private transfer](QTLTOOLS_CATALOG_CHECKPOINT_2026-11-22.md).**
 QTLtools now has one scoped upstream family and nine primary-bound reviews.
 Counts are **146 scoped families (26 native +120 upstream),1639 reviewed uses and
