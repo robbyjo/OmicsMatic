@@ -1,0 +1,109 @@
+FORMALS
+as.pairlist(alist(Z = , obj = , weights.beta.rare = c(1, 25), weights.beta.common = c(0.5, 0.5), weights = NULL, method = "C", r.corr.rare = 0, r.corr.common = 0, CommonRare_Cutoff = NULL, test.type = "Joint", is_dosage = FALSE, missing_cutoff = 0.15, estimate_MAF = 1, SetID1 = NULL))
+BODY
+{
+    is_check_genotype = TRUE
+    if (Check_Class(obj, "SKAT_NULL_Model_ADJ")) {
+        obj.res = obj$re1
+    }
+    else if (Check_Class(obj, "SKAT_NULL_Model")) {
+        obj.res = obj
+    }
+    else {
+        stop("Wrong obj!")
+    }
+    if (is.matrix(Z) != TRUE) {
+        stop("Z should be a matrix")
+    }
+    n <- dim(Z)[1]
+    m <- dim(Z)[2]
+    m.org <- m
+    if (is.null(CommonRare_Cutoff)) {
+        CommonRare_Cutoff <- 1/sqrt(n * 2)
+    }
+    if (CommonRare_Cutoff < 0 && CommonRare_Cutoff > 0.5) {
+        stop("Error in CommonRare_Cutoff! It should be NULL or a numeric value between 0 to 0.5")
+    }
+    if (is.null(obj.res$n.all)) {
+        obj.res$n.all = n
+    }
+    out <- SKAT_MAIN_Check_Z(Z, obj.res$n.all, id_include = obj.res$id_include, SetID = SetID1, weights = weights, weights.beta = c(1, 1), impute.method = "fixed", is_check_genotype = is_check_genotype, is_dosage = is_dosage, missing_cutoff, max_maf = 1, estimate_MAF = estimate_MAF)
+    if (out$return == 1) {
+        out$param$n.marker <- m
+        out$n.rare = 0
+        out$n.common = 0
+        out$test.type = test.type
+        out$Cutoff = CommonRare_Cutoff
+        return(out)
+    }
+    Z.org <- Z
+    Z <- out$Z.test
+    weights.org <- weights
+    weights <- out$weights
+    m.test <- ncol(Z)
+    obj.res$n.all = nrow(Z)
+    obj.res$id_include = 1:nrow(Z)
+    if (Check_Class(obj, "SKAT_NULL_Model_ADJ")) {
+        obj$re1$id_include = obj.res$id_include
+        obj$re1$n.all = obj.res$n.all
+    }
+    else {
+        obj$id_include = obj.res$id_include
+        obj$n.all = obj.res$n.all
+    }
+    MAF <- Get_MAF(Z)
+    id.rare <- intersect(which(MAF < CommonRare_Cutoff), which(MAF > 0))
+    id.common <- intersect(which(MAF >= CommonRare_Cutoff), which(MAF > 0))
+    n.rare = length(id.rare)
+    n.common = length(id.common)
+    if (test.type == "Rare.Only") {
+        n.common = 0
+    }
+    else if (test.type == "Common.Only") {
+        n.rare = 0
+    }
+    is.run <- FALSE
+    if (n.rare == 0 && n.common > 0) {
+        Z.common <- cbind(Z[, id.common])
+        re <- SKAT_1(Z.common, obj, weights.beta = weights.beta.common, weights = weights, r.corr = r.corr.common, is_check_genotype = is_check_genotype, is_dosage = TRUE, missing_cutoff = 1, max_maf = 1, SetID = SetID1)
+        is.run = TRUE
+    }
+    else if (n.common == 0 && n.rare > 0) {
+        Z.rare <- cbind(Z[, id.rare])
+        re <- SKAT_1(Z.rare, obj, weights.beta = weights.beta.rare, weights = weights, r.corr = r.corr.rare, is_check_genotype = is_check_genotype, is_dosage = TRUE, missing_cutoff = 1, max_maf = 1, SetID = SetID1)
+        is.run = TRUE
+    }
+    else if (n.common == 0 && n.rare > 0) {
+        re <- list(p.value = 1)
+    }
+    else {
+        Z.rare <- cbind(Z[, id.rare])
+        Z.common <- cbind(Z[, id.common])
+        weights1 = weights2 = NULL
+        if (!is.null(weights.org)) {
+            weights1 = weights[id.rare]
+            weights2 = weights[id.common]
+        }
+        obj.scale <- SKAT_Scale_Genotypes(obj.res, Z.rare, Z.common, r.corr1 = r.corr.rare, r.corr2 = r.corr.common, weights.beta = weights.beta.rare, weights.beta2 = weights.beta.common, weights1 = weights1, weights2 = weights2)
+        if (method == "C") {
+            re <- SKAT_1(cbind(obj.scale$Z1, obj.scale$Z2), obj, kernel = "linear", is_check_genotype = is_check_genotype, is_dosage = TRUE)
+        }
+        else if (method == "A") {
+            re <- SKAT_CR_Linear(obj.res, obj.scale$Z1, obj.scale$Z2, r.all = c(0, 0.25, 0.5, 0.75, 1), IsReverse = TRUE)
+        }
+        else if (method == "AR") {
+            re <- SKAT_CR_Linear(obj.res, obj.scale$Z1, obj.scale$Z2, r.all = c(0, 0.25, 0.5, 0.75, 1), IsReverse = FALSE)
+        }
+        else {
+            stop("Wrong method!")
+        }
+        re$param$n.marker <- m.org
+        re$param$n.marker.test <- m.test
+    }
+    re$n.rare = n.rare
+    re$n.common = n.common
+    re$test.type = test.type
+    re$Cutoff = CommonRare_Cutoff
+    re$test.snp.mac <- SingleSNP_INFO(out$Z.test)
+    return(re)
+}

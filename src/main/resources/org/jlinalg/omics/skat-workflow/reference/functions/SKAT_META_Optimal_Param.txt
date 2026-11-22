@@ -1,0 +1,27 @@
+FORMALS
+as.pairlist(alist(Phi = , r.all = ))
+BODY
+{
+    p.m <- dim(Phi)[2]
+    r.n <- length(r.all)
+    Z.item1.1 <- Phi %*% rep(1, p.m)
+    ZZ <- Phi
+    ZMZ <- Z.item1.1 %*% t(Z.item1.1)/sum(ZZ)
+    W3.2.t <- ZZ - ZMZ
+    lambda <- Get_Lambda(W3.2.t)
+    W3.3.item <- sum(ZMZ * (ZZ - ZMZ)) * 4
+    z_mean_2 <- sum(ZZ)/p.m^2
+    tau1 <- sum(ZZ %*% ZZ)/p.m^2/z_mean_2
+    MuQ <- sum(lambda)
+    VarQ <- sum(lambda^2) * 2 + W3.3.item
+    KerQ <- sum(lambda^4)/(sum(lambda^2))^2 * 12
+    Df <- 12/KerQ
+    tau <- rep(0, r.n)
+    for (i in 1:r.n) {
+        r.corr <- r.all[i]
+        term1 <- p.m^2 * r.corr * z_mean_2 + tau1 * (1 - r.corr)
+        tau[i] <- term1
+    }
+    out <- list(MuQ = MuQ, VarQ = VarQ, KerQ = KerQ, lambda = lambda, VarRemain = W3.3.item, Df = Df, tau = tau, z_mean_2 = z_mean_2, p.m = p.m, tau.1 = tau1, tau.2 = p.m * z_mean_2)
+    return(out)
+}

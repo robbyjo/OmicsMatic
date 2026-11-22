@@ -1,0 +1,12 @@
+FORMALS
+as.pairlist(alist(ntest = , MAP = , alpha = ))
+BODY
+{
+    alpha1 <- alpha/ntest
+    n1 <- length(which(MAP * 2 < alpha1))
+    idx <- intersect(which(MAP >= alpha1), which(MAP * 2 < alpha1))
+    b1 <- (alpha - 2 * sum(MAP[idx]))/(alpha * n1)
+    k <- 1/b1
+    re = ntest - k
+    return(re)
+}

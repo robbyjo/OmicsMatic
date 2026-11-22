@@ -1,0 +1,25 @@
+FORMALS
+as.pairlist(alist(Z = , id_include = , Is.chrX = FALSE, SexVar = NULL))
+BODY
+{
+    MAF <- SKAT_Get_MAF(Z, id_include = NULL, Is.chrX = Is.chrX, SexVar = SexVar)
+    IDX.Err <- which(MAF > 0.5)
+    if (length(IDX.Err) > 0) {
+        msg <- sprintf("Genotypes of some variants are not the number of minor alleles! These genotypes are flipped!")
+        warning(msg, call. = FALSE)
+        if (!Is.chrX) {
+            Z[, IDX.Err] <- 2 - Z[, IDX.Err]
+        }
+        else {
+            id.male <- which(SexVar == 1)
+            id.female <- which(SexVar == 2)
+            if (length(id.male) > 0) {
+                Z[id.male, IDX.Err] <- 1 - Z[id.male, IDX.Err]
+            }
+            if (length(id.female) > 0) {
+                Z[id.female, IDX.Err] <- 2 - Z[id.female, IDX.Err]
+            }
+        }
+    }
+    return(Z)
+}

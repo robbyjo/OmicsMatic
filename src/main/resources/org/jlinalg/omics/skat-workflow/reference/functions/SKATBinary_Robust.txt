@@ -1,0 +1,114 @@
+FORMALS
+as.pairlist(alist(Z = , obj = , kernel = "linear.weighted", method = "SKAT", r.corr = NULL, weights.beta = c(1, 25), weights = NULL, impute.method = "bestguess", is_check_genotype = TRUE, is_dosage = FALSE, missing_cutoff = 0.15, max_maf = 1, estimate_MAF = 1))
+BODY
+{
+    test.type = "Robust"
+    SetID1 = NULL
+    if (Check_Class(obj, "SKAT_NULL_Model_ADJ")) {
+        obj.res = obj$re1
+    }
+    else if (Check_Class(obj, "SKAT_NULL_Model")) {
+        obj.res = obj
+    }
+    else {
+        stop("Wrong obj!")
+    }
+    if (!Check_Class(Z, c("matrix", "dgCMatrix", "dgeMatrix"))) {
+        stop("Z should be a matrix")
+    }
+    n <- dim(Z)[1]
+    m <- dim(Z)[2]
+    m.org <- m
+    if (is.null(obj.res$n.all)) {
+        obj.res$n.all = n
+    }
+    if (kernel == "linear") {
+        weights = rep(1, ncol(Z))
+    }
+    else {
+        if (kernel != "linear.weighted") {
+            stop("Wrong kernel!")
+        }
+    }
+    if (!is.null(weights)) {
+        if (length(weights) != ncol(Z)) {
+            stop("Incorrect length of weights!")
+        }
+    }
+    else {
+        if (length(weights.beta) != 2) {
+            stop("Incorrect length of weights.beta!")
+        }
+    }
+    out <- SKAT_MAIN_Check_Z(Z, obj.res$n.all, id_include = obj.res$id_include, SetID = SetID1, weights = weights, weights.beta = c(1, 1), impute.method = "fixed", is_check_genotype = is_check_genotype, is_dosage = is_dosage, missing_cutoff, max_maf = max_maf, estimate_MAF = estimate_MAF)
+    if (out$return == 1) {
+        out$param$n.marker <- m
+        out$n = 0
+        out$test.type = test.type
+        return(out)
+    }
+    Z.org <- Z
+    Z <- out$Z.test
+    for (jj in 1:ncol(Z)) {
+        n.g <- sum(Z[, jj])
+        if (n.g/(2 * length(Z[, jj])) > 0.5) {
+            Z[, jj] <- 2 - Z[, jj]
+            n.g <- sum(Z[, jj])
+        }
+    }
+    obj.res$n.all = nrow(Z)
+    obj.res$id_include = 1:nrow(Z)
+    MAF <- Get_MAF(Z)
+    if (is.null(weights)) {
+        weight = Beta_Weight(MAF, weights.beta)
+        weights = weight
+    }
+    if (Check_Class(obj, "SKAT_NULL_Model_ADJ")) {
+        obj$re1$id_include = obj.res$id_include
+        obj$re1$n.all = obj.res$n.all
+    }
+    else {
+        obj$id_include = obj.res$id_include
+        obj$n.all = obj.res$n.all
+    }
+    colmax_Z = colMax(Z)
+    list_tiny = which(colmax_Z <= 0.2)
+    if (length(list_tiny) >= 1) {
+        if (length(list_tiny) < dim(Z)[2]) {
+            Z = Z[, -list_tiny]
+            weights = weights[-list_tiny]
+        }
+        else {
+            stop("all genotypes are close to 0!")
+        }
+    }
+    if (max(Z) > 2 | min(Z) < 0) {
+        stop("Z is out of bounds[0,2]!")
+    }
+    m.test <- ncol(Z)
+    MAF <- Get_MAF(Z)
+    n.markers = length(MAF)
+    mac = sum(Z)
+    is.run <- FALSE
+    if (method == "SKAT") {
+        r.corr = 0
+    }
+    if (method == "Burden") {
+        r.corr = 1
+    }
+    re <- SKATBinary_spa(G = Z, obj = obj.res, weights = weights, method = method, r.corr = r.corr)
+    if (length(r.corr) == 0) {
+        r.corr = c(0, 0.1^2, 0.2^2, 0.3^2, 0.5^2, 0.5, 1)
+    }
+    is.run = TRUE
+    re$param$n.marker <- m.org
+    re$param$n.marker.test <- m.test
+    re$param$rho = r.corr
+    if (method == "SKATO") {
+        re$param$minp = min(re$p.value_each)
+        re$param$rho_est = r.corr[which.min(re$p.value_each)]
+    }
+    re$mac = mac
+    re$test.snp.mac <- SingleSNP_INFO(out$Z.test)
+    return(re)
+}

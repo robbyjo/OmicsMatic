@@ -1,0 +1,57 @@
+FORMALS
+as.pairlist(alist(Z = , obj = , kernel = "linear.weighted", weights.beta = c(1, 25), weights = NULL, impute.method = "bestguess", r.corr = 0, is_dosage = FALSE, missing_cutoff = , max_maf = , SetID = , estimate_MAF = , Is.Single = FALSE, Is.MakeZ1 = TRUE))
+BODY
+{
+    is_check_genotype = TRUE
+    obj.res = SKATExactBin_CheckObj(obj)
+    y = round(obj.res$mu + obj.res$res)
+    pi1 = obj.res$mu
+    ncase = sum(y)
+    n <- dim(Z)[1]
+    m <- dim(Z)[2]
+    SKAT_Check_RCorr(kernel, r.corr)
+    out.z <- SKAT_MAIN_Check_Z(Z, n, obj.res$id_include, SetID, weights, weights.beta, impute.method, is_check_genotype, is_dosage, missing_cutoff, max_maf = max_maf, estimate_MAF = estimate_MAF)
+    if (out.z$return == 1) {
+        out.z$param$n.marker <- m
+        out.z$param$n.marker.test = 0
+        return(out.z)
+    }
+    Z1 = cbind(out.z$Z.test)
+    MAC = sum(Z1)
+    rsum <- rowSums(Z1)
+    idx <- which(rsum > 0)
+    m <- length(idx)
+    if (!Is.MakeZ1) {
+        re = list(Z1 = Z1, obj.res = obj.res, pi1 = pi1, ncase = ncase, r.corr = r.corr, idx = idx, y = y, MAC = MAC, m = m, return = 0)
+        return(re)
+    }
+    if (Is.Single) {
+        re = list(Z1 = Z1, obj.res = obj.res, pi1 = pi1, ncase = ncase, r.corr = 0, idx = idx, y = y, MAC = MAC, m = m, return = 0)
+        return(re)
+    }
+    if (length(r.corr) > 1 && ncol(Z1) <= 1) {
+        r.corr = 0
+    }
+    else if (length(r.corr) > 1 && sum(abs(Z1 - Z1[, 1])) == 0) {
+        r.corr = 0
+        msg <- sprintf("Rank of the genotype matrix is one! SKAT is used instead of SKAT-O!")
+        warning(msg, call. = FALSE)
+    }
+    if (kernel == "linear.weighted") {
+        Z1 = t(t(Z1) * (out.z$weights))
+    }
+    n.marker.test = ncol(Z1)
+    if (length(r.corr) == 1) {
+        if (r.corr == 1) {
+            Z1 <- cbind(rowSums(Z1))
+        }
+        else if (r.corr > 0) {
+            p.m <- dim(Z1)[2]
+            R.M <- diag(rep(1 - r.corr, p.m)) + matrix(rep(r.corr, p.m * p.m), ncol = p.m)
+            L <- chol(R.M, pivot = TRUE)
+            Z1 <- Z1 %*% t(L)
+        }
+    }
+    re = list(Z1 = Z1, obj.res = obj.res, pi1 = pi1, ncase = ncase, r.corr = r.corr, idx = idx, y = y, MAC = MAC, m = m, n.marker.test = n.marker.test, return = 0)
+    return(re)
+}

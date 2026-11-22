@@ -1,0 +1,13 @@
+FORMALS
+as.pairlist(alist(pmin.q = , muQ = , varQ = , df = , tau = , r.all = , pmin = NULL))
+BODY
+{
+    re <- integrate(SKAT_Optimal_Integrate_Func_VarMatching, lower = 0, upper = 40, subdivisions = 2000, pmin.q = pmin.q, muQ = muQ, varQ = varQ, df = df, tau = tau, r.all = r.all, abs.tol = 10^-25)
+    pvalue <- 1 - re[[1]]
+    if (!is.null(pmin)) {
+        if (pmin * length(r.all) < pvalue) {
+            pvalue = pmin * length(r.all)
+        }
+    }
+    return(pvalue)
+}

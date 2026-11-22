@@ -1,0 +1,18 @@
+FORMALS
+as.pairlist(alist(obj = , FWER = 0.05))
+BODY
+{
+    if (!Check_Class(obj, "SKAT_SSD_ALL") && !Check_Class(obj, "SKATBinary_SSD_ALL")) {
+        stop("obj is not a SKAT.SSD.All or SKATBinary.SSD.All output object")
+    }
+    p.min <- apply(obj$P.value.Resampling, 2, min, na.rm = TRUE)
+    P.cut <- quantile(p.min, FWER)
+    ID <- which(obj$results$P.value < P.cut)
+    if (length(ID) == 0) {
+        re <- list(result = NULL, n = length(ID), ID = NULL)
+    }
+    else {
+        re <- list(result = obj$results[ID, ], n = length(ID), ID = ID)
+    }
+    return(re)
+}

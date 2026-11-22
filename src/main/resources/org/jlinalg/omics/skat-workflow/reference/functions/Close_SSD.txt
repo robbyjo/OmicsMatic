@@ -1,0 +1,15 @@
+FORMALS
+NULL
+BODY
+{
+    if (get("SSD_FILE_OPEN.isOpen", envir = SSD.env) == 1) {
+        temp <- .C("R_Close_MWA")
+        Msg <- sprintf("Close the opened SSD file: %s\n", get("SSD_FILE_OPEN.FileName", envir = SSD.env))
+        cat(Msg)
+        assign("SSD_FILE_OPEN.isOpen", 0, envir = SSD.env)
+    }
+    else {
+        Msg <- sprintf("No opened SSD file!\n")
+        cat(Msg)
+    }
+}

@@ -1,0 +1,18 @@
+FORMALS
+as.pairlist(alist(K = , Q = , isFast = FALSE))
+BODY
+{
+    df1 = NULL
+    p1 <- ncol(K)
+    if (!isFast || p1 < 2000) {
+        lambda <- Get_Lambda(K)
+        re <- Get_PValue.Lambda(lambda, Q)
+    }
+    else {
+        out_lambda = Get_Lambda_Approx(K)
+        lambda = out_lambda$lambda
+        df1 = out_lambda$df1
+        re <- Get_PValue.Lambda(lambda, Q, df1 = df1)
+    }
+    return(re)
+}

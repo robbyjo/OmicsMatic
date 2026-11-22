@@ -1,0 +1,49 @@
+FORMALS
+as.pairlist(alist(Q.all = , Z1 = , r.all = , p_all = , Q.sim.all = , res.moments = , method = NULL, Q.sim = NULL))
+BODY
+{
+    n.r <- length(r.all)
+    n.q <- dim(Q.all)[1]
+    p.m <- dim(Z1)[2]
+    lambda.all <- list()
+    Z2.all <- list()
+    for (i in 1:n.r) {
+        r.corr <- r.all[i]
+        R.M <- diag(rep(1 - r.corr, p.m)) + matrix(rep(r.corr, p.m * p.m), ncol = p.m)
+        L <- chol(R.M, pivot = TRUE)
+        Z2.all[[i]] <- Z1 %*% t(L)
+    }
+    param.m <- SKAT_Optimal_Param_VarMatching(Z1, r.all, p_all, res.moments, method = method, Q.sim = Q.sim)
+    Each_Info <- SKAT_Optimal_Each_Q_VarMatching(param.m, Q.all, r.all, Z2.all, p_all, Q.sim.all, method)
+    pmin.q <- Each_Info$pmin.q
+    pmin.q.sim <- Each_Info$pmin.q.sim
+    pmin <- Each_Info$pmin
+    pval <- rep(0, n.q)
+    pval.sim <- rep(0, n.q)
+    muQ = param.m$param$muQ
+    varQ = param.m$param$varQ + param.m$VarRemain
+    df = param.m$param$df
+    tau = param.m$tau
+    p.val.each = Each_Info$pval
+    for (i in 1:n.q) {
+        pval[i] <- SKAT_Optimal_PValue_VarMatching(pmin.q[i, ], muQ, varQ, df, tau, r.all, pmin = pmin[i])
+    }
+    multi <- 3
+    if (length(r.all) < 3) {
+        multi <- 2
+    }
+    for (i in 1:n.q) {
+        pval.each <- Each_Info$pval[i, ]
+        IDX <- which(pval.each > 0)
+        pval1 <- min(pval.each) * multi
+        if (pval[i] < 0 || length(IDX) < length(r.all)) {
+            pval[i] <- pval1
+        }
+        if (pval[i] == 0) {
+            if (length(IDX) > 0) {
+                pval[i] = min(pval.each[IDX])
+            }
+        }
+    }
+    return(list(p.value = pval, p.val.each = p.val.each))
+}

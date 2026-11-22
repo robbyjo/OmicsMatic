@@ -1,0 +1,10 @@
+FORMALS
+as.pairlist(alist(logdelta = , lambda = , etas = ))
+BODY
+{
+    nq <- length(etas)
+    delta <- exp(logdelta)
+    etasq <- etas * etas
+    ldelta <- lambda + delta
+    return(0.5 * (nq * sum(etasq/(ldelta * ldelta))/sum(etasq/ldelta) - sum(1/ldelta)))
+}

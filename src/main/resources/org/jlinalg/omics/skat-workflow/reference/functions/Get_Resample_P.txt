@@ -1,0 +1,12 @@
+FORMALS
+as.pairlist(alist(Z = , res = , res.out = ))
+BODY
+{
+    Q <- sum((t(Z) %*% res)^2)
+    temp <- t(Z) %*% res.out
+    temp1 <- colSums(temp^2)
+    n1 <- length(temp1)
+    idx1 <- which(Q == temp1)
+    idx2 <- which(Q <= temp1)
+    return(c(length(idx2)/n1, length(idx1)/n1))
+}

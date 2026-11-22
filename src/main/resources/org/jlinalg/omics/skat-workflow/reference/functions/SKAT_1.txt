@@ -1,0 +1,19 @@
+FORMALS
+as.pairlist(alist(Z = , obj = , ... = ))
+BODY
+{
+    if (Check_Class(obj, "SKAT_NULL_Model_EMMAX")) {
+        re <- SKAT_emmaX(Z, obj, ...)
+    }
+    else if (Check_Class(obj, "SKAT_NULL_Model_ADJ")) {
+        re <- SKAT_With_NullModel_ADJ(Z, obj, ...)
+    }
+    else if (Check_Class(obj, "SKAT_NULL_Model")) {
+        re <- SKAT_With_NullModel(Z, obj, ...)
+    }
+    else {
+        stop("The old interface is defunct! Please run SKAT_NULL_Model first!")
+    }
+    class(re) <- "SKAT_OUT"
+    return(re)
+}

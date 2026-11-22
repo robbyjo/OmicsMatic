@@ -1,0 +1,29 @@
+FORMALS
+as.pairlist(alist(formula = , SexVar = , data = NULL))
+BODY
+{
+    temp.dat <- get_all_vars(formula, data)
+    idx.var.sex = which(colnames(temp.dat) == SexVar)
+    if (length(idx.var.sex) == 0) {
+        msg <- sprintf("No variable %s exists in the formula!\n", SexVar)
+        stop(msg)
+    }
+    Sex.Var <- temp.dat[, idx.var.sex]
+    Sex.Var.Org <- Sex.Var
+    id.missing <- which(is.na(Sex.Var))
+    if (length(id.missing) == length(Sex.Var)) {
+        msg <- sprintf("All sex values are NA\n")
+        stop(msg)
+    }
+    else if (length(id.missing) > 0) {
+        msg <- sprintf("There are %d missing values in the Sex variable\n", length(id.missing))
+        cat(msg)
+        Sex.Var <- Sex.Var[id.missing]
+    }
+    id <- intersect(which(Sex.Var != 1), which(Sex.Var != 2))
+    if (length(id) > 0) {
+        msg <- sprintf("%d subjects have sex values neither 1 nor 2. They should be either 1 (=male) or 2(=female)!", length(id))
+        stop(msg)
+    }
+    return(Sex.Var.Org)
+}

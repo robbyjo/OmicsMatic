@@ -1,0 +1,9 @@
+FORMALS
+as.pairlist(alist(MAF = , N.Sample = , Weight.Param = ))
+BODY
+{
+    W <- Beta_Weights(MAF, Weight.Param)^2
+    Pi <- 1 - (1 - MAF)^(2 * N.Sample)
+    W_Pi <- W * Pi
+    return(W_Pi)
+}

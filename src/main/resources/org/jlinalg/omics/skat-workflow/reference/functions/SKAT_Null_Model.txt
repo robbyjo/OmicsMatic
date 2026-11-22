@@ -1,0 +1,32 @@
+FORMALS
+as.pairlist(alist(formula = , data = NULL, out_type = "C", n.Resampling = 0, type.Resampling = "bootstrap", Adjustment = TRUE))
+BODY
+{
+    SKAT_MAIN_Check_OutType(out_type)
+    obj1 <- model.frame(formula, na.action = na.omit, data)
+    obj2 <- model.frame(formula, na.action = na.pass, data)
+    n <- dim(obj2)[1]
+    n1 <- dim(obj1)[1]
+    id_include <- SKAT_Null_Model_Get_Includes(obj1, obj2)
+    n1 <- length(id_include)
+    if (n1 < 2000 && out_type == "D" && Adjustment) {
+        MSG <- sprintf("Sample size (non-missing y and X) = %d, which is < 2000. The small sample adjustment is applied!\n", n)
+        cat(MSG)
+        n.Resampling.kurtosis = 10000
+        re <- SKAT_Null_Model_MomentAdjust(formula, data, n.Resampling, type.Resampling = type.Resampling, is_kurtosis_adj = TRUE, n.Resampling.kurtosis = n.Resampling.kurtosis)
+        return(re)
+    }
+    if (n - n1 > 0) {
+        MSG <- sprintf("%d  samples have either missing phenotype or missing covariates. They are excluded from the analysis!", n - n1)
+        warning(MSG, call. = FALSE)
+    }
+    if (out_type == "C") {
+        re <- Get_SKAT_Residuals.linear(formula, data, n.Resampling, type.Resampling, id_include)
+    }
+    else {
+        re <- Get_SKAT_Residuals.logistic(formula, data, n.Resampling, type.Resampling, id_include)
+    }
+    class(re) <- "SKAT_NULL_Model"
+    re$n.all <- n
+    return(re)
+}

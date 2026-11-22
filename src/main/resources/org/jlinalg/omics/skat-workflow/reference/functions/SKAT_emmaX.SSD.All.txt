@@ -1,0 +1,33 @@
+FORMALS
+as.pairlist(alist(SSD.INFO = , obj = , ... = , obj.SNPWeight = NULL))
+BODY
+{
+    N.Set <- SSD.INFO$nSets
+    OUT.Pvalue <- rep(NA, N.Set)
+    OUT.Marker <- rep(NA, N.Set)
+    OUT.Marker.Test <- rep(NA, N.Set)
+    OUT.Error <- rep(-1, N.Set)
+    OUT.Pvalue.Resampling <- NULL
+    Is.Resampling = FALSE
+    n.Resampling = 0
+    pb <- txtProgressBar(min = 0, max = N.Set, style = 3)
+    for (i in 1:N.Set) {
+        try1 = try(SKAT_emmaX.SSD.OneSet_SetIndex(SSD.INFO = SSD.INFO, SetIndex = i, obj = obj, ..., obj.SNPWeight = obj.SNPWeight))
+        if (!Is_TryError(try1)) {
+            err.msg <- geterrmessage()
+            msg <- sprintf("Error to run SKAT for %s: %s", SSD.INFO$SetInfo$SetID[i], err.msg)
+            warning(msg, call. = FALSE)
+        }
+        else {
+            OUT.Pvalue[i] <- re$p.value
+            OUT.Marker[i] <- re$param$n.marker
+            OUT.Marker.Test[i] <- re$param$n.marker.test
+        }
+        setTxtProgressBar(pb, i)
+    }
+    close(pb)
+    out.tbl <- data.frame(SetID = SSD.INFO$SetInfo$SetID, P.value = OUT.Pvalue, N.Marker.All = OUT.Marker, N.Marker.Test = OUT.Marker.Test)
+    re <- list(results = out.tbl)
+    class(re) <- "SKAT_SSD_ALL"
+    return(re)
+}

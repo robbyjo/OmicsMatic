@@ -1,0 +1,85 @@
+FORMALS
+as.pairlist(alist(G = , obj = , u = , Cutoff = , variancematrix = , weight = ))
+BODY
+{
+    res_all = obj$res
+    MAFsum = colSums(G)
+    qtemp = matrix(rep(0, dim(G)[2]))
+    res_time = 1
+    zscore.all_0 <- matrix(rep(0, (ncol(G) * res_time)), ncol = ncol(G))
+    zscore.all_1 <- matrix(rep(0, (ncol(G) * res_time)), ncol = ncol(G))
+    VarS = c()
+    p.old = c()
+    p.new = c()
+    g.sum = 0
+    q.sum = 0
+    for (jj in 1:ncol(G)) {
+        n.g <- sum(G[, jj])
+        if (n.g/(2 * length(G[, jj])) > 0.5) {
+            G[, jj] <- 2 - G[, jj]
+            n.g <- sum(G[, jj])
+        }
+        NAset <- which(G[, jj] == 0)
+        G1 <- G[, jj] - obj$XXVX_inv %*% (obj$XV %*% G[, jj])
+        q <- (t(G1) %*% (res_all + u))/sqrt(n.g)
+        g = G1/sqrt(n.g)
+        mu.qtemp = u
+        g.qtemp = g
+        mu1 <- sum(mu.qtemp * g.qtemp)
+        var1 <- sum(mu.qtemp * (1 - mu.qtemp) * g.qtemp^2)
+        stat.qtemp <- (q - mu1)^2/var1
+        p_temp1 <- pchisq(stat.qtemp, lower.tail = FALSE, df = 1)
+        p.old[jj] = p_temp1
+        zscore.all_0[, jj] = (q - mu1) * sqrt(n.g)
+        id1 <- which(stat.qtemp > Cutoff^2)
+        qtemp[jj, ] = q
+        if (MAFsum[jj] < 10) {
+            if (length(id1) > 0) {
+                G_temp = G[, jj]
+                G_temp[which(G_temp <= 0.2)] = 0
+                temp_binary = SKATBinary(as.matrix(G_temp), obj, method.bin = "ER")
+                p_temp_binary = c(temp_binary$p.value, temp_binary$p.value.resampling)
+                p_temp1[id1] = p_temp_binary[id1]
+            }
+        }
+        else {
+            if (length(id1) > 0) {
+                qtemp_id1 = qtemp[jj, id1]
+                p_temp1_id1 = c()
+                for (jjk in 1:length(qtemp_id1)) {
+                  p_temp1_id1[jjk] = Saddle_Prob(qtemp_id1[jjk], mu = mu.qtemp, g = g.qtemp, Cutoff = Cutoff, alpha = 5 * 10^-8)$p.value
+                  if (p_temp1_id1[jjk] != 0) {
+                    p_temp1[id1[jjk]] = p_temp1_id1[jjk]
+                  }
+                }
+            }
+        }
+        p.new[jj] = p_temp1
+        if (variancematrix[jj, jj] <= 0) {
+            zscore.all_1[, jj] = 0
+        }
+        else {
+            zscore.all_1[, jj] = qnorm(p_temp1/2, mean = 0, sd = sqrt(variancematrix[jj, jj]), lower.tail = FALSE, log.p = FALSE) * weight[jj] * sign(q - mu1)
+        }
+        if (p_temp1 > 0) {
+            VarS[jj] = zscore.all_0[, jj]^2/qchisq(p_temp1, 1, ncp = 0, lower.tail = FALSE, log.p = FALSE)
+        }
+        else {
+            VarS[jj] = zscore.all_0[, jj]^2/500
+        }
+        if (p_temp1 < 1) {
+            g.sum = g.sum + g.qtemp * weight[jj] * sqrt(n.g)
+            q.sum = q.sum + q * weight[jj] * sqrt(n.g)
+        }
+    }
+    outlist = list()
+    outlist$p.old = p.old
+    outlist$p.new = p.new
+    outlist$zscore.all_0 = zscore.all_0
+    outlist$VarS = VarS
+    outlist$mu = mu.qtemp
+    outlist$g.sum = g.sum
+    outlist$q.sum = q.sum
+    outlist$zscore.all_1 = zscore.all_1
+    return(outlist)
+}

@@ -1,0 +1,36 @@
+FORMALS
+as.pairlist(alist(Score = , Phi = , r.all = , method = "davies", Score.Resampling = , isFast = FALSE))
+BODY
+{
+    IDX <- which(r.all >= 0.999)
+    if (length(IDX) > 0) {
+        r.all[IDX] <- 0.999
+    }
+    p.m <- dim(Phi)[2]
+    n.r <- length(r.all)
+    out.Q <- SKAT_META_Optimal_Get_Q(Score, r.all)
+    Q.res = NULL
+    if (!is.null(Score.Resampling)) {
+        Q.res <- SKAT_META_Optimal_Get_Q_Res(Score.Resampling, r.all)$Q.r
+    }
+    Q.all <- rbind(out.Q$Q.r, Q.res)
+    out <- SKAT_META_Optimal_Get_Pvalue(Q.all, Phi/2, r.all, method, isFast = isFast)
+    param <- list(p.val.each = NULL, q.val.each = NULL)
+    param$p.val.each <- out$p.val.each[1, ]
+    param$q.val.each <- Q.all[1, ]
+    param$rho <- r.all
+    param$minp <- min(param$p.val.each)
+    id_temp <- which(param$p.val.each == min(param$p.val.each))
+    id_temp1 <- which(param$rho >= 0.999)
+    if (length(id_temp1) > 0) {
+        param$rho[id_temp1] = 1
+    }
+    param$rho_est <- param$rho[id_temp]
+    p.value <- out$p.value[1]
+    p.value.resampling = NULL
+    if (!is.null(Q.res)) {
+        p.value.resampling = out$p.value[-1]
+    }
+    re <- list(p.value = p.value, param = param, p.value.resampling = p.value.resampling)
+    return(re)
+}

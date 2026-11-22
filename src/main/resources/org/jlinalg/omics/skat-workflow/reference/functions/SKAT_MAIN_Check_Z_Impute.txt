@@ -1,0 +1,34 @@
+FORMALS
+as.pairlist(alist(Z = , id_include = , impute.method = , SetID = , Is.chrX = FALSE, SexVar = NULL))
+BODY
+{
+    MAF <- SKAT_Get_MAF(Z, id_include = NULL, Is.chrX = Is.chrX, SexVar = SexVar)
+    MAF1 <- SKAT_Get_MAF(Z, id_include = id_include, Is.chrX = Is.chrX, SexVar = SexVar)
+    MAF_Org = MAF
+    IDX_MISS <- union(which(is.na(Z)), which(Z == 9))
+    if (length(IDX_MISS) > 0) {
+        if (is.null(SetID)) {
+            msg <- sprintf("The missing genotype rate is %f. Imputation is applied.", (length(IDX_MISS))/length(Z))
+        }
+        else {
+            msg <- sprintf("In %s, the missing genotype rate is %f. Imputation is applied.", SetID, (length(IDX_MISS))/length(Z))
+        }
+        warning(msg, call. = FALSE)
+        if (!Is.chrX) {
+            Z <- Impute(Z, impute.method)
+        }
+        else {
+            Z <- Impute_XChr(Z, impute.method, SexVar)
+        }
+    }
+    Z <- SKAT_MAIN_Check_Z_Flip(Z, id_include, Is.chrX = Is.chrX, SexVar = SexVar)
+    MAF <- SKAT_Get_MAF(Z, id_include = NULL, Is.chrX = Is.chrX, SexVar = SexVar)
+    MAF1 <- SKAT_Get_MAF(Z, id_include = id_include, Is.chrX = Is.chrX, SexVar = SexVar)
+    IDX.Err <- which(MAF > 0.5)
+    if (length(IDX.Err) > 0) {
+        warning(MAF[IDX.Err])
+        msg <- sprintf("ERROR! genotype flipping")
+        stop(msg)
+    }
+    return(Z)
+}

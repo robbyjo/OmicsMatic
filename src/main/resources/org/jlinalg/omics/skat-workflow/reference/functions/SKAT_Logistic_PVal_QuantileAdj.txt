@@ -1,0 +1,27 @@
+FORMALS
+as.pairlist(alist(Q = , param.s = ))
+BODY
+{
+    Q.norm <- (Q - param.s$muQ)/sqrt(param.s$varQ) * sqrt(2 * param.s$df) + param.s$df
+    out.s <- param.s$out.s
+    if (is.null(out.s) == FALSE) {
+        pval <- rep(NA, length(Q.norm))
+        IDX1 <- which(Q.norm <= out.s$minq)
+        IDX2 <- which(Q.norm >= out.s$maxq)
+        IDX3 <- setdiff(setdiff(1:length(Q.norm), IDX1), IDX2)
+        if (length(IDX1) > 0) {
+            pval[IDX1] <- pchisq(Q.norm[IDX1], df = param.s$df, lower.tail = FALSE)
+        }
+        if (length(IDX2) > 0) {
+            pval[IDX2] <- pchisq(Q.norm[IDX2]/out.s$ratio, df = param.s$df, lower.tail = FALSE)
+        }
+        if (length(IDX3) > 0) {
+            temp <- out.s$fun1(Q.norm[IDX3])
+            pval[IDX3] <- pchisq(temp, df = param.s$df, lower.tail = FALSE)
+        }
+    }
+    else {
+        pval <- pchisq(Q.norm, df = param.s$df, lower.tail = FALSE)
+    }
+    return(pval)
+}

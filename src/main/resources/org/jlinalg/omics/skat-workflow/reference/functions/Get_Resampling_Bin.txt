@@ -1,0 +1,13 @@
+FORMALS
+as.pairlist(alist(ncase = , prob = , n.Resampling = ))
+BODY
+{
+    n <- length(prob)
+    err <- 0
+    temp <- .C("SL_Binary_Boot", as.integer(n), as.integer(n.Resampling), as.integer(ncase), as.double(prob), integer(n), integer(n), integer(n * n.Resampling), as.integer(err))
+    if (temp[[8]] != 1) {
+        return(NULL)
+    }
+    out <- matrix(temp[[7]], byrow = FALSE, ncol = n.Resampling)
+    return(out)
+}

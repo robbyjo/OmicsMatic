@@ -1,0 +1,16 @@
+FORMALS
+as.pairlist(alist(MAF = , Causal.Ratio = , Causal.MAF.Cutoff = ))
+BODY
+{
+    IDX <- which(MAF < Causal.MAF.Cutoff)
+    if (length(IDX) == 0) {
+        msg <- sprintf("No SNPs with MAF < %f", Causal.MAF.Cutoff)
+        stop(msg)
+    }
+    N.causal <- round(Causal.Ratio * length(IDX))
+    if (N.causal < 1) {
+        N.causal = 1
+    }
+    re <- sort(sample(IDX, N.causal))
+    return(re)
+}

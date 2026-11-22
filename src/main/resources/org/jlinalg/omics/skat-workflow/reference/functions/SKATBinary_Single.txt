@@ -1,0 +1,43 @@
+FORMALS
+as.pairlist(alist(Z = , obj = , method.bin = "Hybrid", impute.method = "bestguess", is_check_genotype = TRUE, is_dosage = FALSE, missing_cutoff = 0.15, max_maf = 1, estimate_MAF = 1, N.Resampling = 2 * 10^6, seednum = 100, epsilon = 10^-6))
+BODY
+{
+    out.seed = SKATBinary_SeedNum(seednum)
+    obj.res = SKATExactBin_CheckObj(obj)
+    out.Z = SKATBinary.Single.CheckZ(Z = Z, id_include = obj.res$id_include, impute.method = impute.method, is_check_genotype = is_check_genotype, is_dosage = is_dosage, estimate_MAF = estimate_MAF)
+    MAC = out.Z$MAC
+    m = out.Z$m
+    MAC1 = max(MAC, m)
+    if (out.Z$return == 1) {
+        SKATBinary_RestoreSeed(out.seed)
+        class(out.Z) <- "SKATBinary_OUT"
+        return(out.Z)
+    }
+    Is.Hybrid = FALSE
+    Z = out.Z$Z.test
+    if (method.bin == "Hybrid") {
+        if (MAC1 <= 20) {
+            method.bin = "ER"
+            N.Resampling = 2 * 10^6
+        }
+        else {
+            method.bin = "Firth"
+        }
+        Is.Hybrid = TRUE
+    }
+    if (method.bin == "ER") {
+        re = SKATExactBin(Z = cbind(Z), obj = obj.res, kernel = "linear", method.bin = method.bin, weights.beta = c(1, 1), weights = NULL, impute.method = impute.method, r.corr = 1, is_check_genotype = is_check_genotype, is_dosage = is_dosage, missing_cutoff = missing_cutoff, max_maf = max_maf, estimate_MAF = estimate_MAF, N.Resampling = N.Resampling, Is.Single = TRUE, epsilon = epsilon)
+    }
+    else if (method.bin == "Firth") {
+        re = SKATExactBin.Firth(Z = cbind(Z), obj = obj.res, kernel = "linear", weights.beta = c(1, 1), weights = NULL, impute.method = impute.method, r.corr = 1, is_check_genotype = is_check_genotype, is_dosage = is_dosage, missing_cutoff = missing_cutoff, max_maf = max_maf, estimate_MAF = estimate_MAF, Is.Single = TRUE)
+    }
+    else {
+        SKATBinary_RestoreSeed(out.seed)
+        msg <- sprintf("Error! %s is not correct method.bin type !", method.bin)
+        stop(msg)
+    }
+    SKATBinary_RestoreSeed(out.seed)
+    re$method.bin = method.bin
+    class(re) <- "SKATBinary_OUT"
+    return(re)
+}

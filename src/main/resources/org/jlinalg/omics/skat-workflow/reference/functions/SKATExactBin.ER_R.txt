@@ -1,0 +1,46 @@
+FORMALS
+as.pairlist(alist(Z = , res = , pi1 = , ncase = , idx = , r.corr = , res.out = NULL, X1 = , pi_1 = , N.Resampling = N.Resampling))
+BODY
+{
+    N.sim = N.Resampling
+    n <- length(res)
+    p1 <- pi1[idx]
+    p2 <- pi1[-idx]
+    Z.1 <- cbind(Z[idx, ])
+    Z0 <- as.vector(t(Z.1 * (-p1)))
+    Z1 <- as.vector(t(Z.1 * (1 - p1)))
+    test_Z0 <- colSums(cbind(Z.1 * (-p1)))
+    m <- ncol(Z.1)
+    n.Resampling <- 0
+    if (!is.null(res.out)) {
+        n.Resampling <- ncol(res.out)
+    }
+    pr <- SKATExactBin.ComputProb_New(idx, pi1, n, ncase, N.Resampling = 10^7, ExactMax = 1, test_type = 1, type.group = 1)
+    if (length(r.corr) == 1) {
+        re.Q <- SKATExactBin.SKATO_GetQParam(Z, res, idx, 0, pi1, pr$prob_k, pr$k, res.out = res.out, N.sim = N.sim, Is.sim = TRUE)
+        pval.a <- rep(0, re.Q$n.Q)
+        for (i in 1:re.Q$n.Q) {
+            pval.a[i] <- (length(which(re.Q$Q.sim >= re.Q$Q.m[i])) + 1)/(N.sim + 1)
+        }
+    }
+    else {
+        Z.item2 <- SKAT_Optimal_GetZItem2(Z)
+        re.Q <- SKATExactBin.SKATO_GetQParam(Z, res, idx, r.corr, pi1, pr$prob_k, pr$k, res.out = res.out, N.sim = N.sim, Is.sim = TRUE)
+        param <- re.Q$param
+        Q.m <- (t(re.Q$Q.m) - param[, 1])/sqrt(param[, 2]) * sqrt(2 * param[, 3]) + param[, 3]
+        Q.sim1 <- (t(re.Q$Q.sim) - param[, 1])/sqrt(param[, 2]) * sqrt(2 * param[, 3]) + param[, 3]
+        Test.stat <- apply(Q.m, 2, max)
+        Test.stat.Sim <- apply(Q.sim1, 2, max)
+        pval.a <- rep(0, re.Q$n.Q)
+        for (i in 1:re.Q$n.Q) {
+            pval.a[i] <- (length(which(Test.stat.Sim >= Test.stat[i])) + 1)/(N.sim + 1)
+        }
+    }
+    p.value.resampling = NULL
+    if (n.Resampling > 0) {
+        p.value.resampling = pval.a[-1]
+    }
+    p.value = pval.a[1]
+    re = list(p.value = p.value, MAP = -1, p.value.resampling = p.value.resampling, n.total = N.sim)
+    return(re)
+}

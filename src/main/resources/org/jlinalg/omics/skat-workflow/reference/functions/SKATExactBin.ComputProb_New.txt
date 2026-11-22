@@ -1,0 +1,28 @@
+FORMALS
+as.pairlist(alist(idx = , pi1 = , n = , ncase = , N.Resampling = , ExactMax = 1000, test_type = 1, type.group = 1))
+BODY
+{
+    k <- length(idx)
+    p1 <- pi1[idx]
+    obj.prob_k = SKATExactBin.ComputeProb_Group(idx, pi1, n, ncase, type.group = type.group)
+    if (obj.prob_k$is.return) {
+        return(obj.prob_k)
+    }
+    prob_k = obj.prob_k$prob_k
+    IsExact <- rep(1, k + 1)
+    obj.total = Get_Total_K(k)
+    n.total.k = obj.total$n.total.k
+    Is.ExactP = TRUE
+    if (sum(n.total.k) > N.Resampling) {
+        for (i in 0:k) {
+            if (n.total.k[i + 1] > ExactMax) {
+                n.total.k[i + 1] <- ceiling(N.Resampling * prob_k[i + 1])
+                IsExact[i + 1] = 0
+            }
+        }
+        Is.ExactP = FALSE
+    }
+    n.total <- sum(n.total.k)
+    re <- list(prob_k = prob_k, k = k, n = n, n.total = n.total, n.total.k = n.total.k, IsExact = IsExact, p1 = p1, Is.ExactP = Is.ExactP)
+    return(re)
+}

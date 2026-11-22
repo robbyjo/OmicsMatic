@@ -1,0 +1,41 @@
+FORMALS
+as.pairlist(alist(res = , Z = , X1 = , kernel = , weights = NULL, pi_1 = , method = NULL, res.out = NULL, n.Resampling = 0, r.all = , mu = , res.moments = NULL, Q.sim = NULL, Q.sim.a = NULL))
+BODY
+{
+    IDX <- which(r.all >= 0.999)
+    if (length(IDX) > 0) {
+        r.all[IDX] <- 0.999
+    }
+    n <- dim(Z)[1]
+    p.m <- dim(Z)[2]
+    n.r <- length(r.all)
+    D = Matrix(0, nrow = length(pi_1), ncol = length(pi_1), sparse = TRUE)
+    diag(D) = pi_1
+    if (kernel == "linear.weighted") {
+        Z = t(t(Z) * (weights))
+    }
+    Z1 = (Z * sqrt(pi_1)) - (X1 * sqrt(pi_1)) %*% solve(t(X1) %*% (X1 * pi_1)) %*% (t(X1) %*% (Z * pi_1))
+    out.Q <- SKAT_Optimal_Get_Q(Z, res, r.all, n.Resampling, res.out, res.moments, Q.sim.a)
+    Q.all <- rbind(out.Q$Q.r, out.Q$Q.r.res)
+    Q.sim.all <- out.Q$Q.sim
+    p_all <- mu
+    out <- SKAT_Optimal_Get_Pvalue_VarMatching(Q.all, Z1/sqrt(2), r.all, p_all, Q.sim.all, res.moments, method = method, Q.sim = Q.sim)
+    param <- list(p.val.each = NULL, q.val.each = NULL)
+    param$p.val.each <- out$p.val.each[1, ]
+    param$q.val.each <- Q.all[1, ]
+    param$rho <- r.all
+    param$minp <- min(param$p.val.each)
+    id_temp <- which(param$p.val.each == min(param$p.val.each))
+    id_temp1 <- which(param$rho >= 0.999)
+    if (length(id_temp1) > 0) {
+        param$rho[id_temp1] = 1
+    }
+    param$rho_est <- param$rho[id_temp]
+    p.value.resampling = NULL
+    p.value = out$p.value[1]
+    if (n.Resampling > 1) {
+        p.value.resampling <- out$p.value[-1]
+    }
+    re <- list(p.value = p.value, p.value.resampling = p.value.resampling, Test.Type = "moments.matching", Q = NA, param = param)
+    return(re)
+}

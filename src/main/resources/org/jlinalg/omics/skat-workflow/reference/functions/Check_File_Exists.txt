@@ -1,0 +1,9 @@
+FORMALS
+as.pairlist(alist(FileName = ))
+BODY
+{
+    if (!file.exists(FileName)) {
+        Msg <- sprintf("File %s does not exist\n", FileName)
+        stop(Msg)
+    }
+}

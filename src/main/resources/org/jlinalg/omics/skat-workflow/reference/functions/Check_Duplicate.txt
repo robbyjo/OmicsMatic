@@ -1,0 +1,32 @@
+FORMALS
+as.pairlist(alist(SSD.Info = ))
+BODY
+{
+    cat("\nCheck duplicated SNPs in each SNP set\n")
+    colnames(SSD.Info) <- c("SetID", "SNPID")
+    ID.u <- unique(SSD.Info[, 1])
+    ID.n <- length(ID.u)
+    ID.d <- data.frame(SetID = ID.u, idx = 1:ID.n)
+    temp <- merge(ID.d, SSD.Info, by.x = "SetID", by.y = "SetID")
+    temp1 <- temp[order(temp$idx), ]
+    idx.int.end <- findInterval(1:ID.n, temp1$idx)
+    idx.int.start <- c(1, idx.int.end[-ID.n] + 1)
+    for (i in 1:ID.n) {
+        idx.start <- idx.int.start[i]
+        idx.end <- idx.int.end[i]
+        SetID1 <- temp1$SetID[idx.start]
+        SetID2 <- temp1$SetID[idx.end]
+        if (SetID1 != SetID2) {
+            msg <- sprintf("Check Duplicate, SetIDs don't match [%s] [%s]\n", SetID1, SetID2)
+            stop(msg)
+        }
+        if (length(unique(temp1$SNPID[idx.start:idx.end])) != length(temp1$SNPID[idx.start:idx.end])) {
+            msg <- sprintf("%s has duplicates! Check following variants : ", SetID1)
+            tbl <- table(temp1$SNPID[idx.start:idx.end])
+            idx <- which(tbl > 1)
+            msg <- paste(msg, names(tbl[idx]))
+            stop(msg)
+        }
+    }
+    cat("No duplicate\n")
+}

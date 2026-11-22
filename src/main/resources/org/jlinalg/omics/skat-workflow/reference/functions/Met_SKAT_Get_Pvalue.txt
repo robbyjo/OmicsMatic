@@ -1,0 +1,57 @@
+FORMALS
+as.pairlist(alist(Score = , Phi = , r.corr = , method = , Score.Resampling = NULL, isFast = FALSE))
+BODY
+{
+    p.m <- nrow(Phi)
+    Q.res = NULL
+    if (sum(abs(Phi)) == 0) {
+        warning("No polymorphic SNPs!", call. = FALSE)
+        return(list(p.value = 1, p.value.resampling = NULL, pval.zero.msg = NULL))
+    }
+    if (!is.null(Score.Resampling)) {
+        Score.Resampling <- t(Score.Resampling)
+    }
+    if (length(Phi) <= 1) {
+        r.corr = 0
+    }
+    else {
+        if (ncol(Phi) <= 10) {
+            if (qr(Phi)$rank <= 1) {
+                r.corr = 0
+            }
+        }
+    }
+    if (length(r.corr) > 1) {
+        re = SKAT_META_Optimal(Score, Phi, r.corr, method = method, Score.Resampling = Score.Resampling)
+        return(re)
+    }
+    if (r.corr == 0) {
+        Q <- sum(Score^2)/2
+        if (!is.null(Score.Resampling)) {
+            Q.res <- rowSums(Score.Resampling^2)/2
+        }
+    }
+    else if (r.corr == 1) {
+        Q = SKAT_META_Optimal_Get_Q(Score, r.corr)$Q.r
+        if (!is.null(Score.Resampling)) {
+            Q.res <- SKAT_META_Optimal_Get_Q_Res(Score.Resampling, r.corr)$Q.r
+        }
+        a <- as.matrix(sum(Phi))
+        re <- Get_Liu_PVal(Q, a, Q.res)
+        return(re)
+    }
+    else {
+        Q = SKAT_META_Optimal_Get_Q(Score, r.corr)$Q.r
+        if (!is.null(Score.Resampling)) {
+            Q.res <- SKAT_META_Optimal_Get_Q_Res(Score.Resampling, r.corr)$Q.r
+        }
+        R.M <- diag(rep(1 - r.corr, p.m)) + matrix(rep(r.corr, p.m * p.m), ncol = p.m)
+        L <- chol(R.M, pivot = TRUE)
+        Phi <- L %*% (Phi %*% t(L))
+    }
+    re <- Get_Davies_PVal(Q, Phi, Q.res, isFast = isFast)
+    if (length(r.corr) == 1) {
+        re$Q = Q
+    }
+    return(re)
+}

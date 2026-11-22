@@ -1,0 +1,17 @@
+FORMALS
+as.pairlist(alist(Z = , res = , idx = , res.out = NULL))
+BODY
+{
+    Z.1 <- cbind(Z[idx, ])
+    Q1 <- sum((t(Z.1) %*% cbind(res[idx]))^2)
+    temp1 <- NULL
+    if (!is.null(res.out)) {
+        res.out1 <- rbind(res.out[idx, ])
+        temp <- t(Z.1) %*% res.out1
+        temp1 <- colSums(temp^2)
+    }
+    Q <- c(Q1, temp1)
+    n.Q <- length(Q)
+    re <- list(Q = Q, n.Q = n.Q)
+    return(re)
+}

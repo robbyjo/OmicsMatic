@@ -1,0 +1,38 @@
+FORMALS
+as.pairlist(alist(lambda = , Q = , df1 = NULL))
+BODY
+{
+    n1 <- length(Q)
+    p.val <- rep(0, n1)
+    p.val.liu <- rep(0, n1)
+    is_converge <- rep(0, n1)
+    p.val.liu <- Get_Liu_PVal.MOD.Lambda(Q, lambda, df1)
+    for (i in 1:n1) {
+        if (is.null(df1)) {
+            out <- SKAT_davies(Q[i], lambda, acc = 10^(-6))
+        }
+        else {
+            out <- SKAT_davies(Q[i], lambda, h = df1, acc = 10^(-6))
+        }
+        p.val[i] <- out$Qq
+        is_converge[i] <- 1
+        if (length(lambda) == 1) {
+            p.val[i] <- p.val.liu[i]
+        }
+        else if (out$ifault != 0) {
+            is_converge[i] <- 0
+        }
+        if (p.val[i] > 1 || p.val[i] <= 0) {
+            is_converge[i] <- 0
+            p.val[i] <- p.val.liu[i]
+        }
+    }
+    p.val.msg = NULL
+    p.val.log = NULL
+    if (p.val[1] == 0) {
+        param <- Get_Liu_Params_Mod_Lambda(lambda, df1)
+        p.val.msg <- Get_Liu_PVal.MOD.Lambda.Zero(Q[1], param$muQ, param$muX, param$sigmaQ, param$sigmaX, param$l, param$d)
+        p.val.log <- Get_Liu_PVal.MOD.Lambda(Q[1], lambda, log.p = TRUE)[1]
+    }
+    return(list(p.value = p.val, p.val.liu = p.val.liu, is_converge = is_converge, p.val.log = p.val.log, pval.zero.msg = p.val.msg))
+}

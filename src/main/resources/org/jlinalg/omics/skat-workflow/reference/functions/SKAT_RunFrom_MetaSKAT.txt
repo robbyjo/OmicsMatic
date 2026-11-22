@@ -1,0 +1,32 @@
+FORMALS
+as.pairlist(alist(res = , Z = , X1 = , kernel = , weights = NULL, s2 = NULL, pi_1 = NULL, P0 = NULL, out_type = "C", method = , res.out = , n.Resampling = , r.corr = , isFast = FALSE))
+BODY
+{
+    if (kernel == "linear.weighted") {
+        Z = t(t(Z) * (weights))
+    }
+    Score = as.vector(t(Z) %*% res)
+    Score.Resampling = NULL
+    if (!is.null(Score.Resampling)) {
+        Score.Resampling = t(res.out) %*% Z
+    }
+    if (out_type == "C") {
+        Score = Score/sqrt(s2)
+        if (!is.null(Score.Resampling)) {
+            Score.Resampling = Score.Resampling/sqrt(s2)
+        }
+        Phi = t(Z) %*% Z - (t(Z) %*% X1) %*% solve(t(X1) %*% X1) %*% (t(X1) %*% Z)
+    }
+    else if (out_type == "D") {
+        Phi = t(Z) %*% (Z * pi_1) - (t(Z * pi_1) %*% X1) %*% solve(t(X1) %*% (X1 * pi_1)) %*% (t(X1) %*% (Z * pi_1))
+    }
+    else if (out_type == "V") {
+        Phi = t(Z) %*% (P0 %*% Z)
+    }
+    else {
+        stop("SKAT_RunFrom_MetaSKAT: no-known out_type!")
+    }
+    re = Met_SKAT_Get_Pvalue(Score = Score, Phi = Phi, r.corr = r.corr, method = method, Score.Resampling = Score.Resampling, isFast = isFast)
+    re$IsMeta = TRUE
+    return(re)
+}

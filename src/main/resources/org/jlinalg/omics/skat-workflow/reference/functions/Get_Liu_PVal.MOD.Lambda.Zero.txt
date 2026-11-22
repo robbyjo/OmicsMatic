@@ -1,0 +1,12 @@
+FORMALS
+as.pairlist(alist(Q = , muQ = , muX = , sigmaQ = , sigmaX = , l = , d = ))
+BODY
+{
+    Q.Norm <- (Q - muQ)/sigmaQ
+    Q.Norm1 <- Q.Norm * sigmaX + muX
+    temp <- c(0.05, 10^-10, 10^-20, 10^-30, 10^-40, 10^-50, 10^-60, 10^-70, 10^-80, 10^-90, 10^-100)
+    out <- qchisq(temp, df = l, ncp = d, lower.tail = FALSE)
+    IDX <- max(which(out < Q.Norm1))
+    pval.msg <- sprintf("Pvalue < %e", temp[IDX])
+    return(pval.msg)
+}

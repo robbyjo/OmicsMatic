@@ -1,0 +1,33 @@
+FORMALS
+as.pairlist(alist(param.m = , Q.all = , r.all = , c1.all = ))
+BODY
+{
+    n.r <- length(r.all)
+    n.q <- dim(Q.all)[1]
+    pval <- matrix(rep(0, n.r * n.q), ncol = n.r)
+    pmin.q <- matrix(rep(0, n.r * n.q), ncol = n.r)
+    param.mat <- NULL
+    for (i in 1:n.r) {
+        Q <- Q.all[, i]
+        r.corr <- r.all[i]
+        c1 <- c1.all[, i]
+        param.temp <- Get_Liu_Params_Mod(c1)
+        muQ <- param.temp$muQ
+        varQ <- param.temp$sigmaQ^2
+        df <- param.temp$l
+        Q.Norm <- (Q - muQ)/sqrt(varQ) * sqrt(2 * df) + df
+        pval[, i] <- pchisq(Q.Norm, df = df, lower.tail = FALSE)
+        param.mat <- rbind(param.mat, c(muQ, varQ, df))
+    }
+    pmin <- apply(pval, 1, min)
+    for (i in 1:n.r) {
+        muQ <- param.mat[i, 1]
+        varQ <- param.mat[i, 2]
+        df <- param.mat[i, 3]
+        q.org <- qchisq(1 - pmin, df = df)
+        q.q <- (q.org - df)/sqrt(2 * df) * sqrt(varQ) + muQ
+        pmin.q[, i] <- q.q
+    }
+    out <- list(pmin = pmin, pval = pval, pmin.q = pmin.q)
+    return(out)
+}

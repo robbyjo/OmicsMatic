@@ -1,0 +1,12 @@
+FORMALS
+as.pairlist(alist(X1 = ))
+BODY
+{
+    qr1 <- qr(X1)
+    q1 <- ncol(X1)
+    if (qr1$rank < q1) {
+        X1.svd <- svd(X1)
+        X1 = X1.svd$u
+    }
+    return(X1)
+}

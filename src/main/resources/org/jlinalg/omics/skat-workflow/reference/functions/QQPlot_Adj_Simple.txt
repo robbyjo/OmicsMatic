@@ -1,0 +1,20 @@
+FORMALS
+as.pairlist(alist(Pval = , MAP = , ntry = 50))
+BODY
+{
+    p <- length(Pval)
+    id.miss <- which(is.na(MAP))
+    if (length(id.miss) > 0) {
+        MAP[id.miss] = 0
+    }
+    expected <- matrix(rep(0, p * ntry), ncol = ntry)
+    for (i in 1:p) {
+        b1 <- rbinom(ntry, 1, MAP[i])
+        expected[i, ] <- runif(ntry, MAP[i], 1) * (1 - b1) + b1 * MAP[i]
+    }
+    expected <- apply(expected, 2, sort)
+    expected1 <- apply(expected, 1, median)
+    max1 <- max(-log10(expected1), -log10(Pval))
+    qqplot(-log10(expected1), -log10(Pval), xlim = c(0, max1), ylim = c(0, max1))
+    abline(0, 1)
+}

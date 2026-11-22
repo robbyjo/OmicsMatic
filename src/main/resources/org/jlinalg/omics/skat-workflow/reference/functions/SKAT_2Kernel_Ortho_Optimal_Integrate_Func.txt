@@ -1,0 +1,17 @@
+FORMALS
+as.pairlist(alist(x = , pmin.q = , param.m = , r.all = ))
+BODY
+{
+    par1 <- param.m$par.moments[[1]]
+    par2 <- param.m$par.moments[[2]]
+    x1 <- (x - par2[3])/sqrt(2 * par2[3]) * sqrt(par2[2]) + par2[1]
+    n.r <- length(r.all)
+    n.x <- length(x)
+    temp1 <- r.all %x% t(x1)
+    temp <- (pmin.q - temp1)/(1 - r.all)
+    temp.min <- apply(temp, 2, min)
+    temp.q1 <- (temp.min - par1[1])/sqrt(par1[2]) * sqrt(2 * par1[3]) + par1[3]
+    temp.q2 <- x
+    re <- pchisq(temp.q1, df = par1[3]) * dchisq(temp.q2, df = par2[3])
+    return(re)
+}

@@ -1,0 +1,114 @@
+FORMALS
+as.pairlist(alist(G = , obj = , weights = , method = "SKATO", r.corr = NULL))
+BODY
+{
+    Cutoff = 2
+    if (length(G) == 0) {
+        stop("WARNING: no-variantion in the whole genotype matrix!\n")
+    }
+    X = obj$X1
+    u = obj$mu
+    w = obj$pi_1
+    obj$XV = t(X * w)
+    temp1 = solve(t(X) %*% (X * w))
+    obj$XXVX_inv = X %*% temp1
+    MAF_0 = which(colSums(G) == 0)
+    if (length(MAF_0) > 0) {
+        cat("The following columns are removed due to no-variation: ", MAF_0, "\n")
+        G = Matrix(G[, -MAF_0], sparse = TRUE)
+    }
+    if (length(G) == 0) {
+        stop("WARNING: no-variantion in the whole genotype matrix!\n")
+    }
+    MAF = colMeans(G)/2
+    MAFsum = colSums(G)
+    mafcutoff = 0.01
+    weight = weights
+    variancematrix = t(G) %*% (w * G) - (t(G) %*% (w * X)) %*% temp1 %*% (t(w * X) %*% G)
+    out_kernel = SPA_ER_kernel(G, obj, u, Cutoff, variancematrix, weight)
+    zscore.all_1 = out_kernel$zscore.all_0 * weight
+    VarS = out_kernel$VarS * weight^2
+    pi_1 = obj$pi_1
+    G_w = Matrix(t(t(G) * weight), sparse = TRUE)
+    G2_adj_n = as.matrix(t(G_w) %*% (w * G_w) - (t(G_w) %*% (w * X)) %*% temp1 %*% (t(w * X) %*% G_w))
+    rm(G_w)
+    gc()
+    if (method == "SKAT") {
+        r.all = 0
+        r.corr = 0
+    }
+    else {
+        if (method == "Burden") {
+            r.all = 1
+            r.corr = 1
+        }
+        else {
+            if (method == "SKATO") {
+                if (length(r.corr) == 0) {
+                  r.all = c(0, 0.1^2, 0.2^2, 0.3^2, 0.5^2, 0.5, 1)
+                  r.corr = c(0, 0.1^2, 0.2^2, 0.3^2, 0.5^2, 0.5, 1)
+                }
+                else {
+                  r.all = r.corr
+                }
+            }
+            else {
+                stop("WARNING: wrong method!\n")
+            }
+        }
+    }
+    IDX <- which(r.all >= 0.999)
+    if (length(IDX) > 0) {
+        r.all[IDX] <- 0.999
+    }
+    list_myfun = list()
+    VarS_org = diag(G2_adj_n)
+    vars_inf = which(VarS == Inf)
+    if (length(vars_inf) > 0) {
+        VarS[vars_inf] = 0
+        zscore.all_1[vars_inf] = 0
+        G2_adj_n[vars_inf, ] = 0
+        G2_adj_n[, vars_inf] = 0
+    }
+    if (length(VarS) == 1) {
+        G2_adj_n = G2_adj_n * VarS/VarS_org
+    }
+    else {
+        G2_adj_n = diag(sqrt(VarS/VarS_org)) %*% G2_adj_n %*% diag(sqrt(VarS/VarS_org))
+    }
+    mu = out_kernel$mu
+    g.sum = out_kernel$g.sum
+    q.sum = out_kernel$q.sum
+    p.value_burden <- Saddle_Prob(q.sum, mu = mu, g = g.sum, Cutoff = 2, alpha = 2.5 * 10^-6)$p.value
+    v1 = rep(1, dim(G2_adj_n)[1])
+    VarQ = t(v1) %*% G2_adj_n %*% v1
+    p.m <- dim(G)[2]
+    Q_b = p.m^2 * rowMeans(zscore.all_1)^2
+    VarQ_2 = Q_b/qchisq(p.value_burden, df = 1, ncp = 0, lower.tail = FALSE, log.p = FALSE)
+    if (VarQ_2 == 0) {
+        r = 1
+    }
+    else {
+        r = VarQ/VarQ_2
+    }
+    r = min(r, 1)
+    if (dim(G2_adj_n)[2] == 1) {
+        Phi_temp = as.matrix(G2_adj_n * 1/r)
+    }
+    else {
+        Phi_temp = as.matrix(G2_adj_n %*% diag(rep(1/r, dim(G2_adj_n)[2])))
+    }
+    out = try(Met_SKAT_Get_Pvalue(Score = zscore.all_1, Phi = Phi_temp, r.corr = r.all, method = "optimal.adj", Score.Resampling = NULL), silent = TRUE)
+    if (!Is_TryError(out)) {
+        list_myfun$p.value = out$p.value
+        list_myfun$p.value_each = out$param$p.val.each
+    }
+    else {
+        list_myfun$p.value_each = c(p.value_burden)
+        list_myfun$p.value = p.value_burden
+        cat("Try-error message from SKAT. Only report robust burden.\n")
+    }
+    list_myfun$Q = SKAT_META_Optimal_Get_Q(zscore.all_1, r.corr)$Q.r
+    list_myfun$p.value_singlevariant = out_kernel$p.new
+    return(list_myfun)
+}

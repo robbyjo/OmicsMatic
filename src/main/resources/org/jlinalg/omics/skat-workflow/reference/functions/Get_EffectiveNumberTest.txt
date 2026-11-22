@@ -1,0 +1,24 @@
+FORMALS
+as.pairlist(alist(MAP = , alpha = 0.05, Is.MidP = TRUE))
+BODY
+{
+    n <- length(MAP)
+    id.miss <- which(is.na(MAP))
+    if (length(id.miss) > 0) {
+        MAP[id.miss] = 0
+    }
+    if (length(which(MAP < alpha)) == 0) {
+        return(1)
+    }
+    if (!Is.MidP) {
+        re <- uniroot(Get_EffectiveNumberTest_Item, interval = c(1, n), MAP = MAP, alpha = alpha)
+    }
+    else {
+        re <- uniroot(Get_EffectiveNumberTest_Item_MidP, interval = c(1, n), MAP = MAP, alpha = alpha)
+    }
+    n_test <- ceiling(re$root)
+    if (n_test > n) {
+        n_test = n
+    }
+    return(n_test)
+}

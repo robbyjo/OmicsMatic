@@ -1,0 +1,13 @@
+FORMALS
+as.pairlist(alist(Z1 = ))
+BODY
+{
+    n <- dim(Z1)[1]
+    p.m <- dim(Z1)[2]
+    z_mean <- rowMeans(Z1)
+    Z_mean <- matrix(rep(z_mean, p.m), ncol = p.m, byrow = FALSE)
+    cof1 <- (t(z_mean) %*% Z1)[1, ]/sum(z_mean^2)
+    Z.item1 <- Z_mean %*% diag(cof1)
+    Z.item2 <- Z1 - Z.item1
+    return(Z.item2)
+}

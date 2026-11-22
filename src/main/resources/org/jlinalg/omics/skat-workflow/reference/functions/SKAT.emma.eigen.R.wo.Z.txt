@@ -1,0 +1,15 @@
+FORMALS
+as.pairlist(alist(K = , X = ))
+BODY
+{
+    n <- nrow(X)
+    q <- ncol(X)
+    XX1 <- X %*% (solve(crossprod(X, X)))
+    K1 <- t(X) %*% K
+    K2 <- K %*% X
+    Mat <- K - K2 %*% t(XX1) - XX1 %*% (K1 + ((K1 %*% X) %*% t(XX1)) - t(X))
+    diag(Mat) = diag(Mat) + 1
+    eig <- eigen(Mat, symmetric = TRUE)
+    stopifnot(!is.complex(eig$values))
+    return(list(values = eig$values[1:(n - q)] - 1, vectors = eig$vectors[, 1:(n - q)]))
+}

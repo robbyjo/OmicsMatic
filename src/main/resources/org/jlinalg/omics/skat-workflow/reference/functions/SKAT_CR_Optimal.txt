@@ -1,0 +1,61 @@
+FORMALS
+as.pairlist(alist(res = , Z1 = , Z2 = , X1 = , s2 = 0, pi_1 = NULL, res.out = NULL, n.Resampling = 0, r.all = , out_type = "C"))
+BODY
+{
+    method = NULL
+    IDX <- which(r.all >= 0.999)
+    if (length(IDX) > 0) {
+        r.all[IDX] <- 0.999
+    }
+    n <- dim(Z1)[1]
+    p.m1 <- dim(Z1)[2]
+    p.m2 <- dim(Z2)[2]
+    n.r <- length(r.all)
+    out.QR <- qr(Z1)
+    Z1.Q <- try(as.matrix(qr.Q(out.QR)), silent = TRUE)
+    Z1.R <- try(as.matrix(qr.R(out.QR)), silent = TRUE)
+    if (Is_TryError(Z1.Q) || Is_TryError(Z1.R)) {
+        cat("A")
+        out.QR <- qr(Z1, LAPACK = TRUE)
+        Z1.Q <- try(as.matrix(qr.Q(out.QR)), silent = TRUE)
+        Z1.R <- try(as.matrix(qr.R(out.QR)), silent = TRUE)
+        if (Is_TryError(Z1.Q) || Is_TryError(Z1.R)) {
+            stop("QR decomposition error!")
+        }
+    }
+    Z2.item <- t(Z1.Q) %*% Z2
+    Z2.item1 <- Z1.Q %*% Z2.item
+    Z2.Ortho <- Z2 - Z2.item1
+    Z2 <- Z2.Ortho
+    if (out_type == "C") {
+        Z1.1 <- Z1 - X1 %*% solve(t(X1) %*% X1) %*% (t(X1) %*% Z1)
+        Z2.1 <- Z2 - X1 %*% solve(t(X1) %*% X1) %*% (t(X1) %*% Z2)
+    }
+    else {
+        Z1.1 <- (Z1 * sqrt(pi_1)) - (X1 * sqrt(pi_1)) %*% solve(t(X1) %*% (X1 * pi_1)) %*% (t(X1) %*% (Z1 * pi_1))
+        Z2.1 <- (Z2 * sqrt(pi_1)) - (X1 * sqrt(pi_1)) %*% solve(t(X1) %*% (X1 * pi_1)) %*% (t(X1) %*% (Z2 * pi_1))
+        s2 <- 1
+    }
+    out.Q <- SKAT_2Kernel_Optimal_Get_Q(Z1, Z2, res, r.all, n.Resampling, res.out)
+    Q.all <- rbind(out.Q$Q.r, out.Q$Q.r.res)/s2
+    out <- SKAT_2Kernel_Ortho_Optimal_Get_Pvalue(Q.all, Z1.1/sqrt(2), Z2.1/sqrt(2), r.all, method)
+    param <- list(p.val.each = NULL, q.val.each = NULL)
+    param$p.val.each <- out$p.val.each[1, ]
+    param$q.val.each <- Q.all[1, ]
+    param$rho <- r.all
+    param$minp <- min(param$p.val.each)
+    id_temp <- which(param$p.val.each == min(param$p.val.each))
+    id_temp1 <- which(param$rho >= 0.999)
+    if (length(id_temp1) > 0) {
+        param$rho[id_temp1] = 1
+    }
+    param$rho_est <- param$rho[id_temp]
+    p.value <- out$p.value[1]
+    p.value.resampling <- NULL
+    if (n.Resampling > 0) {
+        p.value.resampling <- out$p.value[-1]
+        param$pval.each.resample <- out$p.val.each[-1, ]
+    }
+    re <- list(p.value = p.value, p.value.resampling = p.value.resampling, Test.Type = method, Q = NA, param = param)
+    return(re)
+}

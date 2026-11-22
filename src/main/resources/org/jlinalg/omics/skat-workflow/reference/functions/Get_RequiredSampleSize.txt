@@ -1,0 +1,12 @@
+FORMALS
+as.pairlist(alist(obj = , Power = 0.8))
+BODY
+{
+    if (Check_Class(obj, "SKAT_Power")) {
+        re <- Get_RequiredSampleSize.SKAT_Power(obj, Power)
+    }
+    else {
+        re <- Get_RequiredSampleSize.numeric(obj, Power)
+    }
+    return(re)
+}

@@ -1,0 +1,8 @@
+FORMALS
+as.pairlist(alist(c1 = , alpha = ))
+BODY
+{
+    param.null <- Get_Liu_Params_Mod(c1)
+    q.crit = (qchisq(1 - alpha, df = param.null$l, ncp = param.null$d) - param.null$muX) * (param.null$sigmaQ/param.null$sigmaX) + param.null$muQ
+    return(list(q.crit = q.crit, c.all = c1, param.null = param.null))
+}

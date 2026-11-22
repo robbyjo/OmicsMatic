@@ -1,0 +1,35 @@
+FORMALS
+as.pairlist(alist(Q.all = , Z1.1 = , Z2.1 = , r.all = , method = ))
+BODY
+{
+    n.r <- length(r.all)
+    n.q <- dim(Q.all)[1]
+    p.m <- dim(Z1.1)[2]
+    c1.all <- SKAT_2Kernel_Ortho_Optimal_Get_Params_each_r(Z1.1, Z2.1, r.all)
+    param.m <- SKAT_2Kernel_Ortho_Optimal_Param(Z1.1, Z2.1, r.all)
+    Each_Info <- SKAT_2Kernel_Ortho_Optimal_Each_Q(param.m, Q.all, r.all, c1.all)
+    pmin.q <- Each_Info$pmin.q
+    pmin <- Each_Info$pmin
+    pval <- rep(0, n.q)
+    for (i in 1:n.q) {
+        pval[i] <- SKAT_2Kernel_Ortho_Optimal_PValue_Liu(pmin.q[i, ], param.m, r.all, pmin[i])
+    }
+    multi <- 3
+    if (length(r.all) < 3) {
+        multi <- 2
+    }
+    for (i in 1:n.q) {
+        pval.each <- Each_Info$pval[i, ]
+        IDX <- which(pval.each > 0)
+        pval1 <- min(pval.each) * multi
+        if (pval[i] <= 0 || length(IDX) < length(r.all)) {
+            pval[i] <- pval1
+        }
+        if (pval[i] == 0) {
+            if (length(IDX) > 0) {
+                pval[i] = min(pval.each[IDX])
+            }
+        }
+    }
+    return(list(p.value = pval, p.val.each = Each_Info$pval))
+}

@@ -1,0 +1,15 @@
+FORMALS
+as.pairlist(alist(Score.res = , r.all = ))
+BODY
+{
+    n.r <- length(r.all)
+    p <- dim(Score.res)[1]
+    Q.r <- matrix(rep(0, n.r * p), ncol = n.r)
+    for (i in 1:n.r) {
+        r.corr <- r.all[i]
+        Q.r[, i] <- (1 - r.corr) * rowSums(Score.res^2) + r.corr * rowSums(Score.res)^2
+    }
+    Q.r = Q.r/2
+    re <- list(Q.r = Q.r)
+    return(re)
+}

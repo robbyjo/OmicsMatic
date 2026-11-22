@@ -1,0 +1,12 @@
+FORMALS
+as.pairlist(alist(Z = , eta = , Dist = , ratio = ))
+BODY
+{
+    m <- length(eta)
+    alpha <- log(ratio/(1 - ratio))
+    mu <- (exp(eta + alpha)/(1 + exp(eta + alpha)) - ratio)
+    Z1 <- t(t(Z) - colMeans(Z))
+    B1 <- (t(Z1) %*% (mu * Dist))[, 1]
+    B <- B1 %*% t(B1)
+    return(B)
+}

@@ -1,0 +1,50 @@
+FORMALS
+as.pairlist(alist(method = , r.corr = , n = NULL, m = NULL))
+BODY
+{
+    IsMeta = FALSE
+    if (method != "liu" && method != "davies" && method != "liu.mod" && method != "optimal" && method != "optimal.moment" && method != "optimal.mod" && method != "adjust" && method != "optimal.adj" && method != "optimal.moment.adj" && method != "SKAT" && method != "SKATO" && method != "Burden" && method != "SKATO.m" && method != "davies.M" && method != "optimal.adj.M") {
+        stop("Invalid method!")
+    }
+    if (method == "davies.M") {
+        IsMeta = TRUE
+        method = "davies"
+    }
+    else if (method == "optimal.adj.M") {
+        IsMeta = TRUE
+        method = "optimal.adj"
+    }
+    if (method == "SKAT") {
+        method = "davies"
+        r.corr = 0
+    }
+    else if (method == "SKATO") {
+        method = "optimal.adj"
+    }
+    else if (method == "SKATO.m") {
+        method = "optimal.moment.adj"
+    }
+    else if (method == "Burden") {
+        method = "davies"
+        r.corr = 1
+    }
+    if ((method == "optimal" || method == "optimal.moment") && length(r.corr) == 1) {
+        r.corr = (0:10)/10
+    }
+    else if ((method == "optimal.mod" || method == "optimal.adj" || method == "optimal.moment.adj") && length(r.corr) == 1) {
+        r.corr = c(0, 0.1^2, 0.2^2, 0.3^2, 0.5^2, 0.5, 1)
+    }
+    if (method == "optimal") {
+        method = "davies"
+    }
+    else if (method == "optimal.moment") {
+        method = "liu.mod"
+    }
+    if (!is.null(n) && !is.null(m) && length(r.corr) > 1) {
+        if (m/n < 1 && n > 5000) {
+            IsMeta = TRUE
+        }
+    }
+    re <- list(method = method, r.corr = r.corr, IsMeta = IsMeta)
+    return(re)
+}

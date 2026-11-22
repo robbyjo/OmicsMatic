@@ -1,0 +1,56 @@
+FORMALS
+as.pairlist(alist(Z = , res = , idx = , r.all = , p1 = , prob_k = , k = , res.out = res.out, N.sim = 10000, Is.sim = FALSE))
+BODY
+{
+    Z.1 <- cbind(Z[idx, ])
+    Z0_m <- Z.1 * (-p1[idx])
+    Z1_m <- Z.1 * (1 - p1[idx])
+    Z0 <- as.vector(t(Z0_m))
+    Z1 <- as.vector(t(Z1_m))
+    Z0_C <- rowSums(Z0_m)
+    Z1_C <- rowSums(Z1_m)
+    teststat_Z0 <- colSums(Z0_m)
+    teststat_Z1 <- colSums(Z1_m)
+    teststat_Z0_C <- sum(teststat_Z0)
+    teststat_Z1_C <- sum(teststat_Z1)
+    m <- ncol(Z.1)
+    n <- nrow(Z.1)
+    prob <- p1[idx]/sum(p1[idx])
+    prob_k1 <- prob_k/sum(prob_k)
+    N.resample <- rmultinom(1, N.sim, prob_k1)
+    N.resample.total <- sum(N.resample)
+    RE <- .C("ResampleSTAT", as.double(Z0), as.double(Z1), as.double(Z0_C), as.double(Z1_C), as.double(teststat_Z0), as.double(teststat_Z1), as.double(teststat_Z0_C), as.double(teststat_Z1_C), as.double(r.all), as.integer(length(r.all)), as.integer(n), as.integer(m), as.integer(n), as.integer(N.resample), as.integer(0:n), as.double(prob), integer(n), integer(n), integer(n), double(m), double(N.resample.total * length(r.all)), integer(1))
+    err <- RE[[22]]
+    if (err != 1) {
+        stop("Error in ResampleSTAT!")
+    }
+    Q.sim <- matrix(RE[[21]], byrow = TRUE, ncol = length(r.all))
+    p.m <- ncol(Z.1)
+    n.r = length(r.all)
+    param <- matrix(rep(0, 3 * n.r), nrow = n.r)
+    for (i in 1:n.r) {
+        muQ <- mean(Q.sim[, i])
+        varQ <- var(Q.sim[, i])
+        df <- SKAT_Get_DF_Sim(Q.sim[, i])
+        param[i, ] <- c(muQ, varQ, df)
+    }
+    Q.r.res <- NULL
+    if (!is.null(res.out)) {
+        res.out <- cbind(res[idx], rbind(res.out[idx, ]))
+    }
+    else {
+        res.out <- cbind(res[idx])
+    }
+    temp <- t(res.out) %*% Z.1
+    n1 <- ncol(res.out)
+    n.r = length(r.all)
+    Q.r.res <- matrix(rep(0, n1 * n.r), ncol = n.r)
+    for (i in 1:n.r) {
+        r.corr <- r.all[i]
+        Q1 <- (1 - r.corr) * rowSums(temp^2)
+        Q2 <- r.corr * p.m^2 * rowMeans(temp)^2
+        Q.r.res[, i] <- Q1 + Q2
+    }
+    re <- list(param = param, Q.m = Q.r.res, n.Q = nrow(Q.r.res), Q.sim = Q.sim, N.resample = N.resample)
+    return(re)
+}

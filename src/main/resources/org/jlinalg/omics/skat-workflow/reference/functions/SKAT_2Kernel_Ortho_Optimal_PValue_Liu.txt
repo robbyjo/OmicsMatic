@@ -1,0 +1,16 @@
+FORMALS
+as.pairlist(alist(pmin.q = , param.m = , r.all = , pmin = NULL))
+BODY
+{
+    par2 <- param.m$par.moments[[2]]
+    df = par2[3]
+    upper <- 40 * df
+    re <- integrate(SKAT_2Kernel_Ortho_Optimal_Integrate_Func, lower = 0, upper = upper, subdivisions = 2000, pmin.q = pmin.q, param.m = param.m, r.all = r.all, abs.tol = 10^-15)
+    pvalue <- 1 - re[[1]]
+    if (!is.null(pmin)) {
+        if (pmin * length(r.all) < pvalue) {
+            pvalue = pmin * length(r.all)
+        }
+    }
+    return(pvalue)
+}

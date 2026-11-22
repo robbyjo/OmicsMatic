@@ -1,0 +1,19 @@
+FORMALS
+as.pairlist(alist(Z1.1 = , Z2.1 = , r.all = ))
+BODY
+{
+    c1 <- matrix(rep(0, 4 * length(r.all)), ncol = length(r.all))
+    A1 <- t(Z1.1) %*% Z1.1
+    B1 <- t(Z2.1) %*% Z2.1
+    A2 <- A1 %*% A1
+    B2 <- B1 %*% B1
+    A11 <- t(Z1.1) %*% Z2.1
+    A22 <- A11 %*% t(A11)
+    B22 <- t(A11) %*% A11
+    B333 <- t(A11) %*% A1 %*% A11
+    c1[1, ] <- sum(Z1.1^2) * (1 - r.all) + sum(Z2.1^2) * r.all
+    c1[2, ] <- sum(A1^2) * (1 - r.all)^2 + sum(B1^2) * (r.all)^2 + sum(A11^2) * 2 * (1 - r.all) * r.all
+    c1[3, ] <- sum(A2 * A1) * (1 - r.all)^3 + sum(B2 * B1) * (r.all)^3 + sum(A22 * A1) * 3 * (1 - r.all)^2 * r.all + sum(B1 * B22) * 3 * (1 - r.all) * r.all^2
+    c1[4, ] <- sum(A2 * A2) * (1 - r.all)^4 + sum(B2 * B2) * (r.all)^4 + sum(A22 * A2) * 4 * (1 - r.all)^3 * r.all + sum(B2 * B22) * 4 * (1 - r.all) * r.all^3 + sum(B1 * B333) * 4 * (1 - r.all)^2 * r.all^2 + sum(B22 * B22) * 2 * (1 - r.all)^2 * r.all^2
+    return(c1)
+}

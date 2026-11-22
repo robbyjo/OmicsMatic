@@ -1,0 +1,14 @@
+FORMALS
+as.pairlist(alist(SSD.INFO = , SetIndex = , obj = , ... = , obj.SNPWeight = NULL))
+BODY
+{
+    re1 = SKAT.SSD.GetSNP_Weight(SSD.INFO, SetIndex, obj.SNPWeight = obj.SNPWeight)
+    SetID = SSD.INFO$SetInfo$SetID[SetIndex]
+    if (!re1$Is.weights) {
+        re <- SKATBinary_Robust(re1$Z, obj, ...)
+    }
+    else {
+        re <- SKATBinary_Robust(re1$Z, obj, weights = re1$weights, ...)
+    }
+    return(re)
+}

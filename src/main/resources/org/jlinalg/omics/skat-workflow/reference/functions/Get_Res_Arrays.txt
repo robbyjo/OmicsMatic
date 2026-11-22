@@ -1,0 +1,21 @@
+FORMALS
+as.pairlist(alist(res = , res.out = , idx = ))
+BODY
+{
+    if (!is.null(res.out)) {
+        res.out <- cbind(res[idx], rbind(res.out[idx, ]))
+    }
+    else {
+        res.out <- cbind(res[idx])
+    }
+    resarray <- NULL
+    nres <- ncol(res.out)
+    nres_k <- rep(0, nres)
+    for (i in 1:nres) {
+        id1 <- sort(which(res.out[, i] > 0)) - 1
+        nres_k[i] <- length(id1)
+        resarray <- c(resarray, id1)
+    }
+    re <- list(resarray = resarray, nres = nres, nres_k = nres_k)
+    return(re)
+}

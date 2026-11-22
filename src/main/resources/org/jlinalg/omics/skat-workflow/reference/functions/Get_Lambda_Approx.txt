@@ -1,0 +1,33 @@
+FORMALS
+as.pairlist(alist(K = , maxK = 100))
+BODY
+{
+    lambda <- NULL
+    p1 <- ncol(K)
+    lambda_sum = sum(diag(K))
+    lambda2_sum = sum(K * K)
+    lambda <- rep(0, p1)
+    k1 <- floor(p1/10)
+    if (k1 > maxK) {
+        k1 = maxK
+    }
+    out.s <- RSpectra::eigs_sym(K, k = k1, which = "LM")
+    lambda1 <- out.s$values
+    IDX1 <- which(lambda1 >= 0)
+    IDX2 <- which(lambda1 > mean(lambda1[IDX1])/1e+05)
+    if (length(IDX2) == 0) {
+        stop("No Eigenvalue is bigger than 0!!")
+    }
+    if (length(lambda) <= k1) {
+        lambda1 <- lambda1[IDX2]
+    }
+    lambda_sum = lambda_sum - sum(lambda1)
+    lambda2_sum = lambda2_sum - sum(lambda1^2)
+    df1 = lambda_sum^2/lambda2_sum
+    df1 = round(df1)
+    lambda_last = lambda_sum/df1
+    lambda = c(lambda1, lambda_last)
+    df1 = c(rep(1, length(lambda1)), df1)
+    out_lambda = list(lambda = lambda, df1 = df1)
+    return(out_lambda)
+}

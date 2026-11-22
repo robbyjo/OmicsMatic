@@ -1,0 +1,64 @@
+FORMALS
+as.pairlist(alist(idx = , pi1 = , n = , ncase = , type.group = 1))
+BODY
+{
+    k <- length(idx)
+    ngroup1 = 10
+    if (type.group == 1) {
+        if (k > 400) {
+            ngroup1 = 2
+        }
+        else if (k > 100) {
+            ngroup1 = 5
+        }
+        else if (k > 50) {
+            ngroup1 = 6
+        }
+    }
+    else {
+        if (k > 400) {
+            ngroup1 = 2
+        }
+        else if (k > 300) {
+            ngroup1 = 6
+        }
+        else if (k > 100) {
+            ngroup1 = 8
+        }
+        else if (k > 50) {
+            ngroup1 = 10
+        }
+    }
+    if (length(idx) == 0) {
+        return(list(pval = 1, k = 0, is.return = TRUE))
+    }
+    p1 <- pi1[idx]
+    p2 <- pi1[-idx]
+    id.temp <- which(p1 >= 1)
+    if (length(id.temp) > 0) {
+        p1[id.temp] <- 0.999
+    }
+    weight <- NULL
+    group <- NULL
+    for (i in 1:ngroup1) {
+        if (i < ngroup1) {
+            IDX <- intersect(which(p1 >= (i - 1)/ngroup1), which(p1 < i/ngroup1))
+        }
+        else {
+            IDX <- intersect(which(p1 >= (i - 1)/ngroup1), which(p1 <= i/ngroup1))
+        }
+        if (length(IDX) > 0) {
+            p1.temp <- mean(p1[IDX])
+            odd.temp <- p1.temp/(1 - p1.temp)
+            weight <- c(weight, odd.temp)
+            group <- c(group, length(IDX))
+        }
+    }
+    odds.p2 <- mean(p2)/(1 - mean(p2))
+    weight <- c(weight, odds.p2)/odds.p2
+    group <- c(group, n - k)
+    prob_k <- rep(0, k + 1)
+    RE <- .C("RGetProb", as.integer(k), as.integer(length(group)), as.integer(ncase), as.integer(group), as.double(weight), as.double(prob_k))
+    prob_k = RE[[6]]
+    return(list(prob_k = prob_k, is.return = FALSE))
+}

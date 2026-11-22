@@ -1,0 +1,75 @@
+FORMALS
+as.pairlist(alist(Z = , res = , pi1 = , ncase = , idx = , r.corr = , res.out = NULL, Is.testdata = FALSE, File = NULL, N.Iter = 50000, N.Resampling = 2 * 10^6, epsilon = , test_type = 3))
+BODY
+{
+    n <- length(res)
+    p1 <- pi1[idx]
+    p2 <- pi1[-idx]
+    Z.1 <- cbind(Z[idx, ])
+    Z0 <- as.vector(t(Z.1 * (-p1)))
+    Z1 <- as.vector(t(Z.1 * (1 - p1)))
+    test_Z0 <- colSums(cbind(Z.1 * (-p1)))
+    m <- ncol(Z.1)
+    total.iter = ceiling(N.Resampling/N.Iter)
+    r.critical = 25
+    test_type = 3
+    obj.prob_k = SKATExactBin.ComputeProb_Group(idx, pi1, n, ncase)
+    n.resample.test = 0
+    if (!is.null(res.out)) {
+        n.resample.test <- ncol(res.out)
+    }
+    pval.all <- matrix(rep(NA, 3 * (1 + n.resample.test)), ncol = 3)
+    for (k in 1:(n.resample.test + 1)) {
+        pval.a <- NULL
+        if (k == 1) {
+            re.arr <- Get_Res_Arrays(res, NULL, idx)
+        }
+        else {
+            re.arr <- Get_Res_Arrays(res.out[, k - 1], NULL, idx)
+        }
+        for (l in 1:total.iter) {
+            pr <- SKATExactBin.ComputProb_Random(obj.prob_k, idx, pi1, n, ncase, N.Iter, ExactMax = 0, test_type = 1)
+            p1_adj <- as.double(pr$p1/mean(pr$p1))
+            odds <- pr$p1/(1 - pr$p1)
+            n.Q <- re.arr$nres
+            pval <- rep(0, n.Q)
+            pval1 <- rep(0, n.Q)
+            minP <- 100
+            if (length(r.corr) == 1) {
+                RE <- .C("RSKATExact", as.integer(re.arr$resarray), as.integer(re.arr$nres), as.integer(re.arr$nres_k), as.double(Z0), as.double(Z1), as.integer(pr$k), as.integer(m), as.integer(pr$n.total), as.integer(pr$n.total.k), as.double(pr$prob_k), odds, p1_adj, as.integer(pr$IsExact), as.double(pval), as.double(pval1), as.double(minP), as.integer(test_type), as.double(epsilon))
+                pval.re <- cbind(RE[[14]], RE[[15]])
+                prob_k_out <- RE[[10]]
+                pval1 <- cbind(pval.re[, 1], pval.re[, 1] - pval.re[, 2]/2, pval.re[, 2])
+            }
+            else {
+                if (l == 1) {
+                  re.Q <- SKATExactBin.SKATO_GetQParam(Z, res, idx, r.corr, pi1, pr$prob_k, pr$k, res.out = res.out)
+                  param = as.vector(t(re.Q$param))
+                }
+                RE <- .C("RSKATOExact", as.integer(re.arr$resarray), as.integer(re.arr$nres), as.integer(re.arr$nres_k), as.double(Z0), as.double(Z1), as.double(r.corr), as.integer(length(r.corr)), as.double(param), as.integer(pr$k), as.integer(m), as.integer(pr$n.total), as.integer(pr$n.total.k), as.double(pr$prob_k), odds, p1_adj, as.integer(pr$IsExact), as.double(pval), as.double(pval1), as.double(minP), as.integer(test_type), as.double(epsilon))
+                pval.re <- cbind(RE[[17]], RE[[18]])
+                prob_k_out <- RE[[10]]
+                pval1 <- cbind(pval.re[, 1], pval.re[, 1] - pval.re[, 2]/2, pval.re[, 2])
+            }
+            if (l == 1) {
+                pval.a = pval1
+            }
+            else {
+                pval.a = pval.a * (l - 1)/l + pval1/l
+            }
+            n.Total = N.Iter * l
+            if (SKATExactBin_CheckAccuracy(pval.a[1], n.Total, r.critical = 25)) {
+                break
+            }
+        }
+        pval.all[k, ] = pval.a
+    }
+    p.value.resampling = NULL
+    p.value.standard.resampling = NULL
+    if (n.resample.test > 0) {
+        p.value.resampling = pval.all[-1, 2]
+        p.value.standard.resampling = pval.all[-1, 1]
+    }
+    re = list(p.value = pval.all[1, 2], p.value.standard = pval.all[1, 1], MAP = -1, p.value.resampling = p.value.resampling, p.value.standard.resampling = p.value.standard.resampling, m = pr$k, n.total = n.Total)
+    return(re)
+}

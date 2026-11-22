@@ -1,0 +1,11 @@
+FORMALS
+as.pairlist(alist(G = , obj = , weight = , temp1 = NULL))
+BODY
+{
+    if (temp1 == NULL) {
+        temp1 = solve(t(obj$X1) %*% (obj$pi_1 * obj$X1))
+    }
+    G_w = Matrix(t(t(G) * weight), sparse = TRUE)
+    G2_adj_n = as.matrix(t(G_w) %*% (obj$pi_1 * G_w) - (t(G_w) %*% (obj$pi_1 * obj$X1)) %*% temp1 %*% (t(obj$pi_1 * obj$X1) %*% G_w))
+    return(G2_adj_n)
+}

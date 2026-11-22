@@ -1,0 +1,31 @@
+FORMALS
+as.pairlist(alist(obj.prob_k = , idx = , pi1 = , n = , ncase = , N.Resampling = , ExactMax = 1000, test_type = 1))
+BODY
+{
+    k <- length(idx)
+    p1 <- pi1[idx]
+    if (obj.prob_k$is.return) {
+        return(obj.prob_k)
+    }
+    prob_k = obj.prob_k$prob_k
+    n.total.s <- rmultinom(1, N.Resampling, prob = prob_k)
+    IsExact <- rep(0, k + 1)
+    obj.total = Get_Total_K(k)
+    n.total.k = obj.total$n.total.k
+    if (sum(n.total.k) > N.Resampling) {
+        for (i in 0:k) {
+            if (n.total.s[i + 1] > 0) {
+                if (n.total.s[i + 1] <= ExactMax && n.total.k <= ExactMax) {
+                  n.total.s[i + 1] = n.total.k[i + 1]
+                  IsExact[i + 1] = 1
+                }
+                else if (n.total.s[i + 1] <= ExactMax && n.total.k > ExactMax) {
+                  n.total.s[i + 1] = ExactMax
+                }
+            }
+        }
+    }
+    n.total <- sum(n.total.s)
+    re <- list(prob_k = prob_k, k = k, n = n, n.total = n.total, n.total.k = n.total.s, IsExact = IsExact, p1 = p1)
+    return(re)
+}

@@ -1,0 +1,27 @@
+FORMALS
+as.pairlist(alist(Z1 = ))
+BODY
+{
+    if (dim(Z1)[2] == 1) {
+        Is.OnlyOne = TRUE
+        lambda <- sum(Z1^2)
+        U <- Z1/sqrt(lambda)
+        return(list(lambda = lambda, U = cbind(U)))
+    }
+    try1 <- try(svd(Z1), silent = TRUE)
+    if (Is_TryError(try1)) {
+        stop("SVD error!")
+    }
+    else {
+        out.svd = try1
+    }
+    lambda.org <- out.svd$d^2
+    IDX <- which(lambda.org > mean(lambda.org)/1e+05)
+    if (length(IDX) <= 1) {
+        Is.OnlyOne = TRUE
+    }
+    if (length(IDX) == 0) {
+        return(list(lambda = NULL, U = NULL))
+    }
+    return(list(lambda = lambda.org[IDX], U = cbind(out.svd$u[, IDX])))
+}

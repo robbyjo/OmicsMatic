@@ -1,0 +1,42 @@
+FORMALS
+as.pairlist(alist(Q = , Z1 = , p_all = , Q.sim = , type = "Other"))
+BODY
+{
+    param <- SKAT_Logistic_VarMatching_GetParam1(Z1, p_all, Q.sim, type)
+    pval.msg = NULL
+    if (param$varQ == 0) {
+        p.value <- rep(1, length(Q))
+    }
+    else if (Check_Class(param, "QuantileAdj")) {
+        p.value <- SKAT_Logistic_PVal_QuantileAdj(Q, param)
+    }
+    else {
+        Q.Norm <- (Q - param$muQ)/sqrt(param$varQ)
+        Q.Norm1 <- Q.Norm * sqrt(2 * param$df) + param$df
+        p.value <- pchisq(Q.Norm1, df = param$df, ncp = 0, lower.tail = FALSE)
+        df1 = param$df
+        if (is.null(Q.sim) && param$n.lambda == 1) {
+            re <- Get_Satterthwaite(param$muQ, param$varQ)
+            Q.Norm1 <- Q/re$a
+            p.value <- pchisq(Q.Norm1, df = re$df, ncp = 0, lower.tail = FALSE)
+            df1 = re$df
+        }
+        if (p.value[1] == 0) {
+            pval.msg <- Get_Liu_PVal.MOD.Lambda.Zero(Q.Norm1, muQ = 0, muX = 0, sigmaQ = 1, sigmaX = 1, l = df1, d = 0)
+        }
+    }
+    p.value.noadj = NULL
+    if (!is.null(param$param.noadj)) {
+        param.noadj <- param$param.noadj
+        if (param.noadj$sigmaQ == 0) {
+            p.value.noadj <- rep(1, length(Q))
+        }
+        else {
+            Q.Norm <- (Q - param.noadj$muQ)/param.noadj$sigmaQ
+            Q.Norm1 <- Q.Norm * param.noadj$sigmaX + param.noadj$muX
+            p.value.noadj <- pchisq(Q.Norm1, df = param.noadj$l, ncp = 0, lower.tail = FALSE)
+        }
+    }
+    out <- list(p.value = p.value, p.value.noadj = p.value.noadj, param = param, pval.msg = pval.msg)
+    return(out)
+}

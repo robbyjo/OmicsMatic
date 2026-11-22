@@ -1,0 +1,8 @@
+FORMALS
+as.pairlist(alist(Z = ))
+BODY
+{
+    temp <- apply(Z, 2, var)
+    ID <- which(temp == 0)
+    return(ID)
+}

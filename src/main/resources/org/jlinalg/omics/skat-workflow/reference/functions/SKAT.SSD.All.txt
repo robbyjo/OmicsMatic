@@ -1,0 +1,58 @@
+FORMALS
+as.pairlist(alist(SSD.INFO = , obj = , ... = , obj.SNPWeight = NULL))
+BODY
+{
+    N.Set <- SSD.INFO$nSets
+    OUT.Pvalue <- rep(NA, N.Set)
+    OUT.Marker <- rep(NA, N.Set)
+    OUT.Marker.Test <- rep(NA, N.Set)
+    OUT.Error <- rep(-1, N.Set)
+    OUT.Pvalue.Resampling <- NULL
+    OUT.snp.mac <- list()
+    Is.Resampling = FALSE
+    n.Resampling = 0
+    if (Check_Class(obj, "SKAT_NULL_Model")) {
+        if (obj$n.Resampling > 0) {
+            Is.Resampling = TRUE
+            n.Resampling = obj$n.Resampling
+            OUT.Pvalue.Resampling <- matrix(rep(0, n.Resampling * N.Set), ncol = n.Resampling)
+        }
+    }
+    else if (Check_Class(obj, "SKAT_NULL_Model_ADJ")) {
+        if (obj$re1$n.Resampling > 0) {
+            Is.Resampling = TRUE
+            n.Resampling = obj$re1$n.Resampling
+            OUT.Pvalue.Resampling <- matrix(rep(0, n.Resampling * N.Set), ncol = n.Resampling)
+        }
+    }
+    pb <- txtProgressBar(min = 0, max = N.Set, style = 3)
+    for (i in 1:N.Set) {
+        Is.Error <- TRUE
+        try1 = try(SKAT.SSD.OneSet_SetIndex(SSD.INFO = SSD.INFO, SetIndex = i, obj = obj, ..., obj.SNPWeight = obj.SNPWeight))
+        if (!Is_TryError(try1)) {
+            re <- try1
+            Is.Error <- FALSE
+        }
+        else {
+            err.msg <- geterrmessage()
+            msg <- sprintf("Error to run SKAT for %s: %s", SSD.INFO$SetInfo$SetID[i], err.msg)
+            warning(msg, call. = FALSE)
+        }
+        if (!Is.Error) {
+            OUT.Pvalue[i] <- re$p.value
+            OUT.Marker[i] <- re$param$n.marker
+            OUT.Marker.Test[i] <- re$param$n.marker.test
+            if (Is.Resampling) {
+                OUT.Pvalue.Resampling[i, ] <- re$p.value.resampling
+            }
+            SetID <- SSD.INFO$SetInfo$SetID[i]
+            OUT.snp.mac[[SetID]] <- re$test.snp.mac
+        }
+        setTxtProgressBar(pb, i)
+    }
+    close(pb)
+    out.tbl <- data.frame(SetID = SSD.INFO$SetInfo$SetID, P.value = OUT.Pvalue, N.Marker.All = OUT.Marker, N.Marker.Test = OUT.Marker.Test)
+    re <- list(results = out.tbl, P.value.Resampling = OUT.Pvalue.Resampling, OUT.snp.mac = OUT.snp.mac)
+    class(re) <- "SKAT_SSD_ALL"
+    return(re)
+}

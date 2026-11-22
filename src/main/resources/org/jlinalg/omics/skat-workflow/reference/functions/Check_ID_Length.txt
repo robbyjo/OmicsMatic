@@ -1,0 +1,20 @@
+FORMALS
+as.pairlist(alist(FileName = ))
+BODY
+{
+    SSD.Info <- try(read.table(FileName, header = FALSE, stringsAsFactors = FALSE), silent = TRUE)
+    if (Is_TryError(SSD.Info)) {
+        stop("Error in SetID file!")
+    }
+    n1 <- length(which(nchar(SSD.Info[, 1]) > 1024))
+    n2 <- length(which(nchar(SSD.Info[, 2]) > 1024))
+    if (n1 > 0) {
+        stop("Some SetIDs have more than 1024 characters!")
+    }
+    if (n2 > 0) {
+        stop("Some SNP_IDs have more than 1024 characters!")
+    }
+    nSets <- length(unique(SSD.Info[, 1]))
+    Check_Duplicate(SSD.Info)
+    return(list(nSets = nSets))
+}

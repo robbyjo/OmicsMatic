@@ -1,0 +1,28 @@
+FORMALS
+as.pairlist(alist(z = , obj.res = ))
+BODY
+{
+    if (!is.vector(z)) {
+        stop("z should be a vector!")
+    }
+    if (Check_Class(obj.res, "SKAT_NULL_Model_ADJ")) {
+        obj.res = obj.res$re1
+    }
+    else if (Check_Class(obj.res, "SKAT_NULL_Model")) {
+        if (obj.res$out_type != "D") {
+            stop("out_type in SKAT_Null_Model should be D!")
+        }
+    }
+    else {
+        stop("Error: obj.res!")
+    }
+    pi1 = obj.res$mu
+    if (mean(z, na.rm = TRUE) <= 0.5) {
+        idx <- which(z > 0)
+    }
+    else {
+        idx <- which(z < 2)
+    }
+    re <- prod(pi1[idx])
+    return(re)
+}

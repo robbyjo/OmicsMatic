@@ -1,0 +1,14 @@
+FORMALS
+as.pairlist(alist(x = ))
+BODY
+{
+    my.chol <- tryCatch(chol(x), error = function(e) {
+        NA
+    })
+    if (all(is.na(my.chol)) == T) {
+        return(NA)
+    }
+    else {
+        return(2 * sum(log(diag(my.chol))))
+    }
+}

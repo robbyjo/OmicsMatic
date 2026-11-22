@@ -1,0 +1,31 @@
+FORMALS
+as.pairlist(alist(Z1 = , p_all = , Q.sim = , type = "Other"))
+BODY
+{
+    type.org = type
+    if (type != "OnlySim") {
+        try1 <- try(Get_Lambda_U_From_Z(Z1), silent = TRUE)
+        if (Is_TryError(try1)) {
+            type = "OnlySim"
+        }
+        else {
+            out.svd = try1
+            lambda <- out.svd$lambda
+            if (length(lambda) > 0) {
+                U <- out.svd$U
+                param <- SKAT_Logistic_VarMatching_GetParam(lambda, U, p_all, Q.sim)
+            }
+            else {
+                type = "OnlySim"
+            }
+        }
+    }
+    if (type == "OnlySim") {
+        param <- SKAT_Logistic_VarMatching_GetParam1_OnlySim(Z1, p_all, Q.sim)
+    }
+    if (type.org == "QuantileAdj") {
+        param <- SKAT_Logistic_VarMatching_GetParam1_QuantileAdj(Z1, Q.sim, param)
+        return(param)
+    }
+    return(param)
+}

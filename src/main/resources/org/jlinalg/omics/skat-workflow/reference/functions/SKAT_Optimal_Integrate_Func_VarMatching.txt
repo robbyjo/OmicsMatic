@@ -1,0 +1,19 @@
+FORMALS
+as.pairlist(alist(x = , pmin.q = , muQ = , varQ = , df = , tau = , r.all = ))
+BODY
+{
+    n.r <- length(r.all)
+    n.x <- length(x)
+    temp1 <- tau %x% t(x)
+    temp <- (pmin.q - temp1)/(1 - r.all)
+    temp.min <- apply(temp, 2, min)
+    if (varQ > 0) {
+        temp.q <- (temp.min - muQ)/sqrt(varQ) * sqrt(2 * df) + df
+        val = pchisq(temp.q, df = df)
+    }
+    else {
+        val = rep(0, length(temp.q))
+    }
+    re <- val * dchisq(x, df = 1)
+    return(re)
+}

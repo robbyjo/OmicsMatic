@@ -1,0 +1,93 @@
+FORMALS
+as.pairlist(alist(formula = , data = NULL, K = NULL, Kin.File = NULL, ngrids = 100, llim = -10, ulim = 10, esp = 1e-10, Is.GetEigenResult = FALSE))
+BODY
+{
+    obj1 <- model.frame(formula, na.action = na.omit, data)
+    obj2 <- model.frame(formula, na.action = na.pass, data)
+    n1 <- dim(obj2)[1]
+    n <- dim(obj1)[1]
+    id_include <- SKAT_Null_Model_Get_Includes(obj1, obj2)
+    X <- model.matrix(formula, data = data)
+    X <- Get_SKAT_Residuals.Get_X1(X)
+    y <- model.response(obj1)
+    q <- ncol(X)
+    if (n1 - n > 0) {
+        MSG <- sprintf("%d  samples have either missing phenotype or missing covariates. They are excluded from the analysis!", n1 - n)
+        warning(MSG, call. = FALSE)
+    }
+    stopifnot(nrow(X) == n)
+    if (is.null(K) && is.null(Kin.File)) {
+        stop("both K and Kin.File are NULL!")
+    }
+    else if (is.null(K)) {
+        if (!file.exists(Kin.File)) {
+            msg <- sprintf("File %s is not exist!", Kin.File)
+            stop(msg)
+        }
+        cat("Read ", Kin.File, "\n")
+        K = as.matrix(read.delim(Kin.File, header = FALSE, colClasses = "numeric", sep = "\t"))
+        t <- nrow(K)
+        cat("Read complete. ", Kin.File, " has ", t, " rows! \n")
+    }
+    if (!is.matrix(K)) {
+        stop("K is not a matrix!")
+    }
+    if (n1 - n > 0) {
+        K <- K[id_include, id_include]
+    }
+    t <- nrow(K)
+    stopifnot(ncol(K) == t)
+    eig.R <- emma.eigen.R.wo.Z(K, X)
+    etas <- crossprod(eig.R$vectors, y)
+    logdelta <- (0:ngrids)/ngrids * (ulim - llim) + llim
+    m <- length(logdelta)
+    delta <- exp(logdelta)
+    Lambdas <- matrix(eig.R$values, n - q, m) + matrix(delta, n - q, m, byrow = TRUE)
+    Etasq <- matrix(etas * etas, n - q, m)
+    LL <- 0.5 * ((n - q) * (log((n - q)/(2 * pi)) - 1 - log(colSums(Etasq/Lambdas))) - colSums(log(Lambdas)))
+    dLL <- 0.5 * delta * ((n - q) * colSums(Etasq/(Lambdas * Lambdas))/colSums(Etasq/Lambdas) - colSums(1/Lambdas))
+    optlogdelta <- vector(length = 0)
+    optLL <- vector(length = 0)
+    if (dLL[1] < esp) {
+        optlogdelta <- append(optlogdelta, llim)
+        optLL <- append(optLL, emma.delta.REML.LL.wo.Z(llim, eig.R$values, etas))
+    }
+    if (dLL[m - 1] > 0 - esp) {
+        optlogdelta <- append(optlogdelta, ulim)
+        optLL <- append(optLL, emma.delta.REML.LL.wo.Z(ulim, eig.R$values, etas))
+    }
+    for (i in 1:(m - 1)) {
+        if ((dLL[i] * dLL[i + 1] < 0 - esp * esp) && (dLL[i] > 0) && (dLL[i + 1] < 0)) {
+            r <- uniroot(emma.delta.REML.dLL.wo.Z, lower = logdelta[i], upper = logdelta[i + 1], lambda = eig.R$values, etas = etas)
+            optlogdelta <- append(optlogdelta, r$root)
+            optLL <- append(optLL, emma.delta.REML.LL.wo.Z(r$root, eig.R$values, etas))
+        }
+    }
+    maxdelta <- exp(optlogdelta[which.max(optLL)])
+    maxLL <- max(optLL)
+    maxva <- sum(etas * etas/(eig.R$values + maxdelta))/(n - q)
+    maxve <- maxva * maxdelta
+    va = maxva
+    ve = maxve
+    V = va * K
+    diag(V) = diag(V) + ve
+    if (ve/va < 0.01) {
+        eig.V <- eigen(V, symmetric = TRUE)
+        idx.lambda <- which(abs(eig.V$values) > mean(abs(eig.V$values))/10000)
+        V_inv <- eig.V$vectors[, idx.lambda] %*% (t(eig.V$vectors[, idx.lambda]) * (1/eig.V$values[idx.lambda]))
+    }
+    else {
+        V_inv <- solve(V)
+    }
+    XVX = t(X) %*% (V_inv %*% X)
+    XVX_inv <- solve(XVX)
+    XV_inv = t(X) %*% V_inv
+    P = V_inv - t(XV_inv) %*% (XVX_inv %*% XV_inv)
+    res = P %*% y
+    re <- list(LL = maxLL, va = va, ve = ve, P = P, res = res, id_include = id_include)
+    if (Is.GetEigenResult) {
+        re$eig.R = eig.R
+    }
+    class(re) <- "SKAT_NULL_Model_EMMAX"
+    return(re)
+}

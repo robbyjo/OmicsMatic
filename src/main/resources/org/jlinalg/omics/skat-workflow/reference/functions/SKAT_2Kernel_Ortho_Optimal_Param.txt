@@ -1,0 +1,27 @@
+FORMALS
+as.pairlist(alist(Z1 = , Z2 = , r.all = ))
+BODY
+{
+    n <- dim(Z1)[1]
+    p.m <- dim(Z1)[2]
+    r.n <- length(r.all)
+    lambda <- list()
+    lambda[[1]] <- Get_Lambda(t(Z1) %*% Z1)
+    lambda[[2]] <- Get_Lambda(t(Z2) %*% Z2)
+    par.moments <- list()
+    c1 <- rep(0, 4)
+    for (i in 1:2) {
+        lambda.temp <- lambda[[i]]
+        c1[1] <- sum(lambda.temp)
+        c1[2] <- sum(lambda.temp^2)
+        c1[3] <- sum(lambda.temp^3)
+        c1[4] <- sum(lambda.temp^4)
+        param.temp <- Get_Liu_Params_Mod(c1)
+        muQ <- param.temp$muQ
+        varQ <- param.temp$sigmaQ^2
+        df <- param.temp$l
+        par.moments[[i]] <- c(muQ, varQ, df)
+    }
+    out <- list(lambda = lambda, par.moments = par.moments)
+    return(out)
+}

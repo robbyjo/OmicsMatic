@@ -1,0 +1,67 @@
+FORMALS
+as.pairlist(alist(Pval = , MAP = , main = "QQ plot", ntry = 500, confidence = 0.95, Is.unadjsted = TRUE, Is.legend = TRUE, xlab = "Expected Quantiles (-log10 P-values)", ylab = "Observed Quantiles (-log10 P-values)"))
+BODY
+{
+    alpha = 1 - confidence
+    p <- length(Pval)
+    Pval <- sort(Pval)
+    id.miss <- union(which(is.na(MAP)), which(MAP < 0))
+    if (length(id.miss) > 0) {
+        MAP[id.miss] = 0
+    }
+    if (p > 5e+05) {
+        p1 <- ceiling(p * 0.01)
+        p2 <- ceiling(p * 0.05)
+        p3 <- ceiling(p * 0.1)
+        range <- c(1:p1, seq(p1 + 1, p2, 5), seq(p2 + 1, p3, 20), seq(p3 + 1, p, 50))
+    }
+    else if (p > 1e+05) {
+        p1 <- ceiling(p * 0.01)
+        p2 <- ceiling(p * 0.05)
+        p3 <- ceiling(p * 0.1)
+        range <- c(1:p1, seq(p1 + 1, p2, 2), seq(p2 + 1, p3, 10), seq(p3 + 1, p, 20))
+    }
+    else if (p > 10000) {
+        p1 <- ceiling(p * 0.01)
+        p2 <- ceiling(p * 0.1)
+        range <- c(1:p1, seq(p1 + 1, p2, 2), seq(p2 + 1, p, 10))
+    }
+    else {
+        range <- 1:p
+    }
+    p2 <- length(range)
+    Pval1 <- Pval[range]
+    expected <- matrix(rep(0, p2 * ntry), ncol = ntry)
+    if (Is.unadjsted) {
+        expected_noadj <- matrix(rep(0, p2 * ntry), ncol = ntry)
+    }
+    for (i in 1:ntry) {
+        b1 <- rbinom(p, 1, MAP)
+        b2 <- runif(p)
+        temp <- (b2 * (1 - MAP) + MAP) * (1 - b1) + b1 * MAP
+        expected[, i] <- sort(temp)[range]
+        if (Is.unadjsted) {
+            expected_noadj[, i] <- sort(b2)[range]
+        }
+    }
+    expected1 <- apply(expected, 1, median)
+    expected1.u <- apply(expected, 1, quantile, probs = (1 - alpha/2))
+    expected1.l <- apply(expected, 1, quantile, probs = alpha/2)
+    if (Is.unadjsted) {
+        unadj.m <- apply(expected_noadj, 1, median)
+    }
+    max1 <- max(-log10(expected1), -log10(Pval))
+    if (Is.unadjsted) {
+        max1 <- max(c(max1, -log10(unadj.m)))
+    }
+    plot(-log10(expected1), -log10(Pval1), xlim = c(0, max1), ylim = c(0, max1), col = "black", main = main, pch = "*", xlab = xlab, ylab = ylab)
+    points(-log10(expected1), -log10(expected1.u), type = "l", lty = "dashed", col = "grey")
+    points(-log10(expected1), -log10(expected1.l), type = "l", lty = "dashed", col = "grey")
+    if (Is.unadjsted) {
+        points(-log10(unadj.m), -log10(Pval1), xlim = c(0, max1), ylim = c(0, max1), col = "grey", pch = "*")
+        if (Is.legend) {
+            legend("topleft", legend = c("MAP-adjusted", "Unadjusted"), col = c("black", "grey"), pch = "*", bty = "n")
+        }
+    }
+    abline(0, 1)
+}

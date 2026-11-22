@@ -1,0 +1,30 @@
+FORMALS
+as.pairlist(alist(Q.sim = , param = ))
+BODY
+{
+    muQ <- param[1]
+    varQ <- param[2]
+    df <- param[3]
+    if (varQ == 0) {
+        return(NULL)
+    }
+    n1 <- length(Q.sim)
+    Q.sim <- (Q.sim - muQ)/sqrt(varQ) * sqrt(2 * df) + df
+    Q.sim.sort <- sort(Q.sim)
+    Q.sim.e <- qchisq((1:n1)/(n1 + 1), df = df)
+    n2 <- round(n1/20)
+    prob <- 0:n2/(n2 + 1) + 10/n1
+    Quant1 = -quantile(-Q.sim.sort, prob)
+    Quant2 = -quantile(-Q.sim.e, prob)
+    fun1 <- try(approxfun(Quant1, Quant2), silent = TRUE)
+    maxq <- max(Quant1)
+    minq <- min(Quant1)
+    ratio <- mean(c(max(Quant1[1:5]/Quant2[1:5]), Quant1[1]/Quant2[1]))
+    if (Is_TryError(fun1)) {
+        out.s = NULL
+    }
+    else {
+        out.s <- list(fun1 = fun1, maxq = maxq, minq = minq, ratio = ratio)
+    }
+    return(out.s)
+}

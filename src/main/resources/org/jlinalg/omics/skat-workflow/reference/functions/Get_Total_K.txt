@@ -1,0 +1,11 @@
+FORMALS
+as.pairlist(alist(k = ))
+BODY
+{
+    n.total.k <- rep(0, k + 1)
+    for (i in 0:k) {
+        n.total.k[i + 1] <- choose(k, i)
+    }
+    re = list(n.total = sum(n.total.k), n.total.k = n.total.k)
+    return(re)
+}

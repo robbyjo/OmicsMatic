@@ -1,0 +1,15 @@
+FORMALS
+as.pairlist(alist(Z1 = , p_all = , Q.sim = ))
+BODY
+{
+    lambda <- Get_Lambda(t(Z1) %*% Z1)
+    muQ = sum(lambda)
+    varQ.sim <- var(Q.sim)
+    df.sim <- SKAT_Get_DF_Sim(Q.sim)
+    c1 <- rep(0, 4)
+    for (i in 1:4) {
+        c1[i] <- sum(lambda^i)
+    }
+    param <- Get_Liu_Params_Mod(c1)
+    return(list(muQ = muQ, varQ = varQ.sim, df = df.sim, lambda.new = NULL, param.noadj = param, n.lambda = 0))
+}

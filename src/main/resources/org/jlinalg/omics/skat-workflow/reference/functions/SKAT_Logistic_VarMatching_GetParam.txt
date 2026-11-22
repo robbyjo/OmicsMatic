@@ -1,0 +1,20 @@
+FORMALS
+as.pairlist(alist(lambda = , U = , p_all = , Q.sim = ))
+BODY
+{
+    re <- SKAT_Get_Cov_Param(lambda, p_all, U)
+    lambda.new <- re$lambda.new
+    muQ <- re$muQ
+    varQ <- re$varQ
+    s2 = sum(lambda.new^4)/sum(lambda.new^2)^2
+    df <- 1/s2
+    if (!is.null(Q.sim)) {
+        df <- SKAT_Get_DF_Sim(Q.sim)
+    }
+    c1 <- rep(0, 4)
+    for (i in 1:4) {
+        c1[i] <- sum(lambda^i)
+    }
+    param <- Get_Liu_Params_Mod(c1)
+    return(list(muQ = muQ, varQ = varQ, df = df, lambda.new = lambda.new, param.noadj = param, n.lambda = length(lambda.new)))
+}

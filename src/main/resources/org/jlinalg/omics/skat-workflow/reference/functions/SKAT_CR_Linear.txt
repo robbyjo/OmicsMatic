@@ -1,0 +1,22 @@
+FORMALS
+as.pairlist(alist(obj.res = , Z1 = , Z2 = , r.all = c(0, 0.25, 0.5, 0.75, 1), IsReverse = FALSE))
+BODY
+{
+    if (obj.res$out_type == "C") {
+        s2 = obj.res$s2
+        pi_1 = NULL
+        out_type = "C"
+    }
+    else {
+        s2 = 1
+        pi_1 = obj.res$pi_1
+        out_type = "D"
+    }
+    if (!IsReverse) {
+        re <- SKAT_CR_Optimal(obj.res$res, Z1, Z2, obj.res$X1, s2 = s2, pi_1 = pi_1, res.out = obj.res$res.out, n.Resampling = obj.res$n.Resampling, r.all = r.all, out_type = out_type)
+    }
+    else {
+        re <- SKAT_CR_Optimal(obj.res$res, Z2, Z1, obj.res$X1, s2 = s2, pi_1 = pi_1, res.out = obj.res$res.out, n.Resampling = obj.res$n.Resampling, r.all = r.all, out_type = out_type)
+    }
+    return(re)
+}

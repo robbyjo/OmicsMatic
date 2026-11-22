@@ -1,0 +1,10 @@
+FORMALS
+as.pairlist(alist(Z1 = , Q.sim = , param = ))
+BODY
+{
+    param <- c(param$muQ, param$varQ, param$df)
+    out.s <- SKAT_Logistic_VarMatching_QuantileAdj_Param(Q.sim, param)
+    re <- list(muQ = param$muQ, varQ = param$varQ, df = param$df, out.s = out.s)
+    class(re) <- "QuantileAdj"
+    return(re)
+}

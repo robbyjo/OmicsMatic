@@ -1,0 +1,10 @@
+FORMALS
+as.pairlist(alist(Q.all = , lambda = , df1 = NULL, log.p = FALSE))
+BODY
+{
+    param <- Get_Liu_Params_Mod_Lambda(lambda, df1 = df1)
+    Q.Norm <- (Q.all - param$muQ)/param$sigmaQ
+    Q.Norm1 <- Q.Norm * param$sigmaX + param$muX
+    p.value <- pchisq(Q.Norm1, df = param$l, ncp = param$d, lower.tail = FALSE, log.p = log.p)
+    return(p.value)
+}

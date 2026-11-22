@@ -1,0 +1,17 @@
+FORMALS
+as.pairlist(alist(FileName = ))
+BODY
+{
+    Check_File_Exists(FileName)
+    dat <- read.table(FileName, header = FALSE, stringsAsFactors = FALSE)
+    hashset <- new.env()
+    n.SNP <- length(dat[, 1])
+    for (i in 1:n.SNP) {
+        val1 <- dat[i, 1]
+        val2 <- dat[i, 2]
+        hashset[[val1]] <- val2
+    }
+    obj <- list(hashset = hashset, nSNP = n.SNP)
+    class(obj) <- "SNPWeight"
+    return(obj)
+}

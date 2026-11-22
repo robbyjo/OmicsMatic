@@ -1,0 +1,34 @@
+FORMALS
+as.pairlist(alist(res = , Z = , obj = , kernel = , method = , weights = NULL, r.corr = 0))
+BODY
+{
+    m = ncol(Z)
+    n = nrow(Z)
+    if (any(kernel == "linear.weighted")) {
+        Z = t(t(Z) * (weights))
+    }
+    if (r.corr == 1) {
+        Z <- cbind(rowSums(Z))
+    }
+    else if (r.corr > 0) {
+        p.m <- dim(Z)[2]
+        R.M <- diag(rep(1 - r.corr, p.m)) + matrix(rep(r.corr, p.m * p.m), ncol = p.m)
+        L <- chol(R.M, pivot = TRUE)
+        Z <- Z %*% t(L)
+    }
+    Q.Temp = t(obj$res) %*% Z
+    Q = Q.Temp %*% t(Q.Temp)/2
+    Q.res = NULL
+    W.1 = t(Z) %*% (obj$P %*% Z)
+    if (method == "liu.mod") {
+        out <- Get_Liu_PVal.MOD(Q, W.1, Q.res)
+    }
+    else if (method == "davies") {
+        out <- Get_Davies_PVal(Q, W.1, Q.res)
+    }
+    else {
+        stop("Invalid Method!")
+    }
+    re <- list(p.value = out$p.value, Test.Type = method, Q = Q, param = out$param)
+    return(re)
+}

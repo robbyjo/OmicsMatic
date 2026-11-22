@@ -1,0 +1,9 @@
+FORMALS
+as.pairlist(alist(ntest = , MAP = , alpha = ))
+BODY
+{
+    alpha1 <- alpha/ntest
+    n1 <- length(which(MAP < alpha1))
+    re <- n1 - ntest
+    return(re)
+}

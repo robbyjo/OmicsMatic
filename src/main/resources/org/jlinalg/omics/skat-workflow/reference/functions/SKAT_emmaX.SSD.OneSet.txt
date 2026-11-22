@@ -1,0 +1,13 @@
+FORMALS
+as.pairlist(alist(SSD.INFO = , SetID = , obj = , ... = , obj.SNPWeight = NULL))
+BODY
+{
+    id1 <- which(SSD.INFO$SetInfo$SetID == SetID)
+    if (length(id1) == 0) {
+        MSG <- sprintf("Error: cannot find set id [%s] from SSD!", SetID)
+        stop(MSG)
+    }
+    SetIndex <- SSD.INFO$SetInfo$SetIndex[id1]
+    re = SKAT_emmaX.SSD.OneSet_SetIndex(SSD.INFO, SetIndex, obj, ..., obj.SNPWeight = obj.SNPWeight)
+    return(re)
+}

@@ -1,0 +1,35 @@
+FORMALS
+as.pairlist(alist(Z = , impute.method = , SexVar = ))
+BODY
+{
+    p <- dim(Z)[2]
+    MAF <- SKAT_Get_MAF(Z, id_include = NULL, Is.chrX = TRUE, SexVar = SexVar)
+    id.male <- which(SexVar == 1)
+    id.female <- which(SexVar == 2)
+    for (i in 1:p) {
+        IDX <- which(is.na(Z[, i]))
+        IDX.m <- intersect(IDX, id.male)
+        IDX.f <- intersect(IDX, id.female)
+        maf1 <- MAF[i]
+        if (impute.method == "fixed") {
+            if (length(IDX.m) > 0) {
+                Z[IDX.m, i] <- maf1
+            }
+            if (length(IDX.f) > 0) {
+                Z[IDX.f, i] <- 2 * maf1
+            }
+        }
+        else if (impute.method == "bestguess") {
+            if (length(IDX.m) > 0) {
+                Z[IDX.m, i] <- round(maf1)
+            }
+            if (length(IDX.f) > 0) {
+                Z[IDX.f, i] <- round(2 * maf1)
+            }
+        }
+        else {
+            stop("Error: Imputation method shoud be \"fixed\" or \"bestguess\" ")
+        }
+    }
+    return(Z)
+}

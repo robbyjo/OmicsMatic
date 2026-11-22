@@ -1,0 +1,10 @@
+FORMALS
+as.pairlist(alist(Z = , is_X.inact = , SexVar = ))
+BODY
+{
+    id.male <- which(SexVar == 1)
+    if (is_X.inact && length(id.male) > 0) {
+        Z[id.male, ] = 2 * Z[id.male, ]
+    }
+    return(cbind(Z))
+}

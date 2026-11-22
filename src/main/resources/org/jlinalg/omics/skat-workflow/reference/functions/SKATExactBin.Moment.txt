@@ -1,0 +1,35 @@
+FORMALS
+as.pairlist(alist(Z = , res = , pi1 = , ncase = , idx = , r.corr = , res.out = NULL, X1 = , pi_1 = , method.bin = ))
+BODY
+{
+    if (method.bin == "QA") {
+        N.sim = 5e+05
+    }
+    else {
+        N.sim = 10000
+    }
+    n <- length(res)
+    p1 <- pi1[idx]
+    p2 <- pi1[-idx]
+    Z.1 <- cbind(Z[idx, ])
+    Z0 <- as.vector(t(Z.1 * (-p1)))
+    Z1 <- as.vector(t(Z.1 * (1 - p1)))
+    test_Z0 <- colSums(cbind(Z.1 * (-p1)))
+    m <- ncol(Z.1)
+    n.Resampling <- 0
+    if (!is.null(res.out)) {
+        n.Resampling <- ncol(res.out)
+    }
+    pr <- SKATExactBin.ComputProb_New(idx, pi1, n, ncase, N.Resampling = 10^7, ExactMax = 1, test_type = 1, type.group = 1)
+    if (length(r.corr) == 1) {
+        re.Q <- SKATExactBin.SKATO_GetQParam(Z, res, idx, 0, pi1, pr$prob_k, pr$k, res.out = res.out, N.sim = N.sim, Is.sim = TRUE)
+        out <- KMTest.logistic.Linear.VarMatching(res, Z, X1 = X1, kernel = "linear", weights = NULL, pi_1 = pi_1, method = method.bin, res.out, n.Resampling, r.corr = 0, mu = pi1, res.moments = NULL, Q.sim = re.Q$Q.sim[, 1]/2)
+    }
+    else {
+        Z.item2 <- SKAT_Optimal_GetZItem2(Z)
+        re.Q <- SKATExactBin.SKATO_GetQParam(Z, res, idx, r.corr, pi1, pr$prob_k, pr$k, res.out = res.out, N.sim = N.sim, Is.sim = TRUE)
+        re.Q2 <- SKATExactBin.SKATO_GetQParam(cbind(Z.item2), res, idx, 0, pi1, pr$prob_k, pr$k, res.out = NULL, N.sim = N.sim, Is.sim = TRUE)
+        out <- SKAT_Optimal_Logistic_VarMatching(res, Z, X1, kernel = "linear", weights = NULL, pi_1 = pi_1, method = method.bin, res.out = res.out, n.Resampling = n.Resampling, r.all = r.corr, mu = pi1, res.moments = NULL, Q.sim = re.Q2$Q.sim[, 1]/2, Q.sim.a = re.Q$Q.sim/2)
+    }
+    return(out)
+}

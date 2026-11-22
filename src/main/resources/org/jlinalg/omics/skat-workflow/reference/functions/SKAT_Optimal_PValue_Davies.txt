@@ -1,0 +1,17 @@
+FORMALS
+as.pairlist(alist(pmin.q = , param.m = , r.all = , pmin = NULL))
+BODY
+{
+    re <- try(integrate(SKAT_Optimal_Integrate_Func_Davies, lower = 0, upper = 40, subdivisions = 1000, pmin.q = pmin.q, param.m = param.m, r.all = r.all, abs.tol = 10^-25), silent = TRUE)
+    if (Is_TryError(re)) {
+        re <- SKAT_Optimal_PValue_Liu(pmin.q, param.m, r.all, pmin)
+        return(re)
+    }
+    pvalue <- 1 - re[[1]]
+    if (!is.null(pmin)) {
+        if (pmin * length(r.all) < pvalue) {
+            pvalue = pmin * length(r.all)
+        }
+    }
+    return(pvalue)
+}
