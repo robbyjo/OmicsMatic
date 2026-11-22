@@ -1,5 +1,21 @@
 # Current toolbox handover
 
+**Start here: [g:Profiler workflow handover and exact remaining work](GPROFILER_WORKFLOW_HANDOVER_2026-11-22.md).**
+The new global RUN/VERIFY/REPLAY source, 28-test normal-build evidence, eight
+original-service enrichment cases plus metadata discovery, Linux saved-protocol
+checks and declared cookie-redacted publication copies are saved. The catalog
+model is still a draft: **zero new family credit or canonical reviews**. Current
+totals stay **149 scoped families (27 native +122 upstream), 1,666 reviewed and
+1,057 pending uses** across 250 papers. Finish the independent qualification
+reader, guarded admission controller/tests and styled preview/installed checks
+before admitting the proposed seven g:Profiler roles. Then prioritize FUSION and
+the remaining high-impact gaps. Preserve all **74 worktrees** and transfer ignored
+runtime/original/failed evidence privately before machine retirement. Read the
+prominent SKIP3/FAIL2, raw-cookie privacy, process-safety and blocked historical
+export notices. The 33 existing website citation-panel failures remain open.
+The full goal is unfinished. Lower entries preserve historical checkpoints and
+are superseded where this handover says so.
+
 **Latest development: [Java g:GOSt API and seven-paper source audit](GPROFILER_API_COMPONENT_CHECKPOINT_2026-11-22.md).**
 The API component passes 13 normal-build tests and four packaged live-service
 cases. The exact P052 archive-build mismatch is retained as SKIP3 with no result.
