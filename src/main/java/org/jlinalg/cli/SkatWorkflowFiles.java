@@ -69,8 +69,9 @@ final class SkatWorkflowFiles {
     static String id(String value)throws IOException{return SkatWorkflowContracts.identifier(value);}
     static Prepared prepare(Path root,Map<String,Object> request,boolean compare)throws IOException {
         Path inputs=root.resolve("inputs");int maxSamples=Math.toIntExact(cap(request,"maximum_samples")),maxVariants=Math.toIntExact(cap(request,"maximum_variants")),maxCovariates=Math.toIntExact(cap(request,"maximum_covariates"));long maxBytes=cap(request,"maximum_member_bytes");var samples=new ArrayList<String>();var seenSamples=new HashSet<String>();var missing=new BitSet();var nonbinary=new BitSet();
+        var responses=new ArrayList<Double>();
         List<String> phenotype=rows(inputs.resolve("phenotype.tsv"),maxBytes,2,maxSamples,(row,values)->{
-            require(values.length==2,"Phenotype requires sample_id and exactly one value column");String sample=id(values[0]);require(seenSamples.add(sample),"Duplicate sample identifier");samples.add(sample);if(values[1].equals("NA"))missing.set(row-1);else{double y=finite(values[1]);if(y!=0&&y!=1)nonbinary.set(row-1);}
+            require(values.length==2,"Phenotype requires sample_id and exactly one value column");String sample=id(values[0]);require(seenSamples.add(sample),"Duplicate sample identifier");samples.add(sample);if(values[1].equals("NA")){missing.set(row-1);responses.add(null);}else{double y=finite(values[1]);responses.add(y);if(y!=0&&y!=1)nonbinary.set(row-1);}
         });require(phenotype.get(0).equals("sample_id"),"Require literal UTF-8 header sample_id without a BOM");
         List<String> covariates=List.of();
         if(request.containsKey("covariates")){
@@ -85,6 +86,10 @@ final class SkatWorkflowFiles {
             }
         });require(genotypeHeader.size()>=2&&genotypeHeader.get(0).equals("sample_id"),"Genotypes require sample_id and explicit variant headers");require(countRows(inputs.resolve("genotypes.tsv"))==samples.size(),"Genotype sample count differs");List<String> variants=genotypeHeader.subList(1,genotypeHeader.size());
         var nullModel=map(request.get("null_model"));if(nullModel.get("missing_model").equals("reject"))require(missing.isEmpty(),"Missing phenotype/covariate values require explicit complete-cases policy");int used=samples.size()-missing.cardinality();require(used>=3,"Fewer than three complete phenotype/covariate samples");var invalidBinary=(BitSet)nonbinary.clone();invalidBinary.andNot(missing);if(nullModel.get("out_type").equals("D"))require(invalidBinary.isEmpty(),"Binary outcome requires literal 0/1 for included samples");
+        if(nullModel.get("out_type").equals("D")||Boolean.TRUE.equals(nullModel.get("intercept"))){
+            Double first=null;boolean varies=false;for(int i=0;i<responses.size();i++)if(!missing.get(i)){double value=responses.get(i);if(first==null)first=value;else if(value!=first.doubleValue())varies=true;}
+            require(varies,"Included outcome is constant;binary outcomes and continuous null models with an intercept require variation. Tiny positive floating-point residual variance does not establish variation;no original model was fitted.");
+        }
         int columns=covariates.size()+(Boolean.TRUE.equals(nullModel.get("intercept"))?1:0);require(columns>0&&used>columns,"Require an estimable nonempty null design with positive residual degrees of freedom");
         var variantIndex=new HashMap<String,Integer>();for(int i=0;i<variants.size();i++)variantIndex.put(variants.get(i),i+1);var sets=new LinkedHashMap<String,List<Integer>>();var pairSets=new HashMap<String,Set<Integer>>();
         List<String> setHeader=rows(inputs.resolve("sets.tsv"),maxBytes,2,Math.toIntExact(cap(request,"maximum_memberships")),(row,values)->{
@@ -105,12 +110,15 @@ final class SkatWorkflowFiles {
     static String parameters(Map<String,Object> r)throws IOException {
         var values=new LinkedHashMap<String,Object>();values.put("profile",r.get("profile"));values.put("seed",r.get("seed"));var n=map(r.get("null_model"));var t=map(r.get("test"));var a=map(r.get("admission"));
         values.put("null_function",n.get("function"));for(String key:List.of("out_type","intercept","missing_model","rank_policy","n_resampling","resampling"))values.put(key,n.get(key));values.put("adjustment",n.getOrDefault("adjustment",false));values.put("kurtosis_adjustment",n.getOrDefault("kurtosis_adjustment",true));values.put("kurtosis_resamples",n.getOrDefault("kurtosis_resamples",10000));
-        values.putAll(t);for(String key:List.of("weights_beta","r_corr"))values.put(key,String.join(",",list(t.get(key),key).stream().map(Object::toString).toList()));values.putAll(a);values.put("allow_source_fallback",values.remove("allow_reported_fallback"));values.putAll(map(r.get("limits")));var text=new StringBuilder("key\tvalue\n");for(var entry:values.entrySet())text.append(entry.getKey()).append('\t').append(entry.getValue()).append('\n');return text.toString();
+        values.putAll(t);for(String key:List.of("weights_beta","r_corr"))values.put(key,String.join(",",list(t.get(key),key).stream().map(Object::toString).toList()));values.putAll(a);values.put("allow_source_fallback",values.remove("allow_reported_fallback"));values.putAll(map(r.get("limits")));var text=new StringBuilder("key\tvalue\n");for(var entry:new java.util.TreeMap<>(values).entrySet())text.append(entry.getKey()).append('\t').append(entry.getValue()).append('\n');return text.toString();
     }
     static Map<String,Object> inventory(Path root,Map<String,Object> request)throws IOException {
+        return inventory(root,request,true);
+    }
+    static Map<String,Object> inventory(Path root,Map<String,Object> request,boolean enforceAdmissionLimits)throws IOException {
         var result=new java.util.TreeMap<String,Object>();long bytes=0;int count=0;long member=cap(request,"maximum_member_bytes"),total=cap(request,"maximum_output_bytes"),maxFiles=cap(request,"maximum_files");
         try(var stream=Files.walk(root)){for(Path path:stream.toList()){
-            require(!Files.isSymbolicLink(path),"Capture contains a symbolic link: "+path);if(path.equals(root)||Files.isDirectory(path,LinkOption.NOFOLLOW_LINKS))continue;require(Files.isRegularFile(path,LinkOption.NOFOLLOW_LINKS),"Capture contains a nonregular node: "+path);String name=root.relativize(path).toString().replace('\\','/');if(name.equals("capture-files.json"))continue;long size=Files.size(path);require(size<=member,"Captured member exceeds declared capacity: "+name);bytes=Math.addExact(bytes,size);require(bytes<=total&&++count<=maxFiles,"Captured total byte/file capacity exceeded");result.put(name,pin(path));
+            require(!Files.isSymbolicLink(path),"Capture contains a symbolic link: "+path);if(path.equals(root)||Files.isDirectory(path,LinkOption.NOFOLLOW_LINKS)){require(path.toRealPath().equals(path.toAbsolutePath().normalize()),"Capture directory resolves through an alias: "+path);continue;}require(Files.isRegularFile(path,LinkOption.NOFOLLOW_LINKS),"Capture contains a nonregular node: "+path);String name=root.relativize(path).toString().replace('\\','/');if(name.equals("capture-files.json"))continue;long size=Files.size(path);if(enforceAdmissionLimits)require(size<=member,"Captured member exceeds declared capacity: "+name);bytes=Math.addExact(bytes,size);count++;if(enforceAdmissionLimits)require(bytes<=total&&count<=maxFiles,"Captured total byte/file capacity exceeded");result.put(name,pin(path));
         }}return result;
     }
     static Path output(Path candidate)throws IOException {

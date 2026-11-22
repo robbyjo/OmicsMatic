@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "engine": "original",
+  "profile": "2.2.5-r4.6.1",
+  "operation": "ASSOCIATE",
+  "out": "../../build/skat225-demo/binary-skat",
+  "rscript": "C:/Program Files/R/R-4.6.1/bin/Rscript.exe",
+  "r_libraries": [
+    "D:/PRIVATE/skat-library"
+  ],
+  "seed": 20261122,
+  "phenotype": "data/binary.tsv",
+  "genotypes": "data/genotypes.tsv",
+  "covariates": "data/covariates.tsv",
+  "sets": "data/sets.tsv",
+  "null_model": {
+    "function": "SKAT_Null_Model",
+    "out_type": "D",
+    "intercept": true,
+    "missing_model": "reject",
+    "rank_policy": "require-full-rank",
+    "adjustment": true,
+    "n_resampling": 0,
+    "resampling": "bootstrap"
+  },
+  "test": {
+    "method": "davies",
+    "kernel": "linear.weighted",
+    "weights_beta": [
+      1,
+      25
+    ],
+    "impute": "fixed",
+    "r_corr": [
+      0
+    ],
+    "check_genotype": true,
+    "dosage": false,
+    "missing_cutoff": 0.15,
+    "max_maf": 1,
+    "estimate_maf": 1
+  },
+  "admission": {
+    "allow_reported_fallback": false,
+    "allow_test_substitution": true,
+    "allow_adjustment_omission": false,
+    "allow_empty_sets": true,
+    "zero_policy": "refuse"
+  }
+}

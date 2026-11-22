@@ -9,8 +9,12 @@ hex<-function(value)paste(sprintf("%02x",as.integer(charToRaw(enc2utf8(value))))
 number<-function(x)vapply(x,function(v)if(is.nan(v))"NaN" else if(is.na(v))"NA" else if(is.infinite(v))if(v>0)"Inf" else "-Inf" else sprintf("%.17g",v),character(1))
 newpath<-function(path){need(!file.exists(path)&&!dir.exists(path),paste("Preserve existing evidence and choose NEW output:",path));path}
 save<-function(value,path)saveRDS(value,newpath(path),version=3)
-tableout<-function(value,path)write.table(value,newpath(path),sep="\t",quote=FALSE,row.names=FALSE,col.names=TRUE,na="NA",fileEncoding="UTF-8")
-readtable<-function(path){x<-read.delim(path,header=TRUE,sep="\t",quote="",comment.char="",colClasses="character",check.names=FALSE,na.strings=character(),fileEncoding="UTF-8");need(length(names(x))==length(unique(names(x))),"Duplicate literal table column names");x}
+tableout<-function(value,path){
+ columns<-lapply(value,function(x){if(is.numeric(x))return(number(x));if(is.logical(x))return(ifelse(is.na(x),"NA",ifelse(x,"TRUE","FALSE")));need(is.character(x),"Unsupported owned table column type");x[is.na(x)]<-"NA";enc2utf8(x)})
+ lines<-c(paste(names(value),collapse="\t"),vapply(seq_len(nrow(value)),function(i)paste(vapply(columns,function(x)x[[i]],character(1)),collapse="\t"),character(1)))
+ connection<-file(newpath(path),open="wb");on.exit(close(connection));writeLines(enc2utf8(lines),connection,useBytes=TRUE)
+}
+readtable<-function(path){x<-read.delim(path,header=TRUE,sep="\t",quote="",comment.char="",colClasses="character",check.names=FALSE,na.strings=character(),encoding="UTF-8");need(length(names(x))==length(unique(names(x))),"Duplicate literal table column names");x}
 label<-function(x)all(!is.na(x)&nzchar(x)&!grepl("[[:cntrl:]]",x))
 numeric_cells<-function(x,allow_na=FALSE){
  ok<-grepl("^[+-]?(?:[0-9]+(?:\\.[0-9]*)?|\\.[0-9]+)(?:[eE][+-]?[0-9]+)?$",x,perl=TRUE)
