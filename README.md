@@ -9,6 +9,8 @@ fix can mistake an unrelated process for a worker after Windows reuses a PID.
 Use the corrected source build before running external-tool workflows. Existing
 release assets have not been replaced by this source change. Read the
 [incident, validation limits and required actions](docs/literature/PROCESS_OWNERSHIP_SAFETY_2026-11-22.md).
+The [current validation entry](docs/literature/PROCESS_OWNERSHIP_FIXTURE_CHECKPOINT_2026-11-22.md)
+provides the follow-up source context and verifier.
 
 **[Website and guides](https://robbyjo.github.io/OmicsMatic/)** ·
 **[Download v0.4.0](https://github.com/robbyjo/OmicsMatic/releases/tag/v0.4.0)** ·

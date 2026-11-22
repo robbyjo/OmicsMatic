@@ -4,6 +4,7 @@ package org.jlinalg.cli;
 import static org.junit.jupiter.api.Assertions.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
@@ -37,10 +38,13 @@ class OwnedProcessesIntegrationTest {
     public static final class Fixture {
         private Fixture(){ }
         public static void main(String[]args)throws Exception {
-            if(args[0].equals("leaf")){Files.writeString(Path.of(args[1]),Long.toString(ProcessHandle.current().pid()));Thread.sleep(60000);return;}
+            if(args[0].equals("leaf")){publish(Path.of(args[1]));Thread.sleep(60000);return;}
             Path java=Path.of(System.getProperty("java.home"),"bin",System.getProperty("os.name").startsWith("Windows")?"java.exe":"java");Process child=new ProcessBuilder(java.toString(),"-cp",System.getProperty("java.class.path"),Fixture.class.getName(),"leaf",args[2]).redirectErrorStream(true).inheritIO().start();
-            try{Files.writeString(Path.of(args[1]),Long.toString(ProcessHandle.current().pid()));long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(40);while(!Files.exists(Path.of(args[3]))&&System.nanoTime()<deadline)Thread.sleep(20);}
+            try{publish(Path.of(args[1]));long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(40);while(!Files.exists(Path.of(args[3]))&&System.nanoTime()<deadline)Thread.sleep(20);}
             finally{child.destroyForcibly();child.waitFor(10,TimeUnit.SECONDS);}
+        }
+        private static void publish(Path ready)throws Exception {
+            Path pending=ready.resolveSibling(ready.getFileName()+".pending");Files.writeString(pending,Long.toString(ProcessHandle.current().pid()));Files.move(pending,ready,StandardCopyOption.ATOMIC_MOVE);
         }
     }
 }
