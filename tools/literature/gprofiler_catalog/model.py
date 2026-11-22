@@ -1,8 +1,4 @@
-"""Unapplied g:Profiler admission draft; see GPROFILER_WORKFLOW_HANDOVER_2026-11-22.md.
-
-No guarded controller or complete qualification/admission check exists yet.
-Importing this module does not grant credit or modify canonical data.
-"""
+"""Deterministic source-bound g:Profiler admission; imports never mutate canonical data."""
 from collections import Counter
 import copy
 import html
@@ -84,6 +80,8 @@ def registry():
 
 def validate(before, primary, qualified):
     require(set(before) == set(META) and primary == frozen_primary(), 'Changed predecessor/source roles')
+    require(qualified == json.loads((ROOT / 'docs/literature/gprofiler-workflow-qualification/QUALIFICATION.json').read_bytes()),
+            'Changed exact qualified workflow receipt')
     require(qualified['status'] == 'PASS_GPROFILER_ORIGINAL_PROTOCOL_WORKFLOWS_FOR_ADMISSION'
             and qualified['normal_tests'] == 28 and qualified['enrichment_RUN_cases'] == 8
             and qualified['metadata_RUN_cases'] == 1 and qualified['Windows_offline_REPLAY_cases'] == 9
@@ -180,6 +178,9 @@ def check(before, after, primary, qualified):
     old,new = json.loads(before[META[5]]),json.loads(after[META[5]])
     require(new['reviews'][:1666] == old['reviews'] and {k:v for k,v in old.items() if k!='reviews'} == {k:v for k,v in new.items() if k!='reviews'},'Changed prior ledger records/scope')
     require(len(new['reviews']) == len({(r['pmcid'],r['tool_id']) for r in new['reviews']}) == 1673,'Wrong review credit')
+    markers = {REVIEWED, 'individually-reviewed-primary-source-roles; whole-paper-method-review-open'}
+    marked = {(paper['pmcid'], use['tool_id']) for paper in b for use in paper['tools'] if use['review_status'] in markers}
+    require(marked == {(r['pmcid'],r['tool_id']) for r in new['reviews']}, 'Reviewed markers and ledger identities differ')
     counts = Counter(r['implementation_status'] for r in json.loads(after[META[1]]))
     require(counts['native-subset-validated']==27 and counts['upstream-adapter-validated']==123 and counts['method-overlap']==23 and counts['missing']==258 and unchanged==2716,'Wrong family/observation counts')
     return dict(papers=250,labels=446,provider_definitions=485,observations=2723,reviewed_uses=1673,pending_uses=1050,

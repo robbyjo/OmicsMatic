@@ -1,5 +1,18 @@
 # Current toolbox handover
 
+**Current: [g:Profiler admission, validation and remaining work](GPROFILER_CATALOG_CHECKPOINT_2026-11-22.md).**
+One original-service upstream family and seven source reviews are admitted:
+**150 scoped families (27 native +123 upstream), 1,673 reviewed and 1,050 pending
+uses** across the same 250 papers. The exact P052 historical build remains SKIP3
+before gene submission. New protocol/population checks and 42 fresh offline
+public CLI checks pass; 23 protocol/model/transaction tests pass on each host.
+All prior reviews and unrelated records are preserved. Continue FUSION and the
+remaining high-impact gaps, all 1,050 pending use reviews and missed-tool screening.
+Preserve all 74 worktrees and private original/failed evidence. Read the checkpoint
+for current commands, raw-cookie privacy, SKIP3/FAIL2 remedies, process-safety and
+private transfer. The full goal remains unfinished; the 33 existing website
+citation-panel omissions remain open. Lower entries retain historical counts.
+
 **Start here: [g:Profiler workflow handover and exact remaining work](GPROFILER_WORKFLOW_HANDOVER_2026-11-22.md).**
 The new global RUN/VERIFY/REPLAY source, 28-test normal-build evidence, eight
 original-service enrichment cases plus metadata discovery, Linux saved-protocol

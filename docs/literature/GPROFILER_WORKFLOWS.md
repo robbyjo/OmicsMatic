@@ -1,8 +1,8 @@
-# g:Profiler service workflows (development checkpoint)
+# g:Profiler service workflows
 
-Use a JDK 21 source-built JAR with the `gprofiler-tools` command. This checkpoint
-has tested workflow source but **no new catalog credit**; see the
-[handover and remaining admission work](GPROFILER_WORKFLOW_HANDOVER_2026-11-22.md).
+Use a JDK 21 source-built JAR with the `gprofiler-tools` command. One scoped upstream
+family and seven source reviews are now admitted; see the
+[catalog checkpoint and remaining work](GPROFILER_CATALOG_CHECKPOINT_2026-11-22.md).
 Java validates/records requests and checks results; enrichment, identifier mapping
 and GO highlighting run in the original online service. RUN sends the declared
 identifiers/background upstream only with explicit `allow_upload: true`.
