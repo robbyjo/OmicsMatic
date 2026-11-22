@@ -1,5 +1,21 @@
 # Current literature warnings and required actions
 
+## Original SKAT2.2.5 prepared workflows
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED. Supply the exact permitted named input,R4.6.1 executable and declared SKAT2.2.5 package profile. Download/install privately where allowed;if prohibited,retain the skip and identify the affected analysis and prerequisite. FAIL2: NO COMPLETE RESULT. Preserve raw,null,failed,partial,superseded and invalidated evidence;fix the named input,numerical,capacity,process or integrity cause and retry NEW output. Only admitted/p-values.tsv with results_admitted=true and successful complete verification is a final export. Original results/p-values.tsv can remain after failure. Untested sets and retained zero bounds export NA. Offline verification is integrity/relationship checking,not RDS interpretation,refitting,authenticated provenance or a convergence certificate. Do not use the retained invalidated matrix4 constant-outcome result. Never silently repair IDs,NaN/Inf,endpoints,weights,unknown options or historical hashes. Read WARNINGS.md first. Private runtimes,JARs and complete historical evidence need separate transfer. Cell Ranger remains excluded;unfinished reports remain off Pages.
+
+250 papers,446 labels,485 provider definitions and2723 observations;1661 reviewed uses and1062 pending. There are148 scoped families(27 native+121 upstream),151 including three existing adapters,258 missing labels,25 method-overlap labels and three aliases without extra family credit. This transition adds one upstream SKAT family and one SKAT-O alias,with no new reviews or observations. The full250-paper implementation goal remains unfinished.
+
+Original SKAT R2.2.5 prepared autosomal continuous/binary matrix workflows through skat-tools RUN, offline VERIFY and fresh REPLAY. Explicit null model,method,kernel,seed,ordered variants/sets,weights,imputation,complete cases and admission policies. Qualified Windows x86_64 Java21/R4.6.1 profile with pinned private packages;reported R4.6.2 binary-build warnings remain visible. SKAT-O in this provider is an operation/alias,not another family. No SSD,sex-chromosome,author-binary,whole-tool or whole-paper equivalence is claimed.
+
+All15 existing reviewed SKAT/SKAT-O observations stay unchanged. P246 explicitly names original R2.2.5,but supplementary PDF/workbook review does not establish method/rho,kernel weights,imputation or small-null choices. Do not invent a matched command. Meta-SAIGE,SAIGE-GENE+,REGENIE,REMETA,SEAK and COAST contexts remain distinct;P090 is comparator-only. The newly available original SKAT provider does not reproduce those workflows. Six extra zero-resampling controls preserve original behavior,including binary perturbation refusal.
+
+Read [the qualified integration scope](../SKAT225_CATALOG_INTEGRATION.md).
+
+<details><summary>Before standalone SKAT admission (historical)</summary>
+
+# Current literature warnings and required actions
+
 ## ACAT component and22 reviewed ACAT/SKAT roles
 
 **Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED. Supply the exact named permitted executable, Java/R library, index, source XML/PDF or audit dependency. Download/private installation is authorized where permitted; if installation is prohibited, retain the skip and identify the affected analysis and exact prerequisite. FAIL2: NO COMPLETE RESULT. Preserve raw, null, partial, failed and superseded evidence and logs; resolve the named input, numerical, capacity, source/integrity or process cause and retry NEW output. Never repair NaN/Inf, endpoints, weights or identifiers silently, guess unknown paper options, refresh historical hashes or overwrite evidence. Read analysis-status.json and WARNINGS.md; one unadmitted ACAT column withholds the batch export. VERIFY may confirm failed-capture consistency without admitting its result. Private runtimes, JARs, primary text and complete failed evidence require a separate checksummed transfer before machine retirement. Cell Ranger remains excluded; both unfinished reports stay off Pages.
@@ -1738,6 +1754,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 
