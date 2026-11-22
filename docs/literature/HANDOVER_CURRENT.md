@@ -1,5 +1,22 @@
 # Current toolbox handover
 
+**HANDOVER: [QTLtools drafts, exact resume steps and remaining work](HANDOVER_2026-11-21_QTLTOOLS.md).**
+Collection is complete at **250 papers**; implementation is unfinished. Canonical
+counts remain **145 scoped families (26 native +119 upstream),1630 reviewed and
+1092 pending uses**. The qualified P103 native fdensity library API remains the
+usable baseline. Six exact workflow drafts are saved outside compiled sources;
+three Java classes and the synthetic generator compile, Python syntax/profile
+checks pass, but no workflow scientific execution or CLI qualification is claimed.
+All **61 preceding worktrees** and Git-visible variants are preserved; publication
+owner is62nd. Next: review process supervision, run artificial inputs against all
+three exact editions, implement output admission and RUN/VERIFY/REPLAY, qualify
+normal-JAR/global commands, then source-bound QTLtools admission and high-impact
+GWAS/omics gaps plus1092 use reviews. **Transfer ignored JARs,runtimes,full text,
+private author source and complete private/failed evidence separately before
+retiring this machine.** The handover explains SKIP3/FAIL2 and exact remedies.
+No new family credit, release, Pages deployment or whole-goal completion.
+Lower entries preserve historical checkpoints and their then-current counts.
+
 **Current: [native QTLtools fdensity API and exact next work](QTLTOOLS_FDENSITY.md).**
 Native Java now implements the selected1.3.1 fdensity counting operation on
 declared valid BED intervals. All588 focused tests pass per normal build and
