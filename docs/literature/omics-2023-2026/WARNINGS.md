@@ -1,5 +1,21 @@
 # Current literature warnings and required actions
 
+## ACAT component and22 reviewed ACAT/SKAT roles
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED. Supply the exact named permitted executable, Java/R library, index, source XML/PDF or audit dependency. Download/private installation is authorized where permitted; if installation is prohibited, retain the skip and identify the affected analysis and exact prerequisite. FAIL2: NO COMPLETE RESULT. Preserve raw, null, partial, failed and superseded evidence and logs; resolve the named input, numerical, capacity, source/integrity or process cause and retry NEW output. Never repair NaN/Inf, endpoints, weights or identifiers silently, guess unknown paper options, refresh historical hashes or overwrite evidence. Read analysis-status.json and WARNINGS.md; one unadmitted ACAT column withholds the batch export. VERIFY may confirm failed-capture consistency without admitting its result. Private runtimes, JARs, primary text and complete failed evidence require a separate checksummed transfer before machine retirement. Cell Ranger remains excluded; both unfinished reports stay off Pages.
+
+250 papers, 446 labels and 485 provider definitions; 2723 observations, 1661 reviewed uses and 1062 pending. There are 147 scoped families (27 native + 120 upstream), 150 including three existing adapters, 258 missing and 27 method-overlap labels. Two aliases receive no duplicate credit. Only the qualified native ACAT component receives one new family; a standalone SKAT adapter remains pending. The full 250-paper objective is unfinished.
+
+One native ACAT family covers checked ACAT 0.91 prepared matrix-column p-value combination and acat-tools RUN/VERIFY/REPLAY. It does not qualify ACAT-V/null fitting, ACAT-O, REGENIE, REMETA, isoTWAS, SKAT/SKAT-O or paper pipelines. Existing native ACAT methods remain separate numerical/model profiles, without additional family credit.
+
+22 individual reviews comprise 21 previously pending observations and one recovered P127 SKATO observation. Comparator-only P090, provider-specific methods, reused summaries and explicit versus unknown editions stay distinct. P127 rho-grid ACAT differs from minimum-p SKAT-O. P131 explicitly reports ACAT 0.91; P246 explicitly reports SKAT R 2.2.5 but omits SKAT-O method arguments. P220 SAIGE 1.1.9 is separate from bibliography 45 and from downloaded AoU/Genebass results. Three Cauchy-only papers do not establish a named ACAT package. P210 CDF wording is retained as a tail discrepancy. No full-paper completeness or executed author build is claimed.
+
+Read [the source crosswalk](../ACAT_SKAT_CATALOG_INTEGRATION.md).
+
+<details><summary>Before ACAT admission (historical)</summary>
+
+# Current literature warnings and required actions
+
 ## QTLtools: one scoped family and nine new source reviews
 
 **Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED. Supply the exact permitted missing executable,libraries,input,index,Linux/WSL/Python utility or named source-audit dependency. Download/private installation is authorized where allowed; if installation is prohibited,retain the skip and identify the affected analysis and exact required item. FAIL2: NO COMPLETE RESULT. Preserve raw/null/partial/failed evidence,logs,signal/exit and ownership/cleanup receipts;correct the named data,numerical,capacity,source/integrity or process cause and retry NEW output. Completed null results carry warnings and are not positive findings. Read analysis-status.json and WARNINGS.md. Preserve original1.1 MBV integer fractions,edition-specific trans-null columns and fdensity input-order guards. Never infer unknown paper settings,repair nonfinite values,overwrite failed evidence or substitute an edition. Cell Ranger remains excluded. Both unfinished reports remain off Pages. Private runtimes,JARs,full text and complete failed evidence need a separate checksummed transfer before machine retirement.
@@ -1722,6 +1738,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

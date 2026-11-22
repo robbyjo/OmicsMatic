@@ -1,5 +1,7 @@
 # Native ACAT 0.91 matrix combination
 
+**Catalog update:** [Current source roles and counts](ACAT_SKAT_CATALOG_INTEGRATION.md) now credit one bounded native ACAT family: 147 scoped families, 1661 reviewed uses and 1062 pending. Counts in the frozen component checkpoint below describe f66c8e5e before catalog admission. Scientific behavior and its qualified JAR are unchanged.
+
 `acat-tools` now exposes native Java matrix p-value combination with saved
 RUN/VERIFY/REPLAY captures. The bounded reference is the checked
 `ACAT(Pvals, weights, is.check=TRUE)` function in upstream ACAT 0.91, commit

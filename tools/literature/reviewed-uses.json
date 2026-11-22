@@ -24056,6 +24056,520 @@
           "paragraph_sha256": "1dfa43d7d5c82b61e8e9c170792bb35e250ba85af989dce6185904328230bcb9"
         }
       ]
+    },
+    {
+      "pmcid": "PMC11631752",
+      "doi": "10.1038/s41588-024-01952-y",
+      "tool_id": "skat",
+      "evidence_paragraph_sha256": "46514330bc3750e5a951183acd756cad298261e419c73de60e1953160b32520b",
+      "use_summary": "SKAT is mentioned as an alternative whose inflation motivates the selected REGENIE burden analysis; the paragraph does not establish an executed SKAT run.",
+      "implementation_scope_note": "REGENIE 3.2.4 burden testing, Firth correction, the PTV mask, cohort-specific MAC filters and BH are the reported workflow. Do not attribute its results or options to a standalone SKAT package.",
+      "usage_context": "comparator-not-established-as-executed",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC11631752",
+      "doi": "10.1038/s41588-024-01952-y",
+      "tool_id": "skato",
+      "evidence_paragraph_sha256": "46514330bc3750e5a951183acd756cad298261e419c73de60e1953160b32520b",
+      "use_summary": "SKAT-O is a methodological comparator in the justification for REGENIE burden testing, rather than an established executed test in this paragraph.",
+      "implementation_scope_note": "Keep the binary/quantitative MAC rules and replication criteria with the REGENIE burden workflow. A SKAT-O example or native calibration cannot reproduce an unreported paper run.",
+      "usage_context": "comparator-not-established-as-executed",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12695641",
+      "doi": "10.1038/s41588-025-02403-y",
+      "tool_id": "skat",
+      "evidence_paragraph_sha256": "cc796a24ac542e3df7200351c9da57199ddd7d2b7e12f4616a1973e8977aeae5",
+      "use_summary": "Meta-SAIGE constructs a SKAT gene statistic from combined cohort score statistics and covariance, using Beta(1,25) MAF weighting after its superset construction.",
+      "implementation_scope_note": "The provider is Meta-SAIGE, with its cohort calibration, sparse LD and two-level SPA; an ordinary SKAT R fit is not equivalent. A separate Cauchy step combines annotation/MAF tests.",
+      "usage_context": "method-through-meta-saige",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 4,
+          "section": "Main",
+          "paragraph_sha256": "21aa9498d85b5100f7a0e281ef9390c28cdc41a026bf850be63a71a542363b5e"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12695641",
+      "doi": "10.1038/s41588-025-02403-y",
+      "tool_id": "skato",
+      "evidence_paragraph_sha256": "cc796a24ac542e3df7200351c9da57199ddd7d2b7e12f4616a1973e8977aeae5",
+      "use_summary": "Meta-SAIGE combines burden and SKAT statistics into SKAT-O after score/LD meta-analysis.",
+      "implementation_scope_note": "Preserve the Meta-SAIGE provider and SPA calibration; no standalone SKAT edition or SKAT-O method arguments are established by this paragraph. The three MAF thresholds and annotation combinations belong to the surrounding workflow.",
+      "usage_context": "method-through-meta-saige",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 4,
+          "section": "Main",
+          "paragraph_sha256": "21aa9498d85b5100f7a0e281ef9390c28cdc41a026bf850be63a71a542363b5e"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10703692",
+      "doi": "10.1038/s41588-023-01560-2",
+      "tool_id": "acat",
+      "evidence_paragraph_sha256": "fd4b15fb339c2fb5388f8a72d43e8eec9c4ffa2d27479c359f8723642607e788",
+      "use_summary": "isoTWAS uses ACAT as its default gene omnibus for isoform association p-values, followed by BH across genes and Shaffer sequential Bonferroni testing within selected genes.",
+      "implementation_scope_note": "The ACAT package edition, exact weights and executed implementation are unstated. Native prepared p-value combination does not train isoform predictors, run the two-step correction, permute effects or fine-map isoforms.",
+      "usage_context": "isoform-to-gene-omnibus-in-isotwas",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 7,
+          "section": "Results / The isoTWAS framework",
+          "paragraph_sha256": "e4ecc0ab860f3702f4ed3310d8a35df9a143faf111a40ad3826960715fd6654f"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12695653",
+      "doi": "10.1038/s41588-025-02390-0",
+      "tool_id": "acat",
+      "evidence_paragraph_sha256": "1b3de663e5b6e68733ee095de3fff819c493e9df971d2a38e6ccdd3c7e30da24",
+      "use_summary": "REMETA uses ACAT for per-test combinations and then its GENE_P omnibus. Its ACATV combines variant evidence; ACAT also combines its SKATO rho-grid p-values.",
+      "implementation_scope_note": "The REMETA SKATO construction combines rho-grid p-values with ACAT instead of the original minimum-p procedure. Keep score/LD reconstruction, AAF masks, SPA and variant weighting separate. The ACAT0.91 prepared-column component does not qualify REMETA or ACATV genotype/score calculations.",
+      "usage_context": "remeta-acatv-and-hierarchical-omnibus",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 43,
+          "section": "Methods / Computing gene-based tests from summary statistics",
+          "paragraph_sha256": "7d8eff06b478ec3fa3d7a2b85d889b900c73849a84221a91b583e7c59bc85abb"
+        },
+        {
+          "paragraph_index": 44,
+          "section": "Methods / Computing gene-based tests from summary statistics",
+          "paragraph_sha256": "60e3b848a8be6e4104f3b19ba3263650abb5fa57047884e0569e19da2fdcf973"
+        },
+        {
+          "paragraph_index": 72,
+          "section": "Methods / Variant annotations and gene sets",
+          "paragraph_sha256": "f976169e53c781cab83658530093222e7fb9af42ca2b684fc0cb8e5e75bc517f"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12695653",
+      "doi": "10.1038/s41588-025-02390-0",
+      "tool_id": "skato",
+      "evidence_paragraph_sha256": "f0e52c42047418f0d7aaa420012106ada793165cd5b9fb2c91abd24aec052a6e",
+      "use_summary": "REMETA computes a SKATO-type score/LD variance-component test and combines p-values across its rho grid using ACAT, before mask/test aggregation into GENE_P.",
+      "implementation_scope_note": "This recovers the omitted SKATO spelling as the existing SKAT-O family. The rho-grid ACAT combination differs from minimum-p SKAT-O; the provider is REMETA, not an identified standalone SKAT package. Retain case-control SPA and score-covariance rescaling.",
+      "usage_context": "recovered-remeta-skato-method",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "section": "Results / Methods overview / Meta-analysis",
+          "paragraph_sha256": "77ab4dc51727400ee120930c661ead3509f8998805ea3f22e7a95e25e4707b1c"
+        },
+        {
+          "paragraph_index": 43,
+          "section": "Methods / Computing gene-based tests from summary statistics",
+          "paragraph_sha256": "7d8eff06b478ec3fa3d7a2b85d889b900c73849a84221a91b583e7c59bc85abb"
+        },
+        {
+          "paragraph_index": 52,
+          "section": "Methods / Meta-analysis of gene-based tests",
+          "paragraph_sha256": "977313b43618b4b1524dd2257cdb800b1f50d80f68ef0c89eb2f17d31c161e76"
+        },
+        {
+          "paragraph_index": 69,
+          "section": "Methods / Extension to binary traits with case–control imbalance",
+          "paragraph_sha256": "4caa2dd30bdc70cd2eff158be848b408429381b269cefeec1ee55fe9dfa506a9"
+        },
+        {
+          "paragraph_index": 72,
+          "section": "Methods / Variant annotations and gene sets",
+          "paragraph_sha256": "f976169e53c781cab83658530093222e7fb9af42ca2b684fc0cb8e5e75bc517f"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13553304",
+      "doi": "10.1038/s41588-026-02735-3",
+      "tool_id": "acat",
+      "evidence_paragraph_sha256": "61cb6e7809722c4eaee20f2d04507fb088d4d320e0709875db3a6e6709946177",
+      "use_summary": "The reported ACAT R package 0.91 combines T-SEM/FUSION tissue p-values after QGENE filtering, with the stated gene/factor significance rule.",
+      "implementation_scope_note": "The selected native ACAT0.91 combination component has original-source controls. It does not reproduce FUSION, GenomicSEM 0.0.5, GTEx weight selection, QGENE filtering or colocalization. Preserve the source tissue/gene/factor wording rather than silently changing the analysis unit. The separate gsMAP Cauchy step has no identified ACAT provider.",
+      "usage_context": "t-sem-across-tissue-pvalue-combination",
+      "version_reported_near_name": "0.91",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 16,
+          "section": "Results / Functional annotations of second-order factors",
+          "paragraph_sha256": "d959b66ae172370659ff769e25092c0503deff34a2f1f52461e2a96b92f923e9"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC10703693",
+      "doi": "10.1038/s41588-023-01555-z",
+      "tool_id": "skato",
+      "evidence_paragraph_sha256": "e3549e78118c5f971c8dc9bbd99f4efd60ef3aeabf80f543654e934d25d8b1a1",
+      "use_summary": "Used SKAT-O for high/moderate-impact somatic variants, excluding likely germline variants and adjusting for age, ethnicity, sex and sequencing center; selection uses the reported cross-cohort and Bonferroni rules.",
+      "implementation_scope_note": "The standalone provider, edition, weights and SKAT-O calibration are unstated. Preserve the cohort-specific occurrence cutoffs and VAF germline rule; ordinary germline genotype preparation is not the reported somatic workflow.",
+      "usage_context": "somatic-gene-mutation-testing",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC13553284",
+      "doi": "10.1038/s41588-026-02705-9",
+      "tool_id": "skato",
+      "evidence_paragraph_sha256": "d42026e1705640225ea3b4739c1341a6ee049d86500d7eaf01dd795f82574335",
+      "use_summary": "The RareEffect examples use gene-level burden and SKAT-O p-values obtained from SAIGE-GENE+ to contrast effects with concordant or mixed directions.",
+      "implementation_scope_note": "This establishes the named provider of gene p-values, without identifying a standalone SKAT R run, its edition, or whether this paragraph describes a fresh fit versus externally obtained results. Variant-level SAIGE and collapsed-variant regressions remain distinct.",
+      "usage_context": "provider-referenced-gene-pvalues",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC11549045",
+      "doi": "10.1038/s41588-024-01930-4",
+      "tool_id": "acat",
+      "evidence_paragraph_sha256": "23b55515c94f9f79ee402b0562a6f81a4ce3d76b9c60a51bde9371951403b9b1",
+      "use_summary": "REGENIE Step 2 aggregates rare coding variants across seven consequence masks and five AAF bins, then combines burden, SKAT and ACAT testing frameworks into a gene-level p-value.",
+      "implementation_scope_note": "Preserve the up-to-35 mask combinations, platform-specific testing, significance threshold and discordant-variant exclusions. The paragraph does not identify an ACAT R edition or enough command settings to substitute the native prepared-column component.",
+      "usage_context": "method-through-regenie-gene-aggregation",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC11549045",
+      "doi": "10.1038/s41588-024-01930-4",
+      "tool_id": "skat",
+      "evidence_paragraph_sha256": "23b55515c94f9f79ee402b0562a6f81a4ce3d76b9c60a51bde9371951403b9b1",
+      "use_summary": "SKAT is one of the REGENIE Step 2 test frameworks contributing to the unified gene-level rare-variant analysis across consequence and AAF masks.",
+      "implementation_scope_note": "This is REGENIE context, not evidence that the standalone SKAT R package was executed. Preserve mask construction, platform comparisons and replication threshold rules.",
+      "usage_context": "method-through-regenie-gene-aggregation",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC11525182",
+      "doi": "10.1038/s41588-024-01919-z",
+      "tool_id": "skat",
+      "evidence_paragraph_sha256": "024221d5ddede8161a3f01db9107c4764011bbef76ac9095845ad49a623f5466",
+      "use_summary": "Burden/SKAT combinations select DeepRVAT seed genes and baseline prediction genes. The alternative tests use SEAK 0.4.3 score tests and a separate REGENIE comparison.",
+      "implementation_scope_note": "Keep SEAK Beta(MAF;1,25) weights, MAC<=10 collapsing and the 5000-marker capacity exclusion separate from REGENIE Firth/collapsing behavior. The paper applies distinct within-gene and across-gene Bonferroni steps. Standalone SKAT R equivalence is not established.",
+      "usage_context": "seak-and-regenie-comparison-and-seed-selection",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 39,
+          "section": "Methods / Alternative RVAT methods / Burden tests and SKAT",
+          "paragraph_sha256": "e0437d717c99ce7400dd6ae5e32cf6caabb4aa47ec5d14b78afc80f9d6f0c7f6"
+        },
+        {
+          "paragraph_index": 42,
+          "section": "Methods / Alternative RVAT methods / REGENIE",
+          "paragraph_sha256": "7a4783e4374a7317357c240b00bec143ac366f9e4fc89577b610d64523b5a773"
+        },
+        {
+          "paragraph_index": 43,
+          "section": "Methods / Combination of multiple P values per gene and multiple-testing correction",
+          "paragraph_sha256": "22efc13f717fe7e61d38751efd6cef26f437e5ab6e07d1d1858af66e5c11d8b6"
+        },
+        {
+          "paragraph_index": 65,
+          "section": "Methods / Phenotype prediction using DeepRVAT and alternative rare variant scores / Gene discovery",
+          "paragraph_sha256": "7bc3b6092fab25480a28c911d8bd14fa7319bea231050e140e5990e96c9a672e"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12824618",
+      "doi": "10.1016/j.ajhg.2025.12.002",
+      "tool_id": "skato",
+      "evidence_paragraph_sha256": "63736a0b60bcb53502fa24a2ccf1fc7f9ffea9391b207ab33d74c115d4373e23",
+      "use_summary": "Applied SKAT-O and CMC-Wald burden tests to rare nonsynonymous and CADD>=20 variants for repeat-instability phenotypes, using relatedness and population-structure covariates.",
+      "implementation_scope_note": "The software provider/edition and detailed null model are unreported in the inspected source. Preserve the 15-gene correction, separate exome-wide threshold and the exome-wide null finding. The nested expansion of SKAT inside the name SKAT-O does not establish a second independent SKAT test.",
+      "usage_context": "rare-snv-repeat-instability-association",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 36,
+          "section": "Results / Rare MSH3 coding variants are associated with less somatic expansion",
+          "paragraph_sha256": "68c154fff69d59de22bcb194b81e29015157ba6a634d9ffe8c52b941282b778e"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12626415",
+      "doi": "10.1016/j.ajhg.2025.10.012",
+      "tool_id": "acat",
+      "evidence_paragraph_sha256": "339562a73968a30b18d9f87934afc920dc3ffbbc309a624996d3f4468710a443",
+      "use_summary": "Compared ACAT aggregation of splice-junction association p-values with other sGene tests in correlated-junction simulations. Supplement Note S3.3 specifies uniform weights; Note S5.1 describes the power simulation.",
+      "implementation_scope_note": "The supplement establishes the weighted Cauchy construction and uniform-weight choice, but does not identify an ACAT software edition or executed commit. Keep its stated Cauchy scale equal to the weight sum. Prepared native combination does not simulate correlated beta-binomial read counts, fit junction models or reproduce power results.",
+      "usage_context": "simulated-multivariate-splicing-method-comparison",
+      "version_reported_near_name": null,
+      "supporting_evidence": [],
+      "auxiliary_evidence": [
+        {
+          "url": "https://ars.els-cdn.com/content/image/1-s2.0-S0002929725004033-mmc1.pdf",
+          "pdf": {
+            "bytes": 3125933,
+            "sha256": "468d4018f261f438654d873b539952dd157417910844d68de34be68e5d3678f0"
+          },
+          "pages": [
+            31,
+            32,
+            36
+          ],
+          "sections": [
+            "Note S3.3",
+            "Note S5.1"
+          ],
+          "source_scope": "Uniform-weight Cauchy aggregation and correlated-junction simulation;software edition unstated."
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12808971",
+      "doi": "10.1016/j.ajhg.2025.09.012",
+      "tool_id": "skat",
+      "evidence_paragraph_sha256": "aeb622788046ef0da4e046507d28cade4ce085dd37606b9b0dc75934a3d5f3f4",
+      "use_summary": "COAST-SS reconstructs a SKAT-type variance-component statistic from variant effects, standard errors, MAF, annotation and LD, and includes it with burden-type components in an allelic-series omnibus.",
+      "implementation_scope_note": "The provider is the paper COAST/COAST-SS framework, not an established standalone SKAT R call. Preserve score-covariance reconstruction, annotation/kernel weights and the separately weighted Cauchy omnibus. The method and simulated SKAT-like effect architecture do not identify a SKAT package edition.",
+      "usage_context": "skat-component-in-coast-summary-statistics-method",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 6,
+          "section": "Material and methods / Recap of COAST",
+          "paragraph_sha256": "4b05628f6379c4be42bd0fa6f601abbea9d5af34f12016595b8e433e5b54659d"
+        },
+        {
+          "paragraph_index": 8,
+          "section": "Material and methods / Recap of COAST",
+          "paragraph_sha256": "2f92de1655fa3cb579b1df87a4767b9fb8457a61862a3d246143ce3a8f99eda9"
+        },
+        {
+          "paragraph_index": 27,
+          "section": "Material and methods / COAST from summary statistics / SKAT model from summary statistics",
+          "paragraph_sha256": "69be285c661e6902c28ba4c08cb8463d777fd646bf9dcdba40c27b50977d6de2"
+        },
+        {
+          "paragraph_index": 30,
+          "section": "Material and methods / Simulation studies / Power",
+          "paragraph_sha256": "db7549b264b3ad375b4391e2de16b077086931b34d03296574d2b49af81a3f33"
+        },
+        {
+          "paragraph_index": 40,
+          "section": "Results / COAST-SS runs COAST starting from summary statistics",
+          "paragraph_sha256": "3ef9069399bfeda1524cc68ad2c54bac62d901d918fbb417cad8f6605460c8a4"
+        },
+        {
+          "paragraph_index": 43,
+          "section": "Results / COAST-SS remains valid in the absence of perfect LD information",
+          "paragraph_sha256": "57f3639bf3e4b00213f6c5e8b893bbdb44e64bbb0a38eac8aecc8853ed5a81c6"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11480795",
+      "doi": "10.1016/j.ajhg.2024.08.021",
+      "tool_id": "acat",
+      "evidence_paragraph_sha256": "2cc35d56866e44eabbe5f5287accda70b37766043b3b8a1a129ca2187f991985",
+      "use_summary": "REGENIE 3.0 supplies the paper simulations and real-data analyses, including ACAT-V, uniformly weighted BURDEN-ACAT and hierarchical Cauchy combinations into GENE_P; SBAT also combines opposite phenotype orientations.",
+      "implementation_scope_note": "The ACAT0.91 matrix component does not implement REGENIE 3.0, SBAT, ACAT-V score construction or the four-test omnibus workflow. Preserve the single 1% AAF cutoff for SKAT-O/ACAT-V and separate burden masks. Do not substitute the existing canonical six-component ACAT-O for this four-test GENE_P.",
+      "usage_context": "regenie3-sbat-acatv-and-gene-omnibus",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 14,
+          "section": "Methods / Sparse burden association test",
+          "paragraph_sha256": "800c7698f28d846f632c72ac3a811a44ddc8e2bdb1dd2f341d322a964b8f8d40",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "paragraph_index": 15,
+            "section": "Methods / Sparse burden association test",
+            "paragraph_sha256": "2cc35d56866e44eabbe5f5287accda70b37766043b3b8a1a129ca2187f991985"
+          },
+          "shared_terms": [
+            "burden"
+          ],
+          "relation_note": "Individually inspected details of the same named gene-test workflow; this paragraph supplies the declared provider, filtering, or combination step rather than another tool execution."
+        },
+        {
+          "paragraph_index": 17,
+          "section": "Methods / Combining different gene-based tests into a single p value per gene",
+          "paragraph_sha256": "f77deb76d7a42b0d84c6c349b771bfab72eabbb76d4ece9e65e7ce90d5226f5c"
+        },
+        {
+          "paragraph_index": 19,
+          "section": "Methods / Simulated data",
+          "paragraph_sha256": "b5c0b1e53db5a5c88abf2ef7277d3f3c5b2791eb243dffb96fc75c0c772d1d1a"
+        },
+        {
+          "paragraph_index": 21,
+          "section": "Methods / Analysis of UK Biobank data",
+          "paragraph_sha256": "db5ffaa0029e7d3106ad3fc1114eb7f7b309df83d20c45deb68b6888c9a254ec"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11480795",
+      "doi": "10.1016/j.ajhg.2024.08.021",
+      "tool_id": "skato",
+      "evidence_paragraph_sha256": "f77deb76d7a42b0d84c6c349b771bfab72eabbb76d4ece9e65e7ce90d5226f5c",
+      "use_summary": "Used SKAT-O through REGENIE 3.0 in simulations and quantitative-trait analyses, with a 1% AAF cutoff and aggregation across four annotation classes before GENE_P.",
+      "implementation_scope_note": "The source describes collapsing ultra-rare variants with MAC below 10. Do not silently replace that with MAC<=10 or infer the standalone R optimal.adj implementation. Its four-test omnibus is distinct from the native six-component ACAT-O.",
+      "usage_context": "regenie3-skato-comparison-and-omnibus",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 15,
+          "section": "Methods / Sparse burden association test",
+          "paragraph_sha256": "2cc35d56866e44eabbe5f5287accda70b37766043b3b8a1a129ca2187f991985",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "paragraph_index": 17,
+            "section": "Methods / Combining different gene-based tests into a single p value per gene",
+            "paragraph_sha256": "f77deb76d7a42b0d84c6c349b771bfab72eabbb76d4ece9e65e7ce90d5226f5c"
+          },
+          "shared_terms": [
+            "burden"
+          ],
+          "relation_note": "Individually inspected details of the same named gene-test workflow; this paragraph supplies the declared provider, filtering, or combination step rather than another tool execution."
+        },
+        {
+          "paragraph_index": 19,
+          "section": "Methods / Simulated data",
+          "paragraph_sha256": "b5c0b1e53db5a5c88abf2ef7277d3f3c5b2791eb243dffb96fc75c0c772d1d1a"
+        },
+        {
+          "paragraph_index": 21,
+          "section": "Methods / Analysis of UK Biobank data",
+          "paragraph_sha256": "db5ffaa0029e7d3106ad3fc1114eb7f7b309df83d20c45deb68b6888c9a254ec"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12696503",
+      "doi": "10.1016/j.ajhg.2025.08.013",
+      "tool_id": "skato",
+      "evidence_paragraph_sha256": "6c78c0856d1c3b826ccbd469e4d106c9d8aa1e26600fa31a350651d4e619916d",
+      "use_summary": "Fresh UKB gene tests use SAIGE container 1.1.9 and SKAT-O for obesity/fat-distribution traits. The paper also downloads separate AoU and Genebass SKAT-O summaries for replication/comparison.",
+      "implementation_scope_note": "Keep the SAIGE provider version separate from the method label and its adjacent bibliography citation45. Preserve MAF masks, conditional common-variant tests, selection of minimum p-values before BH and the MAC<10 screen. Downloaded AoU/Genebass results are not fresh local fits; neither their provider editions nor sample identities are inferred.",
+      "usage_context": "fresh-saige-testing-and-separate-reused-summary-results",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 24,
+          "section": "Material and methods / Rare-variant and gene-level testing in ES data",
+          "paragraph_sha256": "454cd2346080a1960566616e7946bb7b6847a40dc5ffdcb4f25b70215584ff72",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "paragraph_index": 27,
+            "section": "Material and methods / Rare-variant and gene-level testing in ES data / Obesity and fat distribution trait-gene-level association tests",
+            "paragraph_sha256": "6c78c0856d1c3b826ccbd469e4d106c9d8aa1e26600fa31a350651d4e619916d"
+          },
+          "shared_terms": [
+            "gene"
+          ],
+          "relation_note": "Individually inspected details of the same named gene-test workflow; this paragraph supplies the declared provider, filtering, or combination step rather than another tool execution."
+        },
+        {
+          "paragraph_index": 25,
+          "section": "Material and methods / Rare-variant and gene-level testing in ES data",
+          "paragraph_sha256": "1c28ab43077d586f5f8f94853fbfc7b253207be6a0c62be608f5e26082de440b",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "paragraph_index": 27,
+            "section": "Material and methods / Rare-variant and gene-level testing in ES data / Obesity and fat distribution trait-gene-level association tests",
+            "paragraph_sha256": "6c78c0856d1c3b826ccbd469e4d106c9d8aa1e26600fa31a350651d4e619916d"
+          },
+          "shared_terms": [
+            "gene"
+          ],
+          "relation_note": "Individually inspected details of the same named gene-test workflow; this paragraph supplies the declared provider, filtering, or combination step rather than another tool execution."
+        },
+        {
+          "paragraph_index": 28,
+          "section": "Material and methods / Rare-variant and gene-level testing in ES data / Obesity and fat distribution trait-gene-level association tests",
+          "paragraph_sha256": "fbfc043793cddc1d8994cfa75110a302df7a609ecdbcdd4daa3e7e1b1ec88133"
+        },
+        {
+          "paragraph_index": 29,
+          "section": "Material and methods / Rare-variant and gene-level testing in ES data / Obesity and fat distribution trait-gene-level association tests",
+          "paragraph_sha256": "32f18aae91b9ff333cfc879c8531dda177b0f9c296cedc0703dd1a825ecf398d",
+          "evidence_role": "method-details",
+          "named_anchor": {
+            "paragraph_index": 27,
+            "section": "Material and methods / Rare-variant and gene-level testing in ES data / Obesity and fat distribution trait-gene-level association tests",
+            "paragraph_sha256": "6c78c0856d1c3b826ccbd469e4d106c9d8aa1e26600fa31a350651d4e619916d"
+          },
+          "shared_terms": [
+            "gene"
+          ],
+          "relation_note": "Individually inspected details of the same named gene-test workflow; this paragraph supplies the declared provider, filtering, or combination step rather than another tool execution."
+        },
+        {
+          "paragraph_index": 30,
+          "section": "Material and methods / Rare-variant and gene-level testing in ES data / Obesity and fat distribution trait-gene-level association tests",
+          "paragraph_sha256": "b9e5afc22ccf900dd6914686266c4f1b9203c3cf1031a901e1cfcc8314e4a768"
+        },
+        {
+          "paragraph_index": 36,
+          "section": "Material and methods / All of Us gene-level summary statistics",
+          "paragraph_sha256": "3e9adb66ffd5f486425bfc510f718ffd8f7a29fd0695b6ce39f8a0785f64cd59"
+        },
+        {
+          "paragraph_index": 37,
+          "section": "Material and methods / Genebass gene-level summary statistics",
+          "paragraph_sha256": "a0325c0e58ca447a596a6d656d672bdad1887aae0e32daaebff9e053a2029b14"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC13078710",
+      "doi": "10.1016/j.ajhg.2026.03.008",
+      "tool_id": "acat",
+      "evidence_paragraph_sha256": "d2d2e7eee8014c653e1a794a1c1f31dc9e2cbe740057ffeaf99a841f9bcc39a2",
+      "use_summary": "Combined TWAS p-values from available EN-FM, PUMICE and PUMICE-FM models with ACAT only when at least two models existed; single-model genes reused their existing TWAS summary statistics.",
+      "implementation_scope_note": "The software edition, weights and signed-Z reconstruction rule are unreported. Unsigned combined p-values alone do not determine a Z-score direction. Native prepared-column combination does not train the FIV predictors or choose the available-model population.",
+      "usage_context": "fiv-twas-multimodel-omnibus",
+      "version_reported_near_name": null,
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12414667",
+      "doi": "10.1016/j.ajhg.2025.06.013",
+      "tool_id": "skat",
+      "evidence_paragraph_sha256": "28ae65f222857431134f3d2a83878d4bc3981b920d9548a23de1f4d5ecce782b",
+      "use_summary": "The CASR PheWAS reports SKAT R package 2.2.5 and its SKAT() function for SKAT-O, adjusting for age, sex and ten genetic PCs; separate statsmodels logistic regression estimates direction.",
+      "implementation_scope_note": "The package version is explicit, but SKAT-O method/rho options, null adjustment and exact executed build are not. Recover supplementary settings before constructing a matched command. Installing SKAT and eight synthetic probe fits do not qualify a production execution adapter.",
+      "usage_context": "explicit-skat-r-package-for-casr-phewas",
+      "version_reported_near_name": "2.2.5",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC12414667",
+      "doi": "10.1016/j.ajhg.2025.06.013",
+      "tool_id": "skato",
+      "evidence_paragraph_sha256": "28ae65f222857431134f3d2a83878d4bc3981b920d9548a23de1f4d5ecce782b",
+      "use_summary": "Performed the CASR phenome-wide SKAT-O analysis using SKAT() from SKAT R package 2.2.5, with age, sex and ten PCs.",
+      "implementation_scope_note": "The package provider is version 2.2.5; this is not a software edition of the SKAT-O method itself. The main text omits the method/rho arguments required to distinguish a SKAT-O call from a default SKAT call. Separate logistic direction estimates are not reconstructed from SKAT-O p-values.",
+      "usage_context": "skat-o-through-explicit-skat-r-package",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 30,
+          "section": "Results / Identification of putative phenotypes associated with GoF CASR variants",
+          "paragraph_sha256": "a3ec1bc1eba7f9d27df81b1a5082179bfaa84c810b969a77cf8d36ac2cf0f972"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,1 @@
+Historical passing controls before notice-spacing changes. Retain all original bytes. The current admission uses acat-skat-catalog-controls-v2 and fresh source/test attempts3. No scientific behavior changed.

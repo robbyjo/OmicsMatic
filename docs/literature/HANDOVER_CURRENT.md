@@ -1,5 +1,25 @@
 # Current toolbox handover
 
+**Current: [ACAT admitted; source crosswalk and next implementation](ACAT_SKAT_CATALOG_CHECKPOINT_2026-11-22.md).**
+One native ACAT 0.91 prepared-column combination family is now credited, with
+22 reviewed ACAT/SKAT/SKAT-O roles and the recovered P127 SKATO observation.
+Counts are **147 scoped families (27 native + 120 upstream), 1661 reviewed uses
+and 1062 pending**; 250 papers, 446 labels, 485 definitions and 2723 observations.
+All 1639 prior reviews and 2701 unrelated observations are preserved. Each host
+passes 32 model/transaction tests plus four actual source refusals; independent
+Windows/Linux source and installed audits agree, with the full 847-member manifest.
+Styled preview/installed desktop/mobile checks cover all 22 rows and warnings.
+Native scientific source and JAR remain unchanged from actual clean sa-1/f66c8e5e,
+with its 500-test-per-JVM qualification rechecked rather than refit. SKAT/SKAT-O
+retain method-overlap status. Next: explicit standalone SKAT adapter and P246
+supplement recovery, then FUSION/GenomicRanges/g:Profiler and other high-impact
+gaps plus 1062 use reviews. Preserve provider, comparator, reused-result and
+unknown-edition distinctions. **Transfer ignored runtimes/JARs, primary text and
+complete private/failed evidence separately before machine retirement.** All
+65 preceding worktrees are preserved (current owner 66). Read SKIP3/FAIL2 remedies
+in the checkpoint. Cell Ranger stays excluded; unfinished reports remain off
+Pages. The full objective remains unfinished. Lower entries retain historical counts.
+
 **HANDOVER: [native ACAT checkpoint, transfer paths and exact next work](HANDOVER_2026-11-22_ACAT_SKAT.md).**
 The new global acat-tools command provides native ACAT0.91 matrix combination
 and RUN/VERIFY/REPLAY captures. The final normal build and packaged Windows21,
