@@ -1,5 +1,27 @@
 # Current toolbox handover
 
+**Current: [qualified QTLtools workflows and exact next work](QTLTOOLS_WORKFLOW_CHECKPOINT_2026-11-21.md).**
+The source-built JAR now provides global qtltools-tools RUN/VERIFY/REPLAY for ten
+prepared operations,exact original1.1/1.2/1.3.1 builds and native1.3.1 fdensity.
+All680 focused tests pass per normal build and Windows21/25/Linux21 packaged JVM.
+All243 actual current operation requests match expected outcomes:237 complete,
+six retained original signal errors. All138 replays preserve full exports and
+parent seals,including13 cross-host replays. All324 complete direct-original
+files/15456 lines match. Fourteen actual resealed contradictions are refused;
+missing/wrong providers skip and a real timeout closes both owned groups.
+All22428 preceding JAR payloads stay exact;only the reviewed dispatcher changes.
+All62 preceding owners remain unchanged (current owner63). Eleven synthetic inputs
+regenerate byte-identically;all4254 captured inputs/935 BAM-VCF copies are verified
+artificial. Failed compiles,old semantics and the initial verifier gap are retained.
+**Counts stay145 scoped families,1630 reviewed/1092 pending;catalog admission is
+next,with no new family credit here.** Review the nine source roles without
+inventing P190's edition,bare-grp grouping or an adaptive permutation scheme,then
+continue high-impact GWAS/omics gaps and1092 use reviews. **Transfer ignored
+JARs,runtimes,private primary context and complete private/failed evidence separately
+before retiring this machine.** Read the checkpoint's prominent SKIP3/FAIL2/null
+actions. No release,Pages deployment,whole-tool,paper or goal completion is claimed.
+Lower entries retain historical checkpoints and their then-current counts.
+
 **HANDOVER: [QTLtools drafts, exact resume steps and remaining work](HANDOVER_2026-11-21_QTLTOOLS.md).**
 Collection is complete at **250 papers**; implementation is unfinished. Canonical
 counts remain **145 scoped families (26 native +119 upstream),1630 reviewed and

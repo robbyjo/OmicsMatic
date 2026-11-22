@@ -2,10 +2,13 @@
 
 `org.jlinalg.genetics.QtltoolsFunctionalDensity.calculate` implements the selected
 fdensity operation on explicitly supplied valid BED intervals. It runs entirely
-in Java and uses no C++, R, network or external process. This is a **library API**;
-the complete QTLtools execution adapter and global CLI remain pending. It adds
-zero catalog-family credit. The catalog stays at 145 scoped families with 1,092
-paper-use reviews pending.
+in Java and uses no C++, R, network or external process. This is a **library API**.
+The versioned file workflows and global `qtltools-tools` command are described in
+the [workflow guide](QTLTOOLS_WORKFLOWS.md). The component qualification below
+records the earlier P103 baseline; keep its source-bound reader on that exact
+unchanged checkout. This component added zero catalog-family credit. Catalog
+admission remains separate: 145 scoped families and 1,092 pending paper-use reviews
+at this checkpoint.
 
 Build current source; the previously released JAR predates this class. Start with
 the [runnable example](../../examples/qtltools-fdensity/README.md). It declares

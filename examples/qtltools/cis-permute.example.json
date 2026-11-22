@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "edition": "1.3.1",
+  "engine": "original",
+  "operation": "CIS_PERMUTE",
+  "out": "build/cis-permute",
+  "inputs": {
+    "genotypes": {"path": "inputs/genotypes.vcf.gz", "format": "VCF_GZ", "index": "inputs/genotypes.vcf.gz.tbi", "index_format": "TBI"},
+    "phenotypes": {"path": "inputs/phenotypes.bed.gz", "format": "BED_GZ", "index": "inputs/phenotypes.bed.gz.tbi", "index_format": "TBI"},
+    "covariates": {"path": "inputs/covariates.txt", "format": "TEXT"}
+  },
+  "parameters": {
+    "window": 1000000,
+    "permutations": 1000,
+    "grouping": "none",
+    "normal": false,
+    "seed": 15112011
+  },
+  "runtime": {
+    "executable": "/REPLACE/WITH/EXACT/QTLtools",
+    "library_directories": [
+      "/REPLACE/WITH/PRIVATE/root/usr/lib",
+      "/REPLACE/WITH/PRIVATE/root/usr/lib/x86_64-linux-gnu",
+      "/REPLACE/WITH/PRIVATE/root/usr/lib/x86_64-linux-gnu/blas"
+    ]
+  },
+  "acknowledge_original_handling": true,
+  "limits": {"timeout_seconds": 3600, "maximum_input_bytes": 1000000000, "maximum_output_bytes": 2000000000}
+}
