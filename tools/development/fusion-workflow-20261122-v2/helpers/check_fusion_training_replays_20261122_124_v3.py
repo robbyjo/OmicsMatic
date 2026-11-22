@@ -1,0 +1,15 @@
+from pathlib import Path
+import hashlib,json,subprocess,time
+T=Path('D:/projects/JLinAlg/build/gp-1');F=T/'build/fusion-1';B=F/'workflow-training-replays-3';B.mkdir();jar=F/'workflow-normal-build-8/project-build/cli/omicsmatic-0.4.0.jar';parent=F/'workflow-packaged-6/train-all-models';assert (parent/'COMPLETED.json').is_file();records=[]
+def linux(p):s=str(p).replace('\\','/');return '/mnt/'+s[0].lower()+s[2:]
+def run(name,r):
+ file=B/(name+'.json');file.write_text(json.dumps(r,indent=2)+'\n');args=['wsl.exe','-d','JLinAlg-Omics-SAIGE-20261026','--cd',linux(T),'--','java','-Xmx2g','-jar',linux(jar),'fusion-tools','--request',linux(file)];started=time.time()
+ with (B/(name+'.stdout')).open('xb') as out,(B/(name+'.stderr')).open('xb') as err:p=subprocess.Popen(args,cwd=T,stdin=subprocess.DEVNULL,stdout=out,stderr=err);(B/(name+'.PROCESS.json')).write_text(json.dumps(dict(pid=p.pid,arguments=args,started_unix=started),indent=2)+'\n');code=p.wait()
+ record=dict(case=name,exit_code=code,seconds=time.time()-started);records.append(record);(B/'PROGRESS.json').write_text(json.dumps(records,indent=2)+'\n');print(json.dumps(record),flush=True);return code
+before=hashlib.sha256((parent/'manifest.json').read_bytes()).hexdigest();r=dict(schema_version=1,mode='REPLAY',analysis=linux(parent),out=linux(B/'strict-replay'));code=run('strict-replay',r)
+comparison=json.loads((B/'strict-replay/replay-comparison.json').read_bytes());equal=comparison['scientific_exports_byte_identical'];assert code==(0 if equal else 2),(code,comparison);assert (B/'strict-replay/COMPLETED.json').exists()==equal
+r=json.loads((F/'workflow-packaged-6/train-all-models.json').read_bytes());r['out']=linux(B/'explicit-allow-parent');r['admission']={'allow_replay_differences':True};assert run('explicit-allow-parent',r)==0
+newparent=B/'explicit-allow-parent';newbefore=hashlib.sha256((newparent/'manifest.json').read_bytes()).hexdigest();r=dict(schema_version=1,mode='REPLAY',analysis=linux(newparent),out=linux(B/'explicit-allow-replay'));assert run('explicit-allow-replay',r)==0
+allowed=json.loads((B/'explicit-allow-replay/replay-comparison.json').read_bytes());assert 'REPLAY DIFFERENCES ALLOWED' in (B/'explicit-allow-replay/WARNINGS.md').read_text(encoding='utf-8');assert before==hashlib.sha256((parent/'manifest.json').read_bytes()).hexdigest() and newbefore==hashlib.sha256((newparent/'manifest.json').read_bytes()).hexdigest()
+result=dict(status='PASS_ORIGINAL_ALL_MODEL_REEXECUTION_POLICY_CONTROLS',cases=records,strict_exports_byte_identical=equal,allowed_exports_byte_identical=allowed['scientific_exports_byte_identical'],parents_unchanged=True,source_RNG_settings_unchanged=True,independent_refit=False)
+(B/'RESULT.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(result),flush=True)

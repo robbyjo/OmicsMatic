@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "profile": "fusion-9346c1222bffbb34499fa7a8e23c1b701b55cb05",
+  "operation": "TRAIN",
+  "out": "../../build/fusion-example-training",
+  "rscript": "/opt/jlinalg-saige-runtime-v1/source/.pixi/envs/default/bin/Rscript",
+  "r_libraries": [
+    "../../build/fusion-1/workflow-linux-install-1/library"
+  ],
+  "expected_R": "4.5.2",
+  "expected_packages": {
+    "here": "1.0.2",
+    "optparse": "1.8.2",
+    "jsonlite": "2.0.0",
+    "glmnet": "5.2"
+  },
+  "inputs": {
+    "bfile": "data/train",
+    "phenotype": "data/phenotype",
+    "covariates": "data/covariates"
+  },
+  "options": {
+    "models": "blup,lasso,top1,enet,bslmm",
+    "hsq_set": 0.4,
+    "crossval": 2,
+    "rn": true,
+    "resid": true,
+    "noclean": true
+  },
+  "seed": 1,
+  "binaries": {
+    "plink": "/mnt/d/projects/JLinAlg/build/gp-1/build/fusion-1/binary-intake-1/plink",
+    "gemma": "/mnt/d/projects/JLinAlg/build/gp-1/build/fusion-1/binary-intake-1/gemma"
+  },
+  "runtime_compatibility": {
+    "gemma_working_directory_output": true
+  }
+}

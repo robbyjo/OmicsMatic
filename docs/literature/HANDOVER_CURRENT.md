@@ -1,5 +1,20 @@
 # Current toolbox handover
 
+**Latest handover: [current FUSION development, completed checks and exact remaining work](FUSION_WORKFLOW_CHECKPOINT_2026-11-22.md).**
+All 39 latest draft files, examples, generators, 55 helpers and 87 selected receipts
+are saved in a second restorable development snapshot. Latest build: **75 tests
+pass** plus the actual COLOC rounding/NA regression. The preceding producer's
+**29 packaged cases all matched expectations**; its full suite has not yet been
+repeated on the latest producer. Production remains at the qualified baseline;
+the draft global command is not enabled. Counts remain **150 scoped families,
+1,673 reviewed/1,050 pending uses, 250 papers**. Finish qualification, guarded
+FUSION P108/P212 source/catalog corrections, high-impact tools and pending reviews.
+Transfer full ignored runtimes/JARs/original and failed evidence privately. Fresh
+inventory: **18 current worktrees**; older counts below are historical. Read the
+prominent warnings/remedies and historical export restrictions. The full goal
+remains unfinished. Lower entries are historical where superseded.
+
+
 **Handover: [current status, unfinished FUSION draft, exact next work and private transfer](FUSION_WORKFLOW_HANDOVER_2026-11-22.md).**
 All 16 unfinished adapter source/resource files are preserved byte-for-byte in a
 non-packaged development snapshot with a restorable patch, helper scripts and

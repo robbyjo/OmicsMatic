@@ -1,0 +1,11 @@
+from pathlib import Path
+import hashlib,json,os,subprocess,tarfile,urllib.request
+T=Path('D:/projects/JLinAlg/build/gp-1');F=T/'build/fusion-1';B=F/'workflow-windows-corrplot084-1';B.mkdir();lib=B/'library';lib.mkdir();url='https://cran.r-project.org/src/contrib/Archive/corrplot/corrplot_0.84.tar.gz';archive=B/'corrplot_0.84.tar.gz'
+with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'OmicsMatic-original-FUSION-corrplot-compatibility-audit'}),timeout=45) as response:archive.write_bytes(response.read())
+with tarfile.open(archive) as bundle:
+ description=bundle.extractfile('corrplot/DESCRIPTION').read();code=bundle.extractfile('corrplot/R/corrplot.R').read();license=bundle.extractfile('corrplot/LICENSE').read();assert b'Version: 0.84' in description and b'License: MIT + file LICENSE' in description and b'cl.lim = NULL' in code
+(B/'DESCRIPTION').write_bytes(description);(B/'LICENSE').write_bytes(license);(B/'corrplot-original.R').write_bytes(code);(B/'INTAKE.json').write_text(json.dumps(dict(url=url,bytes=archive.stat().st_size,sha256=hashlib.sha256(archive.read_bytes()).hexdigest(),version='0.84',reason='Explicit compatible original cl.lim parameter; no source patch or replacement of corrplot0.95',existing_libraries_modified=False),indent=2)+'\n')
+r=B/'install.R';r.write_text('args<-commandArgs(TRUE)\ninstall.packages(args[1],repos=NULL,type="source",lib=args[2])\n.libPaths(c(args[2],.Library))\nstopifnot(as.character(packageVersion("corrplot"))=="0.84", "cl.lim" %in% names(formals(corrplot::corrplot)))\nwrite.table(data.frame(Package="corrplot",Version=as.character(packageVersion("corrplot"))),args[3],sep="\\t",quote=FALSE,row.names=FALSE)\n',encoding='utf-8')
+args=['C:/Program Files/R/R-4.6.1/bin/Rscript.exe','--vanilla',str(r),str(archive),str(lib),str(B/'PACKAGES.tsv')];env=os.environ.copy();env.update(R_LIBS_USER=str(lib),R_LIBS_SITE='',LC_ALL='C',LANG='C')
+with (B/'stdout').open('xb') as out,(B/'stderr').open('xb') as err:p=subprocess.Popen(args,cwd=T,env=env,stdin=subprocess.DEVNULL,stdout=out,stderr=err);code=p.wait()
+(B/'RESULT.json').write_text(json.dumps(dict(exit_code=code,private_library_only=True,default_runtime_or_old_libraries_modified=False),indent=2)+'\n');print(code,(B/'stderr').read_text(errors='replace')[-1000:],flush=True);assert code==0

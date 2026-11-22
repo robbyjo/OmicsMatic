@@ -1,0 +1,9 @@
+args<-commandArgs(TRUE)
+x<-read.table(args[1],header=TRUE,sep="\t",quote="",comment.char="",as.is=TRUE,check.names=FALSE)
+y<-read.table(args[1],header=TRUE,sep="\t",quote="",comment.char="",strip.white=TRUE,as.is=TRUE,check.names=FALSE)
+s<-readRDS(args[2])$association
+print(s[,c("ID","TWAS.P","COLOC.PP4")])
+print(sapply(x[,c("TWAS.P","COLOC.PP4")],class))
+dput(x$COLOC.PP4)
+print(sapply(y[,c("TWAS.P","COLOC.PP4")],class))
+print(y[,c("ID","TWAS.P","COLOC.PP4")])

@@ -1,0 +1,88 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Calculating task graph as no cached configuration is available for tasks: test --tests org.jlinalg.fusion.* --tests org.jlinalg.xwas.* --tests org.jlinalg.cli.FusionWorkflowContractsTest executableJar
+> Task :fetchJdistlib
+> Task :processTestResources
+> Task :processResources
+> Task :compileJava
+> Task :classes
+> Task :compileTestJava
+> Task :testClasses
+
+> Task :test
+
+FusionWorkflowContractsTest > trainingRequiresEvidenceRetentionAndOriginalSeed() FAILED
+    org.opentest4j.AssertionFailedError: Expected java.io.IOException to be thrown, but nothing was thrown.
+        at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+        at app//org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+        at app//org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+        at app//org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+        at app//org.jlinalg.cli.FusionWorkflowContractsTest.trainingRequiresEvidenceRetentionAndOriginalSeed(FusionWorkflowContractsTest.java:76)
+
+FusionWorkflowContractsTest > literalToolPathsCannotBecomeShellSyntax() FAILED
+    org.opentest4j.AssertionFailedError: Expected java.io.IOException to be thrown, but nothing was thrown.
+        at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+        at app//org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+        at app//org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+        at app//org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+        at app//org.jlinalg.cli.FusionWorkflowContractsTest.literalToolPathsCannotBecomeShellSyntax(FusionWorkflowContractsTest.java:88)
+
+FusionWorkflowContractsTest > canonicalScientificSettingsRemainBoundToTheOriginalRequest() FAILED
+    org.opentest4j.AssertionFailedError: expected: <false> but was: <true>
+        at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+        at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+        at app//org.junit.jupiter.api.AssertFalse.failNotFalse(AssertFalse.java:63)
+        at app//org.junit.jupiter.api.AssertFalse.assertFalse(AssertFalse.java:36)
+        at app//org.junit.jupiter.api.AssertFalse.assertFalse(AssertFalse.java:31)
+        at app//org.junit.jupiter.api.Assertions.assertFalse(Assertions.java:231)
+        at app//org.jlinalg.cli.FusionWorkflowContractsTest.canonicalScientificSettingsRemainBoundToTheOriginalRequest(FusionWorkflowContractsTest.java:135)
+
+FusionWorkflowContractsTest > gctaProbeFlagCannotSilentlyAffectFixedHeritabilityTraining() FAILED
+    java.io.IOException: GCTA probe compatibility is only used for original heritability-estimating training
+        at org.jlinalg.cli.GprofilerWorkflowContracts.require(GprofilerWorkflowContracts.java:100)
+        at org.jlinalg.cli.FusionWorkflowContracts.validate(FusionWorkflowContracts.java:86)
+        at org.jlinalg.cli.FusionWorkflowContractsTest.checked(FusionWorkflowContractsTest.java:33)
+        at org.jlinalg.cli.FusionWorkflowContractsTest.gctaProbeFlagCannotSilentlyAffectFixedHeritabilityTraining(FusionWorkflowContractsTest.java:56)
+
+FusionWorkflowContractsTest > completionMarkerAndManifestCountAgainstTheFinalFootprint() FAILED
+    org.opentest4j.AssertionFailedError: Expected java.io.IOException to be thrown, but nothing was thrown.
+        at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+        at app//org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+        at app//org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+        at app//org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+        at app//org.jlinalg.cli.FusionWorkflowContractsTest.completionMarkerAndManifestCountAgainstTheFinalFootprint(FusionWorkflowContractsTest.java:172)
+
+FusionWorkflowContractsTest > predictionModelCannotBeSubstitutedBySusieColocalization() FAILED
+    org.opentest4j.AssertionFailedError: Expected java.io.IOException to be thrown, but nothing was thrown.
+        at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+        at app//org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+        at app//org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+        at app//org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+        at app//org.jlinalg.cli.FusionWorkflowContractsTest.predictionModelCannotBeSubstitutedBySusieColocalization(FusionWorkflowContractsTest.java:72)
+
+FusionWorkflowContractsTest > originalIgnoredOmnibusOptionIsRejectedBeforeAnyRun() FAILED
+    java.io.IOException: Original omnibus_corr is used only with omnibus=true; otherwise the source ignores it
+        at org.jlinalg.cli.GprofilerWorkflowContracts.require(GprofilerWorkflowContracts.java:100)
+        at org.jlinalg.cli.FusionWorkflowContracts.validate(FusionWorkflowContracts.java:70)
+        at org.jlinalg.cli.FusionWorkflowContractsTest.checked(FusionWorkflowContractsTest.java:33)
+        at org.jlinalg.cli.FusionWorkflowContractsTest.originalIgnoredOmnibusOptionIsRejectedBeforeAnyRun(FusionWorkflowContractsTest.java:141)
+
+FusionWorkflowContractsTest > savedCanonicalRequestCannotOmitNewDefaultsOrContainUnknownSettings() FAILED
+    org.opentest4j.AssertionFailedError: Expected java.io.IOException to be thrown, but nothing was thrown.
+        at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:152)
+        at app//org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:73)
+        at app//org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+        at app//org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+        at app//org.jlinalg.cli.FusionWorkflowContractsTest.savedCanonicalRequestCannotOmitNewDefaultsOrContainUnknownSettings(FusionWorkflowContractsTest.java:98)
+
+FusionWorkflowContractsTest > gemmaRoutingRequiresAnActualSelectedOriginalGemmaModel() FAILED
+    java.io.IOException: GEMMA output routing requires original BLUP/BSLMM training with declared GEMMA
+        at org.jlinalg.cli.GprofilerWorkflowContracts.require(GprofilerWorkflowContracts.java:100)
+        at org.jlinalg.cli.FusionWorkflowContracts.validate(FusionWorkflowContracts.java:88)
+        at org.jlinalg.cli.FusionWorkflowContractsTest.checked(FusionWorkflowContractsTest.java:33)
+        at org.jlinalg.cli.FusionWorkflowContractsTest.gemmaRoutingRequiresAnActualSelectedOriginalGemmaModel(FusionWorkflowContractsTest.java:48)
+
+> Task :test FAILED
+> Task :executableJar
+7 actionable tasks: 7 executed
+Configuration cache entry stored.
