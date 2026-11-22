@@ -1,5 +1,21 @@
 # Current toolbox handover
 
+**Handover: [current status, unfinished FUSION draft, exact next work and private transfer](FUSION_WORKFLOW_HANDOVER_2026-11-22.md).**
+All 16 unfinished adapter source/resource files are preserved byte-for-byte in a
+non-packaged development snapshot with a restorable patch, helper scripts and
+selected synthetic receipts. Production source remains at qualified `833864a1`;
+no global `fusion-tools` command or extra catalog credit is enabled. The latest
+Linux training probes have ended: all-models FAIL2 (missing GEMMA output in
+`weights.bslmm`); estimated-h2/top1 returned 0 with explicit modern-GCTA startup
+compatibility. The draft has documented verifier/resource/qualification gaps.
+**150 scoped families (27 native +123 upstream), 1,673 reviewed/1,050 pending uses;
+250 papers.** Resume the FUSION checks and P212/P108 correction, then other
+higher-impact tools and pending reviews. Transfer ignored runtimes/JARs and
+complete original/failed evidence privately before retiring the machine. Preserve
+all 74 worktrees and read the prominent process-safety, SKIP3/FAIL2 and blocked
+historical-export notices. The full goal remains unfinished. Lower entries are
+historical where superseded.
+
 **Latest implementation: [native FUSION component and exact next work](FUSION_NATIVE_COMPONENT_2026-11-22.md).**
 Native Java now implements original allele flags and prepared-model association,
 including fixed-ridge missing-Z imputation, quality filters and explicit no-result
