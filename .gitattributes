@@ -529,3 +529,13 @@ tools/literature/verify_fusion_workflow_checkpoint.py -text whitespace=cr-at-eol
 docs/literature/fusion-workflow-qualification/** -text whitespace=cr-at-eol
 docs/literature/FUSION_WORKFLOWS.md -text whitespace=cr-at-eol
 docs/literature/FUSION_QUALIFICATION_CHECKPOINT_2026-11-22.md -text whitespace=cr-at-eol
+
+# Preserve FUSION source-role/cumulative-admission and validation bytes.
+docs/literature/fusion-catalog-sources/** -text whitespace=cr-at-eol
+docs/literature/fusion-catalog-checkpoint/** -text whitespace=cr-at-eol
+docs/literature/FUSION_CATALOG_CHECKPOINT_2026-11-22.md -text whitespace=cr-at-eol
+docs/literature/omics-2023-2026/fusion-*.json -text whitespace=cr-at-eol
+tools/literature/close_fusion_catalog.py -text whitespace=cr-at-eol
+
+# Retain the original Gradle console line, including its trailing space.
+docs/literature/fusion-catalog-checkpoint/checks/website.stdout -text whitespace=-blank-at-eol,cr-at-eol

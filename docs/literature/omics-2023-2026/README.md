@@ -1,3 +1,19 @@
+# Current FUSION catalog checkpoint
+
+250 papers, 446 labels, 485 provider definitions and 2,722 positive paper-tool observations; 1,679 reviewed uses and 1,043 pending. There are 151 scoped families (27 native +124 upstream), 154 including three existing adapters; 258 missing, 22 method-overlap and three aliases without extra family credit. One false-positive cohort observation is retained separately. The full 250-paper implementation and semantic-completeness objective remains unfinished.
+
+Original FUSION TRAIN/ASSOCIATE/POSTPROCESS through fusion-tools RUN, saved offline VERIFY and real REPLAY. Pinned revision9346c1222bffbb34499fa7a8e23c1b701b55cb05 with exact original scripts/license, declared R/package/tool versions, original inputs/exports, raw source TWAS.P and exact formatted main/MHC reconstruction. Training, prepared-weight TWAS, fixed-ridge missing-Z imputation, COLOC/SuSiE colocalization, permutation, conditional/omnibus/correlation/LDSC postprocessing, reports and original plots are scoped by recorded cases. Windows21/25 association, Linux21 association/training, Windows21 postprocessing/plots. Native prepared-model Java association is also available. Current runtime is not an established historical paper edition; no independent training refit, complete upstream-tool or paper reproduction, biological calibration, opaque-RDS interpretation by the offline reader, host attestation or OS memory-containment claim.
+
+Six positive software-analysis/comparator reviews; P212 is removed from positive uses and retained in the exclusion audit as a FUSION study-cohort homonym. P108 is retained as a FUSION-labelled method-baseline description, not added as an original-software use: its archived v1.0.0 manuscript scripts import isoTWAS and call univariate elastic-net/BLUP/SuSiE functions. Original FUSION command execution is unestablished. P183 includes prediction training and association for lncRNAs/PCGs, explicitly not circRNAs. P131 includes FUSION colocalization; Genomic SEM0.0.5 is a separate package. P181 coloc follow-up is separately named; P238 distinguishes shared algorithm from its LeafCutter/FUSION comparator. Unreported editions/options stay unknown; no paper runtime is inferred from current availability.
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED. Supply the exact named permitted input, R/package or tool edition, installing privately where allowed; otherwise retain the skip and explain the missing prerequisite and remedy. FAIL2: NO COMPLETE RESULT. Preserve original/raw/partial/failed/null/superseded evidence, correct the stated input/protocol/numeric/resource/time/process cause and retry NEW output. Read WARNINGS.md and require a valid COMPLETED.json and successful VERIFY. Preserve IDs, NA/NaN/Inf, zero p-values, source thresholds and stochastic differences. GEMMA output routing, modern-GCTA startup and differing replay admission require explicit recorded opt-in. Original compact plots can have overlapping labels. Use current birth-checked worker ownership; pre-fix worker producers remain unsafe. Transfer private runtimes/JARs/full evidence separately; historical sensitive branch exports remain withheld. Cell Ranger remains excluded. Hashes give integrity, not authenticated provenance.
+
+See [workflow guide](../FUSION_WORKFLOWS.md).
+
+---
+
+Earlier checkpoint text is historical.
+
 # Current g:Profiler catalog checkpoint
 
 250 papers, 446 labels, 485 provider definitions and 2,723 observations; 1,673 reviewed uses and 1,050 pending. There are 150 scoped families (27 native + 123 upstream), 153 including three existing adapters; 258 missing, 23 method-overlap and three aliases without extra credit. The full 250-paper implementation objective remains unfinished.

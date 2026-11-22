@@ -1,4 +1,20 @@
 # Current toolbox handover
+**Current: [FUSION admitted roles, validation and next work](FUSION_CATALOG_CHECKPOINT_2026-11-22.md).**
+One original-workflow upstream family and six source reviews are admitted:
+**151 scoped families (27 native +124 upstream), 1,679 reviewed/1,043 pending
+uses, 250 papers and 2,722 positive observations**. P212 is removed as a cohort
+homonym with its extraction retained. P108 stays a method baseline: archived
+manuscript scripts use isoTWAS univariate functions; original FUSION execution
+is unestablished. The 855-entry manifest, 12 tests per host, current original
+workflow qualification and styled preview/installed report checks pass.
+**Full checkWebsite still fails at the same 33 existing missing citation
+panels**; the checkpoint names every file and remedy. Next prioritize remaining
+implementable families by actual paper coverage and complete all 1,043 pending
+reviews/missed-provider screening. Preserve private runtimes/JARs/full evidence,
+other worktrees and withheld historical exports. Read the prominent SKIP3/FAIL2
+and process-safety notices. The full goal remains unfinished. Lower entries
+are historical where superseded.
+
 **Current: [original FUSION workflow qualification and remaining catalog work](FUSION_QUALIFICATION_CHECKPOINT_2026-11-22.md).**
 The global fusion-tools TRAIN/ASSOCIATE/POSTPROCESS RUN/VERIFY/REPLAY command now
 has **75 passing focused tests, 30 current-producer packaged cases, 17 offline
