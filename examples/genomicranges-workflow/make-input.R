@@ -1,0 +1,16 @@
+# Artificial prepared-GRanges example. This does not download biological data.
+args <- commandArgs(TRUE)
+if (length(args)!=2L) stop("Usage: Rscript --vanilla make-input.R PRIVATE_LIBRARY NEW_OBJECTS_RDS")
+if (file.exists(args[2L])) stop("Output already exists;choose a NEW input file")
+if (!dir.exists(dirname(args[2L]))) stop("Create the output parent directory first")
+.libPaths(c(normalizePath(args[1L],winslash="/",mustWork=TRUE),.Library))
+library(GenomicRanges)
+si <- Seqinfo("chrExample",seqlengths=1000L,isCircular=FALSE,genome="artificial")
+query <- GRanges("chrExample",IRanges(c(100L,400L),width=c(11L,10L)),strand=c("+","-"),seqinfo=si)
+names(query) <- c("peak A","peak B")
+mcols(query)$group <- factor(c("A","B"))
+metadata(query)$input_is_artificial <- TRUE
+subject <- GRanges("chrExample",IRanges(c(105L,400L),width=c(6L,11L)),strand=c("+","-"),seqinfo=si)
+names(subject) <- c("region A","region B")
+saveRDS(list(query=query,subject=subject),args[2L],version=2)
+cat("Wrote two artificial query ranges and two subject ranges.\n")
