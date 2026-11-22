@@ -1,5 +1,23 @@
 # Current toolbox handover
 
+**HANDOVER: [unapplied Monocle plan and exact remaining work](HANDOVER_2026-11-21_MONOCLE_CATALOG.md).**
+The collection is complete at **250 papers**; implementation remains unfinished.
+Canonical counts stay **144 scoped families (26 native +118 upstream), 1,630
+reviewed and 1,092 pending uses**. The qualified P99 baseline below remains usable.
+The new catalog plan and fresh inspection pass, as do 41 tests/eight refusals on
+each host and desktop/mobile preview checks. Four current-JAR original-R actions
+match 29 complete retained scientific files. **The 145-family state is unapplied.**
+Next: finish guarded nine-role admission and the related py-monocle note, installed
+Windows/Linux verification/UI and transition readback, then high-impact GWAS/omics
+gaps and 1,092 use reviews. No new reviews or family credit are added here.
+Exact drafts and Git-visible variants from **57 existing worktrees** are saved;
+the publication owner is58th. All30 canonical files, production science and site
+remain unchanged. **Transfer ignored runtimes, JARs, full text, private author
+source and complete private evidence separately before retiring this machine.**
+The handover gives restoration paths, license decisions and prominent SKIP3/FAIL2
+actions. Both unfinished reports stay off Pages. No release or goal completion
+is claimed. Lower entries retain historical checkpoints and then-current counts.
+
 **Current: [native responses, global Monocle stages and exact next work](MONOCLE_RESPONSES_CHECKPOINT_2026-11-21.md).**
 The source-built JAR supplies explicit native response/metadata/design preparation,
 RUN/VERIFY/REPLAY and exact global1.0.0 graph/neighbor/weight routes. All **889
