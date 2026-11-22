@@ -1,5 +1,21 @@
 # Current literature warnings and required actions
 
+## Monocle: one scoped family and nine existing role updates
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED; supply the named exact permitted runtime, profile, input or path, or retain the skip. Downloads/private installation are authorized where the operating environment permits them; absence alone is not a prohibition. If installation is disallowed, name the affected analysis, reason and exact item the user must supply. FAIL2: NO COMPLETE RESULT; preserve raw/original/null/failed/partial evidence and logs, correct the named data/design, rank, numerical, source/integrity, capacity or process cause, and retry NEW output. Do not silently repair IDs, drop cells/genes, replace nonfinite values, infer roots or substitute editions/providers. Read the selected stage WARNINGS.md, completion and admission flags; preparation/graph/weights do not admit a gene test. Retain finite original R inference from unresolved rounding residuals as source evidence; native refuses the affected complete testing family. Keep numeric-zero probabilities with log-p. Cell Ranger remains excluded. Both unfinished reports remain off Pages. Ignored runtimes, JARs, full text, private author source and complete private evidence require a separate checksummed transfer before machine retirement.
+
+250 papers, 446 named labels and 2,722 observations remain unchanged, with 1,630 reviewed uses and 1,092 pending. There are 145 scoped integrations (26 native Java + 119 upstream), two zero-credit aliases, 258 missing and 29 method-overlap labels; 148 include three existing adapters. This adds one Monocle family, updates nine existing Monocle scopes and corrects one related py-monocle policy note, with zero duplicate review credit. Full implementation and paper-wide semantic completeness remain unfinished.
+
+One scoped Monocle upstream family exposes exact original 1.0.0 graph/neighbors, 1.3.1 models, 1.3.3 graphs, 1.3.7/Batchelor 1.20 alignment, selected Monocle2 2.26.0 differential tests and selected 1.4.27 workflows through monocle-tools. Native supplied-graph ordering, 1.0.0 weights, explicit response/metadata/design preparation and residual-Moran helpers add no second family credit. Each operation requires its own complete declared input, edition, settings, roots and admission flags. No automatic provider, edition, root, assay or covariate substitution is made.
+
+Nine existing Monocle source-role scopes and one related P024 py-monocle policy note are updated; no observations or review records are added. Four reported package editions have qualified component controls; unreported paper patches/settings and executed commits remain unknown. P021 reports UMAT and a modified test; the author fork was not executed. Native whole-family numerical/self-arc refusal differs from author per-gene FAIL/OK-only BH handling. P024 uses separate unqualified py-monocle; the recorded research/nonprofit use category is already answered. P043 is Cicero platform context, not a trajectory run. Cicero and Batchelor already have separate scoped rows and gain no extra credit here. P051 exact 1.3.7/Batchelor 1.20 and P085 exact 1.3.1 runtime controls now exist; older skip/source-candidate notes are historical. P085 original t/grouped-Holm behavior and paper Wald/FDR/documentation BH wording remain distinct. P099 patch/formulas/units are unresolved; source-family failures are unadmitted. P117 settings/root choices, P134 protein activity and P233 separate FD/WT objects remain explicit. Source-build availability and synthetic original controls do not establish whole-tool, whole-paper or biological reproduction.
+
+Read [the source crosswalk](../MONOCLE_CATALOG_INTEGRATION.md).
+
+<details><summary>Before Monocle admission (historical)</summary>
+
+# Current literature warnings and required actions
+
 ## TwoSampleMR: one original-workflow family and14 reviewed roles
 
 **Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED; supply the named exact permitted runtime, package/profile, PLINK or input, or retain the skip. Downloads/private installation are authorized when allowed; absence is not an installation prohibition. If actually disallowed, name the affected analysis and what the user must supply. FAIL2: NO COMPLETE RESULT; preserve raw/original/null/partial/failed evidence, original errors and logs, correct the named data/design, numerical, integrity, capacity or process cause and retry NEW output. Never silently repair IDs, populations, allele/trait order, thresholds, versions, estimators/providers or nonfinite values. Read WARNINGS.md,analysis-status.json,worker/report.json and source logs. Singleton clumping may bypass reference/significance checks; a complete empty selection or MV preparation supplies no MR estimate. Old source/startup configuration stays private. Cell Ranger remains excluded. Both literature reports remain off Pages. Ignored exact runtimes/JARs/full text and complete private evidence require a separate checksummed transfer.
@@ -1690,6 +1706,8 @@ output path. Disconnected infinite pseudotime values remain present. LEARN
 does not admit a pseudotime result. Do not infer roots or repair values to
 conceal failures. Full Batchelor, study reproduction and biological accuracy
 remain unproven; the250-paper goal remains active.
+
+</details>
 
 </details>
 

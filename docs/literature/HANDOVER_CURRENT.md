@@ -1,5 +1,25 @@
 # Current toolbox handover
 
+**Current: [applied Monocle admission and next high-impact work](MONOCLE_ADMISSION_CHECKPOINT_2026-11-21.md).**
+The catalog now has **145 scoped families (26 native +119 upstream)**. Nine
+Monocle scopes and one related py-monocle policy note are corrected; no review
+or observation is appended. Counts remain250 papers,2722 observations,1630
+reviewed/1092 pending uses, with258 missing and29 method-overlap labels.
+Final41 tests/eight source refusals pass on each host;four actual archive,
+fixture/transcript corruptions are refused. Installed Windows/Linux verification
+with fresh all250 source audits and desktop/mobile report checks pass. Independent
+readback confirms10 scope-only review edits,445/484 unrelated definitions and
+all838 prior manifest members,now841. Original proof/inverse records are retained.
+Scientific/build code stays at the qualified889-test P99 baseline;29 retained
+current-JAR original-R scientific files are verified without refitting models.
+Initial filename-collision refusals and the WSL Git-path failure remain preserved.
+The packet reader supplies an owned Git launcher when needed. **Next: high-impact
+QTLtools/GWAS source and implementation work,plus1092 individual-use reviews.**
+Preserve58 preceding owners. **Transfer ignored runtimes,JARs,full text,private
+author source and complete private evidence separately before retiring this
+machine.** Both reports remain off Pages;no release or goal completion is claimed.
+Lower entries retain historical checkpoints and their then-current counts.
+
 **HANDOVER: [unapplied Monocle plan and exact remaining work](HANDOVER_2026-11-21_MONOCLE_CATALOG.md).**
 The collection is complete at **250 papers**; implementation remains unfinished.
 Canonical counts stay **144 scoped families (26 native +118 upstream), 1,630
