@@ -1,5 +1,10 @@
 # FUSION source audit and next implementation work
 
+**Later implementation: [native prepared-model component](FUSION_NATIVE_COMPONENT_2026-11-22.md).**
+That checkpoint adds tested Java operations and direct original-R intake controls;
+the full adapter/canonical correction remains pending. The source-only counts and
+no-runtime statement below describe this earlier audit checkpoint.
+
 This is a **source-only checkpoint: zero new tool-family credit, zero canonical
 reviews and no FUSION upstream runtime execution**. Counts stay 150 scoped families
 (27 native +123 upstream), 1,673 reviewed/1,050 pending uses. The full 250-paper

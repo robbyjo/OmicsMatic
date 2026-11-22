@@ -1,5 +1,19 @@
 # Current toolbox handover
 
+**Latest implementation: [native FUSION component and exact next work](FUSION_NATIVE_COMPONENT_2026-11-22.md).**
+Native Java now implements original allele flags and prepared-model association,
+including fixed-ridge missing-Z imputation, quality filters and explicit no-result
+states. All 45 focused tests pass; 6,561 original allele cases and 136 original
+association cases match on packaged Windows21/25 and Linux21 JVMs. All 22,832
+preceding JAR payloads stay exact. Five direct original-R association/COLOC intake
+cases also ran on artificial data. **The full FUSION RUN/VERIFY/REPLAY/training
+adapter is pending; zero new family credit or canonical reviews.** Counts stay
+150 scoped families (27 native +123 upstream), 1,673 reviewed/1,050 pending uses.
+Resume the full adapter and guarded P212/P108 correction, then other high-impact
+tools and remaining use reviews. Preserve all 74 worktrees and transfer private
+JARs, runtimes and original/failed evidence. Read the checkpoint's warnings and
+recovery actions. The full goal is unfinished; lower entries are historical.
+
 **Current: [g:Profiler admission, validation and remaining work](GPROFILER_CATALOG_CHECKPOINT_2026-11-22.md).**
 One original-service upstream family and seven source reviews are admitted:
 **150 scoped families (27 native +123 upstream), 1,673 reviewed and 1,050 pending
