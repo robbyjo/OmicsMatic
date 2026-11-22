@@ -1,5 +1,25 @@
 # Current toolbox handover
 
+**Current: [native QTLtools fdensity API and exact next work](QTLTOOLS_FDENSITY.md).**
+Native Java now implements the selected1.3.1 fdensity counting operation on
+declared valid BED intervals. All588 focused tests pass per normal build and
+packaged Windows21/25/Linux21 JVM. The576 actual reference cases retain569
+completed outputs,seven original errors and2838 complete bins. The original
+small-tree input-order guard is preserved;the initial313-failure build is
+retained and unadmitted. All22,425 preceding JAR payloads stay byte-identical,
+with four new native classes. The public example passes on three JVMs.
+This is a library API;the full QTLtools workflow/global CLI is pending. **Counts
+stay145 scoped families,1630 reviewed/1092 pending uses;zero new family credit.**
+A fresh all250 source scan finds nine QTLtools-positive papers/19 pointers,
+covering reported1.1,1.2 and1.3.1 roles. P190's executable binding remains
+unresolved. **Next: exact-edition cis/trans,conditional,MBV andquan adapters,
+historical-edition verification,then cumulative source review/admission and
+remaining high-impact GWAS/omics gaps.** Preserve59 preceding owners. Native use
+needs Java only;upstream controls have separate private dependencies. **Transfer
+ignored JARs,runtimes,full text,author source and full private/failed evidence
+separately before retiring this machine.** Both reports stay off Pages;no release
+or full-goal completion is claimed. Lower entries retain historical checkpoints.
+
 **Current: [applied Monocle admission and next high-impact work](MONOCLE_ADMISSION_CHECKPOINT_2026-11-21.md).**
 The catalog now has **145 scoped families (26 native +119 upstream)**. Nine
 Monocle scopes and one related py-monocle policy note are corrected; no review
