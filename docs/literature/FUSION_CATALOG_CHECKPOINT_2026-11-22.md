@@ -115,3 +115,22 @@ application equivalence. Complete all 1,043 pending positive-use reviews and
 missed-provider screening across all 250 papers. Retain the P108 method-baseline
 distinction when implementing isoTWAS-specific prediction. No full-goal completion
 or reliable full-goal ETA is claimed.
+
+## Publication and cleanup readback
+
+The catalog commit `fc20fd5818a7b763b14fc386481cacea14c4b467` passed GitHub Pages
+[run45083603357](https://github.com/robbyjo/OmicsMatic/actions/runs/45083603357),
+both build and deploy. Live index/styles/app script match source after line-ending
+normalization; both unfinished literature report URLs remain404. The
+[exact deployment receipt](fusion-catalog-checkpoint/pages-public-verification.json)
+records this boundary. The receipt-only follow-up does not change site bytes.
+
+Automatic review rejected entire test-profile deletion as potentially containing
+session data; that command did not launch. The approved safer alternative removed
+only eight reproducible HTTP/JavaScript/GPU cache directories, 13,706,340 logical
+bytes (13.7MB); measured free-space increase was13,697,024 bytes. All16 retained
+profile/session records matched their pre-cleanup hashes. Full profile roots and
+all scientific evidence/runtimes/JARs/worktrees remain. See the
+[cleanup receipt](fusion-catalog-checkpoint/cleanup.json); do not run the
+superseded entire-profile deletion helper. Publication/cleanup logs are retained
+under `D:/projects/JLinAlg/build/git-publish/20261122-fusion-catalog-127/`.
