@@ -16,24 +16,27 @@ class StudyPublicationTest {
         Context c = new Context(directory, directory, Map.of("hypothesis", "H-secret", "datasets", List.of("d")),
             Map.of("datasets", List.of(dataset), "hypotheses", List.of(Map.of("id", "H-secret", "description", "Isoform ratios associate with obesity."))), Map.of(), Map.of());
         var outputs = StudyPublication.write(c);
-        assertEquals(14, outputs.size());
+        assertEquals(22, outputs.size());
         String draft = Files.readString(directory.resolve("publication-draft.html"));
         assertTrue(draft.contains("Isoform ratios associate with obesity.")); assertFalse(draft.contains("H-secret"));
         assertTrue(draft.contains("<h2>Results</h2><h3>Table 1."));
-        assertTrue(draft.contains("linear regression")); assertTrue(draft.contains("SCIENTIST INPUT REQUIRED"));
-        assertTrue(draft.contains("most impactful finding"));
+        assertTrue(Files.readString(directory.resolve("publication-review.html")).contains("linear regression"));
+        assertTrue(draft.contains("SCIENTIST INPUT REQUIRED"));
+        assertEquals(3, draft.split("develop this principal finding", -1).length - 1);
         assertFalse(draft.contains("Ranked publication points"));
         assertTrue(Files.readString(directory.resolve("results-discussion-review.yaml")).contains("needs_input"));
         assertTrue(Files.readString(directory.resolve("results-discussion-template.yaml")).contains("impact_reason"));
-        assertTrue(draft.indexOf("most impactful finding") < draft.indexOf("second most impactful finding"));
-        assertTrue(draft.indexOf("third most impactful finding") < draft.indexOf("conditional scientific"));
-        assertTrue(draft.indexOf("conditional scientific") < draft.indexOf("Propose prioritized validation"));
+        assertTrue(draft.lastIndexOf("develop this principal finding") < draft.indexOf("Develop promising scientific implications"));
+        assertTrue(draft.indexOf("Develop promising scientific implications") < draft.indexOf("Explain the study's material design"));
+        assertTrue(draft.indexOf("Explain the study's material design") < draft.indexOf("Prioritize feasible follow-up"));
         assertTrue(draft.contains("publication-supplement.html"));
-        assertTrue(draft.contains("reference-catalog.html"));
+        assertFalse(draft.contains("reference-catalog.html")); assertFalse(draft.contains("<nav>"));
+        assertTrue(draft.contains("<h2>Abstract</h2>")); assertTrue(draft.contains("<h3>Background</h3>"));
+        assertTrue(draft.contains("<h3>Conclusion</h3>")); assertTrue(draft.contains("Data and code availability"));
         assertTrue(Files.readString(directory.resolve("introduction-template.yaml")).contains("importance_and_gap"));
         assertTrue(Files.readString(directory.resolve("introduction-review.yaml")).contains("needs_input"));
         String methods = draft.substring(draft.indexOf("<h2>Methods</h2>"), draft.indexOf("<h2>Results</h2>"));
-        assertTrue(methods.indexOf("describe cohort design") < methods.indexOf("linear regression"));
+        assertTrue(methods.contains("describe cohort design"));
         assertTrue(Files.isRegularFile(directory.resolve("methods-inventory.yaml")));
         assertTrue(Files.readString(directory.resolve("methods-template.yaml")).contains("methods_role: cohorts"));
     }
@@ -54,7 +57,8 @@ class StudyPublicationTest {
         assertTrue(results.indexOf("Table 1") < results.indexOf("discovery replication"));
         assertTrue(results.indexOf("discovery replication") < results.indexOf("meta analysis"));
         assertTrue(results.indexOf("meta analysis") < results.indexOf("colocalization"));
-        assertTrue(draft.contains("GENE1"));
+        assertTrue(Files.readString(directory.resolve("publication-review.html")).contains("GENE1"));
+        assertFalse(draft.contains("Audited source manifest"));
         assertFalse(Files.readString(directory.resolve("publication-claims.yaml")).contains("main_text_rank"));
     }
     @Test void publicationReadsLargeGeneratedOperationManifest() throws Exception {
@@ -70,7 +74,7 @@ class StudyPublicationTest {
                 "description", "Synthetic hypothesis."))), Map.of(),
             Map.of("large", dependency));
         StudyPublication.write(context);
-        assertTrue(Files.readString(output.resolve("publication-draft.html"))
+        assertTrue(Files.readString(output.resolve("publication-review.html"))
             .contains("Synthetic limitation"));
     }
     @Test void abbreviationsExpandAtFirstTextUseWithoutChangingLinksOrAlreadyExpandedText() {

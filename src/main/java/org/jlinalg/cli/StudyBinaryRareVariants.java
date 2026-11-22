@@ -114,7 +114,11 @@ final class StudyBinaryRareVariants {
         }return found;
     }
     private void indexPrior(Context c)throws IOException{
-        Path runs=c.project().resolve("runs");if(!Files.isDirectory(runs))return;try(var run=Files.list(runs)){for(Path directory:run.filter(Files::isDirectory).sorted().toList()){Path operations=directory.resolve("operations");if(!Files.isDirectory(operations))continue;try(var folders=Files.list(operations)){for(Path operation:folders.filter(Files::isDirectory).toList()){Path path=operation.resolve("manifest.yaml");if(!Files.isRegularFile(path))continue;var manifest=StudyYaml.loadArtifact(path);if(!Set.of("complete","waiting_for_input").contains(text(manifest.get("state")))||!"rare_variant_analysis".equals(manifest.get("operation_type"))||!c.operation().get("hypothesis").equals(manifest.get("hypothesis")))continue;for(String name:map(manifest.get("output_sha256")).keySet())if(name.matches("binary-fit-cache/[0-9a-f]{64}\\.yaml"))prior.put(name.substring(17,81),new Prior(operation,manifest,name));}}}}
+        Path runs=c.project().resolve("runs");if(!Files.isDirectory(runs))return;
+        var unavailable=org.jlinalg.study.StudyCleanup.unavailableResults(c.project());
+        try(var run=Files.list(runs)){for(Path directory:run.filter(Files::isDirectory).sorted().toList()){Path operations=directory.resolve("operations");if(!Files.isDirectory(operations))continue;try(var folders=Files.list(operations)){for(Path operation:folders.filter(Files::isDirectory).toList()){Path path=operation.resolve("manifest.yaml");if(!Files.isRegularFile(path))continue;var manifest=StudyYaml.loadArtifact(path);
+            if(unavailable.contains(text(manifest.get("run_id"))+"/"+text(manifest.get("operation_id"))))continue;
+            if(!Set.of("complete","waiting_for_input").contains(text(manifest.get("state")))||!"rare_variant_analysis".equals(manifest.get("operation_type"))||!c.operation().get("hypothesis").equals(manifest.get("hypothesis")))continue;for(String name:map(manifest.get("output_sha256")).keySet())if(name.matches("binary-fit-cache/[0-9a-f]{64}\\.yaml"))prior.put(name.substring(17,81),new Prior(operation,manifest,name));}}}}
     }
     private ConditionalBinarySetTests.Result restore(Context c,String key)throws IOException{
         Prior old=prior.get(key);if(old==null)return null;Path path=old.directory.resolve(old.relative);ConditionalBinarySetTests.Result result;

@@ -25,13 +25,15 @@ class StudyIntroductionTest {
         assertEquals(2, StudyPublicEvidence.map(review.get("paragraph_counts")).get("field_background"));
         assertEquals("structure_complete_scientific_review_required", review.get("status"));
     }
-    @Test void wrongOrderExcessParagraphsAndMisplacedRolesAreErrors() {
+    @Test void wrongOrderAndMisplacedRolesAreErrorsButParagraphTargetsAreFlexible() throws Exception {
         var order = sections(); java.util.Collections.swap(order, 0, 1);
         assertThrows(IOException.class, () -> StudyIntroduction.assess(order));
         for (var invalid : List.of(Map.of("section", "methods", "introduction_role", "field_background"),
-                Map.of("section", "introduction", "introduction_role", "unknown"),
-                Map.of("section", "introduction", "introduction_role", "hypothesis_relevance", "text", "One.\n\nTwo.")))
+                Map.of("section", "introduction", "introduction_role", "unknown")))
             assertThrows(IOException.class, () -> StudyIntroduction.assess(List.of(invalid)));
+        var paragraphs = sections(); var rationale = StudyPublicEvidence.map(paragraphs.get(1));
+        rationale.put("text", "Assay rationale.\n\nTissue rationale linked to the same question."); paragraphs.set(1, rationale);
+        assertEquals("structure_complete_scientific_review_required", StudyIntroduction.assess(paragraphs).get("status"));
     }
     @Test void missingCitationsAndLegacyProseRemainExplicitNeeds() throws Exception {
         var sections = sections(); var first = StudyPublicEvidence.map(sections.get(0));
@@ -40,6 +42,14 @@ class StudyIntroductionTest {
         var legacy = Map.of("section", "introduction", "text", "Existing prose must remain unchanged.");
         assertTrue(StudyIntroduction.assess(List.of(legacy)).get("needs").toString().contains("older prose is preserved"));
         assertEquals("Existing prose must remain unchanged.", legacy.get("text"));
+    }
+    @Test void orderedCitedParagraphsCannotCertifyPersuasiveMotivationOrImpact() throws Exception {
+        var result = StudyIntroduction.assess(sections());
+        assertEquals("structure_complete_scientific_review_required", result.get("status"));
+        var motivation = StudyPublicEvidence.map(result.get("motivation_review"));
+        assertEquals("substantive_review_required", motivation.get("status"));
+        assertEquals(false, motivation.get("assessed_by_structural_checks"));
+        assertTrue(StudyPublicEvidence.list(motivation.get("required_argument")).contains("potential_scientific_impact"));
     }
     @Test void templateUsesDeclaredHypothesesButDoesNotInventFieldOrMotivation() throws Exception {
         var template = StudyIntroduction.template("Fixture", List.of("Our declared hypothesis."));

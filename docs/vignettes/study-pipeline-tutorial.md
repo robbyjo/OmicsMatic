@@ -36,6 +36,8 @@ For completed modules, module GO or an entirely analyzed study, see
 For manuscript claims bound to frozen results and actual public source text, see
 [principal-finding source review](#claim-bound-principal-finding-discussion).
 
+For disk-space management, see [reclaim space from obsolete results](auditable-omics-pipeline.md#reclaim-space-from-obsolete-results): verified replacements, scientist supersession decisions, protected evidence and recorded cleanup.
+
 For completed bibliographies or partly completed searches, see
 [supplied literature and missing searches](#reuse-supplied-literature-and-complete-missing-searches).
 

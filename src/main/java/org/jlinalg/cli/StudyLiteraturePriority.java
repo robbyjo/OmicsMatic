@@ -96,8 +96,10 @@ final class StudyLiteraturePriority {
     }
     private static Map<String,Object> reuse(Context c,String node,String identity,Map<String,Object> payload,Path target)throws IOException {
         Path runs=c.project().resolve("runs");if(!Files.isDirectory(runs))return null;String prefix="literature-priority/comparisons/"+node+"/";
+        var unavailable=org.jlinalg.study.StudyCleanup.unavailableResults(c.project());
         try(var paths=Files.walk(runs)){for(Path path:paths.filter(p->p.getFileName().toString().equals("manifest.yaml")).sorted().toList()){
             var manifest=StudyYaml.loadArtifact(path);if(!"literature_search".equals(manifest.get("operation_type"))||!text(c.operation().get("hypothesis")).equals(text(manifest.get("hypothesis"))))continue;
+            if(unavailable.contains(text(manifest.get("run_id"))+"/"+text(manifest.get("operation_id"))))continue;
             var hashes=map(manifest.get("output_sha256"));String name=prefix+"node-result.yaml";if(!hashes.containsKey(name))continue;
             var saved=StudyYaml.loadArtifact(StudyFindingInventory.verified(path.getParent(),name,text(hashes.get(name))));if(!identity.equals(saved.get("identity")))continue;var answer=validate(payload,map(saved.get("answer")));if("deferred".equals(answer.get("decision")))continue;
             for(var entry:hashes.entrySet())if(entry.getKey().startsWith(prefix)){Path source=StudyFindingInventory.verified(path.getParent(),entry.getKey(),text(entry.getValue())),destination=target.resolve(entry.getKey().substring(prefix.length())).normalize();if(!destination.startsWith(target))throw new IOException("Unsafe literature comparison cache path");Files.createDirectories(destination.getParent());Files.copy(source,destination);}

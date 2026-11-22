@@ -39,6 +39,9 @@ public final class StudyEvidenceIndex {
     public static Map<String, Object> snapshot(Path project) throws IOException {
         Path root = project.toAbsolutePath().normalize();
         Object currentRun = StudyProject.status(root).get("run_id");
+        List<Map<String, Object>> events = StudyLedger.read(root);
+        Map<String, Map<String, Object>> removals = StudyCleanup.removals(events);
+        Map<String, Map<String, Object>> decisions = StudyCleanup.decisions(events);
         List<Object> entries = new ArrayList<>();
         Path runs = root.resolve("runs");
         if (Files.isDirectory(runs)) {
@@ -59,8 +62,12 @@ public final class StudyEvidenceIndex {
                         "operation_type", "hypothesis", "state", "summary",
                         "cache_key", "input_sha256", "output_sha256", "details");
                     entry.put("manifest", portable(root, path));
-                    Object findings = keyFindings(path.getParent(),
-                        String.valueOf(manifest.get("operation_type")));
+                    if (decisions.containsKey(run + "/" + operation)) entry.put("retention", decisions.get(run + "/" + operation));
+                    Map<String, Object> removal = removals.get(run + "/" + operation);
+                    entry.put("availability", removal == null ? "available" : removal.get("availability"));
+                    if (removal != null) entry.put("cleanup", removal);
+                    Object findings = removal == null ? keyFindings(path.getParent(),
+                        String.valueOf(manifest.get("operation_type"))) : null;
                     if (findings != null) entry.put("key_findings", findings);
                     if(Set.of("protein_structure","protein_structure_assessment").contains(manifest.get("operation_type")))entry.put("details",findings==null?Map.of("interpretation","See the retained protein sources; raw sequences, peptides and coordinates are excluded from aggregate previews"):findings);
                     List<Object> artifacts = new ArrayList<>();
@@ -71,6 +78,9 @@ public final class StudyEvidenceIndex {
                         artifact.put("path", portable(root,
                             path.getParent().resolve(output.getKey())));
                         artifact.put("sha256", output.getValue());
+                        artifact.put("availability", removal == null ? "available"
+                            : "deleted".equals(removal.get("availability")) ? "deleted"
+                            : Files.isRegularFile(path.getParent().resolve(output.getKey())) ? "cleanup_pending" : "deleted");
                         artifacts.add(artifact);
                     }
                     entry.put("artifacts", artifacts);
@@ -419,6 +429,7 @@ public final class StudyEvidenceIndex {
         Map<String, Map<String, List<Map<String, Object>>>> annotations = new LinkedHashMap<>();
         for (Object value : entries) {
             Map<String, Object> entry = StudyIO.map(value, "entry");
+            if (entry.containsKey("cleanup")) continue;
             String key = entry.get("run_id") + "/" + entry.get("hypothesis");
             for (Object raw : StudyIO.optionalList(entry.get("artifacts"), "artifacts")) {
                 Map<String, Object> artifact = StudyIO.map(raw, "artifact");
@@ -551,6 +562,8 @@ public final class StudyEvidenceIndex {
                 .append("</td><td>").append(escape(String.valueOf(entry.get("operation_type"))))
                 .append("</td><td>").append(escape(String.valueOf(entry.get("hypothesis"))))
                 .append("</td><td>").append(escape(String.valueOf(entry.get("state"))))
+                .append("available".equals(entry.getOrDefault("availability", "available")) ? ""
+                    : " (" + escape(String.valueOf(entry.get("availability"))) + ")")
                 .append("</td><td>").append(link(String.valueOf(entry.get("manifest")), "Manifest"))
                 .append("</td></tr>\n");
             findings.append("<section data-entry data-historical=\"").append(historical)
@@ -561,13 +574,20 @@ public final class StudyEvidenceIndex {
                 .append(escape(String.valueOf(entry.get("summary")))).append("</p>")
                 .append("<p>Result: ").append(escape(String.valueOf(entry.get("result_id")))).append(" · ")
                 .append(link(String.valueOf(entry.get("manifest")), "Audit manifest")).append("</p>");
+            if (entry.containsKey("cleanup"))
+                findings.append("<p><strong>Outputs deleted by cleanup, or deletion pending.</strong> ")
+                    .append("The scientific execution state above is historical; these outputs cannot be reused.</p>")
+                    .append(render(displayPreview(entry.get("cleanup"))));
+            if (entry.containsKey("retention")) findings.append(render(entry.get("retention")));
             if (entry.containsKey("key_findings")) findings.append(render(displayPreview(entry.get("key_findings"))));
             if (!Set.of("complete", "not_applicable").contains(entry.get("state")))
                 findings.append("<h3>What is needed next?</h3>").append(render(displayPreview(entry.get("details"))));
             findings.append("<details><summary>Full results and SHA-256 hashes</summary><ul>");
             for (Object raw : StudyIO.optionalList(entry.get("artifacts"), "artifacts")) {
                 Map<String, Object> artifact = StudyIO.map(raw, "artifact");
-                findings.append("<li>").append(link(String.valueOf(artifact.get("path")), String.valueOf(artifact.get("path"))))
+                String artifactPath = String.valueOf(artifact.get("path"));
+                findings.append("<li>").append("deleted".equals(artifact.get("availability"))
+                    ? escape(artifactPath) + " (deleted by cleanup)" : link(artifactPath, artifactPath))
                     .append(" <code>").append(escape(String.valueOf(artifact.get("sha256")))).append("</code></li>");
             }
             findings.append("</ul></details></section>");

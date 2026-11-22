@@ -48,6 +48,7 @@ final class StudyPublication {
         Map<String, Object> ledger = new LinkedHashMap<>();
         ledger.put("hypothesis", hypothesis.getOrDefault("description", "Scientific hypothesis description required"));
         ledger.put("writing_policy", StudyResultsDiscussion.policy());
+        ledger.put("manuscript_writing_policy", org.jlinalg.study.StudyManuscriptPolicy.identity());
         ledger.put("impact_ranking", "Not assigned automatically. A scientist or advisory LLM must select distinct findings, link Results paragraphs and justify their impact in an audited revision. Analysis order is not scientific importance.");
         ledger.put("records", records);
         Map<String, Map<String, Object>> references = new LinkedHashMap<>();
@@ -86,6 +87,14 @@ final class StudyPublication {
         StudyPublicEvidence.write(context.outputDirectory().resolve("reference-catalog.yaml"), catalog);
         Files.writeString(context.outputDirectory().resolve("reference-catalog.html"), StudyReferenceCatalog.html(catalog));
         StudyPublicEvidence.write(context.outputDirectory().resolve("publication-claims.yaml"), ledger);
+        StudyManuscriptWriting.writePolicy(context.outputDirectory());
+        StudyPublicEvidence.write(context.outputDirectory().resolve("abstract-template.yaml"), Map.of("schema_version", 1,
+            "id", "abstract-revision", "title", "Publication first draft", "rationale", "Write the abstract after finalizing the manuscript body.", "sections", StudyAbstract.template()));
+        StudyPublicEvidence.write(context.outputDirectory().resolve("abstract-review.yaml"), StudyAbstract.review(""));
+        List<Object> writingSections = new ArrayList<>(list(introduction.get("sections")));
+        writingSections.addAll(list(methods.get("sections"))); writingSections.addAll(list(narrative.get("sections")));
+        StudyPublicEvidence.write(context.outputDirectory().resolve("manuscript-readability-review.yaml"), StudyManuscriptWriting.assess(writingSections, tables));
+        StudyPublicEvidence.write(context.outputDirectory().resolve("participant-characteristics-review.yaml"), StudyManuscriptWriting.populationReview(tables));
         StringBuilder html = new StringBuilder(start("Publication first draft"));
         html.append("<p><strong>Unreviewed first draft generated locally by JLinAlg.</strong> No language model was called. Missing information remains explicit; this is not ready for submission.</p>")
             .append("<p><a href=\"introduction-template.yaml\">Introduction writing template</a> · <a href=\"introduction-review.yaml\">Missing introduction inputs</a> · <a href=\"reference-catalog.html\">Reference catalog and search coverage</a></p>")
@@ -113,16 +122,45 @@ final class StudyPublication {
         html.append("<h2>Conclusion</h2>").append(StudyIntroduction.scaffold(list(narrative.get("sections")).stream().filter(p -> "conclusion".equals(map(p).get("section"))).toList()))
             .append("<p><a href=\"results-discussion-template.yaml\">Results and Discussion writing template</a> · <a href=\"results-discussion-review.yaml\">Narrative review needs</a> · <a href=\"results-discussion-inventory.yaml\">Findings and bioinformatics context inventory</a></p>")
             .append("<p><a href=\"publication-supplement.html\">All evidence layers and supplemental findings</a> · <a href=\"publication-claims.yaml\">Source and writing-policy ledger</a></p>").append(citations.bibliography()).append("</body></html>");
-        Files.writeString(context.outputDirectory().resolve("publication-draft.html"), expandAbbreviations(html.toString(),
+        Files.writeString(context.outputDirectory().resolve("publication-review.html"), expandAbbreviations(html.toString(),
             map(map(hypothesis.get("metadata")).get("abbreviations"))));
-        Files.writeString(context.outputDirectory().resolve("publication-supplement.html"), start("Supplemental evidence")
+        Files.writeString(context.outputDirectory().resolve("publication-draft.html"), expandAbbreviations(
+            readingScaffold(writingSections, tables, catalog), map(map(hypothesis.get("metadata")).get("abbreviations"))));
+        Files.writeString(context.outputDirectory().resolve("publication-evidence-review.html"), start("Supplemental evidence")
             + "<h2>Supplemental Table 1. Detailed participant characteristics</h2>" + detailedTable1(tables)
             + "<p>All evidence layers are retained, including null, contradictory, blocked and unreviewed results. Top-row previews are not exhaustive; use the linked manifests for complete artifacts.</p>" + all + "</body></html>");
+        Files.writeString(context.outputDirectory().resolve("publication-supplement.html"), start("Supplementary material")
+            + "<h2>Supplemental Table 1. Detailed participant characteristics</h2>" + detailedTable1(tables, false)
+            + "<p>Supporting data and reproducibility records are available in the <a href=\"publication-evidence-review.html\">supporting records</a>.</p></body></html>");
         Files.writeString(context.outputDirectory().resolve("participant-characteristics.csv"), table1Csv(tables));
         return List.of("publication-draft.html", "publication-supplement.html", "publication-claims.yaml", "participant-characteristics.csv",
             "introduction-template.yaml", "introduction-review.yaml", "reference-catalog.yaml", "reference-catalog.html",
             "methods-template.yaml", "methods-review.yaml", "methods-inventory.yaml",
-            "results-discussion-template.yaml", "results-discussion-review.yaml", "results-discussion-inventory.yaml");
+            "results-discussion-template.yaml", "results-discussion-review.yaml", "results-discussion-inventory.yaml",
+            "publication-review.html", "manuscript-writing-prompt.txt", "manuscript-writing-policy.yaml",
+            "manuscript-readability-review.yaml", "participant-characteristics-review.yaml", "abstract-template.yaml", "abstract-review.yaml", "publication-evidence-review.html");
+    }
+    private static String readingScaffold(List<Object> sections, List<Object> tables, Map<String, Object> catalog) throws IOException {
+        var citations = new StudyCitations(catalog);
+        var h = new StringBuilder(start("Manuscript writing scaffold"));
+        int abstractPosition = h.length();
+        for (String section : List.of("introduction", "methods", "results", "discussion", "conclusion")) {
+            h.append("<h2>").append(Character.toUpperCase(section.charAt(0))).append(section.substring(1)).append("</h2>");
+            if (section.equals("results")) h.append("<h3>Table 1. Participant characteristics</h3>").append(table1(tables));
+            for (Object raw : sections) {
+                var p = map(raw); if (!section.equals(p.get("section"))) continue;
+                if (p.containsKey("title") && !section.equals("introduction") && !p.containsKey("discussion_role")) h.append("<h3>").append(esc(text(p.get("title")))).append("</h3>");
+                h.append("<p>").append(citations.render(text(p.get("text")), list(p.get("references")))).append("</p>");
+            }
+        }
+        var abstractHtml = new StringBuilder("<div data-manuscript-abstract=\"true\"><h2>Abstract</h2>");
+        for (Object raw : StudyAbstract.template()) {
+            var p = map(raw); abstractHtml.append("<h3>").append(StudyAbstract.label(text(p.get("abstract_role")))).append("</h3><p>").append(esc(text(p.get("text")))).append("</p>");
+        }
+        h.insert(abstractPosition, abstractHtml.append("</div>"));
+        h.append("<h2>Data and code availability</h2><p>").append(StudyManuscriptWriting.AVAILABILITY_PLACEHOLDER)
+            .append("</p><p><a href=\"publication-supplement.html\">Supplementary material</a></p>");
+        return h.append(citations.bibliography()).append("</body></html>").toString();
     }
     static String table1(List<Object> tables) {
         if (tables.isEmpty()) return "<p>[SCIENTIST INPUT REQUIRED: phenotype files and verified analysis-sample membership]</p>";
@@ -163,10 +201,10 @@ final class StudyPublication {
             row(html, name + unit + ", mean ± SD", columns.stream().map(t -> mean(map(t.get("continuous")).get(name), t.get("N"))).toList());
         }
         for (String name : binary) row(html, name + ", n (%)", columns.stream().map(t -> proportion(map(map(t.get("binary")).get(name)), "case_n", "percent", t.get("N"))).toList());
-        html.append("</tbody></table><p>Available-case summaries; when a variable has fewer observations than N, its reduced n is shown. Detailed denominators, missingness, coding and source hashes are in Supplemental Table 1. Display values are rounded to two decimal places; CSV and evidence records retain full precision.</p>");
+        html.append("</tbody></table><p>Available-case summaries; reduced n is shown when observations are missing. Supplemental Table 1 provides denominators, missingness and variable definitions.</p>");
         java.util.Set<String> definitions = new java.util.LinkedHashSet<>();
         columns.forEach(t -> map(t.get("binary")).values().forEach(v -> definitions.add(text(map(v).get("definition")))));
-        for (String definition : definitions) html.append("<p>").append(esc(definition)).append("</p>");
+        for (String definition : definitions) html.append("<p>").append(StudyMathTypography.prose(definition)).append("</p>");
         if (columns.stream().anyMatch(t -> !Boolean.TRUE.equals(t.get("analysis_population_verified"))))
             html.append("<p>Provisional phenotype-file populations: analysis-sample membership remains unverified.</p>");
         return html.toString();
@@ -180,8 +218,8 @@ final class StudyPublication {
         return true;
     }
     private static void row(StringBuilder html, String name, List<String> cells) {
-        html.append("<tr><th scope=\"row\">").append(esc(name)).append("</th>");
-        cells.forEach(cell -> html.append("<td>").append(esc(cell)).append("</td>")); html.append("</tr>");
+        html.append("<tr><th scope=\"row\">").append(StudyMathTypography.prose(name)).append("</th>");
+        cells.forEach(cell -> html.append("<td>").append(StudyMathTypography.prose(cell)).append("</td>")); html.append("</tr>");
     }
     private static String denominator(Object n, Object total) { return java.util.Objects.equals(n, total) ? "" : " [n=" + text(n) + "]"; }
     private static String proportion(Map<String, Object> m, String count, String percent, Object total) {
@@ -189,6 +227,9 @@ final class StudyPublication {
     }
     private static String mean(Object value, Object total) { Map<String, Object> m = map(value); return m.isEmpty() ? "Input required" : StudyReportNumbers.format(m.get("mean")) + " ± " + StudyReportNumbers.format(m.get("sd")) + denominator(m.get("n"), total); }
     static String detailedTable1(List<Object> tables) {
+        return detailedTable1(tables, true);
+    }
+    static String detailedTable1(List<Object> tables, boolean audit) {
         StringBuilder h = new StringBuilder("<p><a href=\"participant-characteristics.csv\">Full-precision participant-summary CSV</a></p><table><thead><tr><th>Dataset</th><th>Characteristic</th><th>Available n</th><th>Missing</th><th>Mean or n (%)</th><th>SD</th></tr></thead><tbody>");
         for (Object raw : tables) {
             Map<String, Object> t = map(raw);
@@ -204,7 +245,13 @@ final class StudyPublication {
             }
         }
         h.append("</tbody></table>");
-        for (Object raw : tables) { Map<String, Object> t = map(raw); h.append("<details><summary>").append(esc(text(t.get("dataset")))).append(" coding, covariates and provenance</summary>").append(render(t)).append("</details>"); }
+        for (Object raw : tables) {
+            Map<String, Object> t = map(raw); var displayed = new LinkedHashMap<String, Object>();
+            if (audit) displayed.putAll(t);
+            else for (String key : List.of("cohort", "N", "N_unit", "analysis_population_verified", "sex", "continuous", "binary", "units", "main_phenotype_label"))
+                if (t.containsKey(key)) displayed.put(key, t.get(key));
+            h.append("<details><summary>").append(esc(text(t.get("dataset")))).append(audit ? " coding, covariates and provenance" : " variable definitions and covariates").append("</summary>").append(render(displayed)).append("</details>");
+        }
         return h.toString();
     }
     private static void detailRow(StringBuilder h, List<String> values) { h.append("<tr>"); values.forEach(v -> h.append("<td>").append(esc(v)).append("</td>")); h.append("</tr>"); }
@@ -247,10 +294,14 @@ final class StudyPublication {
         java.util.Set<String> seen = new java.util.HashSet<>();
         // Operate only on text nodes after <body>, never on paths, URLs or markup.
         StringBuilder result = new StringBuilder();
-        boolean body = false;
+        boolean body = false, math = false; int protectedDepth = 0;
         for (String part : html.split("(?=<)|(?<=>)", -1)) {
             if (part.equals("<body>")) body = true;
-            if (!body || part.startsWith("<")) { result.append(part); continue; }
+            if (part.matches("(?is)<(?:script|style|pre|code|math)(?:\\s[^>]*)?>")) protectedDepth++;
+            if (part.matches("(?is)</(?:script|style|pre|code|math)\\s*>")) protectedDepth = Math.max(0, protectedDepth - 1);
+            if (part.startsWith("<span ") && part.contains("data-tex=\"")) math = true;
+            if (part.equals("</span>")) math = false;
+            if (!body || math || protectedDepth > 0 || part.startsWith("<")) { result.append(part); continue; }
             String text = part;
             for (var entry : dictionary.entrySet()) {
                 String shortName = entry.getKey(), longName = esc(StudyPublicEvidence.text(entry.getValue()));
@@ -265,6 +316,6 @@ final class StudyPublication {
             }
             result.append(text);
         }
-        return result.toString();
+        return StudyMathTypography.document(result.toString());
     }
 }

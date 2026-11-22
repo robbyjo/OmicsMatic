@@ -63,10 +63,12 @@ final class StudyVariantBatchCache {
     }
     private void index(Context context) throws IOException {
         indexed = true; Path runs = context.project().resolve("runs"); if (!Files.isDirectory(runs)) return;
+        var unavailable = org.jlinalg.study.StudyCleanup.unavailableResults(context.project());
         try (var paths = Files.walk(runs)) {
             for (Path manifestPath : paths.filter(path -> path.getFileName().toString().equals("manifest.yaml")).sorted().toList()) {
                 if (manifestPath.startsWith(context.outputDirectory())) continue;
                 var manifest = StudyYaml.loadArtifact(manifestPath);
+                if (unavailable.contains(text(manifest.get("run_id")) + "/" + text(manifest.get("operation_id")))) continue;
                 if (!Set.of("variant_annotation", "variant_scoring", "protein_structure", "protein_structure_assessment").contains(text(manifest.get("operation_type")))) continue;
                 var outputs = map(manifest.get("output_sha256"));
                 for (String name : outputs.keySet()) if (name.endsWith("/batch-receipt.yaml")) {

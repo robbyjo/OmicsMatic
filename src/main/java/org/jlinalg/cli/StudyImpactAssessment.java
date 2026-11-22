@@ -33,6 +33,7 @@ final class StudyImpactAssessment implements StudyOperationExecutor {
         var selected = StudyYaml.loadArtifact(assessment); var plan = StudyYaml.loadArtifact(outline);
         var payload = new LinkedHashMap<String, Object>();
         payload.put("scope", "study_wide"); payload.put("selected_findings", selected.get("selected_findings"));
+        payload.put("manuscript_writing_policy", org.jlinalg.study.StudyManuscriptPolicy.identity());
         payload.put("selection_note", selected.get("selection_note")); payload.put("manuscript_outline", plan);
         payload.put("manuscript_policy", selected.get("manuscript_policy")); payload.put("unavailable_operations", selected.get("unavailable_operations"));
         payload.put("literature_background", selected.getOrDefault("literature_background", Map.of()));
@@ -46,7 +47,7 @@ final class StudyImpactAssessment implements StudyOperationExecutor {
         payload.put("literature_candidate_policy", StudyLiteratureCandidates.CAVEAT);
         payload.put("finding_discussion_facets", StudyFindingDiscussion.FACETS);
         payload.put("finding_discussion_rule", "For every principal story cover each discussion facet explicitly. Bind literature statements to the supplied reference and passage IDs, distinguish this study's observations from source experiments, inference and proposed experiments, and explain absent or insufficient evidence. Essential reasoning belongs in the main text, with complete extended evidence in the linked supplement. A facet list, word count or literal passage match does not certify scientific depth.");
-        payload.put("instructions", "Use the selected 3–5 distinct findings across the entire manuscript. Treat section and per-finding word allowances as adjustable planning allocations; manuscript_policy.word_limit_mode controls the total target or strict limit. Develop each principal finding thoroughly and retain extended source-linked discussions in finding-specific Supplementary sections. Preserve every mandatory caveat and missing/unavailable result. No source appraisal, sample size or reference may be invented. Use Introduction, Methods, Results, Discussion, Conclusion and optional References and Supplementary sections as standalone headings.");
+        payload.put("instructions", "Use the selected 3–5 distinct findings for Results and Discussion. Build the Introduction from field-level evidence and the declared problem-to-objective rationale; do not open with selected hit genes. Treat section and per-finding word allowances as adjustable planning allocations; manuscript_policy.word_limit_mode controls the total target or strict limit. Develop each principal finding thoroughly and retain extended source-linked discussions in finding-specific Supplementary sections. Preserve every mandatory caveat; consolidate generic repetition without changing scientific meaning. No source appraisal, sample size or reference may be invented. Use [TABLE_1] at the Results population subsection; local participant summaries are inserted after generation and are not supplied in this model packet. Use Introduction, Methods, Results, Discussion, optional Conclusion, References and Supplementary sections as standalone headings.");
         return new StudyAssistance().execute(context, payload);
     }
 
@@ -220,9 +221,11 @@ final class StudyImpactAssessment implements StudyOperationExecutor {
 
     private static Map<String, Object> reuse(Context context, String node, String identity, Map<String, Object> payload, Path destination) throws IOException {
         Path runs = context.project().resolve("runs"); if (!Files.isDirectory(runs)) return null;
+        var unavailable = org.jlinalg.study.StudyCleanup.unavailableResults(context.project());
         try (var paths = Files.walk(runs)) {
             for (Path manifestPath : paths.filter(path -> path.getFileName().toString().equals("manifest.yaml")).sorted().toList()) {
                 var manifest = StudyYaml.loadArtifact(manifestPath);
+                if (unavailable.contains(text(manifest.get("run_id")) + "/" + text(manifest.get("operation_id")))) continue;
                 if (!"impact_assessment".equals(manifest.get("operation_type"))) continue;
                 String prefix = "comparisons/" + node + "/"; var hashes = map(manifest.get("output_sha256"));
                 if (!hashes.containsKey(prefix + "node-result.yaml")) continue;
@@ -283,7 +286,9 @@ final class StudyImpactAssessment implements StudyOperationExecutor {
         return new Result(State.COMPLETE, candidates.isEmpty() ? "No eligible impact candidates; explicit empty assessment retained" : "Completed study-wide AI impact comparisons and manuscript outline; scientific review required", outputs(context), summary);
     }
     private static Result waiting(Context context, String reason, List<Object> nodes, List<Map<String, Object>> pending) throws IOException {
-        var need = StudyNeed.review("study-impact-assessment", "What is required to finish the declared AI impact assessment?", reason, true);
+        boolean manuscript = "manuscript_draft".equals(context.operation().get("type"));
+        var need = StudyNeed.review(manuscript ? "study-manuscript-assessment-dependency" : "study-impact-assessment",
+            manuscript ? "What is required before manuscript drafting?" : "What is required to finish the declared AI impact assessment?", reason, true);
         var summary = Map.<String, Object>of("reason", reason, "comparisons", nodes, "pending_finding_ids", ids(pending), "needs", List.of(need.document()), "ranking_status", "incomplete_no_manuscript_selection");
         write(context.outputDirectory().resolve("impact-status.yaml"), summary);
         return new Result(State.WAITING_FOR_INPUT, reason, outputs(context), summary);

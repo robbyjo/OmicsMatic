@@ -398,7 +398,9 @@ class StudyImpactAssessmentTest {
         for (String type : List.of("finding_inventory", "impact_assessment", "manuscript_draft")) assertEquals(1, operations.stream().filter(op -> type.equals(op.get("type"))).count());
         var draft = operations.stream().filter(op -> "manuscript_draft".equals(op.get("type"))).findFirst().orElseThrow();
         assertTrue(list(draft.get("depends_on")).contains("global-study-impact-assessment"));
-        assertFalse(Boolean.TRUE.equals(draft.get("allow_incomplete_dependencies")));
+        assertTrue(Boolean.TRUE.equals(draft.get("allow_incomplete_dependencies")));
+        for (var operation : operations) if ("participant_characteristics".equals(operation.get("type")))
+            assertTrue(list(draft.get("depends_on")).contains(operation.get("id")));
         var out = new ByteArrayOutputStream(); var error = new ByteArrayOutputStream();
         int status = JLinAlgCli.run(new String[] {"study", "auto", input.toString(), "--project", project.toString(), "--offline"}, new PrintStream(out), new PrintStream(error));
         assertEquals(0, status, out + "\n" + error); assertTrue(out.toString().contains("state: waiting_for_input"));

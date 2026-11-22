@@ -66,6 +66,8 @@ final class StudyCli {
                 case "answer" -> answer(options, output);
                 case "operations" -> operations(options, output);
                 case "export" -> export(options, output);
+                case "cleanup" -> cleanup(options, output);
+                case "supersede", "pin", "unpin" -> retention(action, options, output);
                 case "manuscript" -> manuscript(options, output);
                 case "references" -> {
                     Path result = StudyCitationSources.fetch(options.project(Path.of(".")), options.onePositional("references"),
@@ -135,6 +137,50 @@ final class StudyCli {
         output.println("Local evidence archive: " + archive.toAbsolutePath());
         output.println("SHA-256: " + hash);
         output.println("Contains potentially sensitive evidence. No external submission was made; inspect EVIDENCE_BUNDLE.json for exclusions and audit gaps.");
+        return 0;
+    }
+
+    private static int cleanup(Options options, PrintStream output) throws IOException {
+        options.noPositionals("cleanup");
+        Path project = options.project(Path.of("."));
+        String apply = options.one("apply", null);
+        if (apply != null) {
+            if (options.flag("dry-run") || options.one("out", null) != null || !options.many("result").isEmpty())
+                throw new IllegalArgumentException("Use --apply PREVIEW.yaml by itself; preview selection is fixed");
+            Map<String, Object> receipt = org.jlinalg.study.StudyCleanup.apply(project, Path.of(apply), options.actor());
+            output.println(receipt.get("summary"));
+        } else {
+            if (!options.flag("dry-run"))
+                throw new IllegalArgumentException("Choose --dry-run [--out PREVIEW.yaml] or --apply PREVIEW.yaml");
+            String out = options.one("out", null);
+            Map<String, Object> preview = out == null
+                ? org.jlinalg.study.StudyCleanup.preview(project, options.many("result"))
+                : org.jlinalg.study.StudyCleanup.writePreview(project, Path.of(out), options.many("result"));
+            if (out == null) output.print(new Yaml().dump(preview));
+            else {
+                output.println("Cleanup preview: " + Path.of(out).toAbsolutePath().normalize());
+                output.println("Eligible obsolete results: " + list(preview.get("results")).size()
+                    + "; reclaimable logical bytes: " + preview.get("reclaimable_bytes"));
+                output.println("Review paths, replacement evidence and retained results before --apply. No results deleted.");
+            }
+        }
+        return 0;
+    }
+
+    private static int retention(String action, Options options, PrintStream output) throws IOException {
+        options.noPositionals(action);
+        if (options.many("result").size() != 1)
+            throw new IllegalArgumentException("study " + action + " requires exactly one --result RUN/OPERATION");
+        Path project = options.project(Path.of("."));
+        String result = options.required("result");
+        if (action.equals("supersede")) {
+            org.jlinalg.study.StudyCleanup.supersede(project, result, options.required("replacement"),
+                options.required("reason"), options.actor());
+            output.println("Recorded obsolete result " + result + ", replaced by " + options.required("replacement"));
+        } else {
+            org.jlinalg.study.StudyCleanup.pin(project, result, action.equals("pin"), options.required("reason"), options.actor());
+            output.println("Recorded " + action + " decision for " + result);
+        }
         return 0;
     }
 
@@ -528,6 +574,11 @@ final class StudyCli {
               study questions [--project DIRECTORY] [--out answers.yaml] [--include-answered]
               study answer answers.yaml [--project DIRECTORY] --actor-id PERSON --check|--record
               study export --project DIRECTORY --out evidence.zip --acknowledge-sensitive
+              study cleanup --project DIRECTORY --dry-run [--result RUN/OPERATION ...] [--out PREVIEW.yaml]
+              study cleanup --project DIRECTORY --apply PREVIEW.yaml --actor-id PERSON
+              study supersede --project DIRECTORY --result OLD_RUN/OPERATION
+                --replacement NEW_RUN/OPERATION --reason TEXT --actor-id PERSON
+              study pin|unpin --project DIRECTORY --result RUN/OPERATION --reason TEXT --actor-id PERSON
               study manuscript revision.yaml --project DIRECTORY --out NEW_BUNDLE
               study references references.yaml --project DIRECTORY --out NEW_REFERENCE_BUNDLE [--offline]
               study manuscript-verify --project REVISION_BUNDLE
@@ -555,6 +606,10 @@ final class StudyCli {
             Questions and answers are documented locally in QUESTIONS.md and SESSION_HISTORY.md.
             Answers create reviewable proposals, not execution or transmission permission.
             --repair-views regenerates derived views only after authoritative evidence verifies.
+            Cleanup offers only verified identical newer copies or scientist-declared replacements.
+            Current runs, pinned/manuscript evidence, declared inputs and retained dependencies are protected.
+            Apply deletes only reviewed output files and records intent/completion; manifests remain immutable.
+            An interrupted cleanup can be finished by applying the same preview again.
             """;
     }
 
@@ -562,12 +617,13 @@ final class StudyCli {
         private static final Set<String> FLAGS = Set.of(
             "check-files", "check", "force", "explain",
             "accept-assumptions", "resume", "allow-partial", "rerun", "offline",
-            "record", "include-answered", "repair-views", "acknowledge-sensitive");
+            "record", "include-answered", "repair-views", "acknowledge-sensitive", "dry-run");
         private static final Set<String> VALUES = Set.of(
             "template", "out", "project", "actor-type", "actor-id", "actor-model", "model",
             "approved-by", "plan", "artifact", "type", "id", "description",
             "explanation", "hypothesis", "proposed-direction", "amendment-id",
-            "provider", "api-key-env", "approved-payload-sha256", "endpoint", "auth", "oauth-token-env", "credential-file", "credential-password-env", "handoff", "browser");
+            "provider", "api-key-env", "approved-payload-sha256", "endpoint", "auth", "oauth-token-env", "credential-file", "credential-password-env", "handoff", "browser",
+            "result", "replacement", "reason", "apply");
         private final Map<String, List<String>> values = new LinkedHashMap<>();
         private final Set<String> flags = new java.util.HashSet<>();
         private final List<String> positional = new ArrayList<>();
@@ -592,7 +648,7 @@ final class StudyCli {
                             argument + " requires a value");
                     result.values.computeIfAbsent(key,
                         ignored -> new ArrayList<>()).add(arguments[index]);
-                    if (!Set.of("explanation", "hypothesis").contains(key)
+                    if (!Set.of("explanation", "hypothesis", "result").contains(key)
                             && result.values.get(key).size() > 1)
                         throw new IllegalArgumentException(
                             "Duplicate option: " + argument);

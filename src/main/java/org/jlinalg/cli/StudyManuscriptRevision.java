@@ -26,7 +26,7 @@ import org.yaml.snakeyaml.constructor.SafeConstructor;
 /** Offline editorial revisions derived from verified evidence, never new analyses. */
 final class StudyManuscriptRevision {
     private StudyManuscriptRevision() { }
-    private static final Set<String> SECTIONS = Set.of("introduction", "methods", "results", "discussion", "conclusion", "supplementary");
+    private static final Set<String> SECTIONS = Set.of("abstract", "introduction", "methods", "results", "discussion", "conclusion", "availability", "supplementary");
     private static final Pattern TOKEN = Pattern.compile("\\{\\{([A-Za-z0-9._-]+)#(/[^{}]*)}}" );
     private static final String LIMIT = "Unreviewed manuscript revision. Evidence integrity is checked; scientific interpretation, authorship, ethics, novelty and publication readiness are not certified. No network or external LLM call is made by this command.";
 
@@ -104,7 +104,7 @@ final class StudyManuscriptRevision {
         for (Object value : list(edit.get("sections"))) {
             Map<String, Object> p = map(value); String id = required(p, "id"); identifier(id);
             if (!submitted.add(id)) throw new IOException("Duplicate section ID: " + id);
-            keys(p, Set.of("id", "section", "title", "text", "sources", "rationale", "references", "introduction_role", "methods_role", "cohort_ids", "parameters", "parameter_justifications", "uncommon_parameters", "results_role", "supporting_evidence", "discussion_role", "impact_rank", "impact_reason", "result_ids", "finding_ids", "citation_basis"), "paragraph");
+            keys(p, Set.of("id", "section", "title", "text", "sources", "rationale", "references", "abstract_role", "introduction_role", "methods_role", "cohort_ids", "parameters", "parameter_justifications", "uncommon_parameters", "results_role", "supporting_evidence", "discussion_role", "impact_rank", "impact_reason", "result_ids", "finding_ids", "citation_basis"), "paragraph");
             if (!SECTIONS.contains(required(p, "section"))) throw new IOException("Unknown manuscript section");
             if ("supplementary".equals(p.get("section"))) keys(p,
                 Set.of("id", "section", "title", "text", "sources", "rationale", "references", "finding_ids", "citation_basis"),
@@ -198,8 +198,13 @@ final class StudyManuscriptRevision {
             if ("addressed".equals(c.get("status"))) required(c, "response");
         }
         // All semantic validation precedes publication. The unique output is never overwritten.
-        String manuscript = StudyPublication.expandAbbreviations(manuscript(merged, evidence, study, catalog), abbreviations);
-        String supplement = StudyPublication.expandAbbreviations(supplement(merged, evidence, catalog), abbreviations);
+        StudyAbstract.validateRoles(list(merged.get("sections")));
+        String manuscript = StudyPublication.expandAbbreviations(manuscript(merged, evidence, study, catalog, false), abbreviations);
+        String reviewManuscript = StudyPublication.expandAbbreviations(manuscript(merged, evidence, study, catalog, true), abbreviations);
+        var abstractReview = StudyAbstract.reviewRevision(list(merged.get("sections")), manuscript,
+            predecessor == null ? null : Files.readString(predecessor.getParent().getParent().resolve("artifacts/manuscript.html")));
+        String supplement = StudyPublication.expandAbbreviations(supplement(merged, evidence, catalog, false), abbreviations);
+        String evidenceReview = StudyPublication.expandAbbreviations(supplement(merged, evidence, catalog, true), abbreviations);
         Map<String, Object> wordBudget = StudyWordBudget.assessRendered(manuscript, map(merged.get("manuscript_policy")));
         Map<String, Object> supplementaryWords = StudyWordBudget.assessSupplementRendered(supplement);
         wordBudget.put("supplement_words", supplementaryWords.get("supplement_words"));
@@ -282,6 +287,12 @@ final class StudyManuscriptRevision {
             }
         }
         writeYaml(out.resolve("artifacts/evidence.yaml"), evidence);
+        StudyManuscriptWriting.writePolicy(out.resolve("artifacts"));
+        writeYaml(out.resolve("artifacts/abstract-review.yaml"), abstractReview);
+        writeYaml(out.resolve("artifacts/abstract-template.yaml"), Map.of("schema_version", 1, "id", "abstract-revision",
+            "title", required(edit, "title"), "rationale", "Write the structured abstract from the completed manuscript body.", "sections", StudyAbstract.template()));
+        writeYaml(out.resolve("artifacts/manuscript-readability-review.yaml"), StudyManuscriptWriting.assess(list(merged.get("sections")), participantTables(evidence)));
+        writeYaml(out.resolve("artifacts/participant-characteristics-review.yaml"), StudyManuscriptWriting.populationReview(participantTables(evidence)));
         writeYaml(out.resolve("artifacts/publication-claims.yaml"), Map.of("claims", claims, "limitations", LIMIT));
         if (editorialPayload != null) write(out.resolve("artifacts/editorial-payload.json"), editorialPayload);
         else writeYaml(out.resolve("artifacts/editorial-payload-status.yaml"), Map.of("state", "omitted_by_explicit_request",
@@ -300,7 +311,9 @@ final class StudyManuscriptRevision {
         writeYaml(out.resolve("artifacts/word-counts.yaml"), map(narrativeReview.get("word_budget")));
         writeYaml(out.resolve("artifacts/results-discussion-template.yaml"), StudyResultsDiscussion.template(required(edit, "title"), evidence));
         write(out.resolve("artifacts/manuscript.html"), manuscript);
+        write(out.resolve("artifacts/manuscript-review.html"), reviewManuscript);
         write(out.resolve("artifacts/supplement.html"), supplement);
+        write(out.resolve("artifacts/evidence-review.html"), evidenceReview);
         write(out.resolve("artifacts/participant-characteristics.csv"), StudyPublication.table1Csv(participantTables(evidence)));
         writeYaml(out.resolve("metadata/reporting-policy.yaml"), Map.of("decimal_places", 2, "scientific_notation", "lowercase e; two mantissa decimals; nonzero magnitudes below 0.01 or at least 1000000",
             "integer_counts", "unchanged", "machine_readable_precision", "unchanged; raw values and bindings retained", "participant_refresh", merged.getOrDefault("participant_project", Map.of())));
@@ -311,6 +324,9 @@ final class StudyManuscriptRevision {
         writeYaml(out.resolve("artifacts/introduction-template.yaml"), StudyIntroduction.template(required(edit, "title"),
             list(study.get("hypotheses")).stream().map(StudyManuscriptRevision::map).filter(h -> !"retired".equals(h.get("status"))).map(h -> String.valueOf(h.get("description"))).toList()));
         write(out.resolve("artifacts/index.html"), start("Manuscript revision evidence index")
+            + "<p><a href=\"evidence-review.html\">Complete evidence and provenance review</a></p>"
+            + "<p><a href=\"abstract-review.yaml\">Abstract review</a> · <a href=\"abstract-template.yaml\">Structured abstract template</a></p>"
+            + "<p><a href=\"manuscript.html\">Reading copy</a> · <a href=\"manuscript-review.html\">Annotated review copy</a> · <a href=\"manuscript-writing-prompt.txt\">Complete writing prompt</a> · <a href=\"manuscript-writing-policy.yaml\">Template identity</a> · <a href=\"manuscript-readability-review.yaml\">Writing review</a> · <a href=\"participant-characteristics-review.yaml\">Population review</a></p>"
             + "<p><a href=\"finding-discussion-review.html\">Principal-finding evidence and depth review</a> · <a href=\"finding-discussion-template.yaml\">Claim/source dossier template</a></p>"
             + "<p><a href=\"results-discussion-template.yaml\">Results and Discussion template</a> · <a href=\"results-discussion-review.yaml\">Narrative review needs</a> · <a href=\"results-discussion-inventory.yaml\">Findings and contextual evidence</a></p>"
             + "<p><a href=\"methods-template.yaml\">Methods writing template</a> · <a href=\"methods-review.yaml\">Methods review needs</a> · <a href=\"methods-inventory.yaml\">Methods provenance</a></p>"
@@ -319,6 +335,7 @@ final class StudyManuscriptRevision {
         software.put("jlinalg", JLinAlgCli.version()); software.put("java", System.getProperty("java.runtime.version"));
         software.put("os", System.getProperty("os.name") + " " + System.getProperty("os.version")); software.put("actor", actor.asMap());
         software.put("network_requests", 0); software.put("external_llm_calls", 0);
+        software.put("manuscript_writing_policy", org.jlinalg.study.StudyManuscriptPolicy.identity());
         try {
             Path runtime = Path.of(StudyManuscriptRevision.class.getProtectionDomain().getCodeSource().getLocation().toURI());
             if (Files.isRegularFile(runtime) && runtime.toString().endsWith(".jar")) {
@@ -373,9 +390,10 @@ final class StudyManuscriptRevision {
     }
 
     private static String manuscript(Map<String, Object> revision, Map<String, Map<String, Object>> evidence,
-            Map<String, Object> study, Map<String, Object> catalog) throws IOException {
+            Map<String, Object> study, Map<String, Object> catalog, boolean audit) throws IOException {
         StringBuilder h = new StringBuilder(start(required(revision, "title")));
         StudyCitations citations = new StudyCitations(catalog);
+        if (audit) {
         h.append("<nav><a href=\"#references\">References</a> · <a href=\"citation-review.yaml\">Citation review</a> · <a href=\"study-context-review.yaml\">Study context and candidate explanations</a></nav>");
         if ("needs_input".equals(StudyCitations.assess(revision, catalog).get("status"))) h.append("<p class=\"notice\">Citation placement or classification needs review; see citation-review.yaml. Journal-derived statements require citations throughout the paper.</p>");
         h.append("<p class=\"notice\">").append(esc(LIMIT)).append("</p><nav><a href=\"supplement.html\">Supplement</a> · <a href=\"reference-catalog.html\">Reference catalog</a> · <a href=\"introduction-review.yaml\">Introduction review</a> · <a href=\"publication-claims.yaml\">Claim audit</a> · <a href=\"../metadata/change-log.yaml\">Changes</a></nav>");
@@ -390,9 +408,11 @@ final class StudyManuscriptRevision {
         }
         if ("needs_input".equals(StudyResultsDiscussion.assess(revision, evidence, false).get("status")))
             h.append("<p class=\"notice\">Results and Discussion need structural or scientific inputs; see the narrative review. Older prose is preserved, not silently rewritten.</p>");
+        }
+        int abstractPosition = h.length();
         Set<String> previewed = new LinkedHashSet<>();
         for (String section : List.of("introduction", "methods", "results", "discussion", "conclusion")) {
-            if (section.equals("conclusion") && list(revision.get("sections")).stream().map(StudyManuscriptRevision::map).noneMatch(p -> "conclusion".equals(p.get("section")))) continue;
+            if (section.equals("conclusion") && list(revision.get("sections")).stream().map(StudyManuscriptRevision::map).noneMatch(p -> section.equals(p.get("section")))) continue;
             h.append("<div data-manuscript-section=\"").append(section).append("\"><h2>").append(label(section)).append("</h2>");
             if (section.equals("methods")) {
                 if (list(revision.get("sections")).stream().map(StudyManuscriptRevision::map).noneMatch(p -> "cohorts".equals(p.get("methods_role")))) {
@@ -401,19 +421,20 @@ final class StudyManuscriptRevision {
                 }
             }
             if (section.equals("results")) {
-                h.append("<aside><h3>Table 1. Participant characteristics</h3><p>SD means sample standard deviation. <a href=\"supplement.html#supplemental-table-1\">Supplemental Table 1</a> retains the detailed summaries.</p>");
+                h.append("<aside><h3>Table 1. Participant characteristics</h3><p>Continuous summaries use sample standard deviations. <a href=\"supplement.html#supplemental-table-1\">Supplemental Table 1</a> provides detailed summaries.</p>");
                 h.append(StudyPublication.table1(participantTables(evidence)));
                 h.append("</aside>");
             }
             for (Object raw : list(revision.get("sections"))) {
                 Map<String, Object> p = map(raw); if (!section.equals(p.get("section"))) continue;
-                boolean intro = section.equals("introduction");
+                boolean intro = Set.of("introduction", "abstract").contains(section);
                 h.append("<section id=\"").append(esc(p.get("id"))).append("\">");
-                if (!intro && !p.containsKey("discussion_role")) h.append("<h3>").append(esc(p.getOrDefault("title", label(section)))).append("</h3>");
+                if (!intro && !p.containsKey("discussion_role") && (audit || p.containsKey("title")))
+                    h.append("<h3>").append(esc(p.getOrDefault("title", label(section)))).append("</h3>");
                 String text = expand(required(p, "text"), evidence, new ArrayList<>(), required(p, "id"), true);
                 String[] proseParagraphs = text.split("\\R\\s*\\R");
                 for (int i = 0; i < proseParagraphs.length; i++) h.append("<p>").append(citations.render(proseParagraphs[i], i == proseParagraphs.length - 1 ? list(p.get("references")).stream().filter(id -> !StudyCitations.identifiers(Map.of("text", text), "text").contains(id.toString())).toList() : List.of())).append("</p>");
-                if (!intro && !section.equals("methods")) {
+                if (audit && !intro && !section.equals("methods")) {
                     h.append("<details><summary>Editorial rationale and evidence</summary><p class=\"source\">").append(esc(p.get("rationale"))).append("</p>");
                     if (p.containsKey("impact_reason")) {
                         h.append("<p>Impact rank ").append(esc(p.get("impact_rank"))).append(": ")
@@ -425,12 +446,12 @@ final class StudyManuscriptRevision {
                 }
                 for (Object item : list(p.get("supporting_evidence"))) {
                     var support = map(item); String id = support.get("source").toString();
-                    h.append("<aside><h4>Related bioinformatics and contextual evidence</h4><p>")
-                        .append(citations.render(expand(required(support, "relationship"), evidence, new ArrayList<>(), required(p, "id"), true), list(support.get("references")))).append("</p>")
-                        .append(sourceLink(id)).append("<p>Source status: ").append(esc(evidence.get(id).get("state")))
+                    if (audit) h.append("<aside><h4>Related bioinformatics and contextual evidence</h4>");
+                    h.append("<p>").append(citations.render(expand(required(support, "relationship"), evidence, new ArrayList<>(), required(p, "id"), true), list(support.get("references")))).append("</p>");
+                    if (audit) h.append(sourceLink(id)).append("<p>Source status: ").append(esc(evidence.get(id).get("state")))
                         .append(". This relationship is an editorial interpretation, not automatically verified support.</p></aside>");
                 }
-                if (section.equals("results")) for (Object id : list(p.get("sources"))) {
+                if (audit && section.equals("results")) for (Object id : list(p.get("sources"))) {
                     var source = evidence.get(id.toString());
                     if ("meta_analysis".equals(source.get("operation_type")) && StudyResultsDiscussion.completed(source) && previewed.add(id.toString())) {
                         h.append("<details><summary>Selected molecular findings for this analysis</summary><p>Source-selected previews, not independently validated discoveries; inspect effect scale and heterogeneity.</p>")
@@ -438,11 +459,11 @@ final class StudyManuscriptRevision {
                     }
                 }
                 h.append("</section>");
-                if ("limitations".equals(p.get("discussion_role"))) appendLimitations(h, evidence);
-                if (section.equals("methods") && (p.containsKey("parameters") || p.containsKey("parameter_justifications")))
+                if (audit && "limitations".equals(p.get("discussion_role"))) appendLimitations(h, evidence);
+                if (audit && section.equals("methods") && (p.containsKey("parameters") || p.containsKey("parameter_justifications")))
                     h.append("<details><summary>Parameters and recorded justifications</summary>").append(StudyPublication.render(Map.of("parameters", map(p.get("parameters")), "parameter_justifications", map(p.get("parameter_justifications"))))).append("</details>");
             }
-            if (section.equals("methods")) {
+            if (audit && section.equals("methods")) {
                 h.append("<p><a href=\"methods-template.yaml\">Methods template</a> · <a href=\"methods-review.yaml\">Methods review</a> · <a href=\"methods-inventory.yaml\">Execution and parameter inventory</a></p>");
                 h.append("<details><summary>Declared cohort analyses, recorded parameters and unresolved inputs</summary>").append(StudyPublication.render(StudyMethods.displayInventory(StudyMethods.inventory(study, evidence)))).append("</details>");
                 if (revision.containsKey("participant_project")) h.append("<p>Participant summaries were refreshed separately; see <a href=\"../metadata/participant-study.yaml\">the descriptive-summary contract</a>. Supplied association models were not refitted.</p>");
@@ -452,12 +473,33 @@ final class StudyManuscriptRevision {
                 for (Object raw : list(study.get("hypotheses"))) if (!"retired".equals(map(raw).get("status"))) h.append(esc(map(raw).get("description"))).append(" ");
                 h.append("</p>");
             }
-            if (section.equals("discussion") && list(revision.get("sections")).stream().map(StudyManuscriptRevision::map).noneMatch(p -> p.containsKey("discussion_role"))) appendLimitations(h, evidence);
+            if (audit && section.equals("discussion") && list(revision.get("sections")).stream().map(StudyManuscriptRevision::map).noneMatch(p -> p.containsKey("discussion_role"))) appendLimitations(h, evidence);
             h.append("</div><!-- end-main-text:").append(section).append(" -->");
         }
+        // Assemble the abstract after the body, then insert it once at the front.
+        var abstracts = StudyAbstract.blocks(list(revision.get("sections")));
+        if (abstracts.isEmpty()) abstracts = StudyAbstract.blocks(StudyAbstract.template());
+        var abstractHtml = new StringBuilder("<div data-manuscript-abstract=\"true\"><h2>Abstract</h2>");
+        for (var p : abstracts) {
+            abstractHtml.append("<section id=\"").append(esc(p.get("id"))).append("\">");
+            if (p.containsKey("abstract_role")) abstractHtml.append("<h3>").append(StudyAbstract.label(String.valueOf(p.get("abstract_role")))).append("</h3>");
+            abstractHtml.append("<p>").append(citations.render(expand(required(p, "text"), evidence, new ArrayList<>(), required(p, "id"), true), list(p.get("references")))).append("</p></section>");
+        }
+        h.insert(abstractPosition, abstractHtml.append("</div>"));
+        h.append("<div data-manuscript-availability=\"true\"><h2>Data and code availability</h2>");
+        var availability = list(revision.get("sections")).stream().map(StudyManuscriptRevision::map).filter(p -> "availability".equals(p.get("section"))).toList();
+        if (availability.isEmpty()) h.append("<p>").append(StudyManuscriptWriting.AVAILABILITY_PLACEHOLDER).append("</p>");
+        for (var p : availability) h.append("<p>").append(citations.render(expand(required(p, "text"), evidence, new ArrayList<>(), required(p, "id"), true), list(p.get("references")))).append("</p>");
+        h.append("</div>");
+        if (audit) {
         h.append("<div data-manuscript-section=\"methods\"><h2>Reproducibility and use of artificial intelligence</h2><p>JLinAlg verified prior results and generated this revision locally. The revision request contains attributed editorial text; it may have been supplied by a scientist or an LLM advisor. The command made no remote model calls and read no patient-level phenotype rows. Checksums, comments, numeric bindings and before/after paragraph records are available in the audit bundle. This is integrity checking, not a guarantee that an editorial interpretation is correct.</p>");
         h.append("<p>Software: JLinAlg ").append(esc(JLinAlgCli.version())).append(". See <a href=\"../metadata/software-versions.yaml\">runtime and actor provenance</a>.</p>");
         h.append("</div><!-- end-main-text:methods -->");
+        }
+        if (!audit) for (Object raw : list(revision.get("sections"))) {
+            var note = map(raw);
+            if ("supplementary".equals(note.get("section"))) h.append("<p><a href=\"supplement.html#supplement-note-").append(esc(note.get("id"))).append("\">Supplement: ").append(esc(note.getOrDefault("title", note.get("id")))).append("</a></p>");
+        }
         h.append(citations.bibliography());
         return h.append(end()).toString();
     }
@@ -470,11 +512,11 @@ final class StudyManuscriptRevision {
     }
 
     private static String supplement(Map<String, Object> revision,
-            Map<String, Map<String, Object>> evidence, Map<String, Object> catalog) throws IOException {
-        StringBuilder h = new StringBuilder(start("Supplemental evidence and limitations"));
+            Map<String, Map<String, Object>> evidence, Map<String, Object> catalog, boolean audit) throws IOException {
+        StringBuilder h = new StringBuilder(start(audit ? "Evidence and provenance review" : "Supplementary material"));
         StudyCitations citations = new StudyCitations(catalog);
-        h.append("<p><a href=\"manuscript.html\">Manuscript</a> · <a href=\"evidence.yaml\">Complete local evidence snapshot</a></p><p>All current operations are retained, including failed, waiting, null and contradictory evidence. Previews below are not exhaustive result tables. Original manifests record full result paths and hashes.</p><label>Find evidence <input id=\"search\" type=\"search\"></label>");
-        h.append("<section class=\"evidence\" id=\"supplemental-table-1\"><h2>Supplemental Table 1. Detailed participant characteristics</h2>").append(StudyPublication.detailedTable1(participantTables(evidence))).append("</section>");
+        if (audit) h.append("<p><a href=\"manuscript.html\">Manuscript</a> · <a href=\"evidence.yaml\">Complete local evidence snapshot</a></p><p>All current operations are retained, including failed, waiting, null and contradictory evidence. Previews below are not exhaustive result tables. Original manifests record full result paths and hashes.</p><label>Find evidence <input id=\"search\" type=\"search\"></label>");
+        h.append("<section class=\"evidence\" id=\"supplemental-table-1\"><h2>Supplemental Table 1. Detailed participant characteristics</h2>").append(StudyPublication.detailedTable1(participantTables(evidence), audit)).append("</section>");
         for (Object raw : list(revision.get("sections"))) {
             var note = map(raw);
             if (!"supplementary".equals(note.get("section"))) continue;
@@ -489,11 +531,11 @@ final class StudyManuscriptRevision {
                     ? list(note.get("references")).stream().filter(ref -> !StudyCitations.identifiers(
                         Map.of("text", prose), "text").contains(ref.toString())).toList() : List.of()))
                 .append("</p>");
-            for (Object source : list(note.get("sources"))) h.append(sourceLink(source.toString()));
+            if (audit) for (Object source : list(note.get("sources"))) h.append(sourceLink(source.toString()));
             h.append("</div></section><!-- end-supplement:").append(esc(id)).append(" -->");
         }
         h.append(citations.bibliography());
-        for (var entry : evidence.entrySet()) {
+        if (audit) for (var entry : evidence.entrySet()) {
             Map<String, Object> e = entry.getValue();
             h.append("<section class=\"evidence\" id=\"").append(esc(entry.getKey())).append("\"><h2>").append(esc(entry.getKey())).append("</h2><p>").append(esc(e.get("state"))).append(": ").append(esc(e.get("summary"))).append("</p>")
                 .append("<p><a href=\"../metadata/sources/").append(esc(entry.getKey())).append(".yaml\">Verified source manifest</a>; SHA-256 ").append(esc(e.get("manifest_sha256"))).append("</p>");
@@ -502,7 +544,9 @@ final class StudyManuscriptRevision {
             else h.append("<details><summary>Native findings and prerequisites</summary>").append(StudyPublication.render(StudyEvidenceIndex.displayPreview(findings))).append("</details>");
             h.append("</section>");
         }
-        return h.append("<script>document.getElementById('search').addEventListener('input',function(){const q=this.value.toLowerCase();document.querySelectorAll('.evidence').forEach(e=>e.hidden=!e.textContent.toLowerCase().includes(q))});</script>").append(end()).toString();
+        if (audit) h.append("<script>document.getElementById('search').addEventListener('input',function(){const q=this.value.toLowerCase();document.querySelectorAll('.evidence').forEach(e=>e.hidden=!e.textContent.toLowerCase().includes(q))});</script>");
+        else h.append("<p>Supporting data and reproducibility records are available in the <a href=\"evidence-review.html\">supporting records</a>.</p>");
+        return h.append(end()).toString();
     }
 
     private static String literature(Map<String, Map<String, Object>> evidence) {
@@ -577,7 +621,7 @@ final class StudyManuscriptRevision {
             m.appendReplacement(result, Matcher.quoteReplacement(display ? StudyReportNumbers.field(key, value) : value.toString()));
         }
         m.appendTail(result);
-        if (result.toString().contains("{{") || result.toString().contains("}}")) throw new IOException("Malformed or unresolved evidence binding");
+        if (StudyMathTypography.hasUnresolvedBinding(result.toString())) throw new IOException("Malformed or unresolved evidence binding");
         return result.toString();
     }
     private static String table(List<Object> rows, List<String> columns) {
@@ -588,7 +632,7 @@ final class StudyManuscriptRevision {
         for (Object row : rows) { h.append("<tr>"); for (String column : columns) h.append("<td>").append(esc(StudyReportNumbers.field(column, map(row).getOrDefault(column, "—")))).append("</td>"); h.append("</tr>"); }
         return h.append("</tbody></table></div>").toString();
     }
-    private static String sourceLink(String id) { return " <a class=\"source\" href=\"supplement.html#" + esc(id) + "\">[" + esc(id) + "]</a> "; }
+    private static String sourceLink(String id) { return " <a class=\"source\" href=\"evidence-review.html#" + esc(id) + "\">[" + esc(id) + "]</a> "; }
     private static String referenceId(String doi) { return "ref-" + java.util.Base64.getUrlEncoder().withoutPadding().encodeToString(doi.toLowerCase(java.util.Locale.ROOT).getBytes(StandardCharsets.UTF_8)); }
     private static String start(String title) { return "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'none'; connect-src 'none'\"><title>" + esc(title) + "</title><style>body{font:17px/1.65 Georgia,serif;max-width:1080px;margin:2.5rem auto;padding:0 1.3rem;color:#182835;background:#fff}h1,h2,h3,h4,nav,.source,th{font-family:system-ui,sans-serif}h1{line-height:1.2;font-size:2.25rem}h2{border-top:2px solid #dbe4e9;padding-top:1rem;margin-top:2.5rem}h3{line-height:1.4}a{color:#125680;overflow-wrap:anywhere}.notice{padding:1rem;background:#fff7e5;border-left:4px solid #a66b00}.source{font-size:.82rem;color:#435767}table{border-collapse:collapse;font:14px/1.5 system-ui;display:block;overflow-x:auto;max-width:100%}td,th{padding:.5rem;border-bottom:1px solid #dbe4e9;text-align:left;vertical-align:top}th{background:#eff4f7}pre{font:13px/1.5 monospace;white-space:pre-wrap;overflow-wrap:anywhere}details{margin:1rem 0}dt{font-weight:bold}blockquote{border-left:3px solid #91afc1;padding-left:1rem}input{padding:.5rem}nav{margin:1.2rem 0}@media print{body{max-width:none;font-size:11pt}details> *{display:block}nav{display:none}}</style></head><body><h1>" + esc(title) + "</h1>"; }
     private static String end() { return "</body></html>"; }

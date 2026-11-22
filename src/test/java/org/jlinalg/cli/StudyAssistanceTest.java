@@ -126,22 +126,40 @@ class StudyAssistanceTest {
             Map.of("pmid", "123", "title", "Public field paper", "abstractText", "PRIVATE_FULL_ABSTRACT", "excerpt", "Literal source excerpt.")));
         StudyPublicEvidence.write(literature.resolve("manifest.yaml"), Map.of("operation_type", "literature_search", "state", "complete", "output_sha256", Map.of(), "details", Map.of("evidence", List.of(query))));
         var dependencies = new LinkedHashMap<>(base.dependencyDirectories()); dependencies.put("literature", literature);
+        Path population = root.resolve("local-population"); Files.createDirectory(population);
+        StudyPublicEvidence.write(population.resolve("manifest.yaml"), Map.of("operation_type", "participant_characteristics", "state", "complete"));
+        StudyPublicEvidence.write(population.resolve("participant-characteristics.yaml"), Map.of("tables",
+            List.of(Map.of("dataset", "LOCAL_POPULATION_SENTINEL", "N", 7654321))));
+        dependencies.put("population", population);
         var ctx = new StudyOperationExecutor.Context(base.project(), base.outputDirectory(), base.operation(), base.study(), base.plan(), dependencies);
         var result = new StudyAssistance((uri, provider, key, body, timeout) -> {
-            assertTrue(body.contains("four or five connected prose paragraphs"));
+            assertTrue(body.contains("one connected problem-to-objective argument"));
+            assertTrue(body.contains("OmicsMatic manuscript writing template " + org.jlinalg.study.StudyManuscriptPolicy.VERSION));
+            assertTrue(body.contains("persuasive, evidence-grounded case"));
+            assertTrue(body.contains("potential scientific impact"));
+            assertTrue(body.contains("question-to-measurement"));
+            assertTrue(body.contains("GROUNDED OPTIMISM")); assertTrue(body.contains("write the abstract from"));
             assertTrue(body.contains("Always start Methods with a description of every participating cohort"));
             assertTrue(body.contains("results_discussion_policy"));
-            assertTrue(body.contains("most impactful finding and why it matters"));
-            assertTrue(body.contains("future_potential, next_steps and limitations"));
+            assertTrue(body.contains("concise biological answer to the study question"));
+            assertTrue(body.contains("future_potential, limitations and next_steps"));
+            assertTrue(body.contains("why the study was worthwhile"));
+            assertTrue(body.contains("documented study hypothesis or source-supported prior expectation"));
+            assertTrue(body.contains("do not promise to resolve them all"));
+            assertTrue(body.contains("MATHEMATICAL NOTATION AND TYPESETTING"));
+            assertTrue(body.contains("Use actual comparison symbols ≤ and ≥"));
             assertTrue(body.contains("Public field paper")); assertTrue(body.contains("reference_candidates"));
             assertTrue(body.contains("Cite every journal-derived claim wherever it occurs"));
             assertTrue(body.contains("Review the study_contract_context against ALL observed results"));
             assertTrue(body.contains("pmid:123"));
             assertFalse(body.contains("PRIVATE_QUERY_AUDIT")); assertFalse(body.contains("PRIVATE_FULL_ABSTRACT"));
             assertFalse(body.contains("PATIENT_SECRET")); assertFalse(body.contains("PRIVATE_FEATURE"));
+            assertFalse(body.contains("LOCAL_POPULATION_SENTINEL")); assertFalse(body.contains("7654321"));
             return openai("Introduction requires scientist review.", List.of());
         }, key -> "fixture-key").execute(ctx);
         assertEquals(StudyOperationExecutor.State.COMPLETE, result.state());
+        assertTrue(Files.readString(ctx.outputDirectory().resolve("manuscript.html")).contains("<td>7654321</td>"));
+        assertTrue(Files.readString(ctx.outputDirectory().resolve("participant-characteristics-review.yaml")).contains("needs_input"));
     }
 
     @Test void geminiAndManuscriptAreAuditedAndDraftHtmlEscapesProviderContent() throws Exception {
@@ -167,8 +185,10 @@ class StudyAssistanceTest {
         String html = Files.readString(paper.outputDirectory().resolve("manuscript.html"));
         assertTrue(html.contains("&lt;script&gt;"));
         assertFalse(html.contains("<script>"));
-        assertTrue(html.contains("source-map.yaml"));
-        assertTrue(html.contains("Not for submission"));
+        assertFalse(html.contains("source-map.yaml")); assertFalse(html.contains("Model provenance"));
+        assertTrue(html.contains("<h2>Abstract</h2>"));
+        String review = Files.readString(paper.outputDirectory().resolve("manuscript-review.html"));
+        assertTrue(review.contains("source-map.yaml")); assertTrue(review.contains("Draft for scientific review"));
     }
 
     @Test void networkFailureIsNotMisreportedAsNoScientificEvidence() throws Exception {

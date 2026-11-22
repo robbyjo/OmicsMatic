@@ -190,6 +190,8 @@ public final class StudyProject {
 
         Map<String, String> plans = new LinkedHashMap<>();
         Map<String, String> manifests = new LinkedHashMap<>();
+        Map<String, Map<String, Object>> removals = StudyCleanup.removals(events);
+        StudyCleanup.verifyHistory(root, events);
         for (Map<String, Object> event : events) {
             Map<String, Object> payload = StudyIO.optionalMap(
                 event.get("payload"), "event.payload");
@@ -232,6 +234,11 @@ public final class StudyProject {
                     throw new IOException(
                         "Operation manifest is not anchored in the ledger: "
                             + manifestPath);
+                Map<String, Object> removal = removals.get(manifestKey);
+                if (removal != null) {
+                    StudyCleanup.verifyRemoval(root, manifestPath, manifest, removal);
+                    continue;
+                }
                 Map<String, Object> outputs = StudyIO.map(
                     manifest.get("output_sha256"), "output_sha256");
                 Path directory = manifestPath.getParent();

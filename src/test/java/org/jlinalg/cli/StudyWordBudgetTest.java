@@ -6,6 +6,10 @@ import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 class StudyWordBudgetTest {
+    @Test void localTableMarkerAndAbstractAreOutsideDraftWordBudget() {
+        var report = StudyWordBudget.draft("Abstract\nAbstract words.\nIntroduction\nResults\n[TABLE_1]\nObserved evidence.", Map.of());
+        assertEquals(4, report.get("main_text_words"));
+    }
     @Test void aiDraftUsesMainSectionsAndPreservesTheDeclaredCeiling() {
         String draft = "Title outside the paper\nAbstract\nIgnored abstract\nIntroduction\nOne two\nMethods\nThree\nResults\nFour five\n| ignored table |\nDiscussion\nSix\nConclusion\nSeven\nReferences\nIgnored reference";
         var policy = org.jlinalg.study.StudyWorkflowPolicy.manuscript(Map.of("max_main_words", 6));

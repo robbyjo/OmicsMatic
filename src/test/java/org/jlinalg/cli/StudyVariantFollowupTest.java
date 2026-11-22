@@ -188,6 +188,33 @@ class StudyVariantFollowupTest {
             else assertFalse(result.contains("ENSG_CHANGED"));
         }
     }
+    @Test void batchReuseSkipsRecordedCleanupAndUsesRetainedVariantOutputs() throws Exception {
+        annotations(2,"canonical"); Context fixture=context(2,annotationPolicy("canonical"),false);
+        var study=new LinkedHashMap<>(fixture.study()); study.put("schema_version",1);
+        study.put("project",Map.of("id","cleaned-annotation-cache","title","Cleaned cache","description","Synthetic cleanup followed by partial variant reuse."));
+        var hypothesis=new LinkedHashMap<>(map(list(study.get("hypotheses")).get(0)));
+        hypothesis.put("description","Retain verified newer variant batches.");
+        var analysis=new LinkedHashMap<>(map(hypothesis.get("analysis")));
+        analysis.put("mode","manual"); analysis.put("goals",List.of("variant_scoring"));
+        hypothesis.put("analysis",analysis); study.put("hypotheses",List.of(hypothesis));
+        Path contract=project.resolve("study.yaml"); write(contract,study);
+        var out=new ByteArrayOutputStream();var error=new ByteArrayOutputStream();
+        assertEquals(0,JLinAlgCli.run(new String[]{"study","auto",contract.toString(),"--offline"},new PrintStream(out),new PrintStream(error)),out+"\n"+error);
+        String first=text(org.jlinalg.study.StudyProject.status(project).get("run_id"));
+        assertEquals(0,JLinAlgCli.run(new String[]{"study","run","--project",project.toString()},new PrintStream(out),new PrintStream(error)),out+"\n"+error);
+        var actor=org.jlinalg.study.StudyProject.Actor.human("cache-scientist");
+        Path preview=project.resolve("cleanup.yaml");
+        var plan=org.jlinalg.study.StudyCleanup.writePreview(project,preview,List.of());
+        assertTrue(list(plan.get("results")).stream().map(StudyPublicEvidence::map)
+            .anyMatch(entry->text(entry.get("result_id")).startsWith(first+"/")&&text(entry.get("result_id")).endsWith("-variant_scoring")));
+        org.jlinalg.study.StudyCleanup.apply(project,preview,actor);
+        Path output=Files.createDirectories(project.resolve("partial-after-cleanup"));
+        Context resumed=new Context(project,output,fixture.operation(),fixture.study(),Map.of(),fixture.dependencyDirectories(),true);
+        var result=new StudyCliExecutor().execute(resumed);
+        assertEquals(State.COMPLETE,result.state(),result.summary());
+        assertEquals(2,DelimitedData.readResult(output.resolve("variant-consequences.tsv")).rows().size());
+        org.jlinalg.study.StudyProject.verify(project);
+    }
     @Test void generatedConsequencesPrecedeMasksAndKeepRareMembersIndependentOfSingleMarkerMac() throws Exception {
         annotations(3,"canonical"); Files.writeString(project.resolve("reference.fa"),">1\n"+"A".repeat(2000)+"\n");
         StringBuilder vcf=new StringBuilder("##fileformat=VCFv4.2\n##contig=<ID=1>\n##FORMAT=<ID=GT,Number=1,Type=String,Description=\"Genotype\">\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT");

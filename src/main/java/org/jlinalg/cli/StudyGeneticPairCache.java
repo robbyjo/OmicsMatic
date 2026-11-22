@@ -192,12 +192,14 @@ final class StudyGeneticPairCache {
     private void index(Context c) throws IOException {
         indexed = true; Path runs = c.project().resolve("runs");
         if (!Files.isDirectory(runs)) return;
+        var unavailable = org.jlinalg.study.StudyCleanup.unavailableResults(c.project());
         try (var paths = Files.walk(runs)) {
             for (Path manifestPath : paths.filter(p -> p.getFileName().toString().equals("manifest.yaml")).sorted().toList()) {
                 Path directory = manifestPath.getParent();
                 if (directory.startsWith(c.outputDirectory()) || directory.getFileName().toString().startsWith(".operation-")) continue;
                 try {
                     var manifest = StudyYaml.loadArtifact(manifestPath);
+                    if (unavailable.contains(text(manifest.get("run_id")) + "/" + text(manifest.get("operation_id")))) continue;
                     if (!c.operation().get("type").equals(manifest.get("operation_type"))
                             || !c.operation().get("hypothesis").equals(manifest.get("hypothesis"))
                             || !Set.of("complete", "waiting_for_input").contains(text(manifest.get("state")))) continue;

@@ -5,10 +5,10 @@
 <style>.pipeline-spec .result-table table {min-width: 580px; table-layout: fixed;} .pipeline-spec .result-table th, .pipeline-spec .result-table td {white-space: normal; overflow-wrap: anywhere;}</style></head>
 <body><site-header root="../"></site-header><main id="main">
 <section class="page-hero"><div class="container"><div class="breadcrumbs"><a href="../index.html">Home</a><span>/</span><a href="index.html">Vignettes</a><span>/</span><span>Analysis pipeline specification</span></div>
-<span class="eyebrow">Scientific workflow specification · 2026-10-26</span><h1>Analysis pipeline specification</h1><p>End-to-end workflow, GWAS QC and rare variants, functional follow-up, AI selection of 3–5 findings, an 8,000-word manuscript budget and implementation gaps.</p></div></section>
+<span class="eyebrow">Scientific workflow specification · 2026-11-15</span><h1>Analysis pipeline specification</h1><p>End-to-end workflow, GWAS QC and rare variants, functional follow-up, AI selection of 3–5 findings, an 8,000-word manuscript budget and implementation gaps.</p></div></section>
 <div class="container page-layout"><article class="prose pipeline-spec">
 <blockquote>
-<p><strong>Scientific workflow specification, updated 2026-10-26.</strong> This document
+<p><strong>Scientific workflow specification, updated 2026-11-15.</strong> This document
 improves the proposed end-to-end pseudocode and maps it to the current source
 build. Requirements describe the intended workflow; they do not imply that
 every branch is already automatic. Documenting this specification performs no
@@ -268,11 +268,35 @@ for each phenotype/hypothesis and compatible analysis block:
     allow a validated supplied primary result to satisfy the same scoped contract
     retain replication/sensitivity evidence with their distinct result identities
 
+    plan useful bioinformatics follow-ups from the available tool catalog:
+        identify the scientific question or evidence gap each operation addresses
+        match exact supported tool operations to the available data and references
+        register candidate scope, settings, testing families and expected outputs
+        reuse accepted completed results; execute supported requested missing work
+        retain unsupported, unavailable, failed and not-applicable dispositions
+        validate successful outputs and preserve raw tables, figures and provenance
+        attach typed results to the matching variant/locus/gene/feature/tissue dossier
+        feed eligible evidence into interpretation, impact review and manuscript
+        avoid duplicate analyses or counting shared-input outputs as independent support
+
     for each declared eligible functional follow-up:
         run GO/pathway ORA, ranked GSEA or GWAS enrichment as applicable
         record mapping, tested background, resource release and multiplicity
 
     if this is a GWAS:
+        if multiple SNPs are found in a declared locus or analysis scope:
+            perform conditional analysis using the registered association model
+            initialize conditioning SNPs from a prespecified file when supplied
+            otherwise start with the strongest SNP by primary association P value
+            retain the original covariates and registered dependence structure
+            if forward selection is the declared method:
+                test remaining eligible SNPs conditional on all selected SNPs
+                add the strongest SNP meeting the registered conditional entry rule
+                refit and repeat until no SNP qualifies or a declared limit is reached
+            else:
+                run the configured advanced conditional/joint-analysis software
+            save initial SNPs, selection steps, final joint effects and diagnostics
+            preserve marginal results and report conditional findings separately
         annotate every QC-eligible SNP/variant with ANNOVAR or an equivalent
         look up versioned AlphaGenome scores; predict eligible gaps within budget
         retain per-variant status, per-output scores and missingness reasons
@@ -1060,6 +1084,112 @@ membership. Its precision, model and mapping contracts are documented in the
 Phenotype/block-aware nulls, cross-cohort preservation, clustered resampling,
 integrated community/WGCNA orchestration and broader large-scale acceptance
 remain separate requirements.</p>
+<h2 id="4a-useful-bioinformatics-tools-and-result-integration">4a. Useful bioinformatics tools and result integration</h2>
+<p>Select follow-up operations because they answer a declared scientific question
+or fill an evidence gap. The installed/catalogued tool list supplies candidate
+methods; it is not an instruction to run every tool. Selection should consider
+the phenotype, assay, locus/feature identity, tissue, available data, reference
+coverage, supported software profile and computational budget. Use the exact
+operation's capability and validation record, rather than a package name, to
+decide whether a result can be produced.</p>
+<p>Examples from the current source catalog include:</p>
+<div class="result-table"><table>
+<thead>
+<tr>
+<th>Scientific question</th>
+<th>Available method or tool route</th>
+<th>Useful result to add</th>
+<th>Required inputs and scope</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Does a locus contain additional association signals?</td>
+<td>Native conditional/secondary-signal methods; a separately configured advanced conditional/joint tool</td>
+<td>Conditional association table, selected SNPs, final joint effects and selection path</td>
+<td>Compatible genotype/model data or allele-aligned summaries and LD; exact conditioning set and selection rules</td>
+</tr>
+<tr>
+<td>Which variants best explain each signal?</td>
+<td>Native SuSiE method</td>
+<td>Variant PIPs, signal-specific credible sets and convergence diagnostics</td>
+<td>Dense regional summaries, sample size and signed allele-aligned LD; fine-mapping is distinct from conditional testing</td>
+</tr>
+<tr>
+<td>Which genes could a GWAS locus affect?</td>
+<td>Validated native FUMA mapping subset</td>
+<td>Variant-to-gene evidence from position, supplied eQTL tracks and chromatin interactions</td>
+<td>Explicit gene/track resources, build, tissue and mapping rules; mapping does not itself establish causality</td>
+</tr>
+<tr>
+<td>Which genes, pathways or tissues carry association evidence?</td>
+<td>MAGMA original-engine adapter, FUMA gene-set/expression modules, GSEApy or native enrichment</td>
+<td>Gene/set statistics, tissue-property tests, enrichment, leading-edge genes or supplied-DEG overlap</td>
+<td>Appropriate full GWAS/LD or gene-ranking/expression inputs, declared backgrounds/resources and correction families; source expression and DEG generation are separate operations</td>
+</tr>
+<tr>
+<td>Do trait and molecular signals share a genetic basis?</td>
+<td>Native multi-signal coloc and the SMR/HEIDI original-engine adapter</td>
+<td>Signal-pair posteriors, molecular-feature associations and heterogeneity diagnostics</td>
+<td>Compatible regional GWAS/QTL data, alleles, LD, ancestry/tissue and overlap policy; retain each method's distinct interpretation</td>
+</tr>
+<tr>
+<td>What coding or regulatory consequences are plausible?</td>
+<td>VEP/ANNOVAR adapters, LOFTEE original-engine workflow and configured AlphaGenome</td>
+<td>Transcript-specific consequences, loss-of-function confidence/flags and molecular prediction outputs</td>
+<td>Exact variant/build/sequence, annotation releases and supported resource/runtime profiles</td>
+</tr>
+<tr>
+<td>Do implicated regions suggest regulatory mechanisms?</td>
+<td>ChIPseeker annotation, HOMER/MEME motif workflows and Tomtom motif comparison</td>
+<td>Genomic-feature/nearest-TSS annotations, motif enrichment/discovery and motif-library matches</td>
+<td>Compatible peaks or sequences, transcript annotation, matched backgrounds and motif libraries; peak proximity or motif similarity alone does not prove regulation</td>
+</tr>
+<tr>
+<td>Is the signal already represented in prior association resources?</td>
+<td>Native FUMA known-association and locus-novelty subsets</td>
+<td>Matched prior traits/loci, overlap and reference-bounded novelty assessments</td>
+<td>Versioned prior-association resource with explicit matching, distance and coverage rules; absence from the resource is not universal novelty</td>
+</tr>
+<tr>
+<td>Which cell populations or interactions merit follow-up?</td>
+<td>scDRS, CellChat and CellPhoneDB original-engine adapters</td>
+<td>Cell/group disease-relevance scores or inferred ligand-receptor/pathway interactions</td>
+<td>Suitable single-cell expression, cell/sample labels and the method's gene-set/database inputs; retain donor structure and distinguish inference from measured communication</td>
+</tr>
+</tbody>
+</table></div>
+<p>The upstream <a href="https://yanglab.westlake.edu.cn/software/gcta/">GCTA COJO documentation</a>
+describes stepwise selection, joint fitting and conditioning on a SNP-list file.
+It is an example advanced route, not a claim that the current native related
+method reproduces the entire GCTA package. Similarly, native SuSiE/coloc methods
+and bounded FUMA modules must retain their documented scope. See the
+<a href="cli-susie-tutorial.html">SuSiE tutorial</a>,
+<a href="cli-colocalization-tutorial.html">colocalization tutorial</a>,
+<a href="https://fuma.ctglab.nl/tutorial">FUMA method guide</a> and
+<a href="https://yanglab.westlake.edu.cn/software/smr">SMR/HEIDI documentation</a>.</p>
+<p>For every selected operation, declare its expected scientific output before
+execution. Reuse a supplied or previously verified result that satisfies the
+same scope. Otherwise execute through a supported native method, original-engine
+adapter or explicitly configured external workflow; record the exact producer,
+software/version, parameters, input/reference hashes, population, testing family,
+coverage and limitations. A catalog entry does not establish an installed
+runtime or a supported study adapter, and related native methods do not imply
+whole-package equivalence.</p>
+<p>Only successfully validated outputs should contribute results to the evidence
+inventory. Preserve complete raw tables, figures and failed/skipped dispositions;
+normalize admitted results to supported typed artifacts and link them by exact
+variant, locus, gene, transcript, molecular feature and tissue identities. If no
+typed study importer exists, retain the output as a linked external artifact and
+record the missing integration rather than manufacturing an accepted result type.
+Carry useful evidence into finding dossiers, impact assessment, manuscript tables,
+figures and supplements, with quantitative claims linked to the original output.
+Retain null/conflicting evidence and avoid counting correlated tools or repeated
+use of the same source data as independent confirmation.</p>
+<p>This selection and integration policy extends the workflow specification.
+Automatic scheduling and typed-result support require operation-specific
+implementation and acceptance; this documentation change does not establish
+that every catalogued tool is already connected to the study planner.</p>
 <h2 id="5-gwas-annotation-and-alphagenome-scoring">5. GWAS annotation and AlphaGenome scoring</h2>
 <p>Attempt annotation of <strong>every QC-eligible tested variant</strong>, and retain a status
 for each original variant, including exclusions. Normalize representation,
@@ -1103,6 +1233,37 @@ declared weights and sensitivity checks. Correlated predictions are not
 independent corroboration. Scores cannot replace association FDR, establish
 the causal SNP or automatically identify its target gene. Public annotation
 does not require participant genotypes once the permissible variant list exists.</p>
+<h3 id="conditional-analysis-of-multiple-snp-signals">Conditional analysis of multiple SNP signals</h3>
+<p>When multiple SNPs are found in a declared locus or analysis scope, perform
+conditional analysis to assess additional signals after accounting for selected
+SNPs. Register the candidate region/universe, association model, covariates,
+sample/dependence scope, conditional entry threshold, multiplicity policy,
+tie-breaking rule and stopping criteria before selection. Test the declared
+QC-eligible candidate universe rather than silently restricting subsequent
+conditional tests to the initially significant rows.</p>
+<p>Use a prespecified file of conditioning SNPs when supplied; otherwise initialize
+with the strongest SNP by primary association P value. Validate the file's exact
+variant identities, build, alleles and availability, and retain its hash. Keep
+the prespecified conditioning set in each model; unresolved entries require a
+recorded disposition rather than replacement by the strongest SNP.</p>
+<p>For <strong>forward selection</strong>, fit the original model with the conditioning SNPs,
+test each remaining eligible SNP conditional on all selected SNPs, add the
+strongest SNP satisfying the registered entry rule, and refit. Repeat until no
+additional SNP qualifies or the declared maximum signals/iterations is reached.
+Preserve the registered analysis population and covariates, and record
+collinearity, insufficient information and failed fits explicitly.</p>
+<p>Alternatively, use configured advanced conditional/joint-analysis software
+under its documented input and model requirements. Participant-level methods
+need the appropriate genotype and phenotype data; summary-statistic methods
+need compatible allele-aligned statistics and an appropriate LD reference.
+Retain software/version, settings and source provenance. Fine-mapping alone
+does not satisfy a requested conditional-association analysis.</p>
+<p>Report the starting SNPs, complete selection path, conditional tests, final joint
+effects/uncertainty where defined, stopping reason and input/LD limitations.
+Keep marginal primary results and their testing families intact, and identify
+adaptive-selection uncertainty in conditional findings. This addition specifies
+the workflow; it does not itself add executable settings or establish study-run
+integration of an available standalone method.</p>
 <h2 id="6-protein-interpretation-and-alphafold">6. Protein interpretation and AlphaFold</h2>
 <p>Resolve eligible protein findings to organism, UniProt accession, sequence and
 exact isoform where possible. Record ambiguous antibody/aptamer targets, peptide
@@ -1702,5 +1863,5 @@ with exact namespaces, source coverage, shared-node/edge/sign diagnostics and
 typed stage reuse. These descriptive comparisons do not provide null-calibrated
 preservation tests or select a new primary graph.</p>
 <p>The <a href="../analysis-pipeline-implementation.html#software-workflow-acceptance-2026-10-26">25-facet software acceptance</a> distinguishes implemented workflow contracts from live-model and scientific acceptance. <a href="variant-followup.html#application-managed-software-download-and-installation">Managed variant software setup</a> is performed by the application, with explicit registration handling for ANNOVAR.</p></article>
-<aside class="toc"><strong>On this page</strong><a href="#changes-to-the-original-pseudocode">Changes to the original pseudocode</a><a href="#end-to-end-pseudocode">End-to-end pseudocode</a><a href="#0-enter-at-any-analysis-stage-and-complete-missing-work">0. Enter at any analysis stage and complete missing work</a><a href="#1-study-contract-and-participant-data">1. Study contract and participant data</a><a href="#1a-gwas-qc-and-association-strategy">1a. GWAS QC and association strategy</a><a href="#2-result-qc-testing-families-and-comparisons">2. Result QC, testing families and comparisons</a><a href="#3-discovery-validation-and-primary-meta-analysis">3. Discovery, validation and primary meta-analysis</a><a href="#4-enrichment-and-networks">4. Enrichment and networks</a><a href="#5-gwas-annotation-and-alphagenome-scoring">5. GWAS annotation and AlphaGenome scoring</a><a href="#6-protein-interpretation-and-alphafold">6. Protein interpretation and AlphaFold</a><a href="#7-risk-scores-and-related-phenotypes">7. Risk scores and related phenotypes</a><a href="#8-mr-and-colocalization">8. MR and colocalization</a><a href="#9-literature-manuscript-and-evidence-disposition">9. Literature, manuscript and evidence disposition</a><a href="#implementation-map-and-remaining-work">Implementation map and remaining work</a><a href="#scientific-citations-analysis-pipeline-specification">Scientific citations</a></aside></div>
+<aside class="toc"><strong>On this page</strong><a href="#changes-to-the-original-pseudocode">Changes to the original pseudocode</a><a href="#end-to-end-pseudocode">End-to-end pseudocode</a><a href="#0-enter-at-any-analysis-stage-and-complete-missing-work">0. Enter at any analysis stage and complete missing work</a><a href="#1-study-contract-and-participant-data">1. Study contract and participant data</a><a href="#1a-gwas-qc-and-association-strategy">1a. GWAS QC and association strategy</a><a href="#2-result-qc-testing-families-and-comparisons">2. Result QC, testing families and comparisons</a><a href="#3-discovery-validation-and-primary-meta-analysis">3. Discovery, validation and primary meta-analysis</a><a href="#4-enrichment-and-networks">4. Enrichment and networks</a><a href="#4a-useful-bioinformatics-tools-and-result-integration">4a. Useful bioinformatics tools and result integration</a><a href="#5-gwas-annotation-and-alphagenome-scoring">5. GWAS annotation and AlphaGenome scoring</a><a href="#6-protein-interpretation-and-alphafold">6. Protein interpretation and AlphaFold</a><a href="#7-risk-scores-and-related-phenotypes">7. Risk scores and related phenotypes</a><a href="#8-mr-and-colocalization">8. MR and colocalization</a><a href="#9-literature-manuscript-and-evidence-disposition">9. Literature, manuscript and evidence disposition</a><a href="#implementation-map-and-remaining-work">Implementation map and remaining work</a><a href="#scientific-citations-analysis-pipeline-specification">Scientific citations</a></aside></div>
 </main><site-footer root="../"></site-footer></body></html>
