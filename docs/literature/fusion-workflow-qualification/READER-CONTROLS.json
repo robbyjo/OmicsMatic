@@ -1,0 +1,42 @@
+{
+  "status": "PASS_INDEPENDENT_RESEALED_SCIENTIFIC_READER_CONTROLS",
+  "cases": [
+    {
+      "case": "valid-copy",
+      "exit_code": 0,
+      "expected": 0,
+      "all_artifact_and_manifest_hashes_resealed": true,
+      "diagnostic": ""
+    },
+    {
+      "case": "resealed-source-count-contradiction",
+      "exit_code": 2,
+      "expected": 2,
+      "all_artifact_and_manifest_hashes_resealed": true,
+      "diagnostic": "FAIL2: saved FUSION checkpoint differs: Independent TSV result/no-result counts differ"
+    },
+    {
+      "case": "resealed-actual-TSV-count-contradiction",
+      "exit_code": 2,
+      "expected": 2,
+      "all_artifact_and_manifest_hashes_resealed": true,
+      "diagnostic": "FAIL2: saved FUSION checkpoint differs: Independent TSV result/no-result counts differ"
+    },
+    {
+      "case": "resealed-unindexed-input",
+      "exit_code": 2,
+      "expected": 2,
+      "all_artifact_and_manifest_hashes_resealed": true,
+      "diagnostic": "FAIL2: saved FUSION checkpoint differs: Input population/budget differs"
+    },
+    {
+      "case": "resealed-replay-equivalence-contradiction",
+      "exit_code": 2,
+      "expected": 2,
+      "all_artifact_and_manifest_hashes_resealed": true,
+      "diagnostic": "FAIL2: saved FUSION checkpoint differs: Replay comparison/policy differs"
+    }
+  ],
+  "source_checkpoint_unchanged": true,
+  "reader_sha256": "a86bf13be839f95dd1fd424bc81efc435636ed292c9f45b178aedd4878a403a4"
+}

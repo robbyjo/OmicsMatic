@@ -1,4 +1,19 @@
 # Current toolbox handover
+**Current: [original FUSION workflow qualification and remaining catalog work](FUSION_QUALIFICATION_CHECKPOINT_2026-11-22.md).**
+The global fusion-tools TRAIN/ASSOCIATE/POSTPROCESS RUN/VERIFY/REPLAY command now
+has **75 passing focused tests, 30 current-producer packaged cases, 17 offline
+controls and six prerequisite/resource/timeout controls**. An independent Python
+reader passes on Windows/Linux; four resealed scientific contradictions are
+refused. Original association and multi-panel exports match, and 22,839 prior
+JAR payloads stay exact (only the dispatcher changes). The recorded all-model
+CV/replay/examples and compatible plots completed; explicit scope limits remain.
+**Zero new catalog credit/reviews**: totals remain 150 scoped families,
+1,673 reviewed/1,050 pending uses and 250 papers. Next finish guarded FUSION
+P108/P212 source corrections/admission, then prioritize remaining families by
+paper coverage and complete all pending/missed-provider reviews. Read the
+prominent warnings, private-transfer and historical-export/process notices.
+The full objective remains unfinished. Lower entries are historical.
+
 
 **Latest handover: [current FUSION development, completed checks and exact remaining work](FUSION_WORKFLOW_CHECKPOINT_2026-11-22.md).**
 All 39 latest draft files, examples, generators, 55 helpers and 87 selected receipts

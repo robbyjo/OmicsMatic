@@ -36,6 +36,8 @@ public final class JLinAlgCli {
                 return EnrichrWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("gprofiler-tools"))
                 return GprofilerWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("fusion-tools"))
+                return FusionWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("gseapy-native"))
                 return GseapyNativeCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("nextflow-tools"))
@@ -507,6 +509,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar scanpy-tools --help
               java -jar omicsmatic-<version>.jar enrichr-tools --help
               java -jar omicsmatic-<version>.jar gprofiler-tools --help
+              java -jar omicsmatic-<version>.jar fusion-tools --help
               java -jar omicsmatic-<version>.jar enrichment-tools --help
               java -jar omicsmatic-<version>.jar favor-annotate --help
               java -jar omicsmatic-<version>.jar fuma-tools --help
