@@ -230,9 +230,9 @@ final class AlignmentToolsCli {
         suppressed.forEach(builder.environment()::remove); session.put("suppressed_java_environment_keys", suppressed);
         Process process = builder.start();
         try {
-            if (!process.waitFor(timeout, TimeUnit.SECONDS)) { process.descendants().forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); throw new IOException("Picard exceeded timeout; inspect " + log); }
+            if (!process.waitFor(timeout, TimeUnit.SECONDS)) { OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); throw new IOException("Picard exceeded timeout; inspect " + log); }
             session.put(log + "_exit_code", process.exitValue()); return process.exitValue();
-        } catch (InterruptedException failure) { process.descendants().forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); Thread.currentThread().interrupt(); throw failure; }
+        } catch (InterruptedException failure) { OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); Thread.currentThread().interrupt(); throw failure; }
     }
     private static void quarantine(Path directory) throws IOException {
         for (String name : List.of("results.tsv", "alignment.bam", "alignment.bai", "duplication_metrics.txt", "alignment_metrics.txt", "validation.txt")) {

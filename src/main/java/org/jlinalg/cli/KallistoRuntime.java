@@ -44,8 +44,8 @@ final class KallistoRuntime {
         builder.environment().put("LC_ALL","C");builder.environment().put("OMP_NUM_THREADS","1");String system=System.getenv("SystemRoot");if(system==null)throw new IOException("Windows SystemRoot unavailable");builder.environment().put("PATH",home+java.io.File.pathSeparator+Path.of(system,"System32")+java.io.File.pathSeparator+system);
         Process child;try{child=builder.start();}catch(IOException failure){throw new Unavailable("Cannot launch original kallisto: "+failure.getMessage(),failure);}
         try {
-            if(!child.waitFor(timeout,TimeUnit.SECONDS)){child.descendants().forEach(ProcessHandle::destroyForcibly);child.destroyForcibly();child.waitFor(30,TimeUnit.SECONDS);throw new IOException("kallisto "+stage+" timed out; inspect the retained log and resource/reference choices");}
-        }catch(InterruptedException failure){child.descendants().forEach(ProcessHandle::destroyForcibly);child.destroyForcibly();Thread.currentThread().interrupt();throw failure;}
+            if(!child.waitFor(timeout,TimeUnit.SECONDS)){OwnedProcesses.descendants(child).forEach(ProcessHandle::destroyForcibly);child.destroyForcibly();child.waitFor(30,TimeUnit.SECONDS);throw new IOException("kallisto "+stage+" timed out; inspect the retained log and resource/reference choices");}
+        }catch(InterruptedException failure){OwnedProcesses.descendants(child).forEach(ProcessHandle::destroyForcibly);child.destroyForcibly();Thread.currentThread().interrupt();throw failure;}
         session.put(stage+"_exit_code",child.exitValue());verify();
         if(child.exitValue()!=0||Files.readString(dir.resolve(stage+".log")).matches("(?s).*(?m)^\\s*[Ee][Rr][Rr][Oo][Rr]:.*"))throw new IOException("Original kallisto "+stage+" failed (exit "+child.exitValue()+"); inspect "+stage+".log");
     }

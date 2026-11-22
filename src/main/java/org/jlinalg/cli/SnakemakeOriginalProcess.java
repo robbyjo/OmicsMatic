@@ -307,9 +307,10 @@ final class SnakemakeOriginalProcess {
                 do {
                     observe();
                     for (Identity identity : known.values()) {
+                        var candidate = ProcessHandle.of(identity.pid);
                         Sample current = sample(identity.pid);
                         if (current != null && current.identity.startTicks == identity.startTicks && !terminal(current.identity))
-                            ProcessHandle.of(identity.pid).ifPresent(ProcessHandle::destroyForcibly);
+                            candidate.ifPresent(ProcessHandle::destroyForcibly);
                     }
                     if (live().isEmpty()) return;
                     try { Thread.sleep(10); } catch (InterruptedException interrupted) { wasInterrupted = true; }

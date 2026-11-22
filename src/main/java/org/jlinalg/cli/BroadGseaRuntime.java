@@ -33,7 +33,7 @@ final class BroadGseaRuntime {
             try{process=builder.start();}catch(IOException error){throw new Unavailable("Current Java worker could not start; native GSEA analysis skipped: "+executable,error);}
             owned.set(process);process.getOutputStream().close();receipt.put("owned_worker_pid",process.pid());receipt.put("started_at",Instant.now().toString());
             while(!process.waitFor(100,TimeUnit.MILLISECONDS)){
-                process.descendants().forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
+                OwnedProcesses.descendants(process).forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
                 if(System.nanoTime()-started>TimeUnit.SECONDS.toNanos(caps.seconds()))throw new IOException("Native GSEA worker exceeded timeout_seconds; NO COMPLETE RESULT");
                 check(root,caps);
             }
@@ -61,7 +61,7 @@ final class BroadGseaRuntime {
         }
     }
     private static List<Map<String,Object>> stop(Process process,List<ProcessHandle> descendants){
-        boolean interrupted=Thread.interrupted();process.descendants().forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
+        boolean interrupted=Thread.interrupted();OwnedProcesses.descendants(process).forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
         var handles=new ArrayList<>(descendants);Collections.reverse(handles);handles.add(process.toHandle());
         for(var p:handles)if(p.isAlive())p.destroy();long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(2);
         while(handles.stream().anyMatch(ProcessHandle::isAlive)&&System.nanoTime()<deadline)try{Thread.sleep(25);}catch(InterruptedException e){interrupted=true;}

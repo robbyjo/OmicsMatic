@@ -59,14 +59,14 @@ public final class ImageJ154tWorkflowCli {
         try{
             NextflowFiles.writeJson(out.resolve("process-live.json"),Map.of("pid",p.pid(),"command",command,"started",java.time.Instant.now().toString()));
             while(!p.waitFor(200,TimeUnit.MILLISECONDS)){
-                monitor.run();p.descendants().forEach(c->children.put(c.pid(),c));
+                monitor.run();OwnedProcesses.descendants(p).forEach(c->children.put(c.pid(),c));
                 if(Duration.ofNanos(System.nanoTime()-start).toSeconds()>=seconds){failure="Original worker wall timeout exceeded";break;}
                 checkWorkspace(out,bytes,files);
             }
             if(failure!=null)throw new IOException(failure);
             int exit=p.exitValue();checkWorkspace(out,bytes,files);NextflowFiles.writeJson(out.resolve("process-exit.json"),Map.of("pid",p.pid(),"exit_code",exit,"elapsed_millis",Duration.ofNanos(System.nanoTime()-start).toMillis(),"command",command));return exit;
         }finally{
-            p.descendants().forEach(c->children.put(c.pid(),c));for(ProcessHandle c:children.values())if(c.isAlive())c.destroy();if(p.isAlive())p.destroy();if(!p.waitFor(1500,TimeUnit.MILLISECONDS))p.destroyForcibly();for(ProcessHandle c:children.values())if(c.isAlive())c.destroyForcibly();if(p.isAlive())p.waitFor(1500,TimeUnit.MILLISECONDS);
+            OwnedProcesses.descendants(p).forEach(c->children.put(c.pid(),c));for(ProcessHandle c:children.values())if(c.isAlive())c.destroy();if(p.isAlive())p.destroy();if(!p.waitFor(1500,TimeUnit.MILLISECONDS))p.destroyForcibly();for(ProcessHandle c:children.values())if(c.isAlive())c.destroyForcibly();if(p.isAlive())p.waitFor(1500,TimeUnit.MILLISECONDS);
             if(!p.isAlive()&&!Files.exists(out.resolve("process-exit.json")))NextflowFiles.writeJson(out.resolve("process-exit.json"),Map.of("pid",p.pid(),"exit_code",p.exitValue(),"elapsed_millis",Duration.ofNanos(System.nanoTime()-start).toMillis(),"command",command,"terminated_after_failure",true));
         }
     }

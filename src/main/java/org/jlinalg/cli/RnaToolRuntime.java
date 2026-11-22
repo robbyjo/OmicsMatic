@@ -109,13 +109,13 @@ final class RnaToolRuntime {
         Process child = builder.start();
         try {
             if (!child.waitFor(timeout,TimeUnit.SECONDS)) {
-                child.descendants().forEach(ProcessHandle::destroyForcibly); child.destroyForcibly(); child.waitFor(30,TimeUnit.SECONDS);
+                OwnedProcesses.descendants(child).forEach(ProcessHandle::destroyForcibly); child.destroyForcibly(); child.waitFor(30,TimeUnit.SECONDS);
                 throw new IOException("Upstream "+stage+" timed out; inspect "+stage+".log");
             }
             session.put(stage+"_exit_code",child.exitValue());
             if (child.exitValue()!=0) throw new IOException("Upstream "+stage+" exited "+child.exitValue()+"; inspect "+stage+".log");
         } catch (InterruptedException failure) {
-            child.descendants().forEach(ProcessHandle::destroyForcibly); child.destroyForcibly(); Thread.currentThread().interrupt(); throw failure;
+            OwnedProcesses.descendants(child).forEach(ProcessHandle::destroyForcibly); child.destroyForcibly(); Thread.currentThread().interrupt(); throw failure;
         }
     }
     void verify() throws IOException { RegenieRuntime.verify(hashes); }

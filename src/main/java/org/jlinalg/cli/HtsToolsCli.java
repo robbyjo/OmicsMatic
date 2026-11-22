@@ -354,9 +354,9 @@ final class HtsToolsCli {
         builder.environment().remove("BCFTOOLS_PLUGINS"); builder.environment().remove("HTS_PATH"); builder.environment().put("LC_ALL", "C");
         Process process = builder.start();
         try {
-            if (!process.waitFor(timeout, TimeUnit.SECONDS)) { process.descendants().forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); throw new IOException("Upstream HTS process exceeded timeout; inspect " + log + ".log"); }
+            if (!process.waitFor(timeout, TimeUnit.SECONDS)) { OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); throw new IOException("Upstream HTS process exceeded timeout; inspect " + log + ".log"); }
             session.put(log + "_exit_code", process.exitValue()); return process.exitValue();
-        } catch (InterruptedException failure) { process.descendants().forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); Thread.currentThread().interrupt(); throw failure; }
+        } catch (InterruptedException failure) { OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); Thread.currentThread().interrupt(); throw failure; }
     }
     private static void quarantine(Path dir) throws IOException {
         try (var paths = Files.list(dir)) {

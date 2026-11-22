@@ -76,6 +76,6 @@ final class BeagleRuntime {
         if(timedOut){session.put(stage+"_timed_out",true);throw new IOException("Original Beagle "+stage+" exceeded timeout; owned process terminated");}
         if(child.exitValue()!=0)throw new IOException("Original Beagle "+stage+" failed with exit "+child.exitValue()+";inspect retained stdout/stderr and upstream log");
     }
-    private static void terminate(Process child)throws Exception {for(var handle:child.descendants().toList())if(handle.isAlive())handle.destroyForcibly();child.destroyForcibly();if(!child.waitFor(30,TimeUnit.SECONDS))throw new IOException("Owned Beagle JVM did not terminate");}
+    private static void terminate(Process child)throws Exception {for(var handle:OwnedProcesses.descendants(child).toList())if(handle.isAlive())handle.destroyForcibly();child.destroyForcibly();if(!child.waitFor(30,TimeUnit.SECONDS))throw new IOException("Owned Beagle JVM did not terminate");}
     static String setup(){return " Where permitted, run python tools/literature/install_beagle.py --home NEW_PRIVATE_HOME --java JAVA_EXECUTABLE --allow-install; add --allow-download only for permitted missing official downloads. Supply that sealed home with --home or JLINALG_BEAGLE_HOME. If software/Java is unavailable, changed or forbidden, skip this analysis (exit 3). Preserve changed homes/caches and use a new path; never re-seal changed binaries.";}
 }

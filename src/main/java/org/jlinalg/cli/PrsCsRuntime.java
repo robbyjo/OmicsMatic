@@ -172,7 +172,7 @@ final class PrsCsRuntime {
         if(child.exitValue()!=0)throw new IOException("Original PRS-CS "+stage+" failed with exit "+child.exitValue()+"; inspect retained original logs");
     }
     private static void terminate(Process child) throws Exception {
-        for(var descendant:child.descendants().toList())if(descendant.isAlive())descendant.destroyForcibly();
+        for(var descendant:OwnedProcesses.descendants(child).toList())if(descendant.isAlive())descendant.destroyForcibly();
         child.destroyForcibly();if(!child.waitFor(30,TimeUnit.SECONDS))throw new IOException("Owned PRS-CS process did not terminate");
     }
 

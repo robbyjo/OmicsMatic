@@ -54,7 +54,7 @@ final class GseapyWorkflowRuntime {
         final Path home;Process root;boolean stopped;final Map<Long,ProcessHandle> handles=new LinkedHashMap<>();final Map<Long,String> starts=new LinkedHashMap<>();
         Guard(Path home){this.home=home;}
         synchronized Process start(ProcessBuilder builder)throws IOException{require(!stopped,"Owned guard already stopped");root=builder.start();observe();return root;}
-        synchronized void observe(){if(root!=null){remember(root.toHandle());for(var handle:new ArrayList<>(handles.values()))handle.descendants().forEach(this::remember);}}
+        synchronized void observe(){if(root!=null){remember(root.toHandle());for(var handle:new ArrayList<>(handles.values()))OwnedProcesses.descendants(handle).forEach(this::remember);}}
         void remember(ProcessHandle handle){handles.putIfAbsent(handle.pid(),handle);starts.putIfAbsent(handle.pid(),handle.info().startInstant().map(Instant::toString).orElse("unavailable"));}
         synchronized List<Long> live(){observe();return handles.values().stream().filter(ProcessHandle::isAlive).map(ProcessHandle::pid).toList();}
         synchronized List<Map<String,Object>> receipts(){return handles.values().stream().map(handle->Map.<String,Object>of("pid",handle.pid(),"start_instant",starts.get(handle.pid()),"alive",handle.isAlive())).toList();}

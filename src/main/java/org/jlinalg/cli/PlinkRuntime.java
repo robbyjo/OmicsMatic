@@ -121,7 +121,7 @@ final class PlinkRuntime {
         if (child.exitValue()!=0) throw new IOException("Original "+engine+" "+stage+" failed with exit "+child.exitValue()+"; inspect "+stage+".stdout/.stderr and the upstream log");
     }
     private static void terminate(Process process) throws IOException, InterruptedException {
-        var descendants=process.descendants().toList(); for (var handle:descendants) if (handle.isAlive()) handle.destroyForcibly();
+        var descendants=OwnedProcesses.descendants(process).toList(); for (var handle:descendants) if (handle.isAlive()) handle.destroyForcibly();
         process.destroyForcibly(); if (!process.waitFor(30,TimeUnit.SECONDS)) throw new IOException("Owned PLINK process did not terminate within 30 seconds");
     }
     static String setup() { return "Where permitted run python tools/literature/install_plink.py --home NEW_PRIVATE_HOME --allow-install; add --allow-download only for permitted missing downloads. Supply that sealed home using --home or JLINALG_PLINK_HOME. Missing, changed, unsupported or forbidden dependencies skip the original analysis with exit 3. Preserve diagnostics and changed homes; use a new path rather than re-sealing a changed binary. A version probe is not scientific validation."; }

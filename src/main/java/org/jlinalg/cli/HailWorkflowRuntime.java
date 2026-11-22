@@ -76,7 +76,7 @@ final class HailWorkflowRuntime {
         final Path home;Process root;boolean closed;final Map<Long,ProcessHandle> handles=new LinkedHashMap<>();final Map<Long,String> starts=new LinkedHashMap<>();
         Guard(Path home){this.home=home;}
         synchronized Process launch(ProcessBuilder builder)throws IOException{require(!closed,"Owned guard already closed");root=builder.start();observe();return root;}
-        synchronized void observe(){if(root!=null){remember(root.toHandle());for(ProcessHandle handle:new ArrayList<>(handles.values()))handle.descendants().forEach(this::remember);}}
+        synchronized void observe(){if(root!=null){remember(root.toHandle());for(ProcessHandle handle:new ArrayList<>(handles.values()))OwnedProcesses.descendants(handle).forEach(this::remember);}}
         void remember(ProcessHandle h){handles.putIfAbsent(h.pid(),h);starts.putIfAbsent(h.pid(),h.info().startInstant().map(Instant::toString).orElse("unavailable"));}
         synchronized List<Long> live(){observe();return handles.values().stream().filter(ProcessHandle::isAlive).map(ProcessHandle::pid).toList();}
         synchronized List<Map<String,Object>> receipts(){return handles.values().stream().map(h->Map.<String,Object>of("pid",h.pid(),"start_instant",starts.get(h.pid()),"alive",h.isAlive())).toList();}

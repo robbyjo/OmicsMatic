@@ -53,7 +53,7 @@ final class SkatWorkflowRuntime {
     }
     static Map<String,Object> classFingerprints()throws IOException {
         var classes=new TreeMap<String,Class<?>>();
-        for(Class<?> type:List.of(SkatWorkflowRuntime.class,SkatWorkflowContracts.class,SkatWorkflowFiles.class,SkatWorkflowProcess.class,SkatWorkflowAudit.class,SkatWorkflowCli.class,JLinAlgCli.class,org.jlinalg.settest.RSourceColumnSum.class,SeuratDifferentialContracts.class,RsemJson.class,SimpleJson.class,RegenieRuntime.class))collect(type,classes);
+        for(Class<?> type:List.of(SkatWorkflowRuntime.class,SkatWorkflowContracts.class,SkatWorkflowFiles.class,SkatWorkflowProcess.class,OwnedProcesses.class,SkatWorkflowAudit.class,SkatWorkflowCli.class,JLinAlgCli.class,org.jlinalg.settest.RSourceColumnSum.class,SeuratDifferentialContracts.class,RsemJson.class,SimpleJson.class,RegenieRuntime.class))collect(type,classes);
         try{collect(Class.forName("org.jlinalg.settest.RLongDoubleSum"),classes);}catch(ClassNotFoundException error){throw new IOException("Missing selected R column accumulator",error);}
         var result=new LinkedHashMap<String,Object>();
         for(var entry:classes.entrySet()) {

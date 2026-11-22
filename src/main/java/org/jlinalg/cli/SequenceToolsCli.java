@@ -320,10 +320,10 @@ final class SequenceToolsCli {
         builder.environment().keySet().removeIf(name -> name.startsWith("MULTIQC_"));
         Process process = builder.start();
         try {
-            if (!process.waitFor(timeout, TimeUnit.SECONDS)) { process.descendants().forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); throw new IOException("Upstream process exceeded " + timeout + " seconds; see " + log); }
+            if (!process.waitFor(timeout, TimeUnit.SECONDS)) { OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); throw new IOException("Upstream process exceeded " + timeout + " seconds; see " + log); }
             session.put(log + "_exit_code", process.exitValue());
             if (process.exitValue() != 0) throw new IOException("Upstream process failed with status " + process.exitValue() + "; inspect " + log);
-        } catch (InterruptedException failure) { process.descendants().forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); Thread.currentThread().interrupt(); throw failure; }
+        } catch (InterruptedException failure) { OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); Thread.currentThread().interrupt(); throw failure; }
     }
     private static void inputHashes(Map<String, Object> manifest, Map<String, Path> files) throws IOException {
         Map<String, Object> hashes = new LinkedHashMap<>();

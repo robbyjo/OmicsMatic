@@ -170,7 +170,7 @@ public final class SignacLsiToolsCli {
         }
     }
     private static void copyResource(String resource,Path target)throws IOException{try(var in=SignacLsiToolsCli.class.getResourceAsStream("/org/jlinalg/omics/"+resource)){if(in==null)throw new IOException("Missing bundled Signac source: "+resource);Files.copy(in,target);}}
-    private static void stop(Process p)throws InterruptedException{p.descendants().forEach(ProcessHandle::destroyForcibly);p.destroyForcibly();if(!p.waitFor(10,TimeUnit.SECONDS))throw new IllegalStateException("Owned Signac process did not stop; inspect its PID "+p.pid());}
+    private static void stop(Process p)throws InterruptedException{OwnedProcesses.descendants(p).forEach(ProcessHandle::destroyForcibly);p.destroyForcibly();if(!p.waitFor(10,TimeUnit.SECONDS))throw new IllegalStateException("Owned Signac process did not stop; inspect its PID "+p.pid());}
     private static void seal(Path root)throws IOException{
         try(var files=Files.walk(root);var out=Files.newBufferedWriter(root.resolve("artifact-checksums.tsv"),StandardCharsets.UTF_8,StandardOpenOption.CREATE_NEW)){
             out.write("sha256\tpath\n");for(Path path:files.filter(Files::isRegularFile).filter(p->!p.getFileName().toString().equals("artifact-checksums.tsv")).sorted().toList())out.write(hash(path)+"\t"+root.relativize(path).toString().replace('\\','/')+"\n");

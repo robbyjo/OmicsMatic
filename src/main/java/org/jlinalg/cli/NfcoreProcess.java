@@ -313,9 +313,10 @@ final class NfcoreProcess {
                 do {
                     observe();
                     for (Identity identity : known.values()) {
+                        var candidate = ProcessHandle.of(identity.pid());
                         Identity current = identify(identity.pid());
                         if (current != null && current.startTicks() == identity.startTicks())
-                            ProcessHandle.of(identity.pid()).ifPresent(ProcessHandle::destroyForcibly);
+                            candidate.ifPresent(ProcessHandle::destroyForcibly);
                     }
                     if (live().isEmpty()) return;
                     try { Thread.sleep(10); } catch (InterruptedException interrupted) { wasInterrupted = true; }

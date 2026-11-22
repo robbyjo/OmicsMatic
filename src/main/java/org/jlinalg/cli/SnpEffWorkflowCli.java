@@ -238,7 +238,7 @@ public final class SnpEffWorkflowCli {
             if (child.exitValue() != 0) throw new IOException("Original SnpEff exit " + child.exitValue() + "; inspect original.stderr");
         } finally {
             if (child.isAlive()) {
-                child.descendants().forEach(ProcessHandle::destroyForcibly); child.destroyForcibly();
+                OwnedProcesses.descendants(child).forEach(ProcessHandle::destroyForcibly); child.destroyForcibly();
                 if (!child.waitFor(10, TimeUnit.SECONDS)) throw new IOException("Owned original process could not be reaped after failure");
             }
         }

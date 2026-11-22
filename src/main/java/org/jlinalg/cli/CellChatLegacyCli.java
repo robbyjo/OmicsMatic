@@ -155,7 +155,7 @@ public final class CellChatLegacyCli {
         }}return result;
     }
     private static void stop(Process process) {
-        List<ProcessHandle> children=process.descendants().toList();for(int i=children.size()-1;i>=0;i--)children.get(i).destroyForcibly();process.destroyForcibly();try{process.waitFor(10,TimeUnit.SECONDS);}catch(InterruptedException interrupted){Thread.currentThread().interrupt();}
+        List<ProcessHandle> children=OwnedProcesses.descendants(process).toList();for(int i=children.size()-1;i>=0;i--)children.get(i).destroyForcibly();process.destroyForcibly();try{process.waitFor(10,TimeUnit.SECONDS);}catch(InterruptedException interrupted){Thread.currentThread().interrupt();}
     }
     private static void overlap(Path out,Path input)throws IOException {Path actual=resolved(input);require(!out.startsWith(actual)&&!actual.startsWith(out),"Output overlaps protected input/runtime/source");}
     private static Path resolved(Path path)throws IOException {

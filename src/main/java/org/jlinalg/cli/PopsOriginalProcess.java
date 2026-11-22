@@ -25,7 +25,7 @@ final class PopsOriginalProcess {
         synchronized void observe() {
             List<ProcessHandle> parents = new ArrayList<>(); parents.add(process.toHandle());
             for (Child child : descendants.values()) if (live(child)) parents.add(child.handle);
-            for (ProcessHandle parent : parents) for (ProcessHandle child : parent.descendants().toList())
+            for (ProcessHandle parent : parents) for (ProcessHandle child : OwnedProcesses.descendants(parent).toList())
                 child.info().startInstant().ifPresent(start -> descendants.putIfAbsent(child.pid(), new Child(child, start)));
         }
         synchronized void stop() {

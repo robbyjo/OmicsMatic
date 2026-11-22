@@ -215,7 +215,7 @@ final class MinimacRuntime {
         try {
             long nextMarkerCheck = started;
             for (;;) {
-                child.descendants().forEach(descendants::add);
+                OwnedProcesses.descendants(child).forEach(descendants::add);
                 boolean done = child.waitFor(100, TimeUnit.MILLISECONDS);
                 bound(work, byteBound);
                 if (System.nanoTime() >= nextMarkerCheck) {
@@ -232,7 +232,7 @@ final class MinimacRuntime {
             call.put("seconds", (System.nanoTime() - started) / 1e9);
             if (interrupted) Thread.interrupted();
             try {
-                child.descendants().forEach(descendants::add);
+                OwnedProcesses.descendants(child).forEach(descendants::add);
                 for (ProcessHandle handle : descendants) if (handle.isAlive()) handle.destroyForcibly();
                 if (child.isAlive()) child.destroyForcibly();
                 if (!child.waitFor(10, TimeUnit.SECONDS)) throw new IOException("Owned Minimac process did not terminate: PID " + child.pid());

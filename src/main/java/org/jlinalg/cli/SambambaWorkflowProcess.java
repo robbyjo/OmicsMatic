@@ -27,7 +27,7 @@ final class SambambaWorkflowProcess {
         synchronized void observe()throws IOException {
             var handles=new ArrayList<ProcessHandle>();handles.add(root.toHandle());
             for(Identity row:descendants.values())if(matches(row))handles.add(row.handle);
-            for(ProcessHandle p:handles)for(ProcessHandle child:p.descendants().toList()){
+            for(ProcessHandle p:handles)for(ProcessHandle child:OwnedProcesses.descendants(p).toList()){
                 if(!child.isAlive())continue;
                 var start=child.info().startInstant();
                 if(start.isEmpty()){if(child.isAlive())throw new IOException("Owned descendant identity is unavailable");continue;}

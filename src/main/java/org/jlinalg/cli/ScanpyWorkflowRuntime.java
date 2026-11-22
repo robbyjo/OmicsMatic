@@ -49,7 +49,7 @@ final class ScanpyWorkflowRuntime {
             long timeout=((Number)request.get("timeout_seconds")).longValue()*1_000_000_000L;
             long cap=((Number)request.get("maximum_output_bytes")).longValue();
             while(!process.waitFor(100,TimeUnit.MILLISECONDS)) {
-                process.descendants().forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
+                OwnedProcesses.descendants(process).forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
                 checkOutput(worker,cap);if(System.nanoTime()-started>timeout)throw new IOException("Declared worker timeout exceeded; no complete result");
             }
             checkOutput(worker,cap);manifest.put("process_exit_code",process.exitValue());
@@ -82,7 +82,7 @@ final class ScanpyWorkflowRuntime {
     }
     private static void checkOutput(Path root,long cap)throws IOException {long total=0;for(long bytes:footprint(root,true).values()){if(bytes>cap-total)throw new IOException("Original worker exceeded maximum_output_bytes; partials retained, no complete result");total+=bytes;}}
     private static List<Map<String,Object>> stop(Process process,List<ProcessHandle> descendants) {
-        boolean interrupted=Thread.interrupted();process.descendants().forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
+        boolean interrupted=Thread.interrupted();OwnedProcesses.descendants(process).forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
         List<ProcessHandle> handles=new ArrayList<>(descendants);Collections.reverse(handles);handles.add(process.toHandle());
         for(var handle:handles)if(handle.isAlive())handle.destroy();long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(2);
         while(handles.stream().anyMatch(ProcessHandle::isAlive)&&System.nanoTime()<deadline)try{Thread.sleep(25);}catch(InterruptedException e){interrupted=true;}

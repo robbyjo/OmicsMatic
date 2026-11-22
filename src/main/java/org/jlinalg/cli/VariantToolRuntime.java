@@ -101,11 +101,11 @@ final class VariantToolRuntime {
         Process process = new ProcessBuilder(command).redirectErrorStream(true).redirectOutput(console.toFile()).start();
         try {
             if (!process.waitFor(30, TimeUnit.MINUTES)) {
-                process.descendants().forEach(ProcessHandle::destroyForcibly); process.destroyForcibly();
+                OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly); process.destroyForcibly();
                 throw new IOException("Tool installation timed out; retain its home and setup log, then choose a new home");
             }
         } catch (InterruptedException interrupted) {
-            process.descendants().forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); Thread.currentThread().interrupt();
+            OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); Thread.currentThread().interrupt();
             throw new IOException("Tool installation interrupted; partial files retained", interrupted);
         }
         if (process.exitValue() != 0) throw new IOException("Tool installation failed; inspect " + console + " and setup-failure.json in the retained home");

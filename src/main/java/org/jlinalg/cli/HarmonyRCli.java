@@ -54,8 +54,8 @@ final class HarmonyRCli {
                 } catch (IOException failure) { exit[0] = 3; throw new IOException("Rscript cannot be started: " + failure.getMessage(), failure); }
                 boolean finished;
                 try { finished = process.waitFor(timeout, TimeUnit.SECONDS); }
-                catch (InterruptedException failure) { process.descendants().forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); Thread.currentThread().interrupt(); throw failure; }
-                if (!finished) { process.descendants().forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); process.waitFor(10, TimeUnit.SECONDS); throw new IOException("R Harmony timed out; inspect external.log"); }
+                catch (InterruptedException failure) { OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); Thread.currentThread().interrupt(); throw failure; }
+                if (!finished) { OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); process.waitFor(10, TimeUnit.SECONDS); throw new IOException("R Harmony timed out; inspect external.log"); }
                 manifest.put("process_exit_code", process.exitValue());
                 if (!Files.isRegularFile(directory.resolve("r-analysis-status.tsv"))) { exit[0] = process.exitValue() == 3 ? 3 : 2; throw new IOException("R Harmony omitted its status protocol; inspect external.log"); }
                 DelimitedData status = DelimitedData.read(directory.resolve("r-analysis-status.tsv"));

@@ -58,7 +58,7 @@ final class MetalWorkflowRuntime {
             try{inventory(root,c.number("max_bytes"),c.number("max_files"),false);}catch(IOException e){budget=true;}
         }catch(InterruptedException e){interrupted=true;throw e;}
         finally{
-            if(child.isAlive()){child.descendants().forEach(h->{if(h.isAlive())h.destroyForcibly();});child.destroyForcibly();if(!interrupted)child.waitFor(10,TimeUnit.SECONDS);}
+            if(child.isAlive()){OwnedProcesses.descendants(child).forEach(h->{if(h.isAlive())h.destroyForcibly();});child.destroyForcibly();if(!interrupted)child.waitFor(10,TimeUnit.SECONDS);}
             map(folder.resolve("PROCESS-FINISHED.tsv"),Map.of("exit_code",child.isAlive()?"unknown":Integer.toString(child.exitValue()),"timed_out",Boolean.toString(timeout),"budget_exceeded",Boolean.toString(budget),"interrupted",Boolean.toString(interrupted),"pid",Long.toString(child.pid()),"elapsed_ms",Long.toString(TimeUnit.NANOSECONDS.toMillis(System.nanoTime()-began))));
         }
         require(!timeout&&!budget,"Original stage exceeded "+(timeout?"wall time":"workspace budget")+"; preserve partials, no complete result");inventory(root,c.number("max_bytes"),c.number("max_files"),false);

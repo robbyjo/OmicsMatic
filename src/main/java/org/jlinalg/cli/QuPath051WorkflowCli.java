@@ -126,11 +126,11 @@ public final class QuPath051WorkflowCli {
         try {
             NextflowFiles.writeJson(out.resolve("process-live.json"),Map.of("pid",child.pid(),"command",command,"started",java.time.Instant.now().toString()));
             while(!child.waitFor(200,TimeUnit.MILLISECONDS)) {
-                child.descendants().forEach(p->descendants.put(p.pid(),p));require(Duration.ofNanos(System.nanoTime()-start).toSeconds()<request.seconds(),"Original script wall timeout exceeded; no partial result admitted");capacity(out,request);
+                OwnedProcesses.descendants(child).forEach(p->descendants.put(p.pid(),p));require(Duration.ofNanos(System.nanoTime()-start).toSeconds()<request.seconds(),"Original script wall timeout exceeded; no partial result admitted");capacity(out,request);
             }
             int code=child.exitValue();capacity(out,request);NextflowFiles.writeJson(out.resolve("process-exit.json"),Map.of("pid",child.pid(),"exit_code",code,"elapsed_millis",Duration.ofNanos(System.nanoTime()-start).toMillis(),"command",command));return code;
         }finally {
-            child.descendants().forEach(p->descendants.put(p.pid(),p));for(ProcessHandle p:descendants.values())if(p.isAlive())p.destroy();if(child.isAlive())child.destroy();if(!child.waitFor(1500,TimeUnit.MILLISECONDS))child.destroyForcibly();for(ProcessHandle p:descendants.values())if(p.isAlive())p.destroyForcibly();if(child.isAlive())child.waitFor(1500,TimeUnit.MILLISECONDS);
+            OwnedProcesses.descendants(child).forEach(p->descendants.put(p.pid(),p));for(ProcessHandle p:descendants.values())if(p.isAlive())p.destroy();if(child.isAlive())child.destroy();if(!child.waitFor(1500,TimeUnit.MILLISECONDS))child.destroyForcibly();for(ProcessHandle p:descendants.values())if(p.isAlive())p.destroyForcibly();if(child.isAlive())child.waitFor(1500,TimeUnit.MILLISECONDS);
             if(!child.isAlive()&&!Files.exists(out.resolve("process-exit.json")))NextflowFiles.writeJson(out.resolve("process-exit.json"),Map.of("pid",child.pid(),"exit_code",child.exitValue(),"elapsed_millis",Duration.ofNanos(System.nanoTime()-start).toMillis(),"command",command,"terminated_after_failure",true));
         }
     }

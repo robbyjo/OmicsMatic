@@ -73,7 +73,7 @@ final class BiomartRuntime {
         private Process root;private boolean closed;private final Map<Long,ProcessHandle> handles=new LinkedHashMap<>();private final Map<Long,String> starts=new LinkedHashMap<>();
         synchronized Process launch(ProcessBuilder builder)throws IOException{require(!closed,"Worker guard already closed");root=builder.start();remember(root.toHandle());observe();return root;}
         private void remember(ProcessHandle h){handles.putIfAbsent(h.pid(),h);starts.putIfAbsent(h.pid(),h.info().startInstant().map(Instant::toString).orElse("unavailable"));}
-        synchronized void observe(){if(root!=null)root.descendants().forEach(this::remember);for(var h:new ArrayList<>(handles.values()))if(h.isAlive())h.descendants().forEach(this::remember);}
+        synchronized void observe(){if(root!=null)OwnedProcesses.descendants(root).forEach(this::remember);for(var h:new ArrayList<>(handles.values()))if(h.isAlive())OwnedProcesses.descendants(h).forEach(this::remember);}
         synchronized List<Long> live(){return handles.values().stream().filter(ProcessHandle::isAlive).map(ProcessHandle::pid).toList();}
         synchronized List<Long> liveChildren(){return handles.values().stream().filter(h->root==null||h.pid()!=root.pid()).filter(ProcessHandle::isAlive).map(ProcessHandle::pid).toList();}
         synchronized List<Map<String,Object>> receipts(){return handles.values().stream().map(h->Map.<String,Object>of("pid",h.pid(),"started_at",starts.get(h.pid()),"alive_after_cleanup",h.isAlive())).toList();}

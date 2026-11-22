@@ -151,10 +151,10 @@ final class TrimGaloreRuntime {
         try { child = builder.start(); } catch (IOException failure) { throw new Unavailable("Cannot launch the sealed original-process driver", failure); }
         try {
             if (!child.waitFor(timeout, TimeUnit.SECONDS)) {
-                child.descendants().forEach(ProcessHandle::destroyForcibly); child.destroyForcibly(); child.waitFor(30, TimeUnit.SECONDS);
+                OwnedProcesses.descendants(child).forEach(ProcessHandle::destroyForcibly); child.destroyForcibly(); child.waitFor(30, TimeUnit.SECONDS);
                 throw new IOException("Original Trim Galore timed out; all attempt logs/partial streams are retained");
             }
-        } catch (InterruptedException failure) { child.descendants().forEach(ProcessHandle::destroyForcibly); child.destroyForcibly(); Thread.currentThread().interrupt(); throw failure; }
+        } catch (InterruptedException failure) { OwnedProcesses.descendants(child).forEach(ProcessHandle::destroyForcibly); child.destroyForcibly(); Thread.currentThread().interrupt(); throw failure; }
         session.put("driver_exit_code", child.exitValue()); verify();
         if (child.exitValue() != 0) throw new IOException("Original Trim Galore/Cutadapt/FastQC process failed, exit " + child.exitValue() + "; inspect original/driver.stderr, original.stderr and transport-audit logs");
         Map<?, ?> result = RegenieRuntime.object(work.resolve("driver-run.json"));

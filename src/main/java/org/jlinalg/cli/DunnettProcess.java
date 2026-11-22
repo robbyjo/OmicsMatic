@@ -21,7 +21,7 @@ final class DunnettProcess {
     private record Owned(ProcessHandle handle, Optional<Instant> start) {
         boolean alive(){return handle.isAlive() && start.isPresent() && handle.info().startInstant().equals(start);}
     }
-    private static void discover(Process p,Map<Long,Owned> known){p.descendants().forEach(h->known.putIfAbsent(h.pid(),new Owned(h,h.info().startInstant())));}
+    private static void discover(Process p,Map<Long,Owned> known){OwnedProcesses.descendants(p).forEach(h->known.putIfAbsent(h.pid(),new Owned(h,h.info().startInstant())));}
     private static List<Map<String,Object>> stop(Process p,Map<Long,Owned> known) {
         boolean interrupted=Thread.interrupted(); discover(p,known);
         var handles=new ArrayList<>(known.values()); Collections.reverse(handles);

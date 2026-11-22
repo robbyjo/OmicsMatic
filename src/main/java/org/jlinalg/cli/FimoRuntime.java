@@ -122,7 +122,7 @@ final class FimoRuntime {
         } finally {
             call.put("seconds",(System.nanoTime()-started)/1e9);
             if(process.isAlive()) {
-                call.put("termination_requested",true);process.descendants().forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();
+                call.put("termination_requested",true);OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();
                 if(!process.waitFor(10,TimeUnit.SECONDS))throw new IOException("Original FIMO could not be terminated after failure; inspect owned process PID "+process.pid()+" and release its handles before rerunning");
             }
             call.put("alive_after_cleanup",process.isAlive());

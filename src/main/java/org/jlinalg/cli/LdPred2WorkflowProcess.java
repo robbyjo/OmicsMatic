@@ -21,7 +21,7 @@ final class LdPred2WorkflowProcess {
         Owner(Process root){this.root=root;}
         synchronized void observe(){
             List<ProcessHandle> parents=new ArrayList<>();parents.add(root.toHandle());for(Child c:children.values())if(matches(c))parents.add(c.handle);
-            for(ProcessHandle parent:parents)for(ProcessHandle child:parent.descendants().toList())child.info().startInstant().ifPresent(start->children.putIfAbsent(child.pid(),new Child(child,start)));
+            for(ProcessHandle parent:parents)for(ProcessHandle child:OwnedProcesses.descendants(parent).toList())child.info().startInstant().ifPresent(start->children.putIfAbsent(child.pid(),new Child(child,start)));
         }
         synchronized void stop(){
             observe();for(Child child:children.values())if(matches(child))child.handle.destroyForcibly();if(root.isAlive())root.destroyForcibly();

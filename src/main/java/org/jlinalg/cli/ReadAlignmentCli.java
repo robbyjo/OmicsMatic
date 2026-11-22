@@ -210,8 +210,8 @@ final class ReadAlignmentCli {
     private static int execute(List<String> c,Path dir,String log,Path stdout,int timeout,Map<String,Object> session)throws Exception{
         session.put(log+"_command",List.copyOf(c));var builder=new ProcessBuilder(c).directory(dir.toFile()).redirectError(dir.resolve(log+".log").toFile());
         if(stdout==null)builder.redirectErrorStream(true).redirectOutput(dir.resolve(log+".log").toFile());else builder.redirectOutput(stdout.toFile());builder.environment().put("LC_ALL","C");builder.environment().remove("BOWTIE2_INDEXES");
-        Process process=builder.start();try{if(!process.waitFor(timeout,TimeUnit.SECONDS)){process.descendants().forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();throw new IOException("Aligner timed out; inspect "+log+".log");}session.put(log+"_exit_code",process.exitValue());return process.exitValue();}
-        catch(InterruptedException failure){process.descendants().forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();Thread.currentThread().interrupt();throw failure;}
+        Process process=builder.start();try{if(!process.waitFor(timeout,TimeUnit.SECONDS)){OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();throw new IOException("Aligner timed out; inspect "+log+".log");}session.put(log+"_exit_code",process.exitValue());return process.exitValue();}
+        catch(InterruptedException failure){OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();Thread.currentThread().interrupt();throw failure;}
     }
     private static void quarantine(Path dir)throws IOException{try(var files=Files.list(dir)){for(Path p:files.toList()){String name=p.getFileName().toString();if(name.endsWith(".log")||name.equals("partial"))continue;Files.createDirectories(dir.resolve("partial"));Files.move(p,dir.resolve("partial").resolve(name));}}}
     private static final class DependencyUnavailable extends IOException{private static final long serialVersionUID=1L;DependencyUnavailable(String s){super(s);}}

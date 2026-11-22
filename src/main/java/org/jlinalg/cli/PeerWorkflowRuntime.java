@@ -67,7 +67,7 @@ final class PeerWorkflowRuntime {
             try{process=builder.start();}catch(IOException missing){throw new Unavailable("Declared PEER runtime/transport could not start; supply the exact runtime and permitted execution environment",missing);}
             owned.set(process);process.getOutputStream().close();manifest.put("worker_pid",process.pid());manifest.put("worker_started_at",Instant.now().toString());
             while(!process.waitFor(100,TimeUnit.MILLISECONDS)) {
-                process.descendants().forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
+                OwnedProcesses.descendants(process).forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
                 if(System.nanoTime()-started>TimeUnit.SECONDS.toNanos(PeerWorkflowContracts.limit(r,"timeout_seconds")))throw new IOException("Original PEER timed out; owned process cleanup requested");
                 capacity(root,baseline,PeerWorkflowContracts.limit(r,"maximum_output_bytes"));
             }
@@ -116,7 +116,7 @@ final class PeerWorkflowRuntime {
         });return result;
     }
     private static List<Map<String,Object>> stop(Process process,List<ProcessHandle> descendants) {
-        boolean interrupted=Thread.interrupted();process.descendants().forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
+        boolean interrupted=Thread.interrupted();OwnedProcesses.descendants(process).forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
         var handles=new ArrayList<>(descendants);Collections.reverse(handles);handles.add(process.toHandle());for(var handle:handles)if(handle.isAlive())handle.destroy();
         long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(2);while(handles.stream().anyMatch(ProcessHandle::isAlive)&&System.nanoTime()<deadline)try{Thread.sleep(25);}catch(InterruptedException failed){interrupted=true;}
         for(var handle:handles)if(handle.isAlive())handle.destroyForcibly();deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(5);

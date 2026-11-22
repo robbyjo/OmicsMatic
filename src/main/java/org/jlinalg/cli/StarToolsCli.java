@@ -236,8 +236,8 @@ final class StarToolsCli {
     }
     private static void execute(List<String> command,Path dir,String log,int timeout,Map<String,Object> session)throws Exception {
         session.put(log+"_command",List.copyOf(command));ProcessBuilder builder=new ProcessBuilder(command).directory(dir.toFile()).redirectErrorStream(true).redirectOutput(dir.resolve(log+".log").toFile());builder.environment().put("LC_ALL","C");
-        Process process=builder.start();try{if(!process.waitFor(timeout,TimeUnit.SECONDS)){process.descendants().forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();throw new IOException("STAR timed out; inspect "+log+".log");}session.put(log+"_exit_code",process.exitValue());if(process.exitValue()!=0)throw new IOException("STAR exited "+process.exitValue()+"; inspect "+log+".log");}
-        catch(InterruptedException failure){process.descendants().forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();Thread.currentThread().interrupt();throw failure;}
+        Process process=builder.start();try{if(!process.waitFor(timeout,TimeUnit.SECONDS)){OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();throw new IOException("STAR timed out; inspect "+log+".log");}session.put(log+"_exit_code",process.exitValue());if(process.exitValue()!=0)throw new IOException("STAR exited "+process.exitValue()+"; inspect "+log+".log");}
+        catch(InterruptedException failure){OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();Thread.currentThread().interrupt();throw failure;}
     }
     private static void quarantine(Path dir)throws IOException {try(var paths=Files.list(dir)){for(Path p:paths.toList()){String name=p.getFileName().toString();if(name.endsWith(".log")||name.equals("partial"))continue;Files.createDirectories(dir.resolve("partial"));Files.move(p,dir.resolve("partial").resolve(name));}}}
     private static Path file(String value)throws IOException {Path p=Path.of(value).toAbsolutePath().normalize();if(!Files.isRegularFile(p))throw new IOException("Local input does not exist: "+p);return p;}

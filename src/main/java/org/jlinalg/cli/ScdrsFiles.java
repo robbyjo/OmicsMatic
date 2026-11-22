@@ -75,7 +75,7 @@ final class ScdrsFiles {
         long started=System.nanoTime();Process process=builder.start();var descendants=new HashMap<Long,Instant>();String failure=null;boolean finished=false;
         try {
             while(true){
-                process.descendants().forEach(p->p.info().startInstant().ifPresent(t->descendants.putIfAbsent(p.pid(),t)));
+                OwnedProcesses.descendants(process).forEach(p->p.info().startInstant().ifPresent(t->descendants.putIfAbsent(p.pid(),t)));
                 if(process.waitFor(200,TimeUnit.MILLISECONDS)){finished=true;break;}
                 if(TimeUnit.NANOSECONDS.toSeconds(System.nanoTime()-started)>=limits.seconds()){failure="Source process exceeded wall_seconds";break;}
                 try{monitor(out,limits);}catch(IOException capacity){failure=capacity.getMessage();break;}
@@ -88,7 +88,7 @@ final class ScdrsFiles {
             return process.exitValue();
         } finally {
             if(process.isAlive())process.destroyForcibly();
-            for(var entry:descendants.entrySet())if(alive(entry.getKey(),entry.getValue()))ProcessHandle.of(entry.getKey()).ifPresent(ProcessHandle::destroyForcibly);
+            for(var entry:descendants.entrySet())OwnedProcesses.matching(entry.getKey(),entry.getValue()).ifPresent(ProcessHandle::destroyForcibly);
             if(!finished){process.waitFor(30,TimeUnit.SECONDS);if(!Files.exists(out.resolve("source-process.json")))ScdrsJson.write(out.resolve("source-process.json"),map("pid",process.pid(),"source_process_finished",!process.isAlive(),"admitted",false,"cause",failure==null?"interrupted":failure));}
             long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(30);
             while(descendants.entrySet().stream().anyMatch(e->alive(e.getKey(),e.getValue()))&&System.nanoTime()<deadline)Thread.sleep(50);
@@ -97,5 +97,5 @@ final class ScdrsFiles {
             need(remaining.isEmpty()&&!process.isAlive(),"Owned processes not confirmed stopped; inspect recorded PIDs before retry");
         }
     }
-    private static boolean alive(long pid,Instant started){return ProcessHandle.of(pid).filter(p->p.isAlive()&&p.info().startInstant().map(started::equals).orElse(false)).isPresent();}
+    private static boolean alive(long pid,Instant started){return OwnedProcesses.matching(pid,started).isPresent();}
 }

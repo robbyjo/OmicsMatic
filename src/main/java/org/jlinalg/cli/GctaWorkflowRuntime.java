@@ -119,7 +119,7 @@ final class GctaWorkflowRuntime {
             try{process=builder.start();}catch(IOException error){throw new Unavailable("Exact GCTA runtime could not launch: "+error);}
             owned.set(process);record.put("pid",process.pid());json(worker.resolve(step+"-command.json"),record);process.getOutputStream().close();
             while(!process.waitFor(100,TimeUnit.MILLISECONDS)) {
-                process.descendants().forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
+                OwnedProcesses.descendants(process).forEach(p->{if(descendants.stream().noneMatch(old->old.pid()==p.pid()))descendants.add(p);});
                 if(System.nanoTime()-started>TimeUnit.SECONDS.toNanos(number(r,"timeout_seconds")))throw new IOException("Original GCTA workflow timed out; no complete result");
                 checkOutput(worker,number(r,"maximum_output_bytes"));
             }
@@ -136,7 +136,7 @@ final class GctaWorkflowRuntime {
         long size=0;for(long bytes:footprint(worker).values()){if(bytes>cap-size)throw new IOException("maximum_output_bytes exceeded; all available partials retained");size+=bytes;}
     }
     private static List<Map<String,Object>> stop(Process process,List<ProcessHandle> children) {
-        boolean interrupted=Thread.interrupted();process.descendants().forEach(p->{if(children.stream().noneMatch(old->old.pid()==p.pid()))children.add(p);});
+        boolean interrupted=Thread.interrupted();OwnedProcesses.descendants(process).forEach(p->{if(children.stream().noneMatch(old->old.pid()==p.pid()))children.add(p);});
         var handles=new ArrayList<>(children);Collections.reverse(handles);handles.add(process.toHandle());
         for(var handle:handles)if(handle.isAlive())handle.destroy();
         long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(2);

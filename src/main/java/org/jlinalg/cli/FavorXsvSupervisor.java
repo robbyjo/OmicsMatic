@@ -112,7 +112,7 @@ public final class FavorXsvSupervisor {
     }
     private static void stop(Process child)throws IOException {
         boolean interrupted=Thread.interrupted();try {
-            child.descendants().forEach(ProcessHandle::destroyForcibly);if(child.isAlive())child.destroyForcibly();
+            OwnedProcesses.descendants(child).forEach(ProcessHandle::destroyForcibly);if(child.isAlive())child.destroyForcibly();
             try{if(!child.waitFor(10,TimeUnit.SECONDS))throw new IOException("Owned xsv process did not terminate: "+child.pid());}catch(InterruptedException failure){interrupted=true;throw new IOException("Interrupted while confirming owned xsv termination",failure);}
         } finally {if(interrupted)Thread.currentThread().interrupt();}
     }

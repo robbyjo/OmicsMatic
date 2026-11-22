@@ -130,7 +130,7 @@ final class HomerRuntime {
         try{
             long nextMarkerCheck=started;
             for(;;){
-                child.descendants().forEach(descendants::add);boolean done=child.waitFor(100,TimeUnit.MILLISECONDS);bound(work,byteBound);
+                OwnedProcesses.descendants(child).forEach(descendants::add);boolean done=child.waitFor(100,TimeUnit.MILLISECONDS);bound(work,byteBound);
                 if(rssBound>0){
                     long resident=resident(child.toHandle());for(ProcessHandle descendant:descendants)resident=Math.addExact(resident,resident(descendant));
                     long peak=((Number)call.getOrDefault("maximum_observed_rss_bytes",0L)).longValue();call.put("maximum_observed_rss_bytes",Math.max(peak,resident));
@@ -145,7 +145,7 @@ final class HomerRuntime {
         finally{
             call.put("seconds",(System.nanoTime()-started)/1e9);if(interrupted)Thread.interrupted();
             try{
-                child.descendants().forEach(descendants::add);for(ProcessHandle handle:descendants)if(handle.isAlive())handle.destroyForcibly();if(child.isAlive())child.destroyForcibly();
+                OwnedProcesses.descendants(child).forEach(descendants::add);for(ProcessHandle handle:descendants)if(handle.isAlive())handle.destroyForcibly();if(child.isAlive())child.destroyForcibly();
                 if(!child.waitFor(10,TimeUnit.SECONDS))throw new IOException("Owned HOMER process did not terminate: PID "+child.pid());
                 long deadline=System.nanoTime()+5000000000L;boolean alive;
                 do {alive=child.isAlive();for(ProcessHandle handle:descendants)if(!terminal(handle))alive=true;

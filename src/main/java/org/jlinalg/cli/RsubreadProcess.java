@@ -18,7 +18,7 @@ final class RsubreadProcess {
         boolean sameAlive() { return start.isPresent() && handle.isAlive() && handle.info().startInstant().equals(start); }
     }
     private static void discover(Process process,Map<Long,Owned> all) {
-        process.descendants().forEach(p->all.putIfAbsent(p.pid(),new Owned(p,p.info().startInstant())));
+        OwnedProcesses.descendants(process).forEach(p->all.putIfAbsent(p.pid(),new Owned(p,p.info().startInstant())));
     }
     private static List<Map<String,Object>> stop(Process process,Map<Long,Owned> all) {
         boolean interrupted=Thread.interrupted();discover(process,all);all.putIfAbsent(process.pid(),new Owned(process.toHandle(),process.info().startInstant()));

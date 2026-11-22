@@ -88,7 +88,7 @@ final class Monocle100NeighborsRuntime {
         }
     }
     private static void remember(Process process,List<ProcessHandle> result) {
-        synchronized(result){process.descendants().forEach(child->{if(result.stream().noneMatch(old->old.pid()==child.pid()))result.add(child);});}
+        synchronized(result){OwnedProcesses.descendants(process).forEach(child->{if(result.stream().noneMatch(old->old.pid()==child.pid()))result.add(child);});}
     }
     private static List<Long> cleanup(Path root,Process process,List<ProcessHandle> descendants) {
         boolean interrupted=Thread.interrupted();

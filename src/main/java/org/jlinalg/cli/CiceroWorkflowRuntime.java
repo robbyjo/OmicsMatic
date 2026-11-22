@@ -103,7 +103,7 @@ final class CiceroWorkflowRuntime {
     private static void capacity(Path root,Map<String,Long> baseline,long maximum,int maximumFiles)throws IOException{
         long total=0;for(var e:footprint(root,maximumFiles).entrySet()){long extra=Math.max(0,e.getValue()-baseline.getOrDefault(e.getKey(),0L));require(extra<=maximum-total,"Original Cicero co-accessibility exceeds maximum_output_bytes; no partial result admitted");total+=extra;}
     }
-    private static void remember(Process process,List<ProcessHandle> result){process.descendants().forEach(p->{if(result.stream().noneMatch(old->old.pid()==p.pid()))result.add(p);});}
+    private static void remember(Process process,List<ProcessHandle> result){OwnedProcesses.descendants(process).forEach(p->{if(result.stream().noneMatch(old->old.pid()==p.pid()))result.add(p);});}
     private static List<Map<String,Object>> stop(Process process,List<ProcessHandle> descendants){
         boolean interrupted=Thread.interrupted();remember(process,descendants);var handles=new ArrayList<>(descendants);Collections.reverse(handles);handles.add(process.toHandle());
         for(var handle:handles)if(handle.isAlive())handle.destroy();long until=System.nanoTime()+TimeUnit.SECONDS.toNanos(2);

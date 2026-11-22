@@ -1,5 +1,19 @@
 # Current toolbox handover
 
+**Current: [process safety, saved draft and exact remaining work](HANDOVER_2026-11-22_PROCESS_SAFETY.md).**
+**An unrelated older process may have been terminated by a superseded test.**
+Read the incident and required actions before resuming. Pre-fix external-worker
+JARs must not be run; retain them as historical evidence. The source safety fix
+uses birth-checked immediate edges and identity-bound cleanup; its actual focused
+test receipts do not requalify all upstream tools. GenomicRanges draft source is
+saved separately on `codex/genomicranges-runtime-handover-20261122`, unqualified,
+with zero new credit. Totals stay 148 scoped families,1661 reviewed/1062 pending
+uses. Resume packaged qualification with a corrected NEW producer, curate five
+pending GenomicRanges roles, then continue high-impact families and the full
+250-paper objective. Private runtimes/evidence and historical blocked exports
+remain local. Preserve all existing worktrees and transfer ignored data privately.
+Lower entries are historical and superseded where this handover says so.
+
 **Current: [handover, remaining work and private transfer](HANDOVER_2026-11-22_GENOMICRANGES.md).**
 The 250-paper collection is complete; the full implementation goal is unfinished.
 Current main includes qualified original SKAT2.2.5 and catalog admission: **148
@@ -47,7 +61,7 @@ regression. All22440 unchanged preceding JAR payloads are exact;the dispatcher
 is the sole modified preceding payload,with ten new payloads. The earlier
 499-test build and failed alias probe remain labelled historical/unadmitted.
 **Catalog totals stay146 scoped families,1639 reviewed/1083 pending;zero new
-family credit.** The full250-paper objective remains unfinished. Finish the
+family credit.** The full 250-paper objective remains unfinished. Finish the
 ACAT/SKAT/SKAT-O source review,implement a typed standalone SKAT upstream adapter,
 then continue FUSION,GenomicRanges,g:Profiler and other high-impact gaps.
 SKAT2.2.5 is privately installed and eight direct synthetic fits completed;
@@ -76,7 +90,7 @@ distinctions. All63 preceding owners are preserved(current owner64). **Transfer
 ignored JARs,runtimes,private XML/PDF/renders,reader dependency and complete failed
 evidence separately before machine retirement.** Resume high-impact SKAT/SKAT-O
 and ACAT gap inspection,then remaining methods and1083 individual use reviews.
-Cell Ranger stays excluded;unfinished reports remain off Pages. The full250-paper
+Cell Ranger stays excluded;unfinished reports remain off Pages. The full 250-paper
 objective remains active and unfinished. Lower entries retain historical counts.
 
 **Current: [qualified QTLtools workflows and exact next work](QTLTOOLS_WORKFLOW_CHECKPOINT_2026-11-21.md).**
@@ -128,7 +142,7 @@ retained and unadmitted. All22,425 preceding JAR payloads stay byte-identical,
 with four new native classes. The public example passes on three JVMs.
 This is a library API;the full QTLtools workflow/global CLI is pending. **Counts
 stay145 scoped families,1630 reviewed/1092 pending uses;zero new family credit.**
-A fresh all250 source scan finds nine QTLtools-positive papers/19 pointers,
+A fresh all 250 source scan finds nine QTLtools-positive papers/19 pointers,
 covering reported1.1,1.2 and1.3.1 roles. P190's executable binding remains
 unresolved. **Next: exact-edition cis/trans,conditional,MBV andquan adapters,
 historical-edition verification,then cumulative source review/admission and
@@ -145,7 +159,7 @@ or observation is appended. Counts remain250 papers,2722 observations,1630
 reviewed/1092 pending uses, with258 missing and29 method-overlap labels.
 Final41 tests/eight source refusals pass on each host;four actual archive,
 fixture/transcript corruptions are refused. Installed Windows/Linux verification
-with fresh all250 source audits and desktop/mobile report checks pass. Independent
+with fresh all 250 source audits and desktop/mobile report checks pass. Independent
 readback confirms10 scope-only review edits,445/484 unrelated definitions and
 all838 prior manifest members,now841. Original proof/inverse records are retained.
 Scientific/build code stays at the qualified889-test P99 baseline;29 retained
@@ -282,7 +296,7 @@ or full-goal completion is claimed. Lower entries retain historical checkpoints.
 The corpus is complete at250 papers; totals remain **144 scoped families,1630
 reviewed uses and1092 pending**. The latest Monocle1.0.0 neighbor adapter failed
 its SLAM function guard and admitted no graph or statistical result. Five Java
-drafts and11 resources are preserved byte-exact outside compiled sources. The
+drafts and 11 resources are preserved byte-exact outside compiled sources. The
 preceding native weight component remains qualified; its636 tests per JVM are
 recorded prior results. This handover adds no scientific qualification or credit.
 All **49 worktrees** are preserved and all Git-visible dirty variants are saved
@@ -334,7 +348,7 @@ seven real replays and seven Linux R-free verifications pass. Fresh original
 calls match50 complete returns/RNG. Ten CLI refusals admit no results; six
 neighbor help outputs remain exact. Only the reviewed root dispatcher changes
 among22,375 preceding JAR payloads; all original scientific classes/resources
-remain exact. Fresh all250/14-role audits and16 source refusals pass per host;
+remain exact. Fresh all 250/14-role audits and16 source refusals pass per host;
 the unchanged preceding PEER catalog owner verifies independently. All46
 worktrees,27 canonical files and private runtimes remain preserved. **Next:
 guarded TwoSampleMR catalog admission**, then remaining high-impact scopes and
@@ -536,7 +550,7 @@ Use this handover first; the lower entries retain historical checkpoints.
 The normal JAR now contains source-matched limma3.68.5 variance components.
 All 379 tests and 23,873 original field comparisons pass per JVM on Windows21/25
 and Linux21, with actual examples and all 23,548 old JAR payloads unchanged.
-The expanded all250 source audit classifies 20 candidates, including edgeR-only
+The expanded all 250 source audit classifies 20 candidates, including edgeR-only
 P237 and unresolved P228 attribution/spelling. Full models, modern unequal-df,
 trend/robust fitting, file workflows and catalog admission remain open. Totals
 stay **141 families, 1,575 reviewed uses and 1,140 pending**; no new limma credit.

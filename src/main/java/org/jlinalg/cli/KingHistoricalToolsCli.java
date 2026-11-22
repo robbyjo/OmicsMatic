@@ -243,16 +243,16 @@ public final class KingHistoricalToolsCli {
         boolean succeeded=false;
         try {
             while(true) {
-                process.descendants().forEach(h->observed.put(h.pid(),h));check.run();bounds(out,request.limits(),check);
+                OwnedProcesses.descendants(process).forEach(h->observed.put(h.pid(),h));check.run();bounds(out,request.limits(),check);
                 if(process.waitFor(100,TimeUnit.MILLISECONDS))break;
             }
-            process.descendants().forEach(h->observed.put(h.pid(),h));
+            OwnedProcesses.descendants(process).forEach(h->observed.put(h.pid(),h));
             need(observed.values().stream().noneMatch(ProcessHandle::isAlive),"Observed original worker process remains live");succeeded=true;
             Map<String,Object> record=map("id",id,"command",command,"exit_code",process.exitValue(),"observed_owned_processes_terminal",true,"observed_pids",new ArrayList<>(observed.keySet()));
             writeJson(worker.resolve(id+".process.json"),record);return record;
         } finally {
             if(!succeeded) {
-                process.descendants().forEach(h->observed.put(h.pid(),h));
+                OwnedProcesses.descendants(process).forEach(h->observed.put(h.pid(),h));
                 for(ProcessHandle h:observed.values())if(h.isAlive())h.destroy();
                 for(ProcessHandle h:observed.values())if(h.isAlive())h.destroyForcibly();
                 process.waitFor(5,TimeUnit.SECONDS);

@@ -202,7 +202,7 @@ final class GatkToolsCli {
     }
     private static int execute(List<String> command,Path dir,String name,int timeout,Map<String,Object> session)throws Exception{
         session.put(name+"_command",List.copyOf(command));var builder=new ProcessBuilder(command).directory(dir.toFile()).redirectErrorStream(true).redirectOutput(dir.resolve(name+".log").toFile());builder.environment().put("LC_ALL","C");Process process=builder.start();
-        try{if(!process.waitFor(timeout,TimeUnit.SECONDS)){process.descendants().forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();throw new IOException("GATK timed out; inspect "+name+".log");}session.put(name+"_exit_code",process.exitValue());return process.exitValue();}catch(InterruptedException failure){process.descendants().forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();Thread.currentThread().interrupt();throw failure;}
+        try{if(!process.waitFor(timeout,TimeUnit.SECONDS)){OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();throw new IOException("GATK timed out; inspect "+name+".log");}session.put(name+"_exit_code",process.exitValue());return process.exitValue();}catch(InterruptedException failure){OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();Thread.currentThread().interrupt();throw failure;}
     }
     private static final class DependencyUnavailable extends IOException{private static final long serialVersionUID=1L;DependencyUnavailable(String message){super(message);}}
     static String help(){return"""

@@ -55,9 +55,9 @@ final class RegenieRuntime {
             env.put("PATH",home.resolve("bin")+java.io.File.pathSeparator+Path.of(system,"System32")+java.io.File.pathSeparator+system);
         }
         Process child=builder.start();try{
-            if(!child.waitFor(timeout,TimeUnit.SECONDS)){child.descendants().forEach(ProcessHandle::destroyForcibly);child.destroyForcibly();child.waitFor(30,TimeUnit.SECONDS);throw new IOException("REGENIE stage "+stage+" timed out; inspect "+stage+".log");}
+            if(!child.waitFor(timeout,TimeUnit.SECONDS)){OwnedProcesses.descendants(child).forEach(ProcessHandle::destroyForcibly);child.destroyForcibly();child.waitFor(30,TimeUnit.SECONDS);throw new IOException("REGENIE stage "+stage+" timed out; inspect "+stage+".log");}
             session.put(stage+"_exit_code",child.exitValue());if(child.exitValue()!=0)throw new IOException("REGENIE stage "+stage+" exited "+child.exitValue()+"; inspect "+stage+".log");
-        }catch(InterruptedException failure){child.descendants().forEach(ProcessHandle::destroyForcibly);child.destroyForcibly();Thread.currentThread().interrupt();throw failure;}
+        }catch(InterruptedException failure){OwnedProcesses.descendants(child).forEach(ProcessHandle::destroyForcibly);child.destroyForcibly();Thread.currentThread().interrupt();throw failure;}
     }
     void verify()throws IOException {verify(hashes);}
     static void verify(Map<Path,String> hashes)throws IOException {for(var e:hashes.entrySet())if(!Files.isRegularFile(e.getKey())||!e.getValue().equals(hash(e.getKey())))throw new IOException("Input/runtime changed during analysis: "+e.getKey());}

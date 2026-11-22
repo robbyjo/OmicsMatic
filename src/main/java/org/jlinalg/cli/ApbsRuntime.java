@@ -91,7 +91,7 @@ final class ApbsRuntime {
             int code=process.exitValue();call.put("exit_code",code);if(code==-1073741515||code==-1073741701)throw new Unavailable("Windows could not load original APBS or its DLL dependency (exit"+code+")");return code;
         }finally {
             call.put("seconds",(System.nanoTime()-started)/1e9);
-            if(process.isAlive()){call.put("termination_requested",true);process.descendants().forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();if(!process.waitFor(10,TimeUnit.SECONDS))throw new IOException("Owned APBS process could not terminate;inspect PID"+process.pid());}
+            if(process.isAlive()){call.put("termination_requested",true);OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();if(!process.waitFor(10,TimeUnit.SECONDS))throw new IOException("Owned APBS process could not terminate;inspect PID"+process.pid());}
             call.put("alive_after_cleanup",process.isAlive());
         }
     }

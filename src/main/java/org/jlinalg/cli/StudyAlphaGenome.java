@@ -160,7 +160,7 @@ final class StudyAlphaGenome {
             .directory(folder.toFile()).redirectErrorStream(true).redirectOutput(folder.resolve("console.txt").toFile()).start();
         try {
             if (!process.waitFor(((Number) config.get("timeout_seconds")).intValue(), TimeUnit.SECONDS)) {
-                process.descendants().forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); process.waitFor(10, TimeUnit.SECONDS);
+                OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); process.waitFor(10, TimeUnit.SECONDS);
                 return Map.of("status", "process_timeout", "variants", List.of());
             }
         } catch (InterruptedException interrupted) { process.destroyForcibly(); Thread.currentThread().interrupt(); throw new IOException("AlphaGenome bridge interrupted", interrupted); }

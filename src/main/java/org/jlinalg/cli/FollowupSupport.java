@@ -151,7 +151,7 @@ final class FollowupSupport {
     static void process(List<String> command,Path dir,int timeout) throws Exception {
         Process process=new ProcessBuilder(command).directory(dir.toFile()).redirectErrorStream(true).redirectOutput(dir.resolve("external.log").toFile()).start();
         try {
-            if(!process.waitFor(timeout,TimeUnit.SECONDS)) { process.descendants().forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); throw new IOException("External tool timed out after "+timeout+" seconds"); }
+            if(!process.waitFor(timeout,TimeUnit.SECONDS)) { OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly); process.destroyForcibly(); throw new IOException("External tool timed out after "+timeout+" seconds"); }
             if(process.exitValue()!=0) {
                 String log=Files.readString(dir.resolve("external.log"));
                 throw new IOException("External tool failed ("+process.exitValue()+"): "+log.substring(Math.max(0,log.length()-5000)));

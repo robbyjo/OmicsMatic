@@ -98,7 +98,7 @@ final class PlinkRelatednessRuntime {
         clock.check();footprint(stage,l.files(),l.diskBytes(),clock);footprint(stage.resolve("worker"),l.files(),l.outputBytes(),clock);
     }
     static void terminateOwned(Process process,Map<String,Object> record)throws IOException {
-        var descendants=process.descendants().map(h->Map.entry(h,h.info().startInstant())).toList();
+        var descendants=OwnedProcesses.descendants(process).map(h->Map.entry(h,h.info().startInstant())).toList();
         var stopped=new ArrayList<Long>();var unresolved=new ArrayList<Long>();
         for(var e:descendants){var h=e.getKey();if(h.isAlive()){if(e.getValue().isPresent()&&e.getValue().equals(h.info().startInstant())){h.destroyForcibly();stopped.add(h.pid());}else unresolved.add(h.pid());}}
         process.destroyForcibly();boolean interrupted=Thread.interrupted();long deadline=System.nanoTime()+30_000_000_000L;

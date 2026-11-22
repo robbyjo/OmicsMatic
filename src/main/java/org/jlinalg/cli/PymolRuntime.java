@@ -139,7 +139,7 @@ final class PymolRuntime {
         if(child.exitValue()!=0)throw new IOException("Original PyMOL stage failed with exit"+child.exitValue()+";inspect retained stdout/stderr");
     }
     private static void terminate(Process child)throws Exception {
-        for(var handle:child.descendants().toList())if(handle.isAlive())handle.destroyForcibly();child.destroyForcibly();
+        for(var handle:OwnedProcesses.descendants(child).toList())if(handle.isAlive())handle.destroyForcibly();child.destroyForcibly();
         if(!child.waitFor(30,TimeUnit.SECONDS))throw new IOException("Owned PyMOL process did not terminate");
     }
     private Path member(String name)throws IOException {

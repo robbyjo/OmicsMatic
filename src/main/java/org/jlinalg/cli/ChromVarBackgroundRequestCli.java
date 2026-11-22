@@ -111,7 +111,7 @@ public final class ChromVarBackgroundRequestCli {
         }finally{if(process.isAlive()||Thread.currentThread().isInterrupted())manifest.put("owned_process_cleanup",stop(process));}
     }
     private static List<Map<String,Object>> stop(Process process){
-        boolean interrupted=Thread.interrupted();List<ProcessHandle> handles=new ArrayList<>(process.descendants().toList());Collections.reverse(handles);handles.add(process.toHandle());for(var handle:handles)handle.destroy();
+        boolean interrupted=Thread.interrupted();List<ProcessHandle> handles=new ArrayList<>(OwnedProcesses.descendants(process).toList());Collections.reverse(handles);handles.add(process.toHandle());for(var handle:handles)handle.destroy();
         try{process.waitFor(2,TimeUnit.SECONDS);}catch(InterruptedException e){interrupted=true;}for(var handle:handles)if(handle.isAlive())handle.destroyForcibly();long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(5);
         while(handles.stream().anyMatch(ProcessHandle::isAlive)&&System.nanoTime()<deadline)try{Thread.sleep(25);}catch(InterruptedException e){interrupted=true;}
         List<Map<String,Object>> result=new ArrayList<>();for(var handle:handles)result.add(Map.of("pid",handle.pid(),"alive_after_cleanup",handle.isAlive()));if(interrupted)Thread.currentThread().interrupt();return result;

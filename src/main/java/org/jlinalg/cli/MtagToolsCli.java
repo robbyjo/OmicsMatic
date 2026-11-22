@@ -181,7 +181,7 @@ public final class MtagToolsCli {
         builder.redirectOutput(out.resolve(label+".stdout").toFile());builder.redirectError(out.resolve(label+".stderr").toFile());
         long started=System.nanoTime();Process process=builder.start();onStarted.run();var descendants=new HashMap<Long,Instant>();String failure=null;boolean finished=false;
         try {
-            while(true){process.descendants().forEach(p->p.info().startInstant().ifPresent(t->descendants.putIfAbsent(p.pid(),t)));
+            while(true){OwnedProcesses.descendants(process).forEach(p->p.info().startInstant().ifPresent(t->descendants.putIfAbsent(p.pid(),t)));
                 if(process.waitFor(200,TimeUnit.MILLISECONDS)){finished=true;break;}
                 if(TimeUnit.NANOSECONDS.toSeconds(System.nanoTime()-started)>=limits.seconds()){failure="Original MTAG process exceeded wall_seconds";break;}
                 try{monitorCapacity(out,limits);}catch(IOException capacity){failure=capacity.getMessage();break;}
@@ -192,7 +192,7 @@ public final class MtagToolsCli {
             for(var entry:descendants.entrySet())if(alive(entry.getKey(),entry.getValue()))throw new IOException("Original process left an owned descendant running; no result admission");
         } finally {
             if(process.isAlive())process.destroyForcibly();
-            for(var entry:descendants.entrySet())if(alive(entry.getKey(),entry.getValue()))ProcessHandle.of(entry.getKey()).ifPresent(ProcessHandle::destroyForcibly);
+            for(var entry:descendants.entrySet())OwnedProcesses.matching(entry.getKey(),entry.getValue()).ifPresent(ProcessHandle::destroyForcibly);
             if(!finished){process.waitFor(30,TimeUnit.SECONDS);if(!Files.exists(out.resolve(label+"-process.json")))MtagJson.write(out.resolve(label+"-process.json"),map("command",command,"pid",process.pid(),"source_process_finished",!process.isAlive(),"admitted",false,"cause",failure==null?"interrupted":failure));}
             long deadline=System.nanoTime()+TimeUnit.SECONDS.toNanos(30);
             while(descendants.entrySet().stream().anyMatch(e->alive(e.getKey(),e.getValue()))&&System.nanoTime()<deadline)Thread.sleep(50);
@@ -201,5 +201,5 @@ public final class MtagToolsCli {
             need(remaining.isEmpty()&&!process.isAlive(),"Owned source processes could not be confirmed stopped; preserve the attempt and inspect named PIDs before any retry");
         }
     }
-    private static boolean alive(long pid,Instant started){return ProcessHandle.of(pid).filter(p->p.isAlive()&&p.info().startInstant().map(started::equals).orElse(false)).isPresent();}
+    private static boolean alive(long pid,Instant started){return OwnedProcesses.matching(pid,started).isPresent();}
 }

@@ -72,9 +72,9 @@ final class DeepToolsRuntime {
         for(String key:List.of("PYTHONHOME","PYTHONPATH","MATPLOTLIBRC"))environment.remove(key);
         environment.put("PYTHONNOUSERSITE","1");environment.put("PYTHONDONTWRITEBYTECODE","1");environment.put("MPLBACKEND","Agg");environment.put("MPLCONFIGDIR",path(fontCache));environment.put("OPENBLAS_NUM_THREADS","1");environment.put("OMP_NUM_THREADS","1");
         Process child=builder.start();try{
-            if(!child.waitFor(timeout,TimeUnit.SECONDS)){child.descendants().forEach(ProcessHandle::destroyForcibly);child.destroyForcibly();child.waitFor(30,TimeUnit.SECONDS);throw new IOException("deepTools "+stage+" timed out; inspect retained log");}
+            if(!child.waitFor(timeout,TimeUnit.SECONDS)){OwnedProcesses.descendants(child).forEach(ProcessHandle::destroyForcibly);child.destroyForcibly();child.waitFor(30,TimeUnit.SECONDS);throw new IOException("deepTools "+stage+" timed out; inspect retained log");}
             session.put(stage+"_exit_code",child.exitValue());if(child.exitValue()!=0){String detail=Files.isRegularFile(report)?String.valueOf(RegenieRuntime.object(report).get("error")):"No execution marker";throw new IOException("deepTools "+stage+" failed with exit"+child.exitValue()+"; inspect "+stage+".log and execution marker. "+detail.substring(Math.max(0,detail.length()-1800)));}
-        }catch(InterruptedException failure){child.descendants().forEach(ProcessHandle::destroyForcibly);child.destroyForcibly();Thread.currentThread().interrupt();throw failure;}
+        }catch(InterruptedException failure){OwnedProcesses.descendants(child).forEach(ProcessHandle::destroyForcibly);child.destroyForcibly();Thread.currentThread().interrupt();throw failure;}
         if(!Files.isRegularFile(report))throw new IOException("deepTools exited without a completion marker; exit0 alone is not success");return RegenieRuntime.object(report);
     }
     private void validate(Map<?,?> result,String expected)throws IOException {

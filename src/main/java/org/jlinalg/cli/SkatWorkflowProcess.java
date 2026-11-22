@@ -30,8 +30,8 @@ final class SkatWorkflowProcess {
             if(start.isPresent())known.putIfAbsent(handle.pid(),new Owned(handle,start.get()));
         }
         synchronized void discover()throws IOException {
-            if(process==null)return;observe(process.toHandle());for(ProcessHandle child:process.descendants().toList())observe(child);
-            for(Owned owned:new ArrayList<>(known.values()))if(same(owned))for(ProcessHandle child:owned.handle().descendants().toList())observe(child);
+            if(process==null)return;observe(process.toHandle());for(ProcessHandle child:OwnedProcesses.descendants(process).toList())observe(child);
+            for(Owned owned:new ArrayList<>(known.values()))if(same(owned))for(ProcessHandle child:OwnedProcesses.descendants(owned.handle()).toList())observe(child);
         }
         private static boolean same(Owned owned){return owned.handle().isAlive()&&owned.handle().info().startInstant().filter(owned.start()::equals).isPresent();}
         synchronized List<Map<String,Object>> close(boolean force)throws IOException {

@@ -188,12 +188,12 @@ public final class SnprelateToolsCli {
         live[0]=true;state.put("original_analysis_executed",true);process.getOutputStream().close();var descendants=new LinkedHashMap<Long,ProcessHandle>();
         var record=map("command",command,"timeout",false);
         try {
-            while(!process.waitFor(100,TimeUnit.MILLISECONDS)){process.descendants().forEach(h->descendants.put(h.pid(),h));check.run();capacity(root,r);}
+            while(!process.waitFor(100,TimeUnit.MILLISECONDS)){OwnedProcesses.descendants(process).forEach(h->descendants.put(h.pid(),h));check.run();capacity(root,r);}
             check.run();capacity(root,r);return record;
         } catch(Exception failure) {
             record.put("cause",failure.toString());record.put("timeout",failure instanceof java.util.concurrent.CancellationException);throw failure;
         } finally {
-            process.descendants().forEach(h->descendants.put(h.pid(),h));for(var child:descendants.values())if(child.isAlive())child.destroyForcibly();
+            OwnedProcesses.descendants(process).forEach(h->descendants.put(h.pid(),h));for(var child:descendants.values())if(child.isAlive())child.destroyForcibly();
             if(process.isAlive())process.destroyForcibly();need(process.waitFor(10,TimeUnit.SECONDS),"Original R process did not terminate; attempt remains unsealed");
             for(var child:descendants.values())if(child.isAlive())child.onExit().get(10,TimeUnit.SECONDS);
             live[0]=false;

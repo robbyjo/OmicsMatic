@@ -78,7 +78,7 @@ final class EnrichmentRuntime {
         }catch(InterruptedException failure){stop(child);Thread.currentThread().interrupt();throw failure;}
     }
     private static void stop(Process process)throws InterruptedException {
-        process.descendants().forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();process.waitFor(30,TimeUnit.SECONDS);
+        OwnedProcesses.descendants(process).forEach(ProcessHandle::destroyForcibly);process.destroyForcibly();process.waitFor(30,TimeUnit.SECONDS);
     }
     void verify()throws IOException {RegenieRuntime.verify(hashes);}
     static String setup(){return "Where permitted run Rscript --vanilla tools/literature/install_enrichment_dependencies.R build/omics-enrichment-r build/literature-review/enrichment-dependency allow. Legacy DOSE additionally requires install_dose_legacy.R with a separate library and the main dependency library. Supply R4.6.1 and these exact profiles. If installation is unavailable or forbidden,SKIP the dependent analysis until a permitted profile is supplied; preserve changed/incomplete libraries and all diagnostics.";}

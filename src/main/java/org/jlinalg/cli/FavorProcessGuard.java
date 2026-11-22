@@ -23,8 +23,8 @@ final class FavorProcessGuard implements AutoCloseable {
     }
     static FavorProcessGuard register(Path work,String label)throws IOException {return new FavorProcessGuard(work,label);}
     void observe(){
-        ProcessHandle.current().descendants().forEach(handle->{
-            try{if(Path.of("/proc",Long.toString(handle.pid()),"cwd").toRealPath().equals(work)){admit(handle);handle.descendants().forEach(this::admit);}}
+        OwnedProcesses.descendants(ProcessHandle.current()).forEach(handle->{
+            try{if(Path.of("/proc",Long.toString(handle.pid()),"cwd").toRealPath().equals(work)){admit(handle);OwnedProcesses.descendants(handle).forEach(this::admit);}}
             catch(IOException ended){/* A vanished child cannot be admitted by a stale PID. */}
         });
     }
@@ -32,7 +32,7 @@ final class FavorProcessGuard implements AutoCloseable {
     private void shutdown(){
         var record=new LinkedHashMap<String,Object>();record.put("status","shutdown-cleanup-started");record.put("work",work.toString());record.put("operation",label);record.put("started_at",Instant.now().toString());
         try {
-            observe();for(var child:owned.values())if(child.same())child.handle().descendants().forEach(this::admit);
+            observe();for(var child:owned.values())if(child.same())OwnedProcesses.descendants(child.handle()).forEach(this::admit);
             for(var child:owned.values())if(child.same()&&child.handle().isAlive())child.handle().destroyForcibly();
             long deadline=System.nanoTime()+10000000000L;boolean alive;
             do{alive=false;for(var child:owned.values())if(active(child))alive=true;if(alive)Thread.sleep(20);}while(alive&&System.nanoTime()<deadline);

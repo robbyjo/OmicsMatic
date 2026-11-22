@@ -99,7 +99,7 @@ final class LdakWorkflowProcess {
         } catch (InterruptedException stopped) { interrupted = true; throw stopped; }
         finally {
             if (child.isAlive()) {
-                child.descendants().forEach(handle -> { if (handle.isAlive()) handle.destroyForcibly(); });
+                OwnedProcesses.descendants(child).forEach(handle -> { if (handle.isAlive()) handle.destroyForcibly(); });
                 child.destroyForcibly();
                 if (!interrupted) child.waitFor(10, TimeUnit.SECONDS);
             }
