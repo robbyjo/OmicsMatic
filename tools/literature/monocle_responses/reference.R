@@ -6,6 +6,31 @@ stopifnot(as.character(getRversion())=="4.3.3",as.character(packageVersion("mono
 defs<-list();for(expr in parse(official_graph,keep.source=FALSE))if(is.call(expr)&&length(expr)==3L&&is.symbol(expr[[2]])&&is.call(expr[[3]])&&identical(expr[[3]][[1]],as.name("function")))defs[[as.character(expr[[2]])]]<-expr[[3]]
 original<-eval(defs$graph_test,asNamespace("monocle3"));loaded<-get("graph_test",asNamespace("monocle3"));stopifnot(identical(body(original),body(loaded),ignore.srcref=FALSE,ignore.bytecode=FALSE),identical(formals(original),formals(loaded),ignore.srcref=FALSE,ignore.bytecode=FALSE))
 sp<-new.env(parent=asNamespace("spdep"));sys.source(official_moran,envir=sp,keep.source=FALSE);stopifnot(identical(body(sp$lm.morantest),body(spdep::lm.morantest),ignore.srcref=FALSE,ignore.bytecode=FALSE),identical(formals(sp$lm.morantest),formals(spdep::lm.morantest),ignore.srcref=FALSE,ignore.bytecode=FALSE))
+# R4.3.3 matchArgs_NR records ARGUSED in the substitute() argument pairlist.
+# Serialization preserves that execution state (LEVELS << 12); strict parsed
+# body/formal equality is the admission guard. Preserve raw hashes as diagnostics.
+source_matches<-function(candidate,reference,namespace) {
+ is.function(candidate)&&identical(environment(candidate),namespace)&&
+ identical(body(candidate),body(reference),ignore.srcref=FALSE,ignore.bytecode=FALSE)&&
+ identical(formals(candidate),formals(reference),ignore.srcref=FALSE,ignore.bytecode=FALSE)
+}
+assert_sources<-function()stopifnot(
+ source_matches(get("graph_test",asNamespace("monocle3")),original,asNamespace("monocle3")),
+ source_matches(get("lm.morantest",asNamespace("spdep")),sp$lm.morantest,asNamespace("spdep")))
+assert_sources();guard_controls<-list()
+for(name in c("graph_test","lm.morantest")) {
+ namespace<-asNamespace(if(name=="graph_test")"monocle3"else"spdep")
+ candidate<-get(name,namespace,inherits=FALSE);reference<-if(name=="graph_test")original else sp$lm.morantest
+ for(change in c("body","formals","environment")) {
+  changed<-candidate
+  if(change=="body")body(changed)<-quote(stop("changed owned control"))
+  if(change=="formals")formals(changed)<-c(formals(changed),alist(owned_changed_argument=TRUE))
+  if(change=="environment")environment(changed)<-new.env(parent=baseenv())
+  refused<-!source_matches(changed,reference,namespace);stopifnot(refused)
+  guard_controls[[paste(name,change,sep="/")]]<-list(refused=refused,installed_namespace_modified=FALSE)
+ }
+}
+assert_sources()
 before<-list(graph_body=digest::digest(serialize(body(loaded),NULL,version=2),algo="sha256",serialize=FALSE),graph_formals=digest::digest(serialize(formals(loaded),NULL,version=2),algo="sha256",serialize=FALSE),moran_body=digest::digest(serialize(body(spdep::lm.morantest),NULL,version=2),algo="sha256",serialize=FALSE),moran_formals=digest::digest(serialize(formals(spdep::lm.morantest),NULL,version=2),algo="sha256",serialize=FALSE))
 branches<-list();find_branch<-function(node){if(!is.call(node))return(invisible(NULL));if(identical(node[[1]],as.name("if"))&&identical(node[[2]],quote(expression_family %in% c("uninormal","binomialff"))))branches[[length(branches)+1L]]<<-node;children<-as.list(node);for(index in seq_along(children)){if(identical(unname(children[index]),unname(alist(missing=))))next;find_branch(children[[index]])};invisible(NULL)}
 find_branch(body(original));stopifnot(length(branches)==1L);branch<-branches[[1]]
@@ -38,6 +63,8 @@ for(case in c("quasi-design","uninormal-design","binomial-design","quasi-metadat
  record<-list(id=case,source_expression_family_label=family,transform=if(family=="quasipoisson")"size-factor-log10-plus-0.1"else"as-is",cell_ids=as.list(cells),gene_ids=as.list(genes),expression=unname(expression),size_factors=if(family=="quasipoisson")as.list(sf)else NULL,detected_genes=if(with_metadata)as.list(detected)else NULL,expected_responses=unname(prepared),expected_log_n_genes=if(with_metadata)as.list(logged)else NULL,base_design=if(with_design)unname(base)else NULL,base_design_columns=if(with_design)as.list(colnames(base))else NULL,expected_design=unname(design),tests=tests)
  jsonlite::write_json(record,file.path(directory,"RESULT.json"),auto_unbox=TRUE,digits=17,matrix="rowmajor",dataframe="rows",na="string",null="null");saveRDS(list(input=expression,size_factors=sf,detected_genes=detected,responses=prepared,design=design,models_and_results=raw_returns),file.path(directory,"original-complete-objects.rds"));results[[case]]<-record;cat(case,"original preparation and",3*nrow(prepared),"gene tests\n");flush.console()
 }
-stopifnot(identical(before$graph_body,digest::digest(serialize(body(get("graph_test",asNamespace("monocle3"))),NULL,version=2),algo="sha256",serialize=FALSE)),identical(before$graph_formals,digest::digest(serialize(formals(get("graph_test",asNamespace("monocle3"))),NULL,version=2),algo="sha256",serialize=FALSE)),identical(before$moran_body,digest::digest(serialize(body(spdep::lm.morantest),NULL,version=2),algo="sha256",serialize=FALSE)),identical(before$moran_formals,digest::digest(serialize(formals(spdep::lm.morantest),NULL,version=2),algo="sha256",serialize=FALSE)))
-result<-list(status="PASS_ORIGINAL_MONOCLE_RESPONSE_BRANCH_AND_SPDEP_CONTROLS",R=as.character(getRversion()),monocle3=as.character(packageVersion("monocle3")),spdep=as.character(packageVersion("spdep")),official_source_body_formals_identical=TRUE,official_namespace_unchanged=TRUE,author_code_executed=FALSE,cases=results,source_signatures=before,warnings=warnings,whole_paper_reproduced=FALSE)
+assert_sources()
+after<-list(graph_body=digest::digest(serialize(body(get("graph_test",asNamespace("monocle3"))),NULL,version=2),algo="sha256",serialize=FALSE),graph_formals=digest::digest(serialize(formals(get("graph_test",asNamespace("monocle3"))),NULL,version=2),algo="sha256",serialize=FALSE),moran_body=digest::digest(serialize(body(spdep::lm.morantest),NULL,version=2),algo="sha256",serialize=FALSE),moran_formals=digest::digest(serialize(formals(spdep::lm.morantest),NULL,version=2),algo="sha256",serialize=FALSE))
+jsonlite::write_json(list(status="PASS_STRICT_PARSED_OFFICIAL_FUNCTION_GUARDS",body_formals_environment_match_before_and_after=TRUE,owned_changed_function_controls=guard_controls,namespace_modified=FALSE,serialized_hashes_are_diagnostics=TRUE,before=before,after=after),file.path(out,"SOURCE-GUARDS.json"),pretty=TRUE,auto_unbox=TRUE)
+result<-list(status="PASS_ORIGINAL_MONOCLE_RESPONSE_BRANCH_AND_SPDEP_CONTROLS",R=as.character(getRversion()),monocle3=as.character(packageVersion("monocle3")),spdep=as.character(packageVersion("spdep")),official_source_body_formals_identical=TRUE,official_namespace_unchanged=TRUE,selected_namespace_functions_guarded=c("monocle3::graph_test","spdep::lm.morantest"),author_code_executed=FALSE,cases=results,source_signatures_before=before,source_signatures_after=after,source_guard_controls=guard_controls,warnings=warnings,whole_paper_reproduced=FALSE)
 jsonlite::write_json(result,file.path(out,"RESULT.json"),auto_unbox=TRUE,digits=17,matrix="rowmajor",dataframe="rows",na="string",null="null");capture.output(sessionInfo(),file=file.path(out,"SESSION.txt"))

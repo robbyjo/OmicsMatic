@@ -1,5 +1,28 @@
 # Current toolbox handover
 
+**Current: [native responses, global Monocle stages and exact next work](MONOCLE_RESPONSES_CHECKPOINT_2026-11-21.md).**
+The source-built JAR supplies explicit native response/metadata/design preparation,
+RUN/VERIFY/REPLAY and exact global1.0.0 graph/neighbor/weight routes. All **889
+focused tests** pass per Windows Java21/25 and Linux Java21 packaged JVM. Six
+actual preparations match984 original values and replay/verify on three hosts;
+admitted inference matches54 original tests/378 fields. Three entire degenerate
+families are deliberately refused; all66 original R test returns are retained.
+Global graph operations and both neighbor engines retain complete model replays,
+fresh original comparisons and three-host verification. All22,417 preceding
+scientific payloads remain exact; only the reviewed dispatcher changes,with7
+native class additions. The R serialization-state cause is reproduced; old
+failed runs/hashes and original/native numerical differences remain preserved.
+All **55 preceding owners** and30 canonical files are preserved (56 worktrees).
+Counts stay **144 scoped families,1630 reviewed/1092 pending**; no helper credit.
+**Next: guarded nine-role Monocle admission/stale-note correction without duplicate
+reviews,then highest-impact GWAS/omics gaps and1092 individual-use reviews.**
+Preparation admits no gene test,root,UMAT/UMAP recipe or whole-paper result.
+**Transfer ignored runtimes,JARs,full text,private author source and complete
+private evidence separately before retiring this machine.** The checkpoint gives
+exact recovery paths and prominent SKIP3/FAIL2 actions. Both unfinished reports
+stay off Pages; no release or full-goal completion is claimed. Lower entries
+retain historical checkpoints and their then-current counts.
+
 **HANDOVER: [response draft, remaining work and exact resume steps](HANDOVER_2026-11-21_RESPONSES.md).**
 The collection is complete at250 papers; implementation remains unfinished.
 Counts stay **144 scoped families (26 native +118 upstream),1630 reviewed and
