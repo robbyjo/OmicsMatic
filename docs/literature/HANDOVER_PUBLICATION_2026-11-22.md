@@ -105,8 +105,12 @@ and prevents reruns from selecting duplicate artifact names. Deployment receives
 the completed build's saved name, including when deployment alone is rerun.
 Website content,
 permissions and exclusion of the two unfinished literature reports are unchanged.
-The live home page was available and both excluded reports returned HTTP 404
-after the failed original deployment. A fresh run of the corrected workflow
-must pass, followed by live-page checks; its final receipt is recorded separately
-after GitHub completes the run. This hosted deployment check is separate from
-the outstanding local `checkWebsite` failure described above.
+The corrected [fresh workflow run](https://github.com/robbyjo/OmicsMatic/actions/runs/45046642105)
+**passed both build and deployment**, with exactly one artifact carrying the
+expected run/attempt name. Public readback verified the workflow commit and
+four changed publication files. Live checks verified the home page, CSS and
+JavaScript against staged source bytes and both excluded reports returned
+**HTTP 404**. See the [final verification receipt](genomicranges-checkpoint-20261122/pages-public-verification.json).
+This hosted deployment success is separate from the outstanding local
+`checkWebsite` failure described above. The later receipt-only documentation
+commit changes no published website bytes and requires no new deployment.
