@@ -1,5 +1,8 @@
 # Process ownership safety correction
 
+**Latest source context:** use the [atomic fixture follow-up and current verifier](PROCESS_OWNERSHIP_FIXTURE_CHECKPOINT_2026-11-22.md).
+The original packet/reader below remain pinned to their preceding baseline.
+
 **Action required: do not run external-tool workflows with a pre-fix JAR.**
 Retain old JARs unchanged for historical evidence and known offline verification.
 Build corrected source into a NEW build directory; do not overwrite a qualified

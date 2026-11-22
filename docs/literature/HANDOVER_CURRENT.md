@@ -1,5 +1,10 @@
 # Current toolbox handover
 
+**Latest validation: [atomic fixture follow-up and current verifier](PROCESS_OWNERSHIP_FIXTURE_CHECKPOINT_2026-11-22.md).**
+The original safety packet is preserved at its declared baseline. Use the new
+`STATUS-v2.json`/`verify_handover.py` source context after the test-only atomic
+ready-file fix. Production JAR bytes and scientific/catalog scope are unchanged.
+
 **Current: [process safety, saved draft and exact remaining work](HANDOVER_2026-11-22_PROCESS_SAFETY.md).**
 **An unrelated older process may have been terminated by a superseded test.**
 Read the incident and required actions before resuming. Pre-fix external-worker
