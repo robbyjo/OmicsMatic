@@ -1,5 +1,23 @@
 # Current toolbox handover
 
+**Current: [handover, remaining work and private transfer](HANDOVER_2026-11-22_GENOMICRANGES.md).**
+The 250-paper collection is complete; the full implementation goal is unfinished.
+Current main includes qualified original SKAT2.2.5 and catalog admission: **148
+scoped families (27 native +121 upstream),1661 reviewed/1062 pending uses**;
+446 labels,485 definitions,2723 observations. The new GenomicRanges Java component
+has original1.64.0 scalar promoter/boundary references (17 cases/4096 artificial
+ranges); its saved normal-build result gives actual component/regression coverage.
+It is not a complete S4 adapter and adds **zero family credit or reviews**.
+Exact1.44.0/1.58.0/1.60.0 source archives and private portable R4.1.0 are saved;
+historical dependency installs, full adapter, RUN/VERIFY/REPLAY and admission are
+pending. Next: finish GenomicRanges, then high-impact FUSION/g:Profiler and other
+gaps, plus1062 use reviews and missed-tool screening. Preserve **70 worktrees**,
+old qualified JARs, private runtimes, primary text and complete failed evidence;
+GitHub alone is insufficient for machine handover. Read SKIP3/FAIL2 remedies and
+the blocked historical-export scope in the handover. Cell Ranger stays excluded;
+both unfinished reports stay off Pages. No release or full-goal completion.
+Lower entries retain historical counts and are superseded where stated.
+
 **Current: [ACAT admitted; source crosswalk and next implementation](ACAT_SKAT_CATALOG_CHECKPOINT_2026-11-22.md).**
 One native ACAT 0.91 prepared-column combination family is now credited, with
 22 reviewed ACAT/SKAT/SKAT-O roles and the recovered P127 SKATO observation.

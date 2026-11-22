@@ -1,0 +1,12 @@
+from pathlib import Path
+import json,os,shutil,subprocess
+from prepare_genomicranges_20261122_114 import R,T,B
+from handover_inventory_20261122_111 import pin,save
+D=B/'geometry-references-164-1';D.mkdir();source=B/'upstream-intake-2/GenomicRanges1.64.0/source/GenomicRanges';lib=R/'build/omics-sctransform-r';script=R/'build/generate_genomicranges_geometry_references_20261122_114.R';runtime=json.loads((B/'geometry-feasibility-1/PACKAGES-BEFORE.json').read_bytes());assert all(pin(Path(p))==v for p,v in runtime.items())
+command=['C:/Program Files/R/R-4.6.1/bin/Rscript.exe','--vanilla',str(script),str(D/'original'),str(lib),str(source)];env={k:v for k,v in os.environ.items() if not k.upper().startswith('LC_') and k.upper() not in ['LANG','LANGUAGE','R_LIBS','R_LIBS_USER','R_LIBS_SITE','R_PROFILE','R_PROFILE_USER','R_ENVIRON','R_ENVIRON_USER','R_HOME']};env.update(LANG='C',LC_ALL='C',OMP_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',MKL_NUM_THREADS='1');save(D/'STARTED.json',{'command':command,'generator':pin(script),'source_archive':json.loads((source.parents[1]/'RESULT.json').read_bytes())['archive'],'existing_selected_package_files':len(runtime),'new_catalog_credit':0})
+with (D/'stdout').open('xb') as out,(D/'stderr').open('xb') as err:p=subprocess.run(command,cwd=T,env=env,stdin=subprocess.DEVNULL,stdout=out,stderr=err,timeout=180)
+save(D/'PROCESS.json',{'exit_code':p.returncode});assert all(pin(Path(p))==v for p,v in runtime.items());print((D/'stdout').read_text(errors='replace')+(D/'stderr').read_text(errors='replace')[-2000:],flush=True);assert p.returncode==0
+target=T/'src/test/resources/org/jlinalg/genetics/genomicranges-geometry/1.64.0';target.mkdir(parents=True)
+for name in ['cases.tsv','ranges.tsv','sequences.tsv']:shutil.copyfile(D/'original'/name,target/name)
+save(target/'REFERENCE.json',{'scope':'Actual original GenomicRanges1.64.0 scalar promoter geometry/bounds only;not1.44/1.58/1.60 qualification or S4 equivalence.','R':'4.6.1 Windows x86_64','cases':17,'ranges':4096,'seed':20261122,'official_source_archive':json.loads((source.parents[1]/'RESULT.json').read_bytes())['archive'],'generator':pin(script),'three_selected_original_helpers_match_official_source':True,'metadata_preserved_in_original_results':True,'all_input_ranges_artificial':True,'reference_tables':{name:pin(target/name) for name in ['cases.tsv','ranges.tsv','sequences.tsv']},'new_catalog_credit':0,'whole_goal_complete':False})
+print('Published artificial reference tables for Java component testing;no family credit or full-adapter claim',flush=True)
