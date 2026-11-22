@@ -1,5 +1,24 @@
 # Current toolbox handover
 
+**Current: [qualified GenomicRanges checkpoint and remaining full-goal work](GENOMICRANGES_CHECKPOINT_2026-11-22.md).**
+One upstream family and five new reviews are admitted: **149 scoped families
+(27 native +122 upstream),1666 reviewed/1057 pending uses**. Two existing review
+summaries/anchors remain; their scope notes are updated without duplicate credit.
+Actual qualification includes783 Java tests,168 original cases,27 replays,
+37 workflow refusal/runtime/intake controls and195 typed birth-time capture
+audits;18 source/transaction/time tests pass on each host. Linux checks cover
+source/metadata,not Linux R fits. The full851-entry manifest and styled installed
+desktop/mobile checks pass. Preserve private evidence and pre-fix producers;
+old source-bound readers need their historical contexts. Use current STATUS-v2
+and the new checkpoint readers. Next: FUSION/g:Profiler and other high-impact
+gaps plus1057 use reviews. The full250-paper goal is unfinished. Lower entries
+are historical where superseded; do not refresh old hashes.
+
+**Open check:** project-wide `checkWebsite` fails on33 unchanged existing
+Markdown vignettes missing scientific-citation panels. The checkpoint lists
+each file and the required repair. This is separate from passing scoped
+GenomicRanges/source/catalog/UI checks; no release readiness is claimed.
+
 **Latest validation: [atomic fixture follow-up and current verifier](PROCESS_OWNERSHIP_FIXTURE_CHECKPOINT_2026-11-22.md).**
 The original safety packet is preserved at its declared baseline. Use the new
 `STATUS-v2.json`/`verify_handover.py` source context after the test-only atomic

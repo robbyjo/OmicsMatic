@@ -1,0 +1,260 @@
+{
+  "status": "PASS_ONE_GENOMICRANGES_UPSTREAM_FAMILY_FIVE_NEW_REVIEWS_TWO_SCOPE_NOTES",
+  "counts": {
+    "papers": 250,
+    "labels": 446,
+    "provider_definitions": 485,
+    "observations": 2723,
+    "reviewed_uses": 1666,
+    "pending_uses": 1057,
+    "prior_review_identities_and_summaries_preserved": 1661,
+    "unchanged_prior_review_records": 1659,
+    "existing_scope_notes_updated_without_review_credit": 2,
+    "new_reviews": 5,
+    "unchanged_unrelated_observations": 2716,
+    "unchanged_unrelated_inventory_rows": 445,
+    "scoped_families": 149,
+    "native": 27,
+    "upstream": 122,
+    "including_existing_adapters": 152,
+    "validated_family_alias_labels": 3,
+    "method_overlap": 24,
+    "missing": 258,
+    "new_upstream_family_credit": 1,
+    "new_native_family_credit": 0,
+    "new_observations": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
+  },
+  "roles": [
+    {
+      "paper_id": "P013",
+      "paragraphs": [
+        114
+      ],
+      "paragraph_sha256": "02ac6011ac0ffecd5dfc1ada5f8aad4ab79f80c02fea4413694752041c5e07d6",
+      "reported_editions": [],
+      "functions": [
+        "promoters",
+        "get_out_of_bound_index"
+      ],
+      "usage_summary": "Constructed GRanges at one-base array midpoints with width-related metadata, extended windows with promoters(), and used internal chromosome-boundary indices to filter overruns before motif analysis.",
+      "implementation_scope_note": "The package edition and complete call arguments are unstated. Preserve aligned filtering of sequences, midpoints and boundaries. Width and half-width are metadata, not established promoters arguments. Sequence extraction and motif scanning are separate providers. The source spelling seqalong() is retained as an unresolved literal, without silently replacing it.",
+      "tool_id": "genomicranges",
+      "pmcid": "PMC11798873",
+      "doi": "10.1038/s41586-024-08333-9",
+      "xml_sha256": "4787955e5434581fd5843e30b9ebacc89fb4cac5b4021de23d36ddfdd0d91eda",
+      "source_pointers": [
+        {
+          "paragraph_index": 114,
+          "section": "Methods / Bioinformatics / Motif analysis on TF-bound nucleosome arrays",
+          "paragraph_sha256": "02ac6011ac0ffecd5dfc1ada5f8aad4ab79f80c02fea4413694752041c5e07d6"
+        }
+      ],
+      "provider": "GenomicRanges",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P032",
+      "paragraphs": [
+        51
+      ],
+      "paragraph_sha256": "b553234abc3965fb21d3a79ae88531fb3e6ee7eb18f079fdfd4f5672f7722da6",
+      "reported_editions": [
+        "1.44.0"
+      ],
+      "functions": [
+        "nearest"
+      ],
+      "usage_summary": "Used GenomicRanges 1.44.0 nearest() to annotate CUT&RUN regions with the gene whose TSS was nearest, in the R 4.1.0 analysis.",
+      "implementation_scope_note": "The adapter accepts explicitly prepared query and TSS ranges. TSS construction, tie selection, strand policy and subject order are not established by the paragraph. Blacklist removal, matrix reduction, peak segmentation and DESeq2 differential analysis remain separate steps.",
+      "tool_id": "genomicranges",
+      "pmcid": "PMC11754113",
+      "doi": "10.1038/s41586-024-08314-y",
+      "xml_sha256": "b69e9f3d24233ed51dabe954b63664dcbf8e15e7af5d419babb0018173e1ecb6",
+      "source_pointers": [
+        {
+          "paragraph_index": 51,
+          "section": "Methods / CUT&RUN analysis",
+          "paragraph_sha256": "b553234abc3965fb21d3a79ae88531fb3e6ee7eb18f079fdfd4f5672f7722da6"
+        }
+      ],
+      "provider": "GenomicRanges",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P051",
+      "paragraphs": [
+        96
+      ],
+      "paragraph_sha256": "ebdb5c39906e1c5e3147335ef7775afc63f55375fc1765631895053b1c38732b",
+      "reported_editions": [
+        "1.58.0"
+      ],
+      "functions": [],
+      "usage_summary": "Used Signac 1.14.0 with GenomicRanges 1.58.0 to create and quantify a common peak set across experiments before merging datasets with Seurat 5.2.1.",
+      "implementation_scope_note": "The GenomicRanges function and complete common-peak/counting workflow are unstated. Validated reduce/disjoin primitives are available but are not attributed to this paper. Signac quantification, preparation of matching assay features and Seurat merging are not reproduced by this prepared-range adapter.",
+      "tool_id": "genomicranges",
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "xml_sha256": "9182a4004117036e7be71b48cabb34755f397746ef0fe821dfad01f64fa2c129",
+      "source_pointers": [
+        {
+          "paragraph_index": 96,
+          "section": "Methods / Data processing / Merging of the datasets and peak calling",
+          "paragraph_sha256": "ebdb5c39906e1c5e3147335ef7775afc63f55375fc1765631895053b1c38732b"
+        }
+      ],
+      "provider": "GenomicRanges",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P094",
+      "paragraphs": [
+        35
+      ],
+      "paragraph_sha256": "8d8039d76f85ce3a753874fa3ddad5534ac0dcad00f3e609d59aef0dcd83cc74",
+      "reported_editions": [
+        "1.58.0",
+        "1.60.0"
+      ],
+      "functions": [
+        "subsetByOverlaps",
+        "findOverlaps"
+      ],
+      "preserve_existing_review": true,
+      "usage_summary": "Used GenomicRanges subsetByOverlaps() and findOverlaps() to intersect accessible or linked peaks with SNPs and other regulatory datasets after hg38 coordinate harmonization.",
+      "implementation_scope_note": "Preserve both reported GenomicRanges editions and the literal R label v2025.09.0 + 387. Linked Part3 notebook output records Linux R 4.4.2, GenomicRanges 1.58.0 and IRanges 2.40.0; it does not establish the executed paper commit or a 1.60.0 environment. The tested Windows reference dependencies/engines differ. Linked code uses both single-base SNP and POS-through-POS+1 proxy ranges; preserve supplied endpoints. Liftover and upstream peak/link preparation remain separate.",
+      "tool_id": "genomicranges",
+      "pmcid": "PMC13649600",
+      "doi": "10.1038/s41588-026-02748-y",
+      "xml_sha256": "ebd1e6a9559b288607109df25a9ef952fa78b93f938a81cb3f954c7678a8af35",
+      "source_pointers": [
+        {
+          "paragraph_index": 35,
+          "section": "Methods / Downstream multi-omic analysis and visualizations",
+          "paragraph_sha256": "8d8039d76f85ce3a753874fa3ddad5534ac0dcad00f3e609d59aef0dcd83cc74"
+        }
+      ],
+      "provider": "GenomicRanges",
+      "whole_paper_reproduced": false,
+      "linked_author_code": {
+        "metadata_file": "tools/literature/genomicranges_catalog/P094-AUXILIARY.json",
+        "metadata_pin": {
+          "bytes": 16651,
+          "sha256": "bac30bb5f3bd79e169b5831ac6925205af9c2b11cfd6736b4d9c9fa44a802a73"
+        },
+        "repository": "https://github.com/TBouderlique/human_face_development",
+        "commit": "ea1a5fcc81495d889c3d4252f62d658ce53df0b2",
+        "recorded_session": {
+          "path": "multiome/Part3_DARs_SNPs_Motifs_in_multiom.ipynb",
+          "cell_index": 1,
+          "execution_count": 63,
+          "output_sha256": "88ccd0bf59e0c0515bd498e5449df474c28f6aa87146aaf88ec2455a2a358bf2",
+          "R": "4.4.2",
+          "platform": "x86_64-conda-linux-gnu",
+          "GenomicRanges": "1.58.0",
+          "IRanges": "2.40.0",
+          "S4Vectors": "0.44.0",
+          "BiocGenerics": "0.52.0",
+          "Seurat": "5.0.0"
+        },
+        "paper_executed_commit_confirmed": false,
+        "author_code_executed": false
+      }
+    },
+    {
+      "paper_id": "P137",
+      "paragraphs": [
+        67
+      ],
+      "paragraph_sha256": "cc3554919df4bde248cd406c77c06a796ae95a51ae16605f4d47284db155b8d1",
+      "reported_editions": [],
+      "functions": [
+        "distanceToNearest"
+      ],
+      "usage_summary": "Used distanceToNearest() to associate predicted TF binding sites with recurrent SCAA-loss peaks using a distance strictly below 1,000 bp, then selected TFs associated with more than two regions for plotting.",
+      "implementation_scope_note": "Package edition, query/subject orientation, strand and tie options are unstated. A nearest-neighbor distance call must not be relabeled as enumeration of every interval within 1 kb. Selection of recurrent loss peaks and TF binding-site prediction are separate upstream analyses.",
+      "tool_id": "genomicranges",
+      "pmcid": "PMC12695633",
+      "doi": "10.1038/s41588-025-02349-1",
+      "xml_sha256": "d88f004ec6aaa0a27733fb9485e793fa9dc4672b5af4d3154b970485b90de81a",
+      "source_pointers": [
+        {
+          "paragraph_index": 67,
+          "section": "Methods / SCAA and SCAA loss analysis / TF analysis",
+          "paragraph_sha256": "cc3554919df4bde248cd406c77c06a796ae95a51ae16605f4d47284db155b8d1"
+        }
+      ],
+      "provider": "GenomicRanges",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P158",
+      "paragraphs": [
+        23
+      ],
+      "paragraph_sha256": "e1b791cf00909101476ae2171f3ce9188f7cfb639792d500f95aae8262bc200b",
+      "reported_editions": [],
+      "functions": [
+        "distanceToNearest"
+      ],
+      "usage_summary": "Assigned ChIP-seq peaks to nearest promoters with distanceToNearest(); promoter regions were defined as 2 kb upstream and 200 bp downstream of the TSS.",
+      "implementation_scope_note": "GenomicRanges edition, range construction and tie/strand choices are unstated. The promoter definition does not establish use of promoters(). Prepared-range assignment does not reproduce read alignment, csaw peak calling, loess normalization or edgeR differential enrichment.",
+      "tool_id": "genomicranges",
+      "pmcid": "PMC12597831",
+      "doi": "10.1038/s41588-025-02368-y",
+      "xml_sha256": "43ad08ecc1cfa9a6ddc89d82679dcf2b5e69d29c23bdcea15009587bddf2b53a",
+      "source_pointers": [
+        {
+          "paragraph_index": 23,
+          "section": "Methods / ChIP–seq library preparation and analysis",
+          "paragraph_sha256": "e1b791cf00909101476ae2171f3ce9188f7cfb639792d500f95aae8262bc200b"
+        }
+      ],
+      "provider": "GenomicRanges",
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P242",
+      "paragraphs": [
+        30,
+        23
+      ],
+      "paragraph_sha256": "b42894e05664fc835a6584e0b8927006552bc24e1fe190b8269ef1b3a214c70a",
+      "reported_editions": [],
+      "functions": [],
+      "preserve_existing_review": true,
+      "usage_summary": "Used GenomicRanges alongside CrossMap to map UKB SNPs to DHS intervals when constructing epistasis masks.",
+      "implementation_scope_note": "The methods explicitly name SNP-to-DHS mapping, but the GenomicRanges edition and functions are unstated. CrossMap coordinate conversion, UK Biobank data selection, mask construction and FAME/mvMAPIT fitting remain outside this prepared-range adapter.",
+      "tool_id": "genomicranges",
+      "pmcid": "PMC12461027",
+      "doi": "10.1016/j.ajhg.2025.07.004",
+      "xml_sha256": "35ab6372dcbd6d8b49da5fd2ad4cf3a9d81dcc12d4d86f2dee7fcda17bfa519a",
+      "source_pointers": [
+        {
+          "paragraph_index": 30,
+          "section": "Material and methods / Software tools and data sources",
+          "paragraph_sha256": "b42894e05664fc835a6584e0b8927006552bc24e1fe190b8269ef1b3a214c70a"
+        },
+        {
+          "paragraph_index": 23,
+          "section": "Material and methods / Generating masks from external data sources / Masks using DNase I-hypersensitive sites",
+          "paragraph_sha256": "18b02a54015c6d108ffb8685aaba4c9a636d31345a7894625c9df95cc7eb2441"
+        }
+      ],
+      "provider": "GenomicRanges",
+      "whole_paper_reproduced": false
+    }
+  ],
+  "qualification": {
+    "bytes": 1454,
+    "sha256": "87e38f1293f2ccc3c6e47e126b75bb665f2f90caa9940753748249aa8f1bab2e"
+  },
+  "new_reviews": 5,
+  "existing_scope_notes_updated": 2,
+  "whole_tool_qualified": false,
+  "whole_paper_reproduced": false,
+  "whole_goal_complete": false
+}

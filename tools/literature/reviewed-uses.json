@@ -2074,7 +2074,7 @@
       "tool_id": "genomicranges",
       "evidence_paragraph_sha256": "8d8039d76f85ce3a753874fa3ddad5534ac0dcad00f3e609d59aef0dcd83cc74",
       "use_summary": "Used GenomicRanges subsetByOverlaps() and findOverlaps() to intersect accessible or linked peaks with SNPs and other regulatory datasets after hg38 coordinate harmonization.",
-      "implementation_scope_note": "Source reports GenomicRangesv1.58.0/v1.60.0 alongside IRangesv2.40.0. Related Java interval arithmetic is available, but R object metadata, exact overlap semantics and package versions need compatibility checks."
+      "implementation_scope_note": "Preserve both reported GenomicRanges editions and the literal R label v2025.09.0 + 387. Linked Part3 notebook output records Linux R 4.4.2, GenomicRanges 1.58.0 and IRanges 2.40.0; it does not establish the executed paper commit or a 1.60.0 environment. The tested Windows reference dependencies/engines differ. Linked code uses both single-base SNP and POS-through-POS+1 proxy ranges; preserve supplied endpoints. Liftover and upstream peak/link preparation remain separate."
     },
     {
       "pmcid": "PMC13649600",
@@ -2140,7 +2140,7 @@
       "tool_id": "genomicranges",
       "evidence_paragraph_sha256": "b42894e05664fc835a6584e0b8927006552bc24e1fe190b8269ef1b3a214c70a",
       "use_summary": "Used GenomicRanges alongside CrossMap to map UKB SNPs to DHS intervals when constructing epistasis masks.",
-      "implementation_scope_note": "The exact R functions are not named here. Existing Java range arithmetic covers a related subset, without proving R object/metadata or complete mask-construction equivalence."
+      "implementation_scope_note": "The methods explicitly name SNP-to-DHS mapping, but the GenomicRanges edition and functions are unstated. CrossMap coordinate conversion, UK Biobank data selection, mask construction and FAME/mvMAPIT fitting remain outside this prepared-range adapter."
     },
     {
       "pmcid": "PMC12461027",
@@ -24570,6 +24570,56 @@
           "paragraph_sha256": "a3ec1bc1eba7f9d27df81b1a5082179bfaa84c810b969a77cf8d36ac2cf0f972"
         }
       ]
+    },
+    {
+      "pmcid": "PMC11798873",
+      "doi": "10.1038/s41586-024-08333-9",
+      "tool_id": "genomicranges",
+      "evidence_paragraph_sha256": "02ac6011ac0ffecd5dfc1ada5f8aad4ab79f80c02fea4413694752041c5e07d6",
+      "use_summary": "Constructed GRanges at one-base array midpoints with width-related metadata, extended windows with promoters(), and used internal chromosome-boundary indices to filter overruns before motif analysis.",
+      "implementation_scope_note": "The package edition and complete call arguments are unstated. Preserve aligned filtering of sequences, midpoints and boundaries. Width and half-width are metadata, not established promoters arguments. Sequence extraction and motif scanning are separate providers. The source spelling seqalong() is retained as an unresolved literal, without silently replacing it.",
+      "usage_context": "analysis-method-description",
+      "version_reported_near_name": null
+    },
+    {
+      "pmcid": "PMC11754113",
+      "doi": "10.1038/s41586-024-08314-y",
+      "tool_id": "genomicranges",
+      "evidence_paragraph_sha256": "b553234abc3965fb21d3a79ae88531fb3e6ee7eb18f079fdfd4f5672f7722da6",
+      "use_summary": "Used GenomicRanges 1.44.0 nearest() to annotate CUT&RUN regions with the gene whose TSS was nearest, in the R 4.1.0 analysis.",
+      "implementation_scope_note": "The adapter accepts explicitly prepared query and TSS ranges. TSS construction, tie selection, strand policy and subject order are not established by the paragraph. Blacklist removal, matrix reduction, peak segmentation and DESeq2 differential analysis remain separate steps.",
+      "usage_context": "analysis-method-description",
+      "version_reported_near_name": "1.44.0"
+    },
+    {
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "tool_id": "genomicranges",
+      "evidence_paragraph_sha256": "ebdb5c39906e1c5e3147335ef7775afc63f55375fc1765631895053b1c38732b",
+      "use_summary": "Used Signac 1.14.0 with GenomicRanges 1.58.0 to create and quantify a common peak set across experiments before merging datasets with Seurat 5.2.1.",
+      "implementation_scope_note": "The GenomicRanges function and complete common-peak/counting workflow are unstated. Validated reduce/disjoin primitives are available but are not attributed to this paper. Signac quantification, preparation of matching assay features and Seurat merging are not reproduced by this prepared-range adapter.",
+      "usage_context": "analysis-method-description",
+      "version_reported_near_name": "1.58.0"
+    },
+    {
+      "pmcid": "PMC12695633",
+      "doi": "10.1038/s41588-025-02349-1",
+      "tool_id": "genomicranges",
+      "evidence_paragraph_sha256": "cc3554919df4bde248cd406c77c06a796ae95a51ae16605f4d47284db155b8d1",
+      "use_summary": "Used distanceToNearest() to associate predicted TF binding sites with recurrent SCAA-loss peaks using a distance strictly below 1,000 bp, then selected TFs associated with more than two regions for plotting.",
+      "implementation_scope_note": "Package edition, query/subject orientation, strand and tie options are unstated. A nearest-neighbor distance call must not be relabeled as enumeration of every interval within 1 kb. Selection of recurrent loss peaks and TF binding-site prediction are separate upstream analyses.",
+      "usage_context": "analysis-method-description",
+      "version_reported_near_name": null
+    },
+    {
+      "pmcid": "PMC12597831",
+      "doi": "10.1038/s41588-025-02368-y",
+      "tool_id": "genomicranges",
+      "evidence_paragraph_sha256": "e1b791cf00909101476ae2171f3ce9188f7cfb639792d500f95aae8262bc200b",
+      "use_summary": "Assigned ChIP-seq peaks to nearest promoters with distanceToNearest(); promoter regions were defined as 2 kb upstream and 200 bp downstream of the TSS.",
+      "implementation_scope_note": "GenomicRanges edition, range construction and tie/strand choices are unstated. The promoter definition does not establish use of promoters(). Prepared-range assignment does not reproduce read alignment, csaw peak calling, loess normalization or edgeR differential enrichment.",
+      "usage_context": "analysis-method-description",
+      "version_reported_near_name": null
     }
   ]
 }

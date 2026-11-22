@@ -1,15 +1,23 @@
-**HANDOVER DRAFT: this branch is unqualified. Its guard uses the shared process
-ownership correction, but a fresh complete packaged original-R matrix and
-admission are still required. No family or review credit. See
-[the current handover](HANDOVER_2026-11-22_PROCESS_SAFETY.md).**
-
 # Original GenomicRanges prepared-object workflows
 
-**Implementation checkpoint: qualification is still in progress. No new catalog
-family or paper-use credit has been added.** The complete 250-paper objective
-remains unfinished. Current canonical totals are 148 scoped families and
-1,661 reviewed/1,062 pending uses. Use this guide with the source-built JAR;
-it does not describe a published release asset.
+**Qualified prepared-object scope:** original GenomicRanges 1.44.0, 1.58.0 and
+1.60.0 operations under the three explicit Windows reference profiles below.
+The source build passes 783 focused tests. Independent packaged comparisons cover
+168 cases (159 full RDS results and nine original errors), 27 replays, 21 resealed
+refusals, nine runtime controls and seven intake/replay controls. This is one
+upstream family after source-bound catalog admission, not whole-tool or
+whole-paper reproduction. The full 250-paper implementation objective remains
+unfinished. Existing release assets have not been replaced by this source work.
+
+The current producer uses the corrected birth-checked process guard. Preserve
+pre-fix JARs as historical evidence; do not run their external-worker paths.
+Compile with JDK21; the separate pre-existing JDK25 strict-compilation warning
+remains unresolved. Offline source/receipt checks:
+
+```powershell
+python -B tools/literature/genomicranges_workflow_qualification/verify_checkpoint.py
+```
+
 
 `genomicranges-tools` calls original GenomicRanges on explicitly prepared
 GRanges objects. It provides `find-overlaps`, `subset-overlaps`, `nearest`,
@@ -182,3 +190,24 @@ does not establish a call to promoters. P242 names interval mapping without an
 edition or exact function. A broader scan also found P039's unattributed
 subsetByOverlaps mention; the provider is not inferred from a generic name.
 The 250-paper semantic-completeness and missed-tool review remains open.
+
+## Linked P094 software-session and coordinate limits
+
+A read-only audit of seven linked author notebooks at commit
+`ea1a5fcc81495d889c3d4252f62d658ce53df0b2` found Part3 recorded session output
+for Linux R4.4.2, GenomicRanges1.58.0 and IRanges2.40.0. Kernel metadata in other
+notebooks differs. These records do not authenticate the executed paper commit
+or establish its GenomicRanges1.60.0 environment. The qualified Windows profiles
+and their actual dependency versions differ; do not relabel them as paper runs.
+
+The linked code uses both single-base SNPs and proxy ranges ending at POS+1.
+The prepared-object interface preserves supplied endpoints and does not silently
+normalize those constructions. Liftover, range preparation and downstream paper
+inference remain separate. The linked author code was not executed or copied into
+the implementation. Only pointers, hashes and interpreted metadata are published.
+
+The legacy1.44.0 private profile retains S4Vectors/GenomeInfoDb binary-build
+warnings from R4.1.1 under the actual R4.1.0 engine. Read each capture's original
+conditions and WARNINGS.md. Modern profiles use R4.6.1, not the paper's recorded
+Linux R4.4.2. Source/runtime identity and exact original comparisons are scoped
+to these declared reference profiles, not every platform or package edition.
