@@ -13,6 +13,13 @@ for current commands, raw-cookie privacy, SKIP3/FAIL2 remedies, process-safety a
 private transfer. The full goal remains unfinished; the 33 existing website
 citation-panel omissions remain open. Lower entries retain historical counts.
 
+**Next source finding: [FUSION homonym audit and implementation work](FUSION_SOURCE_AUDIT_2026-11-22.md).**
+The all-250 scan separates six software-analysis/comparator papers and one
+additional method-baseline description from study-cohort/instrument homonyms.
+P212's pending FUSION-tool observation names the cohort; P108's missing baseline
+description needs author-code inspection before claiming upstream execution.
+No new credit or canonical correction is applied by this source-only checkpoint.
+
 **Start here: [g:Profiler workflow handover and exact remaining work](GPROFILER_WORKFLOW_HANDOVER_2026-11-22.md).**
 The new global RUN/VERIFY/REPLAY source, 28-test normal-build evidence, eight
 original-service enrichment cases plus metadata discovery, Linux saved-protocol

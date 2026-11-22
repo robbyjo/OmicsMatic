@@ -103,8 +103,10 @@ HPO and original-client acknowledgements. Integrity hashes do not authenticate
 coordinated replacement. Complete resolved custom-background mapping is not
 returned by the service and remains unobserved.
 
-Continue high-impact FUSION (seven paper roles), then source/overlap review of
-Squidpy, smartpca and MR-PRESSO (six each), other remaining tools, all 1,050 pending
+Continue high-impact FUSION after the [homonym/source audit](FUSION_SOURCE_AUDIT_2026-11-22.md):
+six software-analysis/comparator papers plus one additional method-baseline
+description, with cohort/instrument mentions kept separate. Then review
+Squidpy, smartpca and MR-PRESSO, other remaining tools, all 1,050 pending
 use reviews and full-corpus missed-provider screening. Native Java remains
 preferred where practical; use tested upstream adapters for substantial software.
 Evaluate newest iDEP, without assuming legacy iDEP.96 terms. Cell Ranger remains
@@ -119,6 +121,13 @@ requalified. The [development handover](GPROFILER_WORKFLOW_HANDOVER_2026-11-22.m
 lists the exact private transfer paths, producer hash and retained junction.
 New admission work/evidence is in the same owner under `build/gprofiler-catalog-1/`;
 fresh runtime qualification is `build/gprofiler-workflow-1/admission-runtime-1/`.
+
+The admission commit `caf2c4f03f0a16e8383c26b46e11b80fde3b5bb4` passed both build
+and deployment in the [exact-commit Pages run](https://github.com/robbyjo/OmicsMatic/actions/runs/45059437333).
+Live home/CSS/JavaScript match the source after line-ending normalization, and
+both unfinished report URLs return 404. The [public deployment receipt](gprofiler-catalog-checkpoint/pages-public-verification.json)
+records the run, artifact and observed boundary. The subsequent source-audit and
+receipt documentation changes no published website bytes.
 
 The 33 pre-existing website citation-panel omissions remain open; project-wide
 `checkWebsite` is not claimed to pass. Both unfinished literature reports stay
