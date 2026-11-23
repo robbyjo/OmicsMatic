@@ -1,0 +1,395 @@
+{
+  "status": "PASS_ONE_BOUNDED_SCENICPLUS_FAMILY_SIX_ROLES_ONE_MISSED_POSITIVE_WITH_SCANNING_SKIP",
+  "counts": {
+    "papers": 250,
+    "labels": 446,
+    "provider_definitions": 485,
+    "observations": 2723,
+    "reviewed_uses": 1707,
+    "pending_uses": 1016,
+    "unchanged_prior_reviews": 1701,
+    "existing_reviews_enriched": 1,
+    "source_roles_reviewed": 6,
+    "new_reviews": 5,
+    "unchanged_unrelated_observations": 2717,
+    "unchanged_unrelated_inventory_rows": 445,
+    "scoped_families": 156,
+    "native": 29,
+    "upstream": 127,
+    "including_existing_adapters": 159,
+    "method_overlap": 19,
+    "missing": 256,
+    "new_native_family_credit": 0,
+    "new_upstream_family_credit": 1,
+    "added_positive_observations": 1,
+    "removed_positive_observations": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
+  },
+  "roles": [
+    {
+      "paper_id": "P008",
+      "doi": "10.1038/s41586-025-09875-2",
+      "pmcid": "PMC12893920",
+      "xml_sha256": "792ff0b362991b7300468688b3d8e83c611b8c0848de179549300764e829fd0a",
+      "summary": "Inferred enhancer-driven gene regulatory networks from unpaired RNA/ATAC using SCENIC+ same-label random-cell pseudo-multiome metacells, GBM/correlation region-gene and TF-gene inference within 150 kb.",
+      "required_capabilities": [
+        "same-cell-type pseudo-multiome metacell construction",
+        "region-gene GBM and correlations",
+        "TF-gene inference",
+        "complete eGRN pipeline"
+      ],
+      "boundary": "Edition, seed, exact motif/reference bytes and sampling membership remain unreported. Do not replace pseudo-multiome pairing with an assumed shared-barcode intersection.",
+      "reported_SCENICplus_edition": null,
+      "anchors": [
+        {
+          "paper_id": "P008",
+          "paragraph_index": 89,
+          "section": "Methods / Analysis of scATAC–seq data / Integrative analysis of scRNA-seq and scATAC–seq data",
+          "paragraph_sha256": "685a26e0c55eabc0cf8d6338cb734c1c60a118959533dc71b3308c71e590b2cc",
+          "matches": [
+            "pycistarget",
+            "pycistopic"
+          ]
+        },
+        {
+          "paper_id": "P008",
+          "paragraph_index": 90,
+          "section": "Methods / Analysis of scATAC–seq data / Integrative analysis of scRNA-seq and scATAC–seq data",
+          "paragraph_sha256": "f542a1df13ccae790d92c55ddbffb43020469d9099057055cf72998f8e23cb24",
+          "matches": [
+            "SCENIC+"
+          ]
+        }
+      ],
+      "observation_addition_pending": false,
+      "source_role_review_applied": true,
+      "author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "additional_supporting_paragraphs": [],
+      "reported_settings": {
+        "reported_gene_window_bp": 150000,
+        "cell_matching": "random same-label metacells; unpaired modalities"
+      },
+      "historical_edition_analysis_status": "SKIP3 for exact author-edition reproduction: SCENIC+ edition, seed and exact input/reference bytes are unreported; the bounded available profile is v1.0a2.",
+      "available_profile_role": "prepared-network-component",
+      "reported_version_contexts": [],
+      "analysis_status_distinct_from_source_review": true
+    },
+    {
+      "paper_id": "P021",
+      "doi": "10.1038/s41586-026-10271-7",
+      "pmcid": "PMC13600939",
+      "xml_sha256": "d6e691fbafe8e1c42b7a5dbfab7d06ad9e456f833141e7d1b54c2cba9107b1cd",
+      "summary": "Compared 44 independently prioritized TFs with a published resource of 582 developing-neocortex SCENIC+ eRegulons.",
+      "required_capabilities": [
+        "provided eRegulon resource and TF comparison"
+      ],
+      "boundary": "Resource comparison does not establish that this paper fitted SCENIC+. STRING graph filtering, decoupleR and the44-TF selection remain separate.",
+      "reported_SCENICplus_edition": null,
+      "anchors": [
+        {
+          "paper_id": "P021",
+          "paragraph_index": 24,
+          "section": "Astrocyte cellular dynamics across the lifespan",
+          "paragraph_sha256": "b375c1959048645d5053b13616b62f49f3ea408c4d08e548e502a5b2790fb1df",
+          "matches": [
+            "SCENIC+"
+          ]
+        },
+        {
+          "paper_id": "P021",
+          "paragraph_index": 109,
+          "section": "Methods / Inference of transcriptional regulators of pseudotime gene modules",
+          "paragraph_sha256": "8508dede752bc2bcfe566b96b1ce63631bbc1571ce077f3b26e33bf342cb7019",
+          "matches": [
+            "SCENIC+"
+          ]
+        }
+      ],
+      "observation_addition_pending": false,
+      "source_role_review_applied": true,
+      "author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "additional_supporting_paragraphs": [],
+      "reported_settings": {
+        "key_TFs": 44,
+        "external_eRegulons": 582
+      },
+      "historical_edition_analysis_status": "SKIP3 for exact author-edition reproduction: SCENIC+ edition, seed and exact input/reference bytes are unreported; the bounded available profile is v1.0a2.",
+      "available_profile_role": "external-resource-comparison-no-local-SCENICplus-fit",
+      "reported_version_contexts": [],
+      "analysis_status_distinct_from_source_review": true
+    },
+    {
+      "paper_id": "P047",
+      "doi": "10.1038/s41586-023-06823-w",
+      "pmcid": "PMC10719087",
+      "xml_sha256": "894cd1e454d83639da755f2847f9dbf66d198fa33e25e2c1903c71a04f8de01e",
+      "summary": "Used SCENIC+ TF annotations and its ensemble motif-cluster resource; scanned DMRs with Cluster-Buster for a separately constructed PCC-based regulatory network.",
+      "required_capabilities": [
+        "explicit motif-cluster reference input",
+        "Cluster-Buster sequence scanning",
+        "TF annotation resource for gene-category comparison"
+      ],
+      "boundary": "The resource contains 49,504 PWMs from 29 sources clustered into 8,045 groups by the resource authors using TOMTOM. TF annotations also define a gene category for AUROC analysis. The local PCC/shuffle-test graph is separate from SCENIC+ eGRN fitting; local TOMTOM reclustering is not reported.",
+      "reported_SCENICplus_edition": null,
+      "anchors": [
+        {
+          "paper_id": "P047",
+          "paragraph_index": 54,
+          "section": "Methods / Quantification of projection neuron difference with AUROC",
+          "paragraph_sha256": "6fd8daf755bd342685866eb0e644a55264ae06c85abea5618a5ee470e1cc9907",
+          "matches": [
+            "SCENIC+"
+          ]
+        },
+        {
+          "paper_id": "P047",
+          "paragraph_index": 83,
+          "section": "Methods / TF motif enrichment",
+          "paragraph_sha256": "57e8876e77a511b1cdb778bded7585962583350e28834379e0d76c30b84aef5e",
+          "matches": [
+            "Cluster-Buster",
+            "SCENIC+"
+          ]
+        },
+        {
+          "paper_id": "P047",
+          "paragraph_index": 85,
+          "section": "Methods / GRN analysis",
+          "paragraph_sha256": "7ade7d85d77f5098ae20bbc440b59f4b9cecfa6650dcf8a80cd0851b1e318ae0",
+          "matches": [
+            "Cluster-Buster"
+          ]
+        }
+      ],
+      "observation_addition_pending": false,
+      "source_role_review_applied": true,
+      "author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "additional_supporting_paragraphs": [
+        {
+          "paper_id": "P047",
+          "paragraph_index": 85,
+          "section": "Methods / GRN analysis",
+          "paragraph_sha256": "7ade7d85d77f5098ae20bbc440b59f4b9cecfa6650dcf8a80cd0851b1e318ae0"
+        }
+      ],
+      "reported_settings": {
+        "resource_PWMs": 49504,
+        "resource_sources": 29,
+        "resource_clusters": 8045
+      },
+      "historical_edition_analysis_status": "SKIP3 for ClusterBuster-dependent scanning: confirmed runtime permission is unavailable. Prepared motif enrichment is available separately. SCENIC+ resource/package edition and exact reference bytes remain unreported.",
+      "available_profile_role": "resource-use-reviewed; prepared-cisTarget-available; ClusterBuster-scanning-SKIP3",
+      "reported_version_contexts": [],
+      "analysis_status_distinct_from_source_review": true
+    },
+    {
+      "paper_id": "P061",
+      "doi": "10.1038/s41586-023-06805-y",
+      "pmcid": "PMC10719113",
+      "xml_sha256": "f95adca75114b3a845747d11afb578d29e9272a860b2b5161493c841a0f19107",
+      "summary": "Scanned DMRs with the SCENIC+ motif-cluster resource and Cluster-Buster, then applied cisTarget enrichment separately to positively and negatively correlated DMRs using NES > 3 and leading-edge motif assignment.",
+      "required_capabilities": [
+        "explicit motif-cluster reference input",
+        "Cluster-Buster sequence scanning",
+        "cisTarget recovery curves and explicit NES threshold",
+        "leading-edge motif assignment from original Cluster-Buster scores"
+      ],
+      "boundary": "The resource contains 49,504 PWMs from 29 sources in 8,045 clusters; resource-author TOMTOM clustering is separate. Leading-edge motif assignment uses Cluster-Buster scores. These resource/scanning/enrichment operations do not establish a local SCENIC+ eGRN fit.",
+      "reported_SCENICplus_edition": null,
+      "anchors": [
+        {
+          "paper_id": "P061",
+          "paragraph_index": 94,
+          "section": "Methods / GRN analysis / DMR motif scan and TF motif enrichment analysis",
+          "paragraph_sha256": "3ecb6de82e680d8b65cc2e1a33d3aa9b5a666bba6f890ae079bb06810b5bf5bf",
+          "matches": [
+            "Cluster-Buster",
+            "SCENIC+"
+          ]
+        },
+        {
+          "paper_id": "P061",
+          "paragraph_index": 95,
+          "section": "Methods / GRN analysis / DMR motif scan and TF motif enrichment analysis",
+          "paragraph_sha256": "f3998ee4cb4f5c77c3c184fbf32a4ae6ffad04bddb0f45c22d5c9a8133d5d9d3",
+          "matches": [
+            "Cluster-Buster"
+          ]
+        }
+      ],
+      "observation_addition_pending": false,
+      "source_role_review_applied": true,
+      "author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "additional_supporting_paragraphs": [
+        {
+          "paper_id": "P061",
+          "paragraph_index": 95,
+          "section": "Methods / GRN analysis / DMR motif scan and TF motif enrichment analysis",
+          "paragraph_sha256": "f3998ee4cb4f5c77c3c184fbf32a4ae6ffad04bddb0f45c22d5c9a8133d5d9d3"
+        }
+      ],
+      "reported_settings": {
+        "cisTarget_NES_threshold": 3,
+        "resource_PWMs": 49504,
+        "resource_sources": 29,
+        "resource_clusters": 8045
+      },
+      "historical_edition_analysis_status": "SKIP3 for ClusterBuster-dependent scanning: confirmed runtime permission is unavailable. Prepared motif enrichment is available separately. SCENIC+ resource/package edition and exact reference bytes remain unreported.",
+      "available_profile_role": "resource-use-reviewed; prepared-cisTarget-available; ClusterBuster-scanning-SKIP3",
+      "reported_version_contexts": [],
+      "analysis_status_distinct_from_source_review": true
+    },
+    {
+      "paper_id": "P094",
+      "doi": "10.1038/s41588-026-02748-y",
+      "pmcid": "PMC13649600",
+      "xml_sha256": "ebd1e6a9559b288607109df25a9ef952fa78b93f938a81cb3f954c7678a8af35",
+      "summary": "Built SCENIC+ eGRNs using SEACells ATAC-derived metacells and aggregated expression, cisTopic candidate enhancers/topics, preprocessed RNA and human cisTarget/motif references, with a 2 Mbp search space upstream and downstream of each gene TSS.",
+      "required_capabilities": [
+        "prepared metacell input with explicit external preprocessing",
+        "cisTopic objects/candidate enhancers/topics",
+        "provided cisTarget rankings/scores and motif collection",
+        "full eGRN pipeline with2Mbp search bounds"
+      ],
+      "boundary": "SEACells 0.3.3, pycistopic 2.0a0 and Scanpy 1.8.2 are separately reported dependencies, not SCENIC+ editions. SEACells targets 75 cells/metacell with 15 initial eigenvalues. Keep those externally prepared metacells distinct from SCENIC+ random metacells. Results wording SCENIC refers to this multiomic context, not an additional RNA-only call.",
+      "reported_SCENICplus_edition": null,
+      "anchors": [
+        {
+          "paper_id": "P094",
+          "paragraph_index": 9,
+          "section": "Results / Spatial codes in human embryonic facial tissue",
+          "paragraph_sha256": "91a94481e4e32fd227370e7bdaac45ccaf0b82dfe8e41559c7ac1b9d264a1bec",
+          "matches": [
+            "SCENIC+"
+          ]
+        },
+        {
+          "paper_id": "P094",
+          "paragraph_index": 15,
+          "section": "Results / Distinct facial traits associated with differentially active enhancers linked to the MSX1 gene",
+          "paragraph_sha256": "171ca573e932b0fd640cd5ffead24a28c253f0fad8618742c2ea9bd2c53ed917",
+          "matches": [
+            "SCENIC"
+          ]
+        },
+        {
+          "paper_id": "P094",
+          "paragraph_index": 16,
+          "section": "Results / Cleft-related epithelial gene expression signature reveals pleiotropic enhancer–gene link",
+          "paragraph_sha256": "fabf85642084033229c6279e7f13534fc950638aa7339f95754e244ce56ad0e0",
+          "matches": [
+            "SCENIC+"
+          ]
+        },
+        {
+          "paper_id": "P094",
+          "paragraph_index": 36,
+          "section": "Methods / SCENIC+",
+          "paragraph_sha256": "675a8af666d1a78db1e76333c052aa2ad316fa17f8978b8d9c332f4f628d71f6",
+          "matches": [
+            "SCENIC+",
+            "cisTopic",
+            "pycistopic"
+          ]
+        }
+      ],
+      "observation_addition_pending": false,
+      "source_role_review_applied": true,
+      "author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "additional_supporting_paragraphs": [],
+      "reported_settings": {
+        "search_space_upstream_bp": 2000000,
+        "search_space_downstream_bp": 2000000,
+        "SEACells_target_cells_per_metacell": 75,
+        "SEACells_initial_eigenvalues": 15
+      },
+      "historical_edition_analysis_status": "SKIP3 for exact author-edition reproduction: SCENIC+ edition, seed and exact input/reference bytes are unreported; the bounded available profile is v1.0a2.",
+      "available_profile_role": "prepared-network-component",
+      "reported_version_contexts": [
+        {
+          "package": "SEACells",
+          "version": "0.3.3",
+          "SCENICplus_edition": false
+        },
+        {
+          "package": "pycistopic",
+          "version": "2.0a0",
+          "SCENICplus_edition": false
+        },
+        {
+          "package": "Scanpy",
+          "version": "1.8.2",
+          "SCENICplus_edition": false
+        }
+      ],
+      "analysis_status_distinct_from_source_review": true
+    },
+    {
+      "paper_id": "P153",
+      "doi": "10.1038/s41588-026-02695-8",
+      "pmcid": "PMC13447104",
+      "xml_sha256": "58d7366dacc144c8821f5657fa302461b72ca21490d647dbd8fef420ae138aa5",
+      "summary": "Benchmarked SCENIC+ enhancer-gene predictions; the pinned author notebooks record original SCENIC+ prepare_GEX_ACC, search_spance and region_to_gene GBM/SR calls and saved adjacency logs, followed by score reformatting.",
+      "required_capabilities": [
+        "prepared paired GEX/ACC data",
+        "explicit gene/chromosome annotation and search-space bounds",
+        "region-gene GBM importance and Spearman correlation",
+        "explicit benchmark score formatting"
+      ],
+      "boundary": "Author analysis release v1.2 and an environment-directory date are not SCENIC+ editions. Author notebooks contain both 1 Mbp and 150 kb branches; the final Supplementary Note 2 remains unavailable for independent resolution. Paired preparation and annotation/search-space generation are outside the current adapter; supply explicit prepared matrices/candidates. Retain original ConstantInputWarning/nonfinite rho. Author formatting initializes signs to zero, which does not define an undefined correlation. Saved author logs are source evidence, not project-reproduced outcomes.",
+      "reported_SCENICplus_edition": null,
+      "anchors": [
+        {
+          "paper_id": "P153",
+          "paragraph_index": 11,
+          "section": "Results / Benchmarking of scE2G models",
+          "paragraph_sha256": "982b9594921e574708548f68ef487768de203287109f977eca113bae66c2e28f",
+          "matches": [
+            "SCENIC+"
+          ]
+        },
+        {
+          "paper_id": "P153",
+          "paragraph_index": 14,
+          "section": "Results / Benchmarking of scE2G models",
+          "paragraph_sha256": "27261cbb5a7d79a5621299555900b2cff0a7aab6423a195195036cdab124ae91",
+          "matches": [
+            "SCENIC+"
+          ]
+        }
+      ],
+      "observation_addition_pending": false,
+      "source_role_review_applied": true,
+      "author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "additional_supporting_paragraphs": [],
+      "reported_settings": {
+        "author_notebook_search_bounds_bp": [
+          1000000,
+          150000
+        ],
+        "author_notebook_method": "GBM",
+        "author_notebook_correlation": "SR",
+        "author_analysis_release": "v1.2",
+        "author_SCENICplus_version": null,
+        "author_seed": null
+      },
+      "historical_edition_analysis_status": "SKIP3 for exact author-edition reproduction: SCENIC+ edition, seed and exact input/reference bytes are unreported; the bounded available profile is v1.0a2.",
+      "available_profile_role": "prepared-network-component",
+      "reported_version_contexts": [],
+      "analysis_status_distinct_from_source_review": true
+    }
+  ],
+  "workflow_qualification": {
+    "bytes": 187330,
+    "sha256": "97d6d30e700d21404caee0b9906fde73356dc1e68b22c78f839c0b2ad374ef5b"
+  },
+  "whole_goal_complete": false
+}
