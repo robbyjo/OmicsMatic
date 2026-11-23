@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Handover now:** [SCENIC network probe, exact next tasks and private transfer](HANDOVER_SCENIC_NETWORK_2026-11-23.md).
+The original synthetic GRN/CTX/AUCell probe completed (412 adjacency rows,
+96-by-4 activity); its first import failure and successful successor are saved.
+The native AUCell component is already on main. **The full Java SCENIC adapter,
+RUN/VERIFY/REPLAY and catalog admission remain unfinished; zero new credit.**
+Current totals stay 154 scoped families, 1,697 reviewed/1,025 pending uses and
+250 papers. Read the next-step checklist, prominent warning remedies, private
+WSL/JAR transfer requirements and restricted historical-export explanation.
+All 19 worktrees are retained. The full objective remains unfinished; lower
+entries are historical where superseded.
+
 **Latest component:** [native pySCENIC AUCell and exact remaining work](PYSCENIC_COMPONENT_CHECKPOINT_2026-11-23.md).
 Seeded/weighted cell activity is qualified in Java:2,059 selected normal tests,
 22,995 prior JAR payloads unchanged, and original comparisons/example/resource

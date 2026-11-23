@@ -1,0 +1,77 @@
+{
+  "host": "linux",
+  "checks": [
+    {
+      "label": "handover",
+      "arguments": [
+        "/usr/bin/python3",
+        "-X",
+        "utf8",
+        "-B",
+        "/mnt/d/projects/JLinAlg/build/fu-1/tools/literature/verify_scenic_network_handover.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 0.1566457748413086
+    },
+    {
+      "label": "native-aucell",
+      "arguments": [
+        "/usr/bin/python3",
+        "-X",
+        "utf8",
+        "-B",
+        "/mnt/d/projects/JLinAlg/build/fu-1/tools/literature/verify_pyscenic_aucell_component.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 0.4921402931213379
+    },
+    {
+      "label": "current-catalog",
+      "arguments": [
+        "/usr/bin/python3",
+        "-X",
+        "utf8",
+        "-B",
+        "/mnt/d/projects/JLinAlg/build/fu-1/tools/literature/verify_smartpca_catalog_checkpoint.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 27.59324598312378
+    },
+    {
+      "label": "changed-archive",
+      "arguments": [
+        "/usr/bin/python3",
+        "-X",
+        "utf8",
+        "-B",
+        "/mnt/d/projects/JLinAlg/build/fu-1/tools/literature/verify_scenic_network_handover.py",
+        "--root",
+        "/mnt/d/projects/JLinAlg/build/git-publish/20261123-handover-297/checks-linux-2/changed-archive"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "seconds": 0.13785219192504883
+    },
+    {
+      "label": "false-count",
+      "arguments": [
+        "/usr/bin/python3",
+        "-X",
+        "utf8",
+        "-B",
+        "/mnt/d/projects/JLinAlg/build/fu-1/tools/literature/verify_scenic_network_handover.py",
+        "--root",
+        "/mnt/d/projects/JLinAlg/build/git-publish/20261123-handover-297/checks-linux-2/false-count"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "seconds": 0.14269232749938965
+    }
+  ],
+  "valid_readers": 3,
+  "refusal_controls": 2,
+  "original_scientific_analysis_reexecuted": false
+}

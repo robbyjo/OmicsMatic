@@ -1,0 +1,77 @@
+{
+  "host": "windows",
+  "checks": [
+    {
+      "label": "handover",
+      "arguments": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_scenic_network_handover.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 0.15173816680908203
+    },
+    {
+      "label": "native-aucell",
+      "arguments": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_pyscenic_aucell_component.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 0.3419468402862549
+    },
+    {
+      "label": "current-catalog",
+      "arguments": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_smartpca_catalog_checkpoint.py"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 6.774527072906494
+    },
+    {
+      "label": "changed-archive",
+      "arguments": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_scenic_network_handover.py",
+        "--root",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261123-handover-297\\checks-windows\\changed-archive"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "seconds": 0.12679219245910645
+    },
+    {
+      "label": "false-count",
+      "arguments": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_scenic_network_handover.py",
+        "--root",
+        "D:\\projects\\JLinAlg\\build\\git-publish\\20261123-handover-297\\checks-windows\\false-count"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "seconds": 0.1390070915222168
+    }
+  ],
+  "valid_readers": 3,
+  "refusal_controls": 2,
+  "original_scientific_analysis_reexecuted": false
+}
