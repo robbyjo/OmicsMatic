@@ -79,7 +79,7 @@ All affected paths and identities are in VALIDATION.json. Add actual appropriate
 citations and rerun full `checkWebsite`; do not weaken the check or insert empty
 panels. No new citation-panel failure was found. Both unfinished literature reports
 remain excluded from Pages by the unchanged deployment workflow. This checkpoint
-publishes repository source/evidence, not a website or release.
+publishes repository source/evidence; neither literature report nor a release is published.
 
 ## Continue the full goal
 
@@ -99,3 +99,20 @@ and preserve `build/smartpca-catalog-255/` and `build/git-publish/` receipts.
 Only exact redundant copies listed in the new cleanup plan may be removed after
 verified public recovery. Restricted historical export branches/private bundle
 remain local; this selected publication does not clear their histories for export.
+
+
+## Published state and cleanup
+
+Source/catalog admission is verified on GitHub main at `f8bcdded2fd4198c111e1354bbdfab5f00e7eaa1` (63 exact files).
+The existing automatic Pages deployment succeeded for eligible website files;
+both unfinished literature reports remain excluded and return404. No release
+was published. See [publication](smartpca-catalog-checkpoint/PUBLICATION.json) and
+[deployment](smartpca-catalog-checkpoint/DEPLOYMENT.json) receipts. These hosted
+checks do not imply full local website validation passed;33 citation errors remain.
+
+After byte-exact public recovery was confirmed,32 redundant preview/source copies
+were removed from two listed roots: 16,525,762 logical bytes,
+with measured available-space increase 16,596,992 bytes
+(possibly including unrelated activity). [Cleanup](smartpca-catalog-checkpoint/CLEANUP.json)
+lists exact paths/recovery objects. Preserve all original/failed evidence,
+private runtimes/producers, dirty worktrees and restricted histories.

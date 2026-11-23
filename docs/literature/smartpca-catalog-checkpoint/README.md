@@ -43,3 +43,22 @@ The first guard-recovery helper's overescaped Windows probe is historical; the
 independent native exact-profile check in the evidence archive is authoritative
 for confirming that initial owned browser had already closed. Later preview and
 installed checks use the corrected task guard and record their own process closure.
+
+
+All63 selected source/catalog/evidence files were read back byte for byte from
+GitHub at `f8bcdded2fd4198c111e1354bbdfab5f00e7eaa1`. [PUBLICATION.json](PUBLICATION.json) records admission scope.
+The existing Pages workflow automatically deployed the eligible website; both
+unfinished literature reports remain excluded and return404. The workflow and
+live checks passed; [DEPLOYMENT.json](DEPLOYMENT.json) records them. No release
+was published. This does not change the retained33 full-website citation errors.
+
+After verified publication,32 redundant preview/source copies in two exact roots
+were removed: 16,525,762 logical bytes. Measured available space
+increased by 16,596,992 bytes and may include unrelated
+activity. Every removed byte is recoverable from objects in evidence.zip; see
+[CLEANUP.json](CLEANUP.json). Its raw receipt retains a historical compiler-copy
+status label; the normalized receipt states the actual metadata/source-copy scope.
+The first cleanup allowlist expression was refused before deletion; its script
+and corrected exact-literal recovery are retained. Original/failed evidence,
+producer JARs, runtimes,19 worktrees and18 other owners' dirty bytes/indexes remain.
+No unrelated process was stopped. The full250-paper objective remains unfinished.

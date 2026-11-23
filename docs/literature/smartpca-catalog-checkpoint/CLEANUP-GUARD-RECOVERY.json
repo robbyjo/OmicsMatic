@@ -1,0 +1,13 @@
+{
+  "status": "PASS_GUARD_REFUSAL_BEFORE_DELETE_AND_EXACT_LITERAL_ALLOWLIST_RECOVERY",
+  "first_script": {
+    "bytes": 4864,
+    "sha256": "bef6533c0d97054f85b3a9ec8b20cd66803a3cb8473f26844821767aa6de7185"
+  },
+  "cause": "PowerShell array-expression precedence produced an invalid combined allowlist value. The first target failed validation before the deletion loop.",
+  "first_attempt_files_removed": 0,
+  "correction": "Use two explicit absolute literal directory strings; revalidate every resolved path, namespace, file hash, process/reparse guard and published recovery before native LiteralPath deletion.",
+  "corrected_removed_files": 32,
+  "corrected_removed_roots": 2,
+  "original_scientific_evidence_and_other_owners_preserved": true
+}
