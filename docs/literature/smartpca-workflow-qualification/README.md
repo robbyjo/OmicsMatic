@@ -41,3 +41,22 @@ packet omitting the unchanged catalog SHA256SUMS from its nine-file baseline.
 The corrected final checks pass. Native calculations were not silently changed
 to make those checker/metadata failures disappear. Retained captures use their
 own recorded producer; preserve both earlier and final development JARs privately.
+
+
+All 30 selected source/checkpoint files were read back byte for byte from GitHub
+at `99f72a2bc386274b37a4d85e343772b48dba0623`;
+[PUBLICATION.json](PUBLICATION.json) records this stage. No release or site
+deployment was performed; no Actions run was present at readback. The saved
+checkpoint reader passes on Windows and Linux, with the exact producer checked
+on Windows. All historical source hashes and predecessor readers remain unchanged.
+
+After verified publication, four redundant compiler directories were removed:
+five files, 48,081 logical bytes. The measured available-space increase was
+53,248 bytes and may include unrelated filesystem activity. Every removed byte
+is recoverable from the published content-addressed evidence archive;
+[CLEANUP.json](CLEANUP.json) lists the exact archive members and physical paths.
+Original/failed scientific inputs and outputs, exact producer JARs, runtimes and
+all 19 worktrees remain. No unrelated process was stopped. Eighteen other owners'
+HEADs, dirty bytes and indexes stay unchanged; restricted historical branches
+remain local. FST, public dispatch integration, catalog admission and the full
+250-paper objective remain unfinished.
