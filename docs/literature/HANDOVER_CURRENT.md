@@ -1,4 +1,19 @@
 # Current toolbox handover
+**Current: [qualified native Squidpy component and exact remaining work](SQUIDPY_NATIVE_CHECKPOINT_2026-11-22.md).**
+Native Java weighted-CSR Moran/Geary now passes **740 normal-build tests** and
+**728 packaged component tests per Windows21/Windows25/Linux21 JVM**. All22,863
+prior JAR payloads stay byte-identical; eight new payloads contain the component
+and original notices. All three original Squidpy1.1.2/1.2.2/1.8.4 runtimes work;
+240 original public calls retain finite, undefined and failed outcomes. Six actual
+copyable examples verify regular and FAIL2 paths. Read the guide's edition and
+64-ulp variance-admission diagnostics. **Full upstream adapter and catalog
+admission remain pending; zero new family credit/reviews.** Counts stay151 scoped
+families (27 native+124 upstream),1,679 reviewed/1,043 pending uses and250 papers.
+Next finish source-bound spatial/ligand-receptor/reader RUN/VERIFY/REPLAY, then
+high-impact gaps and all pending/missed-provider reviews. Transfer complete private
+runtimes, JARs and failed evidence; preserve19 worktrees and withheld historical
+exports. The full goal is unfinished. Lower entries are historical where superseded.
+
 **Handover: [saved Squidpy work, exact next steps and private transfer](HANDOVER_2026-11-22_SQUIDPY.md).**
 The collection remains **250 papers**, with **151 scoped families (27 native +124
 upstream), 1,679 reviewed/1,043 pending uses**. The unfinished Squidpy Java kernel,
