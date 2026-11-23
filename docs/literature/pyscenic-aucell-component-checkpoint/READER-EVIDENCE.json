@@ -1,0 +1,70 @@
+{
+  "status": "PASS_EIGHT_SAVED_READER_COUNT_SOURCE_ARCHIVE_CHECKS",
+  "cases": [
+    {
+      "host": "windows",
+      "case": "valid",
+      "exit_code": 0,
+      "expected": 0,
+      "stdout": "{\n  \"status\": \"PASS_NATIVE_PYSCENIC_AUCELL_COMPONENT_ONLY\",\n  \"normal_tests\": 2059,\n  \"previous_payloads_unchanged\": 22995,\n  \"focused_methods_per_JVM\": 7,\n  \"unique_original_cases\": 37,\n  \"original_permutations\": 114,\n  \"native_returned_scoring_cases\": 29,\n  \"native_refusals\": 8,\n  \"original_refusals\": 6,\n  \"example_calls\": 3,\n  \"source_resources_per_JVM\": 13,\n  \"prior_catalog_readers_passed\": 2,\n  \"native_component_qualified\": true,\n  \"full_SCENIC_workflow_qualified\": false,\n  \"catalog_admitted\": false,\n  \"new_family_credit\": 0,\n  \"new_reviews\": 0,\n  \"whole_goal_complete\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "host": "windows",
+      "case": "false-count",
+      "exit_code": 1,
+      "expected": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_pyscenic_aucell_component.py\", line 15, in verify\n    assert (state['normal_tests'],state['previous_payloads_unchanged'],state['focused_methods_per_JVM'])==(2059,22995,7),'Reported component counts differ from actual evidence'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Reported component counts differ from actual evidence\n"
+    },
+    {
+      "host": "windows",
+      "case": "changed-source",
+      "exit_code": 1,
+      "expected": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_pyscenic_aucell_component.py\", line 16, in verify\n    for name,wanted in state['source_code'].items():assert pin((root/name).read_bytes())==wanted,'Changed native component source: '+name\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Changed native component source: src/main/java/org/jlinalg/enrichment/PyScenicAucell.java\n"
+    },
+    {
+      "host": "windows",
+      "case": "changed-archive",
+      "exit_code": 1,
+      "expected": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_pyscenic_aucell_component.py\", line 18, in verify\n    assert pin(index_raw)==state['evidence_index'] and pin(archive_raw)==state['evidence_archive'],'Changed saved component evidence index/archive'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Changed saved component evidence index/archive\n"
+    },
+    {
+      "host": "linux",
+      "case": "valid",
+      "exit_code": 0,
+      "expected": 0,
+      "stdout": "{\n  \"status\": \"PASS_NATIVE_PYSCENIC_AUCELL_COMPONENT_ONLY\",\n  \"normal_tests\": 2059,\n  \"previous_payloads_unchanged\": 22995,\n  \"focused_methods_per_JVM\": 7,\n  \"unique_original_cases\": 37,\n  \"original_permutations\": 114,\n  \"native_returned_scoring_cases\": 29,\n  \"native_refusals\": 8,\n  \"original_refusals\": 6,\n  \"example_calls\": 3,\n  \"source_resources_per_JVM\": 13,\n  \"prior_catalog_readers_passed\": 2,\n  \"native_component_qualified\": true,\n  \"full_SCENIC_workflow_qualified\": false,\n  \"catalog_admitted\": false,\n  \"new_family_credit\": 0,\n  \"new_reviews\": 0,\n  \"whole_goal_complete\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "host": "linux",
+      "case": "false-count",
+      "exit_code": 1,
+      "expected": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/mnt/d/projects/JLinAlg/build/fu-1/tools/literature/verify_pyscenic_aucell_component.py\", line 15, in verify\n    assert (state['normal_tests'],state['previous_payloads_unchanged'],state['focused_methods_per_JVM'])==(2059,22995,7),'Reported component counts differ from actual evidence'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Reported component counts differ from actual evidence\n"
+    },
+    {
+      "host": "linux",
+      "case": "changed-source",
+      "exit_code": 1,
+      "expected": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/mnt/d/projects/JLinAlg/build/fu-1/tools/literature/verify_pyscenic_aucell_component.py\", line 16, in verify\n    for name,wanted in state['source_code'].items():assert pin((root/name).read_bytes())==wanted,'Changed native component source: '+name\n                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Changed native component source: src/main/java/org/jlinalg/enrichment/PyScenicAucell.java\n"
+    },
+    {
+      "host": "linux",
+      "case": "changed-archive",
+      "exit_code": 1,
+      "expected": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/mnt/d/projects/JLinAlg/build/fu-1/tools/literature/verify_pyscenic_aucell_component.py\", line 18, in verify\n    assert pin(index_raw)==state['evidence_index'] and pin(archive_raw)==state['evidence_archive'],'Changed saved component evidence index/archive'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Changed saved component evidence index/archive\n"
+    }
+  ],
+  "scientific_fits_reexecuted": false
+}
