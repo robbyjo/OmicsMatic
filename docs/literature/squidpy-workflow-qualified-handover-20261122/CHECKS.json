@@ -1,0 +1,91 @@
+{
+  "status": "PASS_HANDOVER_SAVED_CHECKPOINT_AND_SOURCE_CHECKS",
+  "cases": [
+    {
+      "case": "workflow-checkpoint-windows",
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 1.3280000000086147,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_squidpy_workflow_checkpoint.py",
+        "--jar",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\build\\squidpy-1\\workflow-normal-build-145\\project-build\\cli\\omicsmatic-0.4.0.jar"
+      ]
+    },
+    {
+      "case": "workflow-checkpoint-linux",
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 7.047000000020489,
+      "command": [
+        "wsl.exe",
+        "-d",
+        "JLinAlg-Omics-SAIGE-20261026",
+        "--",
+        "python3",
+        "-B",
+        "/mnt/d/projects/JLinAlg/build/fu-1/tools/literature/verify_squidpy_workflow_checkpoint.py"
+      ]
+    },
+    {
+      "case": "native-checkpoint-windows",
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 0.7030000000086147,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_squidpy_native_checkpoint.py",
+        "--jar",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\build\\squidpy-1\\native-normal-build-1\\project-build\\cli\\omicsmatic-0.4.0.jar"
+      ]
+    },
+    {
+      "case": "canonical-catalog-windows",
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 6.703000000008615,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\close_fusion_catalog.py",
+        "--verify",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\build\\squidpy-handover-catalog-148"
+      ]
+    },
+    {
+      "case": "fresh-all250-primary",
+      "exit_code": 0,
+      "expected": 0,
+      "seconds": 4.844000000011874,
+      "command": [
+        "C:\\Users\\User\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\audit_squidpy_sources.py",
+        "--cache",
+        "D:\\projects\\JLinAlg\\build\\literature-review\\xml",
+        "--out",
+        "D:\\projects\\JLinAlg\\build\\fu-1\\build\\squidpy-handover-source-148"
+      ]
+    }
+  ],
+  "total_registered_worktrees": 19,
+  "other18_worktrees_unchanged": true,
+  "whole_goal_complete": false,
+  "scoped_families": 151,
+  "native": 27,
+  "upstream": 124,
+  "reviewed_uses": 1679,
+  "pending_uses": 1043
+}

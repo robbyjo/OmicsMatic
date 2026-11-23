@@ -1,4 +1,18 @@
 # Current toolbox handover
+**Start here: [qualified Squidpy workflows and exact remaining admission work](SQUIDPY_QUALIFIED_HANDOVER_2026-11-22.md).**
+The global `squidpy-tools` RUN/VERIFY/REPLAY source is qualified for its declared
+original1.1.2/1.2.2/1.8.4 scope:763 tests per JVM,73 packaged scenarios and66
+independent original-API comparisons. The preserved packet includes old failures
+and16 invalidated NUL-padded MatrixMarket exports; use the corrected producer.
+The six-paper catalog model remains a saved draft: **zero new credit/reviews**.
+Current counts stay **151 scoped families (27native+124upstream),1,679 reviewed/
+1,043 pending uses and250 papers**. Finish guarded Squidpy admission, then
+high-impact gaps and all remaining source reviews. The handover records exact
+commands, draft pitfalls, private D:/WSL transfer, SKIP3/FAIL2 remedies,33 existing
+website citation failures and restricted historical exports. All19 worktrees are
+preserved. The full goal remains unfinished; lower entries are historical where
+superseded. A GitHub clone alone is insufficient for machine transfer.
+
 **Handover: [saved full Squidpy draft, known failure and exact resume steps](SQUIDPY_WORKFLOW_HANDOVER_2026-11-22.md).**
 All14 current draft files and13 helpers are saved outside compiled source paths,
 with synthetic/prototype receipts in a content-addressed packet.
