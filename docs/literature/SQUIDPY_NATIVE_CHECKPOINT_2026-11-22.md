@@ -150,8 +150,15 @@ export restrictions still apply. GitHub contains a selected source/evidence
 checkpoint, not private runtimes, full papers, credentials or a complete machine
 backup. The shared dirty root must not replace current main.
 
-After publication, only the verified duplicate compiled test-runner file may be
-removed from its temporary packaged-test directory: its exact bytes are retained
-in the qualification ZIP with the source and producer. Preserve all scientific
-producers, actual test classes/resources, failed evidence and runtime prefixes.
-The local publication receipt records removed paths and measured space change.
+After the component publication, cleanup removed the duplicate compiled
+test-runner file and65 temporary copied reader-control inputs. All66 exact
+files were checked against retained replacement archives first. The runner is
+recoverable from the published qualification ZIP; control copies remain in the
+private archive named by the reader-control receipt. Logical bytes removed:
+2,869,999; measured free-space increase:3,018,752 bytes. All19 worktrees and all
+scientific producers, normal test classes/resources, complete original/failed
+evidence and runtime prefixes remain. Two cleanup preflight failures ended before
+deletion; their logs are retained. See the
+[cleanup receipt](squidpy-native-qualification/CLEANUP.json) and full local
+publication receipts under
+`D:/projects/JLinAlg/build/git-publish/20261122-squidpy-native-132/`.
