@@ -38,6 +38,8 @@ public final class JLinAlgCli {
                 return GprofilerWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("fusion-tools"))
                 return FusionWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("smartpca-tools"))
+                return SmartpcaCommandCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("mrpresso-tools"))
                 return MrPressoToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("squidpy-tools"))
@@ -515,6 +517,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar gprofiler-tools --help
               java -jar omicsmatic-<version>.jar fusion-tools --help
               java -jar omicsmatic-<version>.jar squidpy-tools --help
+              java -jar omicsmatic-<version>.jar smartpca-tools --help
               java -jar omicsmatic-<version>.jar mrpresso-tools --help
               java -jar omicsmatic-<version>.jar enrichment-tools --help
               java -jar omicsmatic-<version>.jar favor-annotate --help

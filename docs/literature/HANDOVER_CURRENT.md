@@ -1,4 +1,15 @@
 # Current toolbox handover
+
+**Latest handover:** [native smartpca FST/global command and exact remaining work](HANDOVER_SMARTPCA_FST_2026-11-23.md).
+PCA and FST RUN/VERIFY/REPLAY are qualified through global `smartpca-tools`.
+The final producer passed 1,906 normal tests and 362 packaged protocol commands.
+**Guarded six-role catalog admission remains pending; zero new family/review
+credit.** Current totals stay 153 scoped families (28 native+125 upstream),
+1,691 reviewed/1,031 pending uses and 250 papers. The handover records exact
+resume steps, retained failures, prominent SKIP3/FAIL2 remedies, private machine
+transfer and restricted historical exports. Preserve all 19 worktrees. The full
+objective remains unfinished; lower entries are historical where superseded.
+
 **Latest: [prepared smartpca workflows and remaining work](SMARTPCA_WORKFLOW_CHECKPOINT_2026-11-23.md).**
 The native class entry point implements source-specific PCA/outliers/shrinkage
 RUN, full recomputation VERIFY and actual REPLAY. Read the saved checkpoint for
