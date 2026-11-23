@@ -27,3 +27,10 @@ fit and provides integrity, not authorship authentication. The optional `--jar`
 argument also checks the exact retained executable's bytes. Fresh scientific
 recomputation is a separate `scenic-tools` VERIFY request requiring that exact
 producer, matching permitted runtime and a new witness directory.
+
+`PUBLICATION.json` records the implementation commit and public byte readback.
+`CLEANUP.json` lists only removed, verified redundant compiler copies and their
+recovery locations. `finalization.zip` and `FINALIZATION-FILES.json` retain the
+exact readback/cleanup helper sources and receipts; private worktree inventories
+and restricted historical payloads are excluded. Exact JARs, runtimes, source,
+scientific captures and failed unit contexts remain retained locally.
