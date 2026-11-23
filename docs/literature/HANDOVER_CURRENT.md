@@ -1,4 +1,17 @@
 # Current toolbox handover
+**Latest: [smartpca analysis development and exact next steps](SMARTPCA_ANALYSIS_HANDOVER_2026-11-23.md).**
+Native outlier, perturbation-shrinkage and iterative PCA components have passing
+original-source comparisons on Windows Java 21/25 and Linux Java 21. Six
+package-private file-workflow classes are saved as unfinished development;
+sealed RUN/VERIFY/REPLAY, FST, workflow qualification and catalog admission remain.
+Read the saved status for normal-build results and retained failed references.
+Counts stay **153 scoped families (28 native +125 upstream), 1,691 reviewed/
+1,031 pending uses and 250 papers**. Prioritize the remaining high-impact gaps
+and full-cohort reviews. Preserve local/WSL runtimes, exact JARs, failed evidence,
+all 19 worktrees and restricted historical exports. GitHub is not a full machine
+backup. Read the prominent warnings and transfer instructions. The full goal is
+unfinished; lower entries are historical where superseded.
+
 **Current: [Squidpy admitted roles, validation and remaining full-goal work](SQUIDPY_CATALOG_CHECKPOINT_2026-11-22.md).**
 One scoped original-workflow upstream family and six source reviews are admitted:
 **152 scoped families (27 native+125 upstream),1,685 reviewed/1,037 pending uses,
