@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Current:** [smartpca admitted roles, validation and remaining full-goal work](SMARTPCA_CATALOG_CHECKPOINT_2026-11-23.md).
+One scoped native family and six source reviews are admitted: **154 scoped
+families (29 native+125 upstream), 1,697 reviewed/1,025 pending uses, 250 papers
+and 2,722 positive observations**. Prior reviews and unrelated records remain.
+Twenty-one model/transaction tests per host, ten actual CLI refusals, fresh
+all250 primary checks, the861-entry manifest and styled preview/installed UI pass.
+Per-context editions/program IDs remain distinct. The33 existing website citation
+errors remain open; both reports remain withheld from Pages. Continue remaining
+high-impact gaps and all pending/missed-provider reviews. Preserve private
+evidence/runtimes/JARs, all19 worktrees and restricted historical exports. The
+full objective is unfinished; lower entries are historical where superseded.
+
 **Latest handover:** [native smartpca FST/global command and exact remaining work](HANDOVER_SMARTPCA_FST_2026-11-23.md).
 PCA and FST RUN/VERIFY/REPLAY are qualified through global `smartpca-tools`.
 The final producer passed 1,906 normal tests and 362 packaged protocol commands.

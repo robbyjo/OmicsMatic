@@ -1,0 +1,279 @@
+{
+  "status": "PASS_ONE_SMARTPCA_NATIVE_FAMILY_SIX_SOURCE_ROLES_WITH_CONTEXT_VERSIONS",
+  "counts": {
+    "papers": 250,
+    "labels": 446,
+    "provider_definitions": 485,
+    "observations": 2722,
+    "reviewed_uses": 1697,
+    "pending_uses": 1025,
+    "unchanged_prior_reviews": 1691,
+    "new_reviews": 6,
+    "unchanged_unrelated_observations": 2716,
+    "unchanged_unrelated_inventory_rows": 445,
+    "scoped_families": 154,
+    "native": 29,
+    "upstream": 125,
+    "including_existing_adapters": 157,
+    "method_overlap": 19,
+    "missing": 258,
+    "new_native_family_credit": 1,
+    "new_upstream_family_credit": 0,
+    "added_positive_observations": 0,
+    "removed_positive_observations": 0,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false
+  },
+  "roles": [
+    {
+      "paper_id": "P019",
+      "doi": "10.1038/s41586-026-10836-6",
+      "pmcid": "PMC13600940",
+      "xml_sha256": "67a35ac2cd25950973379382addff05cb689b1a4b1424c71ec1e54b7e8b01209",
+      "summary": "Computed MVP genetic principal components with reported EIGENSOFT v6; separately projected ROSMAP participants onto 1000 Genomes reference eigenvectors using smartpca for ancestry validation.",
+      "roles": [
+        {
+          "context": "MVP genetic principal components",
+          "reported_package_edition": "6",
+          "reported_program_version": null
+        },
+        {
+          "context": "ROSMAP reference-panel projection",
+          "reported_package_edition": null,
+          "reported_program_version": null
+        }
+      ],
+      "reported_settings": {},
+      "boundary": "Do not assign the MVP v6 edition to the separate ROSMAP call. QC, genotype imputation, ancestry harmonization, quadratic discriminant assignment and GReX imputation are separate. Projection mode and complete caller settings remain unreported.",
+      "anchors": [
+        {
+          "paragraph_index": 59,
+          "section": "Methods / I-TWAS and snGReX-PheWAS in MVP / MVP genotype quality control",
+          "paragraph_sha256": "41d6355a30dda16812b341a0151e6c85bffb9aa61a6d48667278080a18067d8f"
+        },
+        {
+          "paragraph_index": 67,
+          "section": "Methods / Out-of-sample validation of PsychAD snTIMs / Validation of class-level PsychAD snTIMs in ROSMAP",
+          "paragraph_sha256": "2f347996f8d8e39d9c1ec4bb7702b0f38498759d30a5759882dbd56d902c0b4a"
+        }
+      ],
+      "original_observation_identity": {
+        "bytes": 796,
+        "sha256": "ca2e286315737661cf730425eb9c9ae95a6f2818cae8bc29d23afca340ddd9fa"
+      },
+      "original_extraction_version_reported_near_name": "6",
+      "source_role_review_applied": true,
+      "original_author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "source_table_evidence": [],
+      "scope_limit": "Do not assign the MVP v6 edition to the separate ROSMAP call. QC, genotype imputation, ancestry harmonization, quadratic discriminant assignment and GReX imputation are separate. Projection mode and complete caller settings remain unreported."
+    },
+    {
+      "paper_id": "P041",
+      "doi": "10.1038/s41586-023-06831-w",
+      "pmcid": "PMC10733150",
+      "xml_sha256": "ae9b254ed9a0725706c14c83dc1242fc7281e48d89adfaa79e2b9032e1ed199d",
+      "summary": "Used PCA with the lsqproject feature in the reported EIGENSTRAT/EIGENSOFT 7.2.1 package to validate ancestry-masked genotypes alongside F4 ratios and ADMIXTURE.",
+      "roles": [
+        {
+          "context": "PCA reference projection during mask validation",
+          "reported_package_edition": "7.2.1",
+          "reported_program_version": null
+        }
+      ],
+      "reported_settings": {
+        "lsqproject": true
+      },
+      "boundary": "RFMIX local ancestry, construction of masks, F4 ratios, ADMIXTURE and the greater-than-95-percent masking exclusion are separate. Do not reinterpret the EIGENSTRAT package mention as its case-control association command.",
+      "anchors": [
+        {
+          "paragraph_index": 55,
+          "section": "Methods / Ancestry inference",
+          "paragraph_sha256": "bc1c6dc9a6179fcf15d189bf5d014b8580519f7c1f6ab821cdc58fe6abf79133"
+        }
+      ],
+      "original_observation_identity": {
+        "bytes": 712,
+        "sha256": "8887442a84ad0daea254847b0b4b2fdcc18cf19c6e25825a58f351a4afecd56b"
+      },
+      "original_extraction_version_reported_near_name": "7.2.1",
+      "source_role_review_applied": true,
+      "original_author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "source_table_evidence": [],
+      "scope_limit": "RFMIX local ancestry, construction of masks, F4 ratios, ADMIXTURE and the greater-than-95-percent masking exclusion are separate. Do not reinterpret the EIGENSTRAT package mention as its case-control association command."
+    },
+    {
+      "paper_id": "P045",
+      "doi": "10.1038/s41586-025-09811-4",
+      "pmcid": "PMC12872451",
+      "xml_sha256": "7c8702baac1241ce1024443b7ab56c6377a83c2d6469598e3ce05a1d01224609",
+      "summary": "Ran unprojected and least-squares-projected smartpca analyses of pseudohaploidized data with reported shrinkmode YES and r2thresh 0.7.",
+      "roles": [
+        {
+          "context": "Unprojected and projected population PCA",
+          "reported_package_edition": null,
+          "reported_program_version": null
+        }
+      ],
+      "reported_settings": {
+        "lsqproject": true,
+        "shrinkmode": true,
+        "r2thresh": 0.7
+      },
+      "boundary": "The edition, killr2 switch, complete LD rule and outlier settings are unreported. Do not infer that setting r2thresh alone enabled the source LD filter. The separately reported PLINK PCoA, ADMIXTURE and f-statistics remain distinct.",
+      "anchors": [
+        {
+          "paragraph_index": 36,
+          "section": "Methods / Analysis of pseudohaploidized data",
+          "paragraph_sha256": "922084936f54248ab4f37ae4890d9b93192c1f8a18e6987610ce1db388b4df9c"
+        }
+      ],
+      "original_observation_identity": {
+        "bytes": 740,
+        "sha256": "6a1f89d6b0ead9dd1788635687eadfb512ac494607434c5066a8f1ea329f537c"
+      },
+      "original_extraction_version_reported_near_name": null,
+      "source_role_review_applied": true,
+      "original_author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "source_table_evidence": [],
+      "scope_limit": "The edition, killr2 switch, complete LD rule and outlier settings are unreported. Do not infer that setting r2thresh alone enabled the source LD filter. The separately reported PLINK PCoA, ADMIXTURE and f-statistics remain distinct."
+    },
+    {
+      "paper_id": "P071",
+      "doi": "10.1038/s41586-025-09799-x",
+      "pmcid": "PMC12711557",
+      "xml_sha256": "0706316643483beae85d52dd959c6615e3f3f1ece9778a7d5b712e6126db9772",
+      "summary": "Built PCA axes from selected present-day Human Origins populations and projected ancient individuals using lsqproject YES, numoutlieriter 0 and shrinkmode YES.",
+      "roles": [
+        {
+          "context": "Present-day-reference PCA and ancient-sample projection",
+          "reported_package_edition": null,
+          "reported_program_version": null
+        }
+      ],
+      "reported_settings": {
+        "lsqproject": true,
+        "numoutlieriter": 0,
+        "shrinkmode": true
+      },
+      "boundary": "Preserve separate Eurasian and East Asian reference populations. The 82-population starting panel, later ADMIXTURE population subset, PLINK LD pruning and model selection are separate; the exact smartpca edition is unreported.",
+      "anchors": [
+        {
+          "paragraph_index": 22,
+          "section": "Methods / Population structure analysis",
+          "paragraph_sha256": "5cd46a280dfcf0357371ffdc839d279716c06b3dfbdc9aab2f20117b42fad9b8"
+        }
+      ],
+      "original_observation_identity": {
+        "bytes": 730,
+        "sha256": "661b11fe587df5257c9b21eb4b260642aecbfe588c5bfa74716dddfc2009fe07"
+      },
+      "original_extraction_version_reported_near_name": null,
+      "source_role_review_applied": true,
+      "original_author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "source_table_evidence": [],
+      "scope_limit": "Preserve separate Eurasian and East Asian reference populations. The 82-population starting panel, later ADMIXTURE population subset, PLINK LD pruning and model selection are separate; the exact smartpca edition is unreported."
+    },
+    {
+      "paper_id": "P180",
+      "doi": "10.1016/j.ajhg.2024.10.022",
+      "pmcid": "PMC11739871",
+      "xml_sha256": "da52d87762688261114ecbab2ed96ddd482f7cf2c6ec4b1360e0df9f2051eb8a",
+      "summary": "Used smartpca from reported EIGENSOFT 7.2.0 for modern-reference PCA with ancient samples projected by least squares and outlier removal off; separately computed pairwise FST with fstonly YES.",
+      "roles": [
+        {
+          "context": "Modern/ancient PCA projection",
+          "reported_package_edition": "7.2.0",
+          "reported_program_version": null
+        },
+        {
+          "context": "Pairwise population FST",
+          "reported_package_edition": null,
+          "reported_program_version": null,
+          "edition_context": "The PCA paragraph names EIGENSOFT7.2.0; the separate FST paragraph does not restate an edition."
+        }
+      ],
+      "reported_settings": {
+        "PCA": {
+          "lsqproject": true,
+          "outlier_removal": false,
+          "minimum_SNP_cutoff": 100000
+        },
+        "FST": {
+          "fstonly": true
+        }
+      },
+      "boundary": "PCA and fstonly are separate calls, not simultaneous flags. Preserve the study SNP-coverage cutoff as preprocessing. A validated 7.2.1 selection does not establish 7.2.0 equivalence, original FST defaults, uncertainty or whole-study reproduction.",
+      "anchors": [
+        {
+          "paragraph_index": 12,
+          "section": "Material and methods / Population genomic analyses",
+          "paragraph_sha256": "bbc6f71a6b9feeea964b25412465314a5918a303655ec2e9c9c384565438e0ce"
+        },
+        {
+          "paragraph_index": 20,
+          "section": "Material and methods / Population genomic analyses",
+          "paragraph_sha256": "3196609788a66c4692fe290ba1e15ca02afd1a60af99fb4945d7f4b71349265f"
+        }
+      ],
+      "original_observation_identity": {
+        "bytes": 752,
+        "sha256": "73b41e91914f41e41046e67d29af427ce232fbe578183f9bdb7e482833bce16c"
+      },
+      "original_extraction_version_reported_near_name": null,
+      "source_role_review_applied": true,
+      "original_author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "source_table_evidence": [],
+      "scope_limit": "PCA and fstonly are separate calls, not simultaneous flags. Preserve the study SNP-coverage cutoff as preprocessing. A validated 7.2.1 selection does not establish 7.2.0 equivalence, original FST defaults, uncertainty or whole-study reproduction. The100,000-SNP cutoff belongs to PCA; its application to FST is not established. No edition/default/uncertainty is inferred for the FST call."
+    },
+    {
+      "paper_id": "P229",
+      "doi": "10.1016/j.ajhg.2026.02.023",
+      "pmcid": "PMC13078719",
+      "xml_sha256": "9fd25a19989d361f91180bd6a64ce9e9c9506acabca080bef5ba1db23eb1877b",
+      "summary": "Computed ancestry principal components with the literal reported SmartPCA v.13050 after explicit merging, allele/position matching, LD pruning and PCA-specific frequency selection.",
+      "roles": [
+        {
+          "context": "Ancestry PCA",
+          "reported_package_edition": null,
+          "reported_program_version": "13050"
+        }
+      ],
+      "reported_settings": {
+        "PCA_MAF_greater_than": 0.05
+      },
+      "boundary": "13050 is a literal program version, not an inferred EIGENSOFT package release. The selected 7.2.1 binary reports 16000 and is not that historical executable. HGDP/1000G resource selection, merging, missingness restrictions and ADMIXTURE/K selection remain separate.",
+      "anchors": [
+        {
+          "paragraph_index": 11,
+          "section": "Subjects and methods / Global ancestry inference and principal-component analysis",
+          "paragraph_sha256": "ffeaba8b2fa3bd1aef09476b7ba5d90fc39f4ba2550b078b911343359df1a66f"
+        }
+      ],
+      "original_observation_identity": {
+        "bytes": 815,
+        "sha256": "3a47ef0509f9a37fafc048d7c07235e909f839ae28e29f4291a703535eb3d765"
+      },
+      "original_extraction_version_reported_near_name": null,
+      "source_role_review_applied": true,
+      "original_author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "source_table_evidence": [],
+      "scope_limit": "13050 is a literal program version, not an inferred EIGENSOFT package release. The selected 7.2.1 binary reports 16000 and is not that historical executable. HGDP/1000G resource selection, merging, missingness restrictions and ADMIXTURE/K selection remain separate."
+    }
+  ],
+  "qualification": {
+    "bytes": 6443,
+    "sha256": "d368ed0e85fc4e8b02985409beb2413032e4140daa71a587932ad2c57b3ab416"
+  },
+  "new_reviews": 6,
+  "existing_scope_notes_updated": 0,
+  "whole_tool_qualified": false,
+  "whole_paper_reproduced": false,
+  "whole_goal_complete": false
+}

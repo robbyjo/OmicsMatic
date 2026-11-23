@@ -1,0 +1,71 @@
+{
+  "status": "PASS_SAVED_READER_TWO_HOSTS_VALID_AND_THREE_EARLY_INTEGRITY_REFUSALS",
+  "cases": [
+    {
+      "host": "windows",
+      "case": "valid",
+      "exit_code": 0,
+      "expected": 0,
+      "stdout": "{\n  \"status\": \"PASS_SMARTPCA_ONE_NATIVE_FAMILY_SIX_CONTEXT_ROLES_WITH_RETAINED_WEBSITE_FAILURE\",\n  \"logical_files\": 241,\n  \"tests_per_host\": 21,\n  \"actual_CLI_refusals\": 10,\n  \"complete_manifest_entries\": 861,\n  \"counts\": {\n    \"papers\": 250,\n    \"labels\": 446,\n    \"provider_definitions\": 485,\n    \"observations\": 2722,\n    \"reviewed_uses\": 1697,\n    \"pending_uses\": 1025,\n    \"unchanged_prior_reviews\": 1691,\n    \"new_reviews\": 6,\n    \"unchanged_unrelated_observations\": 2716,\n    \"unchanged_unrelated_inventory_rows\": 445,\n    \"scoped_families\": 154,\n    \"native\": 29,\n    \"upstream\": 125,\n    \"including_existing_adapters\": 157,\n    \"method_overlap\": 19,\n    \"missing\": 258,\n    \"new_native_family_credit\": 1,\n    \"new_upstream_family_credit\": 0,\n    \"added_positive_observations\": 0,\n    \"removed_positive_observations\": 0,\n    \"whole_tool_qualified\": false,\n    \"whole_paper_reproduced\": false,\n    \"whole_goal_complete\": false\n  },\n  \"native_PCA_FST_workflow\": {\n    \"status\": \"PASS_NATIVE_SMARTPCA_PCA_FST_GLOBAL_WORKFLOWS\",\n    \"normal_tests\": 1906,\n    \"packaged_protocol_commands\": 362,\n    \"source_finite_cases\": 23,\n    \"source_refusals\": 1,\n    \"source_direct_jackknife_cases\": 23,\n    \"finite_original_comparisons_across_profiles\": 69,\n    \"methods_per_JVM\": 14,\n    \"example_commands\": 18,\n    \"unchanged_previous_payloads\": 22972,\n    \"exact_dispatch_source_extension_lines\": 3,\n    \"native_fst_workflow_qualified\": true,\n    \"global_CLI_dispatch_available\": true,\n    \"catalog_admitted\": false,\n    \"new_family_credit\": 0,\n    \"new_reviews\": 0,\n    \"whole_goal_complete\": false\n  },\n  \"prior_prepared_PCA\": {\n    \"status\": \"PASS_NATIVE_PREPARED_SMARTPCA_RUN_VERIFY_REPLAY\",\n    \"logical_evidence_files\": 8560,\n    \"normal_tests\": 1892,\n    \"previous_payloads_unchanged\": 22971,\n    \"packaged_protocol_commands\": 261,\n    \"workflow_methods_per_JVM\": 15,\n    \"example_commands\": 18,\n    \"original_unique_finite_cases\": 16,\n    \"original_finite_comparisons_across_profiles\": 48,\n    \"new_original_C_calls\": 0,\n    \"fresh_all250_source_audit_profiles\": 2,\n    \"frozen_predecessor_readers\": 3,\n    \"workflow_qualified\": true,\n    \"FST_implemented\": false,\n    \"global_dispatch_integrated\": false,\n    \"catalog_admitted\": false,\n    \"new_family_credit\": 0,\n    \"new_reviews\": 0,\n    \"whole_goal_complete\": false\n  },\n  \"explicit_retained_predecessor_bridge_checked\": true,\n  \"styled_preview_and_installed_UI_passed\": true,\n  \"full_checkWebsite_passed\": false,\n  \"existing_missing_citation_panels\": 33,\n  \"original_analysis_reexecuted\": false,\n  \"whole_goal_complete\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "host": "windows",
+      "case": "false-count",
+      "exit_code": 1,
+      "expected": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_smartpca_catalog_checkpoint.py\", line 11, in verify\n    assert (status['tests_per_host'],status['actual_CLI_refusals'],status['complete_manifest_entries'])==(21,10,861),'Reported checkpoint counts differ from evidence'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Reported checkpoint counts differ from evidence\n"
+    },
+    {
+      "host": "windows",
+      "case": "changed-source",
+      "exit_code": 1,
+      "expected": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_smartpca_catalog_checkpoint.py\", line 16, in verify\n    assert pin((root/path).read_bytes())==wanted,'Changed checkpoint source: '+name\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Changed checkpoint source: tools/literature/smartpca_catalog/__init__.py\n"
+    },
+    {
+      "host": "windows",
+      "case": "changed-archive",
+      "exit_code": 1,
+      "expected": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"D:\\projects\\JLinAlg\\build\\fu-1\\tools\\literature\\verify_smartpca_catalog_checkpoint.py\", line 18, in verify\n    assert pin(index_raw)==status['evidence_index'] and pin(archive_raw)==status['evidence_archive'],'Changed checkpoint evidence archive/index'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Changed checkpoint evidence archive/index\n"
+    },
+    {
+      "host": "linux",
+      "case": "valid",
+      "exit_code": 0,
+      "expected": 0,
+      "stdout": "{\n  \"status\": \"PASS_SMARTPCA_ONE_NATIVE_FAMILY_SIX_CONTEXT_ROLES_WITH_RETAINED_WEBSITE_FAILURE\",\n  \"logical_files\": 241,\n  \"tests_per_host\": 21,\n  \"actual_CLI_refusals\": 10,\n  \"complete_manifest_entries\": 861,\n  \"counts\": {\n    \"papers\": 250,\n    \"labels\": 446,\n    \"provider_definitions\": 485,\n    \"observations\": 2722,\n    \"reviewed_uses\": 1697,\n    \"pending_uses\": 1025,\n    \"unchanged_prior_reviews\": 1691,\n    \"new_reviews\": 6,\n    \"unchanged_unrelated_observations\": 2716,\n    \"unchanged_unrelated_inventory_rows\": 445,\n    \"scoped_families\": 154,\n    \"native\": 29,\n    \"upstream\": 125,\n    \"including_existing_adapters\": 157,\n    \"method_overlap\": 19,\n    \"missing\": 258,\n    \"new_native_family_credit\": 1,\n    \"new_upstream_family_credit\": 0,\n    \"added_positive_observations\": 0,\n    \"removed_positive_observations\": 0,\n    \"whole_tool_qualified\": false,\n    \"whole_paper_reproduced\": false,\n    \"whole_goal_complete\": false\n  },\n  \"native_PCA_FST_workflow\": {\n    \"status\": \"PASS_NATIVE_SMARTPCA_PCA_FST_GLOBAL_WORKFLOWS\",\n    \"normal_tests\": 1906,\n    \"packaged_protocol_commands\": 362,\n    \"source_finite_cases\": 23,\n    \"source_refusals\": 1,\n    \"source_direct_jackknife_cases\": 23,\n    \"finite_original_comparisons_across_profiles\": 69,\n    \"methods_per_JVM\": 14,\n    \"example_commands\": 18,\n    \"unchanged_previous_payloads\": 22972,\n    \"exact_dispatch_source_extension_lines\": 3,\n    \"native_fst_workflow_qualified\": true,\n    \"global_CLI_dispatch_available\": true,\n    \"catalog_admitted\": false,\n    \"new_family_credit\": 0,\n    \"new_reviews\": 0,\n    \"whole_goal_complete\": false\n  },\n  \"prior_prepared_PCA\": {\n    \"status\": \"PASS_NATIVE_PREPARED_SMARTPCA_RUN_VERIFY_REPLAY\",\n    \"logical_evidence_files\": 8560,\n    \"normal_tests\": 1892,\n    \"previous_payloads_unchanged\": 22971,\n    \"packaged_protocol_commands\": 261,\n    \"workflow_methods_per_JVM\": 15,\n    \"example_commands\": 18,\n    \"original_unique_finite_cases\": 16,\n    \"original_finite_comparisons_across_profiles\": 48,\n    \"new_original_C_calls\": 0,\n    \"fresh_all250_source_audit_profiles\": 2,\n    \"frozen_predecessor_readers\": 3,\n    \"workflow_qualified\": true,\n    \"FST_implemented\": false,\n    \"global_dispatch_integrated\": false,\n    \"catalog_admitted\": false,\n    \"new_family_credit\": 0,\n    \"new_reviews\": 0,\n    \"whole_goal_complete\": false\n  },\n  \"explicit_retained_predecessor_bridge_checked\": true,\n  \"styled_preview_and_installed_UI_passed\": true,\n  \"full_checkWebsite_passed\": false,\n  \"existing_missing_citation_panels\": 33,\n  \"original_analysis_reexecuted\": false,\n  \"whole_goal_complete\": false\n}\n",
+      "stderr": ""
+    },
+    {
+      "host": "linux",
+      "case": "false-count",
+      "exit_code": 1,
+      "expected": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/mnt/d/projects/JLinAlg/build/fu-1/tools/literature/verify_smartpca_catalog_checkpoint.py\", line 11, in verify\n    assert (status['tests_per_host'],status['actual_CLI_refusals'],status['complete_manifest_entries'])==(21,10,861),'Reported checkpoint counts differ from evidence'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Reported checkpoint counts differ from evidence\n"
+    },
+    {
+      "host": "linux",
+      "case": "changed-source",
+      "exit_code": 1,
+      "expected": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/mnt/d/projects/JLinAlg/build/fu-1/tools/literature/verify_smartpca_catalog_checkpoint.py\", line 16, in verify\n    assert pin((root/path).read_bytes())==wanted,'Changed checkpoint source: '+name\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Changed checkpoint source: tools/literature/smartpca_catalog/__init__.py\n"
+    },
+    {
+      "host": "linux",
+      "case": "changed-archive",
+      "exit_code": 1,
+      "expected": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/mnt/d/projects/JLinAlg/build/fu-1/tools/literature/verify_smartpca_catalog_checkpoint.py\", line 18, in verify\n    assert pin(index_raw)==status['evidence_index'] and pin(archive_raw)==status['evidence_archive'],'Changed checkpoint evidence archive/index'\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: Changed checkpoint evidence archive/index\n"
+    }
+  ],
+  "check_scope": "Saved count, source and archive identity controls; full scientific contradiction controls remain in the qualified native packets.",
+  "original_C_reexecuted": false
+}

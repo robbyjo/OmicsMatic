@@ -1,3 +1,19 @@
+# Current smartpca catalog checkpoint
+
+250 papers,446 labels,485 provider definitions and2,722 positive observations;1,697 reviewed/1,025 pending uses. There are154 scoped families (29 native +125 upstream),157 including three existing adapters;258 missing,19 method-overlap and three aliases without extra family credit. The full250-paper implementation and semantic-review goal remains unfinished.
+
+Native Java source-specific EIG7.2.1 smartpca program16000 PCA/outlier/perturbation-shrinkage and population FST/inbreeding profiles, commit4f7e9f0bf7c85f45ad27d895e1dd7d28a86ec3d1. Global smartpca-tools RUN, complete scientific recomputation VERIFY and actual child REPLAY. Prepared strict EIGENSTRAT text, explicit population selection, bounded resources and exact producer/source binding. Source marker/pair contributions, global block weights, position-unit inference and weighted jackknife are retained. Negative finite FST is not clamped. Undefined/one-block ordinary diagnostics retain false field eligibility; original inbreeding with at most one block is refused. No original EIGENSOFT installation is needed for native analysis. No whole upstream package, author environment, historical-version equivalence, whole-paper/biological reproduction, authenticity or OS-containment claim.
+
+Six individual paper roles are reviewed. P019 MVP EIGENSOFTv6 is separate from ROSMAP reference projection with unreported edition. P041 reports7.2.1; P045/P071 editions remain unreported. P045 r2thresh0.7 does not establish killr2. P071 Eurasian/East Asian reference panels stay distinct. P180 PCA7.2.0, its100,000-SNP cutoff and LSQ/outlier settings are separate from its fstonly call whose edition/defaults/uncertainty are not restated. P229 program13050 is not a package edition or qualified program16000. Available native7.2.1 does not replace paper-reported or unreported versions. LD pruning, imputation, ancestry masking and other packages remain separate.
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED. Supply/install the named permitted input, Java17+ or exact complete producer JAR; otherwise retain the skip. FAIL2: NO COMPLETE RESULT. Keep raw/partial/failed/undefined/superseded evidence, fix the named input/numerical/resource/deadline/integrity cause and retry NEW output. Read WARNINGS.md, analysis-status.json and per-field flags; require completion and passing VERIFY. Never repair IDs, replace NA/NaN/Inf, clamp negative FST or refresh historical hashes. Explicit diagnostic retention does not grant scientific eligibility. Retain the original one-block inbreeding abort/checker failure and the corrected final qualification separately. Native analysis requires no R/Python/EIGENSOFT runtime. Cell Ranger remains excluded. Private runtimes/JARs/full evidence require private transfer; restricted histories remain local.
+
+See [current workflow guide](../SMARTPCA_TOOLS.md).
+
+---
+
+Earlier checkpoint text is historical.
+
 # Current MR-PRESSO catalog checkpoint
 
 250 papers, 446 labels, 485 provider definitions and 2,722 positive observations; 1,691 reviewed/1,031 pending uses. There are 153 scoped families (28 native +125 upstream), 156 including three existing adapters; 258 missing, 20 method-overlap and three aliases without extra family credit. The full250-paper implementation and semantic-review goal remains unfinished.
