@@ -72,3 +72,18 @@ a GitHub clone does not include those runtimes or the large project JAR. Keep al
 original/failed/partial scientific evidence and exact producers. Only verified
 redundant reader-packet and example compiler copies with complete retained recovery
 may be cleaned after byte-exact publication.
+
+
+All 39 selected source/checkpoint files were read back byte for byte from GitHub
+at `7d656c7f4f413a799297260b9df73fe4a00be80d`; [PUBLICATION.json](PUBLICATION.json)
+records this component stage. Website source and release assets were unchanged;
+no Actions run was triggered. Eighteen other owners' HEADs, dirty bytes and indexes
+were preserved. Previously restricted historical branches remain local.
+
+After verified publication, two redundant reader-packet copies and three example
+compiler directories were removed: nine files, 2,732,737 logical bytes. The measured
+available-space increase was 2,748,416 bytes and may include unrelated filesystem
+activity. [CLEANUP.json](CLEANUP.json) lists exact paths, checks and recovery. Every
+removed byte is recoverable from the published packet/recovery archives. The
+unique altered-archive control and every original/failed scientific input/output,
+producer, runtime and worktree remain. No unrelated process was stopped.
