@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Latest prepared core:** [SCENIC+ TF2G/R2G/eGRN/activity workflow and exact next work](SCENICPLUS_NETWORK_CHECKPOINT_2026-11-23.md).
+Both explicit source interfaces pass RUN/VERIFY/REPLAY and independent original
+comparisons; the producer passed 2,069 normal tests. CSV and array-layout effects,
+unknown merged GSEA statistics, masked failures and ID conversions stay visible.
+Unpaired/metacell and motif/resource preparation, global dispatch and guarded
+admission remain unfinished: **zero new family/review credit**. Totals remain
+**155 scoped families (29 native, 126 upstream), 1,702 reviewed/1,020 pending uses
+and 250 papers**. Follow the checkpoint's resume order, warning remedies and
+private license/transfer restrictions. Preserve exact producers, raw failures,
+all 19 worktrees and restricted refs. The full goal remains unfinished; lower
+entries are historical where superseded.
+
 **Latest component:** [SCENIC+ Java R2G, tested outcomes and remaining full-family work](SCENICPLUS_R2G_CHECKPOINT_2026-11-23.md).
 Actual RUN/VERIFY/REPLAY and two independent original comparisons pass; the final
 producer passed 2,069 normal tests. **Masked Pearson reproduces an upstream
