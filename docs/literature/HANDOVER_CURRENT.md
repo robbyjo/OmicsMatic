@@ -1,4 +1,21 @@
 # Current toolbox handover
+**Handover: [saved full Squidpy draft, known failure and exact resume steps](SQUIDPY_WORKFLOW_HANDOVER_2026-11-22.md).**
+All14 current draft files and13 helpers are saved outside compiled source paths,
+with synthetic/prototype receipts in a content-addressed packet.
+The draft compiles and13 contract tests pass; full qualification remains pending.
+The final42-case follow-up records40 expected outcomes and two unexpected
+Nanostring3D-image admission failures. All three batches ended; failed batches
+stopped before their later cases. Read the final receipts before resuming.
+The qualified native component remains unchanged. **Zero new family credit or
+reviews**:151 scoped families (27 native+124 upstream),1,679 reviewed/1,043 pending
+uses and250 papers. Finish the image fix, independent originals/VERIFY/REPLAY,
+normal/package qualification and guarded six-paper admission, then other high-impact
+gaps and pending/missed-provider reviews. **Transfer the new WSL-only runtime root
+as well as D: evidence** before machine retirement. Other worktrees and historical
+export restrictions remain preserved. Read the prominent SKIP3/FAIL2 remedies and
+33 existing website-citation failures. The full goal is unfinished; lower entries
+are historical where superseded.
+
 **Current: [qualified native Squidpy component and exact remaining work](SQUIDPY_NATIVE_CHECKPOINT_2026-11-22.md).**
 Native Java weighted-CSR Moran/Geary now passes **740 normal-build tests** and
 **728 packaged component tests per Windows21/Windows25/Linux21 JVM**. All22,863

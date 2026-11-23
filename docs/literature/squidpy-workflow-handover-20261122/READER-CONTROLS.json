@@ -1,0 +1,123 @@
+{
+  "status": "DEVELOPMENT_PRESERVATION_READERS_PASS_AND_THREE_CONTRADICTIONS_REFUSED",
+  "cases": [
+    {
+      "case": "development-reader-windows",
+      "exit_code": 0,
+      "expected_admitted": true,
+      "stdout": {
+        "bytes": 479,
+        "sha256": "a87e5469f091de8d913ab9065f5463b5f7431b682318d018ee56de0a92fb6c39"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "case": "development-reader-linux",
+      "exit_code": 0,
+      "expected_admitted": true,
+      "stdout": {
+        "bytes": 463,
+        "sha256": "75d961b6a6383dcf81315479377a8cc08190b16446bb031e17d8cecdf13cf95b"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "case": "changed-draft",
+      "exit_code": 1,
+      "expected_admitted": false,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 117,
+        "sha256": "e70ae2d321ab6826134bad3d65a1bf92f6e9f7abcc2df2a6b6302ceb87daca03"
+      }
+    },
+    {
+      "case": "resealed-false-prototype-count",
+      "exit_code": 1,
+      "expected_admitted": false,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 57,
+        "sha256": "d77365bc2046343cb88ea068df9813ef7062bf87641b16e4647a8680582ff926"
+      }
+    },
+    {
+      "case": "resealed-false-final-count",
+      "exit_code": 1,
+      "expected_admitted": false,
+      "stdout": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "bytes": 57,
+        "sha256": "d77365bc2046343cb88ea068df9813ef7062bf87641b16e4647a8680582ff926"
+      }
+    },
+    {
+      "case": "native-reader",
+      "exit_code": 0,
+      "expected_admitted": true,
+      "stdout": {
+        "bytes": 562,
+        "sha256": "fe929d306be0d3d5ce2891bd5d48349ea291ad31013710b8fabb066eaecd9944"
+      },
+      "stderr": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "negative_control_modifications": {
+    "changed-draft": {
+      "path": "drafts/src/main/java/org/jlinalg/cli/SquidpyWorkflowCli.java",
+      "content": {
+        "bytes": 10848,
+        "sha256": "3ab99d22bc253538ab9597bfefc8cdc3c80851bcdae7a6fdda81acea085b3f82"
+      },
+      "manifest": {
+        "bytes": 7790,
+        "sha256": "407d60bd21e4fd7b4d92a728348b5969fdcdd9ee369c5ac7e2ad2aa48e370048"
+      }
+    },
+    "resealed-false-prototype-count": {
+      "path": "STATUS.json",
+      "content": {
+        "bytes": 1849,
+        "sha256": "2cc1c31468c794078ccb9e276167e262e8f65e7357995aa88398d316b1962fe2"
+      },
+      "manifest": {
+        "bytes": 7790,
+        "sha256": "006626675cad5dce69a4bdaa20ebea53bc1d84a8e0933a4d4c223dd4adb02d90"
+      }
+    },
+    "resealed-false-final-count": {
+      "path": "FINAL-STATUS.json",
+      "content": {
+        "bytes": 914,
+        "sha256": "b63b229d775860a8e25ac955ee21be93592a6e4b135aa7d276e44c12901a771d"
+      },
+      "manifest": {
+        "bytes": 7790,
+        "sha256": "43a4800c7a4deff8b7dddef6b621d685d88e6e911c08912b822b2da25ce33759"
+      }
+    }
+  },
+  "source_or_original_analysis_reexecuted": false,
+  "native_producer_rechecked": true,
+  "full_adapter_qualified": false,
+  "private_control_copies": "D:\\projects\\JLinAlg\\build\\git-publish\\20261122-squidpy-workflow-handover-136\\reader-controls-1",
+  "cleanup": "Retained while publishing; duplicate copied controls may be retired after exact replacement verification. Original scientific captures and runtime prefixes must remain."
+}
