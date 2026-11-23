@@ -1,5 +1,18 @@
 # Current toolbox handover
 
+**Read first:** [SCENIC+ private-runtime development, exact next tasks and transfer restrictions](HANDOVER_SCENICPLUS_2026-11-23.md).
+The user accepted the unmodified private academic runtime. Its full dependency
+check and original region-to-gene API/CLI artificial comparison pass; **the Java
+SCENIC+ adapter and full eGRN qualification remain unfinished, with zero new
+family/review credit**. Current totals remain **155 scoped families (29 native,
+126 upstream), 1,702 reviewed/1,020 pending uses and 250 papers**. Six source-role
+drafts include missed P153 direct-call evidence, not yet admitted. Preserve NaN
+warnings and all local evidence. **Older blanket WSL-transfer advice is subject
+to the new runtime's accepted copying/transfer restrictions.** Keep licensed
+source/runtimes and restricted histories out of GitHub. All 19 worktrees remain
+retained. The full objective remains unfinished; lower entries are historical
+where superseded.
+
 **Current:** [SCENIC catalog admission and full-goal next steps](SCENIC_CATALOG_CHECKPOINT_2026-11-23.md).
 One upstream family and five source-role reviews are admitted: **155 scoped
 families (29 native and 126 upstream), 1,702 reviewed/1,020 pending uses**.
