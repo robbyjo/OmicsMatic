@@ -31,3 +31,12 @@ Current totals are 155 scoped families (29 native and 126 upstream), 1,702
 reviewed and 1,020 pending uses, 250 papers and 2,722 positive observations.
 P070's reported pySCENIC 0.10.3 analysis stays SKIP3 under the available 0.12.1
 profile. SCENIC+, P153 review and the full toolbox objective remain unfinished.
+
+`PUBLICATION.json` records the admission commit and exact public-byte readback.
+`CLEANUP.json` records removal of only the three closed isolated browser profiles;
+all screenshots, consoles, failed checks, source, exact JARs and runtimes remain.
+`finalization.zip` and `FINALIZATION-FILES.json` retain exact helper sources and
+publication, successful deployment, live-page and cleanup receipts. Browser
+profile contents, per-file private cache hashes and worktree inventories are
+excluded. Both literature reports still return404 on Pages; the33 existing
+scientific-citation validation failures remain unresolved.
