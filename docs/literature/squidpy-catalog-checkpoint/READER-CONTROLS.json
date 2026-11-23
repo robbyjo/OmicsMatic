@@ -1,0 +1,56 @@
+{
+  "status": "PASS_TWO_HOSTS_VALID_AND_THREE_CHECKPOINT_CONTRADICTIONS",
+  "checks": 8,
+  "cases": [
+    {
+      "host": "windows",
+      "case": "valid",
+      "exit_code": 0,
+      "expected": 0
+    },
+    {
+      "host": "windows",
+      "case": "false-count",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "host": "windows",
+      "case": "changed-source",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "host": "windows",
+      "case": "changed-archive",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "host": "linux",
+      "case": "valid",
+      "exit_code": 0,
+      "expected": 0
+    },
+    {
+      "host": "linux",
+      "case": "false-count",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "host": "linux",
+      "case": "changed-source",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "host": "linux",
+      "case": "changed-archive",
+      "exit_code": 1,
+      "expected": 1
+    }
+  ],
+  "original_analysis_reexecuted": false,
+  "byte_integrity_not_host_authentication": true
+}

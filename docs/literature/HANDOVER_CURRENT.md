@@ -1,4 +1,18 @@
 # Current toolbox handover
+**Current: [Squidpy admitted roles, validation and remaining full-goal work](SQUIDPY_CATALOG_CHECKPOINT_2026-11-22.md).**
+One scoped original-workflow upstream family and six source reviews are admitted:
+**152 scoped families (27 native+125 upstream),1,685 reviewed/1,037 pending uses,
+250 papers and2,722 positive observations**. All prior reviews and unrelated
+records remain preserved. Sixteen model/transaction tests per host,ten actual
+CLI refusals, fresh all250 source checks,857-entry manifest and styled preview/
+installed desktop/mobile checks pass. P009 broader versions stay separate from
+its unknown near-name field;P161 historical reader remains unknown. The33
+existing website citation-panel failures remain open. Next prioritize high-impact
+gaps and all remaining semantic/missed-provider reviews. Preserve private D:/WSL
+runtimes/JARs/full evidence,19 worktrees and restricted historical exports. Read
+the checkpoint's prominent SKIP3/FAIL2 and process/transfer remedies. The full
+objective is unfinished; lower entries are historical where superseded.
+
 **Start here: [qualified Squidpy workflows and exact remaining admission work](SQUIDPY_QUALIFIED_HANDOVER_2026-11-22.md).**
 The global `squidpy-tools` RUN/VERIFY/REPLAY source is qualified for its declared
 original1.1.2/1.2.2/1.8.4 scope:763 tests per JVM,73 packaged scenarios and66

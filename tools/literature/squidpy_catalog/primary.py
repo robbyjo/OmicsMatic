@@ -37,9 +37,10 @@ def require(value,message):
     if not value:raise ValueError(message)
 
 
-def audit(cache):
+def audit(cache,papers_bytes=None):
     require(pin((ROOT/'tools/literature/collect_omics_review.py').read_bytes())['sha256']==EXTRACTOR_SHA,'Frozen primary extractor changed')
-    papers=json.loads((ROOT/'docs/literature/omics-2023-2026/papers.json').read_bytes());require(len(papers)==250,'Changed250-paper population')
+    if papers_bytes is None:papers_bytes=(ROOT/'docs/literature/omics-2023-2026/papers.json').read_bytes()
+    papers=json.loads(papers_bytes);require(len(papers)==250,'Changed250-paper population')
     prior=json.loads((ROOT/'docs/literature/squidpy-workflow-development/SOURCE-AUDIT.json').read_bytes())
     expected={r['paper_id']:r for r in prior['candidate_papers']};require(sorted(expected)==POSITIVE,'Changed prior source population')
     candidates=[];identities=[];tables=[]

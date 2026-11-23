@@ -1,13 +1,15 @@
-# Squidpy catalog draft: not admitted
+# Squidpy source roles and guarded catalog admission
 
 The source audit checks all250 frozen primary XML files and binds six original
-Squidpy observations. It awards no implementation credit. `model.py` is a saved
-draft of the proposed transition, with projected counts that are not current.
-Only syntax and the fresh source audit have been checked; there is no completed
-controller, transactional test suite, UI check or admission packet yet.
+Squidpy observations. The audit alone awards no implementation credit. The
+controller gates one upstream family/six reviews on the actual scoped original
+workflow qualification, complete predecessor integrity and deterministic role
+transition. [Admission commands and precise limits](ADMISSION.md) explain guarded
+plan/inspect/apply/verify. Check the actual installed proof/current checkpoint to
+determine whether admission has completed; projected counts alone are not evidence.
 
-Read [the current handover](../../../docs/literature/SQUIDPY_QUALIFIED_HANDOVER_2026-11-22.md)
-before resuming. In particular, add saved-predecessor input to `primary.audit`,
-preserve broader versus near-name edition evidence in the report, create the
-frozen source packet, and complete guarded plan/inspect/apply/verify and tests.
-Do not run `model.transition` directly against canonical files.
+`primary.audit` accepts retained predecessor paper bytes so fresh post-admission
+audits preserve the original extraction binding. The renderer distinguishes
+broader provenance from the near-name field. Do not call `model.transition`
+directly against canonical files or treat a current reader failure as permission
+to refresh historical source hashes.

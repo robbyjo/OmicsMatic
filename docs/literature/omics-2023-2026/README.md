@@ -1,3 +1,19 @@
+# Current Squidpy catalog checkpoint
+
+250 papers, 446 labels, 485 provider definitions and 2,722 positive observations; 1,685 reviewed/1,037 pending uses. There are 152 scoped families (27 native+125 upstream), 155 including three existing adapters; 258 missing, 21 method-overlap and three aliases without extra family credit. The complete 250-paper implementation/semantic-review objective remains unfinished.
+
+Original Squidpy1.1.2/1.2.2/1.8.4 Linux CPU spatial-neighbor, weighted supplied-graph autocorrelation, local-pair ligand-receptor and source-available Nanostring workflows through squidpy-tools RUN/VERIFY/REPLAY. Typed original exports, H5AD transport where applicable, source/dependency/input fingerprints, explicit undefined/tainted-probability admission and safe observed-process ownership are retained. Windows21/25 support packaged component tests and offline verification; original Python fits are Linux tests. Supplementary native Java weighted-CSR Moran/Geary remains separately qualified. No silent native fallback, whole upstream package/paper reproduction, author full environment reconstruction, biological calibration, opaque-H5AD interpretation by saved readers, host authentication or OS RAM/job-containment claim.
+
+Six source uses are reviewed with explicit unknown caller/edition boundaries. P008 does not identify an exact function. P009 broader provenance reports1.1.2/Python3.8.13 while its near-name extraction remains unknown; compatible3.8.20 tests do not establish the reported full environment. P010 needs the intended captured interaction snapshot. P024 requires per-sample30-neighbor inputs. P094 uses1.2.2 Moran statistics; its custom ranking is separate. P161 radius units and FOV/sample boundaries must be supplied; read.nanostring is a validated available interface, not an established historical caller. Unreported settings remain unreported; custom GNN/image/temporal/ranking methods are separate.
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED. Provide/install the exact named permitted local runtime/input, or retain the skip when unavailable or prohibited. FAIL2: NO COMPLETE RESULT. Keep original/raw/partial/failed/undefined/superseded evidence, correct the stated cause and retry NEW output. Read WARNINGS.md, analysis-status.json and per-row admission; require completion and successful VERIFY. Preserve IDs, source editions/options, NA/NaN/Inf and zero probabilities. Historical development float32 MatrixMarket exports containing NUL bytes are invalidated for transport qualification and retained unchanged; never strip padding or use them as qualified results. Use the corrected producer. Cell Ranger remains excluded. Transfer private runtimes/JARs/full evidence separately; historical sensitive exports stay withheld. Use current birth-checked process ownership; never stop unrelated processes.
+
+See [workflow guide](../SQUIDPY_WORKFLOWS.md).
+
+---
+
+Earlier checkpoint text is historical.
+
 # Current FUSION catalog checkpoint
 
 250 papers, 446 labels, 485 provider definitions and 2,722 positive paper-tool observations; 1,679 reviewed uses and 1,043 pending. There are 151 scoped families (27 native +124 upstream), 154 including three existing adapters; 258 missing, 22 method-overlap and three aliases without extra family credit. One false-positive cohort observation is retained separately. The full 250-paper implementation and semantic-completeness objective remains unfinished.

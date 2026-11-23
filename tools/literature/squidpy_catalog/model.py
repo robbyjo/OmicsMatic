@@ -32,9 +32,9 @@ ACTION=('SKIP3: DEPENDENT ANALYSIS SKIPPED. Provide/install the exact named perm
         'never strip padding or use them as qualified results. Use the corrected producer. Cell Ranger remains '
         'excluded. Transfer private runtimes/JARs/full evidence separately; historical sensitive exports stay '
         'withheld. Use current birth-checked process ownership; never stop unrelated processes.')
-CURRENT=('250 papers,446 labels,485 provider definitions and2,722 positive observations;1,685 reviewed/1,037 '
-         'pending uses. There are152 scoped families (27 native+125 upstream),155 including three existing '
-         'adapters;258 missing,21 method-overlap and three aliases without extra family credit. The complete '
+CURRENT=('250 papers, 446 labels, 485 provider definitions and 2,722 positive observations; 1,685 reviewed/1,037 '
+         'pending uses. There are 152 scoped families (27 native+125 upstream), 155 including three existing '
+         'adapters; 258 missing, 21 method-overlap and three aliases without extra family credit. The complete '
          '250-paper implementation/semantic-review objective remains unfinished.')
 NOTICE=('<aside id="squidpy-catalog-notice" style="box-sizing:border-box;max-width:calc(100% - 2rem);margin:1rem;'
         'padding:1rem;border:2px solid #a56613;background:#fff8e8;color:#302718;overflow-wrap:anywhere">'
@@ -112,6 +112,14 @@ def transition(before,primary,qualified):
             match=re.search(r'(<script id="review-data" type="application/json">)(.*?)(</script>)',page,re.S)
             require(match is not None and json.loads(match[2])==dict(papers=json.loads(before[META[0]]),tools=json.loads(before[META[1]]),summary=json.loads(before[META[2]])),'Changed embedded predecessor data')
             payload=json.dumps(dict(papers=papers,tools=inventory,summary=summary),ensure_ascii=False).replace('<','\\u003c');page=page[:match.start(2)]+payload+page[match.end(2):]
+            old='${gprofilerVersion(t)}'
+            require(page.count(old)==1 and 'function squidpyVersion' not in page and page.count('function renderContent(){')==1,'Changed predecessor edition renderer')
+            helper=("function squidpyVersion(t){if(t.tool_id!=='squidpy'||!t.source_role_qualification)return gprofilerVersion(t);"
+                    "const r=t.source_role_qualification,v=[];if(r.reported_squidpy)v.push('Squidpy '+r.reported_squidpy);"
+                    "if(r.reported_python)v.push('Python '+r.reported_python);const broader=(r.broader_version_evidence||[]).length>0;"
+                    "return '<br><span class=\"squidpy-version\" style=\"overflow-wrap:anywhere\">'+(v.length?'reported '+esc(v.join('; ')):'edition not reported')"
+                    "+(broader?' (broader software paragraph; near-name edition '+(t.version_reported_near_name?'reported separately':'unreported')+')':'')+'</span>';}\n")
+            page=page.replace(old,'${squidpyVersion(t)}',1).replace('function renderContent(){',helper+'function renderContent(){',1)
         page=page.replace(previous.NOTICE,'<details><summary>Before Squidpy admission (historical)</summary>'+previous.NOTICE+'</details>',1)
         body=re.search(r'<body[^>]*>',page,re.I);require(body is not None,'Missing report body');after[name]=(page[:body.end()]+NOTICE+page[body.end():]).encode()
     for name in (META[3],META[4]):after[name]=('# Current Squidpy catalog checkpoint\n\n'+CURRENT+'\n\n'+SCOPE+'\n\n'+NOTE+'\n\n**Warnings and required actions:** '+ACTION+'\n\nSee [workflow guide](../SQUIDPY_WORKFLOWS.md).\n\n---\n\nEarlier checkpoint text is historical.\n\n').encode()+before[name]
