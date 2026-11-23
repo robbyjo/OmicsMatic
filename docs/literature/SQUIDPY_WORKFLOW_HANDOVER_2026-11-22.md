@@ -177,3 +177,10 @@ after removal; every exact saved copy was restored, checked and removed again
 with the corrected writer. Both attempts and recovery remain recorded. No raw
 or failed scientific evidence, runtime or frozen producer was removed. Never run
 the previously rejected entire-browser-profile deletion helper.
+
+After the handover was pushed and public bytes read back, cleanup removed
+147 verified redundant reader-control files (31060758 logical
+bytes; measured free-space change 31444992 bytes). Exact recovery uses
+the checked-in packet plus `control-recovery.zip`; see the packet's `CLEANUP.json`
+and `CLEANUP-PLAN.json`. All19 worktrees, original/failed evidence, private
+runtimes and frozen producers remain preserved.
