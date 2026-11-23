@@ -115,3 +115,10 @@ Cleanup is limited to verified redundant temporary control-preview copies after
 publication. Exact recovery and measured free-space changes are recorded in the
 checkpoint receipt; all original/failed scientific inputs/results, runtimes,
 frozen producers and unique work remain retained. No unrelated process is stopped.
+
+The admission was published at `ecfc3d0afdff7c5c5beeace6333a575164694901`; every selected public file matched
+the exact local Git archive. Its exact-commit Pages build/deploy passed, with
+the two unfinished reports still404. After publication, cleanup removed42
+redundant reader-input copies (28010367 logical bytes;
+measured free-space change 28098560 bytes). See the packet's
+`PUBLICATION.json`, `PAGES-PUBLIC-VERIFICATION.json` and `CLEANUP.json`.
