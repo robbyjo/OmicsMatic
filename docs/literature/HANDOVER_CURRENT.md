@@ -1,4 +1,19 @@
 # Current toolbox handover
+**Handover: [saved Squidpy work, exact next steps and private transfer](HANDOVER_2026-11-22_SQUIDPY.md).**
+The collection remains **250 papers**, with **151 scoped families (27 native +124
+upstream), 1,679 reviewed/1,043 pending uses**. The unfinished Squidpy Java kernel,
+eight helpers, dependency locks and selected original/failed synthetic receipts
+are saved outside compiled sources with exact restore mappings. Preliminary
+comparison matches 64 original1.8.4 finite rows; 32 undefined rows are explicit.
+Squidpy1.8.4 and1.2.2 import;1.1.2 fails under the attempted Python3.10 interpreter.
+**Zero new family credit/reviews; full Squidpy qualification and adapter remain
+pending.** Next finish that high-impact spatial work, then re-rank missing tools
+and complete all1,043 reviews/missed-provider screening. Transfer full ignored
+runtimes/JARs, original primary text and complete failed evidence privately before
+retiring this machine. Preserve all19 worktrees and withheld historical exports.
+Read the handover's prominent SKIP3/FAIL2, process-safety and33 existing website
+citation-panel remedies. The full goal is unfinished; lower entries are historical.
+
 **Current: [FUSION admitted roles, validation and next work](FUSION_CATALOG_CHECKPOINT_2026-11-22.md).**
 One original-workflow upstream family and six source reviews are admitted:
 **151 scoped families (27 native +124 upstream), 1,679 reviewed/1,043 pending

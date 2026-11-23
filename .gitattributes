@@ -539,3 +539,8 @@ tools/literature/close_fusion_catalog.py -text whitespace=cr-at-eol
 
 # Retain the original Gradle console line, including its trailing space.
 docs/literature/fusion-catalog-checkpoint/checks/website.stdout -text whitespace=-blank-at-eol,cr-at-eol
+
+# Restorable unfinished Squidpy source and synthetic receipts are byte-pinned.
+docs/literature/squidpy-workflow-development/** -text whitespace=cr-at-eol
+# Retain original launcher console endings in the two failed-attempt receipts.
+docs/literature/squidpy-workflow-development/receipts/runtime-legacy-*/launcher.stdout whitespace=-blank-at-eof,cr-at-eol
