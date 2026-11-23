@@ -1,5 +1,15 @@
 # Current toolbox handover
 
+**Handover now:** [SCENIC workflow, exact resume steps and private transfer](HANDOVER_SCENIC_WORKFLOW_2026-11-23.md).
+The global RUN/VERIFY/REPLAY workflow and artificial example pass; the final
+producer passed 2,069 normal tests and four independent original comparisons
+with zero observed activity error. **Catalog admission remains pending: zero
+new family/review credit.** Counts stay 154 scoped families, 1,697 reviewed and
+1,025 pending uses across 250 papers. Read the remaining-task order and prominent
+SKIP3/FAIL2, private machine-transfer and restricted-history instructions first.
+All 19 worktrees remain retained. The full goal is unfinished; lower entries
+describe earlier states where superseded.
+
 **Handover now:** [SCENIC network probe, exact next tasks and private transfer](HANDOVER_SCENIC_NETWORK_2026-11-23.md).
 The original synthetic GRN/CTX/AUCell probe completed (412 adjacency rows,
 96-by-4 activity); its first import failure and successful successor are saved.

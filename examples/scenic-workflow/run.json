@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "engine": "upstream-and-native",
+  "profile": "pyscenic-0.12.1-arboreto-0.1.6-ctxcore-0.2.0-ledger-v1",
+  "operation": "NETWORK",
+  "python": "/path/to/exact/private/scenic/environment/bin/python",
+  "out": "run",
+  "inputs": {
+    "fit_expression": "expression.tsv",
+    "activity_expression": "expression.tsv",
+    "tfs": "tfs.txt",
+    "annotations": "motifs.tbl",
+    "databases": [
+      {
+        "name": "artificial-reference",
+        "file": "synthetic.genes_vs_motifs.rankings.feather"
+      }
+    ]
+  },
+  "options": {
+    "seed": 17,
+    "workers": 2,
+    "modules": {
+      "min_genes": 10
+    },
+    "ctx": {
+      "rank_threshold": 80,
+      "auc_threshold": 0.2,
+      "nes_threshold": 2.5
+    }
+  },
+  "limits": {
+    "threads": 2
+  }
+}
