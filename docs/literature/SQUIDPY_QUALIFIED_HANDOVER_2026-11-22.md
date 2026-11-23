@@ -192,3 +192,8 @@ source packet and `control-recovery.zip`; the packet records each mapping and
 measured free-space change. All original/failed scientific evidence, runtimes,
 producer contexts and unique work remain retained. Do not run old broad cleanup
 helpers, delete a browser profile, or blanket-delete `build/`.
+
+After publication and byte-exact GitHub readback, cleanup removed168 redundant
+reader-control copies (55748637 logical bytes; measured free-space change 56098816 bytes).
+Exact recovery mappings and preservation checks are recorded in the packet's
+`CLEANUP.json` and `CLEANUP-PLAN.json`. No scientific evidence or runtime was removed.
