@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Current:** [SCENIC catalog admission and full-goal next steps](SCENIC_CATALOG_CHECKPOINT_2026-11-23.md).
+One upstream family and five source-role reviews are admitted: **155 scoped
+families (29 native and 126 upstream), 1,702 reviewed/1,020 pending uses**.
+P070's reported 0.10.3 analysis stays SKIP3 under the qualified 0.12.1 profile.
+Two-host source/transaction checks, actual CLI refusals and preview/installed
+desktop/mobile checks pass. The same 33 website citation failures remain;
+literature reports stay withheld from Pages. Continue P153 SCENIC+ review,
+higher-impact missing capabilities and the full cohort. Preserve all 19 worktrees,
+private runtimes/JARs and restricted histories. The full goal is unfinished;
+lower entries are historical where superseded.
+
 **Handover now:** [SCENIC workflow, exact resume steps and private transfer](HANDOVER_SCENIC_WORKFLOW_2026-11-23.md).
 The global RUN/VERIFY/REPLAY workflow and artificial example pass; the final
 producer passed 2,069 normal tests and four independent original comparisons

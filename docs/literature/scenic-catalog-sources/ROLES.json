@@ -1,0 +1,360 @@
+{
+  "status": "SCENIC_FIVE_SOURCE_ROLES_WITH_HISTORICAL_EDITION_SKIP_NOT_ADMISSION",
+  "papers_checked": 250,
+  "roles": [
+    {
+      "paper_id": "P058",
+      "doi": "10.1038/s41586-023-06817-8",
+      "pmcid": "PMC10719099",
+      "xml_sha256": "75c2262af9c034eff4f733e4f60dd326625ff33c95cd402bd80b7bcf9f8f0608",
+      "summary": "Used grn, ctx with nes_threshold2.5/min_genes10, and aucell to estimate mouse SPN regulon activity from raw Seurat counts; averaged/scaled activity by cluster for separate pheatmap display.",
+      "reported_package_edition": null,
+      "reported_settings": {
+        "nes_threshold": 2.5,
+        "min_genes": 10
+      },
+      "boundary": "Mouse TF list and motif v9 resources are separate supplied inputs. Exact pySCENIC edition, expression-matrix filtering, seed, rank fraction and other caller settings remain unreported. Cluster scaling/visualization is not native AUCell.",
+      "anchors": [
+        {
+          "paper_id": "P058",
+          "paragraph_index": 20,
+          "section": "A LIM transcription factor code for adult ReSNs",
+          "paragraph_sha256": "01e72c7d01d11c89e93c5b5187d76cd653e0383b4be2232544093a64fc3c4894",
+          "matches": [
+            "SCENIC"
+          ]
+        },
+        {
+          "paper_id": "P058",
+          "paragraph_index": 55,
+          "section": "Methods / snRNA-seq / SCENIC",
+          "paragraph_sha256": "e3340edfa2ca5937e05fa588a8ea1eeecbe3d6ceae3aac946495d2d3ac3846f1",
+          "matches": [
+            "SCENIC",
+            "aucell",
+            "pySCENIC"
+          ]
+        }
+      ],
+      "original_observation": {
+        "tool_id": "scenic",
+        "tool": "SCENIC",
+        "analysis_role": "Single-cell regulatory network inference",
+        "evidence_section": "Methods / snRNA-seq / SCENIC",
+        "evidence_paragraph_index": 55,
+        "matched_text": "SCENIC",
+        "extraction_score": 10,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "e3340edfa2ca5937e05fa588a8ea1eeecbe3d6ceae3aac946495d2d3ac3846f1",
+        "use_summary": "Single-cell regulatory network inference.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10719099/ (section: Methods / snRNA-seq / SCENIC)"
+      },
+      "source_role_review_applied": false,
+      "author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "reported_version_contexts": [
+        {
+          "context": "RNA-only regulon network, motif pruning and cell activity",
+          "reported_package_edition": null
+        }
+      ],
+      "historical_edition_analysis_status": "Author analysis not reproduced; caller must supply exact compatible inputs, references and settings",
+      "source_table_evidence": []
+    },
+    {
+      "paper_id": "P070",
+      "doi": "10.1038/s41586-023-06806-x",
+      "pmcid": "PMC7616500",
+      "xml_sha256": "95a862241ab6a0d94e137e32fdddf4cf5e54469a860271c361cca3ce01a0578f",
+      "summary": "Used reported pySCENIC0.10.3 grn/ctx/aucell after removing genes expressed in less than10percent of cells in each cluster.",
+      "reported_package_edition": "0.10.3",
+      "reported_settings": {
+        "minimum_cluster_expression_fraction": 0.1
+      },
+      "boundary": "The project-selected0.12.1 profile does not establish0.10.3 equivalence. Preserve cluster-specific preprocessing; do not infer a whole-matrix10percent filter, original seed or resource/database editions.",
+      "anchors": [
+        {
+          "paper_id": "P070",
+          "paragraph_index": 18,
+          "section": "Regulation of embryonic and fetal myogenesis",
+          "paragraph_sha256": "642bd9f6ce79231f0afd247573e9486ac0b8634604be0a30109baef1db2c541a",
+          "matches": [
+            "SCENIC"
+          ]
+        },
+        {
+          "paper_id": "P070",
+          "paragraph_index": 44,
+          "section": "Methods / Regulon analysis of transcription factors",
+          "paragraph_sha256": "523aa5c4f8a023e0f3cece81373801d4409f9dedc7b3d4f1d9f4ba675d6fb206",
+          "matches": [
+            "aucell",
+            "pySCENIC",
+            "pyscenic"
+          ]
+        },
+        {
+          "paper_id": "P070",
+          "paragraph_index": 58,
+          "section": "Supplementary information",
+          "paragraph_sha256": "c712d76420e3b10251b318355d5daf8d7a9c1745a4fe519f76bb46941de1bcce",
+          "matches": [
+            "SCENIC"
+          ]
+        }
+      ],
+      "original_observation": {
+        "tool_id": "scenic",
+        "tool": "SCENIC",
+        "analysis_role": "Single-cell regulatory network inference",
+        "evidence_section": "Methods / Regulon analysis of transcription factors",
+        "evidence_paragraph_index": 44,
+        "matched_text": "pySCENIC",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "523aa5c4f8a023e0f3cece81373801d4409f9dedc7b3d4f1d9f4ba675d6fb206",
+        "use_summary": "Single-cell regulatory network inference.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7616500/ (section: Methods / Regulon analysis of transcription factors)"
+      },
+      "source_role_review_applied": false,
+      "author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "reported_version_contexts": [
+        {
+          "context": "RNA-only regulon network, motif pruning and cell activity",
+          "reported_package_edition": "0.10.3"
+        }
+      ],
+      "historical_edition_analysis_status": "SKIP3: reported pySCENIC0.10.3 is not the qualified0.12.1 profile",
+      "source_table_evidence": []
+    },
+    {
+      "paper_id": "P100",
+      "doi": "10.1038/s41588-025-02407-8",
+      "pmcid": "PMC12695644",
+      "xml_sha256": "26ab3e5a8e6387851333b9f42f11e590cd4d7f0e73ba15689752650febdd414e",
+      "summary": "Used reported pySCENIC0.12.1, GRNBoost2 multiprocessing and dropout-masked motif pruning after5percent per-broad-cell-type downsampling, then per-cell AUCell and separate cell-type RSS/Wilcoxon/network visualization.",
+      "reported_package_edition": "0.12.1",
+      "reported_settings": {
+        "downsample_fraction_per_broad_cell_type": 0.05,
+        "grn_method": "grnboost2",
+        "mask_dropouts": true
+      },
+      "boundary": "The referenced hg38 mc9nr promoter ranking and motifs-v9 TF annotation are distinct from P145 v10 resources. Preserve the published URL literally; database bytes/Feather version and fitting/cell-scoring matrix membership are not inferred. Default AUCell settings and unreported seed are not replaced by project choices. RSS, Wilcoxon, igraph and ggraph remain separate.",
+      "anchors": [
+        {
+          "paper_id": "P100",
+          "paragraph_index": 14,
+          "section": "Results / Microphthalmia-associated transcription factor shapes the lipid-handling phenotype of LAMs",
+          "paragraph_sha256": "c7e8cb4495e0f0ce8903e21d04bde669efb2b25e4b27ce782ff2902b6b56ceb6",
+          "matches": [
+            "pySCENIC"
+          ]
+        },
+        {
+          "paper_id": "P100",
+          "paragraph_index": 30,
+          "section": "Discussion",
+          "paragraph_sha256": "8f7387969b7a19ee477423392c59ea26fcf896aeab38ff1de0404285e336d92b",
+          "matches": [
+            "pySCENIC"
+          ]
+        },
+        {
+          "paper_id": "P100",
+          "paragraph_index": 48,
+          "section": "Methods / Computational analysis / Analysis of GRNs",
+          "paragraph_sha256": "27970e3de9dbc27c090abd13cd8ea0f2d6f5e27a2863770f1bea4033b7a9cd29",
+          "matches": [
+            "AUCell",
+            "GRNBoost2",
+            "SCENIC",
+            "aucell",
+            "grnboost2",
+            "pySCENIC",
+            "pyscenic"
+          ]
+        }
+      ],
+      "original_observation": {
+        "tool_id": "scenic",
+        "tool": "SCENIC",
+        "analysis_role": "Single-cell regulatory network inference",
+        "evidence_section": "Methods / Computational analysis / Analysis of GRNs",
+        "evidence_paragraph_index": 48,
+        "matched_text": "SCENIC",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "27970e3de9dbc27c090abd13cd8ea0f2d6f5e27a2863770f1bea4033b7a9cd29",
+        "use_summary": "Single-cell regulatory network inference.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695644/ (section: Methods / Computational analysis / Analysis of GRNs)"
+      },
+      "source_role_review_applied": false,
+      "author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "reported_version_contexts": [
+        {
+          "context": "RNA-only regulon network, motif pruning and cell activity",
+          "reported_package_edition": "0.12.1"
+        }
+      ],
+      "historical_edition_analysis_status": "Author analysis not reproduced; caller must supply exact compatible inputs, references and settings",
+      "source_table_evidence": []
+    },
+    {
+      "paper_id": "P145",
+      "doi": "10.1038/s41588-026-02709-5",
+      "pmcid": "PMC13553309",
+      "xml_sha256": "9fdbbf6616ee60cf8d1b808afb0ab48d16a2e156eb5d9dbdd8602fd405fc3b46",
+      "summary": "Used pySCENIC0.12.1/grnboost2 on20,000 sampled normalized/log-transformed nuclei and v10 cisTarget resources; computed full-dataset cell-level AUCell, then averaged by sample/cell type and compared selected regulons by Wilcoxon.",
+      "reported_package_edition": "0.12.1",
+      "reported_settings": {
+        "fitting_nuclei": 20000,
+        "grn_method": "grnboost2"
+      },
+      "boundary": "Training subset and full activity matrix stay distinct. Preserve hg38_10kbp_up_10kbp_down_full_tx_v10 and motifs-v10nr labels; exact resource bytes, random seed, scaling and other options remain unreported. Upstream normalization/log1p and downstream group tests are separate.",
+      "anchors": [
+        {
+          "paper_id": "P145",
+          "paragraph_index": 53,
+          "section": "Methods / snRNA-seq of hNCs / Regulon analysis",
+          "paragraph_sha256": "cfa33e675e1cc5429017fde2cd322a20eb99e38f646df48d1d7d14da9ded2220",
+          "matches": [
+            "aucell",
+            "grnboost2",
+            "pySCENIC",
+            "pyscenic"
+          ]
+        }
+      ],
+      "original_observation": {
+        "tool_id": "scenic",
+        "tool": "SCENIC",
+        "analysis_role": "Single-cell regulatory network inference",
+        "evidence_section": "Methods / snRNA-seq of hNCs / Regulon analysis",
+        "evidence_paragraph_index": 53,
+        "matched_text": "pySCENIC",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": "0.12.1",
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "cfa33e675e1cc5429017fde2cd322a20eb99e38f646df48d1d7d14da9ded2220",
+        "use_summary": "Single-cell regulatory network inference.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553309/ (section: Methods / snRNA-seq of hNCs / Regulon analysis)"
+      },
+      "source_role_review_applied": false,
+      "author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "reported_version_contexts": [
+        {
+          "context": "RNA-only regulon network, motif pruning and cell activity",
+          "reported_package_edition": "0.12.1"
+        }
+      ],
+      "historical_edition_analysis_status": "Author analysis not reproduced; caller must supply exact compatible inputs, references and settings",
+      "source_table_evidence": []
+    },
+    {
+      "paper_id": "P225",
+      "doi": "10.1016/j.ajhg.2024.07.002",
+      "pmcid": "PMC11339625",
+      "xml_sha256": "f4c7cb7cfd0297a8b747f96b56b034512cdcfc8203327f8da0cf4653c2f3c347",
+      "summary": "Used Python SCENIC as an orthogonal gene-expression/ATAC comparison, comparing predicted TF overlaps with the study Signac/Seurat approach.",
+      "reported_package_edition": null,
+      "reported_settings": {},
+      "boundary": "Reported64 SCENIC TFs,382 study TFs and22 overlaps are author observations, not reproduced results. Direct output comparability is explicitly limited by motif assignments. Exact program edition, pipeline options, resources and fitted author environment remain unreported.",
+      "anchors": [
+        {
+          "paper_id": "P225",
+          "paragraph_index": 12,
+          "section": "Material and methods / Bioinformatics analysis",
+          "paragraph_sha256": "9a11e711e7c28f003cd32bc60d566542d424b5a81f4c650c0bd75cf8551c8259",
+          "matches": [
+            "SCENIC",
+            "pySCENIC"
+          ]
+        }
+      ],
+      "original_observation": {
+        "tool_id": "scenic",
+        "tool": "SCENIC",
+        "analysis_role": "Single-cell regulatory network inference",
+        "evidence_section": "Material and methods / Bioinformatics analysis",
+        "evidence_paragraph_index": 12,
+        "matched_text": "SCENIC",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "9a11e711e7c28f003cd32bc60d566542d424b5a81f4c650c0bd75cf8551c8259",
+        "use_summary": "Single-cell regulatory network inference.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11339625/ (section: Material and methods / Bioinformatics analysis)"
+      },
+      "source_role_review_applied": false,
+      "author_environment_reproduced": false,
+      "whole_paper_reproduced": false,
+      "reported_version_contexts": [
+        {
+          "context": "RNA-only regulon network, motif pruning and cell activity",
+          "reported_package_edition": null
+        }
+      ],
+      "historical_edition_analysis_status": "Author analysis not reproduced; caller must supply exact compatible inputs, references and settings",
+      "source_table_evidence": []
+    }
+  ],
+  "missed_provider_candidates": [
+    {
+      "paper_id": "P153",
+      "doi": "10.1038/s41588-026-02695-8",
+      "pmcid": "PMC13447104",
+      "xml_sha256": "58d7366dacc144c8821f5657fa302461b72ca21490d647dbd8fef420ae138aa5",
+      "tool_id": "scenicplus",
+      "classification": "POSITIVE_BENCHMARK_ROLE_CATALOG_CORRECTION_PENDING",
+      "anchors": [
+        {
+          "paper_id": "P153",
+          "paragraph_index": 11,
+          "section": "Results / Benchmarking of scE2G models",
+          "paragraph_sha256": "982b9594921e574708548f68ef487768de203287109f977eca113bae66c2e28f",
+          "matches": [
+            "SCENIC+"
+          ]
+        },
+        {
+          "paper_id": "P153",
+          "paragraph_index": 14,
+          "section": "Results / Benchmarking of scE2G models",
+          "paragraph_sha256": "27261cbb5a7d79a5621299555900b2cff0a7aab6423a195195036cdab124ae91",
+          "matches": [
+            "SCENIC+"
+          ]
+        }
+      ],
+      "summary": "Compared SCENIC+ enhancer-to-gene predictions with scE2G/other models and evaluated fine-mapped eQTL-link recall/enrichment.",
+      "boundary": "Direct execution versus reused predictions, versions and exact comparator settings require Supplementary Note2/code review. Do not infer a separate SCENIC RNA-only call. This new observation is not yet added to the canonical catalog."
+    }
+  ],
+  "alias_contexts": [
+    {
+      "paper_id": "P094",
+      "classification": "Results SCENIC wording refers to the SCENIC+ context; do not add a separate RNA-only SCENIC observation without new evidence."
+    }
+  ],
+  "scenicplus_roles_individually_reviewed": false,
+  "new_reviews": 0,
+  "new_family_credit": 0,
+  "canonical_modified": false,
+  "whole_goal_complete": false
+}

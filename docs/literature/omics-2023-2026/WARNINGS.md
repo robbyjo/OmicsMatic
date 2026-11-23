@@ -1,3 +1,19 @@
+# Current SCENIC catalog checkpoint
+
+250 papers,446 labels,485 provider definitions and2,722 positive observations;1,702 reviewed/1,020 pending uses. There are155 scoped families (29 native +126 upstream),158 including three existing adapters;257 missing and19 method-overlap. One upstream SCENIC family is added; its native AUCell component receives no separate family credit. The full goal remains unfinished.
+
+Pinned pySCENIC0.12.1/Arboreto0.1.6/ctxcore0.2.0 Linux x86_64 Python3.10.22 upstream adapter plus native Java AUCell. Global scenic-tools RUN, full original GRN/CTX and native activity recomputation VERIFY, actual REPLAY and metadata-only inspection. Prepared literal matrices, explicit TFs/motif rankings/annotations, separate fitting/activity populations, original GRNBoost2 or GENIE3, complete target/module task ledgers and bounded batched cell scoring. No automatic sampling, normalization, filtering, ID repair or reference selection. Only activity fields flagged eligible are numerically admitted; explicit empty/unreportable policies do not repair undefined fields. No earlier-edition equivalence, author environment, whole-tool/paper/biological reproduction, authenticity or OS containment is established.
+
+Five RNA-only roles are individually reviewed. P058 uses raw Seurat counts, mouse resources and NES2.5/min_genes10; its edition is unreported. P070 reports0.10.3: exact historical analysis is SKIP3 under the available0.12.1 profile; do not substitute editions. P100 reports0.12.1,5percent per-broad-cell-type fitting downsampling, dropout masking and v9/mc9nr promoter resources. P145 reports0.12.1 with20,000 normalized/log-transformed fitting nuclei, full-dataset activity and distinct v10 resources. P225 is an orthogonal comparator with unreported edition/options. Preserve unknown raw near-name editions, unreported seeds and missing exact resource bytes. Downstream scaling, RSS, Wilcoxon, motif-assignment harmonization and visualization are separate. SCENIC+ and missed P153 remain pending.
+
+**Warnings and required actions:** SKIP3: dependent analysis skipped. Supply/install the named permitted exact Linux runtime, matching inputs and exact producer JAR; otherwise retain the skip. P070 historical0.10.3 is unsupported by this profile. FAIL2: no complete result. Preserve raw/partial/failed/undefined evidence, correct the stated input, source, numerical, resource, deadline or integrity cause and retry NEW output. Read WARNINGS.md, analysis-status.json, every task ledger and per-field eligibility. Require full VERIFY for fresh scientific recomputation; inspect checks metadata only. Never replace NA/NaN/Inf, repair IDs or refresh historical hashes. Cell Ranger remains excluded. Privately transfer required runtimes, exact JARs and original evidence.
+
+See [workflow guide](../SCENIC_WORKFLOWS.md).
+
+---
+
+Earlier checkpoint text is historical.
+
 # Current smartpca catalog checkpoint
 
 250 papers,446 labels,485 provider definitions and2,722 positive observations;1,697 reviewed/1,025 pending uses. There are154 scoped families (29 native +125 upstream),157 including three existing adapters;258 missing,19 method-overlap and three aliases without extra family credit. The full250-paper implementation and semantic-review goal remains unfinished.
