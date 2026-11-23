@@ -76,6 +76,12 @@ infer command-line `--weights` defaults from API `noWeights` defaults. Caller
 options must be explicit when reproducing a source command. Author-reported or
 unreported seeds/settings are not recovered by selecting a project example.
 
+**Input-QC warning:** zero or identical expression values, including an all-zero
+cell, are still ranked by the source tie rule and can produce positive scores.
+Check expression/detection quality separately. `eligible` describes the bounded
+numerical profile and its diagnostics; it is not cell QC, statistical significance
+or proof of biological activity.
+
 ## Existing AUCell remains separate
 
 | Behavior | Existing `SignatureScores` AUCell | New pySCENIC component |

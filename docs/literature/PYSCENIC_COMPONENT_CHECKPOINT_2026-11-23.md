@@ -103,3 +103,16 @@ The33 existing website citation-panel errors remain unresolved. Add actual mappe
 citations and rerun full website validation; do not weaken its check or add empty
 panels. Literature reports remain excluded by the unchanged Pages workflow. No
 new release or literature-report deployment is performed in this stage.
+
+
+## Publication and cleanup
+
+All57 selected files are verified on GitHub main at `44695a13abc1c063ac92810656a8b2fdec649e2a`. Read
+[publication](pyscenic-aucell-component-checkpoint/PUBLICATION.json),
+[cleanup](pyscenic-aucell-component-checkpoint/CLEANUP.json) and
+[upstream whitespace](pyscenic-aucell-component-checkpoint/UPSTREAM-WHITESPACE.json)
+receipts. Twelve redundant compiler-copy roots were removed only after byte-exact
+public recovery was verified:84 files,464,771 logical bytes,
+measured available-space increase663,552 bytes
+(possibly including unrelated activity). Exact producers, original/failed evidence,
+runtimes and other owners remain. No release/site deployment was performed.

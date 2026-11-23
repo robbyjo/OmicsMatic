@@ -52,3 +52,21 @@ inputs, partial/failed/undefined evidence, fix the named cause and retry new out
 Inspect every native status and eligibility flag, including empty recovery
 windows, low coverage, normalization NaN/Inf and negative weights. Never repair
 IDs, clamp values or refresh historical hashes to force a pass.
+
+
+All57 selected source/component/evidence files were read back byte for byte from
+GitHub at `44695a13abc1c063ac92810656a8b2fdec649e2a`. [PUBLICATION.json](PUBLICATION.json) records this scope.
+No release or site deployment was performed; no Actions run was present at
+readback. [UPSTREAM-WHITESPACE.json](UPSTREAM-WHITESPACE.json) records a narrow
+Git whitespace exception for two unmodified NumPy files; their original source
+bytes and hashes were preserved. Scientific gates were not relaxed.
+
+After verified publication,12 redundant compiler-copy roots were removed:
+84 files,464,771 logical bytes. Measured available space
+increased by663,552 bytes and may include unrelated
+activity. Every removed byte is recoverable from objects in evidence.zip;
+[CLEANUP.json](CLEANUP.json) records exact paths/members. Original/failed inputs
+and outputs, exact producers, private runtimes and all19 worktrees remain. Eighteen
+other owners' HEADs, dirty bytes and indexes remain unchanged. No unrelated
+process was stopped. Full SCENIC workflow qualification, catalog admission and
+the full250-paper objective remain unfinished.
