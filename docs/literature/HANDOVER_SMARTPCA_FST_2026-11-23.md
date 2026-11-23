@@ -157,3 +157,16 @@ local; do not merge/push them as a way to satisfy a general push request. A safe
 selected-source publication does not grant clearance to those histories.
 Other owners' dirty work is preserved, not incorporated into this validated
 snapshot. Never stop unrelated processes or delete active/unique research data.
+
+
+## Publication and cleanup receipts
+
+The 44 selected source/guide/example/evidence files are verified on GitHub main
+at `70054506b16b8313d8f5e42b13d291a79489addc`. [Publication](smartpca-fst-qualification/PUBLICATION.json) and
+[cleanup](smartpca-fst-qualification/CLEANUP.json) receipts record the scope.
+The six allowed redundant compiler-copy roots were removed after verified public
+recovery: 36 files, 143,355 logical bytes; measured available
+space increased by 221,184 bytes (possibly including
+other activity). Exact producers, all unique/failed evidence, runtimes and other
+owners remain. No release or site deployment is claimed. No new scientific batch
+was left running by this handover; check actual process ownership before resuming.

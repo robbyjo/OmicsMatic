@@ -44,3 +44,20 @@ texts, private cohort data, original executables, large producer JARs, runtimes
 and restricted historical branches remain local. GitHub is not a full-machine
 backup. `CLEANUP-PLAN.json` permits only six redundant compiler-copy directories
 after publication/readback; all removed bytes have content-addressed recovery.
+
+
+All 44 selected source/checkpoint files were read back byte for byte from GitHub
+at `70054506b16b8313d8f5e42b13d291a79489addc`; [PUBLICATION.json](PUBLICATION.json) records this stage. No release
+or site deployment was performed; no Actions run was present at readback. The
+saved reader passes on Windows and Linux; the exact producer was also checked
+on Windows. Historical hashes remain unchanged.
+
+After verified publication, six redundant compiler-copy directories were removed:
+36 files, 143,355 logical bytes. The measured available-space
+increase was 221,184 bytes and may include other
+filesystem activity. Every removed byte is recoverable from the published
+content-addressed evidence archive. [CLEANUP.json](CLEANUP.json) lists exact paths
+and archive members. All original/failed scientific evidence, exact producer
+JARs, runtimes and 19 worktrees remain. Eighteen other owners' HEADs, dirty bytes
+and indexes are preserved. No unrelated process was stopped. Catalog admission
+and the full 250-paper objective remain unfinished.
