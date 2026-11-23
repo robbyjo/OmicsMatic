@@ -1,3 +1,19 @@
+# Current MR-PRESSO catalog checkpoint
+
+250 papers, 446 labels, 485 provider definitions and 2,722 positive observations; 1,691 reviewed/1,031 pending uses. There are 153 scoped families (28 native +125 upstream), 156 including three existing adapters; 258 missing, 20 method-overlap and three aliases without extra family credit. The full250-paper implementation and semantic-review goal remains unfinished.
+
+Native Java MRPRESSO1.0 original-profile global/outlier/distortion and conditional corrected estimates through mrpresso-tools RUN, full native-recomputation VERIFY and actual REPLAY. Pinned source commit 3e3c92d7eda6dce0d1d66077373ec0f7ff4f7e87; explicit R-compatible MT/Inversion and Rounding/Rejection streams. Prepared one-outcome/one-or-more-exposure associations, finite full-rank profile and bounded resources. Original probability bounds, multivariable recycling, exact IDs/complete-case mappings and typed undefined fields remain. Invalid/perfect-fit inference and original distortion values above1 are retained without clamping and not admitted. The older analytic/multiple-outcome PRESSO-style methods remain separate. R is not a native runtime prerequisite. No whole upstream package/paper, author environment, biological calibration, data authentication or OS containment claim.
+
+Six individual source roles are reviewed; editions, seeds and simulation counts remain unreported. P105 outlier correction is separate from weak-instrument filtering; P125 sensitivity is separate from SIMEX/Egger. P135 uses multiple height/BMI exposures with one fracture outcome, not the older multiple-outcome diagnostic. P150 conditional method reporting, its325-outcome Bonferroni correction and decision tree remain separate. P189 nonsignificant global tests do not prove absence of pleiotropy or causality; corrected NA is conditional. P224 is a comparator to primary MR-RAPS analyses. P177 only recommends the method; execution is not established.
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED. Provide/install the named permitted input, Java17+ and exact complete producer JAR; otherwise retain the skip. FAIL2: NO COMPLETE RESULT. Keep original/raw/partial/failed/undefined/superseded evidence, fix the named input/numerical/resource/deadline/integrity cause and retry NEW output. Require completion and passing VERIFY; read WARNINGS.md, analysis-status.json and per-field admission. Do not repair IDs, replace NA/NaN/Inf, clamp original probabilities above1, add Monte Carlo pseudocounts or replace source upper bounds by zero. Explicit diagnostic retention does not make invalid fields valid inference. Use the qualified af72b8cc... producer; the7b9bedea... tiny-unit verifier,0e44e460... perfect-fit guard and 86bcb46c... missing-marker classification failures remain retained. Cell Ranger remains excluded. Private runtimes/JARs/full evidence need separate transfer; previously rejected historical exports remain local.
+
+See [current workflow guide](../MRPRESSO_WORKFLOWS.md).
+
+---
+
+Earlier checkpoint text is historical.
+
 # Current Squidpy catalog checkpoint
 
 250 papers, 446 labels, 485 provider definitions and 2,722 positive observations; 1,685 reviewed/1,037 pending uses. There are 152 scoped families (27 native+125 upstream), 155 including three existing adapters; 258 missing, 21 method-overlap and three aliases without extra family credit. The complete 250-paper implementation/semantic-review objective remains unfinished.

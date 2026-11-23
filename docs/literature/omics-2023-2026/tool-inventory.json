@@ -21272,9 +21272,9 @@
     "name": "MR-PRESSO",
     "pattern": "(?<![A-Za-z0-9_])(?:MR[- ]?PRESSO)(?![A-Za-z0-9_])",
     "role": "MR pleiotropy/outlier sensitivity",
-    "current_coverage": "method-overlap",
-    "existing_source": "src/main/java/org/jlinalg/cli/MultivariateMrCli.java",
-    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation.",
+    "current_coverage": "native-subset-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/MrPressoToolsCli.java",
+    "coverage_note": "Native Java MRPRESSO1.0 original-profile global/outlier/distortion and conditional corrected estimates through mrpresso-tools RUN, full native-recomputation VERIFY and actual REPLAY. Pinned source commit 3e3c92d7eda6dce0d1d66077373ec0f7ff4f7e87; explicit R-compatible MT/Inversion and Rounding/Rejection streams. Prepared one-outcome/one-or-more-exposure associations, finite full-rank profile and bounded resources. Original probability bounds, multivariable recycling, exact IDs/complete-case mappings and typed undefined fields remain. Invalid/perfect-fit inference and original distortion values above1 are retained without clamping and not admitted. The older analytic/multiple-outcome PRESSO-style methods remain separate. R is not a native runtime prerequisite. No whole upstream package/paper, author environment, biological calibration, data authentication or OS containment claim.",
     "paper_count": 6,
     "papers": [
       "P105",
@@ -21284,10 +21284,224 @@
       "P189",
       "P224"
     ],
-    "implementation_status": "method-overlap",
-    "implementation_source": "src/main/java/org/jlinalg/cli/MultivariateMrCli.java",
-    "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "native-subset-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/MrPressoToolsCli.java",
+    "implementation_scope": "Native Java MRPRESSO1.0 original-profile global/outlier/distortion and conditional corrected estimates through mrpresso-tools RUN, full native-recomputation VERIFY and actual REPLAY. Pinned source commit 3e3c92d7eda6dce0d1d66077373ec0f7ff4f7e87; explicit R-compatible MT/Inversion and Rounding/Rejection streams. Prepared one-outcome/one-or-more-exposure associations, finite full-rank profile and bounded resources. Original probability bounds, multivariable recycling, exact IDs/complete-case mappings and typed undefined fields remain. Invalid/perfect-fit inference and original distortion values above1 are retained without clamping and not admitted. The older analytic/multiple-outcome PRESSO-style methods remain separate. R is not a native runtime prerequisite. No whole upstream package/paper, author environment, biological calibration, data authentication or OS containment claim.",
+    "validation_note": "797 focused normal-build tests;45 unchanged original-R witnesses;309 packaged commands/153 original comparisons on Windows21/25 and Linux21;51 saved-integrity checks and30 protocol commands. Degenerate inference limits, source probabilities above1 and all earlier failures remain explicit.",
+    "previous_method_overlap_source": "src/main/java/org/jlinalg/cli/MultivariateMrCli.java",
+    "native_helper_source": "src/main/java/org/jlinalg/mrpresso/MrPressoOriginal.java",
+    "current_documentation": "docs/literature/MRPRESSO_WORKFLOWS.md",
+    "current_qualification": "../mrpresso-workflow-qualification/STATUS.json",
+    "canonical_native_workflow_available": true,
+    "upstream_runtime_adapter_required": false,
+    "public_CLI_available": true,
+    "global_CLI_dispatch_available": true,
+    "source_build_required": true,
+    "released_binary_contains_workflow": false,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false,
+    "new_native_family_credit": 1,
+    "new_upstream_family_credit": 0,
+    "source_roles_reviewed": 6,
+    "source_role_coverage": "mrpresso-source-role-coverage.json",
+    "paper_role_qualification": {
+      "P105": {
+        "paper_id": "P105",
+        "pmcid": "PMC10703676",
+        "doi": "10.1038/s41588-023-01569-7",
+        "xml_sha256": "e62de8f4b3c797ec66020a59b641c28d173b3129e3bc6c26f9d731f7daff017f",
+        "summary": "Used MR-PRESSO to identify pleiotropic outliers and estimate outlier-corrected effects of peptic ulcer disease and its subtypes on gastric cancer; the corrected results were not significant.",
+        "observed_operations": [
+          "outlier_pleiotropy_correction",
+          "conditional_outlier_corrected_univariable_estimate"
+        ],
+        "source_role": "analysis-method",
+        "scope_limit": "F-statistic filtering, allele harmonization, sample splitting, power calculations and the study conclusion are separate. Package edition, Monte Carlo count, seed and exact caller settings are unreported.",
+        "anchors": [
+          {
+            "paragraph_index": 20,
+            "section": "Results / Pleiotropy of PUD risk variants on GC",
+            "paragraph_sha256": "be9bba71671152cd8328cb606a6be34d8cfb5ea80ad4f2b434563082b5bf3e46"
+          },
+          {
+            "paragraph_index": 58,
+            "section": "Methods / Two-sample MR analysis",
+            "paragraph_sha256": "42752d7d1d304aad73622b359ac3d64bb6b1632b293d81278fd46afaa139e58c"
+          }
+        ],
+        "table_anchors": [],
+        "reported_near_name_version": null,
+        "reported_simulations": null,
+        "reported_seed": null,
+        "author_environment_reproduced": false,
+        "whole_paper_reproduced": false
+      },
+      "P125": {
+        "paper_id": "P125",
+        "pmcid": "PMC12695632",
+        "doi": "10.1038/s41588-025-02396-8",
+        "xml_sha256": "f35977fb92d9c713b8f0f887bbc688a2475a5ea42207a0edbf260b0ba815cc95",
+        "summary": "Added MR-PRESSO as an outlier/pleiotropy sensitivity analysis alongside the other Mendelian randomization estimators.",
+        "observed_operations": [
+          "outlier_pleiotropy_sensitivity_analysis"
+        ],
+        "source_role": "sensitivity-method",
+        "scope_limit": "IVW/median/mode/Egger, Q and F statistics, I-squared and the conditional SIMEX correction are separate methods. Do not infer an unreported function call, edition, seed or simulation count.",
+        "anchors": [
+          {
+            "paragraph_index": 24,
+            "section": "Methods / Mendelian randomization",
+            "paragraph_sha256": "84070831bcc8dbdb45a470a24e299378a7dd868364e601cae3e4bb25f9b4aaa8"
+          }
+        ],
+        "table_anchors": [],
+        "reported_near_name_version": null,
+        "reported_simulations": null,
+        "reported_seed": null,
+        "author_environment_reproduced": false,
+        "whole_paper_reproduced": false
+      },
+      "P135": {
+        "paper_id": "P135",
+        "pmcid": "PMC10632131",
+        "doi": "10.1038/s41588-023-01527-3",
+        "xml_sha256": "0c44b9e6179811684c6fb08bc74539310819e478131a5ec14a6b2ef51c150098",
+        "summary": "Used MR-PRESSO outlier exclusion in multivariable height/BMI analyses of fracture risk to assess heterogeneity introduced by height instruments.",
+        "observed_operations": [
+          "multivariable_outlier_detection",
+          "conditional_multivariable_outlier_corrected_estimate"
+        ],
+        "source_role": "multivariable-sensitivity-method",
+        "scope_limit": "This is multiple exposures with one fracture outcome, not the existing multiple-outcome diagnostic. MR-LASSO and MendelianRandomization package estimators remain separate. Exact MR-PRESSO edition and simulation settings are unreported.",
+        "anchors": [
+          {
+            "paragraph_index": 40,
+            "section": "Methods / MR analysis of risk factors for fractures",
+            "paragraph_sha256": "d1dfb4acef0df7b361ff770ddccad1ce2339e47dd7bfc4ac66811d5328e03654"
+          }
+        ],
+        "table_anchors": [],
+        "reported_near_name_version": null,
+        "reported_simulations": null,
+        "reported_seed": null,
+        "author_environment_reproduced": false,
+        "whole_paper_reproduced": false
+      },
+      "P150": {
+        "paper_id": "P150",
+        "pmcid": "PMC11549047",
+        "doi": "10.1038/s41588-024-01933-1",
+        "xml_sha256": "7c6932a914734569a95e3cbdc6976d0e9bdc128a6b4fdaf51de76407469c2c4f",
+        "summary": "Used MR-PRESSO global/outlier tests and corrected estimates for metabolic-syndrome outcome analyses, with conditional method reporting and a separate heterogeneity/pleiotropy decision tree.",
+        "observed_operations": [
+          "global_pleiotropy_test",
+          "outlier_detection",
+          "conditional_outlier_corrected_univariable_estimate"
+        ],
+        "source_role": "conditionally-reported-analysis-method",
+        "scope_limit": "The study omits the MR-PRESSO method when the global test is nonsignificant or too few instruments remain. Its method-selection tree, Wald/IVW/median/Egger analyses and 325-outcome Bonferroni correction are separate. Preserve Table3 as a source anchor, not a reproduced result; exact edition, seed and simulation count remain unreported.",
+        "anchors": [
+          {
+            "paragraph_index": 29,
+            "section": "Results / Two-sample Mendelian randomization",
+            "paragraph_sha256": "e42099c3eff22760091aec7a2a94aa2d8ae9e64b28626cefbe70a0c9349beab0"
+          },
+          {
+            "paragraph_index": 30,
+            "section": "Results / Two-sample Mendelian randomization",
+            "paragraph_sha256": "963945961ead06d38ecb56cbacd08f4dfa326d71f8a7946d4dcac0224fc06ad8"
+          },
+          {
+            "paragraph_index": 70,
+            "section": "Methods / Two-sample Mendelian randomization",
+            "paragraph_sha256": "df86dea214cfd92ff404d78bfc5bc265f2f2018bb0f400ce37d8a53cd7a7deb1"
+          },
+          {
+            "paragraph_index": 71,
+            "section": "Methods / Two-sample Mendelian randomization",
+            "paragraph_sha256": "f729f1f6abc061f538b033ea103bef87eb922ce48e3d4d1e1498faa8830da5b0"
+          }
+        ],
+        "table_anchors": [
+          {
+            "paper_id": "P150",
+            "table_id": "Tab3",
+            "table_text_identity": {
+              "bytes": 3650,
+              "sha256": "201f89ff6377f85b6ca45a89d792e8bebabfb81f67ffc72f900aff5198d29444"
+            }
+          }
+        ],
+        "reported_near_name_version": null,
+        "reported_simulations": null,
+        "reported_seed": null,
+        "author_environment_reproduced": false,
+        "whole_paper_reproduced": false
+      },
+      "P189": {
+        "paper_id": "P189",
+        "pmcid": "PMC11639085",
+        "doi": "10.1016/j.ajhg.2024.10.008",
+        "xml_sha256": "6fe50057926dacbc242d400e391db7d721751ba8d706e5c00a5e9cb668bdb723",
+        "summary": "Used MR-PRESSO to assess horizontal pleiotropy and possible outlier correction in circulating-protein/PCOS associations; reported global tests for the selected65 proteins were nonsignificant.",
+        "observed_operations": [
+          "global_pleiotropy_test",
+          "conditional_outlier_correction"
+        ],
+        "source_role": "sensitivity-method-with-negative-global-findings",
+        "scope_limit": "A nonsignificant global test and conditional corrected NA are not proof of no pleiotropy or of causality. Other MR estimators, colocalization and SMR remain separate. Exact MR-PRESSO edition, seed and simulation count are unreported.",
+        "anchors": [
+          {
+            "paragraph_index": 10,
+            "section": "Material and methods / Genetic instrument selection and primary mendelian randomization analysis",
+            "paragraph_sha256": "e356f1f3aa54d4b12d724cc35490906618653876d3be53449bf45328052c2876"
+          },
+          {
+            "paragraph_index": 26,
+            "section": "Results / Proteome-wide MR analysis identified 65 circulating proteins for PCOS",
+            "paragraph_sha256": "4dde98ac7aaeb733340e341dc5fd4a325bbd0e233af6f3e6d10c206f65d8408f"
+          }
+        ],
+        "table_anchors": [],
+        "reported_near_name_version": null,
+        "reported_simulations": null,
+        "reported_seed": null,
+        "author_environment_reproduced": false,
+        "whole_paper_reproduced": false
+      },
+      "P224": {
+        "paper_id": "P224",
+        "pmcid": "PMC12416758",
+        "doi": "10.1016/j.ajhg.2025.07.015",
+        "xml_sha256": "d4736392299f52787aaccdcc55081d1632f433b08e3468c73e9b4b647c9a5535",
+        "summary": "Compared MR-PRESSO outlier-adjusted causal estimates with the primary MR-RAPS results in primary and secondary analyses.",
+        "observed_operations": [
+          "outlier_adjusted_comparator_estimates"
+        ],
+        "source_role": "comparator-method",
+        "scope_limit": "MR-PRESSO is a comparator here; it is not the primary MR-RAPS engine, cML method or an implementation of the entire paper analysis. Exact caller, edition, seed and simulation settings are unreported.",
+        "anchors": [
+          {
+            "paragraph_index": 28,
+            "section": "Results / Results from secondary analyses",
+            "paragraph_sha256": "56002fa263f5f36f33298304b5a1d5179afc6077cce93c1b3d29739fe9691013"
+          },
+          {
+            "paragraph_index": 36,
+            "section": "Discussion",
+            "paragraph_sha256": "ab19d5e422dbbf6b16f570880f703f820528b3b61af464df1b9e11736d5571e2"
+          }
+        ],
+        "table_anchors": [],
+        "reported_near_name_version": null,
+        "reported_simulations": null,
+        "reported_seed": null,
+        "author_environment_reproduced": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    "current_paper_role_limits": "Six individual source roles are reviewed; editions, seeds and simulation counts remain unreported. P105 outlier correction is separate from weak-instrument filtering; P125 sensitivity is separate from SIMEX/Egger. P135 uses multiple height/BMI exposures with one fracture outcome, not the older multiple-outcome diagnostic. P150 conditional method reporting, its325-outcome Bonferroni correction and decision tree remain separate. P189 nonsignificant global tests do not prove absence of pleiotropy or causality; corrected NA is conditional. P224 is a comparator to primary MR-RAPS analyses. P177 only recommends the method; execution is not established."
   },
   {
     "id": "diann",

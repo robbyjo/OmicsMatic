@@ -1,5 +1,10 @@
 # MR-PRESSO native workflow qualified; catalog admission remains open
 
+**Later catalog admission completed:** see the [current six-role/native-family
+checkpoint](MRPRESSO_CATALOG_CHECKPOINT_2026-11-23.md). This document retains the
+earlier workflow-qualification stage; its pending-admission instructions and
+catalog counts below are historical. No old qualification or failure hashes changed.
+
 The native prepared-association RUN/VERIFY/REPLAY workflow is now qualified within
 the pinned MRPRESSO 1.0 source profile. Read the
 [beginner guide, examples and required actions](MRPRESSO_NATIVE_WORKFLOWS.md) and
