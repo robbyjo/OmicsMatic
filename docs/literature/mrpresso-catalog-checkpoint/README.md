@@ -73,3 +73,20 @@ machine retirement. Previously rejected potentially sensitive historical branche
 remain local. No original/failed scientific evidence or browser profile is eligible
 for blanket cleanup; only exact redundant checker copies with retained recovery
 may be removed after verified publication.
+
+
+Publication and cleanup receipts are in [PUBLICATION.json](PUBLICATION.json) and
+[CLEANUP.json](CLEANUP.json). All 59 source/admission/handover files were read back
+byte for byte from GitHub at `91d7b987d8566a3e4b844fd37972b849906d999b`.
+The corresponding Pages workflow succeeded; four live source files matched and
+both unfinished reports returned HTTP 404. This does not resolve the 33 citation
+errors in full website validation. Eighteen other worktree owners' HEADs, dirty
+bytes and indexes were preserved.
+
+After publication, only the two exact redundant reader-copy roots in the saved
+cleanup plan were removed (three files, 10,323 logical bytes; measured available
+space increase 16,384 bytes, which can include unrelated filesystem activity).
+Their exact altered bytes remain in `reader-control-recovery.zip`. The unique
+corrupted-archive context and all original/failed scientific evidence, producers,
+runtimes, private XML, worktrees and browser profiles remain at their original
+paths. No unrelated process was stopped. This cleanup removes no implementation.
