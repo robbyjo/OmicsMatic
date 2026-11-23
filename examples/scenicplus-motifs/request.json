@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "profile": "scenicplus-1.0a2-motifs-v1",
+  "operation": "MOTIFS",
+  "python": "/absolute/path/private/environment/bin/python",
+  "out": "/absolute/path/NEW-motif-analysis",
+  "inputs": {
+    "prepared": "/absolute/path/prepared.h5mu",
+    "region_sets": "/absolute/path/region-sets.tsv",
+    "motif_annotations": "/absolute/path/motif-annotations.tbl",
+    "rankings": "/absolute/path/reference.regions_vs_motifs.rankings.feather",
+    "scores": "/absolute/path/reference.regions_vs_motifs.scores.feather"
+  },
+  "options": {
+    "export_network_inputs": true,
+    "species": "homo_sapiens",
+    "annotation_version": "v10nr_clust",
+    "annotations_to_use": ["Direct_annot", "Orthology_annot"],
+    "direct_annotation": ["Direct_annot"],
+    "extended_annotation": ["Orthology_annot"],
+    "analyses": [
+      {
+        "name": "CTX_Tcell",
+        "method": "CISTARGET",
+        "foreground": ["Tcell"],
+        "ctx": {"auc_threshold": 0.005, "nes_threshold": 3, "rank_threshold": 0.05}
+      },
+      {
+        "name": "DEM_Tcell",
+        "method": "DEM",
+        "foreground": ["Tcell"],
+        "background": ["Bcell"],
+        "dem": {
+          "seed": 19,
+          "balance_number_of_promoters": false,
+          "max_bg_regions": null,
+          "adjpval_thr": 0.05,
+          "log2fc_thr": 1,
+          "mean_fg_thr": 0,
+          "motif_hit_thr": null
+        }
+      }
+    ]
+  }
+}
