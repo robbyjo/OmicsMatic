@@ -88,3 +88,12 @@ be removed after verified publication, with exact recovery and measured free-spa
 receipts under `D:/projects/JLinAlg/build/git-publish/20261123-mrpresso-qualification-162/`.
 Historical branches previously rejected for possible sensitive content remain
 local and are not part of this publication.
+
+After byte-exact GitHub readback, cleanup removed only 188 redundant saved-reader
+control-copy files and the duplicate packaging archive. Exact changed-control
+bytes remain in `reader-validation/control-recovery.zip`; all other removed
+bytes are recoverable from published source/the retained packet. Logical removed
+copies total153,720,685 bytes, including read-only archive hardlinks; measured
+free-space change was43,474,944 bytes. The [cleanup receipt](CLEANUP.json) records
+the checked paths, recovery and preservation boundaries. No original/failed
+scientific evidence, producer, runtime or worktree was removed.
