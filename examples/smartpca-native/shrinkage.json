@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "mode": "RUN",
+  "engine": "native",
+  "profile": "eig-7.2.1-smartpca-16000-native-pca-v1",
+  "operation": "PCA",
+  "out": "../../build/smartpca-shrinkage-example",
+  "inputs": {
+    "genotypes": "input.geno",
+    "markers": "input.snp",
+    "samples": "input.ind",
+    "reference_populations": [
+      "REF_A",
+      "REF_B"
+    ],
+    "genome_build": "synthetic"
+  },
+  "options": {
+    "numoutevec": 3,
+    "numoutlieriter": 0,
+    "lsqproject": true,
+    "shrinkmode": true
+  }
+}

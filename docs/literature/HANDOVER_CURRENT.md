@@ -1,4 +1,14 @@
 # Current toolbox handover
+**Latest: [prepared smartpca workflows and remaining work](SMARTPCA_WORKFLOW_CHECKPOINT_2026-11-23.md).**
+The native class entry point implements source-specific PCA/outliers/shrinkage
+RUN, full recomputation VERIFY and actual REPLAY. Read the saved checkpoint for
+exact normal/package checks, original comparisons and retained failed attempts.
+FST, global dispatch integration and guarded six-role catalog admission remain.
+Counts stay **153 scoped families (28 native +125 upstream), 1,691 reviewed/
+1,031 pending uses and 250 papers**. Continue high-impact gaps and the full-cohort
+review. Preserve private runtimes/JARs/evidence, all 19 worktrees and restricted
+historical exports. The full objective is unfinished; lower entries are historical.
+
 **Latest: [smartpca analysis development and exact next steps](SMARTPCA_ANALYSIS_HANDOVER_2026-11-23.md).**
 Native outlier, perturbation-shrinkage and iterative PCA components have passing
 original-source comparisons on Windows Java 21/25 and Linux Java 21. Six

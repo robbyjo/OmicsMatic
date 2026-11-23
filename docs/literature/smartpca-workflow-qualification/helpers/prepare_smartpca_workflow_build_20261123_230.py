@@ -1,0 +1,10 @@
+from pathlib import Path
+R=Path('D:/projects/JLinAlg')
+source=(R/'build/handover_smartpca_build_20261123_221.py').read_text()
+source=source.replace("build/smartpca-2/handover-normal-build-1","build/smartpca-3/normal-build-1")
+source=source.replace("'org.jlinalg.cli.PlinkPca*'","'org.jlinalg.cli.PlinkPca*','org.jlinalg.cli.SmartpcaWorkflow*'")
+source=source.replace("build/smartpca-1/normal-build-1/project-build/cli/omicsmatic-0.4.0.jar","build/smartpca-2/handover-normal-build-1/project-build/cli/omicsmatic-0.4.0.jar")
+source=source.replace('c07f1fc6955ff438fbcc2eb23a5620066815b817e21a1d17c7ac3e60d39ec29f','f2a4c8255196adc0cba8a0d72200601fb01ccb446022907f96ee86944dec62f6')
+source=source.replace("'org/jlinalg/cli/SmartpcaWorkflow'","'org/jlinalg/cli/SmartpcaWorkflow','org/jlinalg/cli/SmartpcaToolsCli'")
+(R/'build/build_smartpca_workflow_20261123_230.py').write_text(source,encoding='utf-8')
+print('Prepared isolated normal source/test/package build.')
