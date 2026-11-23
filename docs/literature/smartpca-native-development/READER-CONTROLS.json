@@ -1,0 +1,57 @@
+{
+  "status": "PASS_VALID_AND_THREE_EXPLICIT_CHECKPOINT_CONTRADICTIONS_ON_TWO_HOSTS",
+  "checks": 8,
+  "cases": [
+    {
+      "host": "windows",
+      "case": "valid",
+      "exit_code": 0,
+      "expected": 0
+    },
+    {
+      "host": "windows",
+      "case": "false-count",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "host": "windows",
+      "case": "wrong-source-identity",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "host": "windows",
+      "case": "altered-archive",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "host": "linux",
+      "case": "valid",
+      "exit_code": 0,
+      "expected": 0
+    },
+    {
+      "host": "linux",
+      "case": "false-count",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "host": "linux",
+      "case": "wrong-source-identity",
+      "exit_code": 1,
+      "expected": 1
+    },
+    {
+      "host": "linux",
+      "case": "altered-archive",
+      "exit_code": 1,
+      "expected": 1
+    }
+  ],
+  "canonical_sources_unchanged": true,
+  "scientific_analysis_reexecuted": false,
+  "byte_integrity_not_authentication": true
+}
