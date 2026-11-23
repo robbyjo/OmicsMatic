@@ -11,6 +11,7 @@ import java.util.zip.ZipInputStream;
 import org.jlinalg.gprofiler.GprofilerJson;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.jlinalg.mrpresso.MrPressoReferenceAssertions.*;
 
 final class MrPressoOriginalTest {
     @Test void comparesWholeFiniteNativeAnalysisAndRngAgainstTwentyOriginalPublicApiReturns()throws Exception {
@@ -87,47 +88,4 @@ final class MrPressoOriginalTest {
         assertEquals(20,returned);assertEquals(4,errors);assertEquals(1,unreportable);
     }
 
-    private static void compareFit(Object frame,int offset,int k,MrPressoOriginal.Fit actual,String name) {
-        double[][] outputs={actual.beta(),actual.standardError(),actual.statistic(),actual.pValue()};String[] keys={"Causal Estimate","Sd","T-stat","P-value"};
-        for(int c=0;c<keys.length;c++){
-            double[] expected=column(frame,keys[c]);for(int j=0;j<k;j++)close(expected[offset+j],outputs[c][j],name+" "+keys[c]+" "+j);
-        }
-    }
-    private static void probability(Object expected,MrPressoOriginal.Probability actual,String name){probabilityElement(values(expected).get(0),actual,name);}
-    private static void probabilityElement(Object expected,MrPressoOriginal.Probability actual,String name) {
-        if(expected instanceof Map<?,?>){assertFalse(actual.reportable(),name);return;}
-        if(expected instanceof String text&&text.startsWith("<")){
-            assertTrue(actual.lessThanBound(),name);assertEquals(0,actual.originalValue(),name);assertEquals(Double.parseDouble(text.substring(1)),actual.bound(),3e-14,name);
-        }else{
-            assertFalse(actual.lessThanBound(),name);assertEquals(expected instanceof String text?Double.parseDouble(text):rawNumber(expected),actual.originalValue(),3e-14,name);
-        }
-    }
-    private static void close(double expected,double actual,String name){
-        if(Double.isNaN(expected))assertTrue(Double.isNaN(actual),name);
-        else assertEquals(expected,actual,Math.max(3e-13,Math.abs(expected)*3e-11),name);
-    }
-    private static Object columnObject(Object frame,String name){
-        for(Object raw:list(object(frame).get("columns"))){Map<String,Object> value=object(raw);if(value.get("name").equals(name))return value.get("data");}
-        throw new IllegalArgumentException("Missing original column "+name);
-    }
-    private static double[] column(Object frame,String name){return numbers(columnObject(frame,name));}
-    private static double[] numbers(Object typed){return values(typed).stream().mapToDouble(v->v instanceof Map<?,?>?Double.NaN:rawNumber(v)).toArray();}
-    private static Object optional(Object typed,String name){Map<String,Object> value=object(typed);List<Object> names=list(value.get("names"));int i=names.indexOf(name);return i<0?null:list(value.get("values")).get(i);}
-    private static Object field(Object typed,String name){Object value=optional(typed,name);if(value==null)throw new IllegalArgumentException("Missing original field "+name);return value;}
-    private static double number(Object typed){return rawNumber(values(typed).get(0));}
-    private static double rawNumber(Object value){
-        if(value instanceof GprofilerJson.Numeric numeric)return Double.parseDouble(numeric.token());
-        if(value instanceof Number numeric)return numeric.doubleValue();
-        throw new IllegalArgumentException("Original numeric token required");
-    }
-    private static boolean bool(Object typed){return (Boolean)values(typed).get(0);}
-    private static String text(Object typed){return values(typed).get(0).toString();}
-    private static List<Object> values(Object typed){return list(object(typed).get("values"));}
-    private static List<String> strings(Object typed){return rawStrings(object(typed).get("values"));}
-    private static List<String> rawStrings(Object raw){return list(raw).stream().map(Object::toString).toList();}
-    private static List<Object> list(Object raw){if(!(raw instanceof List<?> values))throw new IllegalArgumentException("Original array required");return new ArrayList<>(values);}
-    private static Map<String,Object> object(Object raw){
-        if(!(raw instanceof Map<?,?> values))throw new IllegalArgumentException("Original typed object required");var result=new LinkedHashMap<String,Object>();
-        for(var entry:values.entrySet())result.put(entry.getKey().toString(),entry.getValue());return result;
-    }
 }

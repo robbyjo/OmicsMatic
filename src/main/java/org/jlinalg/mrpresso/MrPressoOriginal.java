@@ -183,7 +183,7 @@ public final class MrPressoOriginal {
             }
             if(activeOutliers&&(double)n/b>options.significanceThreshold)warnings.add("SOURCE_OUTLIER_PRECISION_UNSTABLE: n/NbDistribution exceeds SignifThreshold; source empirical resolution is insufficient. Increase NbDistribution and retry NEW output.");
             if(corrected==null)warnings.add("SOURCE_NO_CORRECTED_ESTIMATE: original source sets corrected MR to NA when its distortion/correction branch did not produce a fitted model; no replacement by the raw estimate.");
-            if(rawModel.essentiallyPerfect())warnings.add("SOURCE_ESSENTIALLY_PERFECT_FIT: coefficient inference may be unreliable.");
+            if(rawModel.essentiallyPerfect())warnings.add("NATIVE_ESSENTIALLY_PERFECT_FIT_UNREPORTABLE: weighted residual norm is at most1e-15 of fitted norm; finite coefficient inference is not admitted. This native reliability guard does not assert an identical original R warning.");
             return new Result(retained.stream().mapToInt(Integer::intValue).toArray(),labels,fit(rawModel),corrected,observed.rss,global,outliers,distortion,before,random.state(),warnings);
         }
     }

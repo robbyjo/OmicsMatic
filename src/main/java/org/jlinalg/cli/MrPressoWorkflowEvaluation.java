@@ -64,7 +64,8 @@ final class MrPressoWorkflowEvaluation {
         var beta=value.beta();var se=value.standardError();var statistics=value.statistic();var p=value.pValue();boolean admitted=value.rank()==beta.length&&value.residualDf()>0&&!value.essentiallyPerfect();
         for(int j=0;j<beta.length;j++)admitted&=Double.isFinite(beta[j])&&Double.isFinite(se[j])&&se[j]>0&&Double.isFinite(statistics[j])&&Double.isFinite(p[j])&&p[j]>=0&&p[j]<=1;
         return map("status",admitted?"FINITE_SOURCE_PROFILE_INFERENCE":"SOURCE_FIELDS_UNREPORTABLE","rank",value.rank(),"residual_df",value.residualDf(),
-            "beta",cells(beta),"standard_error",cells(se),"statistic",cells(statistics),"p_value",cells(p),"essentially_perfect",value.essentiallyPerfect(),"inference_admitted",admitted);
+            "beta",cells(beta),"standard_error",cells(se),"statistic",cells(statistics),"p_value",cells(p),"essentially_perfect",value.essentiallyPerfect(),
+            "native_inference_reliability_guard","WEIGHTED_RESIDUAL_NORM_OVER_FITTED_NORM_LE_1E_MINUS15","inference_admitted",admitted);
     }
     private static Map<String,Object> probability(MrPressoOriginal.Probability value) {
         return map("kind",!value.reportable()?"UNREPORTABLE":value.lessThanBound()?"STRICT_UPPER_BOUND":"EMPIRICAL",

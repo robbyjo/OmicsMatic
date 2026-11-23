@@ -44,10 +44,12 @@ final class MrPressoLinearModel {
         }
         double[] residual=qty.clone();Arrays.fill(residual,0,rank,0);
         for(int j=rank-1;j>=0;j--)reflect(a[j],auxiliary[j],j,residual);
-        double rss=0,meanFitted=0;double[] fitted=new double[n];
+        double rss=0,weightedResidualNorm=0,weightedFittedNorm=0;
         for(int i=0;i<n;i++){
             double unweighted=residual[i]/roots[i];rss+=weights[rows[i]]*(unweighted*unweighted);
-            fitted[i]=y[rows[i]]-unweighted;meanFitted+=fitted[i]/n;
+            double fitted=y[rows[i]]-unweighted;
+            weightedResidualNorm=Math.hypot(weightedResidualNorm,residual[i]);
+            weightedFittedNorm=Math.hypot(weightedFittedNorm,roots[i]*fitted);
         }
         int df=n-rank;double variance=rss/df;
         double[][] inverse=new double[rank][rank];
@@ -62,8 +64,12 @@ final class MrPressoLinearModel {
             beta[target]=coefficients[j];se[target]=Math.sqrt(diagonal*variance);statistic[target]=beta[target]/se[target];
             probability[target]=df>0?2*T.cumulative(Math.abs(statistic[target]),df,false,false):Double.NaN;
         }
-        double fittedVariance=0;for(double v:fitted){double d=v-meanFitted;fittedVariance+=d*d;}fittedVariance/=n-1;
-        return new Fit(rank,beta,se,statistic,probability,variance,df,variance<(meanFitted*meanFitted+fittedVariance)*1e-30);
+        // A native admission guard, not a claim about R's warning text. Compare
+        // norms in the same weighted response units; mixing weighted residual
+        // variance with unweighted fitted variance can miss perfect fits.
+        boolean essentiallyPerfect=Double.isFinite(weightedResidualNorm)&&Double.isFinite(weightedFittedNorm)
+            &&weightedFittedNorm>0&&weightedResidualNorm/weightedFittedNorm<=1e-15;
+        return new Fit(rank,beta,se,statistic,probability,variance,df,essentiallyPerfect);
     }
 
     private static void reflect(double[] column,double auxiliary,int start,double[] vector) {

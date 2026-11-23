@@ -12,7 +12,10 @@ import static org.jlinalg.cli.MrPressoWorkflowFiles.*;
 final class MrPressoWorkflowAudit {
     private MrPressoWorkflowAudit() { }
     static Map<String,Object> verify(Path capture)throws IOException {
-        Path root=capture.toAbsolutePath().normalize().toRealPath();Map<String,Object> manifest=read(root.resolve("capture-files.json"));
+        Path root=capture.toAbsolutePath().normalize().toRealPath();
+        require(Files.isRegularFile(root.resolve("capture-files.json"),LinkOption.NOFOLLOW_LINKS),"Existing capture has no regular admission seal; unsealed evidence admits no complete result");
+        require(Files.isRegularFile(root.resolve("COMPLETED.json"),LinkOption.NOFOLLOW_LINKS),"Existing capture has no regular completion marker; incomplete evidence admits no complete result");
+        Map<String,Object> manifest=read(root.resolve("capture-files.json"));
         require(!Files.exists(root.resolve("FAILURE.json"),LinkOption.NOFOLLOW_LINKS),"This retained failed capture admits no complete scientific result");
         require(equal(manifest,inventory(root)),"Capture has changed/missing/extra bytes or directories");
         var completed=read(root.resolve("COMPLETED.json"));

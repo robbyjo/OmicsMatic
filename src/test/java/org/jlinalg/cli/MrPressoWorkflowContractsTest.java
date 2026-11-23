@@ -99,6 +99,13 @@ final class MrPressoWorkflowContractsTest {
         assertEquals(3,rows.length);assertTrue(rows[1].startsWith("X1\tRaw\t"));
         assertEquals("X1\tOutlier-corrected\tNA\tNA\tNA\tNA\tfalse\tSOURCE_NOT_ESTIMATED",rows[2]);
     }
+    @Test void existingCaptureWithoutAdmissionMarkersIsAnIntegrityFailureRatherThanAMissingPrerequisite()throws Exception {
+        var missingSeal=assertThrows(IOException.class,()->MrPressoWorkflowAudit.verify(temporary));
+        assertTrue(missingSeal.getMessage().contains("admission seal"));assertFalse(missingSeal instanceof MrPressoWorkflowContracts.Unavailable);
+        Files.writeString(temporary.resolve("capture-files.json"),"{}\n");
+        var missingCompletion=assertThrows(IOException.class,()->MrPressoWorkflowAudit.verify(temporary));
+        assertTrue(missingCompletion.getMessage().contains("completion marker"));assertFalse(missingCompletion instanceof MrPressoWorkflowContracts.Unavailable);
+    }
     private Path table()throws Exception {
         var text=new StringBuilder("SNP\tY\tSY\tX1\tSX1\n");
         for(int i=0;i<12;i++)text.append("rs").append(i).append('\t').append(.1+Math.sin(i*.7)*.02).append("\t.04\t").append(.3+i*.02).append("\t.02\n");
