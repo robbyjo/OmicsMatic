@@ -42,6 +42,8 @@ public final class JLinAlgCli {
                 return SmartpcaCommandCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("scenic-tools"))
                 return ScenicToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("scenicplus-tools"))
+                return ScenicPlusCommandCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("mrpresso-tools"))
                 return MrPressoToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("squidpy-tools"))
@@ -521,6 +523,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar squidpy-tools --help
               java -jar omicsmatic-<version>.jar smartpca-tools --help
               java -jar omicsmatic-<version>.jar scenic-tools --help
+              java -jar omicsmatic-<version>.jar scenicplus-tools --help
               java -jar omicsmatic-<version>.jar mrpresso-tools --help
               java -jar omicsmatic-<version>.jar enrichment-tools --help
               java -jar omicsmatic-<version>.jar favor-annotate --help

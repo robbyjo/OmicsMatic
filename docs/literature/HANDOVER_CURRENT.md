@@ -1,5 +1,17 @@
 # Current toolbox handover
 
+**Latest main command:** [SCENIC+ four-profile dispatch, evidence and next work](SCENICPLUS_GLOBAL_CHECKPOINT_2026-11-23.md).
+All four profiles pass actual packaged-main RUN/VERIFY/REPLAY; 54 scientific exports
+match prior independently qualified original results, and 2,069 regression tests
+pass. Exact source-extension proof preserves unchanged historical readers and
+their pre-extension contexts. **SKIP3 prerequisites and FAIL2 source failures keep
+their warnings and required actions.** Guarded catalog admission/P153 correction
+remain next: zero new family/review credit. Totals stay 155 scoped families
+(29 native/126 upstream), 1,702 reviewed/1,020 pending uses and 250 papers.
+Keep licensed runtimes/traces private, exact producers and all 19 worktrees,
+other owners/indexes and restricted refs. The full goal remains active.
+Earlier entries below describe their historical checkpoints.
+
 **Latest motif and pipeline component:** [SCENIC+ cisTarget/DEM, cistromes, exact network handoff and remaining work](SCENICPLUS_MOTIF_CHECKPOINT_2026-11-23.md).
 Original motif tables/maps and merged cistromes match; the genuinely fitted unpaired
 preparation feeds the network with zero changed values. Five network exports match

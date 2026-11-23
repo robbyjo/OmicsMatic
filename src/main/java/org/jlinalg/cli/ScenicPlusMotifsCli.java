@@ -23,7 +23,7 @@ public final class ScenicPlusMotifsCli {
         Path root=null;
         try{
             if(Arrays.equals(args,new String[]{"--help"})){out.println("Original SCENIC+ cisTarget/DEM and cistrome preparation: --request JSON | --inspect CAPTURE. Schema1 RUN: profile="+PROFILE+", operation=MOTIFS, python, NEW out, inputs{prepared,region_sets,motif_annotations,rankings and/or scores, optional genome_annotation}, options{species,annotation_version,analyses,...}. Analyses explicitly declare CISTARGET foreground region set or DEM foreground/background sets and seed. Complete typed enrichment, mapping, motif hits and merged direct/extended Boolean cistromes are retained. VERIFY/REPLAY run fresh original scientific APIs in NEW disjoint witnesses; --inspect checks saved closure only. Requires complete source-built JAR and permitted unchanged Linux runtime.\n"+ACTION);return 0;}
-            if(args.length==2&&args[0].equals("--inspect")){inspect(Path.of(args[1]));out.println("Saved unpaired-preparation closure checked; no new original computation executed. "+ACTION);return 0;}
+            if(args.length==2&&args[0].equals("--inspect")){inspect(Path.of(args[1]));out.println("Saved motif/cistrome closure checked; no new original computation executed. "+ACTION);return 0;}
             require(args.length==2&&args[0].equals("--request"),"Use --request JSON, --inspect CAPTURE or --help");
             Path requestFile=Path.of(args[1]).toAbsolutePath().normalize();byte[] raw=bytes(requestFile,16777216);var original=object(GprofilerJson.read(raw));
             String mode=text(original.get("mode"),"mode");Path parent=null;Map<String,Object> parentSeal=null;Map<String,Object> request;
