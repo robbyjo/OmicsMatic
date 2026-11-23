@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Latest component:** [SCENIC+ Java R2G, tested outcomes and remaining full-family work](SCENICPLUS_R2G_CHECKPOINT_2026-11-23.md).
+Actual RUN/VERIFY/REPLAY and two independent original comparisons pass; the final
+producer passed 2,069 normal tests. **Masked Pearson reproduces an upstream
+shape error and remains FAIL2; no qualified masked analysis.** Full eGRN,
+metacells/resources, global dispatch and catalog admission remain unfinished:
+zero new family/review credit. Counts stay **155 scoped families (29 native and
+126 upstream), 1,702 reviewed/1,020 pending uses and 250 papers**. Preserve private
+licensed runtimes/traces, exact producers, failures, all 19 worktrees and restricted
+refs. Read the new checkpoint's warnings and resume steps. The full goal remains
+unfinished; lower entries are historical where superseded.
+
 **Read first:** [SCENIC+ private-runtime development, exact next tasks and transfer restrictions](HANDOVER_SCENICPLUS_2026-11-23.md).
 The user accepted the unmodified private academic runtime. Its full dependency
 check and original region-to-gene API/CLI artificial comparison pass; **the Java
