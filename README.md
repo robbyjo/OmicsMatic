@@ -18,6 +18,11 @@ verification. The [paper-use catalog and limits](docs/literature/FASTQTL_CATALOG
 separate prepared operations from unqualified historical 2.165 and paper-cohort
 analyses; the existing v0.4.0 release JAR has not been replaced.
 
+The source build also provides [prepared Genomic SEM models, GWAS and T-SEM](docs/GENOMICSEM_WORKFLOW.md)
+using an explicitly installed private R runtime, with retained source warnings,
+fresh verification and portable saved-result inspection. Munging, multivariable
+LDSC and historical paper editions remain separate integration work.
+
 **[Website and guides](https://robbyjo.github.io/OmicsMatic/)** ·
 **[Download v0.4.0](https://github.com/robbyjo/OmicsMatic/releases/tag/v0.4.0)** ·
 **[What's new](https://robbyjo.github.io/OmicsMatic/release-0.4.0.html)**

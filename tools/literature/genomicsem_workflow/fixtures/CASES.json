@@ -1,0 +1,1104 @@
+[
+  {
+    "name": "commonfactor-DWLS",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "COMMONFACTOR",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG"
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "commonfactor-ML",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "COMMONFACTOR",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv"
+      },
+      "options": {
+        "estimation": "ML",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG"
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "usermodel-DWLS",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USERMODEL",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "model": "basic4/model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "CFIcalc": true,
+        "fix_resid": false,
+        "tolerance": null,
+        "Q_Factor": false
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "usermodel-ML",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USERMODEL",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "model": "basic4/model.txt"
+      },
+      "options": {
+        "estimation": "ML",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "CFIcalc": true,
+        "fix_resid": false,
+        "tolerance": null,
+        "Q_Factor": false
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "conditional-regression",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USERMODEL",
+      "inputs": {
+        "covariance": "regression3/S.tsv",
+        "sampling_covariance": "regression3/V.tsv",
+        "model": "regression3/model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "CFIcalc": false,
+        "fix_resid": false,
+        "tolerance": null,
+        "Q_Factor": false
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "Cholesky-model",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USERMODEL",
+      "inputs": {
+        "covariance": "cholesky2/S.tsv",
+        "sampling_covariance": "cholesky2/V.tsv",
+        "model": "cholesky2/model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "CFIcalc": false,
+        "fix_resid": false,
+        "tolerance": null,
+        "Q_Factor": false
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "higher-order-model",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USERMODEL",
+      "inputs": {
+        "covariance": "hierarchical6/S.tsv",
+        "sampling_covariance": "hierarchical6/V.tsv",
+        "model": "hierarchical6/model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "CFIcalc": true,
+        "fix_resid": false,
+        "tolerance": null,
+        "Q_Factor": false
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "nonperfect-model",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USERMODEL",
+      "inputs": {
+        "covariance": "nonperfect4/S.tsv",
+        "sampling_covariance": "nonperfect4/V.tsv",
+        "model": "nonperfect4/model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "CFIcalc": true,
+        "fix_resid": false,
+        "tolerance": null,
+        "Q_Factor": false
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "common-GWAS",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "COMMONFACTOR_GWAS",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "basic4/I.tsv",
+        "associations": "basic4/associations.tsv"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "user-GWAS",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "basic4/I.tsv",
+        "associations": "basic4/associations.tsv",
+        "model": "basic4/GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": []
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "common-TSEM",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "COMMONFACTOR_TSEM",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "basic4/I.tsv",
+        "associations": "basic4/TWAS.tsv"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "user-TSEM",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_TSEM",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "basic4/I.tsv",
+        "associations": "basic4/TWAS.tsv",
+        "model": "basic4/TSEM-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": []
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "common-GWAS-parallel2",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "COMMONFACTOR_GWAS",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "basic4/I.tsv",
+        "associations": "basic4/associations.tsv"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "cores": 2,
+        "parallel": true,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "user-GWAS-parallel2",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "basic4/I.tsv",
+        "associations": "basic4/associations.tsv",
+        "model": "basic4/GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 2,
+        "parallel": true,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": []
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "GC-conserv",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "basic4/I.tsv",
+        "associations": "basic4/associations.tsv",
+        "model": "basic4/GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "conserv",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": [
+          "F ~ SNP"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "GC-none",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "basic4/I.tsv",
+        "associations": "basic4/associations.tsv",
+        "model": "basic4/GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "none",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": [
+          "F ~ SNP"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "free-measurement",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "basic4/I.tsv",
+        "associations": "basic4/associations.tsv",
+        "model": "basic4/GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": false,
+        "Q_SNP": true,
+        "sub": [
+          "F ~ SNP"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "Cholesky-GWAS",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "cholesky2/S.tsv",
+        "sampling_covariance": "cholesky2/V.tsv",
+        "intercepts": "cholesky2/I.tsv",
+        "associations": "cholesky2/associations.tsv",
+        "model": "cholesky2/GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": false,
+        "sub": [
+          "F ~ SNP"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "higher-order-GWAS",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "hierarchical6/S.tsv",
+        "sampling_covariance": "hierarchical6/V.tsv",
+        "intercepts": "hierarchical6/I.tsv",
+        "associations": "hierarchical6/associations.tsv",
+        "model": "hierarchical6/GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": false,
+        "sub": [
+          "H ~ SNP"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "higher-order-TSEM",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_TSEM",
+      "inputs": {
+        "covariance": "hierarchical6/S.tsv",
+        "sampling_covariance": "hierarchical6/V.tsv",
+        "intercepts": "hierarchical6/I.tsv",
+        "associations": "hierarchical6/TWAS.tsv",
+        "model": "hierarchical6/TSEM-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": false,
+        "sub": [
+          "H ~ Gene"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "explicit-SNPSE-tolerance",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "basic4/I.tsv",
+        "associations": "basic4/associations.tsv",
+        "model": "basic4/GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": 0.001,
+        "tolerance": 1e-12,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": [
+          "F ~ SNP"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "nonunit-intercepts-standard",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "GC4/I.tsv",
+        "associations": "basic4/associations.tsv",
+        "model": "basic4/GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": [
+          "F ~ SNP"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "nonunit-intercepts-conserv",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "GC4/I.tsv",
+        "associations": "basic4/associations.tsv",
+        "model": "basic4/GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "conserv",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": [
+          "F ~ SNP"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "nonunit-intercepts-none",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "GC4/I.tsv",
+        "associations": "basic4/associations.tsv",
+        "model": "basic4/GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "none",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": [
+          "F ~ SNP"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "Q-factor",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USERMODEL",
+      "inputs": {
+        "covariance": "hierarchical6/S.tsv",
+        "sampling_covariance": "hierarchical6/V.tsv",
+        "model": "hierarchical6/correlated-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "CFIcalc": true,
+        "fix_resid": false,
+        "tolerance": null,
+        "Q_Factor": true
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "stdlv-GWAS",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V.tsv",
+        "intercepts": "basic4/I.tsv",
+        "associations": "basic4/associations.tsv",
+        "model": "basic4/GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": true,
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": [
+          "F ~ SNP"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "source-residual-constraint-option",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USERMODEL",
+      "inputs": {
+        "covariance": "nonperfect4/S.tsv",
+        "sampling_covariance": "nonperfect4/V.tsv",
+        "model": "nonperfect4/model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "CFIcalc": true,
+        "fix_resid": true,
+        "tolerance": null,
+        "Q_Factor": false
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "two-factor-GWAS",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "hierarchical6/S.tsv",
+        "sampling_covariance": "hierarchical6/V.tsv",
+        "intercepts": "hierarchical6/I.tsv",
+        "associations": "hierarchical6/associations.tsv",
+        "model": "hierarchical6/two-factor-GWAS-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": [
+          "F1 ~ SNP",
+          "F2 ~ SNP"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "two-factor-GWAS-all-rows",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_GWAS",
+      "inputs": {
+        "covariance": "hierarchical6/S.tsv",
+        "sampling_covariance": "hierarchical6/V.tsv",
+        "intercepts": "hierarchical6/I.tsv",
+        "associations": "hierarchical6/associations.tsv",
+        "model": "hierarchical6/two-factor-GWAS-all-rows-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": []
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "two-factor-TSEM",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USER_TSEM",
+      "inputs": {
+        "covariance": "hierarchical6/S.tsv",
+        "sampling_covariance": "hierarchical6/V.tsv",
+        "intercepts": "hierarchical6/I.tsv",
+        "associations": "hierarchical6/TWAS.tsv",
+        "model": "hierarchical6/two-factor-TSEM-model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "FAIL",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "cores": 1,
+        "parallel": false,
+        "GC": "standard",
+        "SNPSE": false,
+        "tolerance": false,
+        "effects_aligned": true,
+        "fix_measurement": true,
+        "Q_SNP": true,
+        "sub": [
+          "F1 ~ Gene",
+          "F2 ~ Gene"
+        ]
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  },
+  {
+    "name": "explicit-upstream-smoothing",
+    "request": {
+      "schema_version": 1,
+      "mode": "RUN",
+      "profile": "genomicsem-da95d43-r461-win64-lavaan0619-v1",
+      "operation": "USERMODEL",
+      "inputs": {
+        "covariance": "basic4/S.tsv",
+        "sampling_covariance": "basic4/V-nonpositive.tsv",
+        "model": "basic4/model.txt"
+      },
+      "options": {
+        "estimation": "DWLS",
+        "seed": 73,
+        "covariance_scale": "observed",
+        "sampling_order": "lower-column-including-diagonal",
+        "input_reviewed": true,
+        "smoothing_policy": "ALLOW_UPSTREAM",
+        "warning_policy": "RETAIN_AND_FLAG",
+        "std_lv": false,
+        "CFIcalc": true,
+        "fix_resid": false,
+        "tolerance": null,
+        "Q_Factor": false
+      },
+      "limits": {
+        "timeout_seconds": 300
+      }
+    }
+  }
+]
