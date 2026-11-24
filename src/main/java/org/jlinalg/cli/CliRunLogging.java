@@ -11,7 +11,7 @@ import java.util.function.ToIntFunction;
 /** Run lifecycle for subcommands that do not have a command-specific log. */
 final class CliRunLogging {
     private CliRunLogging() { }
-    private static final Set<String> COMMANDS = Set.of("ld-db", "mr-instruments", "clump",
+    private static final Set<String> COMMANDS = Set.of("ld-db", "mr-instruments", "mr-linked", "clump",
         "mr-xwas", "mr-estimate", "mr-mvmr", "mr-multivariate",
         "beta-regression", "penalized-regression",
         "ldsc", "twas", "pwas", "genomic-factor", "score-train", "score-apply",

@@ -375,6 +375,8 @@ public final class JLinAlgCli {
         if (arguments.length > 0 && arguments[0].equals("ld-db"))
             return LdDatabaseCli.run(Arrays.copyOfRange(
                 arguments, 1, arguments.length), output, errorOutput);
+        if (arguments.length > 0 && arguments[0].equals("mr-linked"))
+            return LinkedMrCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
         if (arguments.length > 0 && arguments[0].equals("mr-instruments"))
             return MrInstrumentCli.run(Arrays.copyOfRange(
                 arguments, 1, arguments.length), output, errorOutput);
@@ -810,6 +812,7 @@ public final class JLinAlgCli {
               --location DIRECTORY        Install directory; default is .
 
             MR instrument preparation:
+              mr-linked                   Quality-aware exact/proxy single-signal MR
               mr-instruments search       Find downloadable GWAS by trait
               mr-instruments download     Stream significant MR candidates
               mr-instruments format       Normalize user GWAS/QTL columns
