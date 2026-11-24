@@ -4,6 +4,10 @@
 and evaluates every event in an explicitly supplied FCS file. It reports complete
 memberships, counts, percentages, source captures and integrity checks.
 
+For explicit unbinned measurement summaries after gating, see
+[cytometry intensity summaries](CYTOMETRY_INTENSITY.md). That separate operation
+does not establish agreement with vendor-binned statistics.
+
 Build the current source with `./gradlew executableJar` (PowerShell:
 `.\gradlew.bat executableJar`) and use `build/cli/omicsmatic-0.4.0.jar` in the
 examples below. Preserve that exact JAR alongside your run evidence.

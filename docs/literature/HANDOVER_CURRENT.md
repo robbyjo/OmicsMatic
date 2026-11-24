@@ -1,5 +1,10 @@
 # Current toolbox handover
 
+**Current native intensity component:** [Qualification, numerical discrepancies and next work](CYTOMETRY_INTENSITY_CHECKPOINT_2026-11-23.md); [command guide](../CYTOMETRY_INTENSITY.md).
+`flowjo-tools SUMMARIZE` adds explicit complete unbinned measurement summaries after fresh parent membership verification. Both hosts pass 23 packaged run/verify/replay cases; all 16,312,934 selected values and statistics agree across hosts. R checks 855 summary rows; the two raw R underflow differences and compensation sign-boundary differences remain documented with original evidence. Forty-four FlowJo/FACSDiva source roles are prepared, with no canonical admission yet.
+
+**Next:** perform guarded source-role/catalog admission and rendered-report checks; preserve vendor-binning, cell-cycle, plugin, acquisition and missing-cohort gaps. Totals stay **157 scoped families (29 native/128 upstream), 1,714 reviewed/1,010 pending uses, 2,724 observations and 250 papers**. Keep Pages on hold, exact producers, private/failed evidence, required runtimes, all other worktrees and restricted refs. The full goal remains active; entries below describe historical checkpoints.
+
 **Current native FlowJo workspace component:** [Scope, validation, saved-count disagreements and next work](FLOWJO_WORKSPACE_CHECKPOINT_2026-11-23.md); [copyable command guide](../FLOWJO_WORKSPACES.md).
 `flowjo-tools` supplies complete saved-gate memberships/counts with explicit policies, captured inputs, verification and replay. All 23 comparable sample runs per host pass on Windows/Linux; 53,019,143 event–gate decisions per host/pass match the independent reference exactly. The initial build passes 1,900 selected tests and the corrected final producer passes 66 targeted regressions; 18 actual checks per host pass. The original case-only Windows replay failure and differing LF/CRLF calibration encodings remain retained.
 

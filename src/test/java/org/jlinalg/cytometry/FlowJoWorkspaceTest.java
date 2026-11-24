@@ -74,6 +74,7 @@ class FlowJoWorkspaceTest {
     @Test void workspaceSpectrumHasAnExplicitRowDirectionAndNegativeSignalsAreRetained() throws Exception {
         String spectrum="<t:spilloverMatrix prefix=\"Comp-\" suffix=\"\" spectral=\"0\"><d:parameters><d:parameter d:name=\"X\"/><d:parameter d:name=\"Y\"/></d:parameters><t:spillover d:parameter=\"X\"><t:coefficient d:parameter=\"X\" t:value=\"1\"/><t:coefficient d:parameter=\"Y\" t:value=\"0.1\"/></t:spillover><t:spillover d:parameter=\"Y\"><t:coefficient d:parameter=\"X\" t:value=\"0.2\"/><t:coefficient d:parameter=\"Y\" t:value=\"1\"/></t:spillover></t:spilloverMatrix>";
         String source=sample("1","",interval("negative","Comp-X","-3","0","")); var w=read(source.replace("<Sample>","<Sample>"+spectrum));var p=compile(w);assertArrayEquals(new boolean[]{true},p.evaluate(new double[]{-1,1}));assertArrayEquals(new boolean[]{false},p.evaluate(new double[]{1,2}));assertEquals(2,p.compensationDiagnostics().rank());
+        double[] input={-1,1};assertArrayEquals(new double[]{-1.2/.98,1.1/.98},p.compensatedMeasurements(input),1e-14);assertArrayEquals(new double[]{-1,1},input);assertTrue(p.hasCompensationChannel("X"));assertFalse(p.hasCompensationChannel("FSC-A"));assertThrows(IllegalArgumentException.class,()->p.compensatedMeasurements(new double[]{Double.NaN,1}));
         var ambiguous=read(source.replace("<Sample>","<Sample>"+spectrum+spectrum));assertThrows(FlowJoWorkspace.UnsupportedDefinitionException.class,()->compile(ambiguous));
     }
 }

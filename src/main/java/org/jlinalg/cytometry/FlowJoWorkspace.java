@@ -205,6 +205,17 @@ public final class FlowJoWorkspace {
         public List<Gate> gates() { return gates.stream().map(BoundGate::info).toList(); }
         public List<String> warnings() { return warnings; }
         public CytometryCompensation.Diagnostics compensationDiagnostics() { return spectrum==null ? null : spectrum.matrix.diagnostics(); }
+        /** True only for a named channel explicitly included in the saved square WSP spectrum. */
+        public boolean hasCompensationChannel(String parameter) { return spectrum!=null && spectrum.matrix.detectors().contains(parameter); }
+        /** Measurement-domain compensation for explicitly requested summaries; no display transform or binning. */
+        public double[] compensatedMeasurements(double[] measurements) {
+            if(measurements==null||measurements.length!=names.size())throw new IllegalArgumentException("Require a complete explicitly preprocessed source row");
+            for(double value:measurements)if(!Double.isFinite(value))throw new IllegalArgumentException("Nonfinite measurement; no event drop or replacement");
+            if(spectrum==null)throw new IllegalStateException("No saved WSP spectrum supplies compensated measurement statistics");
+            double[] output=measurements.clone(),selected=new double[spectrum.columns.length];
+            for(int i=0;i<selected.length;i++)selected[i]=measurements[spectrum.columns[i]];
+            double[] signal=spectrum.matrix.apply(selected);for(int i=0;i<signal.length;i++)output[spectrum.columns[i]]=signal[i];return output;
+        }
         /** Input is one complete explicitly preprocessed FCS row; no compensation has yet been applied. */
         public boolean[] evaluate(double[] measurements) {
             if (measurements==null || measurements.length!=names.size()) throw new IllegalArgumentException("Require one complete preprocessed source row");
