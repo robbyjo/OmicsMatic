@@ -1,5 +1,10 @@
 # Current toolbox handover
 
+**Current cytometry catalog admission:** [44 roles, bounded native coverage, warnings and next work](CYTOMETRY_CATALOG_CHECKPOINT_2026-11-24.md).
+One native FlowJo family and 41 new reviews are admitted; three prior reviews are enriched. Totals are **158 scoped families (30 native/128 upstream), 1,755 reviewed/969 pending uses, 2,724 observations and 250 papers**. FACSDiva stays missing. Raw source captures, unrelated observations and prior review identities are preserved; both hosts pass source/transaction checks, and all 44 roles pass preview/installed desktop/mobile checks.
+
+**Remaining:** vendor-binned/off-scale statistics, FlowJo 9, cell-cycle models, clustering plugins, image-event import, acquisition and vendor plots remain explicit gaps. Keep missing original cohort inputs and unresolved settings as SKIP3. Preserve R underflow/sign-boundary discrepancies, exact producers, permitted runtimes, failed scientific evidence, other worktrees/indexes and restricted refs. The same 33 existing citation-panel failures keep the website gate red; literature Pages remain withheld. Continue higher-impact families and all pending uses. The full goal remains active; earlier entries below describe historical checkpoints.
+
 **Current native intensity component:** [Qualification, numerical discrepancies and next work](CYTOMETRY_INTENSITY_CHECKPOINT_2026-11-23.md); [command guide](../CYTOMETRY_INTENSITY.md).
 `flowjo-tools SUMMARIZE` adds explicit complete unbinned measurement summaries after fresh parent membership verification. Both hosts pass 23 packaged run/verify/replay cases; all 16,312,934 selected values and statistics agree across hosts. R checks 855 summary rows; the two raw R underflow differences and compensation sign-boundary differences remain documented with original evidence. Forty-four FlowJo/FACSDiva source roles are prepared, with no canonical admission yet.
 
