@@ -27872,6 +27872,476 @@
         "role_kind": "gates-and-display",
         "profile_availability_is_not_paper_reproduction": true
       }
+    },
+    {
+      "pmcid": "PMC13600940",
+      "doi": "10.1038/s41586-026-10836-6",
+      "tool_id": "fastqtl",
+      "evidence_paragraph_sha256": "a599487b6f0c9e7ab3a01294792be73c519b77285a86f18d68e4feac41f9cb9f",
+      "use_summary": "FastQTL supports PEER-factor-count selection (5-50 factors): choose the significant-eQTL yield closest to 95% of its maximum, using BH-adjusted two-sided P <= 0.05; repeat within PsychAD subcohorts and after their combination.",
+      "implementation_scope_note": "No PEER fitting, first-above-95-percent substitution, inferred tie policy, yield unit or original cohort reproduction. The prepared FastQTL profile alone does not implement the full factor-selection workflow. Available bounded implementation: Prepared nominal and fixed/adaptive permutation passes through the source-built Java fastqtl-tools adapter to pinned Ubuntu 2.184+v7+dfsg-4build3 (v2.184_gtex), including its declared distribution patches. Linux x86_64/WSL execution; one-chromosome biallelic-SNV BGZF VCF/BED with paired TBI checks, exact sample-ID sets and optional finite numeric covariates. Original DS-before-GT selection, float arithmetic, mean imputation, normal transformation, covariate correction, rounded-dosage MAF, empirical and beta-adjusted P values remain upstream. Fresh original VERIFY/REPLAY and read-only derived-audit inspection are separate. No historical 2.165 equivalence, indel/SV/multiallelic support, automatic preprocessing/PEER/TSS/peak-center construction, FDR/q-values, conditional mapping, whole-tool/paper or biological qualification.",
+      "usage_context": "analysis-method-description",
+      "version_reported_near_name": null,
+      "supporting_evidence": [],
+      "reported_version_contexts": [],
+      "reported_settings": {
+        "candidate_PEER_range": [
+          5,
+          50
+        ],
+        "yield_choice": "closest-to-95-percent-of-maximum",
+        "target_fraction": 0.95,
+        "selection_BH_adjusted_two_sided_P_max": 0.05,
+        "subcohorts": 3,
+        "tie_policy_reported": false,
+        "yield_unit_and_P_stage_fully_resolved": false
+      },
+      "historical_analysis_status": "SKIP3_UNREPORTED_EDITION_COHORT_INPUTS_AND_SELECTION_DETAILS_UNRESOLVED",
+      "source_role_qualification": {
+        "paper_id": "P019",
+        "tool_id": "fastqtl",
+        "pmcid": "PMC13600940",
+        "doi": "10.1038/s41586-026-10836-6",
+        "xml_sha256": "67a35ac2cd25950973379382addff05cb689b1a4b1424c71ec1e54b7e8b01209",
+        "role_kind": "PEER-factor-count selection using eQTL yield",
+        "reported_version": "Unreported",
+        "use_summary": "FastQTL supports PEER-factor-count selection (5-50 factors): choose the significant-eQTL yield closest to 95% of its maximum, using BH-adjusted two-sided P <= 0.05; repeat within PsychAD subcohorts and after their combination.",
+        "reported_settings": {
+          "candidate_PEER_range": [
+            5,
+            50
+          ],
+          "yield_choice": "closest-to-95-percent-of-maximum",
+          "target_fraction": 0.95,
+          "selection_BH_adjusted_two_sided_P_max": 0.05,
+          "subcohorts": 3,
+          "tie_policy_reported": false,
+          "yield_unit_and_P_stage_fully_resolved": false
+        },
+        "historical_analysis_status": "SKIP3_UNREPORTED_EDITION_COHORT_INPUTS_AND_SELECTION_DETAILS_UNRESOLVED",
+        "remaining_scope": "No PEER fitting, first-above-95-percent substitution, inferred tie policy, yield unit or original cohort reproduction. The prepared FastQTL profile alone does not implement the full factor-selection workflow.",
+        "primary_anchors": [
+          {
+            "paragraph_index": 37,
+            "section": "Methods / Training of snTIMs / Genotype and gene expression quality control for TIM training / Gene expression quality control",
+            "paragraph_sha256": "a599487b6f0c9e7ab3a01294792be73c519b77285a86f18d68e4feac41f9cb9f"
+          }
+        ],
+        "reported_version_contexts": [],
+        "related_prepared_operations": [
+          "NOMINAL",
+          "PERMUTATION"
+        ],
+        "local_operation_established": true,
+        "paper_edition_qualified": false,
+        "required_original_inputs_available": false,
+        "exact_historical_flags_established": false,
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "original_paper_analysis_reexecuted": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    {
+      "pmcid": "PMC11525184",
+      "doi": "10.1038/s41588-024-01896-3",
+      "tool_id": "fastqtl",
+      "evidence_paragraph_sha256": "5cd9c52cbad4baf3f7ac75388ac1abd1a11c790344535fa013cfc60bb555d0d6",
+      "use_summary": "GTEx-based eQTL mapping with 60 PEER factors, sex and five genotype PCs; disease-stratum fits and fixed-effects meta-analysis are separate stages. Code availability reports FastQTL 2.165.",
+      "implementation_scope_note": "Obtain and qualify exact unmodified FastQTL 2.165 and original prepared inputs, or keep the dependent analysis skipped. The available Ubuntu 2.184/GTEx edition is not a substitute; repeated Associated Data text is not a second execution. Available bounded implementation: Prepared nominal and fixed/adaptive permutation passes through the source-built Java fastqtl-tools adapter to pinned Ubuntu 2.184+v7+dfsg-4build3 (v2.184_gtex), including its declared distribution patches. Linux x86_64/WSL execution; one-chromosome biallelic-SNV BGZF VCF/BED with paired TBI checks, exact sample-ID sets and optional finite numeric covariates. Original DS-before-GT selection, float arithmetic, mean imputation, normal transformation, covariate correction, rounded-dosage MAF, empirical and beta-adjusted P values remain upstream. Fresh original VERIFY/REPLAY and read-only derived-audit inspection are separate. No historical 2.165 equivalence, indel/SV/multiallelic support, automatic preprocessing/PEER/TSS/peak-center construction, FDR/q-values, conditional mapping, whole-tool/paper or biological qualification.",
+      "usage_context": "analysis-method-description",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 71,
+          "section": "Code availability",
+          "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98"
+        },
+        {
+          "paragraph_index": 79,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98"
+        }
+      ],
+      "reported_version_contexts": [
+        {
+          "paragraph_index": 71,
+          "section": "Code availability",
+          "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98",
+          "tool_edition": "2.165",
+          "context_kind": "Code availability",
+          "duplicate_of_paragraph_index": null,
+          "independent_execution_established": false
+        },
+        {
+          "paragraph_index": 79,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98",
+          "tool_edition": "2.165",
+          "context_kind": "Repeated Associated Data declaration",
+          "duplicate_of_paragraph_index": 71,
+          "independent_execution_established": false
+        }
+      ],
+      "reported_settings": {
+        "PEER_factors": 60,
+        "genotype_PCs": 5,
+        "sex_covariate": true,
+        "preprocessing": "STAR/RSEM quantification, QC, TMM and expression filtering are separate stages",
+        "disease_stratum_fixed_effects_meta_analysis_separate": true,
+        "exact_flags_reported": false
+      },
+      "historical_analysis_status": "SKIP3_REQUIRED_2_165_NOT_QUALIFIED_NO_2_184_SUBSTITUTION",
+      "source_role_qualification": {
+        "paper_id": "P157",
+        "tool_id": "fastqtl",
+        "pmcid": "PMC11525184",
+        "doi": "10.1038/s41588-024-01896-3",
+        "xml_sha256": "98edf86475be2175e390999f6b7b6cd2ec2d2aefd39c79956a91384df78b59d1",
+        "role_kind": "GTEx-based eQTL mapping with explicit covariates",
+        "reported_version": "2.165 (Code availability; near-name Methods capture remains unreported)",
+        "use_summary": "GTEx-based eQTL mapping with 60 PEER factors, sex and five genotype PCs; disease-stratum fits and fixed-effects meta-analysis are separate stages. Code availability reports FastQTL 2.165.",
+        "reported_settings": {
+          "PEER_factors": 60,
+          "genotype_PCs": 5,
+          "sex_covariate": true,
+          "preprocessing": "STAR/RSEM quantification, QC, TMM and expression filtering are separate stages",
+          "disease_stratum_fixed_effects_meta_analysis_separate": true,
+          "exact_flags_reported": false
+        },
+        "historical_analysis_status": "SKIP3_REQUIRED_2_165_NOT_QUALIFIED_NO_2_184_SUBSTITUTION",
+        "remaining_scope": "Obtain and qualify exact unmodified FastQTL 2.165 and original prepared inputs, or keep the dependent analysis skipped. The available Ubuntu 2.184/GTEx edition is not a substitute; repeated Associated Data text is not a second execution.",
+        "primary_anchors": [
+          {
+            "paragraph_index": 42,
+            "section": "Methods / eQTL and sQTL fine-mapping",
+            "paragraph_sha256": "5cd9c52cbad4baf3f7ac75388ac1abd1a11c790344535fa013cfc60bb555d0d6"
+          },
+          {
+            "paragraph_index": 71,
+            "section": "Code availability",
+            "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98"
+          },
+          {
+            "paragraph_index": 79,
+            "section": "Associated Data / Data Availability Statement",
+            "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98"
+          }
+        ],
+        "reported_version_contexts": [
+          {
+            "paragraph_index": 71,
+            "section": "Code availability",
+            "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98",
+            "tool_edition": "2.165",
+            "context_kind": "Code availability",
+            "duplicate_of_paragraph_index": null,
+            "independent_execution_established": false
+          },
+          {
+            "paragraph_index": 79,
+            "section": "Associated Data / Data Availability Statement",
+            "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98",
+            "tool_edition": "2.165",
+            "context_kind": "Repeated Associated Data declaration",
+            "duplicate_of_paragraph_index": 71,
+            "independent_execution_established": false
+          }
+        ],
+        "related_prepared_operations": [],
+        "local_operation_established": true,
+        "paper_edition_qualified": false,
+        "required_original_inputs_available": false,
+        "exact_historical_flags_established": false,
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "original_paper_analysis_reexecuted": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    {
+      "pmcid": "PMC12597823",
+      "doi": "10.1038/s41588-025-02344-6",
+      "tool_id": "fastqtl",
+      "evidence_paragraph_sha256": "5723f0cc56dab8f277f39bd229b63df449a904f316db09dfafa98454a9e206c1",
+      "use_summary": "FastQTL linear cis-eQTL mapping of prepared donor-level PBMC profiles: +/-1 Mb from TSS, 1,000 permutations per locus, Q < 0.05; later prioritization of averaged NP/P profiles uses a distinct Q < 0.10 comparison.",
+      "implementation_scope_note": "Prepare donor-level NP/P/average profiles and review the stated residualization policy; do not infer double correction, exact flags or paper-edition equivalence. Preserve the source nominal-Q terminology and distinct 0.05/0.10 thresholds. No automatic Q-value procedure or original cohort fit is supplied. Available bounded implementation: Prepared nominal and fixed/adaptive permutation passes through the source-built Java fastqtl-tools adapter to pinned Ubuntu 2.184+v7+dfsg-4build3 (v2.184_gtex), including its declared distribution patches. Linux x86_64/WSL execution; one-chromosome biallelic-SNV BGZF VCF/BED with paired TBI checks, exact sample-ID sets and optional finite numeric covariates. Original DS-before-GT selection, float arithmetic, mean imputation, normal transformation, covariate correction, rounded-dosage MAF, empirical and beta-adjusted P values remain upstream. Fresh original VERIFY/REPLAY and read-only derived-audit inspection are separate. No historical 2.165 equivalence, indel/SV/multiallelic support, automatic preprocessing/PEER/TSS/peak-center construction, FDR/q-values, conditional mapping, whole-tool/paper or biological qualification.",
+      "usage_context": "analysis-method-description",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 59,
+          "section": "Methods / Colocalization analysis",
+          "paragraph_sha256": "6bf01e2a4ba3cf6921aa1b417d29da8ca0001ba0f88763f0f55f2f7a164b7f31"
+        }
+      ],
+      "reported_version_contexts": [],
+      "reported_settings": {
+        "cis_window_bp": 1000000,
+        "permutations_per_locus": 1000,
+        "mapping_Q_max": 0.05,
+        "profile_prioritization_Q_max": 0.1,
+        "genotype_PCs": 5,
+        "PEER_factors": 15,
+        "transcript_sample_fraction_min": 0.5,
+        "normalization_literal": "log2 count per million + 1",
+        "inverse_normal_formula": "qnorm((rank(gene, na.last=keep)-0.5)/sum(!is.na(gene)))",
+        "selection_unit_literal": "gene-SNP pairs (eGenes)",
+        "colocalization_selection_literal": "nominal Q value < 0.05",
+        "covariate_residualization": "age, sex if available, five genotype PCs and 15 PEER factors before mapping"
+      },
+      "historical_analysis_status": "SKIP3_UNREPORTED_EDITION_PREPROCESSED_DONOR_INPUTS_UNAVAILABLE",
+      "source_role_qualification": {
+        "paper_id": "P170",
+        "tool_id": "fastqtl",
+        "pmcid": "PMC12597823",
+        "doi": "10.1038/s41588-025-02344-6",
+        "xml_sha256": "ea3565b3d487b40dbbd57675e2825b39fda6b485cba722cd505701adc18d3739",
+        "role_kind": "Donor-level PBMC pseudobulk cis-eQTL prioritization",
+        "reported_version": "Unreported",
+        "use_summary": "FastQTL linear cis-eQTL mapping of prepared donor-level PBMC profiles: +/-1 Mb from TSS, 1,000 permutations per locus, Q < 0.05; later prioritization of averaged NP/P profiles uses a distinct Q < 0.10 comparison.",
+        "reported_settings": {
+          "cis_window_bp": 1000000,
+          "permutations_per_locus": 1000,
+          "mapping_Q_max": 0.05,
+          "profile_prioritization_Q_max": 0.1,
+          "genotype_PCs": 5,
+          "PEER_factors": 15,
+          "transcript_sample_fraction_min": 0.5,
+          "normalization_literal": "log2 count per million + 1",
+          "inverse_normal_formula": "qnorm((rank(gene, na.last=keep)-0.5)/sum(!is.na(gene)))",
+          "selection_unit_literal": "gene-SNP pairs (eGenes)",
+          "colocalization_selection_literal": "nominal Q value < 0.05",
+          "covariate_residualization": "age, sex if available, five genotype PCs and 15 PEER factors before mapping"
+        },
+        "historical_analysis_status": "SKIP3_UNREPORTED_EDITION_PREPROCESSED_DONOR_INPUTS_UNAVAILABLE",
+        "remaining_scope": "Prepare donor-level NP/P/average profiles and review the stated residualization policy; do not infer double correction, exact flags or paper-edition equivalence. Preserve the source nominal-Q terminology and distinct 0.05/0.10 thresholds. No automatic Q-value procedure or original cohort fit is supplied.",
+        "primary_anchors": [
+          {
+            "paragraph_index": 39,
+            "section": "Methods / Prioritizing eQTLs in PBMCs bulk expression profiles",
+            "paragraph_sha256": "5723f0cc56dab8f277f39bd229b63df449a904f316db09dfafa98454a9e206c1"
+          },
+          {
+            "paragraph_index": 59,
+            "section": "Methods / Colocalization analysis",
+            "paragraph_sha256": "6bf01e2a4ba3cf6921aa1b417d29da8ca0001ba0f88763f0f55f2f7a164b7f31"
+          }
+        ],
+        "reported_version_contexts": [],
+        "related_prepared_operations": [
+          "NOMINAL",
+          "PERMUTATION"
+        ],
+        "local_operation_established": true,
+        "paper_edition_qualified": false,
+        "required_original_inputs_available": false,
+        "exact_historical_flags_established": false,
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "original_paper_analysis_reexecuted": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    {
+      "pmcid": "PMC12805840",
+      "doi": "10.1016/j.ajhg.2025.11.009",
+      "tool_id": "fastqtl",
+      "evidence_paragraph_sha256": "45cd41caa4c044909016b52cd2262f086615e118d7fdefd3ef3579494d047f3d",
+      "use_summary": "FastQTL tests inverse-normal peak counts within +/-1 kb of peak centers and gene counts within +/-1 Mb of TSS (MAF >= 0.1), with distinct caQTL/eQTL covariates; BH is applied separately to beta-adjusted P values at FDR < 0.05.",
+      "implementation_scope_note": "Prepare center/TSS coordinates, cell-type matrices, count filters, normalizations and covariates explicitly. The adapter supports biallelic SNVs, while the paper describes biallelic variants without establishing SNV-only equivalence. BH, LD clumping and upstream WASP/featureCounts/EDASeq/DESeq2/Seurat stages remain separate. Cell Ranger remains excluded. Available bounded implementation: Prepared nominal and fixed/adaptive permutation passes through the source-built Java fastqtl-tools adapter to pinned Ubuntu 2.184+v7+dfsg-4build3 (v2.184_gtex), including its declared distribution patches. Linux x86_64/WSL execution; one-chromosome biallelic-SNV BGZF VCF/BED with paired TBI checks, exact sample-ID sets and optional finite numeric covariates. Original DS-before-GT selection, float arithmetic, mean imputation, normal transformation, covariate correction, rounded-dosage MAF, empirical and beta-adjusted P values remain upstream. Fresh original VERIFY/REPLAY and read-only derived-audit inspection are separate. No historical 2.165 equivalence, indel/SV/multiallelic support, automatic preprocessing/PEER/TSS/peak-center construction, FDR/q-values, conditional mapping, whole-tool/paper or biological qualification.",
+      "usage_context": "analysis-method-description",
+      "version_reported_near_name": null,
+      "supporting_evidence": [
+        {
+          "paragraph_index": 21,
+          "section": "Material and methods / Mapping eQTL and power analysis",
+          "paragraph_sha256": "e452fb66a698a5c5c244afdf2c4c2c0eb4f71140106f2cf683ff05af4232578c"
+        },
+        {
+          "paragraph_index": 22,
+          "section": "Material and methods / Mapping eQTL and power analysis",
+          "paragraph_sha256": "fe6094bf043afb885fed8cd3fece8a8c109dbbf7c42dce10d99450a4d40e3968"
+        }
+      ],
+      "reported_version_contexts": [],
+      "reported_settings": {
+        "caQTL_window_bp": 1000,
+        "eQTL_window_bp": 1000000,
+        "MAF_min": 0.1,
+        "caQTL_donors": 39,
+        "caQTL_peak_counts_min": 5,
+        "caQTL_peak_donors_min": 10,
+        "eQTL_gene_counts_min": 10,
+        "eQTL_gene_donors_min": 10,
+        "caQTL_covariates": [
+          "two genotype PCs",
+          "sex",
+          "ATAC TSS enrichment"
+        ],
+        "ATAC_PCs_used": false,
+        "ATAC_PC_omission_reason": "PCs driven by zero-count fraction",
+        "eQTL_covariates": [
+          "sex",
+          "two genotype PCs",
+          "cell-type-specific expression PCs"
+        ],
+        "expression_PC_counts": {
+          "hepatocyte": 2,
+          "LSEC": 3,
+          "Kupffer": 6,
+          "mesenchymal": 2,
+          "NK_T": 3,
+          "cholangiocyte": 6
+        },
+        "BH_FDR_max": 0.05,
+        "beta_P_and_BH_are_separate": true,
+        "posthoc_LD_clumping_r2_min": 0.2,
+        "unclumped_eQTLs": 79,
+        "distinct_eQTLs": 67,
+        "bi_allelic_variant_types_fully_resolved": false
+      },
+      "historical_analysis_status": "SKIP3_UNREPORTED_EDITION_ORIGINAL_COUNTS_AND_ALL_VARIANT_COVERAGE_UNAVAILABLE",
+      "source_role_qualification": {
+        "paper_id": "P187",
+        "tool_id": "fastqtl",
+        "pmcid": "PMC12805840",
+        "doi": "10.1016/j.ajhg.2025.11.009",
+        "xml_sha256": "7dbc798c9834346d9395498d85b3c5d4885248e7f15eb34d3c77ccc41fe234e5",
+        "role_kind": "Separate liver-cell-type caQTL and eQTL mapping",
+        "reported_version": "Unreported",
+        "use_summary": "FastQTL tests inverse-normal peak counts within +/-1 kb of peak centers and gene counts within +/-1 Mb of TSS (MAF >= 0.1), with distinct caQTL/eQTL covariates; BH is applied separately to beta-adjusted P values at FDR < 0.05.",
+        "reported_settings": {
+          "caQTL_window_bp": 1000,
+          "eQTL_window_bp": 1000000,
+          "MAF_min": 0.1,
+          "caQTL_donors": 39,
+          "caQTL_peak_counts_min": 5,
+          "caQTL_peak_donors_min": 10,
+          "eQTL_gene_counts_min": 10,
+          "eQTL_gene_donors_min": 10,
+          "caQTL_covariates": [
+            "two genotype PCs",
+            "sex",
+            "ATAC TSS enrichment"
+          ],
+          "ATAC_PCs_used": false,
+          "ATAC_PC_omission_reason": "PCs driven by zero-count fraction",
+          "eQTL_covariates": [
+            "sex",
+            "two genotype PCs",
+            "cell-type-specific expression PCs"
+          ],
+          "expression_PC_counts": {
+            "hepatocyte": 2,
+            "LSEC": 3,
+            "Kupffer": 6,
+            "mesenchymal": 2,
+            "NK_T": 3,
+            "cholangiocyte": 6
+          },
+          "BH_FDR_max": 0.05,
+          "beta_P_and_BH_are_separate": true,
+          "posthoc_LD_clumping_r2_min": 0.2,
+          "unclumped_eQTLs": 79,
+          "distinct_eQTLs": 67,
+          "bi_allelic_variant_types_fully_resolved": false
+        },
+        "historical_analysis_status": "SKIP3_UNREPORTED_EDITION_ORIGINAL_COUNTS_AND_ALL_VARIANT_COVERAGE_UNAVAILABLE",
+        "remaining_scope": "Prepare center/TSS coordinates, cell-type matrices, count filters, normalizations and covariates explicitly. The adapter supports biallelic SNVs, while the paper describes biallelic variants without establishing SNV-only equivalence. BH, LD clumping and upstream WASP/featureCounts/EDASeq/DESeq2/Seurat stages remain separate. Cell Ranger remains excluded.",
+        "primary_anchors": [
+          {
+            "paragraph_index": 18,
+            "section": "Material and methods / Mapping caQTL",
+            "paragraph_sha256": "45cd41caa4c044909016b52cd2262f086615e118d7fdefd3ef3579494d047f3d"
+          },
+          {
+            "paragraph_index": 21,
+            "section": "Material and methods / Mapping eQTL and power analysis",
+            "paragraph_sha256": "e452fb66a698a5c5c244afdf2c4c2c0eb4f71140106f2cf683ff05af4232578c"
+          },
+          {
+            "paragraph_index": 22,
+            "section": "Material and methods / Mapping eQTL and power analysis",
+            "paragraph_sha256": "fe6094bf043afb885fed8cd3fece8a8c109dbbf7c42dce10d99450a4d40e3968"
+          }
+        ],
+        "reported_version_contexts": [],
+        "related_prepared_operations": [
+          "NOMINAL",
+          "PERMUTATION"
+        ],
+        "local_operation_established": true,
+        "paper_edition_qualified": false,
+        "required_original_inputs_available": false,
+        "exact_historical_flags_established": false,
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "original_paper_analysis_reexecuted": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    {
+      "pmcid": "PMC12614742",
+      "doi": "10.1016/j.ajhg.2025.09.003",
+      "tool_id": "fastqtl",
+      "evidence_paragraph_sha256": "666a46047f2347922c5b75c9e79a9f0da3e834fba33662057ca524ca3a611b13",
+      "use_summary": "Colocalization reuses publicly available pancreatic-islet eQTL results generated with FastQTL; no new local FastQTL run is established. Because isolated islet signals were unavailable, one signal per gene was assumed; APEX conditional analyses concern other tissues.",
+      "implementation_scope_note": "Retain public islet dataset provenance and the one-signal assumption. Do not invent a local or conditional FastQTL run from APEX analyses in other tissues. Original eQTL data suitability and colocalization are separate requirements. Available bounded implementation: Prepared nominal and fixed/adaptive permutation passes through the source-built Java fastqtl-tools adapter to pinned Ubuntu 2.184+v7+dfsg-4build3 (v2.184_gtex), including its declared distribution patches. Linux x86_64/WSL execution; one-chromosome biallelic-SNV BGZF VCF/BED with paired TBI checks, exact sample-ID sets and optional finite numeric covariates. Original DS-before-GT selection, float arithmetic, mean imputation, normal transformation, covariate correction, rounded-dosage MAF, empirical and beta-adjusted P values remain upstream. Fresh original VERIFY/REPLAY and read-only derived-audit inspection are separate. No historical 2.165 equivalence, indel/SV/multiallelic support, automatic preprocessing/PEER/TSS/peak-center construction, FDR/q-values, conditional mapping, whole-tool/paper or biological qualification.",
+      "usage_context": "analysis-method-description",
+      "version_reported_near_name": null,
+      "supporting_evidence": [],
+      "reported_version_contexts": [],
+      "reported_settings": {
+        "public_results_reused": true,
+        "new_local_FastQTL_run_established": false,
+        "conditionally_isolated_islet_signals_available": false,
+        "assumed_signals_per_islet_gene": 1,
+        "APEX_conditional_other_tissues": [
+          "subcutaneous adipose",
+          "liver"
+        ]
+      },
+      "historical_analysis_status": "DATASET_REUSE_NO_NEW_LOCAL_FASTQTL_RUN_ESTABLISHED",
+      "source_role_qualification": {
+        "paper_id": "P212",
+        "tool_id": "fastqtl",
+        "pmcid": "PMC12614742",
+        "doi": "10.1016/j.ajhg.2025.09.003",
+        "xml_sha256": "92008590eafb6a68abea130c2562bd521c2a12802c66d58289643b773eed00aa",
+        "role_kind": "Reuse of public pancreatic-islet eQTL results",
+        "reported_version": "Unreported; public dataset provenance",
+        "use_summary": "Colocalization reuses publicly available pancreatic-islet eQTL results generated with FastQTL; no new local FastQTL run is established. Because isolated islet signals were unavailable, one signal per gene was assumed; APEX conditional analyses concern other tissues.",
+        "reported_settings": {
+          "public_results_reused": true,
+          "new_local_FastQTL_run_established": false,
+          "conditionally_isolated_islet_signals_available": false,
+          "assumed_signals_per_islet_gene": 1,
+          "APEX_conditional_other_tissues": [
+            "subcutaneous adipose",
+            "liver"
+          ]
+        },
+        "historical_analysis_status": "DATASET_REUSE_NO_NEW_LOCAL_FASTQTL_RUN_ESTABLISHED",
+        "remaining_scope": "Retain public islet dataset provenance and the one-signal assumption. Do not invent a local or conditional FastQTL run from APEX analyses in other tissues. Original eQTL data suitability and colocalization are separate requirements.",
+        "primary_anchors": [
+          {
+            "paragraph_index": 20,
+            "section": "Methods / T2D colocalizations across tissues",
+            "paragraph_sha256": "666a46047f2347922c5b75c9e79a9f0da3e834fba33662057ca524ca3a611b13"
+          }
+        ],
+        "reported_version_contexts": [],
+        "related_prepared_operations": [],
+        "local_operation_established": false,
+        "paper_edition_qualified": false,
+        "required_original_inputs_available": false,
+        "exact_historical_flags_established": false,
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "original_paper_analysis_reexecuted": false,
+        "whole_paper_reproduced": false
+      }
     }
   ]
 }

@@ -5,7 +5,8 @@ Build the current project executable JAR to obtain `fastqtl-tools`.
 This command runs **Ubuntu `2.184+v7+dfsg-4build3`, identifying itself as
 `v2.184_gtex`**. The distribution includes an HTSlib patch. It does not provide
 historical FastQTL 2.165, conditional mapping, FDR/q-values, PEER estimation or
-a complete paper analysis. The five corpus uses remain pending catalog admission.
+a complete paper analysis. The [paper-use catalog](literature/FASTQTL_CATALOG_WORKFLOWS.md)
+separates prepared operations from historical editions and complete paper fits.
 
 **Warnings and failures require action.** Exit **3** means the dependent analysis
 was **skipped** because a dependency or capability was unavailable. Install or

@@ -14,8 +14,9 @@ provides qualified GenomicRanges scope, source contexts and verification command
 
 The current source also provides [prepared FastQTL nominal/permutation workflows](docs/FASTQTL_WORKFLOW.md)
 with an explicitly named Ubuntu 2.184/GTEx runtime, retained warnings and fresh
-verification. Historical 2.165 and the five paper uses remain pending catalog
-admission; the existing v0.4.0 release JAR has not been replaced.
+verification. The [paper-use catalog and limits](docs/literature/FASTQTL_CATALOG_WORKFLOWS.md)
+separate prepared operations from unqualified historical 2.165 and paper-cohort
+analyses; the existing v0.4.0 release JAR has not been replaced.
 
 **[Website and guides](https://robbyjo.github.io/OmicsMatic/)** ·
 **[Download v0.4.0](https://github.com/robbyjo/OmicsMatic/releases/tag/v0.4.0)** ·
