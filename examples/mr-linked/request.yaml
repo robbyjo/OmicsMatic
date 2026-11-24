@@ -1,0 +1,104 @@
+# Synthetic software example; no biological conclusions.
+schema_version: 1
+family_id: synthetic-three-pair-family
+family_size: 3
+alpha: 0.05
+selection_basis: exposure_only
+policy:
+  instrument_p: 0.00000005
+  minimum_f: 10
+  imputation_metric: minimac_rsq
+  minimum_quality: 0.8
+  minimum_proxy_r2: 0.8
+  confidence_level: 0.95
+tests:
+  - id: retained-null
+    feature_id: transcript-retained-null.1
+    chromosome: "1"
+    cis_start: 1
+    cis_end: 1000
+    sample_overlap: none
+    sample_overlap_basis: Independent synthetic samples
+    exposure:
+      file: exposure.tsv
+      source_id: synthetic-qtl
+      trait_id: transcript-retained-null.1
+      units: isoform-ratio units
+      effect_model: additive_per_allele
+      genome_build: GRCh38
+      ancestry: synthetic-reference-population
+    outcome:
+      file: outcome-null.tsv
+      source_id: synthetic-gwas
+      trait_id: synthetic-trait
+      units: trait units
+      effect_model: additive_per_allele
+      genome_build: GRCh38
+      ancestry: synthetic-reference-population
+    ld:
+      file: ld.tsv
+      source_id: synthetic-ld
+      genome_build: GRCh38
+      ancestry: synthetic-reference-population
+      sample_size: 500
+      reference_basis: Synthetic known LD for a software example
+  - id: quality-proxy
+    feature_id: transcript-quality-proxy.1
+    chromosome: "1"
+    cis_start: 1
+    cis_end: 1000
+    sample_overlap: none
+    sample_overlap_basis: Independent synthetic samples
+    exposure:
+      file: exposure.tsv
+      source_id: synthetic-qtl
+      trait_id: transcript-quality-proxy.1
+      units: isoform-ratio units
+      effect_model: additive_per_allele
+      genome_build: GRCh38
+      ancestry: synthetic-reference-population
+    outcome:
+      file: outcome-poor.tsv
+      source_id: synthetic-gwas
+      trait_id: synthetic-trait
+      units: trait units
+      effect_model: additive_per_allele
+      genome_build: GRCh38
+      ancestry: synthetic-reference-population
+    ld:
+      file: ld.tsv
+      source_id: synthetic-ld
+      genome_build: GRCh38
+      ancestry: synthetic-reference-population
+      sample_size: 500
+      reference_basis: Synthetic known LD for a software example
+  - id: unavailable
+    feature_id: transcript-unavailable.1
+    chromosome: "1"
+    cis_start: 1
+    cis_end: 1000
+    sample_overlap: none
+    sample_overlap_basis: Independent synthetic samples
+    exposure:
+      file: exposure.tsv
+      source_id: synthetic-qtl
+      trait_id: transcript-unavailable.1
+      units: isoform-ratio units
+      effect_model: additive_per_allele
+      genome_build: GRCh38
+      ancestry: synthetic-reference-population
+    outcome:
+      file: outcome-unavailable.tsv
+      source_id: synthetic-gwas
+      trait_id: synthetic-trait
+      units: trait units
+      effect_model: additive_per_allele
+      genome_build: GRCh38
+      ancestry: synthetic-reference-population
+    ld:
+      file: ld.tsv
+      source_id: synthetic-ld
+      genome_build: GRCh38
+      ancestry: synthetic-reference-population
+      sample_size: 500
+      reference_basis: Synthetic known LD for a software example

@@ -43,7 +43,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
     }
     private static final Set<String> CUSTOM_COMMANDS = Set.of(
         "enrichment", "variant-score", "susie", "coloc", "mr-estimate", "mr-xwas",
-        "clump", "mr-instruments", "ldsc", "twas", "pwas", "genomic-factor", "network",
+        "clump", "mr-instruments", "mr-linked", "ldsc", "twas", "pwas", "genomic-factor", "network",
         "differential", "ewas-regions", "multiple-test",
         "multiple-impute", "mi-pool");
 
@@ -1481,7 +1481,7 @@ final class StudyCliExecutor implements StudyOperationExecutor {
                 "Command is not allowed for configured study execution: " + command);
         List<String> configuredArguments = strings(configuration.get("arguments"));
         if ("offline".equals(optionalMap(context.study().get("resources"), "resources").get("network"))
-                && (!Set.of("susie", "coloc", "mr-estimate", "differential", "ewas-regions", "multiple-test", "multiple-impute", "mi-pool").contains(command)
+                && (!Set.of("susie", "coloc", "mr-estimate", "mr-linked", "differential", "ewas-regions", "multiple-test", "multiple-impute", "mi-pool").contains(command)
                     || configuredArguments.stream().anyMatch(argument -> argument.contains("://")
                         || argument.startsWith("--download") || argument.startsWith("--config"))))
             return waiting(context, "Offline policy prevents a potentially network-enabled configured adapter",
