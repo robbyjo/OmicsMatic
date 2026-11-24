@@ -1,0 +1,144 @@
+{
+  "status": "PASS_SAVED_CHECKPOINT_READER_BOUNDARIES",
+  "cases": [
+    {
+      "case": "valid-source-and-saved-evidence",
+      "expected": 0,
+      "exit_code": 0,
+      "source_packet_unchanged": true
+    },
+    {
+      "case": "wrong-producer",
+      "expected": 1,
+      "exit_code": 1,
+      "source_packet_unchanged": true
+    },
+    {
+      "case": "changed-source",
+      "expected": 1,
+      "exit_code": 1,
+      "source_packet_unchanged": true
+    },
+    {
+      "case": "changed-archive",
+      "expected": 1,
+      "exit_code": 1,
+      "source_packet_unchanged": true
+    },
+    {
+      "case": "expanded-catalog-claim",
+      "expected": 1,
+      "exit_code": 1,
+      "source_packet_unchanged": true
+    },
+    {
+      "case": "internally-consistent-hidden-reference-failure",
+      "expected": 1,
+      "exit_code": 1,
+      "source_packet_unchanged": true
+    }
+  ],
+  "valid_controls": 1,
+  "expected_refusals": 5,
+  "current_source_or_evidence_modified": false,
+  "scientific_fits_reexecuted": false,
+  "coordinated_replacement_authentication_claimed": false,
+  "reader_failure_process_exit": 1,
+  "reader_failure_status_label": "FAIL2",
+  "scientific_command_failure_exit_unchanged": 2,
+  "prior_harness_error": "reader-controls-1 wrongly expected scientific-command exit 2 from the readonly Python checker; raw refusal and original harness retained",
+  "private_control_receipts": {
+    "changed-archive.RESULT.json": {
+      "bytes": 108,
+      "sha256": "f22431356950925654758c6f6deead03e5802856106762d95972425fa3895c53"
+    },
+    "changed-archive.stderr": {
+      "bytes": 235,
+      "sha256": "6aad37b2437edec59ba18099859a432f69497797892b656adca29ccf7a839403"
+    },
+    "changed-archive.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "changed-source.RESULT.json": {
+      "bytes": 107,
+      "sha256": "de59f44f3455d890ef703e2d4791f918d3dead38060f87d5062b3d894150c77f"
+    },
+    "changed-source.stderr": {
+      "bytes": 270,
+      "sha256": "804e3b36c17ad7fda660fe24fea5591062833395c6622db5e3beb8fd66ce5ae1"
+    },
+    "changed-source.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "expanded-catalog-claim.RESULT.json": {
+      "bytes": 115,
+      "sha256": "acc3aeba4a78c0101cb29f8b622819f774420211376c1b97f919228d21fcd2f5"
+    },
+    "expanded-catalog-claim.stderr": {
+      "bytes": 259,
+      "sha256": "6b04a040d3c6e297efebc3d26728682616e385b42b1acfb05554c143d6872992"
+    },
+    "expanded-catalog-claim.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "internally-consistent-hidden-reference-failure.RESULT.json": {
+      "bytes": 139,
+      "sha256": "a23d6a0e95025804072663e3ccf528e742ed7c02245026f2f7e34b8176571ffc"
+    },
+    "internally-consistent-hidden-reference-failure.stderr": {
+      "bytes": 230,
+      "sha256": "a8f63de75d4a574556303d8f8c27d628c339b5dd30982ab2c235cb6dd9a8b304"
+    },
+    "internally-consistent-hidden-reference-failure.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "SUMMARY.json": {
+      "bytes": 1427,
+      "sha256": "7f57633563fa3f4107faec3f235647b88d965ce5d2b7c15521d95325fa64ffcf"
+    },
+    "valid-source-and-saved-evidence.RESULT.json": {
+      "bytes": 124,
+      "sha256": "221618ab990ea06e68771fd9d7ef241ec2f9e5382415c6882638ea51fb37b93c"
+    },
+    "valid-source-and-saved-evidence.stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "valid-source-and-saved-evidence.stdout": {
+      "bytes": 529,
+      "sha256": "62fdc578000f9953025d7239e1154c172f6ccf64f62f017be6206369d4d15521"
+    },
+    "wrong-producer.RESULT.json": {
+      "bytes": 107,
+      "sha256": "d3d2eba61faba08fcc5be38d203a17516877c65122751877b546498d1aa87845"
+    },
+    "wrong-producer.stderr": {
+      "bytes": 267,
+      "sha256": "4f694fcd5bed80e8b90d1e702a9ad2a9b7541665356012f112d17cc0840ce975"
+    },
+    "wrong-producer.stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "full_private_readback": {
+    "status": "PASS_NATIVE_FLOWJO_WSP20_FLOWKIT132_MEMBERSHIP_COUNTS",
+    "actual_sample_runs_per_host": 23,
+    "actual_replays_per_host": 23,
+    "complete_event_gate_pairs_per_pass": 53019143,
+    "actual_checks_per_host": 18,
+    "exact_JAR_checked": true,
+    "private_files_checked": 1660,
+    "fresh_primary_XML_checked": 250,
+    "source_and_saved_evidence_checked": true,
+    "scientific_analysis_reexecuted": false,
+    "catalog_admitted": false,
+    "new_family_credit": 0,
+    "new_reviews": 0,
+    "whole_goal_complete": false
+  }
+}
