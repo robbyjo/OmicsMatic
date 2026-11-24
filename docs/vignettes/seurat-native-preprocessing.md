@@ -153,3 +153,13 @@ reproduced both JSON and original RDS bytes and exercised four genuine skips.
 Read the [qualification](../literature/seurat-preprocessing-development-v2/README.md)
 and [current checkpoint](../literature/SEURAT_PREPROCESSING_CHECKPOINT_2026-11-19.md).
 The prior marker-summary and differential interfaces remain separately scoped.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Satija Lab (2026) — Seurat documentation and tutorials](../CITATIONS.md#seurat-api-documentation)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

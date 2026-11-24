@@ -90,3 +90,13 @@ packages. The [catalog admission scope](../literature/GCTA_CATALOG_INTEGRATION.m
 credits one GCTA family and a COJO alias with zero extra credit, with exact
 source-role and transaction evidence. No complete paper or biological
 reproduction is claimed.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Jian Yang et al. (2011) — GCTA: a tool for genome-wide complex trait analysis](../CITATIONS.md#yang-gcta-2011) — [PMID: 21167468](https://pubmed.ncbi.nlm.nih.gov/21167468/) · [PMCID: PMC3014363](https://pmc.ncbi.nlm.nih.gov/articles/PMC3014363/)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

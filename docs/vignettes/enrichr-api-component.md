@@ -118,3 +118,14 @@ license, while its API metadata declares CC-BY-NC-SA-4.0; individual gene-set
 resources have their own terms. This component is original project Java code
 under GPL-3.0-or-later. The public fixture contains synthetic query/results and
 provenance, not a redistribution of the complete downloaded gene-set library.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Maayan Lab (2026) — Enrichr API help](../CITATIONS.md#enrichr-api-documentation)
+- [Yoav Benjamini and Yosef Hochberg (1995) — Controlling the false discovery rate: a practical and powerful approach to multiple testing](../CITATIONS.md#benjamini-hochberg-1995)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

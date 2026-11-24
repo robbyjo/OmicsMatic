@@ -805,3 +805,41 @@ Chained equations, Rubin variance pooling, and finite-sample degrees of freedom.
 <a id="pgs-catalog-scoring-format"></a>
 - **PGS Catalog team (2026).** PGS Catalog download information and scoring file format. *PGS Catalog official documentation, accessed 2026-10-25.* [Primary source](https://www.pgscatalog.org/downloads/)
   - OmicsMatic methods: Explicit genome-build, coordinate and effect-allele weights, Author-reported and harmonized scores; nonadditive flags.
+
+## Workflow source documentation
+
+<a id="scanpy-api-documentation"></a>
+- **Scanpy developers (2026).** Scanpy API and tutorials. *Official software or standards documentation.* [Primary source](https://scanpy.readthedocs.io/en/stable/)
+  - OmicsMatic methods: Single-cell preprocessing and workflows.
+
+<a id="seurat-api-documentation"></a>
+- **Satija Lab (2026).** Seurat documentation and tutorials. *Official software or standards documentation.* [Primary source](https://satijalab.org/seurat/)
+  - OmicsMatic methods: Seurat normalization and prepared workflows.
+
+<a id="isac-data-standards"></a>
+- **International Society for Advancement of Cytometry (2026).** Cytometry data standards: FCS and Gating-ML. *Official software or standards documentation.* [Primary source](https://isac-net.org/data-standards/)
+  - OmicsMatic methods: Stored channels and gating definitions.
+
+<a id="dunn-test-documentation"></a>
+- **Alexis Dinno (2026).** dunn.test: multiple comparisons using rank sums. *Official software or standards documentation.* [Primary source](https://cran.r-project.org/package=dunn.test)
+  - OmicsMatic methods: Tie-corrected pooled-rank comparisons.
+
+<a id="multcomp-documentation"></a>
+- **Torsten Hothorn, Frank Bretz and Peter Westfall (2026).** multcomp: simultaneous inference in general parametric models. *Official software or standards documentation.* [Primary source](https://cran.r-project.org/package=multcomp)
+  - OmicsMatic methods: Dunnett control comparisons.
+
+<a id="enrichr-api-documentation"></a>
+- **Maayan Lab (2026).** Enrichr API help. *Official software or standards documentation.* [Primary source](https://maayanlab.cloud/Enrichr/help#api)
+  - OmicsMatic methods: Enrichment service interfaces.
+
+<a id="metal-documentation"></a>
+- **METAL developers (2026).** METAL documentation. *Official software or standards documentation.* [Primary source](https://genome.sph.umich.edu/wiki/METAL_Documentation)
+  - OmicsMatic methods: Summary-statistic meta-analysis.
+
+<a id="spdep-moran-residuals"></a>
+- **Roger Bivand and spdep contributors (2026).** Moran test for regression residuals. *Official software documentation.* [Primary source](https://r-spatial.github.io/spdep/reference/lm.morantest.html)
+  - OmicsMatic methods: Covariate-aware residual spatial autocorrelation.
+
+<a id="r-tukeyhsd-documentation"></a>
+- **R Core Team (2026).** Tukey multiple comparisons of means. *Official software documentation.* [Primary source](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/TukeyHSD.html)
+  - OmicsMatic methods: Tukey-Kramer post hoc comparisons.

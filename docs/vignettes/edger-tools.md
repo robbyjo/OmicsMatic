@@ -97,3 +97,13 @@ These components do not expose the reported power dispersion trend or
 inference, PEER/RINT, author cohort preparation or whole-paper reproduction.
 See [the 17-role catalog scope](../literature/EDGER_CATALOG_INTEGRATION.md).
 The full 250-paper implementation/review goal remains unfinished.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Mark D. Robinson, Davis J. McCarthy, and Gordon K. Smyth (2010) — edgeR: a Bioconductor package for differential expression analysis of digital gene expression data](../CITATIONS.md#robinson-edger-2010) — [PMID: 19910308](https://pubmed.ncbi.nlm.nih.gov/19910308/) · [PMCID: PMC2796818](https://pmc.ncbi.nlm.nih.gov/articles/PMC2796818/)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

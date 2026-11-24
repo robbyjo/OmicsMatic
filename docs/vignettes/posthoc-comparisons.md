@@ -140,7 +140,7 @@ python3 -B tools/literature/tukey_kramer/generate_reference.py \
   --rscript /path/to/Rscript --tails --out build/tukey-tail-reference-new
 ```
 
-<!-- SCIENTIFIC-CITATIONS:START -->
+### Method-specific source notes
 
 GraphPad documents its unequal-sample-size Tukey procedure as Tukey–Kramer.
 The implementation follows that statistical method; its reference validation
@@ -148,6 +148,14 @@ uses R, without claiming a licensed Prism runtime comparison.
 [GraphPad methods guide](https://www.graphpad.com/guides/prism/latest/statistics/stat_the_methods_of_tukey_and_dunne.htm),
 [R TukeyHSD documentation](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/TukeyHSD.html).
 
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [R Core Team (2026) — Tukey multiple comparisons of means](../CITATIONS.md#r-tukeyhsd-documentation)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->
 
 The source review distinguishes seven papers explicitly describing one-way

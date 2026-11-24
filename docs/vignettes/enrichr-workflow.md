@@ -105,3 +105,14 @@ current custom endpoint uses POST; the inspected SmartAPI GET returned an
 unsupported-endpoint error. Historical paper parity, Julia/local recalculation,
 FGSEA and library-intersection preparation are separate scopes. See the
 [source/API checkpoint](../literature/ENRICHR_COMPONENT_CHECKPOINT_2026-11-19.md).
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Maayan Lab (2026) — Enrichr API help](../CITATIONS.md#enrichr-api-documentation)
+- [Yoav Benjamini and Yosef Hochberg (1995) — Controlling the false discovery rate: a practical and powerful approach to multiple testing](../CITATIONS.md#benjamini-hochberg-1995)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

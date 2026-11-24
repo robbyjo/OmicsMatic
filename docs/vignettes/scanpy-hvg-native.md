@@ -117,3 +117,13 @@ The [checkpoint](../literature/SCANPY_HVG_CHECKPOINT_2026-11-19.md) records
 original comparisons, retained failed attempts, transfer paths and remaining
 qualification/admission work. These synthetic controls do not establish
 whole-package parity, historical author execution or biological validity.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Scanpy developers (2026) — Scanpy API and tutorials](../CITATIONS.md#scanpy-api-documentation)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

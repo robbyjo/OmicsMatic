@@ -147,3 +147,13 @@ partial outputs remain evidence and must not be reported as completed analysis.
 See the [qualification packet](../literature/seurat-workflow-development/README.md)
 and [checkpoint](../literature/SEURAT_WORKFLOW_CHECKPOINT_2026-11-19.md) for the
 tested combinations, refusals, reference discrepancies and remaining work.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Satija Lab (2026) — Seurat documentation and tutorials](../CITATIONS.md#seurat-api-documentation)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

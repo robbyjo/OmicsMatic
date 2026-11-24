@@ -110,3 +110,13 @@ Storage interpretation follows the [ISAC FCS data standard](https://isac-net.org
 and its [normative FCS 3.1 reference](https://flowcytometry.gwu.edu/sites/g/files/zaskib311/files/2021-11/Data%20File%20Standard%20for%20Flow%20Cytometry%281%29.pdf).
 The comparison uses pinned [FlowIO](https://github.com/whitews/FlowIO) 1.4.0
 stored values; it does not establish FlowJo/FACSDiva workspace equivalence.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [International Society for Advancement of Cytometry (2026) — Cytometry data standards: FCS and Gating-ML](../CITATIONS.md#isac-data-standards)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

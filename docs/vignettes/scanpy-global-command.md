@@ -67,3 +67,13 @@ Never silently repair IDs, dtype, layer/raw choice, thresholds or NaN/Inf.
 
 The [checkpoint](../literature/SCANPY_DISPATCH_CHECKPOINT_2026-11-19.md) lists
 qualification, historical verifier recovery, remaining work and transfer paths.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Scanpy developers (2026) — Scanpy API and tutorials](../CITATIONS.md#scanpy-api-documentation)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

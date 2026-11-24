@@ -128,3 +128,13 @@ cover 37 original BED-based models and 75,226 reference fields, the same nine
 tests on Windows/Linux, a 4,099-variant/512-sample case and full upstream L2 CLI
 comparison. This method extension adds no new LDSC family count or whole-paper
 reproduction claim.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Brendan K. Bulik-Sullivan et al. (2015) — LD Score regression distinguishes confounding from polygenicity in genome-wide association studies](../CITATIONS.md#bulik-sullivan-ldsc-2015) — [PMID: 25642630](https://pubmed.ncbi.nlm.nih.gov/25642630/) · [PMCID: PMC4495769](https://pmc.ncbi.nlm.nih.gov/articles/PMC4495769/)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

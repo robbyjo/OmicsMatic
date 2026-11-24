@@ -196,3 +196,13 @@ control definitions and historical settings still prevent whole-paper claims.
 P006 remains ambiguous, P034 uses repeated measures/Geisser-Greenhouse, and
 P217 has unequal-variance/variant ambiguity. Prism and multcomp family-level
 admission and the full literature goal remain separate work.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Torsten Hothorn, Frank Bretz and Peter Westfall (2026) — multcomp: simultaneous inference in general parametric models](../CITATIONS.md#multcomp-documentation)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

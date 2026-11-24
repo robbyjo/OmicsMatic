@@ -136,3 +136,13 @@ Read the [qualification](../literature/weighted-z-development/README.md) and
 No METAL family credit, full paper replication or biological validation is
 implied. The typed original METAL workflow and the 24 individual paper-role
 reviews remain unfinished.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [METAL developers (2026) — METAL documentation](../CITATIONS.md#metal-documentation)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

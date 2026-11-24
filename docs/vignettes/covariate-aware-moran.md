@@ -191,10 +191,19 @@ That author code is neither executed nor redistributed here. The
 retains those distinctions. The complete Monocle family and 250-paper goal
 remain open; no new whole-tool credit is awarded for this component.
 
-<!-- SCIENTIFIC-CITATIONS:START -->
+### Method-specific source notes
 
 - Bivand and contributors, [spdep regression-residual Moran documentation](https://r-spatial.github.io/spdep/reference/lm.morantest.html), referencing Cliff and Ord (1981), p. 203.
 - Original [spdep 1.4-1 CRAN source](https://cran.r-project.org/src/contrib/Archive/spdep/spdep_1.4-1.tar.gz), `R/lm.morantest.R`, GPL >= 2; the native project uses GPL-3.0-or-later.
 - P021, [Lifespan single-cell transcriptomic atlas of the human prefrontal cortex](https://doi.org/10.1038/s41586-026-10271-7), with the separately pinned current-author-code method review above.
 
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [P. A. P. Moran (1950) — Notes on continuous stochastic phenomena](../CITATIONS.md#moran-1950) — [PMID: 15420245](https://pubmed.ncbi.nlm.nih.gov/15420245/)
+- [Roger Bivand and spdep contributors (2026) — Moran test for regression residuals](../CITATIONS.md#spdep-moran-residuals)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
 <!-- SCIENTIFIC-CITATIONS:END -->

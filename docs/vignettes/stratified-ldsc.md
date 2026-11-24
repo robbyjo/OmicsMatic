@@ -120,3 +120,13 @@ tests run against the packaged library on Windows and Linux. Qualification
 addresses this numerical API, with source-derived boundaries retained for
 liability-scale, multivariate, spatial and wrapper-specific workflows. This
 extension adds no additional family count or whole-paper reproduction claim.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Hilary K. Finucane et al. (2015) — Partitioning heritability by functional annotation using genome-wide association summary statistics](../CITATIONS.md#finucane-sldsc-2015) — [PMID: 26414678](https://pubmed.ncbi.nlm.nih.gov/26414678/) · [PMCID: PMC4626285](https://pmc.ncbi.nlm.nih.gov/articles/PMC4626285/)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

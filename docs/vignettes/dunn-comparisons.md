@@ -144,3 +144,14 @@ for raw statistics and retains its differing stepwise values/errors, while
 standard Holm/BH/BY values follow
 [R's p.adjust](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/p.adjust.html).
 These references do not establish licensed Prism runtime equivalence.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Alexis Dinno (2026) — dunn.test: multiple comparisons using rank sums](../CITATIONS.md#dunn-test-documentation)
+- [Yoav Benjamini and Yosef Hochberg (1995) — Controlling the false discovery rate: a practical and powerful approach to multiple testing](../CITATIONS.md#benjamini-hochberg-1995)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

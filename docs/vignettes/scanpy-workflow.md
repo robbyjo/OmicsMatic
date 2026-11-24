@@ -128,3 +128,13 @@ Source NaN/Inf or undefined numeric annotations are not made valid merely
 because final X looks finite. Do not replace them or alter saved hashes.
 Installing into a shared bound runtime or silently choosing another backend
 is not a recovery action. Cell Ranger remains excluded.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Scanpy developers (2026) — Scanpy API and tutorials](../CITATIONS.md#scanpy-api-documentation)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

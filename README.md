@@ -1,56 +1,31 @@
 # OmicsMatic
 
-Java software for biomedical and multiomics analysis: statistical models,
-genetic and molecular workflows, bioinformatics tools, and reproducible studies
-with optional, investigator-supervised AI.
+Java software for biomedical and multiomics analysis, statistical models,
+bioinformatics workflows and reproducible studies with optional supervised AI.
 
-**Process cleanup safety:** builds made before the November 22, 2026 ownership
-fix can mistake an unrelated process for a worker after Windows reuses a PID.
-Use the corrected source build before running external-tool workflows. Existing
-release assets have not been replaced by this source change. Read the
-[incident, validation limits and required actions](docs/literature/PROCESS_OWNERSHIP_SAFETY_2026-11-22.md).
-The [current toolbox checkpoint](docs/literature/GENOMICRANGES_CHECKPOINT_2026-11-22.md)
-provides qualified GenomicRanges scope, source contexts and verification commands.
-
-The current source also provides [prepared FastQTL nominal/permutation workflows](docs/FASTQTL_WORKFLOW.md)
-with an explicitly named Ubuntu 2.184/GTEx runtime, retained warnings and fresh
-verification. The [paper-use catalog and limits](docs/literature/FASTQTL_CATALOG_WORKFLOWS.md)
-separate prepared operations from unqualified historical 2.165 and paper-cohort
-analyses; the existing v0.4.0 release JAR has not been replaced.
-
-The source build also provides [prepared Genomic SEM models, GWAS and T-SEM](docs/GENOMICSEM_WORKFLOW.md)
-using an explicitly installed private R runtime, with retained source warnings,
-fresh verification and portable saved-result inspection. Munging, multivariable
-LDSC and historical paper editions remain separate integration work.
-
+**[Download v0.4.1](https://github.com/robbyjo/OmicsMatic/releases/tag/v0.4.1)** ·
 **[Website and guides](https://robbyjo.github.io/OmicsMatic/)** ·
-**[Download v0.4.0](https://github.com/robbyjo/OmicsMatic/releases/tag/v0.4.0)** ·
-**[What's new](https://robbyjo.github.io/OmicsMatic/release-0.4.0.html)**
+**[What's new](docs/release-0.4.1.md)**
 
-## Start an analysis
-
-Use Java 17 or newer. Download the executable JAR from the release, then run:
+Use Java 17 or newer:
 
 ```shell
-java -jar omicsmatic-0.4.0.jar --help
+java -jar omicsmatic-0.4.1.jar --help
 ```
 
-Start with [your first study](https://robbyjo.github.io/OmicsMatic/vignettes/study-getting-started.html),
-the [command-line guide](https://robbyjo.github.io/OmicsMatic/vignettes/command-line.html),
-or the [bioinformatics toolbox](https://robbyjo.github.io/OmicsMatic/toolbox.html).
-Optional upstream tools have their own runtime and input requirements.
+Start with [your first study](https://robbyjo.github.io/OmicsMatic/vignettes/study-getting-started.html)
+or the [command-line guide](https://robbyjo.github.io/OmicsMatic/vignettes/command-line.html).
+The [linked-variant MR tutorial](docs/vignettes/linked-variant-mr.md) explains
+exact-first matching and quality-aware LD proxy fallback.
 
-## Build from source
+v0.4.1 includes the [worker ownership safety correction](docs/literature/PROCESS_OWNERSHIP_SAFETY_2026-11-22.md)
+and subsequent scoped workflow additions. Optional upstream tools require their
+documented runtimes; supported operations and versions have explicit limits.
+Read the [release scope](docs/release-0.4.1.md) and
+[validation record](docs/releases/0.4.1/validation.md).
 
-```shell
-./gradlew check executableJar
-```
-
-On Windows, use `gradlew.bat check executableJar`. The executable is
-`build/cli/omicsmatic-0.4.0.jar`. See [runtime setup](docs/runtime-requirements.md)
-and the [validation record](docs/release-0.4.0-freeze.md) for dependencies,
-test coverage, and the remaining catalog qualification limitation.
-
-## License
+Build from source with `./gradlew check executableJar` (`gradlew.bat` on Windows).
+The executable is `build/cli/omicsmatic-0.4.1.jar`.
+See [runtime setup](docs/runtime-requirements.md).
 
 [GNU General Public License, version 3 or later](LICENSE).

@@ -207,3 +207,13 @@ Read the [qualification](../literature/metal-workflow-development/README.md),
 [paper-role review preview](../literature/metal-workflow-development/ROLE-REVIEW-PREVIEW.json).
 Canonical METAL catalog admission is a separate pending step. These controls
 do not claim whole-paper or historical-edition reproduction.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [METAL developers (2026) — METAL documentation](../CITATIONS.md#metal-documentation)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

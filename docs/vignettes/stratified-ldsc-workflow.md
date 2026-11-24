@@ -120,3 +120,13 @@ bind 48 original-core models and 22,596 reference fields at both API and file
 boundaries, 17 focused tests on each platform, actual Java process controls and
 all three public examples. This method extension adds no second LDSC family
 credit and does not establish reproduction of the 42 reviewed papers.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Hilary K. Finucane et al. (2015) — Partitioning heritability by functional annotation using genome-wide association summary statistics](../CITATIONS.md#finucane-sldsc-2015) — [PMID: 26414678](https://pubmed.ncbi.nlm.nih.gov/26414678/) · [PMCID: PMC4626285](https://pmc.ncbi.nlm.nih.gov/articles/PMC4626285/)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

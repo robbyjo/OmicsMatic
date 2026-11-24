@@ -48,3 +48,14 @@ invalid data/schema, changed evidence, capacity or interruption; retain raw
 inputs, partial captures and errors, correct the cause and retry NEW output.
 A failed attempt has no accepted complete result. Historical marker-verifier
 SKIP3 gaps and earlier failed builds/archival attempts remain retained.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Maayan Lab (2026) — Enrichr API help](../CITATIONS.md#enrichr-api-documentation)
+- [Yoav Benjamini and Yosef Hochberg (1995) — Controlling the false discovery rate: a practical and powerful approach to multiple testing](../CITATIONS.md#benjamini-hochberg-1995)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

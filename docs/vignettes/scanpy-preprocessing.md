@@ -128,3 +128,13 @@ CLI with exit codes. The saved reader uses **SKIP3** for missing exact permitted
 source/evidence dependencies and **FAIL2** for changed/invalid evidence. Restore
 the named exact item or retain the skipped dependent audit; do not refresh
 old hashes. The native API itself needs only Java 17+, not Python installation.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Scanpy developers (2026) — Scanpy API and tutorials](../CITATIONS.md#scanpy-api-documentation)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

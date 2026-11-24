@@ -152,3 +152,13 @@ contract and correlation reportability. Unsupported `partitioned` and
 The [qualification record](../literature/ldsc-hsq-development/README.md) describes
 72 unchanged original-core reference models, field comparisons, packaged checks,
 retained failures and the pending catalog source corrections.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Brendan K. Bulik-Sullivan et al. (2015) — LD Score regression distinguishes confounding from polygenicity in genome-wide association studies](../CITATIONS.md#bulik-sullivan-ldsc-2015) — [PMID: 25642630](https://pubmed.ncbi.nlm.nih.gov/25642630/) · [PMCID: PMC4495769](https://pmc.ncbi.nlm.nih.gov/articles/PMC4495769/)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

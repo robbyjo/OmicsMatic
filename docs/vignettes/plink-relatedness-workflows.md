@@ -126,3 +126,14 @@ exit 8 is retained as FAIL2 without silently changing the threshold.
 The [checkpoint](../literature/PLINK_RELATEDNESS_CHECKPOINT_2026-11-19.md)
 lists observed tests and remaining work. Qualification covers these workflows;
 paper-specific role review and cumulative catalog admission remain separate.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Ani Manichaikul et al. (2010) — Robust relationship inference in genome-wide association studies](../CITATIONS.md#manichaikul-king-2010) — [PMID: 20926424](https://pubmed.ncbi.nlm.nih.gov/20926424/) · [PMCID: PMC3025716](https://pmc.ncbi.nlm.nih.gov/articles/PMC3025716/)
+- [PLINK developers (2026) — PLINK 2.0 input filtering and basic statistics](../CITATIONS.md#plink2-qc-documentation)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

@@ -140,3 +140,13 @@ or replace values to force success. No software installation is needed for this
 native profile. Optional development reference comparisons need their named
 upstream packages; if installation/retrieval is unavailable or forbidden, skip
 those dependent comparisons and retain the warning rather than claim a pass.
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [International Society for Advancement of Cytometry (2026) — Cytometry data standards: FCS and Gating-ML](../CITATIONS.md#isac-data-standards)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->

@@ -100,3 +100,13 @@ leave its dependent audit skipped; never refresh historical hashes. The Java
 library itself needs no optional original runtime installation. Historical
 reference environments and large normal candidates require separate transfer,
 as recorded in the [checkpoint](../literature/SCANPY_PEARSON_CHECKPOINT_2026-11-19.md).
+
+<!-- SCIENTIFIC-CITATIONS:START -->
+## Scientific citations
+
+These are the primary sources for the methods used in this workflow. Cite the relevant paper as well as OmicsMatic when reporting results.
+
+- [Scanpy developers (2026) — Scanpy API and tutorials](../CITATIONS.md#scanpy-api-documentation)
+
+[Search the complete scientific bibliography](https://robbyjo.github.io/OmicsMatic/citations.html).
+<!-- SCIENTIFIC-CITATIONS:END -->
