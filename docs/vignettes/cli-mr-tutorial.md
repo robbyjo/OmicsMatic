@@ -1,5 +1,9 @@
 # CLI-only Mendelian randomization: download to results
 
+For exposure-selected single-signal MR with imputation QC, exact-first matching,
+LD proxies, full-family correction and decision audits, see
+[MR with linked variants](linked-variant-mr.md).
+
 This page is a file-by-file workflow for users who do not write Java. It
 covers public GWAS discovery, custom instrument files, normalization, LD
 clumping, allele harmonization inside OmicsMatic, causal estimation, and output
