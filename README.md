@@ -12,6 +12,11 @@ release assets have not been replaced by this source change. Read the
 The [current toolbox checkpoint](docs/literature/GENOMICRANGES_CHECKPOINT_2026-11-22.md)
 provides qualified GenomicRanges scope, source contexts and verification commands.
 
+The current source also provides [prepared FastQTL nominal/permutation workflows](docs/FASTQTL_WORKFLOW.md)
+with an explicitly named Ubuntu 2.184/GTEx runtime, retained warnings and fresh
+verification. Historical 2.165 and the five paper uses remain pending catalog
+admission; the existing v0.4.0 release JAR has not been replaced.
+
 **[Website and guides](https://robbyjo.github.io/OmicsMatic/)** ·
 **[Download v0.4.0](https://github.com/robbyjo/OmicsMatic/releases/tag/v0.4.0)** ·
 **[What's new](https://robbyjo.github.io/OmicsMatic/release-0.4.0.html)**
