@@ -10,6 +10,8 @@ public final class NfcoreToolsCli {
     private NfcoreToolsCli() { }
     public static void main(String[] args) { System.exit(run(args, System.out, System.err)); }
     static int run(String[] args, PrintStream output, PrintStream error) {
+        if (args.length > 0 && java.util.Set.of("--source-profiles", "--inspect-source", "--export-source-setup").contains(args[0]))
+            return NfcoreSourceToolsCli.run(args, output, error);
         if (args.length == 0 || args.length == 1 && args[0].equals("--help")) {
             output.writeBytes(("nfcore-tools ATACSEQ-1.2.1 --help\n"
                 +"  Exact original ATAC source workflow, explicit local references and selected output contracts.\n"
@@ -20,7 +22,7 @@ public final class NfcoreToolsCli {
                 +"nfcore-tools CAPTURED --help\n"
                 +"  Generic complete-capture engine with full primary configuration binding.\n"
                 +"Generic engine completion alone does not qualify an nf-core family or paper-specific analysis.\n"
-                +NfcoreAtacseq121Cli.ACTION+"\n").getBytes(StandardCharsets.UTF_8));
+                +NfcoreAtacseq121Cli.ACTION+"\n"+NfcoreSourceToolsCli.help()+"\n").getBytes(StandardCharsets.UTF_8));
             return output.checkError() ? 2 : 0;
         }
         String[] tail = Arrays.copyOfRange(args, 1, args.length);
