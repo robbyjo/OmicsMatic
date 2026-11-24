@@ -48,6 +48,8 @@ public final class JLinAlgCli {
                 return ImputeToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("fastqtl-tools"))
                 return FastqtlToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("prsice-tools"))
+                return PrsiceToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("genomicsem-tools"))
                 return GenomicsemToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("genomicsem-prep"))
@@ -539,6 +541,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar impute-tools --help
               java -jar omicsmatic-<version>.jar fastqtl-tools --help
               java -jar omicsmatic-<version>.jar genomicsem-tools --help
+              java -jar omicsmatic-<version>.jar prsice-tools --help
               java -jar omicsmatic-<version>.jar genomicsem-prep --help
               java -jar omicsmatic-<version>.jar flowjo-tools --help
               java -jar omicsmatic-<version>.jar mrpresso-tools --help
