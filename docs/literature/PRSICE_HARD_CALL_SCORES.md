@@ -11,9 +11,9 @@ handling, original clumping/association and streaming native score audits in a
 separately qualified source build. This Java component alone performs no file
 harmonization, LD estimation, clumping, threshold search, regression,
 cross-validation or model selection. Neither checkpoint reproduces the five
-papers or establishes historical author-edition equivalence. Catalog admission
-remains separate: 160 scoped families and 1,765 reviewed uses; this component
-adds no family or review credit.
+papers or establishes historical author-edition equivalence. The [separate catalog admission](PRSICE_CATALOG_WORKFLOWS.md) links the adapter
+to five paper uses: 161 scoped families and 1,769 reviewed uses. The native
+component receives no additional family credit.
 
 ## Use the Java API
 
