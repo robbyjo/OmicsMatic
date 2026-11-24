@@ -7,3 +7,5 @@ The Windows build uses Java 21 with the project's Java 17 release target. The pa
 The tagged GitHub workflow runs the authoritative Linux/Java 17 `clean check assemble` gate and publishes only after it succeeds. Observed complete test totals, workflow links and artifact verification are appended to this record on main after the gate. Optional-runtime skips remain distinct from executed checks; no live-provider or cohort scientific analysis is claimed.
 
 The local evidence directory is `build/release-v0.4.1-20261124/`. It retains initial and final build logs, the synthetic example, branch inventory/audit and the eventual publication and cleanup receipts.
+
+The full Windows run identified a stale LIMMA root-help projection snapshot. The reviewed difference consists of 19 subsequently added command lines; the expected snapshot now includes those additions. The first tagged workflow ([45454794398](https://github.com/robbyjo/OmicsMatic/actions/runs/45454794398)) was cancelled before publication. The original candidate remains in Git history. GitHub confirmed that no v0.4.1 release existed before the unpublished candidate tag was advanced to this correction.
