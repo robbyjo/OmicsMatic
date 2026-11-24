@@ -5,9 +5,10 @@ Build the current Java21 executable with `gradlew.bat executableJar` and use
 replaced. The command is `genomicsem-tools`.
 
 This workflow calls the original pinned GenomicSEM R implementation for
-prepared covariance-model, GWAS and T-SEM fits. Munging, multivariable LDSC,
-summary-statistic alignment, stratified enrichment and FUSION preparation remain
-separate integration work. Historical paper editions and complete paper
+prepared covariance-model, GWAS and T-SEM fits. The separate
+[preparation command](GENOMICSEM_PREPARATION.md) covers original munging,
+multivariable LDSC, summary-statistic alignment, stratified enrichment and
+FUSION preparation, with its own qualification checkpoint. Historical paper editions and complete paper
 analyses remain unqualified; the catalog admission has not changed at this
 development checkpoint. The [five source roles](literature/genomicsem-source-audit/ROLES.json)
 retain distinct version declarations and uses.
