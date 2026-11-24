@@ -1,3 +1,5 @@
+> **Historical development checkpoint note:** guarded catalog admission has since completed. See [the current IMPUTE catalog checkpoint](IMPUTE_CATALOG_CHECKPOINT_2026-11-23.md) and [current handover](HANDOVER_CURRENT.md) for the latest counts and remaining work. Runtime, exact-JAR and source-retention paths below remain useful; the original development-stage text is preserved.
+
 # IMPUTE2 continuation notes — 23 November 2026
 
 The 250-paper goal remains active and incomplete. Canonical counts remain **156 scoped families (29 native, 127 upstream), 1,707 reviewed and 1,016 pending uses**. IMPUTE2's new [development checkpoint](IMPUTE2_CHECKPOINT_2026-11-23.md) adds zero family/review credit until guarded source-role admission is complete. Its implementation was pushed to main in `7616323cf10222a9eade93ef6c9ac0a79c70551e`; publication and cleanup receipts accompany this note.

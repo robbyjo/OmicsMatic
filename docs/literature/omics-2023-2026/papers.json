@@ -26709,12 +26709,115 @@
         "matched_text": "IMPUTE2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "ef3d2d6ad1cc4daddc84eeb3d6300055bc400703c7909c6d1e3749cffcc83909",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786716/ (section: Methods / Application to BioMe)"
+        "use_summary": "BioMe genotype imputation with IMPUTE2 and the 1000 Genomes Phase 3 v5 reference, followed by ancestry-specific variant QC and expected-allele-count dosage coding for PRS.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786716/ (section: Methods / Application to BioMe)",
+        "implementation_scope_note": "Only the IMPUTE2 major edition is reported. Exact minor edition, imputation flags, input phasing mode and seed are unreported. The available v2.3.2 profile is not an assertion of historical equivalence; downstream ancestry filtering, duplicate-position choice and PRS generation are separate. Available bounded implementation: Pinned original IMPUTE2 v2.3.2 private unmodified academic Linux x86_64 runtime through the source-built Java impute-tools adapter. Four prepared autosomal-diploid Oxford-format operations: PREPHASE, IMPUTE_GENOTYPES, IMPUTE_PREPHASED and MERGE_REFERENCE; the Java merge output is also tested as a subsequent imputation input. Actual RUN, fresh original VERIFY/REPLAY and saved-closure inspection are qualified. Native Java captures literal inputs, audits source fields and provides explicitly conditional unit-mass/zero-censor probability bounds. Source GEN values, missing codes, INFO, warnings and undefined fields remain unchanged. No native imputation estimator, BGEN conversion, automatic reference/QC/identity/strand selection, chromosome X/PAR, other ploidy, IMPUTE2 v2.3.1, IMPUTE4/5, exact historical flags, whole-tool/paper, biological or authentication qualification.",
+        "supporting_evidence": [
+          {
+            "paper_id": "P076",
+            "paragraph_index": 72,
+            "section": "Code availability",
+            "paragraph_sha256": "0e422572c1e718b67565d1037a8f88a8affd75dc256673e5ac4a26e981e179e0",
+            "versioned_name_matches": [
+              "IMPUTE2",
+              "impute_v2"
+            ],
+            "bare_name_matches": [
+              "impute"
+            ]
+          },
+          {
+            "paper_id": "P076",
+            "paragraph_index": 79,
+            "section": "Associated Data / Data Availability Statement",
+            "paragraph_sha256": "0e422572c1e718b67565d1037a8f88a8affd75dc256673e5ac4a26e981e179e0",
+            "versioned_name_matches": [
+              "IMPUTE2",
+              "impute_v2"
+            ],
+            "bare_name_matches": [
+              "impute"
+            ]
+          }
+        ],
+        "source_role_qualification": {
+          "paper_id": "P076",
+          "pmcid": "PMC10786716",
+          "doi": "10.1038/s41588-023-01583-9",
+          "xml_sha256": "b656785a4313898b532cf0f8f66f83244a2eab91d35667e240999b2b68138619",
+          "anchors": [
+            {
+              "paper_id": "P076",
+              "paragraph_index": 59,
+              "section": "Methods / Application to BioMe",
+              "paragraph_sha256": "ef3d2d6ad1cc4daddc84eeb3d6300055bc400703c7909c6d1e3749cffcc83909",
+              "versioned_name_matches": [
+                "IMPUTE2"
+              ],
+              "bare_name_matches": []
+            },
+            {
+              "paper_id": "P076",
+              "paragraph_index": 72,
+              "section": "Code availability",
+              "paragraph_sha256": "0e422572c1e718b67565d1037a8f88a8affd75dc256673e5ac4a26e981e179e0",
+              "versioned_name_matches": [
+                "IMPUTE2",
+                "impute_v2"
+              ],
+              "bare_name_matches": [
+                "impute"
+              ]
+            },
+            {
+              "paper_id": "P076",
+              "paragraph_index": 79,
+              "section": "Associated Data / Data Availability Statement",
+              "paragraph_sha256": "0e422572c1e718b67565d1037a8f88a8affd75dc256673e5ac4a26e981e179e0",
+              "versioned_name_matches": [
+                "IMPUTE2",
+                "impute_v2"
+              ],
+              "bare_name_matches": [
+                "impute"
+              ]
+            }
+          ],
+          "summary": "BioMe genotype imputation with IMPUTE2 and the 1000 Genomes Phase 3 v5 reference, followed by ancestry-specific variant QC and expected-allele-count dosage coding for PRS.",
+          "boundary": "Only the IMPUTE2 major edition is reported. Exact minor edition, imputation flags, input phasing mode and seed are unreported. The available v2.3.2 profile is not an assertion of historical equivalence; downstream ancestry filtering, duplicate-position choice and PRS generation are separate.",
+          "semantic_role": "named-imputation-method",
+          "reported_version_contexts": [
+            {
+              "paragraph_index": 72,
+              "section": "Code availability",
+              "paragraph_sha256": "0e422572c1e718b67565d1037a8f88a8affd75dc256673e5ac4a26e981e179e0",
+              "reported_literal": "IMPUTE2 v.2",
+              "tool_edition": "2"
+            }
+          ],
+          "reported_settings": {
+            "reference": "1000 Genomes Phase 3 v5",
+            "retain_info": ">0.3",
+            "remove_maf": "<1% within each ancestry",
+            "duplicate_positions": "one of each pair removed; selection rule unreported",
+            "PRS_variant_matching": "genomic position, build37",
+            "genotype_coding": "expected allele count dosage"
+          },
+          "historical_edition_analysis_status": "SKIP3_EXACT_EDITION_UNREPORTED",
+          "available_operation_types": [
+            "IMPUTE_GENOTYPES",
+            "IMPUTE_PREPHASED"
+          ],
+          "available_operation_types_are_exact_historical_flags": false,
+          "source_seed_reported": false,
+          "original_paper_analysis_reexecuted": false,
+          "whole_paper_reproduced": false,
+          "source_role_review_applied": true
+        }
       },
       {
         "tool_id": "ldsc",
@@ -28196,12 +28299,67 @@
         "matched_text": "IMPUTE2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "788a227d8e5886f3064cbaa0b6ce3ddf496b515f546459304f91e11aba23c2f7",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786715/ (section: Methods / Genotyping, quality control and imputation in UKBB cohort)"
+        "use_summary": "UKBB two-step SHAPEIT prephasing and IMPUTE2 imputation using HRC and UK10K haplotype resources. Retain the source wording of subsequent QC rather than harmonizing its comparator or metric label.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786715/ (section: Methods / Genotyping, quality control and imputation in UKBB cohort)",
+        "implementation_scope_note": "IMPUTE2 minor edition, flags and seed are unreported. SHAPEIT phasing is a separate upstream stage. The source reports removing MAC>100 and labels the quality metric Minimac r2; neither is silently corrected or reinterpreted as IMPUTE INFO. Available bounded implementation: Pinned original IMPUTE2 v2.3.2 private unmodified academic Linux x86_64 runtime through the source-built Java impute-tools adapter. Four prepared autosomal-diploid Oxford-format operations: PREPHASE, IMPUTE_GENOTYPES, IMPUTE_PREPHASED and MERGE_REFERENCE; the Java merge output is also tested as a subsequent imputation input. Actual RUN, fresh original VERIFY/REPLAY and saved-closure inspection are qualified. Native Java captures literal inputs, audits source fields and provides explicitly conditional unit-mass/zero-censor probability bounds. Source GEN values, missing codes, INFO, warnings and undefined fields remain unchanged. No native imputation estimator, BGEN conversion, automatic reference/QC/identity/strand selection, chromosome X/PAR, other ploidy, IMPUTE2 v2.3.1, IMPUTE4/5, exact historical flags, whole-tool/paper, biological or authentication qualification.",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P084",
+          "pmcid": "PMC10786715",
+          "doi": "10.1038/s41588-023-01600-x",
+          "xml_sha256": "b3f14dd0f3ad7e6c7ddd94237f00324876e5f04afce55ee61158cb6905927334",
+          "anchors": [
+            {
+              "paper_id": "P084",
+              "paragraph_index": 40,
+              "section": "Methods / Genotyping, quality control and imputation in UKBB cohort",
+              "paragraph_sha256": "788a227d8e5886f3064cbaa0b6ce3ddf496b515f546459304f91e11aba23c2f7",
+              "versioned_name_matches": [
+                "IMPUTE2"
+              ],
+              "bare_name_matches": []
+            }
+          ],
+          "summary": "UKBB two-step SHAPEIT prephasing and IMPUTE2 imputation using HRC and UK10K haplotype resources. Retain the source wording of subsequent QC rather than harmonizing its comparator or metric label.",
+          "boundary": "IMPUTE2 minor edition, flags and seed are unreported. SHAPEIT phasing is a separate upstream stage. The source reports removing MAC>100 and labels the quality metric Minimac r2; neither is silently corrected or reinterpreted as IMPUTE INFO.",
+          "semantic_role": "named-two-step-imputation-method",
+          "reported_version_contexts": [
+            {
+              "paragraph_index": 40,
+              "section": "Methods / Genotyping, quality control and imputation in UKBB cohort",
+              "paragraph_sha256": "788a227d8e5886f3064cbaa0b6ce3ddf496b515f546459304f91e11aba23c2f7",
+              "reported_literal": "IMPUTE2",
+              "tool_edition": "2"
+            }
+          ],
+          "reported_settings": {
+            "phasing": "SHAPEIT; exact edition unreported in this paragraph",
+            "references": [
+              "Haplotype Reference Consortium",
+              "UK10K"
+            ],
+            "source_remove_maf": "<1%",
+            "source_remove_mac": ">100",
+            "source_quality_label": "Minimac r2",
+            "source_remove_quality": "<0.4",
+            "source_remove_hwe_p": "<1e-15",
+            "QC_semantics_preserved": true
+          },
+          "historical_edition_analysis_status": "SKIP3_EXACT_EDITION_AND_SOURCE_QC_INTERPRETATION_UNRESOLVED",
+          "available_operation_types": [
+            "IMPUTE_GENOTYPES",
+            "IMPUTE_PREPHASED"
+          ],
+          "available_operation_types_are_exact_historical_flags": false,
+          "source_seed_reported": false,
+          "original_paper_analysis_reexecuted": false,
+          "whole_paper_reproduced": false,
+          "source_role_review_applied": true
+        }
       },
       {
         "tool_id": "king",
@@ -41385,6 +41543,97 @@
         "evidence_paragraph_sha256": "f6efcfbf05a96497d3839e7d09da95530a68a1f015a7b418f0b1d9b78dc24b1d",
         "use_summary": "Variant consequence annotation.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695626/ (section: Methods / Whole-genome sequencing / Sample preparation)"
+      },
+      {
+        "tool_id": "impute",
+        "tool": "IMPUTE",
+        "analysis_role": "Software-use declaration; local operation unresolved",
+        "evidence_section": "Code availability",
+        "evidence_paragraph_index": 45,
+        "matched_text": "IMPUTE2",
+        "extraction_score": null,
+        "usage_context": "software-use-declaration-local-operation-unresolved",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": "2.3.1",
+        "evidence_selection": "manual-source-role-addition-from-code-availability",
+        "evidence_paragraph_sha256": "e04f92478c2e47e2c6da4c3596f501548430be08f2f659df572d9b934a71a1c6",
+        "use_summary": "Code Availability explicitly declares use of IMPUTE2 v2.3.1 among public software. The primary Methods do not identify its local operation or input cohort; no imputation call is inferred from the software list.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695626/ (section: Code availability)",
+        "observation_addition_provenance": "Explicit used-software declaration selected manually; null automatic Methods score. Version is directly reported in Code Availability. No local imputation operation is inferred.",
+        "implementation_scope_note": "This corrects a missed explicit software-use declaration, not a missing Methods execution trace. The available v2.3.2 runtime is not the declared v2.3.1 edition. No local command, panel, flags, seed or genotype-imputation operation is established. Available bounded implementation: Pinned original IMPUTE2 v2.3.2 private unmodified academic Linux x86_64 runtime through the source-built Java impute-tools adapter. Four prepared autosomal-diploid Oxford-format operations: PREPHASE, IMPUTE_GENOTYPES, IMPUTE_PREPHASED and MERGE_REFERENCE; the Java merge output is also tested as a subsequent imputation input. Actual RUN, fresh original VERIFY/REPLAY and saved-closure inspection are qualified. Native Java captures literal inputs, audits source fields and provides explicitly conditional unit-mass/zero-censor probability bounds. Source GEN values, missing codes, INFO, warnings and undefined fields remain unchanged. No native imputation estimator, BGEN conversion, automatic reference/QC/identity/strand selection, chromosome X/PAR, other ploidy, IMPUTE2 v2.3.1, IMPUTE4/5, exact historical flags, whole-tool/paper, biological or authentication qualification.",
+        "supporting_evidence": [
+          {
+            "paper_id": "P116",
+            "paragraph_index": 51,
+            "section": "Associated Data / Data Availability Statement",
+            "paragraph_sha256": "e04f92478c2e47e2c6da4c3596f501548430be08f2f659df572d9b934a71a1c6",
+            "versioned_name_matches": [
+              "IMPUTE2",
+              "impute_v2"
+            ],
+            "bare_name_matches": [
+              "impute"
+            ]
+          }
+        ],
+        "source_role_qualification": {
+          "paper_id": "P116",
+          "pmcid": "PMC12695626",
+          "doi": "10.1038/s41588-025-02398-6",
+          "xml_sha256": "e8c125ce9ba6f45079f1a57aeb5b245d9ad390b7ca78116c800a7f28cc286b76",
+          "anchors": [
+            {
+              "paper_id": "P116",
+              "paragraph_index": 45,
+              "section": "Code availability",
+              "paragraph_sha256": "e04f92478c2e47e2c6da4c3596f501548430be08f2f659df572d9b934a71a1c6",
+              "versioned_name_matches": [
+                "IMPUTE2",
+                "impute_v2"
+              ],
+              "bare_name_matches": [
+                "impute"
+              ]
+            },
+            {
+              "paper_id": "P116",
+              "paragraph_index": 51,
+              "section": "Associated Data / Data Availability Statement",
+              "paragraph_sha256": "e04f92478c2e47e2c6da4c3596f501548430be08f2f659df572d9b934a71a1c6",
+              "versioned_name_matches": [
+                "IMPUTE2",
+                "impute_v2"
+              ],
+              "bare_name_matches": [
+                "impute"
+              ]
+            }
+          ],
+          "summary": "Code Availability explicitly declares use of IMPUTE2 v2.3.1 among public software. The primary Methods do not identify its local operation or input cohort; no imputation call is inferred from the software list.",
+          "boundary": "This corrects a missed explicit software-use declaration, not a missing Methods execution trace. The available v2.3.2 runtime is not the declared v2.3.1 edition. No local command, panel, flags, seed or genotype-imputation operation is established.",
+          "semantic_role": "software-use-declaration-local-operation-unresolved",
+          "reported_version_contexts": [
+            {
+              "paragraph_index": 45,
+              "section": "Code availability",
+              "paragraph_sha256": "e04f92478c2e47e2c6da4c3596f501548430be08f2f659df572d9b934a71a1c6",
+              "reported_literal": "IMPUTE2 v.2.3.1",
+              "tool_edition": "2.3.1"
+            }
+          ],
+          "reported_settings": {
+            "software_use_declared": true,
+            "local_operation_established": false,
+            "local_command_reported": false
+          },
+          "historical_edition_analysis_status": "SKIP3_V2_3_1_UNAVAILABLE_LOCAL_OPERATION_UNRESOLVED",
+          "available_operation_types": [],
+          "available_operation_types_are_exact_historical_flags": false,
+          "source_seed_reported": false,
+          "original_paper_analysis_reexecuted": false,
+          "whole_paper_reproduced": false,
+          "source_role_review_applied": true
+        }
       }
     ],
     "status": "extracted",
@@ -47803,12 +48052,95 @@
         "matched_text": "IMPUTE2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.3.2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "e6fdbfcda82b69e2c72e531ee80afa92a2febc5150fc70640d64bb69fe9fe360",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525193/ (section: Methods / WGS and creation of the imputation reference panel)"
+        "use_summary": "IMPUTE2 v2.3.2 merges filtered BBJ and 1000 Genomes Phase 3 v5 data for an autosomal reference panel. A separate ToMMo stage phases autosomal array variants with SHAPEIT2 and imputes with IMPUTE2 v2.3.2 before INFO filtering.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525193/ (section: Methods / WGS and creation of the imputation reference panel)",
+        "implementation_scope_note": "The exact v2.3.2 engine edition is available for prepared Oxford-format inputs. Paper flags and seeds remain unknown. Reference construction/QC, SHAPEIT2, BGEN conversion and cohort selection are separate; chromosome-X merging uses BEAGLE4.1. No original cohort or whole-paper result is reproduced. Available bounded implementation: Pinned original IMPUTE2 v2.3.2 private unmodified academic Linux x86_64 runtime through the source-built Java impute-tools adapter. Four prepared autosomal-diploid Oxford-format operations: PREPHASE, IMPUTE_GENOTYPES, IMPUTE_PREPHASED and MERGE_REFERENCE; the Java merge output is also tested as a subsequent imputation input. Actual RUN, fresh original VERIFY/REPLAY and saved-closure inspection are qualified. Native Java captures literal inputs, audits source fields and provides explicitly conditional unit-mass/zero-censor probability bounds. Source GEN values, missing codes, INFO, warnings and undefined fields remain unchanged. No native imputation estimator, BGEN conversion, automatic reference/QC/identity/strand selection, chromosome X/PAR, other ploidy, IMPUTE2 v2.3.1, IMPUTE4/5, exact historical flags, whole-tool/paper, biological or authentication qualification.",
+        "supporting_evidence": [
+          {
+            "paper_id": "P136",
+            "paragraph_index": 31,
+            "section": "Methods / Haplotype phasing and imputation",
+            "paragraph_sha256": "a0cbd20644b50598b9785aafa1e4eb4c1058cc107c813d6f3d25683c7350b6c4",
+            "versioned_name_matches": [
+              "IMPUTE2"
+            ],
+            "bare_name_matches": []
+          }
+        ],
+        "source_role_qualification": {
+          "paper_id": "P136",
+          "pmcid": "PMC11525193",
+          "doi": "10.1038/s41588-024-01913-5",
+          "xml_sha256": "e6075d2ebd3679fe39ea74b8d4c15e1c5e8d7d1a206c4cd4ba5227d13fb7880f",
+          "anchors": [
+            {
+              "paper_id": "P136",
+              "paragraph_index": 29,
+              "section": "Methods / WGS and creation of the imputation reference panel",
+              "paragraph_sha256": "e6fdbfcda82b69e2c72e531ee80afa92a2febc5150fc70640d64bb69fe9fe360",
+              "versioned_name_matches": [
+                "IMPUTE2"
+              ],
+              "bare_name_matches": []
+            },
+            {
+              "paper_id": "P136",
+              "paragraph_index": 31,
+              "section": "Methods / Haplotype phasing and imputation",
+              "paragraph_sha256": "a0cbd20644b50598b9785aafa1e4eb4c1058cc107c813d6f3d25683c7350b6c4",
+              "versioned_name_matches": [
+                "IMPUTE2"
+              ],
+              "bare_name_matches": []
+            }
+          ],
+          "summary": "IMPUTE2 v2.3.2 merges filtered BBJ and 1000 Genomes Phase 3 v5 data for an autosomal reference panel. A separate ToMMo stage phases autosomal array variants with SHAPEIT2 and imputes with IMPUTE2 v2.3.2 before INFO filtering.",
+          "boundary": "The exact v2.3.2 engine edition is available for prepared Oxford-format inputs. Paper flags and seeds remain unknown. Reference construction/QC, SHAPEIT2, BGEN conversion and cohort selection are separate; chromosome-X merging uses BEAGLE4.1. No original cohort or whole-paper result is reproduced.",
+          "semantic_role": "named-reference-panel-merge-and-imputation-methods",
+          "reported_version_contexts": [
+            {
+              "paragraph_index": 29,
+              "section": "Methods / WGS and creation of the imputation reference panel",
+              "paragraph_sha256": "e6fdbfcda82b69e2c72e531ee80afa92a2febc5150fc70640d64bb69fe9fe360",
+              "reported_literal": "v.2.3.2",
+              "tool_edition": "2.3.2"
+            },
+            {
+              "paragraph_index": 31,
+              "section": "Methods / Haplotype phasing and imputation",
+              "paragraph_sha256": "a0cbd20644b50598b9785aafa1e4eb4c1058cc107c813d6f3d25683c7350b6c4",
+              "reported_literal": "v.2.3.2",
+              "tool_edition": "2.3.2"
+            }
+          ],
+          "reported_settings": {
+            "reference_merge_inputs": [
+              "filtered BBJ WGS",
+              "1000 Genomes Phase3 v5"
+            ],
+            "autosomes_only_for_IMPUTE_merge": true,
+            "chromosome_X_merge": "BEAGLE4.1 for male WGS, then combined with female genotypes",
+            "ToMMo_phasing": "SHAPEIT2 v2.R837",
+            "ToMMo_imputation": "IMPUTE2 v2.3.2",
+            "ToMMo_remove_info": "<0.3",
+            "reported_imputed_format": "Oxford BGEN; this adapter exports GEN and does not supply BGEN conversion"
+          },
+          "historical_edition_analysis_status": "EXACT_V2_3_2_PROFILE_AVAILABLE_PREPARED_INPUTS_REQUIRED",
+          "available_operation_types": [
+            "MERGE_REFERENCE",
+            "IMPUTE_GENOTYPES",
+            "IMPUTE_PREPHASED"
+          ],
+          "available_operation_types_are_exact_historical_flags": false,
+          "source_seed_reported": false,
+          "original_paper_analysis_reexecuted": false,
+          "whole_paper_reproduced": false,
+          "source_role_review_applied": true
+        }
       },
       {
         "tool_id": "ldsc",
@@ -48667,12 +48999,57 @@
         "matched_text": "IMPUTE4",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "d1e6b9f7b724aafd3882d0db9dffc5052ad664443d0a34e3f266b381858c7c83",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695639/ (section: Methods / Genetic data QC / MoBa)"
+        "use_summary": "MoBa phasing and imputation use IMPUTE4.1.2_r300.3 with HRC release1.1, followed by source INFO, MAF and call-rate QC.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695639/ (section: Methods / Genetic data QC / MoBa)",
+        "implementation_scope_note": "This is IMPUTE4, not the available IMPUTE2 v2.3.2 profile. Preserve the existing null near-name extraction field and record the explicit full edition from primary context separately; do not substitute v2.3.2 or infer command flags and seed. Available bounded implementation: Pinned original IMPUTE2 v2.3.2 private unmodified academic Linux x86_64 runtime through the source-built Java impute-tools adapter. Four prepared autosomal-diploid Oxford-format operations: PREPHASE, IMPUTE_GENOTYPES, IMPUTE_PREPHASED and MERGE_REFERENCE; the Java merge output is also tested as a subsequent imputation input. Actual RUN, fresh original VERIFY/REPLAY and saved-closure inspection are qualified. Native Java captures literal inputs, audits source fields and provides explicitly conditional unit-mass/zero-censor probability bounds. Source GEN values, missing codes, INFO, warnings and undefined fields remain unchanged. No native imputation estimator, BGEN conversion, automatic reference/QC/identity/strand selection, chromosome X/PAR, other ploidy, IMPUTE2 v2.3.1, IMPUTE4/5, exact historical flags, whole-tool/paper, biological or authentication qualification.",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P140",
+          "pmcid": "PMC12695639",
+          "doi": "10.1038/s41588-025-02391-z",
+          "xml_sha256": "0fe7de7050ee813d37932b53c07cb52cc920edf4270ad1eff0ae121aaa0d71cc",
+          "anchors": [
+            {
+              "paper_id": "P140",
+              "paragraph_index": 46,
+              "section": "Methods / Genetic data QC / MoBa",
+              "paragraph_sha256": "d1e6b9f7b724aafd3882d0db9dffc5052ad664443d0a34e3f266b381858c7c83",
+              "versioned_name_matches": [
+                "IMPUTE4"
+              ],
+              "bare_name_matches": []
+            }
+          ],
+          "summary": "MoBa phasing and imputation use IMPUTE4.1.2_r300.3 with HRC release1.1, followed by source INFO, MAF and call-rate QC.",
+          "boundary": "This is IMPUTE4, not the available IMPUTE2 v2.3.2 profile. Preserve the existing null near-name extraction field and record the explicit full edition from primary context separately; do not substitute v2.3.2 or infer command flags and seed.",
+          "semantic_role": "named-IMPUTE4-phasing-and-imputation-method",
+          "reported_version_contexts": [
+            {
+              "paragraph_index": 46,
+              "section": "Methods / Genetic data QC / MoBa",
+              "paragraph_sha256": "d1e6b9f7b724aafd3882d0db9dffc5052ad664443d0a34e3f266b381858c7c83",
+              "reported_literal": "IMPUTE4.1.2_r300.3",
+              "tool_edition": "4.1.2_r300.3"
+            }
+          ],
+          "reported_settings": {
+            "reference": "Haplotype Reference Consortium release1.1",
+            "remove_INFO": "<=0.8",
+            "remove_MAF": "<1%",
+            "remove_call_rate": "<95%"
+          },
+          "historical_edition_analysis_status": "SKIP3_IMPUTE4_PROFILE_UNAVAILABLE",
+          "available_operation_types": [],
+          "available_operation_types_are_exact_historical_flags": false,
+          "source_seed_reported": false,
+          "original_paper_analysis_reexecuted": false,
+          "whole_paper_reproduced": false,
+          "source_role_review_applied": true
+        }
       },
       {
         "tool_id": "ldsc",
@@ -50571,12 +50948,110 @@
         "matched_text": "IMPUTE2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "8a54d2dd34b837a306a13a5c057d8b0820102f0ab7b53b1ce868b91ce34098c5",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632135/ (section: Methods / Genotyping and whole-genome sequencing / Denmark)"
+        "use_summary": "The Denmark Methods describe a Li-and-Stephens-based HMM as similar to IMPUTE2, while Code Availability separately lists IMPUTE2 v2.3.1 as used software. The analogy does not establish a local IMPUTE2 execution or identify its operation.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632135/ (section: Methods / Genotyping and whole-genome sequencing / Denmark)",
+        "implementation_scope_note": "Preserve the Methods analogy as analogy and the explicit software declaration as declaration. Neither assigns an IMPUTE2 command or cohort. The listed v2.3.1 edition is unavailable under the v2.3.2 profile; no version substitution or local fit is claimed. Available bounded implementation: Pinned original IMPUTE2 v2.3.2 private unmodified academic Linux x86_64 runtime through the source-built Java impute-tools adapter. Four prepared autosomal-diploid Oxford-format operations: PREPHASE, IMPUTE_GENOTYPES, IMPUTE_PREPHASED and MERGE_REFERENCE; the Java merge output is also tested as a subsequent imputation input. Actual RUN, fresh original VERIFY/REPLAY and saved-closure inspection are qualified. Native Java captures literal inputs, audits source fields and provides explicitly conditional unit-mass/zero-censor probability bounds. Source GEN values, missing codes, INFO, warnings and undefined fields remain unchanged. No native imputation estimator, BGEN conversion, automatic reference/QC/identity/strand selection, chromosome X/PAR, other ploidy, IMPUTE2 v2.3.1, IMPUTE4/5, exact historical flags, whole-tool/paper, biological or authentication qualification.",
+        "supporting_evidence": [
+          {
+            "paper_id": "P149",
+            "paragraph_index": 63,
+            "section": "Code availability",
+            "paragraph_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19",
+            "versioned_name_matches": [
+              "IMPUTE2",
+              "impute_v2"
+            ],
+            "bare_name_matches": [
+              "impute"
+            ]
+          },
+          {
+            "paper_id": "P149",
+            "paragraph_index": 70,
+            "section": "Associated Data / Data Availability Statement",
+            "paragraph_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19",
+            "versioned_name_matches": [
+              "IMPUTE2",
+              "impute_v2"
+            ],
+            "bare_name_matches": [
+              "impute"
+            ]
+          }
+        ],
+        "source_role_qualification": {
+          "paper_id": "P149",
+          "pmcid": "PMC10632135",
+          "doi": "10.1038/s41588-023-01538-0",
+          "xml_sha256": "1a0fc0dd6a23b6f6035edaf86021ad90a1024a40a474cf1f62c49500ff3a97b1",
+          "anchors": [
+            {
+              "paper_id": "P149",
+              "paragraph_index": 38,
+              "section": "Methods / Genotyping and whole-genome sequencing / Denmark",
+              "paragraph_sha256": "8a54d2dd34b837a306a13a5c057d8b0820102f0ab7b53b1ce868b91ce34098c5",
+              "versioned_name_matches": [
+                "IMPUTE2"
+              ],
+              "bare_name_matches": []
+            },
+            {
+              "paper_id": "P149",
+              "paragraph_index": 63,
+              "section": "Code availability",
+              "paragraph_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19",
+              "versioned_name_matches": [
+                "IMPUTE2",
+                "impute_v2"
+              ],
+              "bare_name_matches": [
+                "impute"
+              ]
+            },
+            {
+              "paper_id": "P149",
+              "paragraph_index": 70,
+              "section": "Associated Data / Data Availability Statement",
+              "paragraph_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19",
+              "versioned_name_matches": [
+                "IMPUTE2",
+                "impute_v2"
+              ],
+              "bare_name_matches": [
+                "impute"
+              ]
+            }
+          ],
+          "summary": "The Denmark Methods describe a Li-and-Stephens-based HMM as similar to IMPUTE2, while Code Availability separately lists IMPUTE2 v2.3.1 as used software. The analogy does not establish a local IMPUTE2 execution or identify its operation.",
+          "boundary": "Preserve the Methods analogy as analogy and the explicit software declaration as declaration. Neither assigns an IMPUTE2 command or cohort. The listed v2.3.1 edition is unavailable under the v2.3.2 profile; no version substitution or local fit is claimed.",
+          "semantic_role": "algorithm-analogy-plus-software-use-declaration",
+          "reported_version_contexts": [
+            {
+              "paragraph_index": 63,
+              "section": "Code availability",
+              "paragraph_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19",
+              "reported_literal": "IMPUTE2 v.2.3.1",
+              "tool_edition": "2.3.1"
+            }
+          ],
+          "reported_settings": {
+            "Methods_IMPUTE_context": "similar algorithm, not an execution statement",
+            "software_use_declared": true,
+            "local_operation_established": false,
+            "local_command_reported": false
+          },
+          "historical_edition_analysis_status": "SKIP3_V2_3_1_UNAVAILABLE_LOCAL_OPERATION_UNRESOLVED",
+          "available_operation_types": [],
+          "available_operation_types_are_exact_historical_flags": false,
+          "source_seed_reported": false,
+          "original_paper_analysis_reexecuted": false,
+          "whole_paper_reproduced": false,
+          "source_role_review_applied": true
+        }
       },
       {
         "tool_id": "kallisto",
@@ -60043,12 +60518,60 @@
         "matched_text": "IMPUTE5",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "546a38b0958f0a6c616e61393d1e0558187399976e6f32c93fe16c7b5b696640",
-        "use_summary": "Genotype imputation.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739871/ (section: Material and methods / Imputation)"
+        "use_summary": "An Armenian genome is masked at Illumina1M SNPs and imputed with IMPUTE5 using either 1000GP Phase3 or that panel augmented by 35 phased Armenian genomes. Squared Pearson correlation compares imputed dosage with CG genotypes.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11739871/ (section: Material and methods / Imputation)",
+        "implementation_scope_note": "The exact IMPUTE5 minor edition, flags and seed are unreported; the v2.3.2 profile does not execute IMPUTE5. Source masking, variant matching, reference preparation and the comparison cohort are explicit prerequisites. The reported squared correlation is empirical dosage agreement, not source INFO or a substituted Minimac metric. Available bounded implementation: Pinned original IMPUTE2 v2.3.2 private unmodified academic Linux x86_64 runtime through the source-built Java impute-tools adapter. Four prepared autosomal-diploid Oxford-format operations: PREPHASE, IMPUTE_GENOTYPES, IMPUTE_PREPHASED and MERGE_REFERENCE; the Java merge output is also tested as a subsequent imputation input. Actual RUN, fresh original VERIFY/REPLAY and saved-closure inspection are qualified. Native Java captures literal inputs, audits source fields and provides explicitly conditional unit-mass/zero-censor probability bounds. Source GEN values, missing codes, INFO, warnings and undefined fields remain unchanged. No native imputation estimator, BGEN conversion, automatic reference/QC/identity/strand selection, chromosome X/PAR, other ploidy, IMPUTE2 v2.3.1, IMPUTE4/5, exact historical flags, whole-tool/paper, biological or authentication qualification.",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P180",
+          "pmcid": "PMC11739871",
+          "doi": "10.1016/j.ajhg.2024.10.022",
+          "xml_sha256": "da52d87762688261114ecbab2ed96ddd482f7cf2c6ec4b1360e0df9f2051eb8a",
+          "anchors": [
+            {
+              "paper_id": "P180",
+              "paragraph_index": 30,
+              "section": "Material and methods / Imputation",
+              "paragraph_sha256": "546a38b0958f0a6c616e61393d1e0558187399976e6f32c93fe16c7b5b696640",
+              "versioned_name_matches": [
+                "IMPUTE5"
+              ],
+              "bare_name_matches": []
+            }
+          ],
+          "summary": "An Armenian genome is masked at Illumina1M SNPs and imputed with IMPUTE5 using either 1000GP Phase3 or that panel augmented by 35 phased Armenian genomes. Squared Pearson correlation compares imputed dosage with CG genotypes.",
+          "boundary": "The exact IMPUTE5 minor edition, flags and seed are unreported; the v2.3.2 profile does not execute IMPUTE5. Source masking, variant matching, reference preparation and the comparison cohort are explicit prerequisites. The reported squared correlation is empirical dosage agreement, not source INFO or a substituted Minimac metric.",
+          "semantic_role": "named-IMPUTE5-masked-genome-panel-comparison",
+          "reported_version_contexts": [
+            {
+              "paragraph_index": 30,
+              "section": "Material and methods / Imputation",
+              "paragraph_sha256": "546a38b0958f0a6c616e61393d1e0558187399976e6f32c93fe16c7b5b696640",
+              "reported_literal": "IMPUTE5",
+              "tool_edition": "5"
+            }
+          ],
+          "reported_settings": {
+            "masked_array": "Illumina1M",
+            "target_genomes": 1,
+            "augmented_Armenian_reference_genomes": 35,
+            "reference": "1000GP Phase3 GRCh38, alone or Armenian-augmented",
+            "eligibility": "biallelic nonmissing sites",
+            "upstream_phasing": "shapeit5 phasing_common as written in source",
+            "comparison": "squared Pearson correlation between CG genotype counts and imputed dosage; reported dosage range0 to2"
+          },
+          "historical_edition_analysis_status": "SKIP3_IMPUTE5_PROFILE_UNAVAILABLE",
+          "available_operation_types": [],
+          "available_operation_types_are_exact_historical_flags": false,
+          "source_seed_reported": false,
+          "original_paper_analysis_reexecuted": false,
+          "whole_paper_reproduced": false,
+          "source_role_review_applied": true
+        }
       },
       {
         "tool_id": "king",

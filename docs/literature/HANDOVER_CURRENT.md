@@ -1,5 +1,12 @@
 # Current toolbox handover
 
+**Current IMPUTE catalog admission:** [Seven source roles, the P116 declaration correction, warnings and remaining editions](IMPUTE_CATALOG_CHECKPOINT_2026-11-23.md).
+One bounded IMPUTE2 v2.3.2 upstream profile and seven new source reviews are admitted. Totals are **157 scoped families (29 native/128 upstream), 1,714 reviewed/1,010 pending uses, 2,724 observations and 250 papers**. All 1,707 prior reviews and 2,717 unrelated observations are preserved. Two-host source/transaction checks and actual plan/inspect/verify, ten refusals, guarded apply and desktop/mobile checks pass.
+
+**Remaining work:** IMPUTE2 v2.3.1 for P116/P149, whose local operations remain unresolved; IMPUTE4.1.2_r300.3 for P140; IMPUTE5 for P180; unknown exact editions for P076/P084; and the other high-impact/full-cohort gaps. The matching v2.3.2 engine supports prepared P136 operation types, without asserting its unknown historical flags or reproducing its cohort. Keep skipped analyses explicit and use no version substitution. Probability bounds remain conditional; preserve original GP/INFO and failed/undefined/superseded evidence.
+
+The website gate retains the same 33 existing citation-panel failures with no new failures; the literature reports remain withheld from Pages. Keep accepted original runtimes/traces private, exact JARs, all 19 worktrees and restricted refs. The full goal remains active. Earlier entries below describe their historical checkpoints.
+
 **Current SCENIC+ catalog admission:** [Six roles, the P153 correction, warnings and next work](SCENICPLUS_CATALOG_CHECKPOINT_2026-11-23.md).
 One bounded upstream family, five new reviews and one expanded P061 review are
 admitted. Totals are **156 scoped families (29 native/127 upstream), 1,707
