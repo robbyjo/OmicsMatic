@@ -1,3 +1,19 @@
+# Current GenomicSEM catalog checkpoint
+
+250 papers, 446 labels, 485 provider definitions and 2,724 observations; 1,765 reviewed/959 pending uses. 160 scoped families (30 native + 130 upstream), 163 including three existing adapters; 254 missing and 17 method-overlap. This admission adds one GenomicSEM upstream family and five source reviews. Exact historical editions and whole-paper analyses remain unqualified; the full goal is unfinished.
+
+Original pinned GenomicSEM preparation and prepared fitting through source-built genomicsem-prep and genomicsem-tools Java adapters: munge, full multivariate ldsc, sumstats, read_fusion, s_ldsc, enrich, commonfactor, usermodel, commonfactorGWAS and userGWAS including TWAS mode. Revision da95d431a4709693d07eae55e172ade55526948b (DESCRIPTION 0.0.5, README 0.0.5c), private Windows x86_64 R4.6.1/Matrix1.7-5/lavaan0.6-19 and independently pinned optional Rmpfr/GMP. One multivariate call supplies complete joint V; original source transformations, typed fields, warnings and unavailable values remain retained. Fresh VERIFY/REPLAY recompute original calls; saved inspection reads typed exports and never decodes opaque RDS or independently refits the optimizer. No historical paper-edition equivalence, full package/optimizer/convergence certification, original paper reanalysis or whole-paper/biological qualification.
+
+P035 reports literal 0.5.0, not current DESCRIPTION 0.0.5; EFA is separately stats::factanal, and manuscript GC wording does not establish exact historical arguments. P125 describes paired-subtype conditional regressions rather than a generic single-factor fit. P131 preserves 0.0.5 contexts for higher-order models/TSEM without borrowing FUSION or ACAT versions. P140: 0.0.3f/R4.3.2 Cholesky subtraction is not replaced by current source and is distinct from PCA-based GWAS. P150: 0.0.5 parallel-analysis wording does not establish use of the newer paLDSC API. Raw near-name versions stay null for the first four observations and0.0.5 for P150. Historical settings and separate methods remain explicit in each role.
+
+**Warnings and required actions:** SKIP3: dependent analysis skipped when an exact permitted runtime, input, add-on or qualified edition is unavailable. Install/stage dependencies only by a method allowed in your environment; if installation is forbidden, retain the skip. FAIL2: no complete admitted result. Preserve partial/original/nonfinite output, read FAILURE.md, WARNINGS.md, scientific-audit.json, row/annotation status tables and original logs; resolve the named cause and retry NEW output. Never silently replace a historical edition with current software or a native overlap, infer study ancestry/build/prevalences, repair identifiers, clip source endpoints or assemble full joint V from pairwise fits. Original enrichment P values are one-sided upper tails for enrichment above1. Original import/build warnings remain visible; pinned Rmpfr/GMP BuiltR4.6.2 arithmetic is narrowly checked under unchanged R4.6.1. Exact producer JARs and original source contexts must be retained; never refresh old hashes. Current release assets lack this source-built workflow. Cell Ranger remains excluded.
+
+See [workflow and source-role guide](../GENOMICSEM_CATALOG_WORKFLOWS.md).
+
+---
+
+Earlier checkpoint text is historical.
+
 # Current FastQTL catalog checkpoint
 
 250 papers, 446 labels, 485 provider definitions and 2,724 observations; 1,760 reviewed/964 pending uses. 159 scoped families (30 native + 129 upstream), 162 including three existing adapters; 254 missing and 18 method-overlap. This admission adds one bounded FastQTL upstream family and five source reviews. Historical 2.165 and complete paper analyses remain unqualified; the full goal is unfinished.
