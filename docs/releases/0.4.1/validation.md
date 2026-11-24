@@ -9,3 +9,7 @@ The tagged GitHub workflow runs the authoritative Linux/Java 17 `clean check ass
 The local evidence directory is `build/release-v0.4.1-20261124/`. It retains initial and final build logs, the synthetic example, branch inventory/audit and the eventual publication and cleanup receipts.
 
 The full Windows run identified a stale LIMMA root-help projection snapshot. The reviewed difference consists of 19 subsequently added command lines; the expected snapshot now includes those additions. The first tagged workflow ([45454794398](https://github.com/robbyjo/OmicsMatic/actions/runs/45454794398)) was cancelled before publication. The original candidate remains in Git history. GitHub confirmed that no v0.4.1 release existed before the unpublished candidate tag was advanced to this correction.
+
+With the corrected fixture loaded, 789 existing Windows tests across MR, colocalization, CLI/study MR, LIMMA routing/help and transform parsing passed (zero failures, errors or skips). These ran through JUnit's launcher against the current compiled classes and corrected source resources; the full Windows run retained its earlier snapshot failure separately.
+
+The second hosted attempt ([45455972677](https://github.com/robbyjo/OmicsMatic/actions/runs/45455972677)) stopped during compilation because Gradle's default 512-MiB build-daemon heap exhausted its capacity. The project now declares a 3-GiB build heap and 1-GiB metaspace cap. The existing 2-GiB test-worker limit is unchanged. This attempt did not reach test execution or publication; its raw logs are retained.
