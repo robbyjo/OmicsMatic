@@ -1,0 +1,616 @@
+{
+  "schema_version": 1,
+  "status": "FIVE_REVIEWED_SOURCE_ROLES_NOT_ADMITTED",
+  "census_identity": {
+    "bytes": 19256,
+    "sha256": "38a7a7d21cec2c13e4497259aae0547e27d2bb73aaf1f28d733d978c282ecd5a"
+  },
+  "roles": [
+    {
+      "paper_id": "P035",
+      "source": {
+        "paper_id": "P035",
+        "doi": "10.1038/s41586-025-09820-3",
+        "pmcid": "PMC12779569",
+        "xml_sha256": "7fcb5520e426b53ab60f09e79907f5f2368afcc3d99989eea98fe39c00fbc52e",
+        "original_observation": {
+          "tool_id": "genomicsem",
+          "tool": "Genomic SEM",
+          "analysis_role": "Genetic covariance and structural equation modelling",
+          "evidence_section": "Methods / Genomic SEM / Genome-wide models",
+          "evidence_paragraph_index": 32,
+          "matched_text": "genomic SEM",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "e89a379843a6c8553604675efdb2e3473c350199cd629ed0b1c93e57689c90e4",
+          "use_summary": "Genetic covariance and structural equation modelling.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12779569/ (section: Methods / Genomic SEM / Genome-wide models)"
+        }
+      },
+      "reviewed_paragraphs": [
+        {
+          "paragraph_index": 8,
+          "section": "Genomic SEM identifies five factors",
+          "paragraph_sha256": "555a32e4ff1ad099fd22fa93073e6eccb03b19badb73ff0c8391de44dfaa1df1"
+        },
+        {
+          "paragraph_index": 32,
+          "section": "Methods / Genomic SEM / Genome-wide models",
+          "paragraph_sha256": "e89a379843a6c8553604675efdb2e3473c350199cd629ed0b1c93e57689c90e4"
+        },
+        {
+          "paragraph_index": 33,
+          "section": "Methods / Genomic SEM / Genome-wide models",
+          "paragraph_sha256": "ee907a181889daa53ee2f16c56fb0cdc19fcf5592c7af9919c9d8f02a7d4e584"
+        },
+        {
+          "paragraph_index": 34,
+          "section": "Methods / Genomic SEM / Stratified genomic SEM",
+          "paragraph_sha256": "16413db811a9e9b2641438711c43121ec869eb3bfec2cad3370bc8ed7fc3941c"
+        },
+        {
+          "paragraph_index": 35,
+          "section": "Methods / Genomic SEM / Stratified genomic SEM",
+          "paragraph_sha256": "cc6526cc447d53a9aad54f7e6bd35e00b34ccbcc547c5eb02350d7aabd46b36d"
+        },
+        {
+          "paragraph_index": 36,
+          "section": "Methods / Genomic SEM / Multivariate GWAS",
+          "paragraph_sha256": "ecaac65b26ccfaf03e3a82cd0c3aef03ce814f4d69bf72ea355c2dcfe8117863"
+        },
+        {
+          "paragraph_index": 37,
+          "section": "Methods / Genomic SEM / Multivariate GWAS",
+          "paragraph_sha256": "bc1ba857359017ea30213a4aa71ed54aff1e3a8443c2f616f4471e41d08f2068"
+        },
+        {
+          "paragraph_index": 54,
+          "section": "Code availability",
+          "paragraph_sha256": "388e914a990ed10546301ad445194be3c8333b6defef1b0cab29819e1f552d98"
+        }
+      ],
+      "reported_edition_contexts": [
+        {
+          "paragraph_index": 54,
+          "literal": "0.5.0",
+          "source_section": "Code availability",
+          "paragraph_sha256": "388e914a990ed10546301ad445194be3c8333b6defef1b0cab29819e1f552d98"
+        },
+        {
+          "paragraph_index": 83,
+          "literal": "0.5.0",
+          "source_section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "388e914a990ed10546301ad445194be3c8333b6defef1b0cab29819e1f552d98"
+        }
+      ],
+      "catalog_admitted": false,
+      "paper_edition_qualified": false,
+      "original_paper_analysis_reexecuted": false,
+      "whole_paper_reproduced": false,
+      "summary": "Used Genomic SEM to model shared genetic liability across 14 psychiatric traits, compare common and five-factor structures, perform stratified factor/residual-variance enrichment and run multivariate GWAS with factor-specific heterogeneity tests.",
+      "settings": {
+        "munge": {
+          "reference": "HapMap3",
+          "INFO_greater_than": 0.9
+        },
+        "LDSC": {
+          "case_control_liability": true,
+          "continuous_exception": "NIC Fagerstrom outcome",
+          "prevalence": "matched to each original GWAS",
+          "effective_N": "sum across contributing cohorts; CUD inferred from GWAS"
+        },
+        "factor_selection": {
+          "EFA_chromosomes": "even",
+          "CFA_chromosomes": "odd",
+          "EFA_factors": [
+            2,
+            3,
+            4,
+            5
+          ],
+          "EFA_rotations": [
+            "promax",
+            "varimax"
+          ],
+          "loading_greater_than": 0.3,
+          "external_EFA": "stats::factanal"
+        },
+        "stratified": {
+          "functions": [
+            "s_ldsc",
+            "enrich"
+          ],
+          "estimates": "zero-order",
+          "excluded_nonpositive_definite_annotations": 22,
+          "retained_annotations": 162,
+          "tests_per_annotation": 11,
+          "P_less_than": 2.81e-05
+        },
+        "GWAS": {
+          "function": "userGWAS",
+          "factors": 6,
+          "retained_SNPs": 2795800,
+          "excluded_nonpositive_definite_SNPs": 136,
+          "P_less_than": 8.33e-09,
+          "GC_description": "literal manuscript multiplication of SE by univariate LDSC intercept when >1; exact implementation/options not established"
+        },
+        "heterogeneity": "factor-specific nested common/independent pathways, including first-order factors for p-factor Q_SNP"
+      },
+      "separate": [
+        "EFA in stats::factanal",
+        "PLINK locus clumping",
+        "CC-GWAS",
+        "Popcorn",
+        "MiXeR",
+        "LAVA"
+      ],
+      "limitation": "The manuscript literal version 0.5.0 differs from upstream DESCRIPTION 0.0.5 and must not be silently normalized. Author edition, model code, reference/input files and exact historical numerical settings remain unqualified."
+    },
+    {
+      "paper_id": "P125",
+      "source": {
+        "paper_id": "P125",
+        "doi": "10.1038/s41588-025-02396-8",
+        "pmcid": "PMC12695632",
+        "xml_sha256": "f35977fb92d9c713b8f0f887bbc688a2475a5ea42207a0edbf260b0ba815cc95",
+        "original_observation": {
+          "tool_id": "genomicsem",
+          "tool": "Genomic SEM",
+          "analysis_role": "Genetic covariance and structural equation modelling",
+          "evidence_section": "Methods / Genomic SEM",
+          "evidence_paragraph_index": 23,
+          "matched_text": "genomic SEM",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "b16e9a58cccd0af6d69ab742b1eae2413729fe2baa28295d85343f6ad0e38155",
+          "use_summary": "Genetic covariance and structural equation modelling.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695632/ (section: Methods / Genomic SEM)"
+        }
+      },
+      "reviewed_paragraphs": [
+        {
+          "paragraph_index": 23,
+          "section": "Methods / Genomic SEM",
+          "paragraph_sha256": "b16e9a58cccd0af6d69ab742b1eae2413729fe2baa28295d85343f6ad0e38155"
+        }
+      ],
+      "reported_edition_contexts": [],
+      "catalog_admitted": false,
+      "paper_edition_qualified": false,
+      "original_paper_analysis_reexecuted": false,
+      "whole_paper_reproduced": false,
+      "summary": "Used Genomic SEM to compare eoMDD and loMDD genetic correlations with other phenotypes and estimate each subtype-specific association while controlling for the other subtype.",
+      "settings": {
+        "outcomes": [
+          "psychiatric disorders",
+          "health determinants",
+          "CVD",
+          "mortality"
+        ],
+        "models": [
+          "marginal genetic correlations",
+          "joint subtype-adjusted associations"
+        ],
+        "sample_overlap": "handled by LDSC-derived sampling dependencies"
+      },
+      "separate": [
+        "primary MDD GWAS",
+        "tissue/cell stratified enrichment",
+        "causal interpretation"
+      ],
+      "limitation": "Edition, exact SEM syntax, fit settings and original matrices are not established by this paragraph. A generic single-factor fit does not reproduce the paired-subtype regressions."
+    },
+    {
+      "paper_id": "P131",
+      "source": {
+        "paper_id": "P131",
+        "doi": "10.1038/s41588-026-02735-3",
+        "pmcid": "PMC13553304",
+        "xml_sha256": "d8f120704e4700fbb26e76704600acdde4e7ea6822c8c8dabe7a04d1e5b47353",
+        "original_observation": {
+          "tool_id": "genomicsem",
+          "tool": "Genomic SEM",
+          "analysis_role": "Genetic covariance and structural equation modelling",
+          "evidence_section": "Methods / Data selection and processing",
+          "evidence_paragraph_index": 27,
+          "matched_text": "genomic SEM",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "c5aa160d7f79ebf2d8e156867e487b4d0c6c9bcb1199140d039520c0fd623c88",
+          "use_summary": "Genetic covariance and structural equation modelling.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553304/ (section: Methods / Data selection and processing)"
+        }
+      },
+      "reviewed_paragraphs": [
+        {
+          "paragraph_index": 27,
+          "section": "Methods / Data selection and processing",
+          "paragraph_sha256": "c5aa160d7f79ebf2d8e156867e487b4d0c6c9bcb1199140d039520c0fd623c88"
+        },
+        {
+          "paragraph_index": 28,
+          "section": "Methods / LD score regression",
+          "paragraph_sha256": "dfe7c90bb412d6d4fb137c291ba89908be20302acc8145ee68eec35480d8e351"
+        },
+        {
+          "paragraph_index": 30,
+          "section": "Methods / Latent factor models",
+          "paragraph_sha256": "e69fca2ff752b2a1f1704a70b19d8416e6ef2333b8b6b9eee31f827904b16b6f"
+        },
+        {
+          "paragraph_index": 31,
+          "section": "Methods / Latent factor models / Common factor models",
+          "paragraph_sha256": "98ee547fdc99f438c15b5bac6fbc8b3438945502b9433f1ec3f80629e20d824b"
+        },
+        {
+          "paragraph_index": 32,
+          "section": "Methods / Latent factor models / Four-factor multiple regression model",
+          "paragraph_sha256": "1877f46ccbc54031e983a6f70b317fbe741a875c041076b0245d7a31bfcc36d1"
+        },
+        {
+          "paragraph_index": 33,
+          "section": "Methods / Latent factor models / Exploratory factor analysis",
+          "paragraph_sha256": "e317ff71e63ce319be32c03f9fb5160c5fdab7153992fd4c2cc2ee593d7b8b0d"
+        },
+        {
+          "paragraph_index": 34,
+          "section": "Methods / Latent factor models / Directed acyclic graphs",
+          "paragraph_sha256": "ea5bb08c8a1d5b51fdd213d02692678a00bb31e1cd64ad5d3bfb8ba18dcc911e"
+        },
+        {
+          "paragraph_index": 35,
+          "section": "Methods / Latent factor models / Multiple regression of individual traits",
+          "paragraph_sha256": "454682c4690ff2ea9b1ae67c41f1826ed33ec2f6cfb87b9bb8d1342045b2d6b7"
+        },
+        {
+          "paragraph_index": 36,
+          "section": "Methods / Multivariate GWAS / Second-order latent factor models",
+          "paragraph_sha256": "ff6c1fd718f0e5c0cf1a0c51864b03720425486da1fb4f4a9988137f0c2ee587"
+        },
+        {
+          "paragraph_index": 41,
+          "section": "Methods / Gastrointestinal factor follow-up analysis / GORD subtypes",
+          "paragraph_sha256": "ed42a82ec7bcea17c55a8318b044f5b43a87b2f3fa5bd2108c11e00798735cae"
+        },
+        {
+          "paragraph_index": 45,
+          "section": "Methods / Biological annotations / Gene expression of second-order factors",
+          "paragraph_sha256": "61cb6e7809722c4eaee20f2d04507fb088d4d320e0709875db3a6e6709946177"
+        }
+      ],
+      "reported_edition_contexts": [
+        {
+          "paragraph_index": 27,
+          "literal": "0.0.5",
+          "source_section": "Methods / Data selection and processing",
+          "paragraph_sha256": "c5aa160d7f79ebf2d8e156867e487b4d0c6c9bcb1199140d039520c0fd623c88"
+        },
+        {
+          "paragraph_index": 45,
+          "literal": "0.0.5",
+          "source_section": "Methods / Biological annotations / Gene expression of second-order factors",
+          "paragraph_sha256": "61cb6e7809722c4eaee20f2d04507fb088d4d320e0709875db3a6e6709946177"
+        }
+      ],
+      "catalog_admitted": false,
+      "paper_edition_qualified": false,
+      "original_paper_analysis_reexecuted": false,
+      "whole_paper_reproduced": false,
+      "summary": "Used Genomic SEM for multivariable LDSC, latent factor and multiple-regression/mediation models, higher-order multivariate GWAS, and transcriptome-wide SEM using FUSION results.",
+      "settings": {
+        "munge": {
+          "reported_defaults": true,
+          "reference": "1000 Genomes European",
+          "INFO_filter": 0.9,
+          "MAF_filter": 0.01,
+          "filter_condition": "when available"
+        },
+        "LDSC": {
+          "MHC_excluded": true,
+          "heritability_z_thresholds": [
+            4,
+            7
+          ],
+          "covariance_P": "0.05 divided by number of traits above threshold"
+        },
+        "SEM": {
+          "estimation": "DWLS",
+          "identification": "unit variance for no-SNP models",
+          "acceptable_CFI_greater_than": 0.9,
+          "acceptable_SRMR_less_than": 0.1,
+          "Heywood_constraints": "explicit constraints such as variance >0",
+          "cross_loadings": "residual correlation >0.10 when fit improves",
+          "models": [
+            "disease-group common factors regressing MDD",
+            "correlated four-factor simultaneous regression",
+            "mediation",
+            "individual-trait multiple regression"
+          ]
+        },
+        "GWAS": {
+          "function": "userGWAS",
+          "estimation": "DWLS",
+          "identification": "unit loading; largest loading indicator fixed to1",
+          "model": "second-order factor with equality-constrained disease-factor/MDD loadings"
+        },
+        "TSEM": {
+          "edition": "0.0.5",
+          "input": "univariate FUSION outputs plus LDSC matrices and second-order models",
+          "tissues": 45,
+          "weights": "European GTEx v8",
+          "QGENE_filter": "remove genes at P <0.05 divided by genes per tissue"
+        }
+      },
+      "separate": [
+        "psych::fa exploratory analysis",
+        "FUSION training/association/colocalization",
+        "ACAT across tissues",
+        "LCV",
+        "CAUSE",
+        "GSA-MiXeR",
+        "gsMAP"
+      ],
+      "limitation": "The paper describes T-SEM as a function but exact invoked GenomicSEM API/model scripts need separate qualification; current documentation uses read_fusion plus userGWAS(TWAS=TRUE). Version 0.0.5 alone does not identify a commit. Do not transfer the ACAT0.91 or FUSION edition to Genomic SEM."
+    },
+    {
+      "paper_id": "P140",
+      "source": {
+        "paper_id": "P140",
+        "doi": "10.1038/s41588-025-02391-z",
+        "pmcid": "PMC12695639",
+        "xml_sha256": "0fe7de7050ee813d37932b53c07cb52cc920edf4270ad1eff0ae121aaa0d71cc",
+        "original_observation": {
+          "tool_id": "genomicsem",
+          "tool": "Genomic SEM",
+          "analysis_role": "Genetic covariance and structural equation modelling",
+          "evidence_section": "Methods / Analyses / GWAS-by-subtraction analyses controlling for educational attainment",
+          "evidence_paragraph_index": 61,
+          "matched_text": "Genomic SEM",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "cdbfe30cb262fc82958e58e41fcf755e494bfb99dc3c60075f5c599c66bd7cba",
+          "use_summary": "Genetic covariance and structural equation modelling.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695639/ (section: Methods / Analyses / GWAS-by-subtraction analyses controlling for educational attainment)"
+        }
+      },
+      "reviewed_paragraphs": [
+        {
+          "paragraph_index": 61,
+          "section": "Methods / Analyses / GWAS-by-subtraction analyses controlling for educational attainment",
+          "paragraph_sha256": "cdbfe30cb262fc82958e58e41fcf755e494bfb99dc3c60075f5c599c66bd7cba"
+        },
+        {
+          "paragraph_index": 62,
+          "section": "Methods / Analyses / SNP-based heritability analyses",
+          "paragraph_sha256": "6a0d52dd23292debd8ae47c4bc6e8c2467ad9eda35cb69f5d3a47f8fcbfb6cc6"
+        },
+        {
+          "paragraph_index": 63,
+          "section": "Methods / Analyses / SNP-based heritability analyses",
+          "paragraph_sha256": "95f6296211ae3ae9dd3c78c1bbcaf628c2b27c681308cbe970fdc4682c8cf129"
+        },
+        {
+          "paragraph_index": 64,
+          "section": "Methods / Analyses / Genetic analyses adjusting for birthplace and parents’ fields",
+          "paragraph_sha256": "15a1b1afc75420ee844961421a301a9fb041d91ffd41e23e487312669a01107a"
+        },
+        {
+          "paragraph_index": 66,
+          "section": "Methods / Analyses / Genetic structure of fields: genetic correlations and PCA GWASs",
+          "paragraph_sha256": "e676342c2d79af8d7aa1dd62e667a4ca8b40b812cf382625f38d4b19d5fc835d"
+        },
+        {
+          "paragraph_index": 67,
+          "section": "Methods / Analyses / Genetic structure of fields: genetic correlations and PCA GWASs",
+          "paragraph_sha256": "b9b810c7c236bef46cc012d60917e9193c9fd06d7cf8e92cdc4b26dbc529c4c8"
+        },
+        {
+          "paragraph_index": 68,
+          "section": "Methods / Analyses / Genetic structure of fields: genetic correlations and PCA GWASs",
+          "paragraph_sha256": "4a59fb1547fbf5e22e460d0b211a68457aa6288e8bd74aa2e41ca5242edb9c2d"
+        }
+      ],
+      "reported_edition_contexts": [
+        {
+          "paragraph_index": 62,
+          "literal": "0.0.3f",
+          "source_section": "Methods / Analyses / SNP-based heritability analyses",
+          "paragraph_sha256": "6a0d52dd23292debd8ae47c4bc6e8c2467ad9eda35cb69f5d3a47f8fcbfb6cc6"
+        },
+        {
+          "paragraph_index": 66,
+          "literal": "0.0.3f",
+          "source_section": "Methods / Analyses / Genetic structure of fields: genetic correlations and PCA GWASs",
+          "paragraph_sha256": "e676342c2d79af8d7aa1dd62e667a4ca8b40b812cf382625f38d4b19d5fc835d"
+        }
+      ],
+      "catalog_admitted": false,
+      "paper_edition_qualified": false,
+      "original_paper_analysis_reexecuted": false,
+      "whole_paper_reproduced": false,
+      "summary": "Used Genomic SEM for educational-attainment-adjusted GWAS by subtraction using SNP-level Cholesky models, SNP heritabilities/genetic correlations and dependent heritability comparisons across adjustment models.",
+      "settings": {
+        "edition": "0.0.3f",
+        "R": "4.3.2",
+        "subtraction": {
+          "fields": 10,
+          "observed": [
+            "educational field",
+            "educational attainment"
+          ],
+          "latent": [
+            "field-specific factor",
+            "educational attainment factor"
+          ],
+          "latent_covariance_fixed": 0
+        },
+        "dependent_heritability": "account for dependence between with/without covariate estimates",
+        "multiplicity": {
+          "function": "stats::p.adjust",
+          "method": "fdr",
+          "adjusted_P_less_than": 0.05
+        },
+        "interpretation": "Authors caution environmental variance is undefined for GWAS-by-subtraction heritability"
+      },
+      "separate": [
+        "R eigen PCA",
+        "genomicPCA/meta-analysis-based PC GWAS",
+        "primary/phenotypically adjusted GWAS",
+        "p.adjust multiple testing"
+      ],
+      "limitation": "Do not label the separate PCA GWAS as GenomicSEM CFA or replace 0.0.3f with current 0.0.5. Full Cholesky specification is in supplementary material and has not been reexecuted."
+    },
+    {
+      "paper_id": "P150",
+      "source": {
+        "paper_id": "P150",
+        "doi": "10.1038/s41588-024-01933-1",
+        "pmcid": "PMC11549047",
+        "xml_sha256": "7c6932a914734569a95e3cbdc6976d0e9bdc128a6b4fdaf51de76407469c2c4f",
+        "original_observation": {
+          "tool_id": "genomicsem",
+          "tool": "Genomic SEM",
+          "analysis_role": "Genetic covariance and structural equation modelling",
+          "evidence_section": "Methods / Parallel analysis",
+          "evidence_paragraph_index": 45,
+          "matched_text": "Genomic SEM",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "0.0.5",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "b2f8d693b2e0ecd629b7fe09be3545105cb0ecc3ab44feb83305cb9c4ce1328e",
+          "use_summary": "Genetic covariance and structural equation modelling.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11549047/ (section: Methods / Parallel analysis)"
+        }
+      },
+      "reviewed_paragraphs": [
+        {
+          "paragraph_index": 9,
+          "section": "Results / Factor analysis of MetS components",
+          "paragraph_sha256": "ebb3299e8d3baf02eabb9bf3f8d66a0c0fef72927565110ef92699336b40ba16"
+        },
+        {
+          "paragraph_index": 10,
+          "section": "Results / Factor analysis of MetS components",
+          "paragraph_sha256": "820a7d60c8438959cc65911aa06b3ade25369400eceb13700ef887abf6cbcd12"
+        },
+        {
+          "paragraph_index": 45,
+          "section": "Methods / Parallel analysis",
+          "paragraph_sha256": "b2f8d693b2e0ecd629b7fe09be3545105cb0ecc3ab44feb83305cb9c4ce1328e"
+        },
+        {
+          "paragraph_index": 46,
+          "section": "Methods / Exploratory factor analysis",
+          "paragraph_sha256": "b096f64d4fab19d7d50ce74721b80ba718d5d3b321bda06f6825a96080064a56"
+        },
+        {
+          "paragraph_index": 47,
+          "section": "Methods / Confirmatory factor analysis",
+          "paragraph_sha256": "809e0b65da505785a023b3ec6b1ec5365ba43aea8a31ad2f68ec040b4c9bb622"
+        },
+        {
+          "paragraph_index": 48,
+          "section": "Methods / Confirmatory factor analysis",
+          "paragraph_sha256": "a4654e62610bcddfba496921b0d0ea70b67a7ef3c2105d691caf17b97c06c85c"
+        },
+        {
+          "paragraph_index": 49,
+          "section": "Methods / MetS multivariate GWAS with Genomic SEM",
+          "paragraph_sha256": "bb23cfd017e151ac6847b59034a2f02700ecdb72c6aea4b61dd52c487b099041"
+        },
+        {
+          "paragraph_index": 51,
+          "section": "Methods / MetS multivariate GWAS with Genomic SEM",
+          "paragraph_sha256": "284cae285d18453f2497e62ee6d19d821e54129feaefb584f425cc5e3e385903"
+        },
+        {
+          "paragraph_index": 52,
+          "section": "Methods / SNP-based heritability and genetic correlation",
+          "paragraph_sha256": "f4161b859cd553319136b622c1dc857a386abbdd4041f58cb4f26686d7e28948"
+        },
+        {
+          "paragraph_index": 54,
+          "section": "Methods / Partitioned heritability",
+          "paragraph_sha256": "2e72e65998b069df8bd13e399df9de63ac07c0fb35f10fee94107a6c5c7a606c"
+        },
+        {
+          "paragraph_index": 55,
+          "section": "Methods / Cell- and tissue-type-specific analysis",
+          "paragraph_sha256": "a30502fcbe2fa6ca51a798be7f8751bc32d3497a07cccba2253d70a0de62b9a3"
+        }
+      ],
+      "reported_edition_contexts": [
+        {
+          "paragraph_index": 45,
+          "literal": "0.0.5",
+          "source_section": "Methods / Parallel analysis",
+          "paragraph_sha256": "b2f8d693b2e0ecd629b7fe09be3545105cb0ecc3ab44feb83305cb9c4ce1328e"
+        },
+        {
+          "paragraph_index": 47,
+          "literal": "0.0.5",
+          "source_section": "Methods / Confirmatory factor analysis",
+          "paragraph_sha256": "809e0b65da505785a023b3ec6b1ec5365ba43aea8a31ad2f68ec040b4c9bb622"
+        }
+      ],
+      "catalog_admitted": false,
+      "paper_edition_qualified": false,
+      "original_paper_analysis_reexecuted": false,
+      "whole_paper_reproduced": false,
+      "summary": "Used Genomic SEM LDSC genetic/sampling covariance matrices for parallel analysis, compared single/correlated/hierarchical factor models for seven MetS components, and ran hierarchical multivariate GWAS with Q_SNP heterogeneity testing.",
+      "settings": {
+        "edition": "0.0.5",
+        "traits": [
+          "BMI",
+          "WC",
+          "T2D",
+          "FG",
+          "HTN",
+          "HDL",
+          "TG"
+        ],
+        "parallel_analysis": "observed genetic-correlation eigenvalues versus Monte Carlo correlation eigenvalues with sampling-covariance noise; exact function/seed not reported",
+        "CFA": {
+          "estimation": "DWLS",
+          "identification": "unit variance",
+          "loading_at_least": 0.3,
+          "good_CFI_at_least": 0.95,
+          "good_SRMR_less_than": 0.08
+        },
+        "GWAS": {
+          "estimation": "DWLS",
+          "identification": "unit loading; BMI->F1 and F1->MetS fixed",
+          "MAF_greater_than": 0.01,
+          "retained_SNPs": 2265555
+        },
+        "Q_SNP": "chi-square difference between common and independent pathways",
+        "effective_N": "computed from effect/Z/SNP variance using MAF between0.10 and0.40"
+      },
+      "separate": [
+        "stats4.0.5 factanal EFA",
+        "standalone LDSC1.0.1",
+        "S-LDSC53 annotations",
+        "LDSC-SEG",
+        "METAL",
+        "FUMA",
+        "GCTA-COJO",
+        "PRS/MR analyses"
+      ],
+      "limitation": "Do not infer that the newly added upstream paLDSC function was used historically. Exact GenomicSEM commit, parallel-analysis code/seed, model scripts, preprocessing and original inputs remain unqualified."
+    }
+  ]
+}
