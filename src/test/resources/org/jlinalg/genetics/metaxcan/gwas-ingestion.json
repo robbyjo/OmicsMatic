@@ -1,0 +1,679 @@
+{
+  "schema_version": 1,
+  "artificial_inputs": true,
+  "upstream_source": "https://github.com/hakyimlab/MetaXcan",
+  "license": "MIT; see LICENSE-MetaXcan.txt",
+  "python": "3.11.18",
+  "numpy": "1.23.5",
+  "scipy": "1.10.1",
+  "pandas": "1.5.3",
+  "case_count": 24,
+  "cases": [
+    {
+      "source": "tag-0.7.3",
+      "commit": "72e8c94edf31a4b261d29a7acf9a659804510e46",
+      "name": "Z-priority-and-OR-override",
+      "text": "ID\tEA\tOA\tZ\tB\tP\tSE\tOR\nrs1\tg\ta\t1.234567891\t99\t.2\t.7\t2\nrs2\tA\tG\t-2.34567891\t99\t.4\t.7\t.5\n",
+      "columns": {
+        "zscore": "Z",
+        "beta": "B",
+        "pvalue": "P",
+        "se": "SE",
+        "odds_ratio": "OR"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.2345678806304932,
+          "beta": 0.6931471805599453
+        },
+        {
+          "id": "rs2",
+          "ea": "A",
+          "oa": "G",
+          "z": -2.3456788063049316,
+          "beta": -0.6931471805599453
+        }
+      ]
+    },
+    {
+      "source": "tag-0.7.3",
+      "commit": "72e8c94edf31a4b261d29a7acf9a659804510e46",
+      "name": "P-priority-over-SE",
+      "text": "ID\tEA\tOA\tB\tP\tSE\nrs1\tG\tA\t.3\t.05\t1e-3\nrs2\tG\tA\t-.2\t.00000003\t1e-3\n",
+      "columns": {
+        "beta": "B",
+        "pvalue": "P",
+        "se": "SE"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.9599640369415283,
+          "beta": 0.3
+        },
+        {
+          "id": "rs2",
+          "ea": "G",
+          "oa": "A",
+          "z": -5.541436672210693,
+          "beta": -0.2
+        }
+      ]
+    },
+    {
+      "source": "tag-0.7.3",
+      "commit": "72e8c94edf31a4b261d29a7acf9a659804510e46",
+      "name": "P-sign-and-zero-default",
+      "text": "ID\tEA\tOA\tS\tP\nrs1\tG\tA\t+\t0\nrs2\tG\tA\t-\t1e-80\nrs3\tG\tA\t+\t.05\n",
+      "columns": {
+        "beta_sign": "S",
+        "pvalue": "P"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 19.027997970581055,
+          "beta": null
+        },
+        {
+          "id": "rs2",
+          "ea": "G",
+          "oa": "A",
+          "z": -19.027997970581055,
+          "beta": null
+        },
+        {
+          "id": "rs3",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.9599640369415283,
+          "beta": null
+        }
+      ]
+    },
+    {
+      "source": "tag-0.7.3",
+      "commit": "72e8c94edf31a4b261d29a7acf9a659804510e46",
+      "name": "P-sign-zero-discard",
+      "text": "ID\tEA\tOA\tS\tP\nrs1\tG\tA\t+\t0\nrs2\tG\tA\t-\t1e-80\nrs3\tG\tA\t+\t.05\n",
+      "columns": {
+        "beta_sign": "S",
+        "pvalue": "P"
+      },
+      "floor": false,
+      "expected": [
+        {
+          "id": "rs2",
+          "ea": "G",
+          "oa": "A",
+          "z": -19.027997970581055,
+          "beta": null
+        },
+        {
+          "id": "rs3",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.9599640369415283,
+          "beta": null
+        }
+      ]
+    },
+    {
+      "source": "tag-0.7.3",
+      "commit": "72e8c94edf31a4b261d29a7acf9a659804510e46",
+      "name": "BETA-SE-filtering",
+      "text": "ID\tEA\tOA\tB\tSE\nrs1\tG\tA\t.2\t.3\nchr1_5_A_G_b38\tG\tA\t.3\t.2\nprsX\tG\tA\t-.3\t.1\nrsBad\tG\tA\tNA\t.1\n",
+      "columns": {
+        "beta": "B",
+        "se": "SE"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 0.6666666865348816,
+          "beta": 0.2
+        },
+        {
+          "id": "prsX",
+          "ea": "G",
+          "oa": "A",
+          "z": -3.0,
+          "beta": -0.3
+        }
+      ]
+    },
+    {
+      "source": "tag-0.7.3",
+      "commit": "72e8c94edf31a4b261d29a7acf9a659804510e46",
+      "name": "OR-SE-keep-coordinate",
+      "text": "ID\tEA\tOA\tOR\tSE\nrs1\tG\tA\t2\t.3\nchr1_5_A_G_b38\tG\tA\t.5\t.2\n",
+      "columns": {
+        "odds_ratio": "OR",
+        "se": "SE"
+      },
+      "keep": true,
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 2.310490608215332,
+          "beta": 0.6931471805599453
+        },
+        {
+          "id": "chr1_5_A_G_b38",
+          "ea": "G",
+          "oa": "A",
+          "z": -3.465735912322998,
+          "beta": -0.6931471805599453
+        }
+      ]
+    },
+    {
+      "source": "tag-0.7.3",
+      "commit": "72e8c94edf31a4b261d29a7acf9a659804510e46",
+      "name": "CSV-decimal-comma-and-quoted-header",
+      "text": "ID,EA,OA,\"B,effect\",SE\nrs1,G,A,\"0,3\",.2\nrs2,G,A,\"-0,4\",.3\n",
+      "separator": "comma",
+      "columns": {
+        "beta": "B,effect",
+        "se": "SE"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.5,
+          "beta": 0.3
+        },
+        {
+          "id": "rs2",
+          "ea": "G",
+          "oa": "A",
+          "z": -1.3333333730697632,
+          "beta": -0.4
+        }
+      ]
+    },
+    {
+      "source": "tag-0.7.3",
+      "commit": "72e8c94edf31a4b261d29a7acf9a659804510e46",
+      "name": "whitespace",
+      "text": "ID EA OA Z\nrs1 g a 1.00000007\nrs2 a g -1.00000007\n",
+      "separator": "whitespace",
+      "columns": {
+        "zscore": "Z"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.0000001192092896,
+          "beta": null
+        },
+        {
+          "id": "rs2",
+          "ea": "A",
+          "oa": "G",
+          "z": -1.0000001192092896,
+          "beta": null
+        }
+      ]
+    },
+    {
+      "source": "commit-0.7.4",
+      "commit": "b133eb36039a557d1476ead50fc6147734c998de",
+      "name": "Z-priority-and-OR-override",
+      "text": "ID\tEA\tOA\tZ\tB\tP\tSE\tOR\nrs1\tg\ta\t1.234567891\t99\t.2\t.7\t2\nrs2\tA\tG\t-2.34567891\t99\t.4\t.7\t.5\n",
+      "columns": {
+        "zscore": "Z",
+        "beta": "B",
+        "pvalue": "P",
+        "se": "SE",
+        "odds_ratio": "OR"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.2345678806304932,
+          "beta": 0.6931471805599453
+        },
+        {
+          "id": "rs2",
+          "ea": "A",
+          "oa": "G",
+          "z": -2.3456788063049316,
+          "beta": -0.6931471805599453
+        }
+      ]
+    },
+    {
+      "source": "commit-0.7.4",
+      "commit": "b133eb36039a557d1476ead50fc6147734c998de",
+      "name": "P-priority-over-SE",
+      "text": "ID\tEA\tOA\tB\tP\tSE\nrs1\tG\tA\t.3\t.05\t1e-3\nrs2\tG\tA\t-.2\t.00000003\t1e-3\n",
+      "columns": {
+        "beta": "B",
+        "pvalue": "P",
+        "se": "SE"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.9599640369415283,
+          "beta": 0.3
+        },
+        {
+          "id": "rs2",
+          "ea": "G",
+          "oa": "A",
+          "z": -5.541436672210693,
+          "beta": -0.2
+        }
+      ]
+    },
+    {
+      "source": "commit-0.7.4",
+      "commit": "b133eb36039a557d1476ead50fc6147734c998de",
+      "name": "P-sign-and-zero-default",
+      "text": "ID\tEA\tOA\tS\tP\nrs1\tG\tA\t+\t0\nrs2\tG\tA\t-\t1e-80\nrs3\tG\tA\t+\t.05\n",
+      "columns": {
+        "beta_sign": "S",
+        "pvalue": "P"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 19.027997970581055,
+          "beta": null
+        },
+        {
+          "id": "rs2",
+          "ea": "G",
+          "oa": "A",
+          "z": -19.027997970581055,
+          "beta": null
+        },
+        {
+          "id": "rs3",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.9599640369415283,
+          "beta": null
+        }
+      ]
+    },
+    {
+      "source": "commit-0.7.4",
+      "commit": "b133eb36039a557d1476ead50fc6147734c998de",
+      "name": "P-sign-zero-discard",
+      "text": "ID\tEA\tOA\tS\tP\nrs1\tG\tA\t+\t0\nrs2\tG\tA\t-\t1e-80\nrs3\tG\tA\t+\t.05\n",
+      "columns": {
+        "beta_sign": "S",
+        "pvalue": "P"
+      },
+      "floor": false,
+      "expected": [
+        {
+          "id": "rs2",
+          "ea": "G",
+          "oa": "A",
+          "z": -19.027997970581055,
+          "beta": null
+        },
+        {
+          "id": "rs3",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.9599640369415283,
+          "beta": null
+        }
+      ]
+    },
+    {
+      "source": "commit-0.7.4",
+      "commit": "b133eb36039a557d1476ead50fc6147734c998de",
+      "name": "BETA-SE-filtering",
+      "text": "ID\tEA\tOA\tB\tSE\nrs1\tG\tA\t.2\t.3\nchr1_5_A_G_b38\tG\tA\t.3\t.2\nprsX\tG\tA\t-.3\t.1\nrsBad\tG\tA\tNA\t.1\n",
+      "columns": {
+        "beta": "B",
+        "se": "SE"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 0.6666666865348816,
+          "beta": 0.2
+        },
+        {
+          "id": "prsX",
+          "ea": "G",
+          "oa": "A",
+          "z": -3.0,
+          "beta": -0.3
+        }
+      ]
+    },
+    {
+      "source": "commit-0.7.4",
+      "commit": "b133eb36039a557d1476ead50fc6147734c998de",
+      "name": "OR-SE-keep-coordinate",
+      "text": "ID\tEA\tOA\tOR\tSE\nrs1\tG\tA\t2\t.3\nchr1_5_A_G_b38\tG\tA\t.5\t.2\n",
+      "columns": {
+        "odds_ratio": "OR",
+        "se": "SE"
+      },
+      "keep": true,
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 2.310490608215332,
+          "beta": 0.6931471805599453
+        },
+        {
+          "id": "chr1_5_A_G_b38",
+          "ea": "G",
+          "oa": "A",
+          "z": -3.465735912322998,
+          "beta": -0.6931471805599453
+        }
+      ]
+    },
+    {
+      "source": "commit-0.7.4",
+      "commit": "b133eb36039a557d1476ead50fc6147734c998de",
+      "name": "CSV-decimal-comma-and-quoted-header",
+      "text": "ID,EA,OA,\"B,effect\",SE\nrs1,G,A,\"0,3\",.2\nrs2,G,A,\"-0,4\",.3\n",
+      "separator": "comma",
+      "columns": {
+        "beta": "B,effect",
+        "se": "SE"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.5,
+          "beta": 0.3
+        },
+        {
+          "id": "rs2",
+          "ea": "G",
+          "oa": "A",
+          "z": -1.3333333730697632,
+          "beta": -0.4
+        }
+      ]
+    },
+    {
+      "source": "commit-0.7.4",
+      "commit": "b133eb36039a557d1476ead50fc6147734c998de",
+      "name": "whitespace",
+      "text": "ID EA OA Z\nrs1 g a 1.00000007\nrs2 a g -1.00000007\n",
+      "separator": "whitespace",
+      "columns": {
+        "zscore": "Z"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.0000001192092896,
+          "beta": null
+        },
+        {
+          "id": "rs2",
+          "ea": "A",
+          "oa": "G",
+          "z": -1.0000001192092896,
+          "beta": null
+        }
+      ]
+    },
+    {
+      "source": "tag-0.8.1",
+      "commit": "964f1fdb5bf9585585690e85bb0eca7b67663ddb",
+      "name": "Z-priority-and-OR-override",
+      "text": "ID\tEA\tOA\tZ\tB\tP\tSE\tOR\nrs1\tg\ta\t1.234567891\t99\t.2\t.7\t2\nrs2\tA\tG\t-2.34567891\t99\t.4\t.7\t.5\n",
+      "columns": {
+        "zscore": "Z",
+        "beta": "B",
+        "pvalue": "P",
+        "se": "SE",
+        "odds_ratio": "OR"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.2345678806304932,
+          "beta": 0.6931471805599453
+        },
+        {
+          "id": "rs2",
+          "ea": "A",
+          "oa": "G",
+          "z": -2.3456788063049316,
+          "beta": -0.6931471805599453
+        }
+      ]
+    },
+    {
+      "source": "tag-0.8.1",
+      "commit": "964f1fdb5bf9585585690e85bb0eca7b67663ddb",
+      "name": "P-priority-over-SE",
+      "text": "ID\tEA\tOA\tB\tP\tSE\nrs1\tG\tA\t.3\t.05\t1e-3\nrs2\tG\tA\t-.2\t.00000003\t1e-3\n",
+      "columns": {
+        "beta": "B",
+        "pvalue": "P",
+        "se": "SE"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.9599640369415283,
+          "beta": 0.3
+        },
+        {
+          "id": "rs2",
+          "ea": "G",
+          "oa": "A",
+          "z": -5.541436672210693,
+          "beta": -0.2
+        }
+      ]
+    },
+    {
+      "source": "tag-0.8.1",
+      "commit": "964f1fdb5bf9585585690e85bb0eca7b67663ddb",
+      "name": "P-sign-and-zero-default",
+      "text": "ID\tEA\tOA\tS\tP\nrs1\tG\tA\t+\t0\nrs2\tG\tA\t-\t1e-80\nrs3\tG\tA\t+\t.05\n",
+      "columns": {
+        "beta_sign": "S",
+        "pvalue": "P"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 19.027997970581055,
+          "beta": null
+        },
+        {
+          "id": "rs2",
+          "ea": "G",
+          "oa": "A",
+          "z": -19.027997970581055,
+          "beta": null
+        },
+        {
+          "id": "rs3",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.9599640369415283,
+          "beta": null
+        }
+      ]
+    },
+    {
+      "source": "tag-0.8.1",
+      "commit": "964f1fdb5bf9585585690e85bb0eca7b67663ddb",
+      "name": "P-sign-zero-discard",
+      "text": "ID\tEA\tOA\tS\tP\nrs1\tG\tA\t+\t0\nrs2\tG\tA\t-\t1e-80\nrs3\tG\tA\t+\t.05\n",
+      "columns": {
+        "beta_sign": "S",
+        "pvalue": "P"
+      },
+      "floor": false,
+      "expected": [
+        {
+          "id": "rs2",
+          "ea": "G",
+          "oa": "A",
+          "z": -19.027997970581055,
+          "beta": null
+        },
+        {
+          "id": "rs3",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.9599640369415283,
+          "beta": null
+        }
+      ]
+    },
+    {
+      "source": "tag-0.8.1",
+      "commit": "964f1fdb5bf9585585690e85bb0eca7b67663ddb",
+      "name": "BETA-SE-filtering",
+      "text": "ID\tEA\tOA\tB\tSE\nrs1\tG\tA\t.2\t.3\nchr1_5_A_G_b38\tG\tA\t.3\t.2\nprsX\tG\tA\t-.3\t.1\nrsBad\tG\tA\tNA\t.1\n",
+      "columns": {
+        "beta": "B",
+        "se": "SE"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 0.6666666865348816,
+          "beta": 0.2
+        },
+        {
+          "id": "prsX",
+          "ea": "G",
+          "oa": "A",
+          "z": -3.0,
+          "beta": -0.3
+        }
+      ]
+    },
+    {
+      "source": "tag-0.8.1",
+      "commit": "964f1fdb5bf9585585690e85bb0eca7b67663ddb",
+      "name": "OR-SE-keep-coordinate",
+      "text": "ID\tEA\tOA\tOR\tSE\nrs1\tG\tA\t2\t.3\nchr1_5_A_G_b38\tG\tA\t.5\t.2\n",
+      "columns": {
+        "odds_ratio": "OR",
+        "se": "SE"
+      },
+      "keep": true,
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 2.310490608215332,
+          "beta": 0.6931471805599453
+        },
+        {
+          "id": "chr1_5_A_G_b38",
+          "ea": "G",
+          "oa": "A",
+          "z": -3.465735912322998,
+          "beta": -0.6931471805599453
+        }
+      ]
+    },
+    {
+      "source": "tag-0.8.1",
+      "commit": "964f1fdb5bf9585585690e85bb0eca7b67663ddb",
+      "name": "CSV-decimal-comma-and-quoted-header",
+      "text": "ID,EA,OA,\"B,effect\",SE\nrs1,G,A,\"0,3\",.2\nrs2,G,A,\"-0,4\",.3\n",
+      "separator": "comma",
+      "columns": {
+        "beta": "B,effect",
+        "se": "SE"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.5,
+          "beta": 0.3
+        },
+        {
+          "id": "rs2",
+          "ea": "G",
+          "oa": "A",
+          "z": -1.3333333730697632,
+          "beta": -0.4
+        }
+      ]
+    },
+    {
+      "source": "tag-0.8.1",
+      "commit": "964f1fdb5bf9585585690e85bb0eca7b67663ddb",
+      "name": "whitespace",
+      "text": "ID EA OA Z\nrs1 g a 1.00000007\nrs2 a g -1.00000007\n",
+      "separator": "whitespace",
+      "columns": {
+        "zscore": "Z"
+      },
+      "expected": [
+        {
+          "id": "rs1",
+          "ea": "G",
+          "oa": "A",
+          "z": 1.0000001192092896,
+          "beta": null
+        },
+        {
+          "id": "rs2",
+          "ea": "A",
+          "oa": "G",
+          "z": -1.0000001192092896,
+          "beta": null
+        }
+      ]
+    }
+  ]
+}

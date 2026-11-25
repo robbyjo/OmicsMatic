@@ -34,6 +34,9 @@ The source-built [GEMMA workflows](docs/literature/GEMMA_WORKFLOWS.md) add Java
 kinship and original univariate association fitting, with explicit sample/QC
 contracts, separate private runtime setup and portable result verification.
 
-The source also includes [native MetaXcan association arithmetic](docs/literature/METAXCAN_ARITHMETIC.md), with original-source numerical controls. Runnable MetaXcan workflow integration remains in development.
+The source includes [native MetaXcan summary workflows](docs/literature/METAXCAN_WORKFLOWS.md)
+from PredictDB, GWAS and covariance inputs, with complete captured-result
+recomputation, plus the [association arithmetic API](docs/literature/METAXCAN_ARITHMETIC.md).
+Individual-level integration and the complete paper-role audit remain in development.
 
 [GNU General Public License, version 3 or later](LICENSE).
