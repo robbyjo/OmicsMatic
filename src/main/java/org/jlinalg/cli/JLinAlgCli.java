@@ -130,6 +130,8 @@ public final class JLinAlgCli {
                 return MonocleToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("nfcore-tools"))
                 return NfcoreToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("crossmap-tools"))
+                return CrossmapToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("cytometry-tools"))
                 return CytometryGateCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             ProjectConfiguration.Resolved config = ProjectConfiguration.resolve(arguments,
@@ -599,6 +601,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar monocle-tools --help
               java -jar omicsmatic-<version>.jar cytometry-tools --help
               java -jar omicsmatic-<version>.jar nfcore-tools --help
+              java -jar omicsmatic-<version>.jar crossmap-tools --help
               java -jar omicsmatic-<version>.jar bigwig-tools --help
               java -jar omicsmatic-<version>.jar stringtie-tools --help
               java -jar omicsmatic-<version>.jar fastp-tools --help

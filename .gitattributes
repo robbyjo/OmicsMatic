@@ -837,3 +837,16 @@ docs/literature/prsice-catalog-checkpoint/** text eol=lf
 
 # Preserve the byte-exact packaged ChIP-seq checkpoint on every platform.
 docs/literature/nfcore-chipseq-command-checkpoint/** -text whitespace=cr-at-eol
+
+# CrossMap source, setup and captured-contract files retain exact bytes.
+src/main/resources/org/jlinalg/cli/crossmap-setup/** -text whitespace=cr-at-eol
+src/main/java/org/jlinalg/cli/Crossmap*.java -text whitespace=cr-at-eol
+src/test/java/org/jlinalg/cli/CrossmapWorkflowTest.java -text whitespace=cr-at-eol
+
+# CrossMap checkpoint readers preserve published source and evidence bytes.
+README.md -text whitespace=cr-at-eol
+src/main/java/org/jlinalg/cli/JLinAlgCli.java -text whitespace=cr-at-eol
+docs/literature/CROSSMAP_WORKFLOWS.md -text whitespace=cr-at-eol
+docs/literature/crossmap-*/** -text whitespace=cr-at-eol
+tools/literature/crossmap_*.py -text whitespace=cr-at-eol
+tools/literature/verify_crossmap_workflows.py -text whitespace=cr-at-eol

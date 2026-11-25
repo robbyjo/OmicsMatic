@@ -25403,9 +25403,9 @@
     "name": "CrossMap",
     "pattern": "(?<![A-Za-z0-9_])CrossMap(?:\\.py)?(?![A-Za-z0-9_])",
     "role": "Genome-assembly coordinate conversion with format-specific interval, alignment and variant handling",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "Independent CrossMap execution/input/output validation is required; a related Java interval mapper is not full CrossMap parity.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/CrossmapToolsCli.java",
+    "coverage_note": "Original CrossMap 0.5.2/0.6.3 BED, VCF and BigWig coordinate conversion through crossmap-tools, with a separate pinned private Linux CPython3.12.3 runtime. Original sources perform mapping, allele handling and signal merging; Java captures complete inputs and source outcomes, checks every record witness, independently regenerates the target FASTA index/checks mapped REF bases, and reads every raw BigWig interval. Exact-producer saved verification works on Windows and Linux. This is one scoped upstream family; the related native basic chain mapper receives no additional credit. No BAM/GFF/MAF support, unreported author edition/format/flags, author Python3.7 environment, phasing, imputation, downstream QC/statistical workflow or complete paper reproduction is claimed. P003: BigWig hg19-to-hg38, version0.5.2. P072: GWAS harmonization to hg19, edition/format unreported and Python3.7 reported. P108: typed genotypes to GRCh38, version0.6.3, format unreported; availability of VCF conversion does not establish author VCF use. P242: DHS intervals hg38-to-hg19 with a UCSC chain; subsequent GenomicRanges SNP overlap is separate. The UCSC directory link is a chain-data source, not evidence of UCSC liftOver execution.",
     "paper_count": 4,
     "papers": [
       "P003",
@@ -25413,10 +25413,253 @@
       "P108",
       "P242"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Independent CrossMap execution/input/output validation is required; a related Java interval mapper is not full CrossMap parity.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/CrossmapToolsCli.java",
+    "implementation_scope": "Original CrossMap 0.5.2/0.6.3 BED, VCF and BigWig coordinate conversion through crossmap-tools, with a separate pinned private Linux CPython3.12.3 runtime. Original sources perform mapping, allele handling and signal merging; Java captures complete inputs and source outcomes, checks every record witness, independently regenerates the target FASTA index/checks mapped REF bases, and reads every raw BigWig interval. Exact-producer saved verification works on Windows and Linux. This is one scoped upstream family; the related native basic chain mapper receives no additional credit. No BAM/GFF/MAF support, unreported author edition/format/flags, author Python3.7 environment, phasing, imputation, downstream QC/statistical workflow or complete paper reproduction is claimed. P003: BigWig hg19-to-hg38, version0.5.2. P072: GWAS harmonization to hg19, edition/format unreported and Python3.7 reported. P108: typed genotypes to GRCh38, version0.6.3, format unreported; availability of VCF conversion does not establish author VCF use. P242: DHS intervals hg38-to-hg19 with a UCSC chain; subsequent GenomicRanges SNP overlap is separate. The UCSC directory link is a chain-data source, not evidence of UCSC liftOver execution.",
+    "validation_note": "26 admitted captures verified on Windows/Linux; 17 intentional conversion refusals; 26 Java tests per platform. Eight human-chain cases agree with independent native HTSJDK coordinates for five full-block queries each. No original study was reexecuted.",
+    "current_documentation": "docs/literature/CROSSMAP_WORKFLOWS.md",
+    "current_qualification": "../crossmap-workflow-checkpoint/STATUS.json",
+    "upstream_runtime_adapter_required": true,
+    "native_component_available": true,
+    "native_component_family_credit": 0,
+    "native_component_source": "src/main/java/org/jlinalg/genetics/ChainLiftover.java",
+    "public_CLI_available": true,
+    "global_CLI_dispatch_available": true,
+    "source_build_required": true,
+    "released_binary_contains_workflow": false,
+    "whole_tool_qualified": false,
+    "whole_paper_reproduced": false,
+    "whole_goal_complete": false,
+    "new_native_family_credit": 0,
+    "new_upstream_family_credit": 1,
+    "source_roles_reviewed": 4,
+    "new_source_reviews": 3,
+    "refined_existing_reviews": 1,
+    "source_role_coverage": "crossmap-source-role-coverage.json",
+    "paper_role_qualification": {
+      "P003": {
+        "paper_id": "P003",
+        "doi": "10.1038/s41586-025-09890-3",
+        "pmcid": "PMC12804090",
+        "role_kind": "BigWig chromatin-track coordinate conversion",
+        "use_summary": "Convert epigenomic BigWig track coordinates from hg19 to hg38 before chromatin-state annotation.",
+        "reported_edition": "0.5.2",
+        "reported_format": "bigwig",
+        "source_build": "hg19",
+        "target_build": "hg38",
+        "reported_python": null,
+        "primary_anchors": [
+          {
+            "paper_id": "P003",
+            "doi": "10.1038/s41586-025-09890-3",
+            "pmcid": "PMC12804090",
+            "xml_sha256": "ba8bdba91bac062550a30b47fa2f0dba8a5caef915fedf15ee341d4c5bda6370",
+            "paragraph_index": 92,
+            "section": "Methods / Consensus chromatin-state annotations for H1 and HFFc6 cells",
+            "paragraph_sha256": "fa971d5d57ad75384faf9b1402e333da5738156930202e650b8a6fbe845e59b1"
+          }
+        ],
+        "raw_source_fields": {
+          "tool_id": "crossmap",
+          "tool": "CrossMap",
+          "analysis_role": "Genome-assembly coordinate conversion with format-specific interval, alignment and variant handling",
+          "matched_text": "CrossMap",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "evidence_section": "Methods / Consensus chromatin-state annotations for H1 and HFFc6 cells",
+          "evidence_paragraph_index": 92,
+          "evidence_paragraph_sha256": "fa971d5d57ad75384faf9b1402e333da5738156930202e650b8a6fbe845e59b1",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12804090/ (section: Methods / Consensus chromatin-state annotations for H1 and HFFc6 cells)",
+          "version_reported_near_name": "0.5.2"
+        },
+        "separate_methods": [
+          "ChromHMM chromatin-state analysis and track selection"
+        ],
+        "reported_settings": {
+          "chain_source": null,
+          "exact_chain_identity": null,
+          "complete_author_flags": null
+        },
+        "remaining_scope": "Exact original source edition is available, but author flags and study inputs were not reexecuted. Downstream QC, statistical analysis and complete paper reproduction remain separate.",
+        "author_unreported_edition_inferred": false,
+        "original_paper_analysis_reexecuted": false,
+        "whole_paper_reproduced": false,
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "reported_version": "0.5.2",
+        "historical_analysis_status": "Original selected source workflows qualified; full author commands/data and paper analyses were not rerun.",
+        "paper_edition_qualified": false
+      },
+      "P072": {
+        "paper_id": "P072",
+        "doi": "10.1038/s41588-023-01584-8",
+        "pmcid": "PMC10786718",
+        "role_kind": "GWAS assembly harmonization",
+        "use_summary": "Harmonize GWAS datasets to hg19 before ancestry meta-analysis.",
+        "reported_edition": null,
+        "reported_format": null,
+        "source_build": null,
+        "target_build": "hg19",
+        "reported_python": "3.7",
+        "primary_anchors": [
+          {
+            "paper_id": "P072",
+            "doi": "10.1038/s41588-023-01584-8",
+            "pmcid": "PMC10786718",
+            "xml_sha256": "0f0a5a3bcb3a832a58367b749f5899e7dccab771e3a51cb2ead7cf8170e2e138",
+            "paragraph_index": 19,
+            "section": "Methods / MAMA",
+            "paragraph_sha256": "a590d720cde03863b10ad038e14d7436793dd577b421dbcd06ce5a82feebaa54"
+          }
+        ],
+        "raw_source_fields": {
+          "tool_id": "crossmap",
+          "tool": "CrossMap",
+          "analysis_role": "Genome-assembly coordinate conversion with format-specific interval, alignment and variant handling",
+          "matched_text": "CrossMap",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "evidence_section": "Methods / MAMA",
+          "evidence_paragraph_index": 19,
+          "evidence_paragraph_sha256": "a590d720cde03863b10ad038e14d7436793dd577b421dbcd06ce5a82feebaa54",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10786718/ (section: Methods / MAMA)",
+          "version_reported_near_name": null
+        },
+        "separate_methods": [
+          "GWAS QC, MR-MEGA meta-analysis and genomic-inflation assessment"
+        ],
+        "reported_settings": {
+          "chain_source": null,
+          "exact_chain_identity": null,
+          "complete_author_flags": null
+        },
+        "remaining_scope": "Author CrossMap edition and exact flags remain unreported. Python3.7 reported by this paper is not reproduced. Downstream QC, statistical analysis and complete paper reproduction remain separate.",
+        "author_unreported_edition_inferred": false,
+        "original_paper_analysis_reexecuted": false,
+        "whole_paper_reproduced": false,
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "reported_version": "unreported",
+        "historical_analysis_status": "Original selected source workflows qualified; full author commands/data and paper analyses were not rerun.",
+        "paper_edition_qualified": false
+      },
+      "P108": {
+        "paper_id": "P108",
+        "doi": "10.1038/s41588-023-01560-2",
+        "pmcid": "PMC10703692",
+        "role_kind": "Typed-genotype coordinate conversion",
+        "use_summary": "Convert typed genotype coordinates to GRCh38 before filtering and imputation preparation.",
+        "reported_edition": "0.6.3",
+        "reported_format": null,
+        "source_build": null,
+        "target_build": "GRCh38",
+        "reported_python": null,
+        "primary_anchors": [
+          {
+            "paper_id": "P108",
+            "doi": "10.1038/s41588-023-01560-2",
+            "pmcid": "PMC10703692",
+            "xml_sha256": "2b6379547edec29576319cbf8354701af40c7480514415c36d8657075449c182",
+            "paragraph_index": 49,
+            "section": "Methods / Adult brain reference panel processing and model training",
+            "paragraph_sha256": "f50abab636c794efe478d438f7eccd808f519a3abf68a646bb6b151064315a77"
+          }
+        ],
+        "raw_source_fields": {
+          "tool_id": "crossmap",
+          "tool": "CrossMap",
+          "analysis_role": "Genome-assembly coordinate conversion with format-specific interval, alignment and variant handling",
+          "matched_text": "CrossMap",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "evidence_section": "Methods / Adult brain reference panel processing and model training",
+          "evidence_paragraph_index": 49,
+          "evidence_paragraph_sha256": "f50abab636c794efe478d438f7eccd808f519a3abf68a646bb6b151064315a77",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703692/ (section: Methods / Adult brain reference panel processing and model training)",
+          "version_reported_near_name": "0.6.3"
+        },
+        "separate_methods": [
+          "REF==ALT filtering, PLINK QC and TOPMed imputation preparation"
+        ],
+        "reported_settings": {
+          "chain_source": null,
+          "exact_chain_identity": null,
+          "complete_author_flags": null
+        },
+        "remaining_scope": "Exact original source edition is available, but author flags and study inputs were not reexecuted. File format is unreported; the available VCF adapter does not establish author VCF use. Downstream QC, statistical analysis and complete paper reproduction remain separate.",
+        "author_unreported_edition_inferred": false,
+        "original_paper_analysis_reexecuted": false,
+        "whole_paper_reproduced": false,
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "reported_version": "0.6.3",
+        "historical_analysis_status": "Original selected source workflows qualified; full author commands/data and paper analyses were not rerun.",
+        "paper_edition_qualified": false
+      },
+      "P242": {
+        "paper_id": "P242",
+        "doi": "10.1016/j.ajhg.2025.07.004",
+        "pmcid": "PMC12461027",
+        "role_kind": "DHS-interval coordinate conversion",
+        "use_summary": "Convert DHS intervals from hg38 to hg19 using a UCSC chain before SNP-to-interval matching.",
+        "reported_edition": null,
+        "reported_format": "intervals",
+        "source_build": "hg38",
+        "target_build": "hg19",
+        "reported_python": null,
+        "primary_anchors": [
+          {
+            "paper_id": "P242",
+            "doi": "10.1016/j.ajhg.2025.07.004",
+            "pmcid": "PMC12461027",
+            "xml_sha256": "35ab6372dcbd6d8b49da5fd2ad4cf3a9d81dcc12d4d86f2dee7fcda17bfa519a",
+            "paragraph_index": 23,
+            "section": "Material and methods / Generating masks from external data sources / Masks using DNase I-hypersensitive sites",
+            "paragraph_sha256": "18b02a54015c6d108ffb8685aaba4c9a636d31345a7894625c9df95cc7eb2441"
+          },
+          {
+            "paper_id": "P242",
+            "doi": "10.1016/j.ajhg.2025.07.004",
+            "pmcid": "PMC12461027",
+            "xml_sha256": "35ab6372dcbd6d8b49da5fd2ad4cf3a9d81dcc12d4d86f2dee7fcda17bfa519a",
+            "paragraph_index": 30,
+            "section": "Material and methods / Software tools and data sources",
+            "paragraph_sha256": "b42894e05664fc835a6584e0b8927006552bc24e1fe190b8269ef1b3a214c70a"
+          }
+        ],
+        "raw_source_fields": {
+          "tool_id": "crossmap",
+          "tool": "CrossMap",
+          "analysis_role": "Genome-assembly coordinate conversion with format-specific interval, alignment and variant handling",
+          "matched_text": "CrossMap",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "evidence_section": "Material and methods / Software tools and data sources",
+          "evidence_paragraph_index": 30,
+          "evidence_paragraph_sha256": "b42894e05664fc835a6584e0b8927006552bc24e1fe190b8269ef1b3a214c70a",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12461027/ (section: Material and methods / Software tools and data sources)",
+          "version_reported_near_name": null
+        },
+        "separate_methods": [
+          "GenomicRanges SNP overlap and DHS mask construction"
+        ],
+        "reported_settings": {
+          "chain_source": "UCSC hg38 liftOver directory",
+          "exact_chain_identity": null,
+          "complete_author_flags": null
+        },
+        "remaining_scope": "Author CrossMap edition and exact flags remain unreported. Downstream QC, statistical analysis and complete paper reproduction remain separate.",
+        "author_unreported_edition_inferred": false,
+        "original_paper_analysis_reexecuted": false,
+        "whole_paper_reproduced": false,
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "reported_version": "unreported",
+        "historical_analysis_status": "Original selected source workflows qualified; full author commands/data and paper analyses were not rerun.",
+        "paper_edition_qualified": false
+      }
+    },
+    "current_paper_role_limits": "P003: BigWig hg19-to-hg38, version0.5.2. P072: GWAS harmonization to hg19, edition/format unreported and Python3.7 reported. P108: typed genotypes to GRCh38, version0.6.3, format unreported; availability of VCF conversion does not establish author VCF use. P242: DHS intervals hg38-to-hg19 with a UCSC chain; subsequent GenomicRanges SNP overlap is separate. The UCSC directory link is a chain-data source, not evidence of UCSC liftOver execution."
   },
   {
     "id": "wasp",

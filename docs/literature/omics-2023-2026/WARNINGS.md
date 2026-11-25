@@ -1,3 +1,19 @@
+# Current CrossMap catalog checkpoint
+
+250 papers, 446 labels, 485 provider definitions and 2,724 observations; 1,772 reviewed/952 pending uses. 162 scoped families (30 native + 132 upstream), 165 including three existing adapters; 253 missing and 16 method-overlap. This admission adds one CrossMap upstream family and three reviews, refining the existing P242 review without duplicate credit. The full implementation goal remains unfinished.
+
+Original CrossMap 0.5.2/0.6.3 BED, VCF and BigWig coordinate conversion through crossmap-tools, with a separate pinned private Linux CPython3.12.3 runtime. Original sources perform mapping, allele handling and signal merging; Java captures complete inputs and source outcomes, checks every record witness, independently regenerates the target FASTA index/checks mapped REF bases, and reads every raw BigWig interval. Exact-producer saved verification works on Windows and Linux. This is one scoped upstream family; the related native basic chain mapper receives no additional credit. No BAM/GFF/MAF support, unreported author edition/format/flags, author Python3.7 environment, phasing, imputation, downstream QC/statistical workflow or complete paper reproduction is claimed.
+
+P003: BigWig hg19-to-hg38, version0.5.2. P072: GWAS harmonization to hg19, edition/format unreported and Python3.7 reported. P108: typed genotypes to GRCh38, version0.6.3, format unreported; availability of VCF conversion does not establish author VCF use. P242: DHS intervals hg38-to-hg19 with a UCSC chain; subsequent GenomicRanges SNP overlap is separate. The UCSC directory link is a chain-data source, not evidence of UCSC liftOver execution.
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED when the exact permitted platform, interpreter, runtime, Linux helper or named capability is unavailable. Download/private installation is allowed where the environment permits; otherwise retain the skip and supply the named exact prerequisite. FAIL2: NO COMPLETE RESULT for changed/invalid input/runtime, process/capacity, source output or finalization failure. Read WARNINGS.md, FAILURE.json/BRIDGE-FAILURE.json, source stderr and the complete OUTPUT-LEDGER.jsonl. Preserve originals and failed/partial results; correct the cause and use NEW paths. Original indel, BED20, reverse BED12, signal-discard/summation and empty-track limitations remain visible. Keep the exact producer JAR and private runtime/evidence; never refresh historical seals. Released0.4.1 assets predate this source-built command. Cell Ranger remains excluded. The unfinished literature reports remain withheld from Pages.
+
+See [workflow and source-role guide](../CROSSMAP_WORKFLOWS.md).
+
+---
+
+Earlier checkpoint text is historical.
+
 # Current PRSice catalog checkpoint
 
 250 papers, 446 labels, 485 provider definitions and 2,724 observations; 1,769 reviewed/955 pending uses. 161 scoped families (30 native + 131 upstream), 164 including three existing adapters; 254 missing and 16 method-overlap. This admission adds one PRSice upstream family and four reviews, refining the existing P150 review without duplicate credit. Historical editions and exact paper analyses remain unqualified; the full goal is unfinished.

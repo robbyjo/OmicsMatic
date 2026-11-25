@@ -29,5 +29,6 @@ The executable is `build/cli/omicsmatic-0.4.1.jar`.
 See [runtime setup](docs/runtime-requirements.md).
 The current source build provides the exact-edition
 [nf-core ChIP-seq commands](docs/literature/NFCORE_CHIPSEQ_COMMANDS.md).
+It also provides original-edition [CrossMap BED, VCF and BigWig conversion](docs/literature/CROSSMAP_WORKFLOWS.md), with separate runtime setup and portable result verification.
 
 [GNU General Public License, version 3 or later](LICENSE).
