@@ -1,5 +1,11 @@
 # Original ChIP-seq 2.0.0 workflow adapter
 
+The current OmicsMatic source build exposes this adapter as
+`java -jar "$OMICS_JAR" nfcore-tools CHIPSEQ-2.0.0 ...`. See the
+[packaged command guide](NFCORE_CHIPSEQ_COMMANDS.md). The standalone artifacts
+and counts below retain the earlier development checkpoint. Its saved hashes
+and producers have not been refreshed.
+
 This development adapter executes all selected branches of the locked original nf-core/chipseq **2.0.0** source, using explicitly selected Nextflow **22.10.6**, the admitted private Apptainer **1.5.5-1** runtime and all **33 source-declared images**. Four required component checks cover the complete inputs/BAMs/FRiP, peaks/annotations, duplication/library complexity and original saved DESeq2 QC. The declared source profile passed a complete 215-task cold run and both final compiler builds' real resumes, each with 213 cached and two completed tasks. Require the frozen checkpoint's final validation status and successful result verification. The released executable and catalog are unchanged. The broader nf-core family and the 250-paper implementation goal remain open.
 
 **Warnings and required actions must be read before using outputs.**
@@ -14,7 +20,10 @@ This development adapter executes all selected branches of the locked original n
 
 Execution needs x86_64 Linux Java 17 or later, including Linux Java inside WSL. Complete saved results are intended to support verification on Windows and Linux without rerunning science or installing scientific runtimes. Software controls do not certify biological accuracy, independently reimplement every upstream model, reproduce a paper or establish unreported author settings. Cell Ranger remains excluded.
 
-The executable takes its options directly, without a central `omicsmatic` route. Build the development artifact from the repository root on the configured Windows development environment:
+The historical standalone executable takes its options directly. The current
+source build accepts the same options after `nfcore-tools CHIPSEQ-2.0.0`.
+To inspect or rebuild the historical development artifact on its configured
+Windows development environment:
 
 ```powershell
 python tools/literature/verify_nfcore_chipseq200_checkpoint.py

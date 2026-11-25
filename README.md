@@ -27,5 +27,7 @@ Read the [release scope](docs/release-0.4.1.md) and
 Build from source with `./gradlew check executableJar` (`gradlew.bat` on Windows).
 The executable is `build/cli/omicsmatic-0.4.1.jar`.
 See [runtime setup](docs/runtime-requirements.md).
+The current source build provides the exact-edition
+[nf-core ChIP-seq commands](docs/literature/NFCORE_CHIPSEQ_COMMANDS.md).
 
 [GNU General Public License, version 3 or later](LICENSE).

@@ -1,10 +1,21 @@
 # Original ChIP-seq 1.2.1 workflow adapter
 
-This development executable runs the locked original nf-core/chipseq **1.2.1** workflow, captures its complete publication tree and requires five source-specific output audits. It uses exact Nextflow **21.04.1**, the admitted private Apptainer **1.5.5-1** runtime and the original pinned image. The released OmicsMatic executable is unchanged. The catalog remains at **99 new scoped integrations**; the broader nf-core family entry and the 250-paper implementation goal remain open.
+The current OmicsMatic source build exposes this adapter as
+`java -jar "$OMICS_JAR" nfcore-tools CHIPSEQ-1.2.1 ...`. See the
+[packaged command guide](NFCORE_CHIPSEQ_COMMANDS.md). The standalone artifact
+and validation counts below preserve the earlier development checkpoint;
+they do not describe the current cumulative catalog count. Its saved hashes
+and producer have not been refreshed.
+
+This development executable runs the locked original nf-core/chipseq **1.2.1** workflow, captures its complete publication tree and requires five source-specific output audits. It uses exact Nextflow **21.04.1**, the admitted private Apptainer **1.5.5-1** runtime and the original pinned image. The released OmicsMatic executable is unchanged. At this historical checkpoint, the catalog contained **99 new scoped integrations**; the broader nf-core family entry and the 250-paper implementation goal remain open.
 
 **Read failures before using results.** Exit **3 / SKIP3** means the affected analysis was skipped because its exact prerequisite or requested capability is missing, forbidden or unsupported. Install/download the exact prerequisites separately only where permitted, or provide an admitted local runtime. Exit **2 / FAIL2** means no adapter result is admitted: inspect the named stage's `process.stderr`, `process.stdout`, `process.json`, `FAILURE.json` and `WARNINGS.md`. Preserve the failure and original data. Correct the cause and use new preparation/run paths for changed inputs, settings or capacities. Require a completed result and successful `--verify` before downstream use.
 
-The executable takes its options directly; it has no central `omicsmatic` command route yet. Execution requires Linux x86_64 and Java 17 or later, including Linux Java inside WSL on Windows. Complete saved results can be verified on Windows and Linux without installing a scientific runtime.
+The historical standalone executable takes its options directly. The current
+source build accepts the same options after `nfcore-tools CHIPSEQ-1.2.1`.
+Execution requires Linux x86_64 and Java 17 or later, including Linux Java inside
+WSL on Windows. Complete saved results can be verified on Windows and Linux
+without installing a scientific runtime.
 
 Verify the repository checkpoint and view help from the repository root:
 

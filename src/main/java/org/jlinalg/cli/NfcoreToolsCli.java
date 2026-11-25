@@ -15,6 +15,10 @@ public final class NfcoreToolsCli {
         if (args.length == 0 || args.length == 1 && args[0].equals("--help")) {
             output.writeBytes(("nfcore-tools ATACSEQ-1.2.1 --help\n"
                 +"  Exact original ATAC source workflow, explicit local references and selected output contracts.\n"
+                +"nfcore-tools CHIPSEQ-1.2.1 --help\n"
+                +"  Exact original ChIP-seq1.2.1 workflow and five selected source-output checks.\n"
+                +"nfcore-tools CHIPSEQ-2.0.0 --help\n"
+                +"  Exact original ChIP-seq2.0.0 workflow and four selected source-output checks.\n"
                 +"nfcore-tools ATACSEQ-AUDIT-1.2.1 --help\n"
                 +"  Portable source-output component check; no workflow/biological admission.\n"
                 +"nfcore-tools ENGINE --help\n"
@@ -28,6 +32,8 @@ public final class NfcoreToolsCli {
         String[] tail = Arrays.copyOfRange(args, 1, args.length);
         return switch (args[0]) {
             case "ATACSEQ-1.2.1" -> NfcoreAtacseq121Cli.run(tail, output, error);
+            case "CHIPSEQ-1.2.1" -> NfcoreChipseqToolsCli.run(tail, output, error);
+            case "CHIPSEQ-2.0.0" -> NfcoreChipseq200ToolsCli.run(tail, output, error);
             case "ATACSEQ-AUDIT-1.2.1" -> NfcoreAtacseq121AuditCli.run(tail, output, error);
             case "ENGINE" -> NfcoreEngineToolsCli.run(tail, output, error);
             case "CAPTURED" -> NfcoreCapturedToolsCli.run(tail, output, error);
