@@ -134,6 +134,8 @@ public final class JLinAlgCli {
                 return GemmaToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("metaxcan-tools"))
                 return MetaxcanToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("iq-tools"))
+                return IqToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("crossmap-tools"))
                 return CrossmapToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("cytometry-tools"))
@@ -607,6 +609,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar nfcore-tools --help
               java -jar omicsmatic-<version>.jar gemma-tools --help
               java -jar omicsmatic-<version>.jar metaxcan-tools --help
+              java -jar omicsmatic-<version>.jar iq-tools --help
               java -jar omicsmatic-<version>.jar crossmap-tools --help
               java -jar omicsmatic-<version>.jar bigwig-tools --help
               java -jar omicsmatic-<version>.jar stringtie-tools --help

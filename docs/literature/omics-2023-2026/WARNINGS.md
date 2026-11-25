@@ -1,3 +1,17 @@
+# Current iq and proteomics catalog checkpoint
+
+250 papers, 451 labels, 490 provider definitions and 2,731 observations; 1,802 reviewed/929 pending uses. 165 scoped families (32 native + 133 upstream), 168 including three existing adapters. 256 labels remain missing, 13 method-overlap and five validated aliases. This checkpoint adds one native iq family, four newly named providers, five positive observations and 16 source-role reviews. Andromeda, MaxDIA and MACS iQ View remain missing; DIA-NN/MaxQuant remain missing. No duplicate family credit.
+
+Native Java iq2.3.0 fast_MaxLFQ aggregation of complete prepared normalized-log2 ion tables; source duplicate-cell linear sums, sample-pair medians, connected-component scaling/annotations, convergence and independent residual checks, complete rows/identities and exact-producer Windows/Linux capture/replay. One scoped native family. No raw MS search, FDR filtering, normalization, imputation, streaming iq format, complete iq package or historical paper reproduction is claimed.
+
+**Warnings and required actions:** SKIP3: dependent analysis skipped when the named permitted prerequisite is unavailable; supply it or retain the skip. MaxQuant registration requires identity, CAPTCHA and licence acceptance; no licensed archive was supplied; the user requested skipping runtime analyses while keeping MaxQuant pending. Andromeda/MaxDIA are bundled components of that pending workflow, without additional family credit. DIA-NN raw-search integration remains unqualified despite private executable/library-generation pilots. MACS iQ View is a distinct pending imaging application. FAIL2: no complete result for invalid/changed data, capacity, cancellation, arithmetic, nonconvergence or finalization failures. Read capture warnings/audits and retain every attempt; correct the cause using NEW paths. Native iq requires already-normalized log2 quantities and a source-built JAR. Old releases predate it. Cell Ranger remains excluded, raw evidence/runtimes remain private, literature HTMLs remain withheld from Pages, and the full 250-paper goal stays open.
+
+See [native iq workflow guide](../IQ_MAXLFQ_WORKFLOWS.md).
+
+---
+
+Earlier checkpoint text is historical.
+
 # Current MetaXcan catalog checkpoint
 
 250 papers, 447 labels, 486 provider definitions and 2,726 observations; 1,786 reviewed/940 pending uses. 164 scoped families (31 native + 133 upstream), 167 including three existing adapters; 253 missing and13 method-overlap, with five validated alias labels excluded from extra credit. This checkpoint adds one native summary family, two aliases and two missing PredictDB training observations.

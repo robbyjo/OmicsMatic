@@ -1176,12 +1176,63 @@
         "matched_text": "DIA-NN",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.8.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "27236f8b6e4654da64472e0114a20dd45041b8a69d779cd2245bcca5e16b2ce0",
-        "use_summary": "Data-independent acquisition proteomic quantification.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823418/ (section: Methods / CCN1 co-immunoprecipitation / Proteomic data analysis)"
+        "use_summary": "Searches mouse proteomic raw data with DIA-NN1.8.1 in library-free mode and exports the protein-group matrix for downstream MetaboAnalyst comparisons.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823418/ (section: Methods / CCN1 co-immunoprecipitation / Proteomic data analysis)",
+        "implementation_scope_note": "Raw-search integration remains unqualified; the selected binary pilot and synthetic library generation do not establish complete proteomic quantification or study reproduction. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P005",
+          "doi": "10.1038/s41586-025-09887-y",
+          "pmcid": "PMC12823418",
+          "tool_id": "diann",
+          "raw_source_fields": {
+            "tool_id": "diann",
+            "tool": "DIA-NN",
+            "analysis_role": "Data-independent acquisition proteomic quantification",
+            "matched_text": "DIA-NN",
+            "extraction_score": 15,
+            "usage_context": "analysis-method-description",
+            "evidence_section": "Methods / CCN1 co-immunoprecipitation / Proteomic data analysis",
+            "evidence_paragraph_index": 73,
+            "evidence_paragraph_sha256": "27236f8b6e4654da64472e0114a20dd45041b8a69d779cd2245bcca5e16b2ce0",
+            "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823418/ (section: Methods / CCN1 co-immunoprecipitation / Proteomic data analysis)",
+            "version_reported_near_name": "1.8.1"
+          },
+          "primary_anchors": [
+            {
+              "paper_id": "P005",
+              "doi": "10.1038/s41586-025-09887-y",
+              "pmcid": "PMC12823418",
+              "xml_sha256": "e77488573a78e002932ba5dd67336204b01eed1e60235a00b4e57c442179e74e",
+              "paragraph_index": 73,
+              "section": "Methods / CCN1 co-immunoprecipitation / Proteomic data analysis",
+              "paragraph_sha256": "27236f8b6e4654da64472e0114a20dd45041b8a69d779cd2245bcca5e16b2ce0"
+            }
+          ],
+          "role_kind": "library_free_protein_group_quantification",
+          "literal_reported_version": "1.8.1",
+          "use_summary": "Searches mouse proteomic raw data with DIA-NN1.8.1 in library-free mode and exports the protein-group matrix for downstream MetaboAnalyst comparisons.",
+          "reported_settings": {
+            "database": "reviewed mouse UniProt, April2023",
+            "mode": "library-free",
+            "downstream": "MetaboAnalyst6.0 uncorrected pairwise t-tests"
+          },
+          "remaining_scope": "Raw-search integration remains unqualified; the selected binary pilot and synthetic library generation do not establish complete proteomic quantification or study reproduction.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "PILOT_ONLY_RAW_SEARCH_UNQUALIFIED",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       },
       {
         "tool_id": "edger",
@@ -4704,12 +4755,176 @@
         "matched_text": "MaxQuant",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "47bc35164f3ee2d516fa052926d07469dc1e0424633e245396502750cf30421c",
-        "use_summary": "Mass-spectrometry proteomic identification and quantification.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12851940/ (section: Methods / Proteomics analysis)"
+        "use_summary": "Uses MaxQuant2.5.1.0 and Andromeda for DDA search of rodent proteins/contaminants, then searches DIA data with the embedded MaxDIA module using DDA-derived spectral libraries.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12851940/ (section: Methods / Proteomics analysis)",
+        "implementation_scope_note": "MaxDIA and Andromeda are newly cataloged bundled components, not independent installed runtimes or additional execution credit. MaxQuant requires a licensed archive/registration; no runtime analysis was run. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P014",
+          "doi": "10.1038/s41586-025-09843-w",
+          "pmcid": "PMC12851940",
+          "tool_id": "maxquant",
+          "raw_source_fields": {
+            "tool_id": "maxquant",
+            "tool": "MaxQuant",
+            "analysis_role": "Mass-spectrometry proteomic identification and quantification",
+            "matched_text": "MaxQuant",
+            "extraction_score": 15,
+            "usage_context": "analysis-method-description",
+            "evidence_section": "Methods / Proteomics analysis",
+            "evidence_paragraph_index": 67,
+            "evidence_paragraph_sha256": "47bc35164f3ee2d516fa052926d07469dc1e0424633e245396502750cf30421c",
+            "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12851940/ (section: Methods / Proteomics analysis)",
+            "version_reported_near_name": null
+          },
+          "primary_anchors": [
+            {
+              "paper_id": "P014",
+              "doi": "10.1038/s41586-025-09843-w",
+              "pmcid": "PMC12851940",
+              "xml_sha256": "3113c865c0d28488d22c790f0a412262f0f14d1492d46e5c9a5bbf898eb64b76",
+              "paragraph_index": 67,
+              "section": "Methods / Proteomics analysis",
+              "paragraph_sha256": "47bc35164f3ee2d516fa052926d07469dc1e0424633e245396502750cf30421c"
+            }
+          ],
+          "role_kind": "Andromeda_DDA_library_and_embedded_MaxDIA",
+          "literal_reported_version": "2.5.1.0",
+          "use_summary": "Uses MaxQuant2.5.1.0 and Andromeda for DDA search of rodent proteins/contaminants, then searches DIA data with the embedded MaxDIA module using DDA-derived spectral libraries.",
+          "reported_settings": {
+            "trypsin_missed_cleavages": 2,
+            "minimum_peptide_length": 7,
+            "initial_search_ppm": 20,
+            "FDR": 0.01,
+            "modifications": "specified acetylation,oxidation,deamidation,pyroglutamate and proline hydroxylation"
+          },
+          "remaining_scope": "MaxDIA and Andromeda are newly cataloged bundled components, not independent installed runtimes or additional execution credit. MaxQuant requires a licensed archive/registration; no runtime analysis was run.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "SKIP3_USER_REQUESTED_KEEP_TOOL_PENDING",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
+      },
+      {
+        "tool_id": "andromeda",
+        "tool": "Andromeda",
+        "analysis_role": "Bundled MaxQuant spectral search engine",
+        "matched_text": "Andromeda",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "evidence_section": "Methods / Proteomics analysis",
+        "evidence_paragraph_index": 67,
+        "evidence_paragraph_sha256": "47bc35164f3ee2d516fa052926d07469dc1e0424633e245396502750cf30421c",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12851940/ (section: Methods / Proteomics analysis)",
+        "version_reported_near_name": null,
+        "discovery": "full250-manual-source-role-completeness-review",
+        "use_summary": "Uses the Andromeda engine bundled with the reported MaxQuant2.5.1.0 workflow for rodent-protein DDA spectral search.",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "implementation_scope_note": "The Andromeda edition is unreported. The parent MaxQuant version is not an engine version. A licensed parent runtime and complete search inputs are required; no extra family credit. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "evidence_selection": "individually-reviewed-source-role",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P014",
+          "doi": "10.1038/s41586-025-09843-w",
+          "pmcid": "PMC12851940",
+          "tool_id": "andromeda",
+          "raw_source_fields": null,
+          "primary_anchors": [
+            {
+              "paper_id": "P014",
+              "doi": "10.1038/s41586-025-09843-w",
+              "pmcid": "PMC12851940",
+              "xml_sha256": "3113c865c0d28488d22c790f0a412262f0f14d1492d46e5c9a5bbf898eb64b76",
+              "paragraph_index": 67,
+              "section": "Methods / Proteomics analysis",
+              "paragraph_sha256": "47bc35164f3ee2d516fa052926d07469dc1e0424633e245396502750cf30421c"
+            }
+          ],
+          "role_kind": "bundled_MaxQuant_search_engine",
+          "literal_reported_version": null,
+          "use_summary": "Uses the Andromeda engine bundled with the reported MaxQuant2.5.1.0 workflow for rodent-protein DDA spectral search.",
+          "reported_settings": {
+            "parent_software": "MaxQuant",
+            "parent_version_literal": "2.5.1.0"
+          },
+          "remaining_scope": "The Andromeda edition is unreported. The parent MaxQuant version is not an engine version. A licensed parent runtime and complete search inputs are required; no extra family credit.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "SKIP3_DEPENDENT_PARENT_MAXQUANT_SKIPPED",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
+      },
+      {
+        "tool_id": "maxdia",
+        "tool": "MaxDIA",
+        "analysis_role": "Embedded MaxQuant DIA search module",
+        "matched_text": "MaxDIA",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "evidence_section": "Methods / Proteomics analysis",
+        "evidence_paragraph_index": 67,
+        "evidence_paragraph_sha256": "47bc35164f3ee2d516fa052926d07469dc1e0424633e245396502750cf30421c",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12851940/ (section: Methods / Proteomics analysis)",
+        "version_reported_near_name": null,
+        "discovery": "full250-manual-source-role-completeness-review",
+        "use_summary": "Uses MaxDIA embedded in MaxQuant2.5.1.0 to search DIA files against spectral libraries derived from the DDA experiment.",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "implementation_scope_note": "The embedded module edition is unreported. This is one parent workflow, not an independent installation or extra family credit. Licensed parent software and the matching DDA-derived library remain required. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "evidence_selection": "individually-reviewed-source-role",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P014",
+          "doi": "10.1038/s41586-025-09843-w",
+          "pmcid": "PMC12851940",
+          "tool_id": "maxdia",
+          "raw_source_fields": null,
+          "primary_anchors": [
+            {
+              "paper_id": "P014",
+              "doi": "10.1038/s41586-025-09843-w",
+              "pmcid": "PMC12851940",
+              "xml_sha256": "3113c865c0d28488d22c790f0a412262f0f14d1492d46e5c9a5bbf898eb64b76",
+              "paragraph_index": 67,
+              "section": "Methods / Proteomics analysis",
+              "paragraph_sha256": "47bc35164f3ee2d516fa052926d07469dc1e0424633e245396502750cf30421c"
+            }
+          ],
+          "role_kind": "embedded_MaxQuant_DIA_module",
+          "literal_reported_version": null,
+          "use_summary": "Uses MaxDIA embedded in MaxQuant2.5.1.0 to search DIA files against spectral libraries derived from the DDA experiment.",
+          "reported_settings": {
+            "parent_software": "MaxQuant",
+            "parent_version_literal": "2.5.1.0",
+            "library": "author DDA-derived"
+          },
+          "remaining_scope": "The embedded module edition is unreported. This is one parent workflow, not an independent installation or extra family credit. Licensed parent software and the matching DDA-derived library remain required.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "SKIP3_DEPENDENT_PARENT_MAXQUANT_SKIPPED",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       }
     ],
     "status": "extracted",
@@ -6899,12 +7114,64 @@
         "matched_text": "DIA-NN",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "1.8",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "be8f2c39ffe9891cb4850775d8876b744ac5d4d924b3dc24556f9c65139c916c",
-        "use_summary": "Data-independent acquisition proteomic quantification.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823405/ (section: Methods / Proteomics)"
+        "use_summary": "Uses DIA-NN1.8 library-free search with deep learning, Robust LC high-accuracy quantification and match-between-runs, then analyzes protein-group reports in Perseus.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823405/ (section: Methods / Proteomics)",
+        "implementation_scope_note": "Perseus log2 transformation, missingness filtering, downshifted-normal imputation and significance testing are separate. Do not substitute a newer DIA-NN edition or generic MaxLFQ aggregation for the raw search. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P020",
+          "doi": "10.1038/s41586-025-09869-0",
+          "pmcid": "PMC12823405",
+          "tool_id": "diann",
+          "raw_source_fields": {
+            "tool_id": "diann",
+            "tool": "DIA-NN",
+            "analysis_role": "Data-independent acquisition proteomic quantification",
+            "matched_text": "DIA-NN",
+            "extraction_score": 15,
+            "usage_context": "analysis-method-description",
+            "evidence_section": "Methods / Proteomics",
+            "evidence_paragraph_index": 38,
+            "evidence_paragraph_sha256": "be8f2c39ffe9891cb4850775d8876b744ac5d4d924b3dc24556f9c65139c916c",
+            "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823405/ (section: Methods / Proteomics)",
+            "version_reported_near_name": "1.8"
+          },
+          "primary_anchors": [
+            {
+              "paper_id": "P020",
+              "doi": "10.1038/s41586-025-09869-0",
+              "pmcid": "PMC12823405",
+              "xml_sha256": "a49fb2508352ef4d9c68d4f91f317ce500811d59680d824c9ce5b602219becc4",
+              "paragraph_index": 38,
+              "section": "Methods / Proteomics",
+              "paragraph_sha256": "be8f2c39ffe9891cb4850775d8876b744ac5d4d924b3dc24556f9c65139c916c"
+            }
+          ],
+          "role_kind": "library_free_deep_learning_MBR",
+          "literal_reported_version": "1.8",
+          "use_summary": "Uses DIA-NN1.8 library-free search with deep learning, Robust LC high-accuracy quantification and match-between-runs, then analyzes protein-group reports in Perseus.",
+          "reported_settings": {
+            "database": "SwissProt human2021_04,20395entries",
+            "deep_learning": true,
+            "quantification": "Robust LC high accuracy",
+            "MBR": true
+          },
+          "remaining_scope": "Perseus log2 transformation, missingness filtering, downshifted-normal imputation and significance testing are separate. Do not substitute a newer DIA-NN edition or generic MaxLFQ aggregation for the raw search.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "PILOT_ONLY_RAW_SEARCH_UNQUALIFIED",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       },
       {
         "tool_id": "diffbind",
@@ -9469,12 +9736,68 @@
         "matched_text": "MaxQuant",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "155437e91cc3e0098db3bec5abebe9a95ec7d576ed90d30b9f12cecc0c108d98",
-        "use_summary": "Mass-spectrometry proteomic identification and quantification.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11946911/ (section: Methods / MS data analysis)"
+        "use_summary": "Searches Astral RAW files with MaxQuant2.4.3.0, enabling LFQ, iBAQ and condition-restricted match-between-runs after separate pFind open-search assessment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11946911/ (section: Methods / MS data analysis)",
+        "implementation_scope_note": "MaxQuant Fast LFQ being disabled does not describe the separate iq fast_MaxLFQ function. pFind/OpenMS conversion, detailed modification/score rules and licensed raw-search execution remain separate; no MaxQuant runtime was installed. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P026",
+          "doi": "10.1038/s41586-024-08493-8",
+          "pmcid": "PMC11946911",
+          "tool_id": "maxquant",
+          "raw_source_fields": {
+            "tool_id": "maxquant",
+            "tool": "MaxQuant",
+            "analysis_role": "Mass-spectrometry proteomic identification and quantification",
+            "matched_text": "MaxQuant",
+            "extraction_score": 15,
+            "usage_context": "analysis-method-description",
+            "evidence_section": "Methods / MS data analysis",
+            "evidence_paragraph_index": 47,
+            "evidence_paragraph_sha256": "155437e91cc3e0098db3bec5abebe9a95ec7d576ed90d30b9f12cecc0c108d98",
+            "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11946911/ (section: Methods / MS data analysis)",
+            "version_reported_near_name": null
+          },
+          "primary_anchors": [
+            {
+              "paper_id": "P026",
+              "doi": "10.1038/s41586-024-08493-8",
+              "pmcid": "PMC11946911",
+              "xml_sha256": "a187abeddf33a0f8370df96cf901492dd9a4d099d3a940545d5ebdc873432daf",
+              "paragraph_index": 47,
+              "section": "Methods / MS data analysis",
+              "paragraph_sha256": "155437e91cc3e0098db3bec5abebe9a95ec7d576ed90d30b9f12cecc0c108d98"
+            }
+          ],
+          "role_kind": "Astral_search_LFQ_iBAQ_and_MBR",
+          "literal_reported_version": "2.4.3.0",
+          "use_summary": "Searches Astral RAW files with MaxQuant2.4.3.0, enabling LFQ, iBAQ and condition-restricted match-between-runs after separate pFind open-search assessment.",
+          "reported_settings": {
+            "digestion": "Trypsin/P",
+            "missed_cleavages": 2,
+            "minimum_peptide_length": 6,
+            "maximum_peptide_mass_Da": 5000,
+            "Fast_LFQ": false,
+            "iBAQ": true,
+            "match_window_minutes": 1,
+            "alignment_window_minutes": 20
+          },
+          "remaining_scope": "MaxQuant Fast LFQ being disabled does not describe the separate iq fast_MaxLFQ function. pFind/OpenMS conversion, detailed modification/score rules and licensed raw-search execution remain separate; no MaxQuant runtime was installed.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "SKIP3_USER_REQUESTED_KEEP_TOOL_PENDING",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       },
       {
         "tool_id": "pymol",
@@ -10201,12 +10524,77 @@
         "matched_text": "DIA-NN",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.0.2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "b0474843f6a2fae84d0ac82415507ce41a1fb6f71a1c4eb677a56985162148a2",
-        "use_summary": "Data-independent acquisition proteomic quantification.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7618714/ (section: Methods / Sample processing for Mass Spectrometry (MS) analysis)"
+        "use_summary": "Generates a yeast predicted spectral library with DIA-NN2.0.2, optimizes individual-run mass/scan settings, and performs batch analysis before separate SAINTq and protein comparisons.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7618714/ (section: Methods / Sample processing for Mass Spectrometry (MS) analysis)",
+        "implementation_scope_note": "The source literal maxLGQ is retained without spelling repair. Library generation alone does not qualify raw-search/fragment reporting; author optimized values, exclusions and downstream scripts remain separate. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P029",
+          "doi": "10.1038/s41586-025-09834-x",
+          "pmcid": "PMC7618714",
+          "tool_id": "diann",
+          "raw_source_fields": {
+            "tool_id": "diann",
+            "tool": "DIA-NN",
+            "analysis_role": "Data-independent acquisition proteomic quantification",
+            "matched_text": "DIA-NN",
+            "extraction_score": 15,
+            "usage_context": "analysis-method-description",
+            "evidence_section": "Methods / Sample processing for Mass Spectrometry (MS) analysis",
+            "evidence_paragraph_index": 55,
+            "evidence_paragraph_sha256": "b0474843f6a2fae84d0ac82415507ce41a1fb6f71a1c4eb677a56985162148a2",
+            "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7618714/ (section: Methods / Sample processing for Mass Spectrometry (MS) analysis)",
+            "version_reported_near_name": "2.0.2"
+          },
+          "primary_anchors": [
+            {
+              "paper_id": "P029",
+              "doi": "10.1038/s41586-025-09834-x",
+              "pmcid": "PMC7618714",
+              "xml_sha256": "e4a97689207af74f04de28e08e53fd28f02f5589e0be6aa1fc53d12589ae281d",
+              "paragraph_index": 55,
+              "section": "Methods / Sample processing for Mass Spectrometry (MS) analysis",
+              "paragraph_sha256": "b0474843f6a2fae84d0ac82415507ce41a1fb6f71a1c4eb677a56985162148a2"
+            }
+          ],
+          "role_kind": "predicted_yeast_library_and_DIA_search",
+          "literal_reported_version": "2.0.2",
+          "use_summary": "Generates a yeast predicted spectral library with DIA-NN2.0.2, optimizes individual-run mass/scan settings, and performs batch analysis before separate SAINTq and protein comparisons.",
+          "reported_settings": {
+            "database": "S288C-2023.06.26.fasta",
+            "missed_cleavages": 1,
+            "N_terminal_methionine_excision": true,
+            "fixed_modification": "cysteine carbamidomethylation",
+            "peptide_length": [
+              7,
+              30
+            ],
+            "precursor_charge": [
+              1,
+              4
+            ],
+            "precursor_mz": [
+              300,
+              1800
+            ],
+            "reported_intensity_name_literal": "maxLGQ"
+          },
+          "remaining_scope": "The source literal maxLGQ is retained without spelling repair. Library generation alone does not qualify raw-search/fragment reporting; author optimized values, exclusions and downstream scripts remain separate.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "PILOT_ONLY_RAW_SEARCH_UNQUALIFIED",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       },
       {
         "tool_id": "dragen",
@@ -11240,12 +11628,82 @@
         "matched_text": "MaxQuant",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.4.7",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "e15129379a3f3f678fbcb3f94d2837fdf507518538a30f66f765f05dfed3fa9b",
-        "use_summary": "Mass-spectrometry proteomic identification and quantification.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11754113/ (section: Methods / Mass spectrometry)"
+        "use_summary": "Searches human DDA spectra in MaxQuant with match-between-runs; spectral counts support SAINTexpress interaction scoring and LFQ results support separate MSstats/artMS analysis.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11754113/ (section: Methods / Mass spectrometry)",
+        "implementation_scope_note": "The article reports literal2.4.7, which is not normalized to a four-part release. SAINTexpress, MSstats/artMS and Cytoscape are downstream tools; this is not proof of iq execution. Licensed MaxQuant runtime remains unavailable. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "supporting_evidence": [
+          {
+            "paper_id": "P032",
+            "doi": "10.1038/s41586-024-08314-y",
+            "pmcid": "PMC11754113",
+            "xml_sha256": "b69e9f3d24233ed51dabe954b63664dcbf8e15e7af5d419babb0018173e1ecb6",
+            "paragraph_index": 47,
+            "section": "Methods / Mass spectrometry analysis",
+            "paragraph_sha256": "c611ed663da6512cd72637c8ddd52040d20f48ad6291a46c56efb2593c2402a0"
+          }
+        ],
+        "source_role_qualification": {
+          "paper_id": "P032",
+          "doi": "10.1038/s41586-024-08314-y",
+          "pmcid": "PMC11754113",
+          "tool_id": "maxquant",
+          "raw_source_fields": {
+            "tool_id": "maxquant",
+            "tool": "MaxQuant",
+            "analysis_role": "Mass-spectrometry proteomic identification and quantification",
+            "matched_text": "MaxQuant",
+            "extraction_score": 15,
+            "usage_context": "analysis-method-description",
+            "evidence_section": "Methods / Mass spectrometry",
+            "evidence_paragraph_index": 46,
+            "evidence_paragraph_sha256": "e15129379a3f3f678fbcb3f94d2837fdf507518538a30f66f765f05dfed3fa9b",
+            "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11754113/ (section: Methods / Mass spectrometry)",
+            "version_reported_near_name": "2.4.7"
+          },
+          "primary_anchors": [
+            {
+              "paper_id": "P032",
+              "doi": "10.1038/s41586-024-08314-y",
+              "pmcid": "PMC11754113",
+              "xml_sha256": "b69e9f3d24233ed51dabe954b63664dcbf8e15e7af5d419babb0018173e1ecb6",
+              "paragraph_index": 46,
+              "section": "Methods / Mass spectrometry",
+              "paragraph_sha256": "e15129379a3f3f678fbcb3f94d2837fdf507518538a30f66f765f05dfed3fa9b"
+            },
+            {
+              "paper_id": "P032",
+              "doi": "10.1038/s41586-024-08314-y",
+              "pmcid": "PMC11754113",
+              "xml_sha256": "b69e9f3d24233ed51dabe954b63664dcbf8e15e7af5d419babb0018173e1ecb6",
+              "paragraph_index": 47,
+              "section": "Methods / Mass spectrometry analysis",
+              "paragraph_sha256": "c611ed663da6512cd72637c8ddd52040d20f48ad6291a46c56efb2593c2402a0"
+            }
+          ],
+          "role_kind": "human_DDA_search_and_spectral_count_export",
+          "literal_reported_version": "2.4.7",
+          "use_summary": "Searches human DDA spectra in MaxQuant with match-between-runs; spectral counts support SAINTexpress interaction scoring and LFQ results support separate MSstats/artMS analysis.",
+          "reported_settings": {
+            "database": "human canonical UniProt, September2022",
+            "MBR": true,
+            "reported_version_literal": "2.4.7"
+          },
+          "remaining_scope": "The article reports literal2.4.7, which is not normalized to a four-part release. SAINTexpress, MSstats/artMS and Cytoscape are downstream tools; this is not proof of iq execution. Licensed MaxQuant runtime remains unavailable.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "SKIP3_USER_REQUESTED_KEEP_TOOL_PENDING",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       },
       {
         "tool_id": "msstats",
@@ -19975,6 +20433,66 @@
           "author_runtime_executed": false,
           "whole_paper_reproduced": false
         }
+      },
+      {
+        "tool_id": "macs_iq_view",
+        "tool": "MACS iQ View",
+        "analysis_role": "Cyclic-image preprocessing and segmentation",
+        "matched_text": "MACS iQ View",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "evidence_section": "Methods / MACSima imaging cyclic staining / Data analysis and visualization",
+        "evidence_paragraph_index": 129,
+        "evidence_paragraph_sha256": "dab1ccc4b3e8db319a997dea12dc28d16f4b4ba1cc66729dc857ab3871e802a8",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12823425/ (section: Methods / MACSima imaging cyclic staining / Data analysis and visualization)",
+        "version_reported_near_name": "1.3.2",
+        "discovery": "full250-manual-source-role-completeness-review",
+        "use_summary": "Uses MACS iQ View1.3.2 to stitch/preprocess cyclic images and apply donut-based segmentation, with separate StarDist/ImageJ and downstream FlowJo analyses.",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "implementation_scope_note": "This is a distinct imaging application, not the R iq proteomics package. Runtime licensing/access and the complete image-processing workflow remain pending; no generic image or MaxLFQ implementation is substituted. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "evidence_selection": "individually-reviewed-source-role",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P051",
+          "doi": "10.1038/s41586-025-09807-0",
+          "pmcid": "PMC12823425",
+          "tool_id": "macs_iq_view",
+          "raw_source_fields": null,
+          "primary_anchors": [
+            {
+              "paper_id": "P051",
+              "doi": "10.1038/s41586-025-09807-0",
+              "pmcid": "PMC12823425",
+              "xml_sha256": "9182a4004117036e7be71b48cabb34755f397746ef0fe821dfad01f64fa2c129",
+              "paragraph_index": 129,
+              "section": "Methods / MACSima imaging cyclic staining / Data analysis and visualization",
+              "paragraph_sha256": "dab1ccc4b3e8db319a997dea12dc28d16f4b4ba1cc66729dc857ab3871e802a8"
+            }
+          ],
+          "role_kind": "cyclic_image_processing_and_donut_segmentation",
+          "literal_reported_version": "1.3.2",
+          "use_summary": "Uses MACS iQ View1.3.2 to stitch/preprocess cyclic images and apply donut-based segmentation, with separate StarDist/ImageJ and downstream FlowJo analyses.",
+          "reported_settings": {
+            "vendor": "Miltenyi Biotec",
+            "version": "1.3.2",
+            "operations": [
+              "stitching",
+              "preprocessing",
+              "donut segmentation"
+            ]
+          },
+          "remaining_scope": "This is a distinct imaging application, not the R iq proteomics package. Runtime licensing/access and the complete image-processing workflow remain pending; no generic image or MaxLFQ implementation is substituted.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "PENDING_UNIMPLEMENTED",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       }
     ],
     "status": "extracted",
@@ -20109,12 +20627,62 @@
         "matched_text": "MaxQuant",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "5e18ecb45c0af72baf9b9d3831c2dbe834cf16540b74d8d8a768b2a86714257f",
-        "use_summary": "Mass-spectrometry proteomic identification and quantification.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668671/ (section: Methods / Characterization of STV-C8 protein content)"
+        "use_summary": "Uses MaxQuant2.4.9.0 label-free quantification for STV-C8 protein content with human SwissProt plus exogenous protein sequences, followed by separate Perseus statistics.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668671/ (section: Methods / Characterization of STV-C8 protein content)",
+        "implementation_scope_note": "The description does not identify an independent iq call or establish all LFQ settings. A licensed exact runtime, matching databases and prepared MS inputs are still required. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P052",
+          "doi": "10.1038/s41586-026-10952-3",
+          "pmcid": "PMC13668671",
+          "tool_id": "maxquant",
+          "raw_source_fields": {
+            "tool_id": "maxquant",
+            "tool": "MaxQuant",
+            "analysis_role": "Mass-spectrometry proteomic identification and quantification",
+            "matched_text": "MaxQuant",
+            "extraction_score": 15,
+            "usage_context": "analysis-method-description",
+            "evidence_section": "Methods / Characterization of STV-C8 protein content",
+            "evidence_paragraph_index": 42,
+            "evidence_paragraph_sha256": "5e18ecb45c0af72baf9b9d3831c2dbe834cf16540b74d8d8a768b2a86714257f",
+            "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668671/ (section: Methods / Characterization of STV-C8 protein content)",
+            "version_reported_near_name": null
+          },
+          "primary_anchors": [
+            {
+              "paper_id": "P052",
+              "doi": "10.1038/s41586-026-10952-3",
+              "pmcid": "PMC13668671",
+              "xml_sha256": "6ef0e991748f47a416f8324e742a7c81bbfc2c42bdbefaf6a6ebfc61ebcf5392",
+              "paragraph_index": 42,
+              "section": "Methods / Characterization of STV-C8 protein content",
+              "paragraph_sha256": "5e18ecb45c0af72baf9b9d3831c2dbe834cf16540b74d8d8a768b2a86714257f"
+            }
+          ],
+          "role_kind": "STV_protein_content_LFQ",
+          "literal_reported_version": "2.4.9.0",
+          "use_summary": "Uses MaxQuant2.4.9.0 label-free quantification for STV-C8 protein content with human SwissProt plus exogenous protein sequences, followed by separate Perseus statistics.",
+          "reported_settings": {
+            "database": "merged SwissProt human and exogenously expressed proteins",
+            "quantification": "label-free"
+          },
+          "remaining_scope": "The description does not identify an independent iq call or establish all LFQ settings. A licensed exact runtime, matching databases and prepared MS inputs are still required.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "SKIP3_USER_REQUESTED_KEEP_TOOL_PENDING",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       },
       {
         "tool_id": "pymol",
@@ -36324,12 +36892,86 @@
         "matched_text": "DIA-NN",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "83076cd6b96b44136ee03a42d759adc2d24376f0cfb6ec865f99951e8a7c0fd9",
-        "use_summary": "Data-independent acquisition proteomic quantification.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695657/ (section: Methods / Proteomics)"
+        "use_summary": "Uses DIA-NN1.8.1 library-free search followed by an MBR pass to derive peptide/protein intensities from Proteograph dia-PASEF runs, including reference and PAV-modified libraries.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695657/ (section: Methods / Proteomics)",
+        "implementation_scope_note": "Nanoparticle selection by largest summed intensity, missingness thresholds, log scaling, age/sex/10PC residualization and inverse-normal scaling are separate study operations. PG.Normalised is not silently replaced with a newer field or iq output. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "supporting_evidence": [
+          {
+            "paper_id": "P097",
+            "doi": "10.1038/s41588-025-02413-w",
+            "pmcid": "PMC12695657",
+            "xml_sha256": "c2fc5b55fb192193520c907287ad57fec48a06a6d0e5aca760cb5f25c25f7e79",
+            "paragraph_index": 43,
+            "section": "Methods / Peptide mapping",
+            "paragraph_sha256": "c2772f1ed55918412aaf34b63d9136f9547bba1481cd9e09aa0331da3524bf39"
+          }
+        ],
+        "source_role_qualification": {
+          "paper_id": "P097",
+          "doi": "10.1038/s41588-025-02413-w",
+          "pmcid": "PMC12695657",
+          "tool_id": "diann",
+          "raw_source_fields": {
+            "tool_id": "diann",
+            "tool": "DIA-NN",
+            "analysis_role": "Data-independent acquisition proteomic quantification",
+            "matched_text": "DIA-NN",
+            "extraction_score": 15,
+            "usage_context": "analysis-method-description",
+            "evidence_section": "Methods / Proteomics",
+            "evidence_paragraph_index": 33,
+            "evidence_paragraph_sha256": "83076cd6b96b44136ee03a42d759adc2d24376f0cfb6ec865f99951e8a7c0fd9",
+            "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12695657/ (section: Methods / Proteomics)",
+            "version_reported_near_name": null
+          },
+          "primary_anchors": [
+            {
+              "paper_id": "P097",
+              "doi": "10.1038/s41588-025-02413-w",
+              "pmcid": "PMC12695657",
+              "xml_sha256": "c2fc5b55fb192193520c907287ad57fec48a06a6d0e5aca760cb5f25c25f7e79",
+              "paragraph_index": 33,
+              "section": "Methods / Proteomics",
+              "paragraph_sha256": "83076cd6b96b44136ee03a42d759adc2d24376f0cfb6ec865f99951e8a7c0fd9"
+            },
+            {
+              "paper_id": "P097",
+              "doi": "10.1038/s41588-025-02413-w",
+              "pmcid": "PMC12695657",
+              "xml_sha256": "c2fc5b55fb192193520c907287ad57fec48a06a6d0e5aca760cb5f25c25f7e79",
+              "paragraph_index": 43,
+              "section": "Methods / Peptide mapping",
+              "paragraph_sha256": "c2772f1ed55918412aaf34b63d9136f9547bba1481cd9e09aa0331da3524bf39"
+            }
+          ],
+          "role_kind": "nanoparticle_pQTL_protein_intensities",
+          "literal_reported_version": "1.8.1",
+          "use_summary": "Uses DIA-NN1.8.1 library-free search followed by an MBR pass to derive peptide/protein intensities from Proteograph dia-PASEF runs, including reference and PAV-modified libraries.",
+          "reported_settings": {
+            "readout": "PG.Normalised",
+            "reference": "UniProt UP000005640_9606",
+            "MBR": "second processing pass",
+            "additional_libraries": [
+              "PAV-exclusive",
+              "PAV-inclusive"
+            ]
+          },
+          "remaining_scope": "Nanoparticle selection by largest summed intensity, missingness thresholds, log scaling, age/sex/10PC residualization and inverse-normal scaling are separate study operations. PG.Normalised is not silently replaced with a newer field or iq output.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "PILOT_ONLY_RAW_SEARCH_UNQUALIFIED",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       },
       {
         "tool_id": "minimac",
@@ -52747,12 +53389,67 @@
         "matched_text": "MaxQuant",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "65750a5ad785f5e0c5d1a7fe94855eb7a472a5d1a0d0c276d67971babd5eccf4",
-        "use_summary": "Mass-spectrometry proteomic identification and quantification.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597822/ (section: Methods / Analysis of proteomic data)"
+        "use_summary": "Uses MaxQuant1.6.14.0/Andromeda to search human spectra and quantify TMT10plex MS2 reporter ions with manufacturer correction factors and PIF filtering before Perseus analysis.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597822/ (section: Methods / Analysis of proteomic data)",
+        "implementation_scope_note": "TMT reporter quantification is not MaxLFQ protein aggregation. Contaminant/reverse/site-only filtering, unique-peptide requirements and Perseus tests are separate; no licensed MaxQuant runtime was run. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P144",
+          "doi": "10.1038/s41588-025-02374-0",
+          "pmcid": "PMC12597822",
+          "tool_id": "maxquant",
+          "raw_source_fields": {
+            "tool_id": "maxquant",
+            "tool": "MaxQuant",
+            "analysis_role": "Mass-spectrometry proteomic identification and quantification",
+            "matched_text": "MaxQuant",
+            "extraction_score": 15,
+            "usage_context": "analysis-method-description",
+            "evidence_section": "Methods / Analysis of proteomic data",
+            "evidence_paragraph_index": 44,
+            "evidence_paragraph_sha256": "65750a5ad785f5e0c5d1a7fe94855eb7a472a5d1a0d0c276d67971babd5eccf4",
+            "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597822/ (section: Methods / Analysis of proteomic data)",
+            "version_reported_near_name": null
+          },
+          "primary_anchors": [
+            {
+              "paper_id": "P144",
+              "doi": "10.1038/s41588-025-02374-0",
+              "pmcid": "PMC12597822",
+              "xml_sha256": "880d3a8bb266dbd6172236f4d27161feaf2e49a239b502d71822657893588723",
+              "paragraph_index": 44,
+              "section": "Methods / Analysis of proteomic data",
+              "paragraph_sha256": "65750a5ad785f5e0c5d1a7fe94855eb7a472a5d1a0d0c276d67971babd5eccf4"
+            }
+          ],
+          "role_kind": "Andromeda_TMT10_reporter_ion_quantification",
+          "literal_reported_version": "1.6.14.0",
+          "use_summary": "Uses MaxQuant1.6.14.0/Andromeda to search human spectra and quantify TMT10plex MS2 reporter ions with manufacturer correction factors and PIF filtering before Perseus analysis.",
+          "reported_settings": {
+            "first_search_ppm": 20,
+            "main_search_ppm": 4.5,
+            "MS_MS_ppm": 20,
+            "minimum_peptide_length": 6,
+            "missed_cleavages": 2,
+            "reporter_tolerance_Da": 0.003,
+            "FDR": 0.01
+          },
+          "remaining_scope": "TMT reporter quantification is not MaxLFQ protein aggregation. Contaminant/reverse/site-only filtering, unique-peptide requirements and Perseus tests are separate; no licensed MaxQuant runtime was run.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "SKIP3_USER_REQUESTED_KEEP_TOOL_PENDING",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       },
       {
         "tool_id": "mutect2",
@@ -52824,6 +53521,61 @@
         "exact_author_settings_established": false,
         "author_runtime_executed": false,
         "whole_paper_reproduced": false
+      },
+      {
+        "tool_id": "andromeda",
+        "tool": "Andromeda",
+        "analysis_role": "Bundled MaxQuant spectral search engine",
+        "matched_text": "Andromeda",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "evidence_section": "Methods / Analysis of proteomic data",
+        "evidence_paragraph_index": 44,
+        "evidence_paragraph_sha256": "65750a5ad785f5e0c5d1a7fe94855eb7a472a5d1a0d0c276d67971babd5eccf4",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12597822/ (section: Methods / Analysis of proteomic data)",
+        "version_reported_near_name": null,
+        "discovery": "full250-manual-source-role-completeness-review",
+        "use_summary": "Uses Andromeda within MaxQuant1.6.14.0 for human-protein spectral matching in a TMT10plex workflow.",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "implementation_scope_note": "The engine edition is unreported; do not copy the parent version into it or replace TMT search with generic protein aggregation. Licensed parent runtime remains pending; no extra family credit. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "evidence_selection": "individually-reviewed-source-role",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P144",
+          "doi": "10.1038/s41588-025-02374-0",
+          "pmcid": "PMC12597822",
+          "tool_id": "andromeda",
+          "raw_source_fields": null,
+          "primary_anchors": [
+            {
+              "paper_id": "P144",
+              "doi": "10.1038/s41588-025-02374-0",
+              "pmcid": "PMC12597822",
+              "xml_sha256": "880d3a8bb266dbd6172236f4d27161feaf2e49a239b502d71822657893588723",
+              "paragraph_index": 44,
+              "section": "Methods / Analysis of proteomic data",
+              "paragraph_sha256": "65750a5ad785f5e0c5d1a7fe94855eb7a472a5d1a0d0c276d67971babd5eccf4"
+            }
+          ],
+          "role_kind": "bundled_MaxQuant_search_engine",
+          "literal_reported_version": null,
+          "use_summary": "Uses Andromeda within MaxQuant1.6.14.0 for human-protein spectral matching in a TMT10plex workflow.",
+          "reported_settings": {
+            "parent_software": "MaxQuant",
+            "parent_version_literal": "1.6.14.0"
+          },
+          "remaining_scope": "The engine edition is unreported; do not copy the parent version into it or replace TMT search with generic protein aggregation. Licensed parent runtime remains pending; no extra family credit.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "SKIP3_DEPENDENT_PARENT_MAXQUANT_SKIPPED",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       }
     ],
     "status": "extracted",
@@ -60867,12 +61619,96 @@
         "matched_text": "DIA-NN",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "eff7fd6ee95f701ba8050b37e15a3b8006f5b376e4011e4f9b13808d961040e2",
-        "use_summary": "Data-independent acquisition proteomic quantification.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447103/ (section: Methods / Proteomic profiling / Seer Proteograph)"
+        "use_summary": "Uses the Proteograph cloud pipeline with DIA-NN1.8.1 library-free MBR search against human and cohort-variant libraries, then separately normalizes precursors with PepCal and aggregates proteins with iq.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447103/ (section: Methods / Proteomic profiling / Seer Proteograph)",
+        "implementation_scope_note": "A local DIA-NN pilot does not qualify the private Proteograph cloud pipeline or cohort-specific library construction. PepCal extraction/five-run smoothing, iq aggregation and limma plate correction are separate providers. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "supporting_evidence": [
+          {
+            "paper_id": "P168",
+            "doi": "10.1038/s41588-026-02697-6",
+            "pmcid": "PMC13447103",
+            "xml_sha256": "e68251d7b700b83479ee28f992b07c396ca42e800acfa35436035248b1ffc149",
+            "paragraph_index": 34,
+            "section": "Methods / Proteomic profiling / Seer Proteograph",
+            "paragraph_sha256": "bec89fcacae16cd7ff12db603c2527e7e65325f2c98145f66add645032edff0b"
+          }
+        ],
+        "source_role_qualification": {
+          "paper_id": "P168",
+          "doi": "10.1038/s41588-026-02697-6",
+          "pmcid": "PMC13447103",
+          "tool_id": "diann",
+          "raw_source_fields": {
+            "tool_id": "diann",
+            "tool": "DIA-NN",
+            "analysis_role": "Data-independent acquisition proteomic quantification",
+            "matched_text": "DIA-NN",
+            "extraction_score": 15,
+            "usage_context": "analysis-method-description",
+            "evidence_section": "Methods / Proteomic profiling / Seer Proteograph",
+            "evidence_paragraph_index": 33,
+            "evidence_paragraph_sha256": "eff7fd6ee95f701ba8050b37e15a3b8006f5b376e4011e4f9b13808d961040e2",
+            "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447103/ (section: Methods / Proteomic profiling / Seer Proteograph)",
+            "version_reported_near_name": null
+          },
+          "primary_anchors": [
+            {
+              "paper_id": "P168",
+              "doi": "10.1038/s41588-026-02697-6",
+              "pmcid": "PMC13447103",
+              "xml_sha256": "e68251d7b700b83479ee28f992b07c396ca42e800acfa35436035248b1ffc149",
+              "paragraph_index": 33,
+              "section": "Methods / Proteomic profiling / Seer Proteograph",
+              "paragraph_sha256": "eff7fd6ee95f701ba8050b37e15a3b8006f5b376e4011e4f9b13808d961040e2"
+            },
+            {
+              "paper_id": "P168",
+              "doi": "10.1038/s41588-026-02697-6",
+              "pmcid": "PMC13447103",
+              "xml_sha256": "e68251d7b700b83479ee28f992b07c396ca42e800acfa35436035248b1ffc149",
+              "paragraph_index": 34,
+              "section": "Methods / Proteomic profiling / Seer Proteograph",
+              "paragraph_sha256": "bec89fcacae16cd7ff12db603c2527e7e65325f2c98145f66add645032edff0b"
+            }
+          ],
+          "role_kind": "Proteograph_cloud_library_free_variant_search",
+          "literal_reported_version": "1.8.1",
+          "use_summary": "Uses the Proteograph cloud pipeline with DIA-NN1.8.1 library-free MBR search against human and cohort-variant libraries, then separately normalizes precursors with PepCal and aggregates proteins with iq.",
+          "reported_settings": {
+            "missed_cleavages": 1,
+            "peptide_length": [
+              7,
+              30
+            ],
+            "precursor_mz": [
+              300,
+              1800
+            ],
+            "fragment_mz": [
+              200,
+              1800
+            ],
+            "MS1_ppm": 3,
+            "MS2_ppm": 8,
+            "FDR": 0.01,
+            "variant_library": "MAC5"
+          },
+          "remaining_scope": "A local DIA-NN pilot does not qualify the private Proteograph cloud pipeline or cohort-specific library construction. PepCal extraction/five-run smoothing, iq aggregation and limma plate correction are separate providers.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "PILOT_ONLY_RAW_SEARCH_UNQUALIFIED",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       },
       {
         "tool_id": "exome-germline-single-sample",
@@ -61139,6 +61975,62 @@
         "evidence_paragraph_sha256": "4d6f40b33b6dbdf14b7a04b8d35142826d02c073e7eacfe0290289a7860ce70c",
         "use_summary": "Variant consequence annotation.",
         "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447103/ (section: Methods / Statistical analysis)"
+      },
+      {
+        "tool_id": "iq",
+        "tool": "iq",
+        "analysis_role": "Prepared precursor-to-protein MaxLFQ aggregation",
+        "matched_text": "iq",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "evidence_section": "Methods / Proteomic profiling / Seer Proteograph",
+        "evidence_paragraph_index": 34,
+        "evidence_paragraph_sha256": "bec89fcacae16cd7ff12db603c2527e7e65325f2c98145f66add645032edff0b",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447103/ (section: Methods / Proteomic profiling / Seer Proteograph)",
+        "version_reported_near_name": null,
+        "discovery": "full250-manual-source-role-completeness-review",
+        "use_summary": "Aggregates externally PepCal-normalized precursor intensities into biosample protein-group intensities using fast_MaxLFQ from the R iq package, followed by separate limma plate correction.",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "implementation_scope_note": "Native iq2.3.0 prepared normalized-log2 aggregation is available; the paper does not report the iq edition, exact input transformation or complete call. No author version, PepCal preparation or full cloud pipeline is inferred. Available implementation: Native Java iq2.3.0 fast_MaxLFQ aggregation of complete prepared normalized-log2 ion tables; source duplicate-cell linear sums, sample-pair medians, connected-component scaling/annotations, convergence and independent residual checks, complete rows/identities and exact-producer Windows/Linux capture/replay. One scoped native family. No raw MS search, FDR filtering, normalization, imputation, streaming iq format, complete iq package or historical paper reproduction is claimed.",
+        "evidence_selection": "individually-reviewed-source-role",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P168",
+          "doi": "10.1038/s41588-026-02697-6",
+          "pmcid": "PMC13447103",
+          "tool_id": "iq",
+          "raw_source_fields": null,
+          "primary_anchors": [
+            {
+              "paper_id": "P168",
+              "doi": "10.1038/s41588-026-02697-6",
+              "pmcid": "PMC13447103",
+              "xml_sha256": "e68251d7b700b83479ee28f992b07c396ca42e800acfa35436035248b1ffc149",
+              "paragraph_index": 34,
+              "section": "Methods / Proteomic profiling / Seer Proteograph",
+              "paragraph_sha256": "bec89fcacae16cd7ff12db603c2527e7e65325f2c98145f66add645032edff0b"
+            }
+          ],
+          "role_kind": "fast_MaxLFQ_prepared_precursor_aggregation",
+          "literal_reported_version": null,
+          "use_summary": "Aggregates externally PepCal-normalized precursor intensities into biosample protein-group intensities using fast_MaxLFQ from the R iq package, followed by separate limma plate correction.",
+          "reported_settings": {
+            "function": "fast_MaxLFQ",
+            "upstream_preparation": "PepCal extraction, quality filtering and five-run smoothing",
+            "downstream": "limma removeBatchEffect"
+          },
+          "remaining_scope": "Native iq2.3.0 prepared normalized-log2 aggregation is available; the paper does not report the iq edition, exact input transformation or complete call. No author version, PepCal preparation or full cloud pipeline is inferred.",
+          "implementation_available": true,
+          "qualified_behavior_edition": "iq-2.3.0",
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "NATIVE_PREPARED_AGGREGATION_QUALIFIED",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 1
+        }
       }
     ],
     "status": "extracted",
@@ -80917,12 +81809,64 @@
         "matched_text": "MaxQuant",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
         "version_reported_near_name": "2.2.0.0",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-source-role",
         "evidence_paragraph_sha256": "6c893b3769b529478b531dcb076a708521dfc27b6d3cd9120f962db2dba2fbc9",
-        "use_summary": "Mass-spectrometry proteomic identification and quantification.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11339613/ (section: Subjects and methods / Mass-spectrometry (MS) analysis)"
+        "use_summary": "Uses MaxQuant2.2.0.0 search against human SwissProt plus four HDAC3 variants and contaminants, with iBAQ label-free quantification.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11339613/ (section: Subjects and methods / Mass-spectrometry (MS) analysis)",
+        "implementation_scope_note": "iBAQ is not silently replaced by iq MaxLFQ. Exact licensed runtime, search configuration and original protein database remain required; no study execution is admitted. Runtime search/imaging implementation remains pending; native iq does not substitute for it.",
+        "supporting_evidence": [],
+        "source_role_qualification": {
+          "paper_id": "P230",
+          "doi": "10.1016/j.ajhg.2024.06.015",
+          "pmcid": "PMC11339613",
+          "tool_id": "maxquant",
+          "raw_source_fields": {
+            "tool_id": "maxquant",
+            "tool": "MaxQuant",
+            "analysis_role": "Mass-spectrometry proteomic identification and quantification",
+            "matched_text": "MaxQuant",
+            "extraction_score": 15,
+            "usage_context": "analysis-method-description",
+            "evidence_section": "Subjects and methods / Mass-spectrometry (MS) analysis",
+            "evidence_paragraph_index": 17,
+            "evidence_paragraph_sha256": "6c893b3769b529478b531dcb076a708521dfc27b6d3cd9120f962db2dba2fbc9",
+            "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11339613/ (section: Subjects and methods / Mass-spectrometry (MS) analysis)",
+            "version_reported_near_name": "2.2.0.0"
+          },
+          "primary_anchors": [
+            {
+              "paper_id": "P230",
+              "doi": "10.1016/j.ajhg.2024.06.015",
+              "pmcid": "PMC11339613",
+              "xml_sha256": "01e3a3b8b419e5da5cddad02253ade46a72fc64d9a083ced768aa0fc02c9986c",
+              "paragraph_index": 17,
+              "section": "Subjects and methods / Mass-spectrometry (MS) analysis",
+              "paragraph_sha256": "6c893b3769b529478b531dcb076a708521dfc27b6d3cd9120f962db2dba2fbc9"
+            }
+          ],
+          "role_kind": "HDAC3_variant_search_and_iBAQ",
+          "literal_reported_version": "2.2.0.0",
+          "use_summary": "Uses MaxQuant2.2.0.0 search against human SwissProt plus four HDAC3 variants and contaminants, with iBAQ label-free quantification.",
+          "reported_settings": {
+            "precursor_ppm": 6,
+            "MS_MS_ppm": 20,
+            "FDR": 0.01,
+            "quantification": "iBAQ"
+          },
+          "remaining_scope": "iBAQ is not silently replaced by iq MaxLFQ. Exact licensed runtime, search configuration and original protein database remain required; no study execution is admitted.",
+          "implementation_available": false,
+          "qualified_behavior_edition": null,
+          "whole_paper_reproduced": false,
+          "runtime_analysis_status": "SKIP3_USER_REQUESTED_KEEP_TOOL_PENDING",
+          "source_role_review_applied": true,
+          "catalog_admitted": true,
+          "paper_edition_reproduced": false,
+          "raw_search_qualified": false,
+          "whole_package_qualified": false,
+          "new_family_credit": 0
+        }
       },
       {
         "tool_id": "pymol",

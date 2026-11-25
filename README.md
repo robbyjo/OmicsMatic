@@ -37,6 +37,11 @@ contracts, separate private runtime setup and portable result verification.
 The source includes [native MetaXcan summary workflows](docs/literature/METAXCAN_WORKFLOWS.md)
 from PredictDB, GWAS and covariance inputs, with complete captured-result
 recomputation, plus the [association arithmetic API](docs/literature/METAXCAN_ARITHMETIC.md).
-Individual-level integration and the complete paper-role audit remain in development.
+Individual-level integration and model training remain unqualified.
+
+The source-built [native iq MaxLFQ workflow](docs/literature/IQ_MAXLFQ_WORKFLOWS.md)
+aggregates prepared normalized-log2 ion measurements into protein quantities,
+with captured-input numerical replay and no R dependency during analysis.
+Raw mass-spectrometry search and Proteograph/PepCal preparation remain separate.
 
 [GNU General Public License, version 3 or later](LICENSE).
