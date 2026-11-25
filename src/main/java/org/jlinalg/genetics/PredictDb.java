@@ -8,7 +8,9 @@ import java.util.*;
 
 /**
  * Read-only PredictDB weight/annotation input for the original MetaXcan schema.
- * Identifiers and allele orientation are never repaired. Annotation SNP counts
+ * Allele orientation is never repaired. Explicit alternate-key reads can apply
+ * the original source's first-row b38 prefix rule, with reversible provenance.
+ * Default reads leave identifiers unchanged. Annotation SNP counts
  * are retained separately from actual weight counts. This does not train models
  * or establish their provenance, genome build or biological suitability.
  */
@@ -25,13 +27,30 @@ public final class PredictDb {
     public record Extra(String gene,String name,long annotatedSnps,Double performanceR2,
                         Double performanceP,Double performanceQ,Double phi) { }
     public record Model(List<Weight> weights,Map<String,List<Weight>> byGene,Map<String,Extra> extra,boolean hasPhi) { }
+    /** A non-null column selects the original --model_db_snp_key path. */
+    public record Key(String column) {
+        public Key {if(column!=null&&!column.matches("[A-Za-z_][A-Za-z0-9_]{0,127}"))throw new IllegalArgumentException("Require one literal ASCII PredictDB column identifier; SQL expressions are not keys");}
+    }
+    /** The prefix operation applies to ALL rows when the first selected ID triggers it. */
+    public record SelectedModel(Model model,String requestedColumn,String effectiveColumn,
+                                String firstSourceVariant,boolean sourceB38PrefixApplied) {
+        public String sourceVariant(String effectiveVariant) {
+            Objects.requireNonNull(effectiveVariant);
+            if(!sourceB38PrefixApplied)return effectiveVariant;
+            if(!effectiveVariant.startsWith("chr"))throw new IllegalArgumentException("Not an effective ID from this prefixed model");
+            return effectiveVariant.substring(3);
+        }
+    }
 
     /** Refuse live WAL/journal state rather than capture an incomplete database. */
     public static void requireStandalone(Path file)throws IOException {
         for(String suffix:List.of("-wal","-shm","-journal"))if(Files.exists(Path.of(file.toString()+suffix),LinkOption.NOFOLLOW_LINKS))throw new IOException("PredictDB has a journal/WAL sidecar: "+file+suffix+". Export/checkpoint a separate closed database; no sidecar is silently discarded");
     }
     public static Model read(Path file,Limits limits,Runnable check)throws IOException {
-        Objects.requireNonNull(file);Objects.requireNonNull(limits);Objects.requireNonNull(check);check.run();
+        return readSelected(file,limits,new Key(null),check).model();
+    }
+    public static SelectedModel readSelected(Path file,Limits limits,Key key,Runnable check)throws IOException {
+        Objects.requireNonNull(file);Objects.requireNonNull(limits);Objects.requireNonNull(key);Objects.requireNonNull(check);check.run();
         Path path=file.toAbsolutePath().normalize();
         if(!Files.isRegularFile(path,LinkOption.NOFOLLOW_LINKS)||!path.toRealPath().equals(path)||Files.size(path)<100||Files.size(path)>limits.bytes())throw new IOException("Require a bounded canonical regular PredictDB SQLite file: "+path);
         requireStandalone(path);
@@ -48,19 +67,25 @@ public final class PredictDb {
                     }
                 }
             }
+            String requestedColumn=key.column()==null?"rsid":key.column(),selectedColumn=null;
+            try(var r=query.executeQuery("PRAGMA table_info(weights)")){while(r.next()){String actual=r.getString("name");if(actual.matches("[A-Za-z_][A-Za-z0-9_]{0,127}")&&requestedColumn.equalsIgnoreCase(actual))selectedColumn=actual;}}
+            if(selectedColumn==null)throw new IOException("PredictDB key column is absent: "+requestedColumn+". Inspect the actual weights schema and declare its literal column; no SNP_ID/varID/rsid alias or replacement is inferred");
             boolean hasPhi=false;try(var r=query.executeQuery("PRAGMA table_info(extra)")){while(r.next())if("phi".equals(r.getString("name")))hasPhi=true;}
             var weights=new ArrayList<Weight>();var grouped=new LinkedHashMap<String,List<Weight>>();var alleles=new HashMap<String,List<String>>();var pairs=new HashSet<List<String>>();
+            String firstSourceVariant=null;boolean prefix=false;
             query.setMaxRows(limits.weights()+1);
-            try(var r=query.executeQuery("SELECT rsid,gene,weight,ref_allele,eff_allele FROM weights")) {
+            // The key is a validated literal existing column, never an SQL expression.
+            try(var r=query.executeQuery("SELECT \""+selectedColumn+"\",gene,weight,ref_allele,eff_allele FROM weights")) {
                 while(r.next()) {
                     check.run();if(weights.size()>=limits.weights())throw new IOException("Complete PredictDB weight capacity exceeded");
-                    var w=new Weight(id(r,1),id(r,2),number(r,3,false),allele(r,4),allele(r,5));
+                    String raw=id(r,1);if(firstSourceVariant==null){firstSourceVariant=raw;prefix=key.column()!=null&&raw.contains("_b38")&&!raw.contains("chr");}
+                    var w=new Weight(prefix?"chr"+raw:raw,id(r,2),number(r,3,false),allele(r,4),allele(r,5));
                     if(w.referenceAllele().equals(w.effectAllele()))throw new IOException("PredictDB alleles are identical: "+w.variant());
                     if(!pairs.add(List.of(w.gene(),w.variant())))throw new IOException("Duplicate PredictDB gene/variant weight; no deduplication: "+w.gene()+"/"+w.variant());
                     var orientation=List.of(w.referenceAllele(),w.effectAllele());var old=alleles.putIfAbsent(w.variant(),orientation);
                     if(old!=null&&!old.equals(orientation))throw new IOException("Conflicting PredictDB allele orientation: "+w.variant());
                     if(!grouped.containsKey(w.gene())&&grouped.size()>=limits.genes())throw new IOException("Complete PredictDB gene capacity exceeded");
-                    grouped.computeIfAbsent(w.gene(),key->new ArrayList<>()).add(w);weights.add(w);
+                    grouped.computeIfAbsent(w.gene(),geneId->new ArrayList<>()).add(w);weights.add(w);
                 }
             }
             var extra=new LinkedHashMap<String,Extra>();query.setMaxRows(limits.genes()+1);
@@ -75,7 +100,8 @@ public final class PredictDb {
             }
             if(weights.isEmpty()||extra.isEmpty())throw new IOException("Empty PredictDB weights/extra; no complete model admitted");
             var immutable=new LinkedHashMap<String,List<Weight>>();grouped.forEach((k,v)->immutable.put(k,List.copyOf(v)));
-            requireStandalone(path);check.run();return new Model(List.copyOf(weights),Collections.unmodifiableMap(immutable),Collections.unmodifiableMap(extra),hasPhi);
+            requireStandalone(path);check.run();var model=new Model(List.copyOf(weights),Collections.unmodifiableMap(immutable),Collections.unmodifiableMap(extra),hasPhi);
+            return new SelectedModel(model,key.column(),selectedColumn,firstSourceVariant,prefix);
         }catch(SQLException failure){for(Throwable cause=failure;cause!=null;cause=cause.getCause())if(cause.getMessage()!=null&&cause.getMessage().toLowerCase(Locale.ROOT).matches("[\\s\\S]*(?:no native library|native library.*(?:load|found)|failed to load.*sqlite)[\\s\\S]*"))throw new Unavailable("SQLite native runtime cannot load. Supply the complete platform-supported JAR and a permitted executable temporary directory; dependent analysis skipped",failure);throw new IOException("Cannot read original PredictDB schema/values: "+path+"; no file is created or repaired",failure);}
         catch(LinkageError unavailable){throw new Unavailable("SQLite native library cannot load. Supply the complete platform-supported JAR and a permitted executable temporary directory; dependent analysis skipped",unavailable);}
     }

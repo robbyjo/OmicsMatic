@@ -27,14 +27,19 @@ final class MetaxcanRequest {
         boolean joint(){return mode.endsWith("-joint");}
         boolean individual(){return !summary();}
         boolean nativeEngine(){return engine.equals("native");}
+        int schemaVersion(){return ((Number)document.get("schema_version")).intValue();}
+        boolean extended(){return schemaVersion()==2;}
+        String modelKey(){return extended()?(String)((Map<?,?>)settings.get("model_key")).get("column"):null;}
+        boolean additionalOutput(){return extended()&&Boolean.TRUE.equals(settings.get("additional_output"));}
     }
     private MetaxcanRequest(){ }
     static Spec read(Path file,boolean live)throws IOException{String raw=utf8(bytes(file,1048576));if(raw.startsWith("\ufeff"))raw=raw.substring(1);return parse(object(SimpleJson.parse(raw)),live);}
     static Spec parse(Map<?,?> source,boolean live)throws IOException {
-        keys(source,"schema_version","edition","mode","genome_build","engine","data","settings","capacity","process");integer(source.get("schema_version"),1,1);
+        keys(source,"schema_version","edition","mode","genome_build","engine","data","settings","capacity","process");int schemaVersion=(int)integer(source.get("schema_version"),1,2);
         String edition=text(source.get("edition")),mode=text(source.get("mode")),build=text(source.get("genome_build")),engine=text(source.get("engine"));require(Set.of("native","original").contains(engine),"Choose explicit native or original execution");
         if(!EDITIONS.contains(edition))throw new Unavailable("No qualified exact MetaXcan source selection: "+edition+". Select a pinned tag/commit; tag v0.8.1 has internal package version0.7.5, not0.8.1");
         if(!MODES.contains(mode))throw new Unavailable("No qualified MetaXcan workflow mode: "+mode+". Prediction-model training belongs to a separate training workflow; it is not inferred from the MetaXcan name");
+        if(schemaVersion==2&&!mode.startsWith("summary"))throw new Unavailable("MetaXcan request schema2 qualifies summary modes; original individual workflows remain separate");
         if(engine.equals("native")&&!mode.startsWith("summary"))throw new Unavailable("The native MetaXcan workflow currently supports summary and summary-joint. Individual prediction/association requires its separately qualified original adapter; no engine is substituted");
         require(!build.isBlank()&&build.length()<=1024&&build.chars().noneMatch(c->c<32||c==127),"Require an explicit assembly/input-provider label; this does not verify assembly identity");
         var raw=object(source.get("capacity"));keys(raw,"models","genes","variants","samples","input_bytes","decoded_bytes","output_bytes","numeric_bytes","multiply_adds","wall_millis");
@@ -70,7 +75,12 @@ final class MetaxcanRequest {
         require(models.size()<=cap.models()&&expressions.size()<=cap.models(),"Declared model capacity exceeded");
         var settings=object(source.get("settings"));
         if(summary){
-            keys(settings,"calibration","joint_cutoff","regularization","keep_non_rsid","pvalue_policy");bool(settings.get("keep_non_rsid"));require(Set.of("source-default-divergent-floor","discard-divergent").contains(settings.get("pvalue_policy")),"Declare the original default divergent-P floor or discard-divergent (--input_pvalue_fix 0)");var calibration=object(settings.get("calibration"));String type=text(calibration.get("mode"));
+            if(schemaVersion==2){
+                keys(settings,"calibration","joint_cutoff","regularization","keep_non_rsid","pvalue_policy","model_key","additional_output");bool(settings.get("additional_output"));var key=object(settings.get("model_key"));keys(key,"column","identifier_handling");
+                if(key.get("column")==null)require("unchanged".equals(key.get("identifier_handling")),"Default rsid selection requires explicit unchanged identifiers");
+                else {String column=text(key.get("column"));require(column.matches("[A-Za-z_][A-Za-z0-9_]{0,127}"),"Select a literal PredictDB key column; SQL expressions are not allowed");require("source-b38-first-row-rule".equals(key.get("identifier_handling")),"Explicit model-key selection requires the declared original source b38 first-row prefix rule; no identifier transformation is inferred");}
+            }else keys(settings,"calibration","joint_cutoff","regularization","keep_non_rsid","pvalue_policy");
+            bool(settings.get("keep_non_rsid"));require(Set.of("source-default-divergent-floor","discard-divergent").contains(settings.get("pvalue_policy")),"Declare the original default divergent-P floor or discard-divergent (--input_pvalue_fix 0)");var calibration=object(settings.get("calibration"));String type=text(calibration.get("mode"));
             if(type.equals("source-uncalibrated"))keys(calibration,"mode");else if(type.equals("source-phi")){keys(calibration,"mode","gwas_samples","gwas_heritability");require(edition.equals("tag-0.8.1"),"Phi calibration belongs to explicit release-tag v0.8.1; no historical correction is inferred");integer(calibration.get("gwas_samples"),1,Long.MAX_VALUE);finite(calibration.get("gwas_heritability"));}else throw new IOException("Choose explicit source-uncalibrated or source-phi calibration");
             if(mode.equals("summary-joint")){jointCutoff(object(settings.get("joint_cutoff")));if(settings.get("regularization")!=null)require(finite(settings.get("regularization"))>=0,"Regularization must be nonnegative");}
             else require(settings.get("joint_cutoff")==null&&settings.get("regularization")==null,"Single-tissue summary requests require null joint_cutoff and regularization");

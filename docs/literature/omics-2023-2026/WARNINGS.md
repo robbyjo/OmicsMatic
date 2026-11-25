@@ -1,3 +1,19 @@
+# Current MetaXcan catalog checkpoint
+
+250 papers, 447 labels, 486 provider definitions and 2,726 observations; 1,786 reviewed/940 pending uses. 164 scoped families (31 native + 133 upstream), 167 including three existing adapters; 253 missing and13 method-overlap, with five validated alias labels excluded from extra credit. This checkpoint adds one native summary family, two aliases and two missing PredictDB training observations.
+
+Native Java S-PrediXcan and S-MulTiXcan summary association from complete PredictDB SQLite, GWAS, covariance and explicit joint model-product inputs. Source-compatible float32 GWAS Z, exact/swap alleles, used-SNP variance, explicit key/first-row b38 policy, optional additional statistics and phi calibration, all four explicit joint cutoffs, complete exclusion ledgers and exact-producer numerical replay on Windows/Linux. One scoped native family; PrediXcan and MultiXcan are aliases without extra family credit. No model training, individual prediction/association adapter, unreported author setting inference, complete package equivalence or historical study reproduction is claimed.
+
+PredictDB transcriptome model training remains a separate missing integration. A SQLite reader and generic elastic-net kernel do not implement nested CV, training QC, export or the author workflow. Obtain exact licensed training sources and corrected author inputs before training; selected tutorial license template establishes no grant. Keep P074 literal v7 and unreported editions unresolved.
+
+**Warnings and required actions:** SKIP3: dependent analysis skipped when the named permitted prerequisite is unavailable; supply it where allowed or retain the skip. FAIL2: no complete result for invalid/changed input, numerical, capacity or finalization failure. Read WARNINGS.md, OUTPUT-AUDIT.json and every disposition; preserve attempts and use NEW paths after correcting the cause. The deposited MESA wrapper selects absent SNP_ID and its R trainer fails parsing; neither was patched. Source-build required; old release downloads predate the command. Exact producer JARs and raw evidence stay private. Cell Ranger remains excluded; unfinished literature HTMLs remain withheld from Pages. Full250-paper goal remains open.
+
+See [workflow guide](../METAXCAN_WORKFLOWS.md) and [paper roles](../METAXCAN_PAPER_ROLES.md).
+
+---
+
+Earlier checkpoint text is historical.
+
 # Current GEMMA catalog checkpoint
 
 250 papers, 446 labels, 485 provider definitions and 2,724 observations; 1,776 reviewed/948 pending uses. 163 scoped families (30 native + 133 upstream), 166 including three existing adapters; 253 missing and 15 method-overlap. This admission adds one GEMMA upstream family and four source-role reviews. Its Java kinship component receives no duplicate native-family credit. The full goal remains unfinished.

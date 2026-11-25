@@ -33,8 +33,37 @@ before `-jar` when necessary. Missing support skips the dependent analysis with
 Prepare closed, standalone PredictDB databases and the matching provider's
 covariance file. A live `-wal`, `-shm` or `-journal` sidecar causes refusal:
 checkpoint/export a **separate** closed database first. The original is never
-opened for writing or repaired. The supported weight key is `rsid`, stored as
-text; this workflow does not select `varID` or add `chr` prefixes.
+opened for writing or repaired. Weight identifiers must be stored as text.
+The generated template uses request schema2. Existing schema1 requests keep
+their original `rsid`-only, exact-four-column behavior and saved profile.
+
+Schema2 requires both settings below explicitly:
+
+```json
+"model_key": {"column": null, "identifier_handling": "unchanged"},
+"additional_output": false
+```
+
+`column: null` uses `rsid` unchanged, just as omitting upstream
+`--model_db_snp_key` does. To select an existing alternate column, use for example:
+
+```json
+"model_key": {"column": "varID", "identifier_handling": "source-b38-first-row-rule"},
+"additional_output": true
+```
+
+The column must be a literal existing identifier, not an SQL expression. Matching
+uses SQLite's ASCII case-insensitive column semantics. An absent column fails;
+`SNP_ID` is never silently mapped to `rsid` or `varID`.
+
+**Source identifier rule:** with any explicitly selected column (including
+`"rsid"`), the original inspects its first row. If that identifier contains
+`_b38` and does not contain case-sensitive `chr`, it adds literal `chr` to
+**every** identifier in that model. A later identifier already beginning with
+`chr` therefore becomes `chrchr...`. If the first row already contains `chr`,
+no row is prefixed. This reproduces the source; it does not infer coordinates
+or repair individual identifiers. Review `OUTPUT-AUDIT.json` model-key decisions
+and both `source_variant` and effective `variant` in `MODEL-SNPS.jsonl`.
 
 Create a request template, then edit its absolute paths, column names, assembly,
 source edition, calibration and capacities. All illustrated values, including
@@ -144,7 +173,12 @@ The optional joint `model_product` input uses:
 gene model1 model2 value
 ```
 
-Whitespace separates these four columns. Entries for each gene must be contiguous.
+Whitespace separates the columns. Schema2 accepts these required names in any
+order and retains every unused column literally as `source_metadata` in
+`MATRICES.jsonl`; for example, the deposited MESA covariance includes a fifth
+`chr` column. Such metadata is captured but does not establish allele or assembly
+identity. Schema1 still requires the exact four-column headers above.
+Entries for each gene must be contiguous.
 Supply one triangle with all required pairs, including the diagonal; reverse or
 duplicate pairs are refused. Missing numeric entries are recorded as ignored.
 Used axes reproduce the source's first-ID rule. A missing required pair is never
@@ -161,6 +195,12 @@ be present. Select one explicit cutoff kind: `condition-number`, `eigen-ratio`,
 `trace-ratio` or `variance-threshold`. Optional nonnegative `regularization` is
 applied after deriving the cutoff, as upstream does. The first singular component
 is always retained. The Java CPU backend is selected explicitly.
+
+When `additional_output: true`, `outputs/summary.tsv` also contains source
+`best_gwas_p` (the two-sided normal P for the largest absolute used, rounded,
+aligned GWAS Z) and `largest_weight` (largest absolute used model weight).
+These use the SNP intersection before phi calibration; an ingested GWAS P
+column does not replace the source's Z-derived calculation.
 
 | Saved file | What to inspect |
 | --- | --- |
@@ -203,11 +243,31 @@ remains unfinished. Observed upstream issues include suppressed prediction
 exceptions, old text readers treating FID/IID as genes, the selected0.7.4
 MulTiXcan entrypoint missing a phenotype argument, and HDF5 byte-string gene
 labels under the tested environment. No original source was patched to hide them.
-Model-training attribution in the paper audit also remains unresolved.
+The [paper-role audit](METAXCAN_PAPER_ROLES.md) classifies all25 broad text matches
+across the250-paper corpus. It separates eight MetaXcan-family observations
+from two previously uncataloged PredictDB training observations. Catalog credit
+is one **scoped native summary family** with two alias labels; it does not
+certify a complete MetaXcan package, training pipeline or historical paper run.
+PredictDB training remains a separately named missing integration. The wider
+project goal remains active. The unfinished literature pages remain withheld
+from the website.
 
-This summary workflow does not by itself close the MetaXcan paper-role audit or
-add a fully qualified family to the250-paper catalog. The wider project goal
-remains active. The unfinished literature pages remain withheld from the website.
+**Deposited MESA example needs correction by its provider:** in the
+[author's CC-BY4.0 deposit](https://zenodo.org/records/18644222), `TWAS.sh` selects
+`SNP_ID`, but `EN-FM_model.db` has `rsid` and `varID` and no `SNP_ID` column.
+The literal wrapper request fails in all three pinned original editions and
+in this native command. Use an explicitly verified existing key with matching
+GWAS/covariance identifiers, or obtain corrected author inputs; do not rename
+columns by guesswork. The unchanged public database and covariance, combined
+with synthetic GWAS statistics, were checked with all three original editions
+and complete native captures on Windows/Linux. No cohort analysis was run.
+
+The same deposit's `EN-FM_model.R` fails an R parse-only check at line9,
+`library(doMC))`. Training was skipped without evaluating or patching it.
+Obtain a corrected, licensed trainer and validate its complete workflow before
+training. The selected older PredictDB tutorial's license page is an unfilled
+template, which does not establish permission to install or execute its code.
+Neither issue blocks the independently validated summary-association command.
 
 **SKIP3:** dependent implementation/platform/SQLite support unavailable; supply
 the named permitted prerequisite or retain the skip. **FAIL2:** invalid/changed
