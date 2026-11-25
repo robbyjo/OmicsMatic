@@ -44,4 +44,9 @@ aggregates prepared normalized-log2 ion measurements into protein quantities,
 with captured-input numerical replay and no R dependency during analysis.
 Raw mass-spectrometry search and Proteograph/PepCal preparation remain separate.
 
+The source-built [spectral-library annotation command](docs/literature/SPECTRAL_LIBRARY_ANNOTATIONS.md)
+extracts explicitly stated b/y fragment charges and numbers into separate columns,
+preserving every original field and record with complete captured-input replay.
+Raw-MS analysis and upstream runtime qualification remain separate.
+
 [GNU General Public License, version 3 or later](LICENSE).
