@@ -1,3 +1,19 @@
+# Current GEMMA catalog checkpoint
+
+250 papers, 446 labels, 485 provider definitions and 2,724 observations; 1,776 reviewed/948 pending uses. 163 scoped families (30 native + 133 upstream), 166 including three existing adapters; 253 missing and 15 method-overlap. This admission adds one GEMMA upstream family and four source-role reviews. Its Java kinship component receives no duplicate native-family credit. The full goal remains unfinished.
+
+Java PLINK hard-call centered/standardized kinship and SNP quality filtering, plus original unmodified GEMMA 0.98.1/0.98.3/0.98.5 Linux x86_64 univariate LMM1 Wald, LMM2 likelihood-ratio, LMM3 score and LMM4 all-tests fitting through gemma-tools. Explicit phenotype, covariates, sample-order sidecars, external kinship, QC, genome declaration and capacities are required. Complete inputs and all sample/SNP/output populations remain captured; exact-producer portable verification works on Windows and Linux. This is one scoped upstream family with a native component receiving no additional family credit. No source-version inference, PanGEMMA fallback, LOCO, multivariate/BSLMM model, phenotype BLUP derivation, imputation, pruning, optimizer convergence certificate, complete package equivalence or full paper reproduction is claimed.
+
+P102 reports 0.98.1, Wald trait GWAS and SV-eQTL, with first-three-PC adjustment in GWAS; its author IBS wording does not identify a -gk flag. P171 reports 0.98.3 and explicitly -gk 2; association modes are unreported. P176 literally reports 0.983 in both method paragraphs: the exact edition remains unresolved and is not silently mapped to 0.98.3. P248 reports 0.98.5 and precomputed BLUP phenotypes with first-three-PC adjustment; this does not establish GEMMA BSLMM/BLUP training. Author input formats and unreported settings remain unqualified.
+
+**Warnings and required actions:** SKIP3: DEPENDENT ANALYSIS SKIPPED when the exact permitted platform, runtime, installation, download, access or monitoring prerequisite is unavailable. Supply the named exact prerequisite through separate authorized setup, or retain the skip; analysis never installs software. FAIL2: NO COMPLETE RESULT for invalid/changing input/runtime, process/resource, cancellation, nonfinite/degenerate or inconsistent output, or finalization failure. Read WARNINGS.md, FAILURE.json, every QC.jsonl disposition, original logs and process stderr. Preserve all attempts and correct the cause using NEW paths. Original exit0 can accompany nan p-values; constant/covariate-explained phenotypes are refused. Original 0.98.1/0.98.3 score-mode logl_H1 zeros are uncomputed placeholders, not fitted likelihoods; 0.98.5 omits that column. Review lambda boundaries and retained near-zero-eigenvalue warnings. Keep exact producers and private evidence; never refresh historical seals. Earlier 0.4.1 release downloads predate this source-built command. Cell Ranger remains excluded. Unfinished literature HTMLs remain withheld from Pages. Hashes establish integrity, not authenticity or biological accuracy.
+
+See [workflow and source-role guide](../GEMMA_WORKFLOWS.md).
+
+---
+
+Earlier checkpoint text is historical.
+
 # Current CrossMap catalog checkpoint
 
 250 papers, 446 labels, 485 provider definitions and 2,724 observations; 1,772 reviewed/952 pending uses. 162 scoped families (30 native + 132 upstream), 165 including three existing adapters; 253 missing and 16 method-overlap. This admission adds one CrossMap upstream family and three reviews, refining the existing P242 review without duplicate credit. The full implementation goal remains unfinished.

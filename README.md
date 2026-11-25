@@ -30,5 +30,8 @@ See [runtime setup](docs/runtime-requirements.md).
 The current source build provides the exact-edition
 [nf-core ChIP-seq commands](docs/literature/NFCORE_CHIPSEQ_COMMANDS.md).
 It also provides original-edition [CrossMap BED, VCF and BigWig conversion](docs/literature/CROSSMAP_WORKFLOWS.md), with separate runtime setup and portable result verification.
+The source-built [GEMMA workflows](docs/literature/GEMMA_WORKFLOWS.md) add Java
+kinship and original univariate association fitting, with explicit sample/QC
+contracts, separate private runtime setup and portable result verification.
 
 [GNU General Public License, version 3 or later](LICENSE).
