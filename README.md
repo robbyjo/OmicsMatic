@@ -56,4 +56,9 @@ extracts explicitly stated b/y fragment charges and numbers into separate column
 preserving every original field and record with complete captured-input replay.
 Raw-MS analysis and upstream runtime qualification remain separate.
 
+The source-built [native contact-map insulation workflow](docs/literature/CONTACT_INSULATION.md)
+calculates weighted cis insulation and fixed numeric boundary strengths from
+complete prepared sparse tables, with captured-input numerical replay.
+Raw Cooler preparation, eigenvectors, dots and ALLCools remain separate.
+
 [GNU General Public License, version 3 or later](LICENSE).

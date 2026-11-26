@@ -1,3 +1,17 @@
+# Current native contact-insulation catalog checkpoint
+
+250 papers, 451 labels, 490 provider definitions and 2,731 observations; 1,809 reviewed / 922 pending uses. 167 scoped families (33 native + 134 upstream), 170 including three existing adapters. 254 labels remain missing, 13 method overlaps and five validated aliases. This checkpoint adds one native insulation family, seven source-role reviews and an expanded existing ALLCools review, with zero new papers, observations or providers. The full goal remains open.
+
+Native Java prepared weighted cis-map insulation and fixed numeric boundary strengths using the shared selected cooltools 0.5.1/0.5.4 numerical behavior. Complete typed bins/pixels, supplied weights, explicit settings, per-region median normalization, global per-window eligibility, source masks/prominence/order, full input/producer capture and portable numerical replay. One scoped native family. Raw Cooler IO/balancing, automatic thresholds, eigenvectors, dots, ALLCools and full author pipelines remain separate. A selected comparison tag does not authenticate an author commit.
+
+**Warnings and required actions:** SKIP3: the dependent analysis was skipped because a named permitted source, executable or installation prerequisite is unavailable. Supply it where permitted, or retain the skip. FAIL2: no complete result was admitted; preserve the attempt, correct the named input, resource, cancellation, arithmetic or consistency problem and retry NEW paths. Read WARNINGS.md and OUTPUT-AUDIT.json and require COMPLETED.json plus saved verification with the exact producing JAR. Native insulation uses >=; P053 reports >0.1 and that strict author rule is not silently substituted. Missing source score/strength markers are counted explicitly. ALLCools remains pending. MaxQuant runtime stays skipped at the user request; MaxQuant/Andromeda/MaxDIA remain pending. Cell Ranger remains excluded. Raw evidence stays private and literature reports remain withheld from Pages.
+
+See [contact-insulation workflow guide](../CONTACT_INSULATION.md).
+
+---
+
+Earlier checkpoint text is historical.
+
 # Current original DIA-NN catalog checkpoint
 
 250 papers, 451 labels, 490 provider definitions and 2,731 observations; 1,802 reviewed / 929 pending uses. 166 scoped families (32 native + 134 upstream), 169 including three existing adapters. 255 labels remain missing, 13 method overlaps and five validated aliases. This checkpoint adds one bounded original DIA-NN upstream family and zero papers, observations, provider definitions or source reviews.
