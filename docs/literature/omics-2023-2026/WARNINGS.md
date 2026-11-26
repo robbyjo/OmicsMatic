@@ -1,3 +1,17 @@
+# Current Merqury catalog checkpoint
+
+250 papers, 451 labels, 490 provider definitions and 2,731 observations; 1,812 reviewed / 919 pending uses. 169 scoped families (34 native + 135 upstream), 172 including three existing adapters; 252 missing labels, 13 method overlaps and five validated aliases. This admission adds one Merqury upstream family and three source reviews, expanding the existing P164 review. No paper, observation or provider is added. Native helpers receive no duplicate family credit. The full goal remains open.
+
+Complete ordinary k-mer counting, assembly QV/completeness/copy and assembly spectra, per-sequence QV/error tracks, optional defined source false duplication, and parental hap-mer construction through explicitly bound Merqury/Meryl workflows. Original1.1/1.3 controls remain separate from explicitly selected current1.4.1 native-boundary/palette mode. Java checks complete count populations, every position track and source equations; original binary databases are freshly decoded on admission and replay. Legacy1.1 TDF datasets are fully compared with deterministic coverage reconstructed from validated BED/FAI. This is one scoped upstream family with native helpers receiving no extra family credit. Homopolymer compression, full trio phasing, assembler execution, inferred author parameters, whole-package equivalence and full-paper reproduction remain unqualified.
+
+**Warnings and required actions:** Require COMPLETED.json, read WARNINGS.md and OUTPUT-AUDIT.json, and run merqury-tools --verify with a NEW scratch path, the exact producing JAR and unchanged bound Linux runtime. Missing/forbidden prerequisites give SKIP3 and skip dependent analyses; supply/install exact prerequisites only where permitted, otherwise retain the skip. FAIL2 admits no complete result: preserve the attempt, correct the named data/runtime, original-process, capacity, cancellation, undefined-rate or consistency failure and retry NEW paths. Original shell exit0 is insufficient; low-k-mer lookup and plotting failures remain retained. Inf/NaN and source1.1 21-base BED conventions remain explicit. Native first-depth output is not a repaired full ploidy report. No source fallback or source-version/compression inference occurs. MaxQuant runtime stays skipped and MaxQuant/Andromeda/MaxDIA pending; Cell Ranger remains excluded. Raw contexts/process/runtime/cleanup evidence stay private, literature HTMLs remain withheld from Pages, and earlier0.4.1 release downloads predate this source-built command.
+
+See [Merqury guide](../../MERQURY_TOOLS.md).
+
+---
+
+Earlier checkpoints below are historical.
+
 # Current native ALLCools posterior catalog checkpoint
 
 250 papers, 451 labels, 490 provider definitions and 2,731 observations; 1,809 reviewed / 922 pending uses. 168 scoped families (34 native + 134 upstream), 171 including three existing adapters. 253 labels remain missing, 13 method overlaps and five validated aliases. This checkpoint adds one scoped native ALLCools family and zero papers, observations, providers or source reviews. P047/P053 have a prepared posterior subset available; P060/P061 author roles remain pending. The full goal remains open.
