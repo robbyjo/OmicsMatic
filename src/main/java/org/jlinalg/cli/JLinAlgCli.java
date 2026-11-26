@@ -140,6 +140,8 @@ public final class JLinAlgCli {
                 return SpectralAnnotationCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("diffbind-tools"))
                 return DiffbindToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("ascat-objective"))
+                return AscatObjectiveCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("merqury-tools"))
                 return MerquryToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("allcools-region-quantify"))
