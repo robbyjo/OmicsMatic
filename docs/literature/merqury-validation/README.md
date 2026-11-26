@@ -25,3 +25,5 @@ python3 -B tools/literature/verify_merqury_workflows.py \
 ```
 
 The source audit scans the frozen 250-paper cohort. Catalog admission reviews three additional uses (P101, P171, P248) and expands P164's existing parental-database role. It grants no duplicate native family credit. The source audit's earlier pending-implementation fields are intentionally historical; the catalog admission record supplies the subsequent scoped qualification. The literature report HTML remains withheld from the hosted website.
+
+The separate [completion receipt](COMPLETION.json) records publication readback, website checks, verified temporary-file cleanup, preservation of other worktrees, and all nine saved replays after cleanup. Detailed process and cleanup traces remain private; the receipt publishes reviewed counts and hashes.
