@@ -1,3 +1,17 @@
+# Current original DIA-NN catalog checkpoint
+
+250 papers, 451 labels, 490 provider definitions and 2,731 observations; 1,802 reviewed / 929 pending uses. 166 scoped families (32 native + 134 upstream), 169 including three existing adapters. 255 labels remain missing, 13 method overlaps and five validated aliases. This checkpoint adds one bounded original DIA-NN upstream family and zero papers, observations, provider definitions or source reviews.
+
+Original separately permitted Linux x86_64 DIA-NN1.8/1.8.1/2.0.2 local library-free protein quantification, with explicit UniProt FASTA, tryptic C/UniMod4 and M/UniMod35 candidates, complete requested raw-run capture, fresh original prediction and raw fitting, original MBR/normalization and separately tested1.8RobustLC, supported full report/matrix/statistics consistency and exact-producer Windows/Linux saved readback. One scoped upstream family. Full execution controls use two complete distinct Bruker TDF runs and a limited1704-record reference; they do not reproduce a historical paper, whole-human database, every format or every DIA-NN mode.
+
+**Warnings and required actions:** SKIP3 skips a dependent analysis when its named permitted input/platform/runtime/install/access prerequisite is unavailable; supply it separately where allowed or retain the skip. FAIL2 admits no complete result for invalid/changed data, process, numerical, resource, cancellation or consistency failure. Keep all attempts and use NEW paths after correction. Read WARNINGS.md, OUTPUT-AUDIT.json and original logs; require COMPLETED.json and successful saved readback with the EXACT producing JAR. Original fragmentless-candidate omissions can include targets and decoys and remain visible. QuantUMS with fewer than six runs retains its optimization limitation; do not duplicate or silently change the cohort. MaxQuant runtime analyses stay skipped at the user request, with MaxQuant/Andromeda/MaxDIA pending. Cell Ranger remains excluded. Raw scientific/process/runtime evidence stays private; literature HTML reports remain withheld from Pages. The full 250-paper goal remains active.
+
+See [DIA-NN workflow guide](../DIA_NN.md).
+
+---
+
+Earlier checkpoint text is historical.
+
 # Current iq and proteomics catalog checkpoint
 
 250 papers, 451 labels, 490 provider definitions and 2,731 observations; 1,802 reviewed/929 pending uses. 165 scoped families (32 native + 133 upstream), 168 including three existing adapters. 256 labels remain missing, 13 method-overlap and five validated aliases. This checkpoint adds one native iq family, four newly named providers, five positive observations and 16 source-role reviews. Andromeda, MaxDIA and MACS iQ View remain missing; DIA-NN/MaxQuant remain missing. No duplicate family credit.

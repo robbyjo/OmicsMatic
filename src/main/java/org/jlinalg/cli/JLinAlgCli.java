@@ -138,6 +138,8 @@ public final class JLinAlgCli {
                 return IqToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("spectral-library-annotations"))
                 return SpectralAnnotationCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("diann-tools"))
+                return DiannToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("crossmap-tools"))
                 return CrossmapToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("cytometry-tools"))
@@ -613,6 +615,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar metaxcan-tools --help
               java -jar omicsmatic-<version>.jar iq-tools --help
               java -jar omicsmatic-<version>.jar spectral-library-annotations --help
+              java -jar omicsmatic-<version>.jar diann-tools --help
               java -jar omicsmatic-<version>.jar crossmap-tools --help
               java -jar omicsmatic-<version>.jar bigwig-tools --help
               java -jar omicsmatic-<version>.jar stringtie-tools --help

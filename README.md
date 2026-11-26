@@ -44,6 +44,13 @@ aggregates prepared normalized-log2 ion measurements into protein quantities,
 with captured-input numerical replay and no R dependency during analysis.
 Raw mass-spectrometry search and Proteograph/PepCal preparation remain separate.
 
+The [DIA-NN command](docs/literature/DIA_NN.md) is available from source for bounded
+local library-free protein quantification with original Linux 1.8, 1.8.1 and 2.0.2
+runtimes. Java captures and audits inputs and outputs; original prediction and
+raw fitting remain upstream. Complete two-run controls and Windows/Linux saved
+readback are validated. Supply a separately permitted runtime and read the
+scope limits and warning actions before analysis.
+
 The source-built [spectral-library annotation command](docs/literature/SPECTRAL_LIBRARY_ANNOTATIONS.md)
 extracts explicitly stated b/y fragment charges and numbers into separate columns,
 preserving every original field and record with complete captured-input replay.
