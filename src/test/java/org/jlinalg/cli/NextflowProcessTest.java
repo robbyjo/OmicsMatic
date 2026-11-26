@@ -29,6 +29,11 @@ class NextflowProcessTest {
     @Test void realSuccessRetainsOriginalOutputAndTerminalOwnership()throws Exception{
         if(!linux())return;var result=run("print('original-control')");assertEquals(0,result.exitCode());assertTrue(result.ownedLiveAfterCleanup().isEmpty());assertEquals("original-control\n",Files.readString(result.stdout()));assertTrue(Files.readString(result.ledger()).contains("completed-process-only"));
     }
+    @Test void explicitEnvironmentSessionPreservesHomeSelection()throws Exception{
+        if(!linux())return;var env=new java.util.HashMap<>(ENV);String home=System.getenv("HOME");if(home!=null)env.put("HOME",home);
+        var result=NextflowProcess.executeSessionEnvironment(List.of("/usr/bin/python3","-c","import os;print(repr(os.environ.get('HOME')))"),env,temp.resolve("record"),temp,temp,limits(10000,67108864,32),()->{},()->{});
+        assertEquals(home==null?"None\n":"'"+home+"'\n",Files.readString(result.stdout()));assertTrue(result.ownedLiveAfterCleanup().isEmpty());
+    }
     @Test void capturedInputSymlinkWorksWithoutFollowingItsBytesForCapacity()throws Exception{
         if(!linux())return;Path data=Files.writeString(temp.resolve("data.fa"),">test\nACGT\n");
         var result=run("import os,pathlib;os.symlink("+NextflowJson.json(data.toString())+",'staged.fa');pathlib.Path('result.fa').write_bytes(pathlib.Path('staged.fa').read_bytes())");

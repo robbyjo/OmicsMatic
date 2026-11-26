@@ -1,3 +1,17 @@
+# Current DiffBind catalog checkpoint
+
+250 papers, 451 labels, 490 provider definitions and 2,731 observations; 1,815 reviewed / 916 pending uses. 170 scoped families (34 native + 136 upstream), 173 including three existing adapters; 251 missing labels, 13 method overlaps and five validated aliases. This admission adds one DiffBind upstream family and three source reviews, expanding the existing P163 review. No paper, observation or provider is added. Native helpers receive no duplicate family credit. The full goal remains open.
+
+Complete BAM/BED consensus counting through original summarizeOverlaps, explicit LIB/RLE/TMM normalization and full/peak library sizes, additive source-factor contrasts with DESeq2 or edgeR, complete reports including source NULL selection, PCA and uniquely labeled correlation heatmaps through original DiffBind 3.24.0 / R 4.6.2. Single-end, paired-end and shared-control workflows are qualified. Java validates complete input BAM/BED populations and projects fitted DESeq2 rows against the full original namespace; upstream code fits and shrinks models. Complete model/count RDS, reports and PNGs are freshly replayed byte-for-byte. One scoped upstream family; native helpers receive no extra family credit. Historical author editions, inferred formulas/defaults, arbitrary R expressions or input RDS, custom GoodpeaksScript, randomized-pair generation, whole-package equivalence and full-paper reproduction remain unqualified.
+
+**Warnings and required actions:** Require COMPLETED.json, read WARNINGS.md and OUTPUT-AUDIT.json and all original source warnings/logs, then run diffbind-tools --verify with NEW scratch, the exact producing JAR and unchanged bound Linux runtime. Missing or forbidden prerequisites give SKIP3 and skip dependent analysis; supply/install exact prerequisites only where permitted, otherwise retain the skip and required action. FAIL2 admits no complete result: preserve the attempt, correct changed/invalid data/runtime, model failure, capacity exhaustion or cancellation and retry NEW paths. External JVM termination may return a signal exit code; interrupted captures remain incomplete. Original NULL selected reports and their warnings are preserved as valid empty selections, separate from failed models. test_fold changes the original hypothesis test AND report filter; it is not a post-hoc view-only cutoff. Repeated report headers remain ordinal columns. MaxQuant runtime stays skipped and MaxQuant/Andromeda/MaxDIA pending; Cell Ranger remains excluded. Raw XML/process/runtime/cleanup evidence stay private; literature HTMLs remain withheld from Pages. Existing 0.4.1 release downloads predate this source-built command.
+
+See [DiffBind guide](../../diffbind-tools.md).
+
+---
+
+Earlier checkpoints below are historical.
+
 # Current Merqury catalog checkpoint
 
 250 papers, 451 labels, 490 provider definitions and 2,731 observations; 1,812 reviewed / 919 pending uses. 169 scoped families (34 native + 135 upstream), 172 including three existing adapters; 252 missing labels, 13 method overlaps and five validated aliases. This admission adds one Merqury upstream family and three source reviews, expanding the existing P164 review. No paper, observation or provider is added. Native helpers receive no duplicate family credit. The full goal remains open.

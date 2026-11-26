@@ -138,6 +138,8 @@ public final class JLinAlgCli {
                 return IqToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("spectral-library-annotations"))
                 return SpectralAnnotationCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("diffbind-tools"))
+                return DiffbindToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("merqury-tools"))
                 return MerquryToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("allcools-region-quantify"))
@@ -625,6 +627,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar spectral-library-annotations --help
               java -jar omicsmatic-<version>.jar allcools-region-quantify --help
               java -jar omicsmatic-<version>.jar merqury-tools --help
+              java -jar omicsmatic-<version>.jar diffbind-tools --help
               java -jar omicsmatic-<version>.jar allcools-posterior --help
               java -jar omicsmatic-<version>.jar contact-insulation --help
               java -jar omicsmatic-<version>.jar diann-tools --help

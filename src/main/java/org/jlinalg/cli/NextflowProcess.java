@@ -63,13 +63,29 @@ final class NextflowProcess {
     /** Stable engine cwd/cache across attempts; each attempt owns new diagnostics. */
     static Result executeSession(List<String> command, Map<String,String> environment,Path newRecord,
             Path workingDirectory,Path allowedRoot,Limits limits,Check integrity,Runnable cancellation)throws IOException {
+        return executeSession(command,environment,newRecord,workingDirectory,allowedRoot,limits,integrity,cancellation,true);
+    }
+
+    /** Explicit-environment workflows retain the caller's HOME selection. */
+    static Result executeSessionEnvironment(List<String> command, Map<String,String> environment,Path newRecord,
+            Path workingDirectory,Path allowedRoot,Limits limits,Check integrity,Runnable cancellation)throws IOException {
+        return executeSession(command,environment,newRecord,workingDirectory,allowedRoot,limits,integrity,cancellation,false);
+    }
+
+    private static Result executeSession(List<String> command, Map<String,String> environment,Path newRecord,
+            Path workingDirectory,Path allowedRoot,Limits limits,Check integrity,Runnable cancellation,boolean ownedHome)throws IOException {
         NextflowFiles.directory(workingDirectory);
         if(!workingDirectory.startsWith(allowedRoot))throw new IOException("Nextflow session cwd escapes its owned root");
-        return execute(command,environment,newRecord,workingDirectory,allowedRoot,allowedRoot,limits,integrity,cancellation);
+        return execute(command,environment,newRecord,workingDirectory,allowedRoot,allowedRoot,limits,integrity,cancellation,ownedHome);
     }
 
     private static Result execute(List<String> command,Map<String,String> environment,Path newWork,Path workingDirectory,
             Path allowedRoot,Path observedRoot,Limits limits,Check integrity,Runnable cancellation)throws IOException {
+        return execute(command,environment,newWork,workingDirectory,allowedRoot,observedRoot,limits,integrity,cancellation,true);
+    }
+
+    private static Result execute(List<String> command,Map<String,String> environment,Path newWork,Path workingDirectory,
+            Path allowedRoot,Path observedRoot,Limits limits,Check integrity,Runnable cancellation,boolean ownedHome)throws IOException {
         Objects.requireNonNull(limits, "limits"); Objects.requireNonNull(integrity, "integrity"); Objects.requireNonNull(cancellation, "cancellation");
         if (!System.getProperty("os.name").equals("Linux")) throw new Unavailable("Owned Nextflow execution requires Linux Java");
         Path work = newWork.toAbsolutePath().normalize();
@@ -91,7 +107,7 @@ final class NextflowProcess {
             guard = new Guard(work); // The hook exists before ProcessBuilder.start.
             var cwd=workingDirectory.toAbsolutePath().normalize();
             var builder = new ProcessBuilder(invocation).directory(cwd.toFile()).redirectOutput(stdout.toFile()).redirectError(stderr.toFile());
-            var env = builder.environment(); env.clear(); env.putAll(environment); env.put("HOME", cwd.toString()); env.put("TMPDIR", cwd.toString());
+            var env = builder.environment(); env.clear(); env.putAll(environment); if(ownedHome)env.put("HOME", cwd.toString()); env.put("TMPDIR", cwd.toString());
             child = guard.launch(builder); record.put("owned_launcher_pid", child.pid()); record.put("status", "running");
             write(work.resolve("launch.json"), record); guard.observe();
             for (;;) {
