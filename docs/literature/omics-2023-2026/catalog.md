@@ -1,3 +1,13 @@
+# Current supplementary PDF evidence checkpoint
+
+250 papers, 453 named tool labels, 492 providers and 2,733 observations; 1,821 reviewed / 912 pending uses. 171 scoped families remain: 34 native + 137 upstream. ConstructASCATFiles and PREASCAT are now canonical supplement-backed observations; neither receives implementation credit. 252 labels remain missing. The full goal remains active.
+
+**Warnings and required actions:** SKIP3: ConstructASCATFiles/PREASCAT runtime analyses are skipped pending applicable license or permission from their own analysis-code rights holders. Obtain that permission before preparing and validating a private runtime, or retain the skip. Neither was installed, executed or redistributed. A bundled third-party license does not cover the authors' own code. Paper versions are unreported; inspected repository commits are not asserted author versions. The PDF parser reports a cross-reference table correction; original PDF bytes are unchanged, and the diagnostic identities/counts are retained. Raw PDFs/page text remain private. Missing permitted PDF/XML/parser prerequisites skip source validation (exit 3); changed evidence fails (exit 2). Restore the exact source/parser or correct a new reviewed locator in NEW paths; do not refresh old seals. Cell Ranger remains excluded; MaxQuant runtime remains skipped/pending. Literature HTMLs remain withheld from Pages.
+
+See [PDF evidence guide](../SUPPLEMENTARY_PDF_EVIDENCE.md). Earlier status checkpoints below are historical.
+
+---
+
 # Omics and GWAS paper catalog
 
 250 papers; 405 named tools; 2479 paper-tool observations.
@@ -2886,6 +2896,8 @@ Nature Genetics · 2023-10-26 · [DOI](https://doi.org/10.1038/s41588-023-01545-
 | dndscv | Estimated gene-level dN/dS across lesional and nonlesional skin and global selection for11 predefined gene sets; the figure description identifies a pentanucleotide model for pathway-level estimates. | Methods / Selection and driver analyses / Exome-wide driver discovery |
 | Picard | Alignment QC, duplicates and sequence processing. | Methods / DNA sequencing / Whole-exome sequencing |
 | SAMtools | Alignment manipulation and QC. | Methods / DNA sequencing / Whole-exome sequencing |
+| ConstructASCATFiles | Extracts coverage and BAF for common dbSNP150 GRCh38p7 sites inside the exome panel. | Supplementary PDF, physical page 7; https://pmc-oa-opendata.s3.amazonaws.com/PMC10632143.1/41588_2023_1545_MOESM1_ESM.pdf?md5=1404318e1881cb07856cda7892f268d2 |
+| PREASCAT | Performs coverage QC/PCA and generates normalized logR and BAF before ASCAT fitting. | Supplementary PDF, physical page 7; https://pmc-oa-opendata.s3.amazonaws.com/PMC10632143.1/41588_2023_1545_MOESM1_ESM.pdf?md5=1404318e1881cb07856cda7892f268d2 |
 
 XML SHA-256: `bbf17164639a6bbbb9d2437e32807e743c69abae1be5d1e39a9d8d83dcbdf46d`. Exact evidence paragraph hashes and locators are in [papers.json](papers.json).
 

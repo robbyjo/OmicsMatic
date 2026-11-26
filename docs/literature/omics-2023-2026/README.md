@@ -1,3 +1,13 @@
+# Current supplementary PDF evidence checkpoint
+
+250 papers, 453 named tool labels, 492 providers and 2,733 observations; 1,821 reviewed / 912 pending uses. 171 scoped families remain: 34 native + 137 upstream. ConstructASCATFiles and PREASCAT are now canonical supplement-backed observations; neither receives implementation credit. 252 labels remain missing. The full goal remains active.
+
+**Warnings and required actions:** SKIP3: ConstructASCATFiles/PREASCAT runtime analyses are skipped pending applicable license or permission from their own analysis-code rights holders. Obtain that permission before preparing and validating a private runtime, or retain the skip. Neither was installed, executed or redistributed. A bundled third-party license does not cover the authors' own code. Paper versions are unreported; inspected repository commits are not asserted author versions. The PDF parser reports a cross-reference table correction; original PDF bytes are unchanged, and the diagnostic identities/counts are retained. Raw PDFs/page text remain private. Missing permitted PDF/XML/parser prerequisites skip source validation (exit 3); changed evidence fails (exit 2). Restore the exact source/parser or correct a new reviewed locator in NEW paths; do not refresh old seals. Cell Ranger remains excluded; MaxQuant runtime remains skipped/pending. Literature HTMLs remain withheld from Pages.
+
+See [PDF evidence guide](../SUPPLEMENTARY_PDF_EVIDENCE.md). Earlier status checkpoints below are historical.
+
+---
+
 # Current ASCAT catalog checkpoint
 
 250 papers, 451 primary registry labels, 490 providers and 2,731 observations; 1,819 reviewed / 912 pending uses. 171 scoped families: 34 native + 137 upstream, 174 including three existing adapters; 250 primary labels missing, 13 method overlaps and five validated aliases. This admission adds one ASCAT upstream family and four source reviews, with no new primary paper/observation/provider. Two newly identified supplement tools are cataloged separately pending canonical evidence integration;451 is not a discovery ceiling. The full goal remains open.
