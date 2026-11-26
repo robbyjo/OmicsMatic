@@ -65,6 +65,8 @@ Saved verification checks the complete file/directory population and exact produ
 
 The declared bin, pixel-row, byte and cooperative wall limits cover complete populations. They are not JVM heap guarantees or immediate-interruption guarantees. Provide sufficient heap and resources for the full requested map; an out-of-memory attempt fails rather than admitting a truncated result.
 
+If averaging two finite central scores overflows, this profile fails with `FAIL2`. It does not rescale the values or admit the zero scores produced by division by an overflowed median. This is an explicit arithmetic restriction relative to the upstream warning-producing behavior. Keep the failed attempt and correct the input magnitude or preparation; do not use an older executable to bypass the refusal. The ordinary zero/NaN median semantics remain unchanged.
+
 ## Paper roles and qualified scope
 
 - [P003](https://doi.org/10.1038/s41586-025-09890-3) describes insulation using 25 kb bins, a 100 kb window and two ignored diagonals, plus separate compartment and loop analyses. Its insulation edition is unreported; dots has a separate 0.5.1 attribution. The native insulation profile does not supply the compartment/loop steps or identify an unreported author command/version.

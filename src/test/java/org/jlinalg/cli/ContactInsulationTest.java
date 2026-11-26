@@ -94,4 +94,13 @@ class ContactInsulationTest {
         assertEquals(3,ContactInsulationCli.run(new String[]{"--request",path.toString(),"--out",temporary.resolve("absent-capture").toString()},new PrintStream(out),new PrintStream(err)));
         assertTrue(err.toString(StandardCharsets.UTF_8).contains("SKIP3"));assertTrue(err.toString(StandardCharsets.UTF_8).contains("Required action:"));assertFalse(Files.exists(temporary.resolve("absent-capture")));
     }
+    @Test void finiteMedianAdditionOverflowFailsInsteadOfAdmittingZeroScores()throws Exception {
+        var settings=new PreparedInsulation.Settings(10,List.of(10L),0,0,0.66,0.1,100,1000,1000000);
+        Path overflow=fixture("median-overflow","1,1,1,1","0\t0\t1e308\n1\t1\t1e308\n2\t2\t1e308\n3\t3\t1e308\n");
+        var error=assertThrows(ArithmeticException.class,()->PreparedInsulation.calculate(overflow.resolve("inputs/bins.tsv"),overflow.resolve("inputs/pixels.tsv"),settings,()->{}));
+        assertTrue(error.getMessage().contains("median addition"));
+        Path finite=fixture("large-finite-median","1,1,1,1","0\t0\t1e307\n1\t1\t1e307\n2\t2\t1e307\n3\t3\t1e307\n");
+        var result=PreparedInsulation.calculate(finite.resolve("inputs/bins.tsv"),finite.resolve("inputs/pixels.tsv"),settings,()->{});
+        assertArrayEquals(new double[]{1,1,1,1},result.windows().get(0).rows().stream().mapToDouble(PreparedInsulation.Row::score).toArray());
+    }
 }

@@ -120,6 +120,10 @@ public final class CooltoolsDiamond {
         double[] present = Arrays.stream(values).filter(value -> !Double.isNaN(value)).toArray();
         if (present.length == 0) return Double.NaN;
         Arrays.sort(present); int middle = present.length / 2;
-        return present.length % 2 == 0 ? (present[middle - 1] + present[middle]) / 2 : present[middle];
+        if (present.length % 2 != 0) return present[middle];
+        double lower = present[middle - 1], upper = present[middle], sum = lower + upper;
+        if (Double.isFinite(lower) && Double.isFinite(upper) && !Double.isFinite(sum))
+            throw new ArithmeticException("Finite central scores overflow during median addition; no complete insulation result");
+        return sum / 2;
     }
 }

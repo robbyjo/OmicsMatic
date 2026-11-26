@@ -60,5 +60,7 @@ The source-built [native contact-map insulation workflow](docs/literature/CONTAC
 calculates weighted cis insulation and fixed numeric boundary strengths from
 complete prepared sparse tables, with captured-input numerical replay.
 Raw Cooler preparation, eigenvectors, dots and ALLCools remain separate.
+The [arithmetic validation supplement](docs/literature/contact-insulation-arithmetic/README.md)
+documents the explicit median-overflow refusal and unchanged reference-map results.
 
 [GNU General Public License, version 3 or later](LICENSE).
