@@ -138,6 +138,8 @@ public final class JLinAlgCli {
                 return IqToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("spectral-library-annotations"))
                 return SpectralAnnotationCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("allcools-posterior"))
+                return AllcoolsPosteriorCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("contact-insulation"))
                 return ContactInsulationCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("diann-tools"))
@@ -617,6 +619,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar metaxcan-tools --help
               java -jar omicsmatic-<version>.jar iq-tools --help
               java -jar omicsmatic-<version>.jar spectral-library-annotations --help
+              java -jar omicsmatic-<version>.jar allcools-posterior --help
               java -jar omicsmatic-<version>.jar contact-insulation --help
               java -jar omicsmatic-<version>.jar diann-tools --help
               java -jar omicsmatic-<version>.jar crossmap-tools --help

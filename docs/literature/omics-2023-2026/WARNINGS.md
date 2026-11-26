@@ -1,3 +1,17 @@
+# Current native ALLCools posterior catalog checkpoint
+
+250 papers, 451 labels, 490 provider definitions and 2,731 observations; 1,809 reviewed / 922 pending uses. 168 scoped families (34 native + 134 upstream), 171 including three existing adapters. 253 labels remain missing, 13 method overlaps and five validated aliases. This checkpoint adds one scoped native ALLCools family and zero papers, observations, providers or source reviews. P047/P053 have a prepared posterior subset available; P060/P061 author roles remain pending. The full goal remains open.
+
+Native Java ALLCools 1.0.8 prepared-count posterior fractions and M-value transforms, with complete contiguous float64 feature axes per cell/type, population variance, unmodified moment priors, explicit NumPy/xarray clipping, complete count/prior/output accounting, exact producer capture and portable numerical replay. The xarray branch can replace NaN with the clip value; raw posteriors and replacements remain visible. Near-zero normalized-M divisors have an explicit numerical refusal; no automatic rescaling or fallback occurs. This is one scoped native family. Raw ALLC/Tabix/Zarr IO, tensor/Dask layouts, dataset construction, feature selection, clustering, pseudobulk merging, SeuratIntegration, label transfer, BaseDS and DMS/DMR workflows remain separate. A selected comparison tag does not authenticate an author commit.
+
+**Warnings and required actions:** Inspect WARNINGS.md, OUTPUT-AUDIT.json and outputs/priors.tsv, especially zero coverage, degenerate priors, NaN/Inf values and xarray NaN-to-clip replacements. Require COMPLETED.json and saved verification with the exact producing JAR. FAIL2 admits no complete result: preserve the attempt, correct the named input, dimensions, capacity, cancellation, numeric or consistency problem and retry NEW paths. SKIP3 means the dependent analysis was skipped because a permitted prerequisite is unavailable; supply it where allowed or retain the skip. The native command needs no upstream runtime. Do not repair priors, impute counts or refresh old seals. MaxQuant runtime stays skipped; MaxQuant/Andromeda/MaxDIA remain pending. Cell Ranger remains excluded. Raw evidence stays private; literature reports remain withheld from Pages.
+
+See [ALLCools posterior guide](../ALLCOOLS_POSTERIOR.md).
+
+---
+
+Earlier checkpoints below are historical.
+
 # Current native contact-insulation catalog checkpoint
 
 250 papers, 451 labels, 490 provider definitions and 2,731 observations; 1,809 reviewed / 922 pending uses. 167 scoped families (33 native + 134 upstream), 170 including three existing adapters. 254 labels remain missing, 13 method overlaps and five validated aliases. This checkpoint adds one native insulation family, seven source-role reviews and an expanded existing ALLCools review, with zero new papers, observations or providers. The full goal remains open.

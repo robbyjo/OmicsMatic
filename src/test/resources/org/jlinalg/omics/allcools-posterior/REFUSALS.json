@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "status": "EXPLICIT_NATIVE_UNSTABLE_MVALUE_NORMALIZATION_REFUSALS",
+  "relative_roundoff_budget": 1e-11,
+  "logarithm_difference_allowance_ulps": 32,
+  "condition": "For normalized M values with a finite normalization divisor and at least one non-NaN value, refuse abs(mean_M) <= 32*ulp(max_abs_finite_M)/1e-11. No source value is repaired or substituted.",
+  "source_reference_fixture": {
+    "bytes": 4683181,
+    "sha256": "77b79e6898673afb1b4363fd1650497c38c41f7e0aaf6530d2252b5777a6f276"
+  },
+  "cases": [
+    {
+      "case": "bernoulli-xarray-m-value-True-None-0.01",
+      "original_M_mean": 0.0,
+      "maximum_finite_absolute_M": 6.658211482751795,
+      "minimum_admissible_absolute_mean": 0.0028421709430404007,
+      "source_normalized_values_retained": true
+    },
+    {
+      "case": "bernoulli-xarray-m-value-True-None-0.1",
+      "original_M_mean": 0.0,
+      "maximum_finite_absolute_M": 3.4594316186372973,
+      "minimum_admissible_absolute_mean": 0.0014210854715202004,
+      "source_normalized_values_retained": true
+    },
+    {
+      "case": "regular-xarray-m-value-True-None-0.0",
+      "original_M_mean": -2.2204460492503132e-17,
+      "maximum_finite_absolute_M": 1.0000000000000002,
+      "minimum_admissible_absolute_mean": 0.0007105427357601002,
+      "source_normalized_values_retained": true
+    },
+    {
+      "case": "regular-xarray-m-value-True-None-0.01",
+      "original_M_mean": -1.1102230246251565e-16,
+      "maximum_finite_absolute_M": 0.9788353900019581,
+      "minimum_admissible_absolute_mean": 0.0003552713678800501,
+      "source_normalized_values_retained": true
+    },
+    {
+      "case": "regular-xarray-m-value-True-None-0.1",
+      "original_M_mean": -1.3322676295501878e-16,
+      "maximum_finite_absolute_M": 0.8231222379159209,
+      "minimum_admissible_absolute_mean": 0.0003552713678800501,
+      "source_normalized_values_retained": true
+    },
+    {
+      "case": "near-uint32-xarray-m-value-True-None-0.01",
+      "original_M_mean": -1.6961469562204456e-08,
+      "maximum_finite_absolute_M": 6.658211482751795,
+      "minimum_admissible_absolute_mean": 0.0028421709430404007,
+      "source_normalized_values_retained": true
+    },
+    {
+      "case": "near-uint32-xarray-m-value-True-None-0.1",
+      "original_M_mean": -1.8322015016281057e-09,
+      "maximum_finite_absolute_M": 3.4594316186372973,
+      "minimum_admissible_absolute_mean": 0.0014210854715202004,
+      "source_normalized_values_retained": true
+    },
+    {
+      "case": "random-1024-xarray-m-value-True-None-0.0",
+      "original_M_mean": 0.0029992762476831747,
+      "maximum_finite_absolute_M": 11.350647164020824,
+      "minimum_admissible_absolute_mean": 0.0056843418860808015,
+      "source_normalized_values_retained": true
+    }
+  ],
+  "whole_package_qualified": false
+}
