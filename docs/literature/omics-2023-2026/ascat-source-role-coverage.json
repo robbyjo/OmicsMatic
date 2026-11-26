@@ -1,0 +1,365 @@
+{
+  "schema_version": 1,
+  "tool_id": "ascat",
+  "roles": [
+    {
+      "paper_id": "P111",
+      "qualification": {
+        "paper_id": "P111",
+        "pmcid": "PMC13649571",
+        "doi": "10.1038/s41588-026-02738-0",
+        "tool_id": "ascat",
+        "literal_package_version_reported_elsewhere": "3.2.0",
+        "use_summary": "Used ASCAT3.2.0 to infer allele-specific copy-number segments from targeted sequencing, using capture-region SNPs selected with normal samples and sequencing-derived logR/BAF. The WGS workflow separately uses ascatNgs.",
+        "remaining_scope": "The scoped original3.2.0 targeted panel/count/preparation/fitting APIs are available after qualification. Exact author reference sets, correction choices, bounds/penalty, homozygosity exclusion and the separate ascatNgs WGS pipeline are not inferred or reproduced. Original ASCAT3.2.0/R4.6.2 and ASCAT2.5.2/R4.0.2 matrix workflows; current original alleleCounter4.3.0 HTS/CRAM and targeted20-normal preparation; explicit correction, genotype prediction, separate or weighted joint segmentation, manual states, purity/ploidy fitting, complete per-locus/segment outputs, QC and plots. Both complete original100-sample examples match direct upstream model objects. Eight qualified captures have complete fresh binary/numerical replay. Java audits complete populations and original segment/objective functions; original R code fits models. One scoped upstream family; existing native helpers receive no extra family credit. Historical author recipes, ascatNgs, imported-estimate execution, whole-package equivalence and full-paper reproduction remain unqualified.",
+        "primary_anchors": [
+          {
+            "paper_id": "P111",
+            "pmcid": "PMC13649571",
+            "doi": "10.1038/s41588-026-02738-0",
+            "paragraph_index": 45,
+            "section": "Methods / DNA sequencing / Copy number calling",
+            "paragraph_sha256": "006ebecb0fdb902b8a57d969353860ae65f335147bedfe8354764e08fe6f6e5f"
+          },
+          {
+            "paper_id": "P111",
+            "pmcid": "PMC13649571",
+            "doi": "10.1038/s41588-026-02738-0",
+            "paragraph_index": 46,
+            "section": "Methods / DNA sequencing / Copy number calling",
+            "paragraph_sha256": "211b046c258f317c088b461968745e0bbc33ffa12f46ec715979d9ee8dfabbb6"
+          }
+        ],
+        "raw_catalog_observation_preserved": {
+          "tool_id": "ascat",
+          "tool": "ASCAT",
+          "analysis_role": "Allele-specific tumor copy-number analysis",
+          "evidence_section": "Methods / DNA sequencing / Copy number calling",
+          "evidence_paragraph_index": 46,
+          "matched_text": "ASCAT",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "3.2.0",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "211b046c258f317c088b461968745e0bbc33ffa12f46ec715979d9ee8dfabbb6",
+          "use_summary": "Allele-specific tumor copy-number analysis.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13649571/ (section: Methods / DNA sequencing / Copy number calling)"
+        },
+        "source_review_previously_present": false,
+        "implementation_available": true,
+        "implementation_status": "SCOPED_ORIGINAL_WORKFLOWS_AVAILABLE_AUTHOR_RECIPE_PENDING",
+        "source_role_review_status": "MANUAL_COMPLETE_MAIN_CONTEXT_AND_REFERENCED_SUPPLEMENT_REVIEW",
+        "whole_paper_reproduced": false,
+        "legacy_main_text_roles_preserved": [
+          {
+            "paragraphs": [
+              45
+            ],
+            "role": "WGS copy-number inference through the separate ascatNgs wrapper, with matched muscle germline controls or a grid-derived substitute where a germline sample was unavailable.",
+            "reported_version": null,
+            "qualification": "Wrapper integration remains pending; the R ASCAT component is not interchangeable with ascatNgs."
+          },
+          {
+            "paragraphs": [
+              46
+            ],
+            "role": "Targeted-sequencing allele-specific copy-number segments from capture-region SNPs identified with normal samples, allele counts, logR and BAF.",
+            "reported_version": "3.2.0",
+            "qualification": "Requires capture BED, normal-panel SNP selection, allele counting, sequencing preparation, correction, segmentation and complete model/QC. A highly homozygous case was excluded by the authors; the numerical component does not reproduce this decision."
+          }
+        ],
+        "supplementary_evidence": null,
+        "role_kind": "targeted sequencing",
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "literal_reported_version": "3.2.0",
+        "runtime_analysis_status": "SCOPED_EXPLICIT_ORIGINAL_PROFILES_AVAILABLE",
+        "full_source_role_implemented": false,
+        "paper_edition_reproduced": false,
+        "whole_package_qualified": false,
+        "new_family_credit": 0
+      }
+    },
+    {
+      "paper_id": "P129",
+      "qualification": {
+        "paper_id": "P129",
+        "pmcid": "PMC10703688",
+        "doi": "10.1038/s41588-023-01540-6",
+        "tool_id": "ascat",
+        "literal_package_version_reported_elsewhere": "2.5.2",
+        "use_summary": "Used ASCAT2.5.2 as a somatic copy-number comparator on short-read data and500 simulated genomes; evaluated breakpoint accuracy and total/allelic copy-number RMSE in10-kb bins. The separate400-genome AHR comparison and JaBbA graph workflow are not attributed to ASCAT.",
+        "remaining_scope": "Original2.5.2 matrix fitting is available under a separately qualified R4.0.2 runtime. Author SNP selection/count inputs, single-versus-joint segmentation, penalty and complete benchmark pipeline remain unspecified or separate. Notes3/6 describe GRCh37/BWA0.7.17, HapMap3.3/Rsamtools matched-normal ALT fraction strictly0.2to0.8,80X/40X simulation, correct-strand breakends within10kb and10-kb RMSE bins excluding >90percent CN-unmappable overlap. These details do not establish an ASCAT command recipe. Original ASCAT3.2.0/R4.6.2 and ASCAT2.5.2/R4.0.2 matrix workflows; current original alleleCounter4.3.0 HTS/CRAM and targeted20-normal preparation; explicit correction, genotype prediction, separate or weighted joint segmentation, manual states, purity/ploidy fitting, complete per-locus/segment outputs, QC and plots. Both complete original100-sample examples match direct upstream model objects. Eight qualified captures have complete fresh binary/numerical replay. Java audits complete populations and original segment/objective functions; original R code fits models. One scoped upstream family; existing native helpers receive no extra family credit. Historical author recipes, ascatNgs, imported-estimate execution, whole-package equivalence and full-paper reproduction remain unqualified.",
+        "primary_anchors": [
+          {
+            "paper_id": "P129",
+            "pmcid": "PMC10703688",
+            "doi": "10.1038/s41588-023-01540-6",
+            "paragraph_index": 4,
+            "section": "Main",
+            "paragraph_sha256": "c8dbb154449aeec8511500e45873dbc4591f67e1c54558c459c6f241b9e1bab1"
+          },
+          {
+            "paper_id": "P129",
+            "pmcid": "PMC10703688",
+            "doi": "10.1038/s41588-023-01540-6",
+            "paragraph_index": 7,
+            "section": "Results / JaBbA v1 outperforms previous CN algorithms",
+            "paragraph_sha256": "9238dffb407f9e3f0a36cb23291e97427a83cb95c1406fcd7711947f6e5c8930"
+          },
+          {
+            "paper_id": "P129",
+            "pmcid": "PMC10703688",
+            "doi": "10.1038/s41588-023-01540-6",
+            "paragraph_index": 44,
+            "section": "Methods / Short-read whole-genome sequencing",
+            "paragraph_sha256": "113d8c0b94e6b1b35d2a7b1fd4200ea5185347ca382b279b6ae646df12085a15"
+          },
+          {
+            "paper_id": "P129",
+            "pmcid": "PMC10703688",
+            "doi": "10.1038/s41588-023-01540-6",
+            "paragraph_index": 53,
+            "section": "Methods / Benchmarking",
+            "paragraph_sha256": "e5400aec6d85cbdb3e8eed5117458e51775eced1c3f94390f7cbc8c3bce922a7"
+          }
+        ],
+        "raw_catalog_observation_preserved": {
+          "tool_id": "ascat",
+          "tool": "ASCAT",
+          "analysis_role": "Allele-specific tumor copy-number analysis",
+          "evidence_section": "Methods / Short-read whole-genome sequencing",
+          "evidence_paragraph_index": 44,
+          "matched_text": "ASCAT",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": "2.5.2",
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "113d8c0b94e6b1b35d2a7b1fd4200ea5185347ca382b279b6ae646df12085a15",
+          "use_summary": "Allele-specific tumor copy-number analysis.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703688/ (section: Methods / Short-read whole-genome sequencing)"
+        },
+        "source_review_previously_present": false,
+        "implementation_available": true,
+        "implementation_status": "SCOPED_ORIGINAL_WORKFLOWS_AVAILABLE_AUTHOR_RECIPE_PENDING",
+        "source_role_review_status": "MANUAL_COMPLETE_MAIN_CONTEXT_AND_REFERENCED_SUPPLEMENT_REVIEW",
+        "whole_paper_reproduced": false,
+        "legacy_main_text_roles_preserved": [
+          {
+            "paragraphs": [
+              4,
+              7,
+              44,
+              53
+            ],
+            "role": "ASCAT 2.5.2 is a somatic copy-number comparator on short-read GRCh37 tumor/cell-line data and 500 simulated genomes. Benchmarking assesses same-strand breakends within 10 kb and total/allelic copy-number RMSE across 10-kb bins.",
+            "reported_version": "2.5.2",
+            "qualification": "JaBbA performance is not attributed to ASCAT. Supplementary Notes 3 and 6 remain required for the full recipe; retrieval failed. Legacy full segmentation under the installed R 4.6.2 failed and is not admitted."
+          }
+        ],
+        "supplementary_evidence": {
+          "source": {
+            "version": 1,
+            "pdf": {
+              "bytes": 537808,
+              "sha256": "efc27677e07027853335c664a2c904ac487887e098c92d77b49d828419959f6c"
+            },
+            "filename": "P129-v1-SUPPLEMENT.pdf",
+            "http": {
+              "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC10703688.1/41588_2023_1540_MOESM1_ESM.pdf?md5=2e534ffd485f87d72748833647bfcf37",
+              "final_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC10703688.1/41588_2023_1540_MOESM1_ESM.pdf?md5=2e534ffd485f87d72748833647bfcf37",
+              "status": 200
+            },
+            "official_metadata": {
+              "bytes": 3928,
+              "sha256": "222e119435e4f407df40fd0b2d30d583552183c939ec47889f0823af51a9f196"
+            },
+            "license_code": "CC BY",
+            "official_MD5": "2e534ffd485f87d72748833647bfcf37",
+            "all_original_article_XMLs_preserved": true
+          },
+          "reviewed_PDF_pages": [
+            6,
+            8,
+            9
+          ]
+        },
+        "role_kind": "copy-number benchmark comparator",
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "literal_reported_version": "2.5.2",
+        "runtime_analysis_status": "SCOPED_EXPLICIT_ORIGINAL_PROFILES_AVAILABLE",
+        "full_source_role_implemented": false,
+        "paper_edition_reproduced": false,
+        "whole_package_qualified": false,
+        "new_family_credit": 0
+      }
+    },
+    {
+      "paper_id": "P143",
+      "qualification": {
+        "paper_id": "P143",
+        "pmcid": "PMC11525181",
+        "doi": "10.1038/s41588-024-01883-8",
+        "tool_id": "ascat",
+        "literal_package_version_reported_elsewhere": null,
+        "use_summary": "Imported released TCGA purity/ploidy estimates from ASCAT ReleasedData/TCGA_SNP6_hg38. This is reuse of existing estimates, without a reported fresh ASCAT execution or software version.",
+        "remaining_scope": "Retain the released-estimate import role; fresh fitting with an explicitly selected profile is a different analysis. No historical execution, release provenance or version is inferred from the current comparison runtimes. Original ASCAT3.2.0/R4.6.2 and ASCAT2.5.2/R4.0.2 matrix workflows; current original alleleCounter4.3.0 HTS/CRAM and targeted20-normal preparation; explicit correction, genotype prediction, separate or weighted joint segmentation, manual states, purity/ploidy fitting, complete per-locus/segment outputs, QC and plots. Both complete original100-sample examples match direct upstream model objects. Eight qualified captures have complete fresh binary/numerical replay. Java audits complete populations and original segment/objective functions; original R code fits models. One scoped upstream family; existing native helpers receive no extra family credit. Historical author recipes, ascatNgs, imported-estimate execution, whole-package equivalence and full-paper reproduction remain unqualified.",
+        "primary_anchors": [
+          {
+            "paper_id": "P143",
+            "pmcid": "PMC11525181",
+            "doi": "10.1038/s41588-024-01883-8",
+            "paragraph_index": 49,
+            "section": "Methods / The TCGA cohort",
+            "paragraph_sha256": "4059cd74c393e7ada2401ef1795c611a6f1961bd1f32c2a9d0a58664477418e4"
+          }
+        ],
+        "raw_catalog_observation_preserved": {
+          "tool_id": "ascat",
+          "tool": "ASCAT",
+          "analysis_role": "Allele-specific tumor copy-number analysis",
+          "evidence_section": "Methods / The TCGA cohort",
+          "evidence_paragraph_index": 49,
+          "matched_text": "ASCAT",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "4059cd74c393e7ada2401ef1795c611a6f1961bd1f32c2a9d0a58664477418e4",
+          "use_summary": "Allele-specific tumor copy-number analysis.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525181/ (section: Methods / The TCGA cohort)"
+        },
+        "source_review_previously_present": false,
+        "implementation_available": false,
+        "implementation_status": "RELEASED_ESTIMATE_IMPORT_DISTINCT_FROM_FRESH_FITTING",
+        "source_role_review_status": "MANUAL_COMPLETE_MAIN_CONTEXT_AND_REFERENCED_SUPPLEMENT_REVIEW",
+        "whole_paper_reproduced": false,
+        "legacy_main_text_roles_preserved": [
+          {
+            "paragraphs": [
+              49
+            ],
+            "role": "Imports previously estimated TCGA purity and ploidy from the ASCAT ReleasedData/TCGA_SNP6_hg38 repository directory.",
+            "reported_version": null,
+            "qualification": "Released-estimate import is distinct from fresh ASCAT fitting. The main-text context does not report an ASCAT version or establish a fresh execution recipe."
+          }
+        ],
+        "supplementary_evidence": null,
+        "role_kind": "released estimate import",
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "literal_reported_version": null,
+        "runtime_analysis_status": "NOT_A_REPORTED_FRESH_EXECUTION_ROLE",
+        "full_source_role_implemented": false,
+        "paper_edition_reproduced": false,
+        "whole_package_qualified": false,
+        "new_family_credit": 0
+      }
+    },
+    {
+      "paper_id": "P146",
+      "qualification": {
+        "paper_id": "P146",
+        "pmcid": "PMC10632143",
+        "doi": "10.1038/s41588-023-01545-1",
+        "tool_id": "ascat",
+        "literal_package_version_reported_elsewhere": null,
+        "use_summary": "Used paired-germline exome copy-number analysis through ASCAT after ConstructASCATFiles coverage/BAF extraction and PREASCAT normalization, with segmentation penalty100 and additional sample/event filters. The core ASCAT version is unreported; WGS separately uses an internal ascatNgs4.5.0 workflow.",
+        "remaining_scope": "Core R version remains unreported. Matched normal exome fitting uses penalty100. Methods reject no-optimum or goodness<90percent, whereas extended results describe goodness>90percent; equality is not resolved. Filters remove <1Mb segments, chrX, described chr6Mb20to38 MHC and chr14Mb19 artifacts, matched-normal/shared-lesional-nonlesional/near-universal within-individual events, and samples with >10calls AND purity<0.4. Coordinate/overlap/event equivalence conventions are not invented. ConstructASCATFiles/PREASCAT runtime use is SKIP3 pending source-wide permission; internal ascatNgs4.5.0 and full author workflow remain unqualified. Original ASCAT3.2.0/R4.6.2 and ASCAT2.5.2/R4.0.2 matrix workflows; current original alleleCounter4.3.0 HTS/CRAM and targeted20-normal preparation; explicit correction, genotype prediction, separate or weighted joint segmentation, manual states, purity/ploidy fitting, complete per-locus/segment outputs, QC and plots. Both complete original100-sample examples match direct upstream model objects. Eight qualified captures have complete fresh binary/numerical replay. Java audits complete populations and original segment/objective functions; original R code fits models. One scoped upstream family; existing native helpers receive no extra family credit. Historical author recipes, ascatNgs, imported-estimate execution, whole-package equivalence and full-paper reproduction remain unqualified.",
+        "primary_anchors": [
+          {
+            "paper_id": "P146",
+            "pmcid": "PMC10632143",
+            "doi": "10.1038/s41588-023-01545-1",
+            "paragraph_index": 44,
+            "section": "Methods / Somatic mutation calling / Structural variant calling in the exome data with allele-specific copy number analysis of tumors",
+            "paragraph_sha256": "af67f32f6e38e270c9e9d3baec955687d47a5c1a1721da929766a26f356c5859"
+          }
+        ],
+        "raw_catalog_observation_preserved": {
+          "tool_id": "ascat",
+          "tool": "ASCAT",
+          "analysis_role": "Allele-specific tumor copy-number analysis",
+          "evidence_section": "Methods / Somatic mutation calling / Structural variant calling in the exome data with allele-specific copy number analysis of tumors",
+          "evidence_paragraph_index": 44,
+          "matched_text": "ascat",
+          "extraction_score": 15,
+          "usage_context": "analysis-method-description",
+          "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+          "version_reported_near_name": null,
+          "evidence_selection": "highest-scored-eligible-method-sentence",
+          "evidence_paragraph_sha256": "af67f32f6e38e270c9e9d3baec955687d47a5c1a1721da929766a26f356c5859",
+          "use_summary": "Allele-specific tumor copy-number analysis.",
+          "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632143/ (section: Methods / Somatic mutation calling / Structural variant calling in the exome data with allele-specific copy number analysis of tumors)"
+        },
+        "source_review_previously_present": false,
+        "implementation_available": true,
+        "implementation_status": "SCOPED_ORIGINAL_WORKFLOWS_AVAILABLE_AUTHOR_RECIPE_PENDING",
+        "source_role_review_status": "MANUAL_COMPLETE_MAIN_CONTEXT_AND_REFERENCED_SUPPLEMENT_REVIEW",
+        "whole_paper_reproduced": false,
+        "legacy_main_text_roles_preserved": [
+          {
+            "paragraphs": [
+              44
+            ],
+            "role": "Uses allele-specific tumor copy-number analysis in the exome structural-variant analysis, with further details delegated to Supplementary Notes 1 and 2.",
+            "reported_version": null,
+            "qualification": "Do not infer a generic junction SV caller, an ASCAT version, segmentation/model parameters or an author recipe. Supplement retrieval failed; full exome workflow interpretation remains open."
+          }
+        ],
+        "supplementary_evidence": {
+          "source": {
+            "version": 1,
+            "pdf": {
+              "bytes": 8348316,
+              "sha256": "c14e1946070b0a38156ff6786a9d6e83d5ecb2ff24f61d29d24600e3633db903"
+            },
+            "filename": "P146-v1-SUPPLEMENT.pdf",
+            "http": {
+              "url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC10632143.1/41588_2023_1545_MOESM1_ESM.pdf?md5=1404318e1881cb07856cda7892f268d2",
+              "final_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC10632143.1/41588_2023_1545_MOESM1_ESM.pdf?md5=1404318e1881cb07856cda7892f268d2",
+              "status": 200
+            },
+            "official_metadata": {
+              "bytes": 3084,
+              "sha256": "5cfa62ad30ee97ce0d19cb73bd4731160b6d083a9e411584d26fe2d97b17fcfb"
+            },
+            "license_code": "CC BY",
+            "official_MD5": "1404318e1881cb07856cda7892f268d2",
+            "all_original_article_XMLs_preserved": true
+          },
+          "reviewed_PDF_pages": [
+            7,
+            20
+          ]
+        },
+        "role_kind": "exome fitting and distinct WGS wrapper",
+        "ascatNgs_internal_version": "4.5.0",
+        "core_R_version_reported": null,
+        "segmentation_penalty": 100,
+        "goodness_equality_boundary_unresolved": true,
+        "preprocessing_tools": [
+          "ConstructASCATFiles",
+          "PREASCAT"
+        ],
+        "source_role_review_applied": true,
+        "catalog_admitted": true,
+        "literal_reported_version": null,
+        "runtime_analysis_status": "SCOPED_EXPLICIT_ORIGINAL_PROFILES_AVAILABLE",
+        "full_source_role_implemented": false,
+        "paper_edition_reproduced": false,
+        "whole_package_qualified": false,
+        "new_family_credit": 0
+      }
+    }
+  ],
+  "new_family_credit": 1,
+  "new_native_family_credit": 0,
+  "whole_paper_reproduced": false,
+  "additional_supplementary_named_tools": 2,
+  "primary_registry_expansion_pending": true
+}
