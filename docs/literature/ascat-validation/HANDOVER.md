@@ -1,0 +1,19 @@
+# ASCAT completion and remaining full-cohort work
+
+ASCAT implementation is complete within its [qualified scope](README.md), published in feature commit `17ab3b3c0cd2d3c389eae8e6af264005b9759343`. No release or tag was created. Earlier0.4.1 release downloads predate this source-built command. Use the [guide](../../ascat-tools.md), exact producing JAR and unchanged bound runtimes for replay.
+
+Current catalog:250 papers,451 primary labels,490 providers,2,731 observations;1,819 reviewed and912 pending uses. There are171 scoped families—34 native and137 upstream—or174 including three existing adapters.250 primary labels remain missing. ConstructASCATFiles/PREASCAT are two additional names in the [supplementary catalog](../ascat-source-audit-v2/SUPPLEMENTARY-TOOLS.json), outside those primary counts. The registry is not a discovery ceiling. The full goal is still active.
+
+Eight complete captures and eight fresh saved-input replays passed. Both original100-sample cohorts match complete direct upstream model objects. Sixteen focused Java tests passed on each OS and again after cleanup. Both full runtime censuses passed after cleanup. Original articles/data, failed attempts, runtime bindings, producing JARs and raw warnings remain at their retained private paths.
+
+**Keep the warning boundaries:**50,136 targeted min/max warnings arise from the directly diagnosed zero-homozygote empty-stretch branch in the retained experiment. Original code skips its NA bounds, and all25,068 final retained states match independent truth. Other runs need their own review. Regular-count synthetic data produced misleadingly high goodness of fit with incorrect recovery. The first SNP-allele oracle error, initial tumor-only no-optimum result, legacy GC singleton source error and earlier legacy-R incompatibility remain preserved. Do not repair source/data, manufacture samples, ignore warnings or refresh old seals to force success. Full author recipes, ascatNgs and released-estimate execution remain separate.
+
+Remaining work:
+
+1. Extend canonical catalog evidence to support genuine supplementary PDFs/pages. Integrate the two source-backed additional names without inventing XML paragraph locators or changing the frozen250-paper identities. Their paper versions remain unreported.
+2. Keep ConstructASCATFiles/PREASCAT runtime analyses skipped until applicable permission or licensing is obtained from their analysis-code rights holders. Neither was installed, executed or redistributed. Third-party SAMtools/IDE notices do not license their own code.
+3. Continue the remaining912 use reviews and prioritize eligible tools with broad omics/GWAS impact. The current pending inventory includes WASP, RFMix, Azimuth, velocyto and nf-core; inspect all source roles and existing project coverage before choosing the next implementation. Frequency alone should not prioritize license-gated instrument/GUI workflows.
+4. Preserve the user's Cell Ranger exclusion and MaxQuant runtime skip/pending decision, including pending Andromeda/MaxDIA. Do not ask again for already granted private academic-runtime permissions.
+5. For each next feature, qualify actual source behavior, retain failures and no-result states, publish only authorized artifacts, and perform verified task-local cleanup. Preserve shared runtimes, scientific evidence and unrelated checkouts. Current literature HTMLs remain withheld from Pages.
+
+The final cleanup removed verified compiler/cache/duplicate copies only. Required verification classes/references, source snapshots, JARs, recovery archive and scientific evidence remain. See `COMPLETION.json` for measured cleanup and preservation totals. Historical source contexts and the unpublished first metadata candidate remain retained; no original input, runtime, capture or replay seal was refreshed.
