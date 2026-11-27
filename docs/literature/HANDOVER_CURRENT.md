@@ -1,4 +1,20 @@
-# Current checkpoint: full original rnasplice reference graph (2026-11-27)
+# Current checkpoint: native rMATS result selection (2026-11-27)
+
+181 scoped families (36 native, 145 upstream), 1,864 reviewed uses and 870
+pending uses remain current. Native Java positional table import and exact
+raw-P/absolute-PSI selection now retain both ID columns, NA masks and declared
+JC/JCEC mode. This post-fit component adds zero whole-tool/family credit.
+13 tests, all 20 original tables on each host, 40 separate saved verifications
+and 20 synthetic/refusal cases pass. See [current handover](rmats-results-validation/HANDOVER.md),
+[qualification](rmats-results-validation/QUALIFICATION.json), and
+[guide](../rmats-results.md). The complete RNA adapter, remaining scientific
+contracts and full 250-paper implementation goal remain pending/active.
+Publication, preservation and mandatory cleanup closure are recorded in this
+checkpoint's COMPLETED.json when present. Earlier checkpoints are historical.
+
+---
+
+# Historical checkpoint: full original rnasplice reference graph (2026-11-27)
 
 181 scoped families (36 native, 145 upstream), 1,864 reviewed uses and 870
 pending uses remain current. All 128 original rnasplice test tasks completed;

@@ -142,6 +142,8 @@ public final class JLinAlgCli {
                 return NfcoreToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("nfcore-validation-tools"))
                 return NfcoreValidationToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("rmats-results"))
+                return RmatsResultsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("gemma-tools"))
                 return GemmaToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("metaxcan-tools"))

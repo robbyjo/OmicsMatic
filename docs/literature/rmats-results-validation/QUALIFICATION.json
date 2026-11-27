@@ -1,0 +1,481 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-27",
+  "status": "QUALIFIED_NATIVE_RMATS_POSTFIT_SELECTION_COMPONENT_ONLY",
+  "new_family_credit": 0,
+  "new_source_reviews": 0,
+  "whole_tool_reimplemented": false,
+  "whole_family_qualified": false,
+  "whole_paper_reproduced": false,
+  "whole_goal_complete": false,
+  "producer": {
+    "bytes": 214453282,
+    "sha256": "243c19afca2b5d9eb00c553d130f6fc0cd0e21ab1a98ee3e6d1fc70969dd2648"
+  },
+  "private_producer": "build/tool-audit-909/project-build-Windows-3/project-build/cli/omicsmatic-0.4.1.jar",
+  "catalog_totals": {
+    "papers": 250,
+    "scoped_families": 181,
+    "native": 36,
+    "upstream": 145,
+    "reviewed_uses": 1864,
+    "pending_uses": 870
+  },
+  "validation": {
+    "java_tests": {
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "complete_original_table_cases": 40,
+    "separate_saved_verifications": 40,
+    "original_tables_per_host": 20,
+    "original_rows_per_host": 1460,
+    "selected_rows_per_host": 191,
+    "unassessable_rows_per_host": 70,
+    "source_NA_tokens_per_host": 634,
+    "both_ID_columns_preserved": true,
+    "all9_result_files_byte_identical_between_hosts": true,
+    "synthetic_and_refusal_cases": 20,
+    "synthetic_case_results": {
+      "Windows": [
+        {
+          "case": "synthetic",
+          "exit_code": 0
+        },
+        {
+          "case": "saved-verify",
+          "exit_code": 0
+        },
+        {
+          "case": "zero-population",
+          "exit_code": 0
+        },
+        {
+          "case": "missing-input",
+          "exit_code": 3
+        },
+        {
+          "case": "wrong-replicates",
+          "exit_code": 2
+        },
+        {
+          "case": "invalid-count-mode",
+          "exit_code": 2
+        },
+        {
+          "case": "invalid-encoding",
+          "exit_code": 2
+        },
+        {
+          "case": "invalid-NaN",
+          "exit_code": 2
+        },
+        {
+          "case": "existing-output",
+          "exit_code": 2
+        },
+        {
+          "case": "forged-semantic-verification",
+          "exit_code": 2
+        }
+      ],
+      "Linux": [
+        {
+          "case": "synthetic",
+          "exit_code": 0
+        },
+        {
+          "case": "saved-verify",
+          "exit_code": 0
+        },
+        {
+          "case": "zero-population",
+          "exit_code": 0
+        },
+        {
+          "case": "missing-input",
+          "exit_code": 3
+        },
+        {
+          "case": "wrong-replicates",
+          "exit_code": 2
+        },
+        {
+          "case": "invalid-count-mode",
+          "exit_code": 2
+        },
+        {
+          "case": "invalid-encoding",
+          "exit_code": 2
+        },
+        {
+          "case": "invalid-NaN",
+          "exit_code": 2
+        },
+        {
+          "case": "existing-output",
+          "exit_code": 2
+        },
+        {
+          "case": "forged-semantic-verification",
+          "exit_code": 2
+        }
+      ]
+    },
+    "changed_prior_class_members": [
+      "org/jlinalg/cli/JLinAlgCli.class"
+    ],
+    "added_class_members": [
+      "org/jlinalg/cli/RmatsResultsCli$Missing.class",
+      "org/jlinalg/cli/RmatsResultsCli.class",
+      "org/jlinalg/splicing/RmatsResults$Decision.class",
+      "org/jlinalg/splicing/RmatsResults$Event.class",
+      "org/jlinalg/splicing/RmatsResults$Limits.class",
+      "org/jlinalg/splicing/RmatsResults$Row.class",
+      "org/jlinalg/splicing/RmatsResults$Table.class",
+      "org/jlinalg/splicing/RmatsResults$Threshold.class",
+      "org/jlinalg/splicing/RmatsResults.class"
+    ]
+  },
+  "original_source": {
+    "pipeline": "nf-core/rnasplice1.0.4",
+    "rMATS": "4.1.2",
+    "complete_original_engine_manifest": {
+      "bytes": 887424,
+      "sha256": "0c9765024bd2e0846aba9e524df7bfc5ae3fbd697db01655b0ee6689f9825218"
+    },
+    "tables": [
+      {
+        "name": "GBR-YRI-A3SS-JC.tsv",
+        "source_output": "star_salmon/rmats/GBR-YRI/rmats_post/A3SS.MATS.JC.txt",
+        "event": "A3SS",
+        "mode": "JC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 9328,
+        "sha256": "80032a25bf76e64d9fcb800baa169736c9c3987d80691629bbc36428e33a03a1"
+      },
+      {
+        "name": "GBR-YRI-A3SS-JCEC.tsv",
+        "source_output": "star_salmon/rmats/GBR-YRI/rmats_post/A3SS.MATS.JCEC.txt",
+        "event": "A3SS",
+        "mode": "JCEC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 9582,
+        "sha256": "e8572a9c8a9bd241c860e4fe2a4ab0908ad4ec48962269eb25a4857587c19608"
+      },
+      {
+        "name": "GBR-YRI-A5SS-JC.tsv",
+        "source_output": "star_salmon/rmats/GBR-YRI/rmats_post/A5SS.MATS.JC.txt",
+        "event": "A5SS",
+        "mode": "JC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 6696,
+        "sha256": "7afe3c280f4fd2adef6fde640a1956b7086e0af1c414ed329263ab91942e6bc9"
+      },
+      {
+        "name": "GBR-YRI-A5SS-JCEC.tsv",
+        "source_output": "star_salmon/rmats/GBR-YRI/rmats_post/A5SS.MATS.JCEC.txt",
+        "event": "A5SS",
+        "mode": "JCEC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 7316,
+        "sha256": "8711c35279149bfecbca820b711b7f1ed187d860c51cad126a1c4c4cef12287e"
+      },
+      {
+        "name": "GBR-YRI-MXE-JC.tsv",
+        "source_output": "star_salmon/rmats/GBR-YRI/rmats_post/MXE.MATS.JC.txt",
+        "event": "MXE",
+        "mode": "JC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 3617,
+        "sha256": "eef442e3bdf0dab542660576ef2803dd06621a2ae3a6168aad659330b1ea8b04"
+      },
+      {
+        "name": "GBR-YRI-MXE-JCEC.tsv",
+        "source_output": "star_salmon/rmats/GBR-YRI/rmats_post/MXE.MATS.JCEC.txt",
+        "event": "MXE",
+        "mode": "JCEC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 3708,
+        "sha256": "7cb23c80327330bd30351fe150822e5dc1c56d7560ca049d182a5258e0b4c1e1"
+      },
+      {
+        "name": "GBR-YRI-RI-JC.tsv",
+        "source_output": "star_salmon/rmats/GBR-YRI/rmats_post/RI.MATS.JC.txt",
+        "event": "RI",
+        "mode": "JC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 9018,
+        "sha256": "1a944a8e9f085a6a2659bb06830201449b959ec8998aff41211991cf693265db"
+      },
+      {
+        "name": "GBR-YRI-RI-JCEC.tsv",
+        "source_output": "star_salmon/rmats/GBR-YRI/rmats_post/RI.MATS.JCEC.txt",
+        "event": "RI",
+        "mode": "JCEC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 10571,
+        "sha256": "dc6ecfc56625c99138d02309731c07e5ef6da5e01efd433d4653f004da05e94c"
+      },
+      {
+        "name": "GBR-YRI-SE-JC.tsv",
+        "source_output": "star_salmon/rmats/GBR-YRI/rmats_post/SE.MATS.JC.txt",
+        "event": "SE",
+        "mode": "JC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 36354,
+        "sha256": "c7f173473bbff92375701df9705c9d79839affc6883ce8dbc4a7b87f208372f4"
+      },
+      {
+        "name": "GBR-YRI-SE-JCEC.tsv",
+        "source_output": "star_salmon/rmats/GBR-YRI/rmats_post/SE.MATS.JCEC.txt",
+        "event": "SE",
+        "mode": "JCEC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 38209,
+        "sha256": "bfe4750111849e4ad9d716ddc961788bf214a614fdb258c63d2b69d2ed76e501"
+      },
+      {
+        "name": "YRI-GBR-A3SS-JC.tsv",
+        "source_output": "star_salmon/rmats/YRI-GBR/rmats_post/A3SS.MATS.JC.txt",
+        "event": "A3SS",
+        "mode": "JC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 9318,
+        "sha256": "e27c7da6eaea5d61143d3a86df2f01d59e0d301953a3bb2d6442b991319baa90"
+      },
+      {
+        "name": "YRI-GBR-A3SS-JCEC.tsv",
+        "source_output": "star_salmon/rmats/YRI-GBR/rmats_post/A3SS.MATS.JCEC.txt",
+        "event": "A3SS",
+        "mode": "JCEC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 9577,
+        "sha256": "18e588ade743db7792f102f952095ffb00e53485bf347b35f21eeabc91b107be"
+      },
+      {
+        "name": "YRI-GBR-A5SS-JC.tsv",
+        "source_output": "star_salmon/rmats/YRI-GBR/rmats_post/A5SS.MATS.JC.txt",
+        "event": "A5SS",
+        "mode": "JC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 6691,
+        "sha256": "92fa0974bb3ba748d57b9bd3a4e642aa0cb0a175706f8fabfcf3a140d875587e"
+      },
+      {
+        "name": "YRI-GBR-A5SS-JCEC.tsv",
+        "source_output": "star_salmon/rmats/YRI-GBR/rmats_post/A5SS.MATS.JCEC.txt",
+        "event": "A5SS",
+        "mode": "JCEC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 7313,
+        "sha256": "5ea8894a5351e55e4538700b0cc8c9a3917a4e5eda50e8793f593ff79ca84447"
+      },
+      {
+        "name": "YRI-GBR-MXE-JC.tsv",
+        "source_output": "star_salmon/rmats/YRI-GBR/rmats_post/MXE.MATS.JC.txt",
+        "event": "MXE",
+        "mode": "JC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 3619,
+        "sha256": "c53d2d1864ed164dbd4aa9dfc4d69c442285c4a072f1748422ab761f3be7db48"
+      },
+      {
+        "name": "YRI-GBR-MXE-JCEC.tsv",
+        "source_output": "star_salmon/rmats/YRI-GBR/rmats_post/MXE.MATS.JCEC.txt",
+        "event": "MXE",
+        "mode": "JCEC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 3710,
+        "sha256": "ba6b5541806577574868babacb8161d5e7697145183935792e40017ad6105004"
+      },
+      {
+        "name": "YRI-GBR-RI-JC.tsv",
+        "source_output": "star_salmon/rmats/YRI-GBR/rmats_post/RI.MATS.JC.txt",
+        "event": "RI",
+        "mode": "JC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 9016,
+        "sha256": "0877a4056619014fa64b53292fb870ceb69b6c5d42a2879018810a92f7a60c31"
+      },
+      {
+        "name": "YRI-GBR-RI-JCEC.tsv",
+        "source_output": "star_salmon/rmats/YRI-GBR/rmats_post/RI.MATS.JCEC.txt",
+        "event": "RI",
+        "mode": "JCEC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 10564,
+        "sha256": "7f70863a8b6d3b0fae61d4ab5aa84f73c71f85823c0bd9348865c4e784e00f09"
+      },
+      {
+        "name": "YRI-GBR-SE-JC.tsv",
+        "source_output": "star_salmon/rmats/YRI-GBR/rmats_post/SE.MATS.JC.txt",
+        "event": "SE",
+        "mode": "JC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 36336,
+        "sha256": "ac956851b171741d4236efee5780372b90c296589aa1a2294d22a36e21c59f81"
+      },
+      {
+        "name": "YRI-GBR-SE-JCEC.tsv",
+        "source_output": "star_salmon/rmats/YRI-GBR/rmats_post/SE.MATS.JCEC.txt",
+        "event": "SE",
+        "mode": "JCEC",
+        "groups": [
+          2,
+          2
+        ],
+        "bytes": 38259,
+        "sha256": "51eae1c2028828e415fc1abecafa2ccbdb2eda97820cb7f8258cded99ab8eb16"
+      }
+    ],
+    "raw_tables_or_traces_published": false,
+    "runtime_version_observation": {
+      "status": "EXACT_ORIGINAL_RMATS412_VERSION_MEMBER_OBSERVED",
+      "original_manifest": {
+        "bytes": 887424,
+        "sha256": "0c9765024bd2e0846aba9e524df7bfc5ae3fbd697db01655b0ee6689f9825218"
+      },
+      "source_output": "pipeline_info/software_versions.yml",
+      "source_pin": {
+        "bytes": 1475,
+        "sha256": "1df2ae1274d515044a009fdcf4c17a7b829c398ea127b4e1eaec749ea326fdee"
+      },
+      "process": "RMATS_POST",
+      "tool": "rmats",
+      "version": "4.1.2",
+      "raw_runtime_or_trace_published": false
+    }
+  },
+  "reference": {
+    "official_field_semantics": "https://github.com/Xinglab/rmats-turbo/blob/v4.1.2/README.md#output",
+    "independent_projection": "tools/literature/rmats_results_original_reference.py",
+    "upstream_workflow_applied_this_cutoff": false,
+    "source_version_conflict_resolved": false
+  },
+  "public_files": {
+    "src/main/java/org/jlinalg/splicing/RmatsResults.java": {
+      "bytes": 10255,
+      "sha256": "ac7efec3e6d4403e8a583fe5279372e4702b93695dffc1a67518b1f33b315498"
+    },
+    "src/main/java/org/jlinalg/cli/RmatsResultsCli.java": {
+      "bytes": 11738,
+      "sha256": "78c8c4bfbda2f8bb24088c1666e56d8dd4f097b8e3626abe99f8d4b3b1047d18"
+    },
+    "src/main/java/org/jlinalg/cli/JLinAlgCli.java": {
+      "bytes": 68533,
+      "sha256": "e35ead84a0a0c44a87228a2310dba0895e88e3e45745689f8d33b4c128b8b347"
+    },
+    "src/test/java/org/jlinalg/splicing/RmatsResultsTest.java": {
+      "bytes": 5991,
+      "sha256": "b06ea3542a1b48f46e0414d85d20b737b0d383e04be68d202465ed7260590f49"
+    },
+    "src/test/java/org/jlinalg/cli/RmatsResultsCliTest.java": {
+      "bytes": 4181,
+      "sha256": "d9590bc98c5f2bc5aaad993fb8e93eee4a0cedd14dde48dab305cbc3138cb707"
+    },
+    "tools/literature/rmats_results_original_reference.py": {
+      "bytes": 2084,
+      "sha256": "8f9d9cc6e320c7c2f4987df1e51f7ca4d505d50182b1b6737ef47083de61045c"
+    },
+    "examples/rmats-results/create_example.py": {
+      "bytes": 1288,
+      "sha256": "e2f1a6bda8470198c71c57338de1c8ec7453ce0a9590740dd18fc533d4b195c5"
+    },
+    "examples/rmats-results/README.md": {
+      "bytes": 1075,
+      "sha256": "c66a0a0e65bd267a0be0c043f8ac598f08645d6bc4229b466a1a7154c07e81b5"
+    },
+    "docs/rmats-results.md": {
+      "bytes": 4447,
+      "sha256": "c90b6375cc74bea75c9ae9588b0ed0843d672daeec34128ae37113e46566ded4"
+    },
+    "docs/literature/rmats-results-validation/HANDOVER.md": {
+      "bytes": 2570,
+      "sha256": "e857ea66597e9e5a823dfc07b8cabeb82b6459feb1ec07a781d24ac660baf482"
+    }
+  },
+  "private_evidence": {
+    "project-build-Windows-3/COMPLETED.json": {
+      "bytes": 451,
+      "sha256": "28c0a705d738e931a8e5deeaf2347600b7d0f02ef7e472d76c4dfae41ab04ba2"
+    },
+    "project-build-Windows-3/SOURCES.json": {
+      "bytes": 1205,
+      "sha256": "29ad1e4d19ed0b1fc5551124415d619fb0ac4ff5d0e2f86a15fab6746c8d3d6d"
+    },
+    "original-reference-1/INPUTS.json": {
+      "bytes": 6860,
+      "sha256": "32a9e0bc0b3677580c7a5277993284a78a1b8e50adf4af40aea17a0e7aaed2f4"
+    },
+    "original-comparison-2/COMPLETED.json": {
+      "bytes": 131738,
+      "sha256": "23ac70b29b3f35a1796a2882ca4632491f94744e40ac216a593038989d562422"
+    },
+    "synthetic-controls-2/COMPLETED.json": {
+      "bytes": 16964,
+      "sha256": "9dd1cd335a299f9cb9ff24bf194cab6814e98c6c385db163062f3b8bbc05420d"
+    }
+  },
+  "release_created": false,
+  "literature_pages_deployed": false
+}
