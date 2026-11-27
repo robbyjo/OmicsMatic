@@ -110,3 +110,7 @@ Remove verified stale temporary compiler/cache copies after validation and
 publication, record measured space changes, and rerun affected original workflows
 before reporting completion. Keep governed study data, evidence, original inputs,
 active jobs, required runtimes and persistent refs.
+
+## Publication and cleanup verified
+
+Feature commit `e327b06f465dddd6c8e734a648d8f8f865d7f3f9` is on GitHub main; all 48 feature files passed full hosted byte verification. The separate [completion receipt](COMPLETION.json) records verified compiler cleanup, both recovery archives, measured host/Linux free-space changes and the successful post-cleanup original v1.4 node replay with all 17 variant records and complete native audits unchanged. Both required producing JARs, scientific evidence, original inputs, runtimes, 18 foreign worktrees and 51 tracked foreign edits remain preserved. The full goal continues with 894 pending source-use reviews and 247 missing named labels.
