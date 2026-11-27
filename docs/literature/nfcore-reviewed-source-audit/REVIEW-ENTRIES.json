@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "reviews": [
+    {
+      "pmcid": "PMC11964931",
+      "doi": "10.1038/s41586-024-08515-5",
+      "tool_id": "nfcore",
+      "evidence_paragraph_sha256": "1f645f2ce00682d71111e245d3ea612de2a76106f25d7db551d4f4c3e88b1501",
+      "use_summary": "Used an unversioned eager workflow to map enriched ancient treponemal libraries to the Nichols reference, with SNP profiles requiring at least four supporting reads. Separately, eager 2.4.4 with Nextflow 21.04.1 performed read processing, human-read removal and historical-database MALT/HOPS screening; eager 2.3.4 processed human ancestry data against hg19 with damage and contamination assessment. Custom pseudo-haploid genotyping and population-genetic selection were separate downstream steps.",
+      "implementation_scope_note": "Do not assign the screening edition to the unversioned capture-mapping branch or the ancestry branch. Preserve the historical bacterial/viral database dates and selection rules, including the incompletely specified eukaryotic set. The two RAZ007 Treponema read counts, three and two, were unassessable in HOPS, not negative results. Preserve the paper literals samtools c1.12 and dedup v0.21.8; do not silently reconcile their source/environment discrepancies. The ancestry branch reports eager 2.3.4, GRCh37/hg19, AdapterRemoval length 30/base-quality 20, BWA 0.7.12 seed 32, mapDamage 2.0, ANGSD 0.935, targeted-chromosome sex ratios, then separate mpileup/custom pileupCaller random-draw genotyping and a strict >10,000-SNP retention rule. Its exact Nextflow edition is unreported. Existing eager components do not qualify all these distinct recipes; permission for GATK 3.8 is not assumed to cover the source environments GATK 3.5. Primary-source review alone does not admit a runtime analysis, prove an executed author recipe, certify a complete tool family or reproduce a paper.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 7,
+          "section": "Screening and capturing ancient treponemal DNA",
+          "paragraph_sha256": "f0c2eb0d76fabd67fb9e3670cfe85d7f5500b4386fa14cee6e7c6296aa7ff09c",
+          "matching_text_sha256": "c4c7315bb15360b3741e57ba1322dc6a42d0f67b0b452b41625b85fc2dac8afb"
+        },
+        {
+          "paragraph_index": 32,
+          "section": "Methods / Human ancestry analyses",
+          "paragraph_sha256": "99934757bff8c500683f39336ea1cce9502bf5dff7d2f2a4df69f5195d1298f1",
+          "matching_text_sha256": "3ca6b81445f8e7e92b843b3ddb2fbde083c8676744a68f122f80e8911be985eb"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12779559",
+      "doi": "10.1038/s41586-025-09853-8",
+      "tool_id": "nfcore",
+      "evidence_paragraph_sha256": "76b069f028fbfb36467f2cec531f8269ec9ade098f9c5d8ca81044d51ae6b795",
+      "use_summary": "Used nf-core/rnasplice 1.0.4 with Nextflow 24.04.4 for FastQC, TrimGalore and STAR processing of C. elegans RNA-seq, primarily for rMATS 4.1.2 alternative-splicing analysis. The paper reports WBcel235/ce11, FastQC 0.12.1, TrimGalore 0.6.7 and STAR 2.7.9a. Differential events required absolute deltaPSI at least 0.05 and raw P below 0.05; boxplot visualization was separate.",
+      "implementation_scope_note": "Keep the inclusive deltaPSI boundary and strict raw-P boundary; FDR is not an interchangeable criterion. Original rnasplice 1.0.4 source selects STAR 2.7.10a, conflicting with the reported 2.7.9a. The complete author parameters, contrast/replicate design, overrides and executed source revision are not established by the pipeline name. The linked plotting source was inspected read only and supplies no license declaration or complete pipeline command. The upstream human chromosome-X software control does not reproduce this worm experiment; the RNA execution trial and scientific output contracts remain unqualified. Primary-source review alone does not admit a runtime analysis, prove an executed author recipe, certify a complete tool family or reproduce a paper.",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC11754113",
+      "doi": "10.1038/s41586-024-08314-y",
+      "tool_id": "nfcore",
+      "evidence_paragraph_sha256": "b026c4fa4db8c3fbbe890f3ee900314fd06bd1f4593b5d630a041398dab09c64",
+      "use_summary": "Used nf-core/chipseq 2.0.0 with default parameters for adapter/quality trimming, reported BWA 0.7.17-r1188 alignment against hg38/mm10 and duplicate/low-quality/problematic-region filtering. Mouse spike-in scaling, selected CXXC1/MED12 MACS2 calls and subsequent blacklist removal were separately described analyses.",
+      "implementation_scope_note": "The exact Nextflow edition is unreported. Preserve the quotient of the human:mouse ChIP and input ratios rather than inventing a different spike-normalization denominator. CXXC1 used pooled AAVS1-knockout donor BAMs with input background; MED12 used pooled donor BAMs and MED12-knockout background. The reported MACS2 version is 2.2.6 with -q 0.05. A selected original chipseq 2.0.0 software control does not establish those paper-specific control choices, scaling, inputs or every internal package version. Primary-source review alone does not admit a runtime analysis, prove an executed author recipe, certify a complete tool family or reproduce a paper.",
+      "supporting_evidence": []
+    },
+    {
+      "pmcid": "PMC10781626",
+      "doi": "10.1038/s41586-023-06821-y",
+      "tool_id": "nfcore",
+      "evidence_paragraph_sha256": "7c82ee1cdcd75de24dc88a845a82d71b4343a5d28abfa3fbfe76d9a1852c88fa",
+      "use_summary": "Used an unversioned nf-core ChIP-seq workflow with standard parameters for intersample comparisons and pipeline-hosted HOMER peak annotation. A second unversioned workflow, literally named nf-core ATAQ-SEQ, performed reported ATAC read processing against ME49 and comparative broad-peak analysis. Its paragraph also describes MACS2/HOMER annotation and featureCounts/DESeq2 comparisons between untreated and 24-hour IAA samples.",
+      "implementation_scope_note": "Mapping the paper spelling ATAQ-SEQ to nf-core/atacseq is explicitly an inference. Neither pipeline edition nor an exact Nextflow version is reported. Keep bwa2 and Picard duplicate-read merging as written, without substituting BWA-MEM2 or duplicate marking. The preceding Arraystar/BOWTIE V2/Bamtools/MACS processing, BedGraphToBigWig and deepTools visualization are separate descriptions, not a complete nf-core command. The demultiplexing spelling bcl2fastq V3 and its separate runtime/license boundary remain preserved. Do not infer versions or defaults from neighboring tools or publication date. Primary-source review alone does not admit a runtime analysis, prove an executed author recipe, certify a complete tool family or reproduce a paper.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 47,
+          "section": "Methods / ATAC–seq",
+          "paragraph_sha256": "e12f052ce57697b8e37d8ec7c8a80fa989609538f6306ff7fa68796b68b05b62",
+          "matching_text_sha256": "0dbbb393a74ec209754af998cbd78748fe02ef17dcb342dfa4a3b911920fb5cd"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC11525171",
+      "doi": "10.1038/s41588-024-01900-w",
+      "tool_id": "nfcore",
+      "evidence_paragraph_sha256": "7401946d396e4210169bf1b1d031e339119b3382fee7ca493fd005c95f212644",
+      "use_summary": "Used nf-core/chipseq 1.2.1 with default parameters for five histone marks and CTCF in six colorectal-cancer cell lines, and nf-core/atacseq 1.2.1 with default parameters for Omni-ATAC in eight cell lines. BAMs from the ChIP workflow were subsequently binarized for a separate ChromHMM 1.24 chromatin-state analysis.",
+      "implementation_scope_note": "Five histone marks plus CTCF are six targets, not six histone marks plus CTCF. Keep the six-cell-line ChIP and eight-cell-line ATAC populations distinct. Neither exact Nextflow edition is reported. ChromHMM binarization and 15-state learning are downstream operations, not evidence that nf-core performed state modeling. The qualified original1.2.1 software controls do not reconstruct the human ChIPmentation/Omni-ATAC input libraries, commands or complete paper recipes. Primary-source review alone does not admit a runtime analysis, prove an executed author recipe, certify a complete tool family or reproduce a paper.",
+      "supporting_evidence": [
+        {
+          "paragraph_index": 32,
+          "section": "Methods / Omni-ATAC",
+          "paragraph_sha256": "f52aedbebbfeefc0bc1812321e6fd95da579138cacd29bc3244f2bdf00960137",
+          "matching_text_sha256": "dbd6d4f1dd4fa5ad86d2d20b36be9522ddf1e35052717d4eacce2ed35af0f8a7"
+        },
+        {
+          "paragraph_index": 38,
+          "section": "Methods / ChromHMM",
+          "paragraph_sha256": "8cd546beb2b21fb6871ea1abd7a7edb8e05095c4a16ba1ad74786a47fa1bf4f4",
+          "matching_text_sha256": "84facc1f0e0d0ccbef4920df07c01bae9d7e569cc2fa02b6e11024a4be63f294"
+        }
+      ]
+    },
+    {
+      "pmcid": "PMC12696504",
+      "doi": "10.1016/j.ajhg.2025.07.020",
+      "tool_id": "nfcore",
+      "evidence_paragraph_sha256": "1b4fceedd203637c30a26e70d3136361ce540e2adfa1676b69ef55a42f1a9b8e",
+      "use_summary": "Used nf-core/hic 2.1.0 for Arima Hi-C processing against GRCh38, selecting HiCExplorer TAD calling and minimum mapping quality 10. The paper separately describes HiC-Pro 3.1.0/Bowtie2 mapping settings, Cooler contact maps, ICE balancing, HiCExplorer processing, diffHic/edgeR interaction tests and downstream TAD/compartment analyses.",
+      "implementation_scope_note": "Preserve --digestion arima, --tads_caller hicexplorer, --min_mapq 10 and --genome GRCh38. Retain the HiC-Pro attribution and Unicode dash in the reported Bowtie2 reorder option; executable normalization requires an explicit validated interpretation. Contact resolutions 10/40/25 kb and 1 Mb, 40-kb TAD calling, Loess/BH interaction inference, the differentiated TAD tests, target-versus-combined-control operations, and separate compartment/visualization steps need their own contracts. The Nextflow edition is unreported. A generic nf-core runner does not implement or qualify every downstream analysis. Primary-source review alone does not admit a runtime analysis, prove an executed author recipe, certify a complete tool family or reproduce a paper.",
+      "supporting_evidence": []
+    }
+  ]
+}

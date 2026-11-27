@@ -1,3 +1,15 @@
+# Current nf-core source-use reviews
+
+250 frozen papers; 453 labels and 492 provider definitions; 181 scoped families (36 native, 145 upstream), 1,864 reviewed uses and 870 pending uses. There are 2,734 observations and 247 missing labels. This checkpoint adds six source reviews and zero tool-family credit. The full 250-paper implementation and semantic-review goal remains open.
+
+Six primary-source nf-core usage reviews span eleven paragraphs and ten workflow branches. Capture mapping, pathogen screening and ancestry eager workflows remain distinct; rnasplice, ChIP, ATAC and Hi-C roles preserve reported versions, defaults, references, thresholds and unreported settings. Downstream statistical/visualization steps are identified separately. Only source facts are admitted by this checkpoint. The nf-core family remains missing for implementation accounting; existing separately qualified components and the original RNA execution trial do not establish every workflow or author recipe.
+
+**Warnings and required actions:** Read each paper-specific scope note. Do not infer unreported editions, substitute the reported ATAQ-SEQ/bwa2/Picard semantics, reconcile source/paper version discrepancies silently, replace raw P with FDR, or turn unassessable screening reads into negatives. Runtime use requires its own exact permitted prerequisites, inputs, source/profile and complete validation. Missing/forbidden prerequisites mean SKIP3: skip dependent analysis and complete permitted setup or retain the skip. Invalid/changed input, numerical/process/capacity failures mean FAIL2: preserve evidence and admit no complete result. Cell Ranger stays excluded; MaxQuant runtimes remain skipped/pending. No whole-paper result, complete nf-core family, release or literature Pages deployment is admitted here.
+
+See [reviewed roles](../nfcore-reviewed-source-audit/ROLES.json) and [handover](../nfcore-source-review/HANDOVER.md). Earlier checkpoints below are historical.
+
+---
+
 # Current original tensorQTL workflows
 
 250 frozen papers; 453 labels and 492 provider definitions; 181 scoped families (36 native, 145 upstream), 1,858 reviewed uses and 876 pending uses. There are 2,734 observations and 247 missing labels. This adds one tensorQTL workflow family and four source reviews. The cited 2022 auxiliary paper adds zero cohort papers. The full implementation and semantic review goal remains open.

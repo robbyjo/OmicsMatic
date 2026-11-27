@@ -20377,7 +20377,355 @@
     "implementation_status": "missing",
     "implementation_source": null,
     "implementation_scope": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending.",
+    "paper_role_qualification": {
+      "P002": {
+        "paper_id": "P002",
+        "pmcid": "PMC11964931",
+        "doi": "10.1038/s41586-024-08515-5",
+        "tool_id": "nfcore",
+        "primary_anchors": [
+          {
+            "paragraph_index": 7,
+            "section": "Screening and capturing ancient treponemal DNA",
+            "paragraph_sha256": "f0c2eb0d76fabd67fb9e3670cfe85d7f5500b4386fa14cee6e7c6296aa7ff09c",
+            "matching_text_sha256": "c4c7315bb15360b3741e57ba1322dc6a42d0f67b0b452b41625b85fc2dac8afb"
+          },
+          {
+            "paragraph_index": 29,
+            "section": "Methods / Computational screening for T. pallidum DNA",
+            "paragraph_sha256": "1f645f2ce00682d71111e245d3ea612de2a76106f25d7db551d4f4c3e88b1501",
+            "matching_text_sha256": "70dc3124336fc1af1f0257c9e67bf91d94281ba05ff2ddda115b064c5d621bc6"
+          },
+          {
+            "paragraph_index": 32,
+            "section": "Methods / Human ancestry analyses",
+            "paragraph_sha256": "99934757bff8c500683f39336ea1cce9502bf5dff7d2f2a4df69f5195d1298f1",
+            "matching_text_sha256": "3ca6b81445f8e7e92b843b3ddb2fbde083c8676744a68f122f80e8911be985eb"
+          }
+        ],
+        "pipelines": [
+          {
+            "paragraph_index": 7,
+            "pipeline": "eager",
+            "pipeline_literal": "nf-core/eager",
+            "pipeline_name_inferred": false,
+            "version_reported": null,
+            "version_literal": null,
+            "use_summary": "Mapped enriched treponemal libraries to the Nichols reference; this paragraph does not identify an eager edition.",
+            "literal_settings": [
+              "NC_021490.2",
+              "minimum of fourfold read support"
+            ],
+            "qualified": false
+          },
+          {
+            "paragraph_index": 29,
+            "pipeline": "eager",
+            "pipeline_literal": "nf-core/eager",
+            "pipeline_name_inferred": false,
+            "version_reported": "2.4.4",
+            "version_literal": "v2.4.4",
+            "use_summary": "Read processing, human-read removal, and HOPS/MALT pathogen screening.",
+            "literal_settings": [
+              "nextflow v21.04.1",
+              "samtools c1.12",
+              "dedup v0.21.8",
+              "<37"
+            ],
+            "qualified": false
+          },
+          {
+            "paragraph_index": 32,
+            "pipeline": "eager",
+            "pipeline_literal": "nf-core/eager",
+            "pipeline_name_inferred": false,
+            "version_reported": "2.3.4",
+            "version_literal": "v. 2.3.4",
+            "use_summary": "Adapter trimming, human alignment, damage assessment and ANGSD contamination analysis.",
+            "literal_settings": [
+              "GRCh37 (hg19)",
+              "min length = 30; min base quality = 20",
+              "seed length of 32",
+              "ANGSD v. 0.935"
+            ],
+            "qualified": false
+          }
+        ],
+        "separate_downstream_steps": [
+          "Custom pileupCaller v. 8.2.2 pseudo-haploid genotyping and >10,000-SNP inclusion rule.",
+          "Genetic sex assignment and subsequent population-genetic analyses.",
+          "The JUC013 screening used an alternative computational approach."
+        ],
+        "use_summary": "Used an unversioned eager workflow to map enriched ancient treponemal libraries to the Nichols reference, with SNP profiles requiring at least four supporting reads. Separately, eager 2.4.4 with Nextflow 21.04.1 performed read processing, human-read removal and historical-database MALT/HOPS screening; eager 2.3.4 processed human ancestry data against hg19 with damage and contamination assessment. Custom pseudo-haploid genotyping and population-genetic selection were separate downstream steps.",
+        "implementation_scope_note": "Do not assign the screening edition to the unversioned capture-mapping branch or the ancestry branch. Preserve the historical bacterial/viral database dates and selection rules, including the incompletely specified eukaryotic set. The two RAZ007 Treponema read counts, three and two, were unassessable in HOPS, not negative results. Preserve the paper literals samtools c1.12 and dedup v0.21.8; do not silently reconcile their source/environment discrepancies. The ancestry branch reports eager 2.3.4, GRCh37/hg19, AdapterRemoval length 30/base-quality 20, BWA 0.7.12 seed 32, mapDamage 2.0, ANGSD 0.935, targeted-chromosome sex ratios, then separate mpileup/custom pileupCaller random-draw genotyping and a strict >10,000-SNP retention rule. Its exact Nextflow edition is unreported. Existing eager components do not qualify all these distinct recipes; permission for GATK 3.8 is not assumed to cover the source environments GATK 3.5. Primary-source review alone does not admit a runtime analysis, prove an executed author recipe, certify a complete tool family or reproduce a paper.",
+        "extractor_near_name_version_preserved": null,
+        "source_review_complete_for_named_contexts": true,
+        "source_audit_admits_runtime": false,
+        "whole_family_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P027": {
+        "paper_id": "P027",
+        "pmcid": "PMC12779559",
+        "doi": "10.1038/s41586-025-09853-8",
+        "tool_id": "nfcore",
+        "primary_anchors": [
+          {
+            "paragraph_index": 55,
+            "section": "Methods / Illumina sequencing and alternative splicing analysis",
+            "paragraph_sha256": "76b069f028fbfb36467f2cec531f8269ec9ade098f9c5d8ca81044d51ae6b795",
+            "matching_text_sha256": "0e8dbbd1fc08ce424cea4e5fbb9f6771d140621f39d9b5a705001cc7fde575c0"
+          }
+        ],
+        "pipelines": [
+          {
+            "paragraph_index": 55,
+            "pipeline": "rnasplice",
+            "pipeline_literal": "nf-core/rnasplice",
+            "pipeline_name_inferred": false,
+            "version_reported": "1.0.4",
+            "version_literal": "v.1.0.4",
+            "use_summary": "QC, trimming and STAR alignment feeding rMATS alternative-splicing analysis.",
+            "literal_settings": [
+              "v.24.04.4",
+              "v.4.1.2",
+              "WBcel235/ce11",
+              "v.2.7.9a"
+            ],
+            "qualified": false
+          }
+        ],
+        "separate_downstream_steps": [
+          "Reported differential-event threshold: absolute delta PSI at least 0.05 and P < 0.05.",
+          "Boxplot visualization."
+        ],
+        "use_summary": "Used nf-core/rnasplice 1.0.4 with Nextflow 24.04.4 for FastQC, TrimGalore and STAR processing of C. elegans RNA-seq, primarily for rMATS 4.1.2 alternative-splicing analysis. The paper reports WBcel235/ce11, FastQC 0.12.1, TrimGalore 0.6.7 and STAR 2.7.9a. Differential events required absolute deltaPSI at least 0.05 and raw P below 0.05; boxplot visualization was separate.",
+        "implementation_scope_note": "Keep the inclusive deltaPSI boundary and strict raw-P boundary; FDR is not an interchangeable criterion. Original rnasplice 1.0.4 source selects STAR 2.7.10a, conflicting with the reported 2.7.9a. The complete author parameters, contrast/replicate design, overrides and executed source revision are not established by the pipeline name. The linked plotting source was inspected read only and supplies no license declaration or complete pipeline command. The upstream human chromosome-X software control does not reproduce this worm experiment; the RNA execution trial and scientific output contracts remain unqualified. Primary-source review alone does not admit a runtime analysis, prove an executed author recipe, certify a complete tool family or reproduce a paper.",
+        "extractor_near_name_version_preserved": null,
+        "source_review_complete_for_named_contexts": true,
+        "source_audit_admits_runtime": false,
+        "whole_family_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P032": {
+        "paper_id": "P032",
+        "pmcid": "PMC11754113",
+        "doi": "10.1038/s41586-024-08314-y",
+        "tool_id": "nfcore",
+        "primary_anchors": [
+          {
+            "paragraph_index": 53,
+            "section": "Methods / ChIP–seq analysis",
+            "paragraph_sha256": "b026c4fa4db8c3fbbe890f3ee900314fd06bd1f4593b5d630a041398dab09c64",
+            "matching_text_sha256": "8501a193c24d1d86b902c0613429ed435946787060fe612f220f17ebbb7af5a0"
+          }
+        ],
+        "pipelines": [
+          {
+            "paragraph_index": 53,
+            "pipeline": "chipseq",
+            "pipeline_literal": "nf-core/ChIP–seq",
+            "pipeline_name_inferred": false,
+            "version_reported": "2.0.0",
+            "version_literal": "v2.0.0",
+            "use_summary": "Default-parameter read processing and hg38/mm10 alignment/filtering.",
+            "literal_settings": [
+              "hg38 and mm10",
+              "v0.7.17-r1188",
+              "default parameters"
+            ],
+            "qualified": false
+          }
+        ],
+        "separate_downstream_steps": [
+          "Mouse spike normalization using the quotient of human:mouse ChIP and input read ratios.",
+          "MACS2 2.2.6 -q 0.05 calls with different input/knockout control choices and pooled donor BAMs.",
+          "Blacklist removal from called peaks."
+        ],
+        "use_summary": "Used nf-core/chipseq 2.0.0 with default parameters for adapter/quality trimming, reported BWA 0.7.17-r1188 alignment against hg38/mm10 and duplicate/low-quality/problematic-region filtering. Mouse spike-in scaling, selected CXXC1/MED12 MACS2 calls and subsequent blacklist removal were separately described analyses.",
+        "implementation_scope_note": "The exact Nextflow edition is unreported. Preserve the quotient of the human:mouse ChIP and input ratios rather than inventing a different spike-normalization denominator. CXXC1 used pooled AAVS1-knockout donor BAMs with input background; MED12 used pooled donor BAMs and MED12-knockout background. The reported MACS2 version is 2.2.6 with -q 0.05. A selected original chipseq 2.0.0 software control does not establish those paper-specific control choices, scaling, inputs or every internal package version. Primary-source review alone does not admit a runtime analysis, prove an executed author recipe, certify a complete tool family or reproduce a paper.",
+        "extractor_near_name_version_preserved": null,
+        "source_review_complete_for_named_contexts": true,
+        "source_audit_admits_runtime": false,
+        "whole_family_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P050": {
+        "paper_id": "P050",
+        "pmcid": "PMC10781626",
+        "doi": "10.1038/s41586-023-06821-y",
+        "tool_id": "nfcore",
+        "primary_anchors": [
+          {
+            "paragraph_index": 44,
+            "section": "Methods / ChIP coupled with Illumina sequencing / Library preparation, sequencing and data analysis (Arraystar)",
+            "paragraph_sha256": "7c82ee1cdcd75de24dc88a845a82d71b4343a5d28abfa3fbfe76d9a1852c88fa",
+            "matching_text_sha256": "91af5f60ca10144e2b02a915a4852605919f7163c9913fbf37b7795f11f31079"
+          },
+          {
+            "paragraph_index": 47,
+            "section": "Methods / ATAC–seq",
+            "paragraph_sha256": "e12f052ce57697b8e37d8ec7c8a80fa989609538f6306ff7fa68796b68b05b62",
+            "matching_text_sha256": "0dbbb393a74ec209754af998cbd78748fe02ef17dcb342dfa4a3b911920fb5cd"
+          }
+        ],
+        "pipelines": [
+          {
+            "paragraph_index": 44,
+            "pipeline": "chipseq",
+            "pipeline_literal": "nf-core ChIP–seq",
+            "pipeline_name_inferred": false,
+            "version_reported": null,
+            "version_literal": null,
+            "use_summary": "Intersample comparisons with standard parameters; HOMER annotatePeaks from the pipeline.",
+            "literal_settings": [
+              "standard parameters",
+              "HOMER (annotatePeaks)"
+            ],
+            "qualified": false
+          },
+          {
+            "paragraph_index": 47,
+            "pipeline": "atacseq",
+            "pipeline_literal": "nf-core ATAQ-SEQ",
+            "pipeline_name_inferred": true,
+            "version_reported": null,
+            "version_literal": null,
+            "use_summary": "Reported trimming, QC, ME49 alignment, Picard duplicate merging and peak/count comparisons; atacseq is an explicitly tentative name mapping.",
+            "literal_settings": [
+              "using bwa2",
+              "using Picard",
+              "broad peak calling",
+              "biological duplicates"
+            ],
+            "qualified": false
+          }
+        ],
+        "separate_downstream_steps": [
+          "Arraystar processing described before the nf-core intersample comparison, including BOWTIE V2, Bamtools and MACS v2.2.",
+          "BedGraphToBigWig and Deeptools commands/visualization.",
+          "Demultiplexing by the literal bcl2fastq V3; its separate licensing restriction is retained."
+        ],
+        "use_summary": "Used an unversioned nf-core ChIP-seq workflow with standard parameters for intersample comparisons and pipeline-hosted HOMER peak annotation. A second unversioned workflow, literally named nf-core ATAQ-SEQ, performed reported ATAC read processing against ME49 and comparative broad-peak analysis. Its paragraph also describes MACS2/HOMER annotation and featureCounts/DESeq2 comparisons between untreated and 24-hour IAA samples.",
+        "implementation_scope_note": "Mapping the paper spelling ATAQ-SEQ to nf-core/atacseq is explicitly an inference. Neither pipeline edition nor an exact Nextflow version is reported. Keep bwa2 and Picard duplicate-read merging as written, without substituting BWA-MEM2 or duplicate marking. The preceding Arraystar/BOWTIE V2/Bamtools/MACS processing, BedGraphToBigWig and deepTools visualization are separate descriptions, not a complete nf-core command. The demultiplexing spelling bcl2fastq V3 and its separate runtime/license boundary remain preserved. Do not infer versions or defaults from neighboring tools or publication date. Primary-source review alone does not admit a runtime analysis, prove an executed author recipe, certify a complete tool family or reproduce a paper.",
+        "extractor_near_name_version_preserved": null,
+        "source_review_complete_for_named_contexts": true,
+        "source_audit_admits_runtime": false,
+        "whole_family_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P169": {
+        "paper_id": "P169",
+        "pmcid": "PMC11525171",
+        "doi": "10.1038/s41588-024-01900-w",
+        "tool_id": "nfcore",
+        "primary_anchors": [
+          {
+            "paragraph_index": 31,
+            "section": "Methods / ChIPmentation",
+            "paragraph_sha256": "7401946d396e4210169bf1b1d031e339119b3382fee7ca493fd005c95f212644",
+            "matching_text_sha256": "5f02f1c031ef563b03bb40f09d5be95d7941ba17dcf9e057ac27312641449d8c"
+          },
+          {
+            "paragraph_index": 32,
+            "section": "Methods / Omni-ATAC",
+            "paragraph_sha256": "f52aedbebbfeefc0bc1812321e6fd95da579138cacd29bc3244f2bdf00960137",
+            "matching_text_sha256": "dbd6d4f1dd4fa5ad86d2d20b36be9522ddf1e35052717d4eacce2ed35af0f8a7"
+          },
+          {
+            "paragraph_index": 38,
+            "section": "Methods / ChromHMM",
+            "paragraph_sha256": "8cd546beb2b21fb6871ea1abd7a7edb8e05095c4a16ba1ad74786a47fa1bf4f4",
+            "matching_text_sha256": "84facc1f0e0d0ccbef4920df07c01bae9d7e569cc2fa02b6e11024a4be63f294"
+          }
+        ],
+        "pipelines": [
+          {
+            "paragraph_index": 31,
+            "pipeline": "chipseq",
+            "pipeline_literal": "nf-core chipseq",
+            "pipeline_name_inferred": false,
+            "version_reported": "1.2.1",
+            "version_literal": "v1.2.1",
+            "use_summary": "Default-parameter ChIPmentation processing of histone marks and CTCF across six cell lines.",
+            "literal_settings": [
+              "default parameters"
+            ],
+            "qualified": false
+          },
+          {
+            "paragraph_index": 32,
+            "pipeline": "atacseq",
+            "pipeline_literal": "nf-core atacseq",
+            "pipeline_name_inferred": false,
+            "version_reported": "1.2.1",
+            "version_literal": "v1.2.1",
+            "use_summary": "Default-parameter Omni-ATAC processing across eight cell lines.",
+            "literal_settings": [
+              "default parameters"
+            ],
+            "qualified": false
+          }
+        ],
+        "separate_downstream_steps": [
+          "ChromHMM 1.24 binarization and 15-state learning from the nf-core chipseq BAMs.",
+          "Experimental ChIPmentation and Omni-ATAC protocols."
+        ],
+        "use_summary": "Used nf-core/chipseq 1.2.1 with default parameters for five histone marks and CTCF in six colorectal-cancer cell lines, and nf-core/atacseq 1.2.1 with default parameters for Omni-ATAC in eight cell lines. BAMs from the ChIP workflow were subsequently binarized for a separate ChromHMM 1.24 chromatin-state analysis.",
+        "implementation_scope_note": "Five histone marks plus CTCF are six targets, not six histone marks plus CTCF. Keep the six-cell-line ChIP and eight-cell-line ATAC populations distinct. Neither exact Nextflow edition is reported. ChromHMM binarization and 15-state learning are downstream operations, not evidence that nf-core performed state modeling. The qualified original1.2.1 software controls do not reconstruct the human ChIPmentation/Omni-ATAC input libraries, commands or complete paper recipes. Primary-source review alone does not admit a runtime analysis, prove an executed author recipe, certify a complete tool family or reproduce a paper.",
+        "extractor_near_name_version_preserved": null,
+        "source_review_complete_for_named_contexts": true,
+        "source_audit_admits_runtime": false,
+        "whole_family_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P228": {
+        "paper_id": "P228",
+        "pmcid": "PMC12696504",
+        "doi": "10.1016/j.ajhg.2025.07.020",
+        "tool_id": "nfcore",
+        "primary_anchors": [
+          {
+            "paragraph_index": 9,
+            "section": "Material and methods / Hi-C and data analysis",
+            "paragraph_sha256": "1b4fceedd203637c30a26e70d3136361ce540e2adfa1676b69ef55a42f1a9b8e",
+            "matching_text_sha256": "549a01e8a9e7e2614d90ae47bfc2cb1742951611525b117ab078db9db3b8758d"
+          }
+        ],
+        "pipelines": [
+          {
+            "paragraph_index": 9,
+            "pipeline": "hic",
+            "pipeline_literal": "hic v.2.1.0 pipeline within nf-core",
+            "pipeline_name_inferred": false,
+            "version_reported": "2.1.0",
+            "version_literal": "v.2.1.0",
+            "use_summary": "Arima Hi-C mapping and contact processing for stem cells and cortical organoids.",
+            "literal_settings": [
+              "--digestion arima --tads_caller hicexplorer --min_mapq 10 --genome GRCh38",
+              "HiC-Pro 3.1.0",
+              "--very-sensitive -L 30 --score-min L,-0.6,-0.2 --end-to-end –reorder"
+            ],
+            "qualified": false
+          }
+        ],
+        "separate_downstream_steps": [
+          "Cooler contact maps at 10 kb, 40 kb, 25 kb and 1 Mb.",
+          "HiCExplorer balancing/normalization, diffHic filtering and edgeR differential interaction tests with LOESS and BH correction.",
+          "Differential TAD analysis, Cooltools eigs-cis, pyGenomeTracks and custom Python/R visualization."
+        ],
+        "use_summary": "Used nf-core/hic 2.1.0 for Arima Hi-C processing against GRCh38, selecting HiCExplorer TAD calling and minimum mapping quality 10. The paper separately describes HiC-Pro 3.1.0/Bowtie2 mapping settings, Cooler contact maps, ICE balancing, HiCExplorer processing, diffHic/edgeR interaction tests and downstream TAD/compartment analyses.",
+        "implementation_scope_note": "Preserve --digestion arima, --tads_caller hicexplorer, --min_mapq 10 and --genome GRCh38. Retain the HiC-Pro attribution and Unicode dash in the reported Bowtie2 reorder option; executable normalization requires an explicit validated interpretation. Contact resolutions 10/40/25 kb and 1 Mb, 40-kb TAD calling, Loess/BH interaction inference, the differentiated TAD tests, target-versus-combined-control operations, and separate compartment/visualization steps need their own contracts. The Nextflow edition is unreported. A generic nf-core runner does not implement or qualify every downstream analysis. Primary-source review alone does not admit a runtime analysis, prove an executed author recipe, certify a complete tool family or reproduce a paper.",
+        "extractor_near_name_version_preserved": null,
+        "source_review_complete_for_named_contexts": true,
+        "source_audit_admits_runtime": false,
+        "whole_family_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    "source_review_qualification": "docs/literature/nfcore-reviewed-source-audit/ROLES.json",
+    "source_review_status": "six-primary-source-role-reviews; runtime-family-admission-open"
   },
   {
     "id": "tsne",
