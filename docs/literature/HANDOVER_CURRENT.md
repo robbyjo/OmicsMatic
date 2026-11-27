@@ -1,3 +1,9 @@
+# Current checkpoint: original nf-validation execution component (2026-11-27)
+
+181 scoped families (36 native, 145 upstream), 1,858 reviewed uses and 876 pending uses remain current. This adds a qualified offline Nextflow/plugin component and zero family credit. See [current handover](nfcore-validation/HANDOVER.md), [qualification](nfcore-validation/QUALIFICATION.json) and [guide](NFCORE_VALIDATION_BRIDGE.md). The separate full original rnasplice test remains unqualified until its complete task and scientific-output audit finishes. Follow its current state; preserve active jobs and do not restart RUNNING sessions. Publication/cleanup closure is recorded in nfcore-validation/COMPLETED.json when present. The full250-paper goal remains active. Earlier checkpoints below are historical.
+
+---
+
 # Current checkpoint: original tensorQTL (2026-11-27)
 
 181 scoped families (36 native, 145 upstream); 1,858 reviewed uses and 876 pending uses. The full 250-paper implementation goal remains active. See [current handover](tensorqtl-validation/HANDOVER.md), [qualification](tensorqtl-validation/QUALIFICATION.json), [tool guide](../tensorqtl-tools.md) and [current registry](tensorqtl-admission/REGISTRY.json). Publication/hosted checks and mandatory cleanup are closed in tensorqtl-validation/COMPLETED.json. Earlier checkpoints below are historical.

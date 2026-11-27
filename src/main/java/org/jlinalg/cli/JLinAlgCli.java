@@ -140,6 +140,8 @@ public final class JLinAlgCli {
                 return MonocleToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("nfcore-tools"))
                 return NfcoreToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("nfcore-validation-tools"))
+                return NfcoreValidationToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("gemma-tools"))
                 return GemmaToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("metaxcan-tools"))
@@ -649,6 +651,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar monocle-tools --help
               java -jar omicsmatic-<version>.jar cytometry-tools --help
               java -jar omicsmatic-<version>.jar nfcore-tools --help
+              java -jar omicsmatic-<version>.jar nfcore-validation-tools --help
               java -jar omicsmatic-<version>.jar gemma-tools --help
               java -jar omicsmatic-<version>.jar metaxcan-tools --help
               java -jar omicsmatic-<version>.jar iq-tools --help
