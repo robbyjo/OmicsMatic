@@ -28263,9 +28263,9 @@
     "name": "velocyto",
     "pattern": "(?<![A-Za-z0-9_])(?:velocyto)(?![A-Za-z0-9_])",
     "role": "Spliced/unspliced counting and RNA velocity",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "No equivalent workflow identified in the current source inventory.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/VelocytoToolsCli.java",
+    "coverage_note": "Original velocyto0.17.17 CB/UB droplet spliced/unspliced/ambiguous counts from actual coordinate-sorted BAMs and compatible GTF, with Default/Permissive10X logic, supplied or original-inferred barcodes, explicit multimapper handling and distinct-cell BAM batches. Native Java literal MA-to-UB/declared-contig preparation, complete input molecule bounds and all-value Loom count audits export exact S+U separately from original float32(S+U+A). Original CLI uint16 buffers require proven safety; explicit original Counter API uint64 is a different integer profile. Complete source/runtime/JAR/input binding and fresh replay are required. RNA velocities, scVelo/PAGA, Smartseq, other logics, incomplete repeat masks, unknown author modifications, exact author recipes and whole-paper reproduction remain separate.",
     "paper_count": 4,
     "papers": [
       "P051",
@@ -28273,10 +28273,48 @@
       "P117",
       "P228"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "No equivalent workflow identified in the current source inventory.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/VelocytoToolsCli.java",
+    "implementation_scope": "Original velocyto0.17.17 CB/UB droplet spliced/unspliced/ambiguous counts from actual coordinate-sorted BAMs and compatible GTF, with Default/Permissive10X logic, supplied or original-inferred barcodes, explicit multimapper handling and distinct-cell BAM batches. Native Java literal MA-to-UB/declared-contig preparation, complete input molecule bounds and all-value Loom count audits export exact S+U separately from original float32(S+U+A). Original CLI uint16 buffers require proven safety; explicit original Counter API uint64 is a different integer profile. Complete source/runtime/JAR/input binding and fresh replay are required. RNA velocities, scVelo/PAGA, Smartseq, other logics, incomplete repeat masks, unknown author modifications, exact author recipes and whole-paper reproduction remain separate.",
+    "validation_note": "Nine complete original count captures and fresh replays, independent original CLI/Counter API and native-preparation controls, 20 native/contract tests per OS and 17 packaged prerequisite/preparation/integer/mask/capacity/tamper refusals; see docs/literature/velocyto-validation/QUALIFICATION.json.",
+    "paper_role_qualification": {
+      "P051": {
+        "paper_id": "P051",
+        "source_role": "BD-Rhapsody-prepared-BAM-spliced-unspliced-counts",
+        "reported_version": "0.17.17",
+        "runtime_scope": "ORIGINAL_0_17_17_CB_UB_COUNTING_WITH_EXPLICIT_NATIVE_PREPARATION_AND_COUNT_AUDIT",
+        "remaining_scope": "The exact adapted front end, antibody references, CB/NH tags, author files and all other modifications are unestablished. Native literal MA-to-UB and declared antibody-contig preparation do not certify the full author modification. Downstream scVelo/Seurat steps and concatenation recipes remain separate.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P064": {
+        "paper_id": "P064",
+        "source_role": "cross-species-cell-and-nucleus-exonic-intronic-matrices",
+        "reported_version": null,
+        "runtime_scope": "ORIGINAL_0_17_17_CB_UB_COUNTING_WITH_EXPLICIT_NATIVE_PREPARATION_AND_COUNT_AUDIT",
+        "remaining_scope": "Cell Ranger v7.0 generated the alignments but remains user-excluded from implementation. This workflow starts with existing caller-provided BAMs and actual species annotations. Velocyto revision, command flags, references and sample/species concatenation identities are unreported. Native S+U export excludes ambiguous molecules, distinct from the original Loom S+U+A matrix.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P117": {
+        "paper_id": "P117",
+        "source_role": "velocyto-py-CLI-counts-before-scVelo-PAGA",
+        "reported_version": "0.17.17",
+        "runtime_scope": "ORIGINAL_0_17_17_CB_UB_COUNTING_WITH_EXPLICIT_NATIVE_PREPARATION_AND_COUNT_AUDIT",
+        "remaining_scope": "The raw automatic nearby-version field was null; the direct method states v0.17.17. Preserve that extraction and record the reviewed version separately. Exact flags, author revision, barcode selection and actual inputs are unestablished. This counting workflow computes no scVelo/PAGA velocities or transitions.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P228": {
+        "paper_id": "P228",
+        "source_role": "reported-velocyto-counts-with-velociraptor-link-ambiguity",
+        "reported_version": null,
+        "runtime_scope": "ORIGINAL_0_17_17_CB_UB_COUNTING_WITH_EXPLICIT_NATIVE_PREPARATION_AND_COUNT_AUDIT",
+        "remaining_scope": "The displayed Velocyto URL points to velociraptor, so the executable/package link, version and exact count command are ambiguous. Keep Velocyto counting, velociraptor wrapping and scVelo modeling distinct. Cell Ranger remains user-excluded; no author runtime or recipe is inferred.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    }
   },
   {
     "id": "juicer",

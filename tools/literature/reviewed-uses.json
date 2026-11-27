@@ -35413,6 +35413,114 @@
         "whole_paper_reproduced": false,
         "new_uppercase_observation": false
       }
+    },
+    {
+      "pmcid": "PMC12823425",
+      "doi": "10.1038/s41586-025-09807-0",
+      "tool_id": "velocyto",
+      "evidence_paragraph_sha256": "24c6a80edc36e9f617fd399177b5c7b1dd2152d0ee21a38e96d9fd87ff49644b",
+      "use_summary": "Generated spliced/unspliced count data with velocyto v0.17.17 from BD Rhapsody alignments after antibody-alignment removal and MA-to-UB UMI-tag preparation, using mouse GRCm38/gencodevM19 annotation. Experiments were concatenated; Seurat/scVelo performed later selection, normalization and stochastic velocity modeling.",
+      "implementation_scope_note": "Original velocyto0.17.17 CB/UB droplet spliced/unspliced/ambiguous counts from actual coordinate-sorted BAMs and compatible GTF, with Default/Permissive10X logic, supplied or original-inferred barcodes, explicit multimapper handling and distinct-cell BAM batches. Native Java literal MA-to-UB/declared-contig preparation, complete input molecule bounds and all-value Loom count audits export exact S+U separately from original float32(S+U+A). Original CLI uint16 buffers require proven safety; explicit original Counter API uint64 is a different integer profile. Complete source/runtime/JAR/input binding and fresh replay are required. RNA velocities, scVelo/PAGA, Smartseq, other logics, incomplete repeat masks, unknown author modifications, exact author recipes and whole-paper reproduction remain separate. The exact adapted front end, antibody references, CB/NH tags, author files and all other modifications are unestablished. Native literal MA-to-UB and declared antibody-contig preparation do not certify the full author modification. Downstream scVelo/Seurat steps and concatenation recipes remain separate. WARNINGS AND REQUIRED ACTION: require completed capture and exact-producer fresh replay; inspect original logs and input/reference/mask/count audits. Missing/forbidden prerequisites produce SKIP3 and skip dependent analysis: supply/install where permitted and retry NEW paths. Invalid/changed data/source/runtime, failed model/QC, cancellation or capacity exhaustion produce FAIL2 with no complete result. Preserve every attempt. Do not drop cells/reads to fit uint16, repair CB/reference identities, patch original peek or repeat parsing, or substitute S+U+A for S+U. Review explicit Counter API uint64 as different integer behavior. Preserve exact JARs and effective runtime roots/symlink targets. Cell Ranger remains excluded; MaxQuant pending with runtime analyses skipped. Literature HTMLs remain withheld from Pages.",
+      "supporting_evidence": [
+        {
+          "paper_id": "P051",
+          "pmcid": "PMC12823425",
+          "doi": "10.1038/s41586-025-09807-0",
+          "paragraph_index": 85,
+          "section": "Methods / Single-cell transcriptomics on mouse neutrophils / Velocyto analysis",
+          "paragraph_sha256": "24c6a80edc36e9f617fd399177b5c7b1dd2152d0ee21a38e96d9fd87ff49644b"
+        }
+      ],
+      "source_role_qualification": {
+        "paper_id": "P051",
+        "source_role": "BD-Rhapsody-prepared-BAM-spliced-unspliced-counts",
+        "reported_version": "0.17.17",
+        "runtime_scope": "ORIGINAL_0_17_17_CB_UB_COUNTING_WITH_EXPLICIT_NATIVE_PREPARATION_AND_COUNT_AUDIT",
+        "remaining_scope": "The exact adapted front end, antibody references, CB/NH tags, author files and all other modifications are unestablished. Native literal MA-to-UB and declared antibody-contig preparation do not certify the full author modification. Downstream scVelo/Seurat steps and concatenation recipes remain separate.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    {
+      "pmcid": "PMC10719112",
+      "doi": "10.1038/s41586-023-06638-9",
+      "tool_id": "velocyto",
+      "evidence_paragraph_sha256": "2117cb97fb22763891a27348d072799599fb34d44ea7fb34c205e669bde7acf5",
+      "use_summary": "Counted spliced and unspliced gene-expression matrices from each supplied single-cell/single-nucleus BAM with velocyto, summed those two matrices to form each sample total, then concatenated samples within species.",
+      "implementation_scope_note": "Original velocyto0.17.17 CB/UB droplet spliced/unspliced/ambiguous counts from actual coordinate-sorted BAMs and compatible GTF, with Default/Permissive10X logic, supplied or original-inferred barcodes, explicit multimapper handling and distinct-cell BAM batches. Native Java literal MA-to-UB/declared-contig preparation, complete input molecule bounds and all-value Loom count audits export exact S+U separately from original float32(S+U+A). Original CLI uint16 buffers require proven safety; explicit original Counter API uint64 is a different integer profile. Complete source/runtime/JAR/input binding and fresh replay are required. RNA velocities, scVelo/PAGA, Smartseq, other logics, incomplete repeat masks, unknown author modifications, exact author recipes and whole-paper reproduction remain separate. Cell Ranger v7.0 generated the alignments but remains user-excluded from implementation. This workflow starts with existing caller-provided BAMs and actual species annotations. Velocyto revision, command flags, references and sample/species concatenation identities are unreported. Native S+U export excludes ambiguous molecules, distinct from the original Loom S+U+A matrix. WARNINGS AND REQUIRED ACTION: require completed capture and exact-producer fresh replay; inspect original logs and input/reference/mask/count audits. Missing/forbidden prerequisites produce SKIP3 and skip dependent analysis: supply/install where permitted and retry NEW paths. Invalid/changed data/source/runtime, failed model/QC, cancellation or capacity exhaustion produce FAIL2 with no complete result. Preserve every attempt. Do not drop cells/reads to fit uint16, repair CB/reference identities, patch original peek or repeat parsing, or substitute S+U+A for S+U. Review explicit Counter API uint64 as different integer behavior. Preserve exact JARs and effective runtime roots/symlink targets. Cell Ranger remains excluded; MaxQuant pending with runtime analyses skipped. Literature HTMLs remain withheld from Pages.",
+      "supporting_evidence": [
+        {
+          "paper_id": "P064",
+          "pmcid": "PMC10719112",
+          "doi": "10.1038/s41586-023-06638-9",
+          "paragraph_index": 37,
+          "section": "Methods / Preprocessing of transcriptomic data",
+          "paragraph_sha256": "2117cb97fb22763891a27348d072799599fb34d44ea7fb34c205e669bde7acf5"
+        }
+      ],
+      "source_role_qualification": {
+        "paper_id": "P064",
+        "source_role": "cross-species-cell-and-nucleus-exonic-intronic-matrices",
+        "reported_version": null,
+        "runtime_scope": "ORIGINAL_0_17_17_CB_UB_COUNTING_WITH_EXPLICIT_NATIVE_PREPARATION_AND_COUNT_AUDIT",
+        "remaining_scope": "Cell Ranger v7.0 generated the alignments but remains user-excluded from implementation. This workflow starts with existing caller-provided BAMs and actual species annotations. Velocyto revision, command flags, references and sample/species concatenation identities are unreported. Native S+U export excludes ambiguous molecules, distinct from the original Loom S+U+A matrix.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    {
+      "pmcid": "PMC13553300",
+      "doi": "10.1038/s41588-026-02737-1",
+      "tool_id": "velocyto",
+      "evidence_paragraph_sha256": "2a161ef933f0436b7f9a0b15205ed6dc93ea897e21e53d9c0a406162a7f0ab25",
+      "use_summary": "Used velocyto.py v0.17.17 to generate spliced and unspliced count matrices; scVelo v0.2.4 supplied stochastic transcriptional dynamics and PAGA transition analysis for the selected mouse cell clusters.",
+      "implementation_scope_note": "Original velocyto0.17.17 CB/UB droplet spliced/unspliced/ambiguous counts from actual coordinate-sorted BAMs and compatible GTF, with Default/Permissive10X logic, supplied or original-inferred barcodes, explicit multimapper handling and distinct-cell BAM batches. Native Java literal MA-to-UB/declared-contig preparation, complete input molecule bounds and all-value Loom count audits export exact S+U separately from original float32(S+U+A). Original CLI uint16 buffers require proven safety; explicit original Counter API uint64 is a different integer profile. Complete source/runtime/JAR/input binding and fresh replay are required. RNA velocities, scVelo/PAGA, Smartseq, other logics, incomplete repeat masks, unknown author modifications, exact author recipes and whole-paper reproduction remain separate. The raw automatic nearby-version field was null; the direct method states v0.17.17. Preserve that extraction and record the reviewed version separately. Exact flags, author revision, barcode selection and actual inputs are unestablished. This counting workflow computes no scVelo/PAGA velocities or transitions. WARNINGS AND REQUIRED ACTION: require completed capture and exact-producer fresh replay; inspect original logs and input/reference/mask/count audits. Missing/forbidden prerequisites produce SKIP3 and skip dependent analysis: supply/install where permitted and retry NEW paths. Invalid/changed data/source/runtime, failed model/QC, cancellation or capacity exhaustion produce FAIL2 with no complete result. Preserve every attempt. Do not drop cells/reads to fit uint16, repair CB/reference identities, patch original peek or repeat parsing, or substitute S+U+A for S+U. Review explicit Counter API uint64 as different integer behavior. Preserve exact JARs and effective runtime roots/symlink targets. Cell Ranger remains excluded; MaxQuant pending with runtime analyses skipped. Literature HTMLs remain withheld from Pages.",
+      "supporting_evidence": [
+        {
+          "paper_id": "P117",
+          "pmcid": "PMC13553300",
+          "doi": "10.1038/s41588-026-02737-1",
+          "paragraph_index": 57,
+          "section": "Methods / Transition and velocity analysis",
+          "paragraph_sha256": "2a161ef933f0436b7f9a0b15205ed6dc93ea897e21e53d9c0a406162a7f0ab25"
+        }
+      ],
+      "source_role_qualification": {
+        "paper_id": "P117",
+        "source_role": "velocyto-py-CLI-counts-before-scVelo-PAGA",
+        "reported_version": "0.17.17",
+        "runtime_scope": "ORIGINAL_0_17_17_CB_UB_COUNTING_WITH_EXPLICIT_NATIVE_PREPARATION_AND_COUNT_AUDIT",
+        "remaining_scope": "The raw automatic nearby-version field was null; the direct method states v0.17.17. Preserve that extraction and record the reviewed version separately. Exact flags, author revision, barcode selection and actual inputs are unestablished. This counting workflow computes no scVelo/PAGA velocities or transitions.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    },
+    {
+      "pmcid": "PMC12696504",
+      "doi": "10.1016/j.ajhg.2025.07.020",
+      "tool_id": "velocyto",
+      "evidence_paragraph_sha256": "aa8c0330a79d061eed602c897f834c1ce42ceb4dab82a0a46c1cbe01300b24f5",
+      "use_summary": "Reported generating spliced/unspliced read counts with Velocyto from existing Cell Ranger output. Subsequent scVelo analysis was invoked through the separate R package velociraptor.",
+      "implementation_scope_note": "Original velocyto0.17.17 CB/UB droplet spliced/unspliced/ambiguous counts from actual coordinate-sorted BAMs and compatible GTF, with Default/Permissive10X logic, supplied or original-inferred barcodes, explicit multimapper handling and distinct-cell BAM batches. Native Java literal MA-to-UB/declared-contig preparation, complete input molecule bounds and all-value Loom count audits export exact S+U separately from original float32(S+U+A). Original CLI uint16 buffers require proven safety; explicit original Counter API uint64 is a different integer profile. Complete source/runtime/JAR/input binding and fresh replay are required. RNA velocities, scVelo/PAGA, Smartseq, other logics, incomplete repeat masks, unknown author modifications, exact author recipes and whole-paper reproduction remain separate. The displayed Velocyto URL points to velociraptor, so the executable/package link, version and exact count command are ambiguous. Keep Velocyto counting, velociraptor wrapping and scVelo modeling distinct. Cell Ranger remains user-excluded; no author runtime or recipe is inferred. WARNINGS AND REQUIRED ACTION: require completed capture and exact-producer fresh replay; inspect original logs and input/reference/mask/count audits. Missing/forbidden prerequisites produce SKIP3 and skip dependent analysis: supply/install where permitted and retry NEW paths. Invalid/changed data/source/runtime, failed model/QC, cancellation or capacity exhaustion produce FAIL2 with no complete result. Preserve every attempt. Do not drop cells/reads to fit uint16, repair CB/reference identities, patch original peek or repeat parsing, or substitute S+U+A for S+U. Review explicit Counter API uint64 as different integer behavior. Preserve exact JARs and effective runtime roots/symlink targets. Cell Ranger remains excluded; MaxQuant pending with runtime analyses skipped. Literature HTMLs remain withheld from Pages.",
+      "supporting_evidence": [
+        {
+          "paper_id": "P228",
+          "pmcid": "PMC12696504",
+          "doi": "10.1016/j.ajhg.2025.07.020",
+          "paragraph_index": 13,
+          "section": "Material and methods / snRNA-seq and data analysis",
+          "paragraph_sha256": "aa8c0330a79d061eed602c897f834c1ce42ceb4dab82a0a46c1cbe01300b24f5"
+        }
+      ],
+      "source_role_qualification": {
+        "paper_id": "P228",
+        "source_role": "reported-velocyto-counts-with-velociraptor-link-ambiguity",
+        "reported_version": null,
+        "runtime_scope": "ORIGINAL_0_17_17_CB_UB_COUNTING_WITH_EXPLICIT_NATIVE_PREPARATION_AND_COUNT_AUDIT",
+        "remaining_scope": "The displayed Velocyto URL points to velociraptor, so the executable/package link, version and exact count command are ambiguous. Keep Velocyto counting, velociraptor wrapping and scVelo modeling distinct. Cell Ranger remains user-excluded; no author runtime or recipe is inferred.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      }
     }
   ]
 }

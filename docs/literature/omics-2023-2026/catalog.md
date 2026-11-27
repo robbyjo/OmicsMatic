@@ -1,3 +1,20 @@
+# Current velocyto counting checkpoint
+
+250 papers, 453 named labels, 492 providers and 2,734 observations; 1,836 reviewed / 898 pending uses. 175 scoped families: 34 native +141 upstream. Velocyto adds one scoped upstream counting family and four reviewed source roles, with no new observations or extra native-family credit. 248 labels remain missing. The full goal remains active.
+
+**Warnings and required actions:** WARNINGS AND REQUIRED ACTION: require completed capture and exact-producer fresh replay; inspect original logs and input/reference/mask/count audits. Missing/forbidden prerequisites produce SKIP3 and skip dependent analysis: supply/install where permitted and retry NEW paths. Invalid/changed data/source/runtime, failed model/QC, cancellation or capacity exhaustion produce FAIL2 with no complete result. Preserve every attempt. Do not drop cells/reads to fit uint16, repair CB/reference identities, patch original peek or repeat parsing, or substitute S+U+A for S+U. Review explicit Counter API uint64 as different integer behavior. Preserve exact JARs and effective runtime roots/symlink targets. Cell Ranger remains excluded; MaxQuant pending with runtime analyses skipped. Literature HTMLs remain withheld from Pages.
+
+See [workflow guide](../../velocyto-tools.md), [all four source roles](../velocyto-source-audit/ROLES.json) and [qualification](../velocyto-validation/QUALIFICATION.json). Earlier checkpoints below are historical.
+
+| Paper | Reviewed use | Reported version |
+| --- | --- | --- |
+| P051 | Generated spliced/unspliced count data with velocyto v0.17.17 from BD Rhapsody alignments after antibody-alignment removal and MA-to-UB UMI-tag preparation, using mouse GRCm38/gencodevM19 annotation. Experiments were concatenated; Seurat/scVelo performed later selection, normalization and stochastic velocity modeling. | 0.17.17 |
+| P064 | Counted spliced and unspliced gene-expression matrices from each supplied single-cell/single-nucleus BAM with velocyto, summed those two matrices to form each sample total, then concatenated samples within species. | None |
+| P117 | Used velocyto.py v0.17.17 to generate spliced and unspliced count matrices; scVelo v0.2.4 supplied stochastic transcriptional dynamics and PAGA transition analysis for the selected mouse cell clusters. | 0.17.17 |
+| P228 | Reported generating spliced/unspliced read counts with Velocyto from existing Cell Ranger output. Subsequent scVelo analysis was invoked through the separate R package velociraptor. | None |
+
+---
+
 # Current Popcorn workflow checkpoint
 
 250 papers, 453 named labels, 492 providers and 2,734 observations; 1,832 reviewed / 902 pending uses. 174 scoped families: 34 native +140 upstream. Popcorn adds one scoped hybrid upstream family and five reviewed source roles, including one recovered uppercase observation. 249 labels remain missing. The full goal remains active.

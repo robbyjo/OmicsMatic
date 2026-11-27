@@ -150,6 +150,8 @@ public final class JLinAlgCli {
                 return WaspToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("popcorn-tools"))
                 return PopcornToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("velocyto-tools"))
+                return VelocytoToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("ascat-objective"))
                 return AscatObjectiveCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("merqury-tools"))
@@ -645,6 +647,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar hornet-alleles --help
               java -jar omicsmatic-<version>.jar wasp-tools --help
               java -jar omicsmatic-<version>.jar popcorn-tools --help
+              java -jar omicsmatic-<version>.jar velocyto-tools --help
               java -jar omicsmatic-<version>.jar allcools-posterior --help
               java -jar omicsmatic-<version>.jar contact-insulation --help
               java -jar omicsmatic-<version>.jar diann-tools --help

@@ -30,6 +30,9 @@ See [runtime setup](docs/runtime-requirements.md).
 The source-built [Popcorn workflows](docs/popcorn-tools.md) add original
 cross-population GWAS covariance scores and correlation fitting, native Java
 regression checks, explicit runtime setup and complete saved-input replay.
+The source-built [velocyto counting workflows](docs/velocyto-tools.md) add original
+spliced/unspliced counts from supplied BAMs, native Java preparation and exact
+S+U matrices, explicit integer-overflow checks and complete fresh replay.
 The current source build provides the exact-edition
 [nf-core ChIP-seq commands](docs/literature/NFCORE_CHIPSEQ_COMMANDS.md).
 It also provides original-edition [CrossMap BED, VCF and BigWig conversion](docs/literature/CROSSMAP_WORKFLOWS.md), with separate runtime setup and portable result verification.
