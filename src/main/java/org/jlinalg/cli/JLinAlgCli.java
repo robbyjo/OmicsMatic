@@ -114,6 +114,8 @@ public final class JLinAlgCli {
                 return LimmaWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("sva-tools"))
                 return SvaWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("tensorqtl-tools"))
+                return TensorQtlWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("skat-tools"))
                 return SkatWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("genomicranges-tools"))
@@ -633,6 +635,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar peer-tools --help
               java -jar omicsmatic-<version>.jar limma-tools --help
               java -jar omicsmatic-<version>.jar sva-tools --help
+              java -jar omicsmatic-<version>.jar tensorqtl-tools --help
               java -jar omicsmatic-<version>.jar skat-tools --help
               java -jar omicsmatic-<version>.jar genomicranges-tools --help
               java -jar omicsmatic-<version>.jar edger-tools --help

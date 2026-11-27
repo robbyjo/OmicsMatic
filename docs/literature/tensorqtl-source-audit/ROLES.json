@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "roles": [
+    {
+      "paper_id": "P157",
+      "pmcid": "PMC11525184",
+      "doi": "10.1038/s41588-024-01896-3",
+      "tool_id": "tensorqtl",
+      "kind": "targeted-trans-and-severity-interaction-QTL",
+      "reported_version": "1.0.5",
+      "use_summary": "Used tensorQTL 1.0.5 for targeted genome-wide effects of lead cis-pQTL variants and imputed four-digit HLA alleles on protein and mRNA expression, with the original cis-model covariates. Also reported COVID-19-severity interaction eQTL/pQTL tests with retained PCs/PEER factors in the 998 overlapping samples.",
+      "details": [
+        "The primary code-availability list reports tensorQTL 1.0.5; the extractor-near-name version remains null.",
+        "Lead-variant analysis reports MAF>0.01 and a 5-Mb TSS exclusion, with Bonferroni denominator 4569247. HLA analysis defines trans distance from the MHC center, not independently from each HLA allele coordinate.",
+        "The inspected linked script calls original trans.map_trans with MAF threshold 0.01 and trans.filter_cis window 5000000. It uses pval_threshold 1 for one analysis and 0.01 for another; these retained-output thresholds are distinct from the final significance rules."
+      ],
+      "implementation_scope_note": "The paper calls its severity interaction p-value a likelihood-ratio test, whereas the inspected original 1.0.5 interaction implementation calculates coefficient t-statistics. The linked 39-file author tree does not expose the interaction calling script. Following its cited 2022 study recovered an earlier MIT-licensed author script that calls cis.map_nominal with an interaction vector, MAF 0.01, interaction MAF 0.05 and eigenMT. That auxiliary script does not establish the later study recipe or resolve its likelihood-ratio wording. Preserve this unresolved test-provenance discrepancy; do not relabel an original coefficient t-test as a likelihood-ratio test. HLA MHC-center distance, external imputation QC, lead-variant selection and the significance denominator are separate author pipeline operations. The current linked repository commits are not established as executed study revisions. Source review alone does not admit runtime analysis, establish an executed author recipe or reproduce a whole paper.",
+      "primary_anchors": [
+        {
+          "paragraph_index": 50,
+          "section": "Methods / Targeted trans-eQTL and trans-pQTL calling",
+          "paragraph_sha256": "d372882999d32fcc815735e35af1db9c0ab41c697e966f6ac936fc581ab5f676",
+          "matching_text_sha256": "d372882999d32fcc815735e35af1db9c0ab41c697e966f6ac936fc581ab5f676"
+        },
+        {
+          "paragraph_index": 51,
+          "section": "Methods / Targeted trans-eQTL and trans-pQTL calling",
+          "paragraph_sha256": "b283aa5332e913182e2f2e7fe850282f6a8cfd9628c658198f651de87a4b1182",
+          "matching_text_sha256": "5dab5c28647bae8ab2b488bc8489bdc078e8db3d40687a722ed9e7e307b1328e"
+        },
+        {
+          "paragraph_index": 52,
+          "section": "Methods / ieQTL and ipQTL calling",
+          "paragraph_sha256": "46f476374af6c82f1740835c93da2ea5e973d0ab45dd38790d87a312210cba60",
+          "matching_text_sha256": "a8ebc91475b2770ed40623e7e0db77edb43760ff30572a74d03514c447ee65d9"
+        },
+        {
+          "paragraph_index": 71,
+          "section": "Code availability",
+          "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98",
+          "matching_text_sha256": "1b48f310b51fd98748959692aedee39180e459cbd7f3f7abdb984cb001ece042"
+        },
+        {
+          "paragraph_index": 79,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98",
+          "matching_text_sha256": "1b48f310b51fd98748959692aedee39180e459cbd7f3f7abdb984cb001ece042"
+        }
+      ],
+      "extractor_near_name_version_preserved": null,
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    },
+    {
+      "paper_id": "P181",
+      "pmcid": "PMC13361010",
+      "doi": "10.1016/j.ajhg.2026.06.005",
+      "tool_id": "tensorqtl",
+      "kind": "grouped-permutation-conditional-and-fine-mapping",
+      "reported_version": null,
+      "use_summary": "Used tensorQTL through Pantry Pheast for cis-QTL permutation tests, across-gene q-values and stepwise conditionally independent discoveries, with RNA phenotypes grouped by gene. Repeated mapping across annotation/read/phenotyping comparisons. Used cis_susie fine-mapping on the strongest phenotype per gene and tissue, retaining 95-percent credible sets and PIPs for enrichment.",
+      "details": [
+        "The inspected linked Pheast wrapper calls map_cis/map_independent with group_s and random_tiebreak=True, calculates q-values with lambda 0.85, and applies an explicit MAF/minimum-allele-count rule.",
+        "The linked current Pheast environment declares torch 2.3.1 but leaves tensorqtl unpinned. These current linked-code settings do not prove the historical executed recipe.",
+        "cis_susie is tensorQTL hosting of its own SuSiE implementation; a separately qualified standalone susieR fit does not establish this workflow."
+      ],
+      "implementation_scope_note": "The executed tensorQTL/Pantry revision, complete preprocessing, exact study commands and random seeds remain unresolved. Preserve grouping, permutation, cross-modality selection, conditional mapping and fine-mapping as distinct steps. Never replace grouped tests with independent per-phenotype tests or regard current unpinned defaults as recovered author settings. Source review alone does not admit runtime analysis, establish an executed author recipe or reproduce a whole paper.",
+      "primary_anchors": [
+        {
+          "paragraph_index": 14,
+          "section": "Methods / xQTL mapping",
+          "paragraph_sha256": "c0ebef870b61c413616805e4c38356a90d37d489572ef69912b131a6469e01b8",
+          "matching_text_sha256": "bc957f8641146bebf04b0f75e5388213e184650fcd2f6d2f1dab4d887bc018c5"
+        },
+        {
+          "paragraph_index": 16,
+          "section": "Methods / Pruned annotation analysis",
+          "paragraph_sha256": "15bc81546922bcc14cd2a6a329240b4ae4456941b1f3e8c8609292e8e0ea6c4a",
+          "matching_text_sha256": "15bc81546922bcc14cd2a6a329240b4ae4456941b1f3e8c8609292e8e0ea6c4a"
+        },
+        {
+          "paragraph_index": 17,
+          "section": "Methods / Read-length and -depth simulations",
+          "paragraph_sha256": "b9c2a99b91e2b12dbfe072c676b7003f388bc33404c79e6dffabc8b70445ee98",
+          "matching_text_sha256": "b9c2a99b91e2b12dbfe072c676b7003f388bc33404c79e6dffabc8b70445ee98"
+        },
+        {
+          "paragraph_index": 18,
+          "section": "Methods / Method and parameter comparisons",
+          "paragraph_sha256": "f0c391ba05e2748813afad38cac7a6f16e17d3d864ce6ec76b895940d1de796b",
+          "matching_text_sha256": "f0c391ba05e2748813afad38cac7a6f16e17d3d864ce6ec76b895940d1de796b"
+        },
+        {
+          "paragraph_index": 20,
+          "section": "Methods / Functional enrichment analysis of fine-mapped xQTLs",
+          "paragraph_sha256": "8e496ac9472283399b88237b4d2f0d5ec6482a1ab4249edb2b3a91e677694521",
+          "matching_text_sha256": "886e9b55b5757a710d7f7d5b82a3cfbba0ec0ffd1e53fd88001201cecf06f001"
+        },
+        {
+          "paragraph_index": 31,
+          "section": "Results / LaDDR phenotypes encode multimodal genetic regulatory variation",
+          "paragraph_sha256": "1181c540028d648cb0ed8087bd5dfbdfb4f7c94abebf98f93c259c52f04931ba",
+          "matching_text_sha256": "256679264a509f8259d72d69338ab59fd18636d7719ebb6a6bebdda86bd8b1d0"
+        },
+        {
+          "paragraph_index": 64,
+          "section": "Data and code availability",
+          "paragraph_sha256": "77cf0e7679cd0d5c5fc5b917f129d41892712460981e0adc6095ae2929ecb930",
+          "matching_text_sha256": "dd4d796da0b8feda27ddf7d87106f7b62fc45805c9ff1f42edd86b6fdea7e691"
+        }
+      ],
+      "extractor_near_name_version_preserved": null,
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    },
+    {
+      "paper_id": "P183",
+      "pmcid": "PMC12824624",
+      "doi": "10.1016/j.ajhg.2025.11.012",
+      "tool_id": "tensorqtl",
+      "kind": "prepared-phenotype-cis-regression-and-meta-analysis",
+      "reported_version": null,
+      "use_summary": "Used tensorQTL linear regression for cohort-specific lncRNA/circRNA/PCG eQTL mapping after phenotype adjustment for age, sex, PEER factors and 20 genotype PCs, followed by overlap-aware MECS meta-analysis. The results describe a 2-Mb TSS window and significance threshold 5e-8.",
+      "details": [
+        "The linked command records name custom tensorQTL_CMC, cisQTL, cis_ind_QTL and withcovar scripts, but those Python programs are absent from the inspected 14-file repository.",
+        "Linked command records include separate qvalue calculations; they do not establish how the missing custom Python programs residualized phenotypes/genotypes or selected windows.",
+        "The inspected linked tree supplies no license declaration. Its command records were read only and are never executed or redistributed."
+      ],
+      "implementation_scope_note": "The exact tensorQTL edition, custom program bodies, window half-width, and complete preprocessing/regression recipe remain unresolved. Do not infer that phenotype pre-adjustment equals joint residualization of both genotype and phenotype. Keep circular-RNA normalization and cohort exclusions distinct from linear-RNA preparation. MECS is a separate overlap-aware meta-analysis, not a tensorQTL option. Source review alone does not admit runtime analysis, establish an executed author recipe or reproduce a whole paper.",
+      "primary_anchors": [
+        {
+          "paragraph_index": 13,
+          "section": "Material and methods / eQTL mapping analysis",
+          "paragraph_sha256": "3a0c4cccba6681622283f2ead9837d7a1608880ed6daa0f83a2115782de9cbca",
+          "matching_text_sha256": "f855628455ea4ddcddf01ef8d6da1fa8d45f37319566d9630b4e721e3c6f34b6"
+        },
+        {
+          "paragraph_index": 14,
+          "section": "Material and methods / eQTL mapping analysis",
+          "paragraph_sha256": "63092796e34777f13e20d5dde45779e635a54a4924c70b3cba403746dc4108a3",
+          "matching_text_sha256": "e0c46792d179fa338f0356b9707ca3f835ff034867d19f3d8c7cda3afc09fa42"
+        },
+        {
+          "paragraph_index": 15,
+          "section": "Material and methods / eQTL mapping analysis",
+          "paragraph_sha256": "39c06e19caad2ea12b13a28f85e3c776818ebad2ddf8813f1322212885738a2f",
+          "matching_text_sha256": "f310c1465051fd8dd8033163f6805f7bb97587f93aebe72f57e0c104d011479a"
+        },
+        {
+          "paragraph_index": 24,
+          "section": "Results / Genetic control of lncRNA and circRNA expression",
+          "paragraph_sha256": "b0811564ce6109c6b7f82b2020be10ce76c74ff2941428f10fb8629498e48449",
+          "matching_text_sha256": "7629e44d6cf6a339a76f7b9a9f909047e0368508107e1b8f55425b92e39ba3c0"
+        },
+        {
+          "paragraph_index": 45,
+          "section": "Data and code availability",
+          "paragraph_sha256": "d6e25d59a22b9aa2ee055eb4e581ddb4a6e5d47d17940b69320f6397d215bcb0",
+          "matching_text_sha256": "d6e25d59a22b9aa2ee055eb4e581ddb4a6e5d47d17940b69320f6397d215bcb0"
+        }
+      ],
+      "extractor_near_name_version_preserved": null,
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    },
+    {
+      "paper_id": "P234",
+      "pmcid": "PMC13087463",
+      "doi": "10.1016/j.ajhg.2026.02.022",
+      "tool_id": "tensorqtl",
+      "kind": "cis-permutation-qvalues-and-complete-nominal-statistics",
+      "reported_version": null,
+      "use_summary": "Used tensorQTL cis permutation mode to obtain empirical p-values/q-values and phenotype-level 5-percent FDR, and cis_nominal mode for complete variant-phenotype statistics used in allelic-fold-change and PIP-weighted summaries.",
+      "details": [
+        "The inspected linked environment pins tensorqtl 1.0.9, Python 3.8.18, NumPy 1.24.4, pandas 2.0.3, SciPy 1.10.1, rpy2 3.5.15 and torch 2.1.2+cpu. This is linked-code evidence, not a version printed near the primary software mention.",
+        "The linked permutation script explicitly calculates q-values with lambda 0.85 and invokes map_independent; the primary paragraph describes default cis settings. Preserve both sources and their different granularity.",
+        "The inspected linked tree supplies no license declaration. Its files were read only and are never executed or redistributed."
+      ],
+      "implementation_scope_note": "The current linked repository revision is not established as the executed study commit, and complete data/commands remain unreproduced. Do not infer CUDA execution from the tensorQTL name; the recovered environment declares a CPU build. Allelic fold change, PIP weighting, genotype-shuffling calibration and cross-locus colocalization remain separate procedures, with their own denominators and inputs. Source review alone does not admit runtime analysis, establish an executed author recipe or reproduce a whole paper.",
+      "primary_anchors": [
+        {
+          "paragraph_index": 21,
+          "section": "Methods / Phenotype-level permutation-based FDR",
+          "paragraph_sha256": "2ab003b1a2ef0d2a61a68582adb8251efabcd23cb292d4c36244fb65cba7c626",
+          "matching_text_sha256": "cdbb4f9a0bc3d6cb768af221a1e93f54e70ba6e0ab47640773dc7fff87673329"
+        },
+        {
+          "paragraph_index": 22,
+          "section": "Methods / Phenotype-level permutation-based FDR",
+          "paragraph_sha256": "07df12177215d89793e3a965b85fbdc7b92f023f12e4845045dab76144d5492b",
+          "matching_text_sha256": "07df12177215d89793e3a965b85fbdc7b92f023f12e4845045dab76144d5492b"
+        },
+        {
+          "paragraph_index": 24,
+          "section": "Methods / Posterior inclusion probability-weighted log2aFC",
+          "paragraph_sha256": "da83e3d74bf451e1e5f4d64d1e842fa565b36b046716ccca5b0dbc0e6613d2a9",
+          "matching_text_sha256": "df61e56242a6f664f0a473308540006be0103a44a7629e0da8884192cc0c2896"
+        },
+        {
+          "paragraph_index": 50,
+          "section": "Data and code availability",
+          "paragraph_sha256": "e9f292e5e0d3c3f90a6b14b309790ffacf0c92c01cf64a357745d705f1a10965",
+          "matching_text_sha256": "e9f292e5e0d3c3f90a6b14b309790ffacf0c92c01cf64a357745d705f1a10965"
+        },
+        {
+          "paragraph_index": 51,
+          "section": "Data and code availability",
+          "paragraph_sha256": "81ff596bfad8b890fb67b8488dee99c55e7926313a9c3484974b81eff6d6841d",
+          "matching_text_sha256": "81ff596bfad8b890fb67b8488dee99c55e7926313a9c3484974b81eff6d6841d"
+        }
+      ],
+      "extractor_near_name_version_preserved": null,
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    }
+  ],
+  "new_source_reviews": 4,
+  "new_family_credit": 0,
+  "source_audit_admits_runtime": false,
+  "whole_goal_complete": false
+}

@@ -1,3 +1,9 @@
+# Current checkpoint: original tensorQTL (2026-11-27)
+
+181 scoped families (36 native, 145 upstream); 1,858 reviewed uses and 876 pending uses. The full 250-paper implementation goal remains active. See [current handover](tensorqtl-validation/HANDOVER.md), [qualification](tensorqtl-validation/QUALIFICATION.json), [tool guide](../tensorqtl-tools.md) and [current registry](tensorqtl-admission/REGISTRY.json). Publication/hosted checks and mandatory cleanup are closed in tensorqtl-validation/COMPLETED.json. Earlier checkpoints below are historical.
+
+---
+
 # Current checkpoint: original SVA factor workflows (2026-11-27)
 
 The full 250-paper goal remains active. **180 scoped families (36 native,

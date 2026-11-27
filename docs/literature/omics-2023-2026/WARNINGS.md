@@ -1,3 +1,15 @@
+# Current original tensorQTL workflows
+
+250 frozen papers; 453 labels and 492 provider definitions; 181 scoped families (36 native, 145 upstream), 1,858 reviewed uses and 876 pending uses. There are 2,734 observations and 247 missing labels. This adds one tensorQTL workflow family and four source reviews. The cited 2022 auxiliary paper adds zero cohort papers. The full implementation and semantic review goal remains open.
+
+Original tensorQTL 1.0.5/1.0.9 prepared-matrix workflows on explicit Python/Torch/R Linux profiles: cis nominal/permutation, grouped conditional discoveries, supplied-table independent mapping, qvalues, trans/interactions and modern original SuSiE hosting. Mapping preserves source float32 arithmetic, version-specific missing/MAF rules, explicit project seeds, original optimizer/model/RNG objects and exact critical source/runtime file guards. CPU and actual CUDA have separate evidence. Failed optimizers, nonconvergence, unexpected nonfinite outputs and original errors admit no complete result; beta_approx=false retains the five source-defined undefined beta fields. R/Python-free saved verification audits integrity, literal intake, journal boundaries and exported structure/bounds without unpickling or statistical refitting. This is a selected software workflow, not an executed author recipe or whole-paper reproduction. The source 1.0.9 dense-trans interaction shape error remains a refused branch; it is never silently rewritten or converted to sparse output.
+
+**Warnings and required actions:** Build current source and use tensorqtl-tools with explicit permitted exact Python/source/R/device bindings; see docs/tensorqtl-tools.md and the synthetic example. Read WARNINGS.md, analysis-status.json and original worker reports/logs; require exit0, results_admitted=true and fresh --verify. SKIP3 skips the dependent analysis: restore the named exact permitted prerequisite or retain the skip. FAIL2 admits no partial result: preserve original inputs/objects/diagnostics, correct the named data/design/numerical/convergence/integrity/process/capacity cause and retry NEW paths. Do not infer author versions, seeds, half-window widths, defaults or CUDA execution; relabel interaction t-tests as likelihood-ratio tests; execute/redistribute unlicensed author programs; repair nonfinite values; or replace tensorQTL-hosted SuSiE with standalone susieR. Original 1.0.9 dense trans interaction fails on the qualified fixture and remains unavailable for admitted results. No release, whole-paper or literature Pages publication is qualified.
+
+See [guide](../../tensorqtl-tools.md) and [qualification/handover](../tensorqtl-validation/HANDOVER.md). Earlier checkpoints below are historical.
+
+---
+
 # Current original SVA factor workflows
 
 250 frozen papers; 453 labels and 492 provider definitions; 180 scoped families (36 native, 144 upstream), 1,854 reviewed uses and 880 pending uses. There are 2,734 observations and 247 missing labels. This adds one SVA factor-workflow family and zero source reviews. The P108 sva provider mention receives no extra ComBat credit. The full 250-paper implementation and semantic review remain open.
