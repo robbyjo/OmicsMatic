@@ -47,6 +47,10 @@ def safe(name):
 
 
 def source_record(root):
+    successor = root / 'docs/literature/rfmix-range-validation/QUALIFICATION.json'
+    if successor.is_file():
+        from verify_rfmix_range_workflows import source_record as successor_record
+        return successor_record(root)['predecessor']
     q = read(root / FOLDER / 'QUALIFICATION.json')
     require(q['status'] == 'PASS_SCOPED_ORIGINAL_RFMIX_MSP_FB_Q_WORKFLOW' and q['whole_goal_complete'] is False
             and q['whole_package_qualified'] is False and q['new_native_family_credit'] == 0

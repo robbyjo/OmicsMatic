@@ -1,0 +1,1162 @@
+{
+  "schema_version": 1,
+  "status": "PASS_ORIGINAL_RFMIX_PLAIN_DECIMAL_RANGES_AND_FULL_WORKFLOW_REGRESSION",
+  "source_commit": "09599c19c69f81571c7a7aab4cd2d847a9e0633a",
+  "source_version": "v2.03-r0",
+  "original_source_files": 38,
+  "original_scientific_source_modified": false,
+  "predecessor_qualification": {
+    "bytes": 12564,
+    "sha256": "4cd1d8aa1ccfbb82a82d81b5a296a8c7d18f60af9a2ddf506cdd73b0b744e6bd"
+  },
+  "predecessor_archive": {
+    "bytes": 77702,
+    "sha256": "be48d95f2ec652970ae184c1728e42851210e94903e8167bce73347cd8fc6b06"
+  },
+  "predecessor_seals_refreshed": false,
+  "exact_source_derivations": {
+    "src/main/java/org/jlinalg/cli/RfmixRequest.java": {
+      "before": {
+        "bytes": 10037,
+        "sha256": "2fa052550d74bf7bd40e157ac2b73b019db67cfaffe8c381a079ad2b38488ac9"
+      },
+      "after": {
+        "bytes": 9963,
+        "sha256": "4d43236706d03cbe77dc7680ea98b58cafe1d3a6ffc9b5824372859bff6d4c07"
+      }
+    },
+    "src/main/java/org/jlinalg/cli/RfmixBundle.java": {
+      "before": {
+        "bytes": 17958,
+        "sha256": "bc2eeadd2a7cfe90b64fb55bb2f600c9a2bef58af56d33fd8746ba5b639f4dd7"
+      },
+      "after": {
+        "bytes": 18058,
+        "sha256": "72d76d41f1d12d49d220f985a05a5b17d2b6358beb47237106273c6f89648bb5"
+      }
+    },
+    "tools/literature/verify_rfmix_workflows.py": {
+      "before": {
+        "bytes": 9011,
+        "sha256": "a75ff34eaa90e39dabf5737b5a5947d41eba15f52ac32dbf80e07dd2dcff964c"
+      },
+      "after": {
+        "bytes": 9258,
+        "sha256": "74478b38d1945248332b1035722f27010673ff7c66539311359af9dd7377d0b9"
+      }
+    },
+    ".gitattributes": {
+      "before": {
+        "bytes": 66264,
+        "sha256": "65bea5b46d812d8269b459fbc3fb1d2d1c61dbddcdfde66c72249c5e21453b98"
+      },
+      "after": {
+        "bytes": 66479,
+        "sha256": "945a19045c127d6af1e70f54d93c167d90bca8518ed7802510a1d9d3b8fb440b"
+      }
+    }
+  },
+  "producer": {
+    "bytes": 213278006,
+    "sha256": "2ec14ffcf7a17f84d2cc0722a5428017088a6aca0f2f1ced4377c067fda477ec"
+  },
+  "producer_path": "project-build-Windows-2/project-build/cli/omicsmatic-0.4.1.jar",
+  "parent_commit": "19596062c77061f8cf1a18a63b9ac19d3f93c5d4",
+  "Windows_native_tests": 46,
+  "Linux_native_tests": 46,
+  "native_test_skips": 0,
+  "packaged_Windows_checks": [
+    {
+      "case": "help",
+      "exit_code": 0,
+      "expected": 0
+    },
+    {
+      "case": "profiles",
+      "exit_code": 0,
+      "expected": 0
+    },
+    {
+      "case": "example",
+      "exit_code": 0,
+      "expected": 0
+    },
+    {
+      "case": "unknown",
+      "exit_code": 2,
+      "expected": 2
+    },
+    {
+      "case": "execution-platform-skip",
+      "exit_code": 3,
+      "expected": 3
+    }
+  ],
+  "core_model_cases": [
+    {
+      "case": "snp-fixed",
+      "retained_loci": 2000,
+      "query_samples": 4,
+      "populations": [
+        "A",
+        "B"
+      ],
+      "markers": 400,
+      "segments": 2,
+      "posterior_cells": 6400,
+      "Q_cells": 8,
+      "original_files": {
+        "Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "fb": {
+          "bytes": 60738,
+          "sha256": "8c8b8c3735ea66491cac163699fcba184088a9ea7d930b98802b7c6c5565013c"
+        },
+        "msp": {
+          "bytes": 233,
+          "sha256": "3852b4c6181afbd4da872b408b29bef479eb6575a9e1e97c2245ba0621586370"
+        },
+        "sis": {
+          "bytes": 35242,
+          "sha256": "3f9492fcba5fa60965773313d8fea0afa13c7b0a6a5dd4bf4d1824bbacc3684c"
+        }
+      },
+      "actual_EM_iterations": 0,
+      "source_range": {
+        "format": "plain round-trip decimal Mbp with one original hyphen delimiter; original binary64 multiplication and signed-int truncation unchanged",
+        "original_notice": null,
+        "positive_VCF_selection_domain_bp": [
+          0,
+          2147483647
+        ],
+        "restriction_requested": false,
+        "source_internal_effective_range_bp": [
+          -2147483648,
+          2147483647
+        ]
+      },
+      "retained_truth_haplotype_states": 16000,
+      "retained_truth_mismatches": 24
+    },
+    {
+      "case": "cm-EM10",
+      "retained_loci": 2000,
+      "query_samples": 4,
+      "populations": [
+        "A",
+        "B"
+      ],
+      "markers": 79,
+      "segments": 2,
+      "posterior_cells": 1264,
+      "Q_cells": 88,
+      "original_files": {
+        "Q": {
+          "bytes": 949,
+          "sha256": "10f1b88c0512954d7129d608a571c456618b4fd258ccfb6a501bd969625c00ef"
+        },
+        "fb": {
+          "bytes": 12296,
+          "sha256": "67b64b94592038983038d9a8e3aa8b531448c96b4872b383ea6e293b8976e161"
+        },
+        "msp": {
+          "bytes": 231,
+          "sha256": "2adb765ad1a7c266e6ce292b979e941a34e673322fa43ee5c5574db02a87c085"
+        },
+        "sis": {
+          "bytes": 7344,
+          "sha256": "d93ee4ee1fbbe1f3aab9734d3d5570ea614519f2d78f90fd6947655a1a23f159"
+        }
+      },
+      "actual_EM_iterations": 7,
+      "source_range": {
+        "format": "plain round-trip decimal Mbp with one original hyphen delimiter; original binary64 multiplication and signed-int truncation unchanged",
+        "original_notice": null,
+        "positive_VCF_selection_domain_bp": [
+          0,
+          2147483647
+        ],
+        "restriction_requested": false,
+        "source_internal_effective_range_bp": [
+          -2147483648,
+          2147483647
+        ]
+      },
+      "retained_truth_haplotype_states": 16000,
+      "retained_truth_mismatches": 40
+    },
+    {
+      "case": "automatic-weight",
+      "retained_loci": 2000,
+      "query_samples": 4,
+      "populations": [
+        "A",
+        "B"
+      ],
+      "markers": 79,
+      "segments": 2,
+      "posterior_cells": 1264,
+      "Q_cells": 8,
+      "original_files": {
+        "Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "fb": {
+          "bytes": 12296,
+          "sha256": "57d40e14ffa14294dbe58e53931f086cff9212e90ccfce879e9ab159f5246cbd"
+        },
+        "msp": {
+          "bytes": 231,
+          "sha256": "2adb765ad1a7c266e6ce292b979e941a34e673322fa43ee5c5574db02a87c085"
+        },
+        "sis": {
+          "bytes": 14626,
+          "sha256": "70369e8b5b8e2cf6b815b44a5c6e7791a19ab058f691b819c2c9a43a56b2a6d2"
+        }
+      },
+      "actual_EM_iterations": 0,
+      "source_range": {
+        "format": "plain round-trip decimal Mbp with one original hyphen delimiter; original binary64 multiplication and signed-int truncation unchanged",
+        "original_notice": null,
+        "positive_VCF_selection_domain_bp": [
+          0,
+          2147483647
+        ],
+        "restriction_requested": false,
+        "source_internal_effective_range_bp": [
+          -2147483648,
+          2147483647
+        ]
+      },
+      "retained_truth_haplotype_states": 16000,
+      "retained_truth_mismatches": 40
+    },
+    {
+      "case": "three-pop",
+      "retained_loci": 2000,
+      "query_samples": 6,
+      "populations": [
+        "A",
+        "B",
+        "C"
+      ],
+      "markers": 130,
+      "segments": 7,
+      "posterior_cells": 4680,
+      "Q_cells": 18,
+      "original_files": {
+        "Q": {
+          "bytes": 248,
+          "sha256": "ccfd736f3d8408027419e3c3f4e3aebc0f72accc8271862e8b010785e9d1335b"
+        },
+        "fb": {
+          "bytes": 41223,
+          "sha256": "229b1572f5c564b07d6f3b6f204a91555a1c870df43581cd59f16b0844395b18"
+        },
+        "msp": {
+          "bytes": 570,
+          "sha256": "8e5bd5829e56dcb680b6e37bba6715c6325b26f0a1c1a7272a2c97ea735727fe"
+        },
+        "sis": {
+          "bytes": 16099,
+          "sha256": "633aae5958f6f93dfc8f465db97af4033eba4a3103e894604637bfd3a34cb42f"
+        }
+      },
+      "actual_EM_iterations": 0,
+      "source_range": {
+        "format": "plain round-trip decimal Mbp with one original hyphen delimiter; original binary64 multiplication and signed-int truncation unchanged",
+        "original_notice": null,
+        "positive_VCF_selection_domain_bp": [
+          0,
+          2147483647
+        ],
+        "restriction_requested": false,
+        "source_internal_effective_range_bp": [
+          -2147483648,
+          2147483647
+        ]
+      },
+      "retained_truth_haplotype_states": 24000,
+      "retained_truth_mismatches": 216
+    },
+    {
+      "case": "three-pop-reference-EM2",
+      "retained_loci": 2000,
+      "query_samples": 6,
+      "populations": [
+        "A",
+        "B",
+        "C"
+      ],
+      "markers": 130,
+      "segments": 7,
+      "posterior_cells": 4680,
+      "Q_cells": 162,
+      "original_files": {
+        "Q": {
+          "bytes": 1592,
+          "sha256": "05968996e4612e107ad55ff0903fc20ec6e1a2d7cc1bc98d5e32f3c4294ca9c2"
+        },
+        "fb": {
+          "bytes": 41223,
+          "sha256": "e6c90359b65f85441b972dd5845956815ac54b2d1790b9f7dac8ab48caa7e6a8"
+        },
+        "msp": {
+          "bytes": 570,
+          "sha256": "8e5bd5829e56dcb680b6e37bba6715c6325b26f0a1c1a7272a2c97ea735727fe"
+        },
+        "sis": {
+          "bytes": 16099,
+          "sha256": "0928d9f3fb409540950ef5bb6e6894594850a65a961b6c225ac52962a64b512a"
+        }
+      },
+      "actual_EM_iterations": 2,
+      "source_range": {
+        "format": "plain round-trip decimal Mbp with one original hyphen delimiter; original binary64 multiplication and signed-int truncation unchanged",
+        "original_notice": null,
+        "positive_VCF_selection_domain_bp": [
+          0,
+          2147483647
+        ],
+        "restriction_requested": false,
+        "source_internal_effective_range_bp": [
+          -2147483648,
+          2147483647
+        ]
+      },
+      "retained_truth_haplotype_states": 24000,
+      "retained_truth_mismatches": 216
+    }
+  ],
+  "range_cases": [
+    {
+      "case": "small-start",
+      "input_range_Mbp": [
+        0.0001,
+        1.5009999
+      ],
+      "effective_range_bp": [
+        100,
+        1500999
+      ],
+      "retained_loci": 1491,
+      "excluded_loci": 509,
+      "markers": 299,
+      "posterior_cells": 4784,
+      "Q_cells": 8,
+      "actual_EM_iterations": 0,
+      "bootstrap_mode": 1,
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 45386,
+          "sha256": "b163d6b56c63cbc9bd5e52742cfd4bd8d8c63ea0b760887dbe03625678a45a6e"
+        },
+        "msp.tsv": {
+          "bytes": 233,
+          "sha256": "599bb977498530d804685267b70b39fc2d2c79bcbf6efe07171d3c1cda66b892"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 26354,
+          "sha256": "74481a29de8ea90b4523747932bc7fd9d8f1eabc4d73967d5b69636483b712b9"
+        }
+      },
+      "direct_original_files": {
+        "msp.tsv": {
+          "bytes": 233,
+          "sha256": "599bb977498530d804685267b70b39fc2d2c79bcbf6efe07171d3c1cda66b892"
+        },
+        "fb.tsv": {
+          "bytes": 45386,
+          "sha256": "b163d6b56c63cbc9bd5e52742cfd4bd8d8c63ea0b760887dbe03625678a45a6e"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 26354,
+          "sha256": "74481a29de8ea90b4523747932bc7fd9d8f1eabc4d73967d5b69636483b712b9"
+        }
+      },
+      "source_notice": {
+        "format": "plain round-trip decimal Mbp with one original hyphen delimiter; original binary64 multiplication and signed-int truncation unchanged",
+        "original_notice": "NOTICE: Analysis restricted to positions in range 100 to 1500999",
+        "positive_VCF_selection_domain_bp": [
+          100,
+          1500999
+        ],
+        "restriction_requested": true,
+        "source_internal_effective_range_bp": [
+          100,
+          1500999
+        ]
+      },
+      "producer": {
+        "bytes": 213278006,
+        "sha256": "2ec14ffcf7a17f84d2cc0722a5428017088a6aca0f2f1ced4377c067fda477ec"
+      }
+    },
+    {
+      "case": "fractional-endpoints",
+      "input_range_Mbp": [
+        0.250000999,
+        1.750999999
+      ],
+      "effective_range_bp": [
+        250000,
+        1750999
+      ],
+      "retained_loci": 1501,
+      "excluded_loci": 499,
+      "markers": 301,
+      "posterior_cells": 4816,
+      "Q_cells": 8,
+      "actual_EM_iterations": 0,
+      "bootstrap_mode": 1,
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 45756,
+          "sha256": "48fbb479e5bced9ae2289cf9594618974f8bd914be12f91476e6f565ec48812a"
+        },
+        "msp.tsv": {
+          "bytes": 233,
+          "sha256": "29fdbbb9d69ee6296c4bd710289877b1ae8ac7b1e7a1201f541344c3cea627ed"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 26596,
+          "sha256": "4d7d545b63aaa31b606a09057feb8726bcdeddf01cca0d53352bf38b7ce55da8"
+        }
+      },
+      "direct_original_files": {
+        "msp.tsv": {
+          "bytes": 233,
+          "sha256": "29fdbbb9d69ee6296c4bd710289877b1ae8ac7b1e7a1201f541344c3cea627ed"
+        },
+        "fb.tsv": {
+          "bytes": 45756,
+          "sha256": "48fbb479e5bced9ae2289cf9594618974f8bd914be12f91476e6f565ec48812a"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 26596,
+          "sha256": "4d7d545b63aaa31b606a09057feb8726bcdeddf01cca0d53352bf38b7ce55da8"
+        }
+      },
+      "source_notice": {
+        "format": "plain round-trip decimal Mbp with one original hyphen delimiter; original binary64 multiplication and signed-int truncation unchanged",
+        "original_notice": "NOTICE: Analysis restricted to positions in range 250000 to 1750999",
+        "positive_VCF_selection_domain_bp": [
+          250000,
+          1750999
+        ],
+        "restriction_requested": true,
+        "source_internal_effective_range_bp": [
+          250000,
+          1750999
+        ]
+      },
+      "producer": {
+        "bytes": 213278006,
+        "sha256": "2ec14ffcf7a17f84d2cc0722a5428017088a6aca0f2f1ced4377c067fda477ec"
+      }
+    },
+    {
+      "case": "subnormal-start",
+      "input_range_Mbp": [
+        5e-324,
+        0.8
+      ],
+      "effective_range_bp": [
+        0,
+        800000
+      ],
+      "retained_loci": 791,
+      "excluded_loci": 1209,
+      "markers": 159,
+      "posterior_cells": 2544,
+      "Q_cells": 88,
+      "actual_EM_iterations": 2,
+      "bootstrap_mode": 1,
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 24186,
+          "sha256": "71064898deec9e85fd947b0de4887360c4588b58983c108f358fe193f0f3d114"
+        },
+        "msp.tsv": {
+          "bytes": 182,
+          "sha256": "cba6121c0e301b26595000f71fb1025aaf45988e54c38b32d326dd18537eadb1"
+        },
+        "rfmix.Q": {
+          "bytes": 949,
+          "sha256": "10f1b88c0512954d7129d608a571c456618b4fd258ccfb6a501bd969625c00ef"
+        },
+        "sis.tsv": {
+          "bytes": 14116,
+          "sha256": "b60ef768b114472fb79c1e443406004759e7784797ac4a5073fa838d9cb109cc"
+        }
+      },
+      "direct_original_files": {
+        "msp.tsv": {
+          "bytes": 182,
+          "sha256": "cba6121c0e301b26595000f71fb1025aaf45988e54c38b32d326dd18537eadb1"
+        },
+        "fb.tsv": {
+          "bytes": 24186,
+          "sha256": "71064898deec9e85fd947b0de4887360c4588b58983c108f358fe193f0f3d114"
+        },
+        "rfmix.Q": {
+          "bytes": 949,
+          "sha256": "10f1b88c0512954d7129d608a571c456618b4fd258ccfb6a501bd969625c00ef"
+        },
+        "sis.tsv": {
+          "bytes": 14116,
+          "sha256": "b60ef768b114472fb79c1e443406004759e7784797ac4a5073fa838d9cb109cc"
+        }
+      },
+      "source_notice": {
+        "format": "plain round-trip decimal Mbp with one original hyphen delimiter; original binary64 multiplication and signed-int truncation unchanged",
+        "original_notice": "NOTICE: Analysis restricted to positions in range 0 to 800000",
+        "positive_VCF_selection_domain_bp": [
+          0,
+          800000
+        ],
+        "restriction_requested": true,
+        "source_internal_effective_range_bp": [
+          0,
+          800000
+        ]
+      },
+      "producer": {
+        "bytes": 213278006,
+        "sha256": "2ec14ffcf7a17f84d2cc0722a5428017088a6aca0f2f1ced4377c067fda477ec"
+      }
+    },
+    {
+      "case": "negative-zero-start",
+      "input_range_Mbp": [
+        -0.0,
+        1.0009
+      ],
+      "effective_range_bp": [
+        0,
+        1000899
+      ],
+      "retained_loci": 991,
+      "excluded_loci": 1009,
+      "markers": 199,
+      "posterior_cells": 3184,
+      "Q_cells": 8,
+      "actual_EM_iterations": 0,
+      "bootstrap_mode": 0,
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 30187,
+          "sha256": "53f5829343e9b6fc805e44646742912b96a7a912054e191af4ec552538e7d7cf"
+        },
+        "msp.tsv": {
+          "bytes": 183,
+          "sha256": "d515043120b1cd99bcc3e39b444aa37e81d76efd954c7166d4760b97d8df10a9"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 17556,
+          "sha256": "6e3c3139e8a098e70e1284b1bb0305140c274af32ccbef707d33c8e36e1078a8"
+        }
+      },
+      "direct_original_files": {
+        "msp.tsv": {
+          "bytes": 183,
+          "sha256": "d515043120b1cd99bcc3e39b444aa37e81d76efd954c7166d4760b97d8df10a9"
+        },
+        "fb.tsv": {
+          "bytes": 30187,
+          "sha256": "53f5829343e9b6fc805e44646742912b96a7a912054e191af4ec552538e7d7cf"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 17556,
+          "sha256": "6e3c3139e8a098e70e1284b1bb0305140c274af32ccbef707d33c8e36e1078a8"
+        }
+      },
+      "source_notice": {
+        "format": "plain round-trip decimal Mbp with one original hyphen delimiter; original binary64 multiplication and signed-int truncation unchanged",
+        "original_notice": "NOTICE: Analysis restricted to positions in range 0 to 1000899",
+        "positive_VCF_selection_domain_bp": [
+          0,
+          1000899
+        ],
+        "restriction_requested": true,
+        "source_internal_effective_range_bp": [
+          0,
+          1000899
+        ]
+      },
+      "producer": {
+        "bytes": 213278006,
+        "sha256": "2ec14ffcf7a17f84d2cc0722a5428017088a6aca0f2f1ced4377c067fda477ec"
+      }
+    },
+    {
+      "case": "short-both-exponents",
+      "input_range_Mbp": [
+        0.0001,
+        0.00025
+      ],
+      "effective_range_bp": [
+        100,
+        250
+      ],
+      "retained_loci": 151,
+      "excluded_loci": 1849,
+      "markers": 31,
+      "posterior_cells": 496,
+      "Q_cells": 8,
+      "actual_EM_iterations": 0,
+      "bootstrap_mode": 1,
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 4911,
+          "sha256": "cf53dc01f97299c0ff619c9026b256faf07b6131bae64905cbf2381bfd6b6b7c"
+        },
+        "msp.tsv": {
+          "bytes": 177,
+          "sha256": "3c5e5284588429c668d5901e374d7c463ed272c220c5cbb8e11088684a02d70c"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 3036,
+          "sha256": "d8b8af99ec860ca6b5fedf9d9146ce5cf27f515ae77f9918c119d539becba15f"
+        }
+      },
+      "direct_original_files": {
+        "msp.tsv": {
+          "bytes": 177,
+          "sha256": "3c5e5284588429c668d5901e374d7c463ed272c220c5cbb8e11088684a02d70c"
+        },
+        "fb.tsv": {
+          "bytes": 4911,
+          "sha256": "cf53dc01f97299c0ff619c9026b256faf07b6131bae64905cbf2381bfd6b6b7c"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 3036,
+          "sha256": "d8b8af99ec860ca6b5fedf9d9146ce5cf27f515ae77f9918c119d539becba15f"
+        }
+      },
+      "source_notice": {
+        "format": "plain round-trip decimal Mbp with one original hyphen delimiter; original binary64 multiplication and signed-int truncation unchanged",
+        "original_notice": "NOTICE: Analysis restricted to positions in range 100 to 250",
+        "positive_VCF_selection_domain_bp": [
+          100,
+          250
+        ],
+        "restriction_requested": true,
+        "source_internal_effective_range_bp": [
+          100,
+          250
+        ]
+      },
+      "producer": {
+        "bytes": 213278006,
+        "sha256": "2ec14ffcf7a17f84d2cc0722a5428017088a6aca0f2f1ced4377c067fda477ec"
+      }
+    }
+  ],
+  "full_capture_cases": 13,
+  "full_fresh_replay_cases": 13,
+  "captures": [
+    {
+      "case": "snp-fixed",
+      "capture": "qualification-Linux-1/snp-fixed-capture",
+      "replay": "qualification-Linux-1/snp-fixed-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 60738,
+          "sha256": "8c8b8c3735ea66491cac163699fcba184088a9ea7d930b98802b7c6c5565013c"
+        },
+        "msp.tsv": {
+          "bytes": 233,
+          "sha256": "3852b4c6181afbd4da872b408b29bef479eb6575a9e1e97c2245ba0621586370"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 35242,
+          "sha256": "3f9492fcba5fa60965773313d8fea0afa13c7b0a6a5dd4bf4d1824bbacc3684c"
+        }
+      }
+    },
+    {
+      "case": "cm-EM10",
+      "capture": "qualification-Linux-1/cm-EM10-capture",
+      "replay": "qualification-Linux-1/cm-EM10-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 12296,
+          "sha256": "67b64b94592038983038d9a8e3aa8b531448c96b4872b383ea6e293b8976e161"
+        },
+        "msp.tsv": {
+          "bytes": 231,
+          "sha256": "2adb765ad1a7c266e6ce292b979e941a34e673322fa43ee5c5574db02a87c085"
+        },
+        "rfmix.Q": {
+          "bytes": 949,
+          "sha256": "10f1b88c0512954d7129d608a571c456618b4fd258ccfb6a501bd969625c00ef"
+        },
+        "sis.tsv": {
+          "bytes": 7344,
+          "sha256": "d93ee4ee1fbbe1f3aab9734d3d5570ea614519f2d78f90fd6947655a1a23f159"
+        }
+      }
+    },
+    {
+      "case": "automatic-weight",
+      "capture": "qualification-Linux-1/automatic-weight-capture",
+      "replay": "qualification-Linux-1/automatic-weight-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 12296,
+          "sha256": "57d40e14ffa14294dbe58e53931f086cff9212e90ccfce879e9ab159f5246cbd"
+        },
+        "msp.tsv": {
+          "bytes": 231,
+          "sha256": "2adb765ad1a7c266e6ce292b979e941a34e673322fa43ee5c5574db02a87c085"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 14626,
+          "sha256": "70369e8b5b8e2cf6b815b44a5c6e7791a19ab058f691b819c2c9a43a56b2a6d2"
+        }
+      }
+    },
+    {
+      "case": "three-pop",
+      "capture": "qualification-Linux-1/three-pop-capture",
+      "replay": "qualification-Linux-1/three-pop-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 41223,
+          "sha256": "229b1572f5c564b07d6f3b6f204a91555a1c870df43581cd59f16b0844395b18"
+        },
+        "msp.tsv": {
+          "bytes": 570,
+          "sha256": "8e5bd5829e56dcb680b6e37bba6715c6325b26f0a1c1a7272a2c97ea735727fe"
+        },
+        "rfmix.Q": {
+          "bytes": 248,
+          "sha256": "ccfd736f3d8408027419e3c3f4e3aebc0f72accc8271862e8b010785e9d1335b"
+        },
+        "sis.tsv": {
+          "bytes": 16099,
+          "sha256": "633aae5958f6f93dfc8f465db97af4033eba4a3103e894604637bfd3a34cb42f"
+        }
+      }
+    },
+    {
+      "case": "three-pop-reference-EM2",
+      "capture": "qualification-Linux-1/three-pop-reference-EM2-capture",
+      "replay": "qualification-Linux-1/three-pop-reference-EM2-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 41223,
+          "sha256": "e6c90359b65f85441b972dd5845956815ac54b2d1790b9f7dac8ab48caa7e6a8"
+        },
+        "msp.tsv": {
+          "bytes": 570,
+          "sha256": "8e5bd5829e56dcb680b6e37bba6715c6325b26f0a1c1a7272a2c97ea735727fe"
+        },
+        "rfmix.Q": {
+          "bytes": 1592,
+          "sha256": "05968996e4612e107ad55ff0903fc20ec6e1a2d7cc1bc98d5e32f3c4294ca9c2"
+        },
+        "sis.tsv": {
+          "bytes": 16099,
+          "sha256": "0928d9f3fb409540950ef5bb6e6894594850a65a961b6c225ac52962a64b512a"
+        }
+      }
+    },
+    {
+      "case": "gzip",
+      "capture": "qualification-Linux-1/gzip-capture",
+      "replay": "qualification-Linux-1/gzip-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 60738,
+          "sha256": "8c8b8c3735ea66491cac163699fcba184088a9ea7d930b98802b7c6c5565013c"
+        },
+        "msp.tsv": {
+          "bytes": 233,
+          "sha256": "3852b4c6181afbd4da872b408b29bef479eb6575a9e1e97c2245ba0621586370"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 35242,
+          "sha256": "3f9492fcba5fa60965773313d8fea0afa13c7b0a6a5dd4bf4d1824bbacc3684c"
+        }
+      }
+    },
+    {
+      "case": "bcf",
+      "capture": "qualification-Linux-1/bcf-capture",
+      "replay": "qualification-Linux-1/bcf-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 60738,
+          "sha256": "8c8b8c3735ea66491cac163699fcba184088a9ea7d930b98802b7c6c5565013c"
+        },
+        "msp.tsv": {
+          "bytes": 233,
+          "sha256": "3852b4c6181afbd4da872b408b29bef479eb6575a9e1e97c2245ba0621586370"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 35242,
+          "sha256": "3f9492fcba5fa60965773313d8fea0afa13c7b0a6a5dd4bf4d1824bbacc3684c"
+        }
+      }
+    },
+    {
+      "case": "selection",
+      "capture": "qualification-Linux-1/selection-capture",
+      "replay": "qualification-Linux-1/selection-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 60964,
+          "sha256": "bcbfd94867936718250e8548a0ce5e3f78940a3630bf507a7dd17c518df7b5f2"
+        },
+        "msp.tsv": {
+          "bytes": 295,
+          "sha256": "352be77d9be3c96b93b10d14e84adaff670eabdc5a3b27a62a2a9c1cb9176af4"
+        },
+        "rfmix.Q": {
+          "bytes": 163,
+          "sha256": "42df0a56538b46222e8844fff132629ffa66548a15d810968445843b91d6638f"
+        },
+        "sis.tsv": {
+          "bytes": 35342,
+          "sha256": "88560fa9ac87a8bfdad0f88b5948140850ff2174abacf6e5f667777d2c303136"
+        }
+      }
+    },
+    {
+      "case": "small-start",
+      "capture": "ranges-Linux-1/small-start-capture",
+      "replay": "ranges-Linux-1/small-start-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 45386,
+          "sha256": "b163d6b56c63cbc9bd5e52742cfd4bd8d8c63ea0b760887dbe03625678a45a6e"
+        },
+        "msp.tsv": {
+          "bytes": 233,
+          "sha256": "599bb977498530d804685267b70b39fc2d2c79bcbf6efe07171d3c1cda66b892"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 26354,
+          "sha256": "74481a29de8ea90b4523747932bc7fd9d8f1eabc4d73967d5b69636483b712b9"
+        }
+      }
+    },
+    {
+      "case": "fractional-endpoints",
+      "capture": "ranges-Linux-1/fractional-endpoints-capture",
+      "replay": "ranges-Linux-1/fractional-endpoints-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 45756,
+          "sha256": "48fbb479e5bced9ae2289cf9594618974f8bd914be12f91476e6f565ec48812a"
+        },
+        "msp.tsv": {
+          "bytes": 233,
+          "sha256": "29fdbbb9d69ee6296c4bd710289877b1ae8ac7b1e7a1201f541344c3cea627ed"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 26596,
+          "sha256": "4d7d545b63aaa31b606a09057feb8726bcdeddf01cca0d53352bf38b7ce55da8"
+        }
+      }
+    },
+    {
+      "case": "subnormal-start",
+      "capture": "ranges-Linux-1/subnormal-start-capture",
+      "replay": "ranges-Linux-1/subnormal-start-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 24186,
+          "sha256": "71064898deec9e85fd947b0de4887360c4588b58983c108f358fe193f0f3d114"
+        },
+        "msp.tsv": {
+          "bytes": 182,
+          "sha256": "cba6121c0e301b26595000f71fb1025aaf45988e54c38b32d326dd18537eadb1"
+        },
+        "rfmix.Q": {
+          "bytes": 949,
+          "sha256": "10f1b88c0512954d7129d608a571c456618b4fd258ccfb6a501bd969625c00ef"
+        },
+        "sis.tsv": {
+          "bytes": 14116,
+          "sha256": "b60ef768b114472fb79c1e443406004759e7784797ac4a5073fa838d9cb109cc"
+        }
+      }
+    },
+    {
+      "case": "negative-zero-start",
+      "capture": "ranges-Linux-1/negative-zero-start-capture",
+      "replay": "ranges-Linux-1/negative-zero-start-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 30187,
+          "sha256": "53f5829343e9b6fc805e44646742912b96a7a912054e191af4ec552538e7d7cf"
+        },
+        "msp.tsv": {
+          "bytes": 183,
+          "sha256": "d515043120b1cd99bcc3e39b444aa37e81d76efd954c7166d4760b97d8df10a9"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 17556,
+          "sha256": "6e3c3139e8a098e70e1284b1bb0305140c274af32ccbef707d33c8e36e1078a8"
+        }
+      }
+    },
+    {
+      "case": "short-both-exponents",
+      "capture": "ranges-Linux-1/short-both-exponents-capture",
+      "replay": "ranges-Linux-1/short-both-exponents-replay",
+      "canonical": {
+        "fb.tsv": {
+          "bytes": 4911,
+          "sha256": "cf53dc01f97299c0ff619c9026b256faf07b6131bae64905cbf2381bfd6b6b7c"
+        },
+        "msp.tsv": {
+          "bytes": 177,
+          "sha256": "3c5e5284588429c668d5901e374d7c463ed272c220c5cbb8e11088684a02d70c"
+        },
+        "rfmix.Q": {
+          "bytes": 149,
+          "sha256": "0bb027c481b6309de35a661ae1fabede3aa0f68468757c7090e471a5058cb95f"
+        },
+        "sis.tsv": {
+          "bytes": 3036,
+          "sha256": "d8b8af99ec860ca6b5fedf9d9146ce5cf27f515ae77f9918c119d539becba15f"
+        }
+      }
+    }
+  ],
+  "core_refusal_controls": [
+    {
+      "name": "missing-runtime",
+      "expected": 3,
+      "attempt_exists": false
+    },
+    {
+      "name": "missing-input",
+      "expected": 3,
+      "attempt_exists": false
+    },
+    {
+      "name": "missing-bcf-index",
+      "expected": 3,
+      "attempt_exists": false
+    },
+    {
+      "name": "unrepresentable-unit",
+      "expected": 2,
+      "attempt_exists": false
+    },
+    {
+      "name": "unresolved-phase",
+      "expected": 2,
+      "attempt_exists": true
+    },
+    {
+      "name": "mismatched-alleles",
+      "expected": 2,
+      "attempt_exists": true
+    },
+    {
+      "name": "corrupt-gzip",
+      "expected": 2,
+      "attempt_exists": true
+    },
+    {
+      "name": "owned-file-resource-limit",
+      "expected": 2,
+      "attempt_exists": true
+    },
+    {
+      "name": "changed-capture",
+      "expected": 2
+    }
+  ],
+  "range_refusal_controls": [
+    {
+      "case": "no-retained-interval",
+      "expected": 2,
+      "complete_result": false
+    },
+    {
+      "case": "reversed-interval",
+      "expected": 2,
+      "complete_result": false
+    },
+    {
+      "case": "coordinate-overflow",
+      "expected": 2,
+      "complete_result": false
+    }
+  ],
+  "predecessor_range_bug_reproduced_with_no_complete_result": true,
+  "production_owned_process_ledgers": 41,
+  "independent_original_oracle_sessions": 5,
+  "no_owned_live_children_after_cleanup": true,
+  "all_previous536_truth_mismatches_retained": true,
+  "range_biological_truth_or_statistical_convergence_certified": false,
+  "failed_build_attempts_retained": 1,
+  "all_producing_JARs_retained": true,
+  "source_context_archive": {
+    "bytes": 89168,
+    "sha256": "a9c63d571285ff55500b562bb861f2577f176b0e327bf7fec552fdb601cb1dfe"
+  },
+  "source_context": {
+    ".gitattributes": {
+      "bytes": 66479,
+      "sha256": "945a19045c127d6af1e70f54d93c167d90bca8518ed7802510a1d9d3b8fb440b"
+    },
+    "build.gradle": {
+      "bytes": 44155,
+      "sha256": "ab40d44c4a3feb3016d3a0f1da8a8a6246d5223538209eb5881c8027609e00a5"
+    },
+    "docs/literature/rfmix-range-validation/README.md": {
+      "bytes": 7410,
+      "sha256": "5bd1a1f3675c0007bf73592ddaa3d2c9bc8d07c40c6bd4dc9c2c7896ff6ea824"
+    },
+    "docs/rfmix-tools.md": {
+      "bytes": 11635,
+      "sha256": "347f5b3279db35431931e418ecec2bf3c4d388020edb9f74a0dc664fae8c50a5"
+    },
+    "src/main/java/org/jlinalg/cli/JLinAlgCli.java": {
+      "bytes": 65373,
+      "sha256": "4355488f76420d4a0ef85a4962ba764ee3951d84acdf08385d84d29747884868"
+    },
+    "src/main/java/org/jlinalg/cli/RfmixBundle.java": {
+      "bytes": 18058,
+      "sha256": "72d76d41f1d12d49d220f985a05a5b17d2b6358beb47237106273c6f89648bb5"
+    },
+    "src/main/java/org/jlinalg/cli/RfmixInputs.java": {
+      "bytes": 16663,
+      "sha256": "0c07b280d3595b78df0ec4f34faeaaed21f1b5d0fcbcf8f051dda658c4031cec"
+    },
+    "src/main/java/org/jlinalg/cli/RfmixRange.java": {
+      "bytes": 3376,
+      "sha256": "66412a57928b5152168dc7e1532d49cc17aa8f299f9bb97f0d9c6c2ba18c1751"
+    },
+    "src/main/java/org/jlinalg/cli/RfmixRequest.java": {
+      "bytes": 9963,
+      "sha256": "4d43236706d03cbe77dc7680ea98b58cafe1d3a6ffc9b5824372859bff6d4c07"
+    },
+    "src/main/java/org/jlinalg/cli/RfmixRuntime.java": {
+      "bytes": 12267,
+      "sha256": "13c73d3239fffddd1f89d839481cc36c136df991d573b4fbb21d4b61995805aa"
+    },
+    "src/main/java/org/jlinalg/cli/RfmixToolsCli.java": {
+      "bytes": 5725,
+      "sha256": "49d17d5147dc2cd4e6a917c8c96defde6506a4d116c1ba5c6bc743f5a9c0e48d"
+    },
+    "src/main/java/org/jlinalg/genetics/RfmixOutputAudit.java": {
+      "bytes": 26566,
+      "sha256": "68f0648e3702f193840200c2598ecf27f47f4fe3602ff1625d9c8f8bcc227559"
+    },
+    "src/main/resources/org/jlinalg/omics/rfmix/bind_runtime.py": {
+      "bytes": 8332,
+      "sha256": "22837350e62f4f8ba184def6100f7aea0a7a3b2abaacb8378322c895b2edce69"
+    },
+    "src/main/resources/org/jlinalg/omics/rfmix/profiles.json": {
+      "bytes": 6188,
+      "sha256": "3641a85bf9984cc08744ed9faf5876e9f5d7be5a7450ddea19f5aa7776ed1987"
+    },
+    "src/test/java/org/jlinalg/cli/RfmixInputsTest.java": {
+      "bytes": 7068,
+      "sha256": "e48f2cb89eb1f0b44e9fad5de502a3efd3d252dc7c12d6223a3c9e33ffc9c2bf"
+    },
+    "src/test/java/org/jlinalg/cli/RfmixRangeTest.java": {
+      "bytes": 3879,
+      "sha256": "693d892318233b2b37d0c1f1f6491cb1d0c99ed8b48496d1f93faab169a51593"
+    },
+    "src/test/java/org/jlinalg/genetics/RfmixOutputAuditTest.java": {
+      "bytes": 9453,
+      "sha256": "c5b59a0add678581addb032ed911f36651572f97a6c8b6a427eb23e40e4d3462"
+    },
+    "tools/literature/rfmix_range_derivation.py": {
+      "bytes": 2015,
+      "sha256": "031f6b76ad941561e33ff046c732c8bf52653d87be50341b12d70190905da07f"
+    },
+    "tools/literature/verify_rfmix_range_workflows.py": {
+      "bytes": 11339,
+      "sha256": "386eda0a9b1f17b7f6074f4b7f9fd61dae66a03bd86a6aaf63410192c9cf6e27"
+    },
+    "tools/literature/verify_rfmix_workflows.py": {
+      "bytes": 9258,
+      "sha256": "74478b38d1945248332b1035722f27010673ff7c66539311359af9dd7377d0b9"
+    }
+  },
+  "private_proof": {
+    "bytes": 289734,
+    "sha256": "f8a8a6044ae6c95a27d85d14e79e6f84a953e71d8fba52e1d427bc20cc36dc36"
+  },
+  "protected_private_files": 1548,
+  "legacy_1_5_4_implemented": false,
+  "sis_dependent_analysis": "SKIPPED_ORIGINAL_WRITER_FINAL_ITERATION_UNQUALIFIED",
+  "new_family_credit": 0,
+  "new_paper_review_credit": 0,
+  "whole_package_qualified": false,
+  "whole_goal_complete": false
+}

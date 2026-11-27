@@ -32,7 +32,7 @@ final class RfmixRequest {
             var weight=object(settings.get("crf_weight"));args.add("--crf-weight="+(autoWeight()?"-1":number(weight.get("value"))));
             for(var row:new TreeMap<>(Map.of("generations","generations","em_iterations","em-iterations","trees","trees","node_size","node-size","max_missing","max-missing","bootstrap_mode","bootstrap-mode","min_snps","rf-minimum-snps","threads","n-threads","seed","random-seed")).entrySet())args.add("--"+row.getValue()+"="+number(settings.get(row.getKey())));
             if(reanalyze())args.add("--reanalyze-reference");
-            if(settings.get("range")!=null){var range=object(settings.get("range"));args.add("--analyze-range="+number(range.get("start_mbp"))+"-"+number(range.get("end_mbp")));}
+            if(settings.get("range")!=null)args.add(RfmixRange.argument(object(settings.get("range"))));
             return List.copyOf(args);
         }
     }

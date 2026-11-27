@@ -1,3 +1,9 @@
+# Current restricted-range support
+
+The interval-formatting issue described in this historical checkpoint is fixed and independently qualified in the [successor range qualification](../rfmix-range-validation/README.md). Use a newly built JAR with a NEW binding/capture. The predecessor JAR, seals and all evidence remain retained. Its original warning and qualification follow unchanged below.
+
+---
+
 **Restricted-range warning:** the eight qualified cases use a null range. A small positive Mbp start can serialize as `1.0E-4`; the original runtime splits the interval at its first hyphen and can misread that exponent. Interval-mode equivalence is unqualified until a separate plain-decimal formatter fix and actual restricted-range captures/replays pass. See [handover](HANDOVER.md). Preserve this producing-JAR seal.
 
 # RFMix workflow qualification
