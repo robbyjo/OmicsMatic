@@ -114,3 +114,9 @@ prepublication snapshot. Preserve them, the detached root checkout, active jobs,
 original scientific inputs/outputs and required runtimes. No subagents were used.
 Feature-local verified cleanup is mandatory after validation/publication. Never
 blanket-delete `build/`, use broad `git clean` or retire uncertain worktrees.
+
+## Publication and cleanup complete
+
+The native component was published on main at `c6453daeade716c37f4036d22b055542ff6d5ba9`; all16 files passed complete hosted readback. `COMPLETION.json` records the subsequent cleanup. Removed15,194 verified temporary files,386,178,097 logical bytes (368MiB): Windows compiler/resource/cache copies plus the private pip cache and BWA compiler copy. Exact compiler recovery ZIP, all14 original wheels, producing JAR, source archives, original runtime and synthetic/source evidence are retained. Observed D: free-space change including recovery was213508096bytes; the Linux filesystem gained100581376bytes. Filesystem observations include allocation overhead and concurrent accounting; no host VHD shrink was requested.
+
+Post-cleanup341 native tests, a complete packaged replay and original Hornet/Python/BWA/Samtools/Bowtie2 health checks passed. All893 current protected files and4,487 predecessor RFMix files passed full-hash verification. All18 foreign worktrees,51 tracked foreign edits, HEADs and statuses are unchanged. All19 worktrees remain; no process was stopped. Cleanup receipts/plans list exact removed paths and recovery mappings. The two failed cleanup-planning attempts deleted nothing and remain retained. Continue the full mapping implementation and source review above; the component added no family or review credit.
