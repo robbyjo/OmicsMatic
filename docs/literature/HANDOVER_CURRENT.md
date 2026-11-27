@@ -1,4 +1,20 @@
-# Current checkpoint: six nf-core source reviews (2026-11-27)
+# Current checkpoint: full original rnasplice reference graph (2026-11-27)
+
+181 scoped families (36 native, 145 upstream), 1,864 reviewed uses and 870
+pending uses remain current. All 128 original rnasplice test tasks completed;
+the complete declared capture passed saved verification on Windows and Linux.
+This component adds zero family credit. Scientific method contracts and a
+usable typed RNA adapter remain pending; the full 250-paper goal is active.
+See [current handover](nfcore-rnasplice-validation/HANDOVER.md),
+[execution evidence](nfcore-rnasplice-validation/EXECUTION-1.json), and
+[current registry](nfcore-source-review-admission/REGISTRY.json). Preserve all
+source runs, results and original warnings. Publication/preservation/cleanup
+closure is recorded in this checkpoint's COMPLETED.json when present.
+Earlier checkpoints below are historical.
+
+---
+
+# Historical checkpoint: six nf-core source reviews (2026-11-27)
 
 181 scoped families (36 native, 145 upstream), 1,864 reviewed uses and 870
 pending uses are current. Six source reviews add zero implementation-family
