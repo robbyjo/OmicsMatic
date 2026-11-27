@@ -1,3 +1,15 @@
+# Current original SVA factor workflows
+
+250 frozen papers; 453 labels and 492 provider definitions; 180 scoped families (36 native, 144 upstream), 1,854 reviewed uses and 880 pending uses. There are 2,734 observations and 247 missing labels. This adds one SVA factor-workflow family and zero source reviews. The P108 sva provider mention receives no extra ComBat credit. The full 250-paper implementation and semantic review remain open.
+
+Original sva3.46.0 factor-workflow adapter on the explicit private R4.2.3 Linux profile: sva, svaseq and num.sv; IRW/two-step/supervised; explicit or original BE/Leek factor counts; original vfilter ties/repeated filtering, fractional normalized counts and zero-factor shapes. Core package file hashes, original body/formals, RNG states, original RDS, console/warnings and pre/post file fingerprints are retained. R-free verification audits complete saved integrity, literal intake and exported structure/norms/probabilities without refitting. This selected software workflow does not establish a paper recipe, historical-version equivalence or biological reproduction. Generic native Java SVA stays method-overlap. Continuous ComBat, ComBat_seq and longitudinal mixed models remain distinct.
+
+**Warnings and required actions:** Build current source and use sva-tools with explicit permitted Rscript/libraries and the exact licensed source archive; see docs/sva-tools.md. Run the original runtime inside the qualified Linux environment. Windows supports R-free saved verification; a Windows original-R profile is not qualified. Read WARNINGS.md, analysis-status.json, original report/warnings and console logs; require exit0, results_admitted=true and fresh --verify. SKIP3 skips the dependent analysis; restore the named exact permitted prerequisite/profile or retain the skip. FAIL2 admits no partial result: preserve all original inputs/objects/diagnostics, fix the named data/design/numerical/integrity/process/capacity cause and retry NEW paths. Do not infer P176 author package version or complete design, or P185 function/count estimator/seed/outcome. Never execute or redistribute the unlicensed author script. Do not substitute this workflow for P086 count ComBat or P128 longitudinal ComBat. No release, whole-paper or literature Pages publication is qualified.
+
+See [current guide](../../sva-tools.md) and [qualification/handover](../sva346-validation/HANDOVER.md). Earlier checkpoints below are historical.
+
+---
+
 # Current native ComBat revision2
 
 250 frozen papers; 453 labels and 492 provider definitions; 179 scoped families (36 native, 143 upstream), 1,854 reviewed uses and 880 pending uses. There are 2,734 observations and 247 missing labels. The continuous-ComBat addition contributes one total native family. This forward correction adds zero extra families or reviews and gives zero extra credit to its sva provider label. Current revision2 matches16 complete finite R controls and both complete source undefined masks on Windows/Linux. The full implementation goal remains open.

@@ -1,3 +1,32 @@
+# Current checkpoint: original SVA factor workflows (2026-11-27)
+
+The full 250-paper goal remains active. **180 scoped families (36 native,
+144 upstream), 1,854 reviewed uses, 880 pending uses and 247 missing labels**
+are current; 453 labels, 492 definitions and 2,734 observations remain.
+
+Read [the current handover](sva346-validation/HANDOVER.md),
+[qualification](sva346-validation/QUALIFICATION.json), and
+[current command](../sva-tools.md). One original SVA factor-workflow family
+is added; P108 receives no extra ComBat credit. Ten tests, 17 complete direct
+original comparisons (8,938 numeric and 1,000 logical values), two original
+errors refused, Linux execution/verification and Windows R-free verification
+pass. P176 author edition/full design and P185 exact entry point/settings
+remain unresolved. The original author script is not licensed for execution.
+
+**Warnings/actions:** original execution requires the declared Linux R4.2.3
+profile/source; no Windows original-R profile is qualified. Require admitted
+status, read WARNINGS.md and original diagnostics, and freshly --verify.
+SKIP3 skips named missing/forbidden prerequisites; restore the exact permitted
+file/runtime/package or retain the skip. FAIL2 admits no partial result;
+preserve original evidence, correct the named cause and retry NEW paths.
+Counts/longitudinal ComBat remain separate. Generic native Java SVA stays
+method overlap. No paper replication, release or literature Pages publication
+is qualified. Retain all worktrees, refs, runtimes and scientific evidence.
+
+Earlier entries below describe historical checkpoints.
+
+---
+
 # Current checkpoint: native ComBat revision2 (2026-11-27)
 
 The full 250-paper goal remains active. **179 scoped families (36 native,143

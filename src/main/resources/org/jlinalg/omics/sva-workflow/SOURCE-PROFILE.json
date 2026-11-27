@@ -1,0 +1,3823 @@
+{
+  "schema_version": 1,
+  "profile": "sva-3.46.0-R4.2.3-linux64",
+  "r_version": "4.2.3",
+  "platform": "x86_64-conda-linux-gnu",
+  "packages": {
+    "sva": "3.46.0",
+    "genefilter": "1.80.0",
+    "limma": "3.54.0",
+    "edgeR": "3.40.0",
+    "matrixStats": "1.3.0",
+    "BiocParallel": "1.32.5",
+    "jsonlite": "1.8.8"
+  },
+  "sva_source": {
+    "url": "https://bioconductor.org/packages/3.16/bioc/src/contrib/sva_3.46.0.tar.gz",
+    "bytes": 441140,
+    "sha256": "6f08aab3ee29cbe6481797b6bb507f351be25e4f0fc9e72588c8fb9d093f2b30"
+  },
+  "license": "Artistic-2.0",
+  "source_redistributed": false,
+  "author_recipe_claim": false,
+  "functions": [
+    "sva",
+    "svaseq",
+    "num.sv",
+    "irwsva.build",
+    "twostepsva.build",
+    "ssva",
+    "edge.lfdr",
+    "f.pvalue",
+    "modefunc",
+    "mono"
+  ],
+  "qualified_package_files": {
+    "sva/DESCRIPTION": {
+      "bytes": 2471,
+      "md5": "1f2dcfbeb68740d0cb2e51d6b84b7e36",
+      "sha256": "5587e24aefd04b6493b476d1ef3e13e3a72212e745f629e8519e14626f2f6ff1"
+    },
+    "sva/INDEX": {
+      "bytes": 2253,
+      "md5": "1e0f551a447205ff43d0726c6c28423d",
+      "sha256": "73856d092198cd05b6c162607b4f8f081dc861e3f91a04c4e370f7f70345f721"
+    },
+    "sva/Meta/Rd.rds": {
+      "bytes": 1004,
+      "md5": "219aa8a932c6fa449a1aa75115836248",
+      "sha256": "3400c99b7c739f21739fefd8b693f85f1b2b8eeab8d00d4298435314a967691b"
+    },
+    "sva/Meta/features.rds": {
+      "bytes": 122,
+      "md5": "a5ebb33b27ed46511c73164e41e04d60",
+      "sha256": "04eebe0ed07cb3a56d7c6e12d4dfd405eb443d53e3d8e6dfbb3fe39af71e0e97"
+    },
+    "sva/Meta/hsearch.rds": {
+      "bytes": 938,
+      "md5": "883f56b86e57b019aebe3d4ebb8b2205",
+      "sha256": "49092821acb67531abe2b983936f0ecc3917fe386f36a3fbad50b1e7a0f0b007"
+    },
+    "sva/Meta/links.rds": {
+      "bytes": 328,
+      "md5": "2069505ec49b03e6012d6e6eb46b5a2f",
+      "sha256": "e4b0eeb9af554ab5944c35b5bd06868ae8d53e4b714929d527945f603d130dd9"
+    },
+    "sva/Meta/nsInfo.rds": {
+      "bytes": 726,
+      "md5": "1648f630dc53275468095489db477140",
+      "sha256": "3652c5def56d0d4b807541c1db175425f3ae8a4cb371c9a0a9f317c94d31bdc0"
+    },
+    "sva/Meta/package.rds": {
+      "bytes": 1786,
+      "md5": "70f7b40f5dfef1b9966cb498433a35b6",
+      "sha256": "b15f6203a5c078d278066f8bff5650fa4499d78598e09aff84a57e7cef0ef19c"
+    },
+    "sva/Meta/vignette.rds": {
+      "bytes": 238,
+      "md5": "42be16d5f88592c20b4b9fc56ecae78a",
+      "sha256": "0ecf73f73e18e8ad1c0c36f80613e66fc758a3bc977727760a6fd3c497170545"
+    },
+    "sva/NAMESPACE": {
+      "bytes": 1298,
+      "md5": "c07885762a7717267140c88cc2f55d6f",
+      "sha256": "d349ee4a52006b2aa17b001cf603931ef69d8b927263d10289ada91b8b7ad695"
+    },
+    "sva/R/sva": {
+      "bytes": 1058,
+      "md5": "d6c68f1fe41ced6e98a766a3757313da",
+      "sha256": "570ca456b280cdeb201ef5ebdf22dc8f80092e2c0c68e33c7f73340e420f3759"
+    },
+    "sva/R/sva.rdb": {
+      "bytes": 75012,
+      "md5": "e21ffde885c6bdf7e3dac4e0c7c499ab",
+      "sha256": "40ca39bff95efbca625b6078b52aa0fddc1e8fcf11da43af504f1aca63f50c3d"
+    },
+    "sva/R/sva.rdx": {
+      "bytes": 761,
+      "md5": "b3f28538f121cf742cc14a097343a4d8",
+      "sha256": "58ee192af0cec56a24544e6d28e297d67c5428f59de6e6337ba3dd51939ac7cd"
+    },
+    "sva/doc/index.html": {
+      "bytes": 1332,
+      "md5": "618aa76efdfa32d9a029bbfddb1efdb8",
+      "sha256": "6aff0df6a61d8ed7a44d74feb937f3d312405d385eb0b8c1f06e8d07327904cd"
+    },
+    "sva/doc/sva.R": {
+      "bytes": 7432,
+      "md5": "0df6c6fa0fd5cb236f244df2395ab6e2",
+      "sha256": "b8ee1dc84d9cd4e55f60a3c168830251a78c3d7b4cc531f98804788f08ef5467"
+    },
+    "sva/doc/sva.Rnw": {
+      "bytes": 26645,
+      "md5": "0dae48f50716f62a3ec0a9452faed3ad",
+      "sha256": "abdc5d831f8c27b1eeb49866353f2bf55fc3a8ae208143576ded76f077fdab65"
+    },
+    "sva/doc/sva.pdf": {
+      "bytes": 224816,
+      "md5": "977907ef6c34a434ecd48f9b7a5ffb80",
+      "sha256": "e6ec360b5d6597923342ecc1ce1964faaaefd96eaefca7750e326a5870befbc6"
+    },
+    "sva/extdata/bwtool/SRR595926_degradeStats_polyA.txt": {
+      "bytes": 65973,
+      "md5": "09d2a3024014c88c73401d314e207d33",
+      "sha256": "6ec8c99c70fea1e41c194b337259bf191a1457f3d28b8a12f7f840c50014b99a"
+    },
+    "sva/extdata/bwtool/SRR604050_degradeStats_polyA.txt": {
+      "bytes": 64421,
+      "md5": "555826983f0c7bfc1892c28231a3e156",
+      "sha256": "407fec2b696ed73b99a625ad6b29313cd7de484fd10f7fc218e87e4322d58e5b"
+    },
+    "sva/extdata/bwtool/SRR604098_degradeStats_polyA.txt": {
+      "bytes": 65283,
+      "md5": "11e499e53382bda693014d429d196025",
+      "sha256": "30ab80616bb6bb129c9e47171392a53fc9e64965ff053eec1163206da8b13d1c"
+    },
+    "sva/extdata/bwtool/SRR607214_degradeStats_polyA.txt": {
+      "bytes": 61295,
+      "md5": "f4e26a7b7cbdc3fb5da52e9de753082e",
+      "sha256": "a50a6abac5cef13626ce53d02b4348dfb83e1b9cca9ed58a5786ee8674d2afb3"
+    },
+    "sva/extdata/bwtool/SRR608456_degradeStats_polyA.txt": {
+      "bytes": 64639,
+      "md5": "fbba2331eafa1203dea3bcc2420c850e",
+      "sha256": "b0e2667d3e2474e778545940a87c318adc765e7b1eef6f3d642774c25d7ea08e"
+    },
+    "sva/extdata/region_matrix_all/gtex_5sample_region_matrix.txt": {
+      "bytes": 50378,
+      "md5": "29076bc7709aa0f4cd09d5d14223befd",
+      "sha256": "1ff3a9c4bfa6289705d69e9249dffa1df40e8a465fa6f9880f06f30a9b801283"
+    },
+    "sva/extdata/region_matrix_one/SRR595926.cov": {
+      "bytes": 29621,
+      "md5": "98b2290d4aee0c736ab2f736950ac8dc",
+      "sha256": "ed2a2fd4512c0be70e90e4fab262bcea7b2342c81082c699846e14486e2ad23c"
+    },
+    "sva/extdata/region_matrix_one/SRR604050.cov": {
+      "bytes": 29316,
+      "md5": "f84e7d38e8cf87e0ca4c463dc2459eea",
+      "sha256": "e0704430357db5bc07eaa2a468805f761ef42826949c4353489965377360ed96"
+    },
+    "sva/extdata/region_matrix_one/SRR604098.cov": {
+      "bytes": 29433,
+      "md5": "6eb2202bb17b25cc8ca46ce3349f5416",
+      "sha256": "65dc71a1ca38897df9e6e52af6ee20e9d331ba5c2b9570b0e912afc161e573b0"
+    },
+    "sva/extdata/region_matrix_one/SRR607214.cov": {
+      "bytes": 28188,
+      "md5": "1c1f896ffbdf68c02bd50dc80ef80f14",
+      "sha256": "c9612cd32ab826bb2a97f9f3c996c3a565aee63f628125e1e4d3fcff17cd9472"
+    },
+    "sva/extdata/region_matrix_one/SRR608456.cov": {
+      "bytes": 29338,
+      "md5": "efce863b6eacda3e37fe2422af6cc840",
+      "sha256": "516f03221ce0e69879cf8802ba3c08e88c2bb9adcb9c5159f8bed081add14509"
+    },
+    "sva/help/AnIndex": {
+      "bytes": 334,
+      "md5": "33a072138d5f2a766ca057ee7f4e525d",
+      "sha256": "3366b5108d9d0c8626c5eddae3f28d16b1d7df6d81f1516e6eb9c6c1ef44c181"
+    },
+    "sva/help/aliases.rds": {
+      "bytes": 222,
+      "md5": "725c7bd2d1775e3d2bce783146c46ce7",
+      "sha256": "62578bad24ccc27f21b3c6af6518a85aa7bddbcceee2efa58a0642d84bb330f9"
+    },
+    "sva/help/paths.rds": {
+      "bytes": 298,
+      "md5": "88e0f803169296611d6d407537b86967",
+      "sha256": "213da0f3fa57ca506f5c90ae9fd49dfca1ecd95080fd608d6adb1a2bf9bfb379"
+    },
+    "sva/help/sva.rdb": {
+      "bytes": 37973,
+      "md5": "9a4a25638f68451fd5acd1dfd1a469c4",
+      "sha256": "bf9cb05704f57db0edf867660bf979c0b434cad81848f352ba884c2670a69fda"
+    },
+    "sva/help/sva.rdx": {
+      "bytes": 538,
+      "md5": "408605f4c735f586bfbbf5950a6f6490",
+      "sha256": "ec8d277b9acdf96a2bae0261bd49e95f5ca4400ea6b6b953b6a7f695ef58b3d4"
+    },
+    "sva/html/00Index.html": {
+      "bytes": 3818,
+      "md5": "33e35958a63c527368bc15a82643f635",
+      "sha256": "088e57f9178a269ef0695eea622d387ce0cf12e1facca70aee71b151faebcbeb"
+    },
+    "sva/html/R.css": {
+      "bytes": 1735,
+      "md5": "3845aef6126cf18c45937f292f23508c",
+      "sha256": "7378544281fb630e3e62a6b7855b428c008332a0249156e72aac5343078654df"
+    },
+    "sva/libs/sva.so": {
+      "bytes": 15528,
+      "md5": "0017affc642c8148ce29c76220e2f666",
+      "sha256": "0b09390fb611706665450be36a6b1bf5e3e6d2bff9c2d5c41044543f36d144b2"
+    },
+    "genefilter/DESCRIPTION": {
+      "bytes": 1207,
+      "md5": "edd98eb76230bc26c1f3b0f9cbf7d07e",
+      "sha256": "c935c3125497ed60827b4263ccc89231fac28e4037eb81d53fe9cb17a6bc73a6"
+    },
+    "genefilter/INDEX": {
+      "bytes": 2360,
+      "md5": "00ff48efe920c7efdb8f709b97c4c220",
+      "sha256": "2d437e219c34b15dc1f3ab334dc1db824ae0d36012b607fd8414e742baf7be11"
+    },
+    "genefilter/Meta/Rd.rds": {
+      "bytes": 1731,
+      "md5": "2312f9811bcaa291515c093913ec9d9c",
+      "sha256": "40f8bc266f7a13289f0f8e9cc39ef13456aa3f6b6bc7489ee47e1297c194bc9d"
+    },
+    "genefilter/Meta/data.rds": {
+      "bytes": 129,
+      "md5": "01596a2601b6f953cbf14b2f3022d14f",
+      "sha256": "519bd0f81cdb0161d47f97d0e0349c965e06919bbff923411fc664aa7dc1bdde"
+    },
+    "genefilter/Meta/features.rds": {
+      "bytes": 122,
+      "md5": "a5ebb33b27ed46511c73164e41e04d60",
+      "sha256": "04eebe0ed07cb3a56d7c6e12d4dfd405eb443d53e3d8e6dfbb3fe39af71e0e97"
+    },
+    "genefilter/Meta/hsearch.rds": {
+      "bytes": 1696,
+      "md5": "c27b24c43272f5544d1a119f19c4cb1e",
+      "sha256": "9b3a40df3ec5ca1bbc705e6d274cab4ef51fd8353ad5374111b7847bb7e58a64"
+    },
+    "genefilter/Meta/links.rds": {
+      "bytes": 843,
+      "md5": "66f843fdbca73d48b2d5bd5496f041c2",
+      "sha256": "4609335d8621596b871fa8b8832707d42d5deead12524877f8f461411802ac00"
+    },
+    "genefilter/Meta/nsInfo.rds": {
+      "bytes": 953,
+      "md5": "978eaae896ddc0261093c3682aad2b46",
+      "sha256": "f0fcbf208f609a4c95289dca1d75b495d32f84e988bfde838376bed02c4c7b42"
+    },
+    "genefilter/Meta/package.rds": {
+      "bytes": 1173,
+      "md5": "d99027202efd308d7dd816468d83c24b",
+      "sha256": "bbfba400c196bb12dec7f522197f6d81e6d1d23f0c786b29d8b4cd8f7c59506f"
+    },
+    "genefilter/Meta/vignette.rds": {
+      "bytes": 459,
+      "md5": "fa53a8030b1744432be41ed9f83efa0a",
+      "sha256": "61b5e75b0c01d0548c113b7f14fa1ede36a799718fe7fccebcb1416aa82fcf8e"
+    },
+    "genefilter/NAMESPACE": {
+      "bytes": 2567,
+      "md5": "0c1436d67400bac0fbf868eb5ae99401",
+      "sha256": "d6df9fd6fc6e1776db6c556515aa41b2f76db8381064f3fab796bc5eb3d67448"
+    },
+    "genefilter/NEWS": {
+      "bytes": 344,
+      "md5": "464d77e6a0943ec58cff7f2197b98d92",
+      "sha256": "2db13efdd2fb22b36d1aae4eb7a826e0b10c1ed3afa87028ac16cf5f5d7ebe54"
+    },
+    "genefilter/R/genefilter": {
+      "bytes": 1058,
+      "md5": "d6c68f1fe41ced6e98a766a3757313da",
+      "sha256": "570ca456b280cdeb201ef5ebdf22dc8f80092e2c0c68e33c7f73340e420f3759"
+    },
+    "genefilter/R/genefilter.rdb": {
+      "bytes": 438116,
+      "md5": "d29421daed5a64ce5954e3de94cace6a",
+      "sha256": "08d669b580cefbaddce9198c0b948f7980427ce246bf371a5b97431da32ee0ea"
+    },
+    "genefilter/R/genefilter.rdx": {
+      "bytes": 1906,
+      "md5": "85c88d8d3f0f6e2aa676674bc7c9e0cc",
+      "sha256": "446f7fec6116c443b144334ca4ad673bc9b12178a6c049603c43a3c4230b72cf"
+    },
+    "genefilter/data/Rdata.rdb": {
+      "bytes": 61729,
+      "md5": "150203be7bf3f6f40cf543bbd6458061",
+      "sha256": "67a51810c6ed4744e892b20c79291d8560668ef1392335c51933b9e5d870c68b"
+    },
+    "genefilter/data/Rdata.rds": {
+      "bytes": 77,
+      "md5": "f812ae0bcab9242d36baab7c0b72e4a5",
+      "sha256": "66220d6ff8863816db6ece6268e3d07cddbb2891d7723a4a3d184bd4a59f8299"
+    },
+    "genefilter/data/Rdata.rdx": {
+      "bytes": 144,
+      "md5": "4d93b0a6133332b268c88ecba2c0d5a2",
+      "sha256": "7ff354cfaec6b7402aeea4a612e64ba0c9c16ae389f706c9c6cde9625bab7083"
+    },
+    "genefilter/doc/howtogenefilter.R": {
+      "bytes": 3085,
+      "md5": "992f30fcf077a0a7d4c946ba9ad0d9e1",
+      "sha256": "e6c2868ec13dfe669b666581f01ad03c04390bd15acd082c13076919cb36d550"
+    },
+    "genefilter/doc/howtogenefilter.Rnw": {
+      "bytes": 6530,
+      "md5": "d533f93e5107e37a8016e845ca386919",
+      "sha256": "5fc3bf2826308db75a74a87929da1e6529bf5eae9d4c3e7813a442ae81827c3e"
+    },
+    "genefilter/doc/howtogenefilter.pdf": {
+      "bytes": 89726,
+      "md5": "475dd9227a84c08424ad0002d20805a0",
+      "sha256": "2a5a030be8cec38e83c4528d14a6606845e0bed6360a0f85400551be2b018151"
+    },
+    "genefilter/doc/howtogenefinder.R": {
+      "bytes": 879,
+      "md5": "34036a80848a5cbd4ab6de8fff990516",
+      "sha256": "a22a4880b29376fd8e6c274947f86b7fef5a899fd9e1465473fe859c117a5384"
+    },
+    "genefilter/doc/howtogenefinder.Rnw": {
+      "bytes": 3862,
+      "md5": "26b5a2a883b1cc690392a4c7620508f8",
+      "sha256": "2f5cbc046e9949efbc2c672359e0497be01194bee803860458f112305b4f290f"
+    },
+    "genefilter/doc/howtogenefinder.pdf": {
+      "bytes": 124059,
+      "md5": "a5f2c4aa34a5474803fc7c59d068d765",
+      "sha256": "11979f6ab095d9ea2863813d5610d4e48c180e85afa85d28c605e660487e5149"
+    },
+    "genefilter/doc/independent_filtering_plots.R": {
+      "bytes": 2847,
+      "md5": "b4fdc11a81387d9b23ffbad530a0d707",
+      "sha256": "755ef9c1012b8897e825916359352dd4c0851eb32afd6808fcb7ec5e65f56a98"
+    },
+    "genefilter/doc/independent_filtering_plots.Rnw": {
+      "bytes": 6798,
+      "md5": "747595c639a1c8fed78cadd32202b265",
+      "sha256": "19a312869ed7ccac628014ab5d575dd8e4d908e995e56253533bdbe8a87bdc25"
+    },
+    "genefilter/doc/independent_filtering_plots.pdf": {
+      "bytes": 432171,
+      "md5": "b14badcd47c6e9e50c8bb45ea7c08393",
+      "sha256": "e122732325c8508bf9483a730361367e77bca4feb5250079f4cd270af3f006a8"
+    },
+    "genefilter/doc/index.html": {
+      "bytes": 2893,
+      "md5": "aebda72b0a53b699da62589fe97342d5",
+      "sha256": "0916095f9d81bbde62ebfb0c4f936eb5171207e14886ecfe7dac933d93b9ab34"
+    },
+    "genefilter/help/AnIndex": {
+      "bytes": 2341,
+      "md5": "e9f3efe59436ef740a89ca95628137d7",
+      "sha256": "16c45bd695041d95508361bc6045c1d4acc0930320251b586c94cccbcde8874c"
+    },
+    "genefilter/help/aliases.rds": {
+      "bytes": 720,
+      "md5": "8390fdac286b425478e2be58f4c12ee6",
+      "sha256": "3b95b2ad3e0c0acfbde448eba710933519f721c54ccd520b415b209ff25bc409"
+    },
+    "genefilter/help/genefilter.rdb": {
+      "bytes": 91866,
+      "md5": "bdd2259691a53b89aab55d30fea9503c",
+      "sha256": "973ceb460415753e82f3cf23df80d5df73630ac20e8a62e64233d39700828317"
+    },
+    "genefilter/help/genefilter.rdx": {
+      "bytes": 772,
+      "md5": "9d34574aceb085f6517a105a9de378e1",
+      "sha256": "20858b4c78f602b35991aae13d7cd95ccbe1ad159322da1904d5d4c94dfe6ccc"
+    },
+    "genefilter/help/paths.rds": {
+      "bytes": 382,
+      "md5": "609d581a3c14a079aa034927938a64ac",
+      "sha256": "05b466467a79f8315dbd28dc855b7e17c8404afc620e2201ac0fff5e9e3caa5e"
+    },
+    "genefilter/html/00Index.html": {
+      "bytes": 9651,
+      "md5": "d2cd0968c46c0e019d11ec59f2e16fce",
+      "sha256": "746fe8c0a23aa23051d990fdd703ffe99d5f83e41437b3e904cb5d6f23878d4a"
+    },
+    "genefilter/html/R.css": {
+      "bytes": 1735,
+      "md5": "3845aef6126cf18c45937f292f23508c",
+      "sha256": "7378544281fb630e3e62a6b7855b428c008332a0249156e72aac5343078654df"
+    },
+    "genefilter/libs/genefilter.so": {
+      "bytes": 43080,
+      "md5": "ab3368f899df3217b3ac94d46deeaecd",
+      "sha256": "e5bca3c7931db81050979b61e10fbfb67e14bc4d15f8ce9bf7365fcb719548f3"
+    },
+    "genefilter/wFun/Anova.xml": {
+      "bytes": 805,
+      "md5": "9db11d86c120b70110228611a3aa68b4",
+      "sha256": "c9231bff6993b6aef0178f58d2fcfe4ead7f6373f7936c33c87c14bc67737968"
+    },
+    "genefilter/wFun/coxfilter.xml": {
+      "bytes": 800,
+      "md5": "a11e0a24bd595d6fefefdf051e0c956e",
+      "sha256": "09ee8c239b09ea4547f20003c112b81e4bf2ac8fa1332c0f33e4ee88485d39d9"
+    },
+    "genefilter/wFun/cv.xml": {
+      "bytes": 801,
+      "md5": "d9240c8010a3fdc678e58dec8efb0c90",
+      "sha256": "8db20447a0c61f06f4e717a8f304b34d8f14082f5f7d36ed0effb1b58a8e4fb9"
+    },
+    "genefilter/wFun/gapFilter.xml": {
+      "bytes": 1252,
+      "md5": "c0052c1e2f7d2857805f4ee4b901640c",
+      "sha256": "2d232d553728e509bd9e28a49465b2cd3072da30870d74158ff7b5922dfadfb4"
+    },
+    "genefilter/wFun/kOverA.xml": {
+      "bytes": 803,
+      "md5": "d90a07da0294b945de4566d4b3d983f8",
+      "sha256": "0164c2e7f6d9d76c1c0339d5bc123e3bc8d1edf048f683bbd2dc0c62520bff48"
+    },
+    "genefilter/wFun/maxA.xml": {
+      "bytes": 583,
+      "md5": "c2cb06d135b8c2dff6b235336ee52863",
+      "sha256": "fe3cee5f5c8122bcb04b4593c46b4887c4dbb2df1d7c066416ba24645c4fb16e"
+    },
+    "genefilter/wFun/pOverA.xml": {
+      "bytes": 808,
+      "md5": "4051f9be6ffb4c5af6aa05114d8bb23f",
+      "sha256": "05b2464db07c0c33ca8fa4450d38105e6c4a17ae88b73f44258e98a3d4debbb7"
+    },
+    "genefilter/wFun/ttest.xml": {
+      "bytes": 803,
+      "md5": "4a87542c78cba22f80098652162dda5c",
+      "sha256": "3de7170734e050865ecee8abb4c6c8ae989b3213c246aeb0ca2677ab258fc33b"
+    },
+    "limma/CITATION": {
+      "bytes": 1110,
+      "md5": "11774a84b8993201ad147e0f09d417ee",
+      "sha256": "d81744e4e338cb432ee594d7007ce25001eb48c8280b2ea190b15f130ebea115"
+    },
+    "limma/DESCRIPTION": {
+      "bytes": 1849,
+      "md5": "165910f4fd73ed112718bdb797b7fe95",
+      "sha256": "7e59f006fd770729904f0fd70430cb94c6eaa1bed9aaff0a68869084e96cc526"
+    },
+    "limma/INDEX": {
+      "bytes": 12550,
+      "md5": "bc3a5a890b01fe1cb20d612fd16f0250",
+      "sha256": "09e2068a064e8270ec0b556d8181cc3fbe928b4a0c6b54ac30f5ab156ad26ddb"
+    },
+    "limma/Meta/Rd.rds": {
+      "bytes": 7991,
+      "md5": "4ede6fafca2f9a40021d9db55fdef948",
+      "sha256": "5d6c058d75d32673576db51db702be880620708186a4cdda8419ae8d49eee96d"
+    },
+    "limma/Meta/features.rds": {
+      "bytes": 122,
+      "md5": "a5ebb33b27ed46511c73164e41e04d60",
+      "sha256": "04eebe0ed07cb3a56d7c6e12d4dfd405eb443d53e3d8e6dfbb3fe39af71e0e97"
+    },
+    "limma/Meta/hsearch.rds": {
+      "bytes": 7493,
+      "md5": "48a02bc776c0cc1ac5c3c748e39b3d43",
+      "sha256": "6f74028989587dc720c4fa7a7f325af7624d84d2ee987fb4817e9d12429144da"
+    },
+    "limma/Meta/links.rds": {
+      "bytes": 3711,
+      "md5": "dc96cc960a02c29ac31529d5a3133227",
+      "sha256": "8e0601c988eb4805caec44100c1627cfe73c0db762d096ec98f3da5fef33d31b"
+    },
+    "limma/Meta/nsInfo.rds": {
+      "bytes": 1241,
+      "md5": "efc54c217f271d26408dffec5231a3ff",
+      "sha256": "517f0045c7d64c446d3508b74a9c524767072bb4d9878c910af8141df8210f22"
+    },
+    "limma/Meta/package.rds": {
+      "bytes": 1571,
+      "md5": "c2349872ee8079950d636fc741e7271d",
+      "sha256": "e9398c1609f9be00b6b75fc4ac71e098242fe5aca074ac423b633a43e2e4a6d8"
+    },
+    "limma/Meta/vignette.rds": {
+      "bytes": 231,
+      "md5": "cbf67a25c83ede1c6612129f50674bbb",
+      "sha256": "10cb412042fa357afeb71e5192fb17153db4d29873f9093ca68b568d77660355"
+    },
+    "limma/NAMESPACE": {
+      "bytes": 4677,
+      "md5": "b83b431a5661d0107fff1ddc6d4d5825",
+      "sha256": "e8da85e2472fb8175ab366b30d0a2e01c9e0b21d027bc4f0af4d8b880888af31"
+    },
+    "limma/NEWS.Rd": {
+      "bytes": 66058,
+      "md5": "e25a9fa91c930b4a92f9f5c4b635b4eb",
+      "sha256": "9eb51e10e46e78b62d767cae609cccd90c501fcf720fd833b55f519c42e891b3"
+    },
+    "limma/R/limma": {
+      "bytes": 1058,
+      "md5": "d6c68f1fe41ced6e98a766a3757313da",
+      "sha256": "570ca456b280cdeb201ef5ebdf22dc8f80092e2c0c68e33c7f73340e420f3759"
+    },
+    "limma/R/limma.rdb": {
+      "bytes": 931165,
+      "md5": "06d01ca468cac5aabca2c7bd0076d5b9",
+      "sha256": "2997822fe51e669b65d55824e2b1264dc0cee9392f940e2ef7102bdc6fd25025"
+    },
+    "limma/R/limma.rdx": {
+      "bytes": 5458,
+      "md5": "fc1108baaa94835ad480cbad33765c8b",
+      "sha256": "d012f693ca738ea1d186c742ebe39d9becda534b7ff8169e80012a581d3b287c"
+    },
+    "limma/doc/changelog.txt": {
+      "bytes": 182614,
+      "md5": "6450d18053163daa953c2426574bc143",
+      "sha256": "97d5743f42ef3ba7bc708faeb6d629317d732a40cd9ad727b67cb7f5224411e1"
+    },
+    "limma/doc/index.html": {
+      "bytes": 737,
+      "md5": "49318ed77f1254113d474535c748b94c",
+      "sha256": "8d71bce02f792dfa4b4b63390b1daa9d4570ca20eb5f66ea175b429a40d5b915"
+    },
+    "limma/doc/intro.Rnw": {
+      "bytes": 1753,
+      "md5": "bc3dd3f10ba5c4e20ace0d82ab716d46",
+      "sha256": "7ce9beb55d820d0506da26ae5af818637301de86e3692754bb488c5fed295c9e"
+    },
+    "limma/doc/intro.pdf": {
+      "bytes": 37501,
+      "md5": "2b41ef4760437a445ca3523bf854374d",
+      "sha256": "9596a7ba5f9165499bb6a34a2048fc16a05b928465c043367f4576ebd1e54c72"
+    },
+    "limma/doc/usersguide.pdf": {
+      "bytes": 1284354,
+      "md5": "ca2200c9b9fe036d51adb6d000772276",
+      "sha256": "56223e27f29edf884d357fcf437751982976716754b4dd81e8adab33ead62fe0"
+    },
+    "limma/help/AnIndex": {
+      "bytes": 8379,
+      "md5": "57bfef0f1638f216e439fa8aa35d56a2",
+      "sha256": "126375244a3b008d4f09ff016618cc9de7df475ad24d9d3ae9f1878b07ff61d7"
+    },
+    "limma/help/aliases.rds": {
+      "bytes": 3085,
+      "md5": "683f90db0706ca60d771dbcdc43ac6d3",
+      "sha256": "cbdae9665bb00f3527770a7d4923a8c80ef20be5450f835d687845f25b1f171d"
+    },
+    "limma/help/limma.rdb": {
+      "bytes": 684883,
+      "md5": "9f64a602fe7a96c2b1e6a45ce10acffc",
+      "sha256": "e47a1ff1bb8dfdf6c1696f00447f7f48120aa4ca405b99b1d5602adb10bc6405"
+    },
+    "limma/help/limma.rdx": {
+      "bytes": 4069,
+      "md5": "9a982dbba82f95bca53bba03833c6ec9",
+      "sha256": "ea249edba429756626b216b6ec56a660d15365f14b1e040702989d1ac7b6d761"
+    },
+    "limma/help/paths.rds": {
+      "bytes": 1680,
+      "md5": "0f0a47b33cacea347c52b730c24c559c",
+      "sha256": "0d8a1fbf23d9fe0fa095061fb8a5c9d00ba004a8753b41a34e2dda872faaf60e"
+    },
+    "limma/html/00Index.html": {
+      "bytes": 49155,
+      "md5": "ca452132c2662cdc6022c161dc445d2f",
+      "sha256": "e4221a5856e860be0d4e00ab4d2ea432a0d1fe374a610874973998efddfe2c81"
+    },
+    "limma/html/R.css": {
+      "bytes": 1735,
+      "md5": "3845aef6126cf18c45937f292f23508c",
+      "sha256": "7378544281fb630e3e62a6b7855b428c008332a0249156e72aac5343078654df"
+    },
+    "limma/libs/limma.so": {
+      "bytes": 29248,
+      "md5": "b6027439cabe9663fb0c69a2a1cb2c0d",
+      "sha256": "7b7c218b1704eb70a911c3da7052360e690d16c0dbe09a039bd5f30e7569f4fe"
+    },
+    "edgeR/CITATION": {
+      "bytes": 1819,
+      "md5": "bd602919af60384254b93b83f3919467",
+      "sha256": "b6ab8dc2deb6577725403f55d239d433d34110733b5ac9facbdefdaa991ef296"
+    },
+    "edgeR/DESCRIPTION": {
+      "bytes": 2112,
+      "md5": "a072d864897f13bf8610da15afbf8469",
+      "sha256": "1faae4c5ff99f187819efc0260d7b877a584fd7b3e18e3ebfc3b0391d79b298f"
+    },
+    "edgeR/INDEX": {
+      "bytes": 9001,
+      "md5": "1f34ff06608eae04f7be9731f2710537",
+      "sha256": "60993140c1e6b44fab56105dcd483e963995b86976af8b083b170ea6ce1e441a"
+    },
+    "edgeR/Meta/Rd.rds": {
+      "bytes": 5145,
+      "md5": "3b337729243e7ef9b07fc24a6a20e0d0",
+      "sha256": "416bd6720cdf760f618c31fa640a51d029dd764bab6fee808d9bccabd5834571"
+    },
+    "edgeR/Meta/features.rds": {
+      "bytes": 122,
+      "md5": "a5ebb33b27ed46511c73164e41e04d60",
+      "sha256": "04eebe0ed07cb3a56d7c6e12d4dfd405eb443d53e3d8e6dfbb3fe39af71e0e97"
+    },
+    "edgeR/Meta/hsearch.rds": {
+      "bytes": 4990,
+      "md5": "2e01f6364a0b344c916d02b04c6e908e",
+      "sha256": "2df05f6d100b8ec613f12f881a731e4a0fd37e9ea6b7dc7e95f5dc4d141b1b91"
+    },
+    "edgeR/Meta/links.rds": {
+      "bytes": 2537,
+      "md5": "db9ae2abb4ac6df3019b6d60b9612ad7",
+      "sha256": "4a4adfdf162915e181ce699dc8515a7af8a8a429a462f61cbe30c64b6316693d"
+    },
+    "edgeR/Meta/nsInfo.rds": {
+      "bytes": 1468,
+      "md5": "876c28aee6eaf8a78e76b53c4a890627",
+      "sha256": "9ba75e6fc12c6d09ea2a749c8b19d15e0fe042bf8fbc3ce6af90707bd1d42285"
+    },
+    "edgeR/Meta/package.rds": {
+      "bytes": 1691,
+      "md5": "96b30f68923ceba8881d70a4eb368d2d",
+      "sha256": "dc18989da3c8e49f13f2a3828b0162dabe8d4e3a11703ae79367d3c105b77690"
+    },
+    "edgeR/Meta/vignette.rds": {
+      "bytes": 229,
+      "md5": "9423e728931fcfa6fd56ac6c16360cfd",
+      "sha256": "8832366f8d40e346c93d4c331e35fc697a6c693c9cc1f7be5ea6b6c79a160995"
+    },
+    "edgeR/NAMESPACE": {
+      "bytes": 5313,
+      "md5": "bbc01114966957a889b8057f30336d38",
+      "sha256": "cac1225a757e7ee6f893b62c7ee99a54e00437ffb1fe5114b2de3943abb3a3b6"
+    },
+    "edgeR/NEWS.Rd": {
+      "bytes": 34355,
+      "md5": "d217452031e513f2ca8eb6acd3401650",
+      "sha256": "78015bf4fc420c875bebd1436444901b56e35fd6e65def63e953fecc8d0d3398"
+    },
+    "edgeR/R/edgeR": {
+      "bytes": 1058,
+      "md5": "d6c68f1fe41ced6e98a766a3757313da",
+      "sha256": "570ca456b280cdeb201ef5ebdf22dc8f80092e2c0c68e33c7f73340e420f3759"
+    },
+    "edgeR/R/edgeR.rdb": {
+      "bytes": 568767,
+      "md5": "edd6774ceb2f5f338f319dbb06b650f8",
+      "sha256": "cebfc32a93ff4a446353a037e11c072c890abd7bc6b10fc0abf65fd1191f93fe"
+    },
+    "edgeR/R/edgeR.rdx": {
+      "bytes": 4041,
+      "md5": "7c1fe4a5a927e855f61b70de1d154641",
+      "sha256": "1518de25a9ef46889c2958349852b2a3d34575a0a91d5b231b95fbf8ce8c95ff"
+    },
+    "edgeR/doc/edgeR.Rnw": {
+      "bytes": 1817,
+      "md5": "18ce9a858f3eb87f57e100a146c660d0",
+      "sha256": "3e86654bfcf76b9459ae511fefaeced5d6bdce7ba558e0239eb72e818565c944"
+    },
+    "edgeR/doc/edgeR.pdf": {
+      "bytes": 44111,
+      "md5": "95507bf87613d4469d7cf17c4becdd0e",
+      "sha256": "a4904bdb41c9b4e6a08849794760d7e47b768ee6aa3c1595aae43d84e8d79491"
+    },
+    "edgeR/doc/edgeRUsersGuide.pdf": {
+      "bytes": 1244091,
+      "md5": "06aa08b365a813efec49a04685209303",
+      "sha256": "af32a246866cb9ed896189ef89395a4b0a410df4d2e405771fed08996632403f"
+    },
+    "edgeR/doc/index.html": {
+      "bytes": 663,
+      "md5": "29c2057e2080351b94d32a14098ae73b",
+      "sha256": "5958eb306364d533cd810f73ccf8295579817a9e729a92e45b002cd2daa9a6d3"
+    },
+    "edgeR/help/AnIndex": {
+      "bytes": 7324,
+      "md5": "11102d4e38f839115230b75070e6d13a",
+      "sha256": "2cd344a76eef64a7630de78c5a10f63328e4c775bd42476e0f6d8db2b6c3cdba"
+    },
+    "edgeR/help/aliases.rds": {
+      "bytes": 2088,
+      "md5": "9432ea78a72d0559523b54e6fab7dedb",
+      "sha256": "eff4d6eed8b60a26639e80b9c8ff0ce538e16885fd34d893696d901e9087a06e"
+    },
+    "edgeR/help/edgeR.rdb": {
+      "bytes": 382023,
+      "md5": "dca2dfcf8406c1d7a34d1e992422802a",
+      "sha256": "56ac1c6ae97862d6ac55b1b48f1eda485fce7f7bb9668a14b9ce73f34a73debc"
+    },
+    "edgeR/help/edgeR.rdx": {
+      "bytes": 2511,
+      "md5": "97669b11942cb0044f38148abba7e5e4",
+      "sha256": "e450fec150217875c54b4bebda68f5aca5030bd6205f6a4463c84b5f1f8a2862"
+    },
+    "edgeR/help/paths.rds": {
+      "bytes": 1130,
+      "md5": "cbd939ebff4f1d59c756f5abbe1d2fc7",
+      "sha256": "58ac991e7b3326906a057725ee76e5005e2016f702ae06c98c00d8a27be356a8"
+    },
+    "edgeR/html/00Index.html": {
+      "bytes": 39699,
+      "md5": "740e73406643acc00b03f79d3406630f",
+      "sha256": "77796268408a9c22134c106aa4bd7344e692a3f58822e5b31d519d494315508c"
+    },
+    "edgeR/html/R.css": {
+      "bytes": 1735,
+      "md5": "3845aef6126cf18c45937f292f23508c",
+      "sha256": "7378544281fb630e3e62a6b7855b428c008332a0249156e72aac5343078654df"
+    },
+    "edgeR/libs/edgeR.so": {
+      "bytes": 299208,
+      "md5": "6f469452a70f6886df5579d6e4d5ab84",
+      "sha256": "c90c66b3de9ee3fb3f4407a0f93f91e385a2e29afa82d080d09f6a7af34be9ff"
+    },
+    "matrixStats/DESCRIPTION": {
+      "bytes": 2170,
+      "md5": "bfa6d41e89fa3421b9266db64fd7a419",
+      "sha256": "83d864a2bcc34fcf0f8c6cb188a501b77aab9f63ec2f82d619da4cb9b382fa75"
+    },
+    "matrixStats/INDEX": {
+      "bytes": 3047,
+      "md5": "12d1190ade00ab9176443bded40a7ead",
+      "sha256": "df7da9337f034c3c2280fc653088cd67e9e556f47389310982b70a6ee4a8e4a4"
+    },
+    "matrixStats/Meta/Rd.rds": {
+      "bytes": 2302,
+      "md5": "96e35e98724f2f504a69bcac714f3535",
+      "sha256": "3769bd266b1d225089803b21b9930361e319d5802cf097031d758b66e54a1325"
+    },
+    "matrixStats/Meta/features.rds": {
+      "bytes": 122,
+      "md5": "a5ebb33b27ed46511c73164e41e04d60",
+      "sha256": "04eebe0ed07cb3a56d7c6e12d4dfd405eb443d53e3d8e6dfbb3fe39af71e0e97"
+    },
+    "matrixStats/Meta/hsearch.rds": {
+      "bytes": 2349,
+      "md5": "4f4f2fd895624facfca11ec55b54dc74",
+      "sha256": "0206ab9b777484d29ecc3812a44a70c559ba43840fbf8ed42435552051719807"
+    },
+    "matrixStats/Meta/links.rds": {
+      "bytes": 1184,
+      "md5": "0828fe5a86f37b297fbf4715078cd6cf",
+      "sha256": "6652c19b816ce26706ef318d774bba80e616555b1753837308e98948ecb64a79"
+    },
+    "matrixStats/Meta/nsInfo.rds": {
+      "bytes": 831,
+      "md5": "6ba6e020076abf1646ea69e464c2fc77",
+      "sha256": "a204eeec43da6309acdb9f46ec4dfed5b4a16f573738eabb898584109de9562a"
+    },
+    "matrixStats/Meta/package.rds": {
+      "bytes": 1441,
+      "md5": "f499e9cc0e5c06f90a8778f82d17390b",
+      "sha256": "85c606323a3be747d696968f6e0110781d2e2feeeb2fd810780d40e5bd95795c"
+    },
+    "matrixStats/Meta/vignette.rds": {
+      "bytes": 270,
+      "md5": "2f779e39f3de6f64ad05304275b89f9d",
+      "sha256": "d7330f15fd2357f6fdd8fa80c9dc446ee7d0d96df1e5078301a9035916b7f7f6"
+    },
+    "matrixStats/NAMESPACE": {
+      "bytes": 2107,
+      "md5": "0ec2aff687137e8e82740bb58f5498b4",
+      "sha256": "789a58f280c89e4f4ba1364da17ab3a9b46b7c5f4d0d6697bfaa3638e99982e3"
+    },
+    "matrixStats/NEWS.md": {
+      "bytes": 56788,
+      "md5": "dedd559c7e0f10da2d1dbff9ed8bbea0",
+      "sha256": "f146457ae4af899f987cd5387a68bd0595dfc279c6f9c21d9e9c8313229d2547"
+    },
+    "matrixStats/R/matrixStats": {
+      "bytes": 1058,
+      "md5": "d6c68f1fe41ced6e98a766a3757313da",
+      "sha256": "570ca456b280cdeb201ef5ebdf22dc8f80092e2c0c68e33c7f73340e420f3759"
+    },
+    "matrixStats/R/matrixStats.rdb": {
+      "bytes": 157036,
+      "md5": "20788a41935baf21b3f283187031d2ad",
+      "sha256": "ea8007642a40b522494a7ca03be51cf84bc8b4b7e41aa5f3b2b563d02703924e"
+    },
+    "matrixStats/R/matrixStats.rdx": {
+      "bytes": 1757,
+      "md5": "d6ec633f03570e54aaf7a14bc5e2528d",
+      "sha256": "a5f63cda1251f3fc41ec1aee68495f93366313656aeb24c8cdef2430cd94bd35"
+    },
+    "matrixStats/WORDLIST": {
+      "bytes": 2381,
+      "md5": "9e4a729fee3a8de13a1fd2c09e90dfce",
+      "sha256": "a615008d55378bdccded655b407bfd66800b9c8d0b7e66fefe738966b4fd1393"
+    },
+    "matrixStats/benchmarking/R/random-matrices.R": {
+      "bytes": 1045,
+      "md5": "ca773a01fc2df607bef2bf6ee72f01fb",
+      "sha256": "3a8552c05b33ca45ddafe136abff93758d3e7490c18547d623aba40ccf21be6f"
+    },
+    "matrixStats/benchmarking/R/random-vectors.R": {
+      "bytes": 784,
+      "md5": "68d9d75e6b36f6bd61569553be4cb133",
+      "sha256": "163675ff71258b22e24053986309a23b0fbe1558f4eaa31fd14a79b6d92120fb"
+    },
+    "matrixStats/benchmarking/allocMatrix.md.rsp": {
+      "bytes": 2112,
+      "md5": "e00cf911d14b0c6bc13bb17b3dd62f1e",
+      "sha256": "c1b56b2df2d7a38924079ce626caa52f28feff434b2dcc769019f6e6508de449"
+    },
+    "matrixStats/benchmarking/allocVector.md.rsp": {
+      "bytes": 2194,
+      "md5": "81d8eb603b80c27bed9570bd49ae03f0",
+      "sha256": "4ec8933ed20ae44b4f12a7c44c49bc1f1c908a9be66ec6f7001e043fa445cf4a"
+    },
+    "matrixStats/benchmarking/anyMissing.md.rsp": {
+      "bytes": 1382,
+      "md5": "87c66c03ab530a473a7cfab448e30664",
+      "sha256": "ac44826bbc71fdb6b1c6862372101607be7804ab5e79195ee63a38fc9bb84f87"
+    },
+    "matrixStats/benchmarking/anyMissing_subset.md.rsp": {
+      "bytes": 1355,
+      "md5": "f97927a62ed926d0092677057692449f",
+      "sha256": "d3a84af0623846bd470b5676c71e2135a67aed3edcd174deb78802089d8463f7"
+    },
+    "matrixStats/benchmarking/binCounts.md.rsp": {
+      "bytes": 1983,
+      "md5": "86bfbd81cb938e1caa98d01bfc32849c",
+      "sha256": "31f2e1152a23275d4bd2038e29bda5b775588e04c23e06ae0a2c742567df68eb"
+    },
+    "matrixStats/benchmarking/binCounts_subset.md.rsp": {
+      "bytes": 1894,
+      "md5": "17aa0aa0a6be8f9359f1cb0f09286db2",
+      "sha256": "11d808969058bcd152312af553d04fc324dad874170b46d345f1a3885cfd7c0c"
+    },
+    "matrixStats/benchmarking/binMeans.md.rsp": {
+      "bytes": 2034,
+      "md5": "4e7fff2c598adc6b0982245a5542dfd9",
+      "sha256": "d1db5badf41ec53479c379883193f4e265b6fb6a71418d3ee4218346cf6d8924"
+    },
+    "matrixStats/benchmarking/binMeans_subset.md.rsp": {
+      "bytes": 1688,
+      "md5": "3797dd738454272a3431c4979b39c0c9",
+      "sha256": "d1774dc2b4839a858f955d2266419dbb404e4ec8ff711b3774d053beb22b6715"
+    },
+    "matrixStats/benchmarking/colRowAlls.md.rsp": {
+      "bytes": 1404,
+      "md5": "3a3911d3e2b396d9f55015baef8f04f5",
+      "sha256": "d00ab8a9404d29060a8b7e94038cd31d8c2ed5ffeb90db3bbc1a5786201b0c07"
+    },
+    "matrixStats/benchmarking/colRowAlls_subset.md.rsp": {
+      "bytes": 1601,
+      "md5": "ffe602c8b8a9e9ce2aab09ad6b3e37d8",
+      "sha256": "1450cf5298bfaf8b676e445d215e2372390a83ce7e4fd0b0d86a22b6436deb67"
+    },
+    "matrixStats/benchmarking/colRowAnyMissings.md.rsp": {
+      "bytes": 1873,
+      "md5": "23f7cd533e7631799278786bca210bf9",
+      "sha256": "85ff2d49316c08992bf8e9888e0eb3ac94dcbbf9378842a930881d0d7bec44b2"
+    },
+    "matrixStats/benchmarking/colRowAnyMissings_subset.md.rsp": {
+      "bytes": 1828,
+      "md5": "69ab6c0d6c537a30b5550ad5c4a231b2",
+      "sha256": "32f8fe05f4e050eb8c59799132f6509fe8bceb6af2bdb103750fdced6cb32e74"
+    },
+    "matrixStats/benchmarking/colRowAnys.md.rsp": {
+      "bytes": 1398,
+      "md5": "73f26ffb9340049cd3818c63b622a549",
+      "sha256": "401e67bb13af545fd67ec08f879348404a16108929c9aacdca7296aea5ee31b3"
+    },
+    "matrixStats/benchmarking/colRowAnys_subset.md.rsp": {
+      "bytes": 1601,
+      "md5": "0098b1085ada124e68e8dfa7f7d3620f",
+      "sha256": "7806e308ede52b59471c3ab3808b0ad0dfc0f9243700ec3c5d6e2524bcd3253e"
+    },
+    "matrixStats/benchmarking/colRowCounts.md.rsp": {
+      "bytes": 1794,
+      "md5": "40d79f5b1e5f42e33318a5bcd36a554d",
+      "sha256": "9418b1347b6806287f92f80e3dbf620d9c12e3a180d0d2e99028cc74338a7edb"
+    },
+    "matrixStats/benchmarking/colRowCounts_subset.md.rsp": {
+      "bytes": 2045,
+      "md5": "313513c280d51f3638c2cd6eebf650d5",
+      "sha256": "70a9c53112f15d5886d55ebef727df761574e4f4962611a97ca4abd72f86470a"
+    },
+    "matrixStats/benchmarking/colRowCummins.md.rsp": {
+      "bytes": 1451,
+      "md5": "2b1c4e6a925ee6443499c01c846ea04b",
+      "sha256": "3b2ef28fc77344cd55c33ecd72cf9e124ad49b8a7e56a39f8d6e2b49552aa07b"
+    },
+    "matrixStats/benchmarking/colRowCummins_subset.md.rsp": {
+      "bytes": 1778,
+      "md5": "5261ab39cdf0673af2d3589071f00fb2",
+      "sha256": "54649878a0cc855abbca894c4f538042a0a2f614132a0638ff7fbddbb1a45ca7"
+    },
+    "matrixStats/benchmarking/colRowCumprods.md.rsp": {
+      "bytes": 1480,
+      "md5": "e619768942c419a9e0628d0ef324a914",
+      "sha256": "dbb86bd4cc20d2f3f0146f1ceedb69c8a032f546fff1a97e77735a75b2fb487a"
+    },
+    "matrixStats/benchmarking/colRowCumprods_subset.md.rsp": {
+      "bytes": 1812,
+      "md5": "6f6045c415f73cdceef948a6978f5707",
+      "sha256": "610a575fb283ddbf104f114d3a718446537c66399d4836df252bc9870106fca7"
+    },
+    "matrixStats/benchmarking/colRowCumsums.md.rsp": {
+      "bytes": 1451,
+      "md5": "a8697a83212a1d59887f547e097104b2",
+      "sha256": "7089bacacd1de6da3f264f28ea82ddfd2a1b51c0ee19b7445f0e3426d389950e"
+    },
+    "matrixStats/benchmarking/colRowCumsums_subset.md.rsp": {
+      "bytes": 1778,
+      "md5": "efba595e480cbd813311cc298d5e2c88",
+      "sha256": "f73c06106eb4687baafcaf458ef563dc9e8a6f4943015a848c3bbd492fd9789a"
+    },
+    "matrixStats/benchmarking/colRowDiffs.md.rsp": {
+      "bytes": 1623,
+      "md5": "927737181751c970fae9963e4e4bc370",
+      "sha256": "e2f34100f906ba25b66292df3324d3b0156088f65645abc56dff4cf1d6c3cef1"
+    },
+    "matrixStats/benchmarking/colRowDiffs_subset.md.rsp": {
+      "bytes": 1749,
+      "md5": "4e74122ee4454982b84331ef7d7951e9",
+      "sha256": "9eb27c7c7b63535c896f243dc3be82fde771ed90e7daec5f992eadc41f903a6c"
+    },
+    "matrixStats/benchmarking/colRowLogSumExps.md.rsp": {
+      "bytes": 1775,
+      "md5": "c20505dc8b1d26b04899a0a627ec7bd3",
+      "sha256": "aacf3f412392256415d9c1b0e3e2b5e8b8c6ea2a4da8cf05c13a0bb7d1dba333"
+    },
+    "matrixStats/benchmarking/colRowLogSumExps_subset.md.rsp": {
+      "bytes": 1779,
+      "md5": "505c90416b1dedd80ce017b7ebae6d9b",
+      "sha256": "130fbdf47d52c0d0985c616fb976e7da9aba494f224a766ff66be1fc27f56afd"
+    },
+    "matrixStats/benchmarking/colRowMads.md.rsp": {
+      "bytes": 2195,
+      "md5": "24d973f08bca1b563257c1dc1a10544a",
+      "sha256": "8282e244ab4de1481778588ae0e7de1a50f55b4e32c38b4044ab6b0ad7aea8b7"
+    },
+    "matrixStats/benchmarking/colRowMads_subset.md.rsp": {
+      "bytes": 1823,
+      "md5": "54cb05bb7c246cca315156a83cd8087d",
+      "sha256": "669c0250c332149297a82ef71dd00cfb07a0492db32fa92c3eb6beff72bd2d4d"
+    },
+    "matrixStats/benchmarking/colRowMeans2.md.rsp": {
+      "bytes": 1590,
+      "md5": "e4362ddc6881e551ad8609d15dfa5430",
+      "sha256": "649a6c65746fdf878c17da3c7bd2293a62c591f9b37475ab69e8b42b3bc2cd20"
+    },
+    "matrixStats/benchmarking/colRowMeans2_subset.md.rsp": {
+      "bytes": 1669,
+      "md5": "1625e937116e331749caaf0b6f3f23c7",
+      "sha256": "dd29e57b8a6aca941ae29705b12f7662144502bf921238986cf413443993e7e0"
+    },
+    "matrixStats/benchmarking/colRowMedians.md.rsp": {
+      "bytes": 1511,
+      "md5": "10cc2739e1485f274478af45cc535386",
+      "sha256": "83a2abd26b9c50f272b33dfd2ae967d6524b0c85367f8717e110c50eb480a0ba"
+    },
+    "matrixStats/benchmarking/colRowMedians_subset.md.rsp": {
+      "bytes": 1868,
+      "md5": "2149f29d22e6f6a5ca0b3952ea4b9521",
+      "sha256": "0fc54a28c99b6ea8baf58eae74f64bc6539e710a6646d67d7a6eaa98066ff3f5"
+    },
+    "matrixStats/benchmarking/colRowMins.md.rsp": {
+      "bytes": 1919,
+      "md5": "fdc8aea9103c8f029188621562fbd985",
+      "sha256": "7f05d5337228125a19b0d3b7842a6de1b3f55f96c4bce3a5427cf1f3531ba140"
+    },
+    "matrixStats/benchmarking/colRowMins_subset.md.rsp": {
+      "bytes": 1824,
+      "md5": "f8e85f562710a8ab093c7c64c8b88597",
+      "sha256": "c07f5e6532cb976564f38029756b43d9217977f0629a136349b8f65fb1bf9a7d"
+    },
+    "matrixStats/benchmarking/colRowOrderStats.md.rsp": {
+      "bytes": 1844,
+      "md5": "eb98ef33bed1925407cfcf6a2b133b5d",
+      "sha256": "6eca0c837fe6937d78480cdd68f7a917a76042bcc593a91222fb7da3d7fad45c"
+    },
+    "matrixStats/benchmarking/colRowOrderStats_subset.md.rsp": {
+      "bytes": 2049,
+      "md5": "ae91cc26681c8784f56d078a6983feb9",
+      "sha256": "77b8aeed4ee8b4d4b609195e956c10e81f05a467f52d234d353679026ff8117b"
+    },
+    "matrixStats/benchmarking/colRowProds.md.rsp": {
+      "bytes": 1905,
+      "md5": "3d8008f33266df3de8da082280f93fa1",
+      "sha256": "31ed795c1fb2f0c9fbbd8bb1e23331ed718e22dcb5b2a587197ed164c297c718"
+    },
+    "matrixStats/benchmarking/colRowProds_subset.md.rsp": {
+      "bytes": 2595,
+      "md5": "66699301fd6260e59762b488bf8c13fe",
+      "sha256": "9fc63e397a26b32ac939cb5ded56ff749bbcc70a52dabe9ca1281fd180ccaa73"
+    },
+    "matrixStats/benchmarking/colRowQuantiles.md.rsp": {
+      "bytes": 1502,
+      "md5": "c8bd43b47ecb77a45536af8f9ad39949",
+      "sha256": "6bb1b5eefe48ecc132ba6b75057df7a20bc9f8628e93f10314b3bd564c767dad"
+    },
+    "matrixStats/benchmarking/colRowQuantiles_subset.md.rsp": {
+      "bytes": 1897,
+      "md5": "7f84b255abdcf984e7d845a999662587",
+      "sha256": "8c56fa152c58867451f2166b8427cebdb3cbe5e3211cb4d96bc3f4e97cc77ec2"
+    },
+    "matrixStats/benchmarking/colRowRanges.md.rsp": {
+      "bytes": 1513,
+      "md5": "88c7df3b546ffb3b96dd82d7d7b584c1",
+      "sha256": "b81ca1736f72c721032078aa8af601599b667b757594603b370fc625dc86c387"
+    },
+    "matrixStats/benchmarking/colRowRanges_subset.md.rsp": {
+      "bytes": 1854,
+      "md5": "3513026d04a7983083fb4e8f06b99362",
+      "sha256": "4646ac054286f7b378b5214b45e8846ad55779766fbc5957ba3bed89f0cfb06c"
+    },
+    "matrixStats/benchmarking/colRowRanks.md.rsp": {
+      "bytes": 1540,
+      "md5": "f4f381ce25f6718d064cb9cffa89db68",
+      "sha256": "992df25bf87cf7719a2d9e99cb865b4412428dc1b50e51b43a75e0c7597d6641"
+    },
+    "matrixStats/benchmarking/colRowRanks_subset.md.rsp": {
+      "bytes": 1839,
+      "md5": "11291514300345f2ff5428b5a216d498",
+      "sha256": "97b37360d7ddd428cd116e44782d3064a5cdc0f371e19b48151429f1ee2e95c3"
+    },
+    "matrixStats/benchmarking/colRowSums2.md.rsp": {
+      "bytes": 1567,
+      "md5": "ad61d0827bffb9751d6d2836b85387db",
+      "sha256": "32c64b13998e4af6e95ced76b149dbb703abbf7d3bd8754ff63467bbf4e06494"
+    },
+    "matrixStats/benchmarking/colRowSums2_subset.md.rsp": {
+      "bytes": 1654,
+      "md5": "0b3508d6488f5f133dcdd3b98753d961",
+      "sha256": "b2652bde573bca485555f102c0d079680db5fd91fa4a7186ed49bcf57947851d"
+    },
+    "matrixStats/benchmarking/colRowTabulates.md.rsp": {
+      "bytes": 1255,
+      "md5": "50b104a7f39a08ea581f0964907333e6",
+      "sha256": "1190e213445a3e8d9c6bfaf1e4d5e9d2b2a5d2fb72f10a7aa2518194a2d5759e"
+    },
+    "matrixStats/benchmarking/colRowTabulates_subset.md.rsp": {
+      "bytes": 1785,
+      "md5": "113d098fd3a2b8ccfa2657dc67c50d1b",
+      "sha256": "4cac61f5a91652a42e6fc8df48a95fed70df12fc7eef2caf9e02ca5c4176ce5e"
+    },
+    "matrixStats/benchmarking/colRowVars.md.rsp": {
+      "bytes": 3006,
+      "md5": "b7029ee5fb5966559b19a3ed574546f7",
+      "sha256": "980452dbd08dfe9a08cb763e5b84596f31fb1dadb6dc594fa70e68fce7e27047"
+    },
+    "matrixStats/benchmarking/colRowVars_subset.md.rsp": {
+      "bytes": 1825,
+      "md5": "fd0f2f8afa805375950d79ea1fd7757e",
+      "sha256": "6719cd8b5e7bea487297e4347dedb0aa5f91599104b698a86fa4ee6252812ce0"
+    },
+    "matrixStats/benchmarking/colRowWeightedMeans.md.rsp": {
+      "bytes": 1494,
+      "md5": "02b139cf5d9e2eb4abe496b26a745d76",
+      "sha256": "111940f8cfc4968fe2b4789e7e9f659a0ba17c4fff9fde822fb0f6d64390a448"
+    },
+    "matrixStats/benchmarking/colRowWeightedMeans_subset.md.rsp": {
+      "bytes": 1969,
+      "md5": "5643a1fd128eb081a40fa632404d87ee",
+      "sha256": "8ed24b1ef6a8f5b697b484a27755cbda2014808bcb22f436f9554e4b85fa0f2f"
+    },
+    "matrixStats/benchmarking/colRowWeightedMedians.md.rsp": {
+      "bytes": 1509,
+      "md5": "bbaedf22f44a0a1d038d2e3b89826f37",
+      "sha256": "91b26db056bd3136c5bb8b6b21d9bb9cb8b4974b26c307c2362f050865574e39"
+    },
+    "matrixStats/benchmarking/colRowWeightedMedians_subset.md.rsp": {
+      "bytes": 1997,
+      "md5": "9545c448dd47ea1314617936fbf5fc81",
+      "sha256": "d89421caad3ee9f18fc51133814dd6862449bca530a3477a6bf2590d52d4d402"
+    },
+    "matrixStats/benchmarking/count.md.rsp": {
+      "bytes": 1285,
+      "md5": "ca9f0ec0b3fdba6f089b42f284eafbae",
+      "sha256": "c3a2f34b504c348e21d6ac87792039a6686c71a97b65b93ab369fa907ef06b95"
+    },
+    "matrixStats/benchmarking/count_subset.md.rsp": {
+      "bytes": 1347,
+      "md5": "58aaf19b7253bb01ccca1de1719b9d9e",
+      "sha256": "6c89755b247b2f4e234fe931b4ba245deb80688870202009d9355875b53e1b3d"
+    },
+    "matrixStats/benchmarking/includes/appendix.md.rsp": {
+      "bytes": 445,
+      "md5": "ab9f5049c780d39eca80e084f60cf68e",
+      "sha256": "f619fcc7a917b97946c258e23bb093741d147144175e54aafa1a42fa21225389"
+    },
+    "matrixStats/benchmarking/includes/footer.md.rsp": {
+      "bytes": 755,
+      "md5": "75a4dbe1cebc11442ce3f8626cb2f786",
+      "sha256": "b9551413e6697a5f7df076a331b1fadc4a4aaf613c237652b8f7341f36bea61b"
+    },
+    "matrixStats/benchmarking/includes/header.md.rsp": {
+      "bytes": 74,
+      "md5": "80fec8731611547e148434c4a8af80a7",
+      "sha256": "fd5bacf3f65e09376d9b71b77ecc4400a049e1f5ce62087935af375f3490483d"
+    },
+    "matrixStats/benchmarking/includes/references.md.rsp": {
+      "bytes": 655,
+      "md5": "126e65a1ededbfcac666238fd271a0dd",
+      "sha256": "c92ad452d59e9ca3e81f6ee674fcb8a6e9d0eca491b8d5c1c3edbb7fe6b42fe7"
+    },
+    "matrixStats/benchmarking/includes/results.md.rsp": {
+      "bytes": 5398,
+      "md5": "e4f6f67e64fa5e2dc270cd443add0053",
+      "sha256": "74c5bab0284522e83fe832f4265cbc0525f1c05b74d4a0650e7d743329b7f6b1"
+    },
+    "matrixStats/benchmarking/includes/setup.md.rsp": {
+      "bytes": 1268,
+      "md5": "f2400acb9800a049f23305a37cac9db3",
+      "sha256": "b1613fcb8be0c50702135fdf55eb2918c96bd6eb505689be0b8c347a13d6463c"
+    },
+    "matrixStats/benchmarking/index.md.rsp": {
+      "bytes": 2142,
+      "md5": "b02cc2f4ed76e14478c85429397ac129",
+      "sha256": "5386ba2d2b360600c02b2ed096c59cc3c42f2db81d894a2e3e82b41fc3a90a33"
+    },
+    "matrixStats/benchmarking/indexByRow.md.rsp": {
+      "bytes": 2936,
+      "md5": "b9c2a2f843b653034c1654bc12d48fe5",
+      "sha256": "0e3a5a2feb6460ded5eebec84209af00b042df7056ccca0702c9c649df656ebc"
+    },
+    "matrixStats/benchmarking/logSumExp.md.rsp": {
+      "bytes": 1340,
+      "md5": "e55144f01e221ec010b701b273e164cc",
+      "sha256": "3f618f5ec37bf2d1ac2e3853cb33f1062df685f6d0c711dcda1eb056bd8fcd40"
+    },
+    "matrixStats/benchmarking/logSumExp_subset.md.rsp": {
+      "bytes": 1242,
+      "md5": "0c1b2fa6b417e39be2da23c774ff663b",
+      "sha256": "ac3194a9facf02c7e132a55435a6c4c9cccf543d030126cacf136870bdfa1173"
+    },
+    "matrixStats/benchmarking/madDiff.md.rsp": {
+      "bytes": 1310,
+      "md5": "1a6af4356e4e9edb2a59e9632e6d4615",
+      "sha256": "2892288b7c7359354fe1a9540ed401ab694231425277540702797cb015e3117f"
+    },
+    "matrixStats/benchmarking/madDiff_subset.md.rsp": {
+      "bytes": 1332,
+      "md5": "07ad9f539a5cee89cd0bdad8175990cf",
+      "sha256": "2dd35238f5564fd8a3731d1da67f6af8786e77da6b387cf1b437a2b3f48d11b0"
+    },
+    "matrixStats/benchmarking/mean2.md.rsp": {
+      "bytes": 2292,
+      "md5": "a4dbef70e5817836b15dcf085deb426d",
+      "sha256": "67f9f9261f6945dde20cddf6b2c480d918b14bbe011090542bd55177a33d91e7"
+    },
+    "matrixStats/benchmarking/mean2_subset.md.rsp": {
+      "bytes": 1600,
+      "md5": "9f87d271ce0a2ec1387c304ccdb128d9",
+      "sha256": "61e13cbf3122cb10b514debb5219e0d4380d3b04a3b79b286ef39d540a26d4d9"
+    },
+    "matrixStats/benchmarking/product.md.rsp": {
+      "bytes": 1691,
+      "md5": "1402880c69595363a1e3c3c985bc013f",
+      "sha256": "30501bdd50736841fe89f1ad4f605566e1846ed9b7831479887b3f540cd3f074"
+    },
+    "matrixStats/benchmarking/product_subset.md.rsp": {
+      "bytes": 1272,
+      "md5": "62d982e249e0d8cfee8729d35af302ef",
+      "sha256": "50b25729805e01defa64e3a8dce42153b2b111c4d706f97f34d0e9ef3d3e9769"
+    },
+    "matrixStats/benchmarking/sum2.md.rsp": {
+      "bytes": 1860,
+      "md5": "9c94919d6a73a46b27b97673f771afe1",
+      "sha256": "33c36ed80029241feb462648323413bc6528c8b640c0d41b6409c30eab7ec490"
+    },
+    "matrixStats/benchmarking/sum2_subset.md.rsp": {
+      "bytes": 1355,
+      "md5": "18bdbfc55c0bff412054f683c4f26342",
+      "sha256": "1c8bfb10446feaab1f31ce1b56887ceae3fc6243af0f019ab3c37510d43bddef"
+    },
+    "matrixStats/benchmarking/t_tx_OP_y.md.rsp": {
+      "bytes": 2122,
+      "md5": "b744777ba0af2a8a50e5d1c9207e7177",
+      "sha256": "32f84659d62b04767e932d6226f19f3254c79bd177281ff2209504accdbb8fbe"
+    },
+    "matrixStats/benchmarking/t_tx_OP_y_subset.md.rsp": {
+      "bytes": 1822,
+      "md5": "03905f14b790eb96b401d934d953cfbd",
+      "sha256": "ab49aef2b049d46086bae382744b3a9b3f9b0d9a5708e564dd2e3c58d8945667"
+    },
+    "matrixStats/benchmarking/varDiff.md.rsp": {
+      "bytes": 1310,
+      "md5": "e8c65eec84796fa104ebd81eaf06baee",
+      "sha256": "12c273e80baeff8ab5dd924a5fb9250648d82aa4e7f359138b7fa0d866213a75"
+    },
+    "matrixStats/benchmarking/varDiff_subset.md.rsp": {
+      "bytes": 1365,
+      "md5": "7673948c3ce870b5a2f9d777e1e94a16",
+      "sha256": "63088adc4cc8e515b0572dc96a01857f9308f54857e120d8d127aba394fdbdb0"
+    },
+    "matrixStats/benchmarking/weightedMean.md.rsp": {
+      "bytes": 1616,
+      "md5": "4056928e8440de8793c172c949b1a64d",
+      "sha256": "1636a33c24f00d980ec8b48e74ebb5202739e55ae34832bd42b3d5efbf93aef2"
+    },
+    "matrixStats/benchmarking/weightedMean_subset.md.rsp": {
+      "bytes": 1525,
+      "md5": "414e2188ce3206a01b280c3786d187b2",
+      "sha256": "c48649b2b5e98a43b14e35fdcf201699318b60c249b30f234fd27c317310d117"
+    },
+    "matrixStats/benchmarking/weightedMedian.md.rsp": {
+      "bytes": 2279,
+      "md5": "0d6e67649cafa21f08f3405456d0365e",
+      "sha256": "8df32e7609051806a03b580d57c7669537821d52de54bab533470ace36ea026d"
+    },
+    "matrixStats/benchmarking/weightedMedian_subset.md.rsp": {
+      "bytes": 1516,
+      "md5": "fa6e9a4a08145bce053c6e4d774e81a0",
+      "sha256": "e8b59ea493238c05b4ec47dda3221db6e13c16a9b99c4f11819ce5be57dd3b35"
+    },
+    "matrixStats/benchmarking/x_OP_y.md.rsp": {
+      "bytes": 2080,
+      "md5": "e68f83709396b851d7c53e36561ed6de",
+      "sha256": "79cfcdbaecdcbc433a191ddc46d171a6753a8b3213c380e580a256a5d6911195"
+    },
+    "matrixStats/benchmarking/x_OP_y_subset.md.rsp": {
+      "bytes": 1798,
+      "md5": "2dd5fa9d134fc7d05ded89f7d458b1eb",
+      "sha256": "a1a11a16c5a9fd6fc7c427b8fdd3ffd368033eb8a67880c29446573c4c66bf07"
+    },
+    "matrixStats/doc/index.html": {
+      "bytes": 1412,
+      "md5": "c9c6bd80b2c484b3b7bf043dbb4a3fce",
+      "sha256": "1abc84c6c8163e3008ad2b8bf347fa5463d6cc892b6d7da0156b7a084327ed56"
+    },
+    "matrixStats/doc/matrixStats-methods.html": {
+      "bytes": 9428,
+      "md5": "63419af2360af513dee9d77661962666",
+      "sha256": "10a3e8867727393ed5a31748fbcf588004fbf3e286614f133e92ae140b0cf023"
+    },
+    "matrixStats/doc/matrixStats-methods.md.rsp": {
+      "bytes": 8916,
+      "md5": "b5d58ec253e5089b3b1ca4887eab8707",
+      "sha256": "92e247d2bab43d52319591dbbc706a39a751f437bc603fb4eddce70f621415ad"
+    },
+    "matrixStats/help/AnIndex": {
+      "bytes": 3093,
+      "md5": "13d2ad7eda32514a569543697addd1fb",
+      "sha256": "858ee101b69dd0b83897bd6b4d657d114b2cce4088ba0cdc97c9565189a9aac1"
+    },
+    "matrixStats/help/aliases.rds": {
+      "bytes": 998,
+      "md5": "aa3c001fe0ccc807caddb56496285188",
+      "sha256": "4ebcdcfe4540510d89ccb13e39c2313146640c08aac5778c757389cd0e4138ca"
+    },
+    "matrixStats/help/matrixStats.rdb": {
+      "bytes": 154210,
+      "md5": "e772bbe184ef098b54463315ad23adbc",
+      "sha256": "f40d2bce369473f3a051bad6f03103c1735c698be641e2b331cc51842f32934c"
+    },
+    "matrixStats/help/matrixStats.rdx": {
+      "bytes": 1010,
+      "md5": "405eab37c2fd684ad43c1fe62be1f288",
+      "sha256": "a8659f4b18cb4cf733da15fca620ed1ede50b17e6b7536757efa2608735f7072"
+    },
+    "matrixStats/help/paths.rds": {
+      "bytes": 486,
+      "md5": "e52a97e0c98d39baf53396bf426ff002",
+      "sha256": "fe28e3e3bd48327e6cf175e3932550aab91399cbe67439076f6fa00fb3ef209d"
+    },
+    "matrixStats/html/00Index.html": {
+      "bytes": 14766,
+      "md5": "8bde9008c4ae9792c494cfd1dd00e83c",
+      "sha256": "c97f9e11a4b0f1f77a3be6f583789da1484b4c0045e109e76fa2aaf4455c7d3c"
+    },
+    "matrixStats/html/R.css": {
+      "bytes": 1735,
+      "md5": "3845aef6126cf18c45937f292f23508c",
+      "sha256": "7378544281fb630e3e62a6b7855b428c008332a0249156e72aac5343078654df"
+    },
+    "matrixStats/libs/matrixStats.so": {
+      "bytes": 338224,
+      "md5": "f57fd18b74a700e0eefc24c20c6c5d6e",
+      "sha256": "0db64b1559500df265e26d4f0e30480b159a365b33b49ec3cf76aca960091394"
+    },
+    "BiocParallel/DESCRIPTION": {
+      "bytes": 3189,
+      "md5": "c54e7b8d493cf10d68c9308c65162dbc",
+      "sha256": "2f4bbc134c62398e3ed9a363ddd8b1d14e9519ca1b3f13e3691bf5802c2ef5e8"
+    },
+    "BiocParallel/INDEX": {
+      "bytes": 1921,
+      "md5": "cc512a06dff8a65edd3c3e8290a176ba",
+      "sha256": "2868f36db974c673699c53f501d47fa10908e08bfef176dc83106c0af70892e7"
+    },
+    "BiocParallel/Meta/Rd.rds": {
+      "bytes": 2940,
+      "md5": "7c46836e4948814e569e082d312cc47f",
+      "sha256": "687f79f09ee5c6b9b0742620e1801089756220fd1931ea616499aa1508ae49fe"
+    },
+    "BiocParallel/Meta/features.rds": {
+      "bytes": 122,
+      "md5": "a5ebb33b27ed46511c73164e41e04d60",
+      "sha256": "04eebe0ed07cb3a56d7c6e12d4dfd405eb443d53e3d8e6dfbb3fe39af71e0e97"
+    },
+    "BiocParallel/Meta/hsearch.rds": {
+      "bytes": 3029,
+      "md5": "3654ad9b2a0e6b5f1b916590afec22e0",
+      "sha256": "2468b984d3926a1b90656132e0888190ce125fdbcd7df96d87766a25dbc1a961"
+    },
+    "BiocParallel/Meta/links.rds": {
+      "bytes": 2327,
+      "md5": "ab85cfef2aaf64ab75df5de21aa85fec",
+      "sha256": "563e601b2cf8aa8f5495579fbcb946dc3fbe8f68eebda8b37d58bb517182b9d3"
+    },
+    "BiocParallel/Meta/nsInfo.rds": {
+      "bytes": 1179,
+      "md5": "4b0e4e88a5d70387b51b636065a268fb",
+      "sha256": "23e70e796c72bea40844bac3dd194f218b480f23f44e629bf3cd7751bf165738"
+    },
+    "BiocParallel/Meta/package.rds": {
+      "bytes": 2056,
+      "md5": "fa5cfed7ba2518e3c416e728edc20fed",
+      "sha256": "0d41bcff05daa448f37df9feaf8adc0aa2d20b644f24873d997529ba1b914c1a"
+    },
+    "BiocParallel/Meta/vignette.rds": {
+      "bytes": 367,
+      "md5": "338b45f1e32749a8514748e9ae654f16",
+      "sha256": "7cd8842485ca1da3d7f8ddb2decd7d7fbdcc0d257608b5eb1e56716be86156bd"
+    },
+    "BiocParallel/NAMESPACE": {
+      "bytes": 3740,
+      "md5": "ff4cb422acffbcfb91181b129bb01a2b",
+      "sha256": "f9d4ee837189ce1330f9c5691f70eae549c20503ff111ae644fcdc4ddc1c326b"
+    },
+    "BiocParallel/NEWS": {
+      "bytes": 14768,
+      "md5": "a6b3fa6ee923715982c6ce2d938d27f2",
+      "sha256": "e0994428bb0fb08f5aa8ea7ab63c8caaf4762035220a3a9bc1967e03d59f62b6"
+    },
+    "BiocParallel/R/BiocParallel": {
+      "bytes": 1058,
+      "md5": "d6c68f1fe41ced6e98a766a3757313da",
+      "sha256": "570ca456b280cdeb201ef5ebdf22dc8f80092e2c0c68e33c7f73340e420f3759"
+    },
+    "BiocParallel/R/BiocParallel.rdb": {
+      "bytes": 666063,
+      "md5": "b8f1927c097272a2c5c81ec63f16004a",
+      "sha256": "3b17df391d99751d7c1f9322279841d91a2668f2a1729d6e943286cb231461ef"
+    },
+    "BiocParallel/R/BiocParallel.rdx": {
+      "bytes": 7639,
+      "md5": "5bfc50cd16109d42771d239c6855ba6d",
+      "sha256": "93c1daf9d4eb8f36f68ded404eeedc590e6b2d33ef452fb47cb946e1bb6a2ba9"
+    },
+    "BiocParallel/RMPInode.sh": {
+      "bytes": 146,
+      "md5": "bf8aa8c8052167754af22b8b75a6c361",
+      "sha256": "dda23351cba65cc7af2da2d07893b63503e4a49b8c14d0af542f4ed112ea6098"
+    },
+    "BiocParallel/RSOCKnode.sh": {
+      "bytes": 270,
+      "md5": "56e7ffcf9e0fc4ec82cc72442a8b14ba",
+      "sha256": "40c5e57133cb35bd7dc50791ed53e5b5f506994160e04048e8e10624445188d4"
+    },
+    "BiocParallel/doc/BiocParallel_BatchtoolsParam.R": {
+      "bytes": 2624,
+      "md5": "3d3ad64e6d7ed3b051471fd915a626ab",
+      "sha256": "6efa54fa5ed363cda70af576e84d95cf496927c4eb01c4e82cecaac6e1830817"
+    },
+    "BiocParallel/doc/BiocParallel_BatchtoolsParam.Rnw": {
+      "bytes": 9421,
+      "md5": "156f1c8b60195df6eba5c173e6039d1d",
+      "sha256": "28fc9ac183fcbf35f9dd5949c9b24194fc7b7afc5ce2f320ca1eb3dc9a578a48"
+    },
+    "BiocParallel/doc/BiocParallel_BatchtoolsParam.pdf": {
+      "bytes": 172085,
+      "md5": "4e57f1a3df5469d73cd1d4203bcaa7d3",
+      "sha256": "049723db5c1daa5c86bf76ec90ffabea982e57e35ea3d5b7ea67e6d43cd47c83"
+    },
+    "BiocParallel/doc/Errors_Logs_And_Debugging.R": {
+      "bytes": 5760,
+      "md5": "05d560fb5f96c2030b4b72510658d2e2",
+      "sha256": "95eb460cab67ce48c06f66a2f4c775cfa6214a0dcf68a5891501771015c47bdc"
+    },
+    "BiocParallel/doc/Errors_Logs_And_Debugging.Rnw": {
+      "bytes": 20697,
+      "md5": "39c22c75c8766b85b1317f9126f2a6e0",
+      "sha256": "4e7b24f44cdc0f21d246fc6a996e80f0d9c2473a4dfd71f62d5055dbeede77f8"
+    },
+    "BiocParallel/doc/Errors_Logs_And_Debugging.pdf": {
+      "bytes": 183868,
+      "md5": "13f44be325749fc49cf271b057b092a0",
+      "sha256": "27d39496c3c24e953a4c1e64598eadab350c699059fe07b896f93b97b9950dfb"
+    },
+    "BiocParallel/doc/Introduction_To_BiocParallel.R": {
+      "bytes": 5096,
+      "md5": "f105d9abf96aa5de21085d2a65566b5e",
+      "sha256": "e7998e94184478ede9da820bb2da0714211b4198e185a8b9769c2ecbd2d846f5"
+    },
+    "BiocParallel/doc/Introduction_To_BiocParallel.Rmd": {
+      "bytes": 28121,
+      "md5": "232c7086d53ff123e47d9f096a13c120",
+      "sha256": "48418df4c90d9aed9cbf11d70928ffb94beca62c64e2549f43d7a2519045f0be"
+    },
+    "BiocParallel/doc/Introduction_To_BiocParallel.html": {
+      "bytes": 682025,
+      "md5": "a1b1c81ebdae82dd972e31d092894147",
+      "sha256": "59b1735ec817c0464b2595e2da83c4861fd744483c2c48010df81f3527a9359a"
+    },
+    "BiocParallel/doc/Random_Numbers.R": {
+      "bytes": 4505,
+      "md5": "0f281f3b5190b4a2a684bcb4d49b8d2f",
+      "sha256": "8142811990af8a1289d084856ec0ed17a8edf4b181a9f3a02f357738f94b258b"
+    },
+    "BiocParallel/doc/Random_Numbers.Rmd": {
+      "bytes": 10025,
+      "md5": "48367ab2f33a332cafd70b301642f4b7",
+      "sha256": "abab1ddaefd33d18c8e5839320d885aba4f7e36d3072d20f3eb96fbea9c33ad6"
+    },
+    "BiocParallel/doc/Random_Numbers.html": {
+      "bytes": 647522,
+      "md5": "ae594b8624e4a23591bd03f2653b3d59",
+      "sha256": "ba672fe116c987a0e34817f96fd2f095d422428869dcab469b6b5c4b8a4a8117"
+    },
+    "BiocParallel/doc/index.html": {
+      "bytes": 3437,
+      "md5": "f5dbb1434987b3fd5a53e09b73815113",
+      "sha256": "51d3e20bb1dfac6fcb7f8264f6e3e01f92f4f9f2995a2ea803b883913552926c"
+    },
+    "BiocParallel/help/AnIndex": {
+      "bytes": 12732,
+      "md5": "9f9ccd7293db979d5ccf48656a7548f7",
+      "sha256": "f8d5df1863a75b94449699502c7306a675433b34258fe3be59971aa100485355"
+    },
+    "BiocParallel/help/BiocParallel.rdb": {
+      "bytes": 176411,
+      "md5": "4db7992b0c92df5776b6f611c967a5de",
+      "sha256": "421f132d9466dceb82b9da75baecc40d18bd71d78e0a9fcdeddcece885964529"
+    },
+    "BiocParallel/help/BiocParallel.rdx": {
+      "bytes": 717,
+      "md5": "9949f4a0de3e732c2f9152c282e3642b",
+      "sha256": "b68cdb2ebb77e16d0e63f314bebe4937b7f8289ead21714d359afd064eaf4576"
+    },
+    "BiocParallel/help/aliases.rds": {
+      "bytes": 2293,
+      "md5": "0f2d2a2f3b827098f573e6d772093ff8",
+      "sha256": "1b250d9fcc1541e32593a26d57e1515dc24cd7e96b70fc03e827c90e8d2aff69"
+    },
+    "BiocParallel/help/paths.rds": {
+      "bytes": 380,
+      "md5": "fd0b447a67ef21a533d45cbdcd84069a",
+      "sha256": "ba153e53bcee0333ebbc770bb5e90feeca36b8241dc52f271e415e90e4bb5298"
+    },
+    "BiocParallel/html/00Index.html": {
+      "bytes": 35071,
+      "md5": "d62e5de667b0d7cea1c4c82fbe91dbda",
+      "sha256": "3f8432d3ef3cf26d7869c81dbb728c1feefb72fc772f447941926a21fbc739b8"
+    },
+    "BiocParallel/html/R.css": {
+      "bytes": 1735,
+      "md5": "3845aef6126cf18c45937f292f23508c",
+      "sha256": "7378544281fb630e3e62a6b7855b428c008332a0249156e72aac5343078654df"
+    },
+    "BiocParallel/libs/BiocParallel.so": {
+      "bytes": 158704,
+      "md5": "ed11efcbe44df317b924cec03a33ad2b",
+      "sha256": "b03d7d1907fd563b029cf420e45105b118a30a438ac965bc640ec2949d864cfd"
+    },
+    "BiocParallel/snow/RMPInode.R": {
+      "bytes": 689,
+      "md5": "67b7e6cca3125973f76b37d50bf95a90",
+      "sha256": "dc8a562d7a851579ec5354a09c1ebe9744839d60f7679993e8f5827e4dbf0549"
+    },
+    "BiocParallel/snow/RSOCKnode.R": {
+      "bytes": 903,
+      "md5": "5fbe03d4b4e4b277144a30a86cbb629c",
+      "sha256": "66b703ba258153a3883d723d983ea424d210bb49eb72beba7369085cd5c159e1"
+    },
+    "BiocParallel/unitTests/test_BatchJobsParam.R": {
+      "bytes": 489,
+      "md5": "845d3e5ad677ec19398dff644412c923",
+      "sha256": "fc6092e770468ba41a9377858dbbadb9127223b91eae6d7483e840ad7c156b9c"
+    },
+    "BiocParallel/unitTests/test_BatchtoolsParam.R": {
+      "bytes": 15350,
+      "md5": "ffba90f66f1db3cdf1089a671218b74d",
+      "sha256": "0969a39198eed8c54430a1f3ccb6c86715f525f72ac1062c3862a59bca36ab90"
+    },
+    "BiocParallel/unitTests/test_BiocParallelParam.R": {
+      "bytes": 763,
+      "md5": "cf372ec941b59e0d9f8501be94af981e",
+      "sha256": "afbc80f8dba5f72f1600cb0752494c9c24279c2497ed108269c40e6a3489eebf"
+    },
+    "BiocParallel/unitTests/test_DoparParam.R": {
+      "bytes": 2720,
+      "md5": "2188fc4927c3d8317e172280b5c2be34",
+      "sha256": "37b3ca73243216300d19a1c5e5c95e2c9ab8267bc231a4702898b696da914e68"
+    },
+    "BiocParallel/unitTests/test_MulticoreParam.R": {
+      "bytes": 821,
+      "md5": "7e363d992da217eb92ee286822bae61b",
+      "sha256": "f85f786e219f2c936fb6aa61721cebc9cdba59344cee9e81988e9e2409b5c1e6"
+    },
+    "BiocParallel/unitTests/test_SerialParam.R": {
+      "bytes": 1120,
+      "md5": "c7726673f482d4288a53c15553fe69a2",
+      "sha256": "0047c922a136af7c8e90474f775fe5dd71548751e196ce25ddf279fd5cc94f30"
+    },
+    "BiocParallel/unitTests/test_SnowParam.R": {
+      "bytes": 6187,
+      "md5": "2900411a0ca63ac4384d4f0eb6d5e9a6",
+      "sha256": "97c66ac8744c45e0d556ee6c41244bc171bd911736f9b394a666d278debe6ec8"
+    },
+    "BiocParallel/unitTests/test_bpaggregate.R": {
+      "bytes": 1036,
+      "md5": "d565de23291e1e47dd8c99ff0f8ad221",
+      "sha256": "0232d60fcd70ad5634f8e37ddfbbff52ced10ae33c4c1362161daf6ba0970030"
+    },
+    "BiocParallel/unitTests/test_bpexportglobals.R": {
+      "bytes": 1431,
+      "md5": "955b4a1519d1c78ea76140b773f638bb",
+      "sha256": "164335d7d0bd1fdf4d807bf7bc59775523b76043f895c8db27ef44bf3238caad"
+    },
+    "BiocParallel/unitTests/test_bpiterate.R": {
+      "bytes": 4404,
+      "md5": "25cb322c16e5dd8491d51e91a8c85895",
+      "sha256": "ceffe3cc128800da676f614edf4fc4026837ae775ee003b129eccc95df501f9a"
+    },
+    "BiocParallel/unitTests/test_bplapply.R": {
+      "bytes": 4865,
+      "md5": "ddc4fede5759cc94fbfce7877033fd4f",
+      "sha256": "ec8bc208c944545d34413cf208f9c14228aa8425469734cd14616953b0fdadf4"
+    },
+    "BiocParallel/unitTests/test_bploop.R": {
+      "bytes": 10430,
+      "md5": "e84d423b3a8791710b8917d00f60b575",
+      "sha256": "5faa4632f84b558a363ed298dfab3dfdd6aaf33f60b87c523b42ac1b7d0bf078"
+    },
+    "BiocParallel/unitTests/test_bpmapply.R": {
+      "bytes": 4220,
+      "md5": "8a7162daf7b95463ef69c33d6a45b3d9",
+      "sha256": "f63a0fc6c376ad512e96c0763607e65fd922d4d4bbc7592bcb835223050aba5f"
+    },
+    "BiocParallel/unitTests/test_bpoptions.R": {
+      "bytes": 3692,
+      "md5": "5d599bbdd1f0e00c6e6a0ea3346fac68",
+      "sha256": "3ec9bd897d807a2748a89fb70c5227a5d83d6ff1b65726ad9fc7bef26b3c7beb"
+    },
+    "BiocParallel/unitTests/test_bpvalidate.R": {
+      "bytes": 3297,
+      "md5": "871d5ed42bcf1d7818fa761f5db84ca9",
+      "sha256": "4432feae295a9989f38419c47b81756730256faf77814c08820ce30aabcf693b"
+    },
+    "BiocParallel/unitTests/test_bpvec.R": {
+      "bytes": 1512,
+      "md5": "104feb0429e1ec4a883b1c0f7810a8f9",
+      "sha256": "95685b6d4d8a5793ee34c27355406679e92261c7428127c0c788ec80e694bddb"
+    },
+    "BiocParallel/unitTests/test_bpvectorize.R": {
+      "bytes": 706,
+      "md5": "92394a95913ffffac47aac00bfd1e229",
+      "sha256": "1f2de2d5efd619bb34ba2f39f1d0bc3b458e48371303b0362f3cde9eba386534"
+    },
+    "BiocParallel/unitTests/test_errorhandling.R": {
+      "bytes": 9202,
+      "md5": "2ea9593a46e691f1a3006cd613e626d1",
+      "sha256": "dc275ab437b9519fdfd7c133f06d4a587ee5466653670d73c259090c2ac0941a"
+    },
+    "BiocParallel/unitTests/test_internal_rng_stream.R": {
+      "bytes": 378,
+      "md5": "ce05d786c763fa1c7e2217e9e4d50052",
+      "sha256": "b1222550eb4859d276785270cd759ed6c2ee6aedb2a682dcdadc30fc0ec86efe"
+    },
+    "BiocParallel/unitTests/test_ipcmutex.R": {
+      "bytes": 1240,
+      "md5": "04f5435fdcb1af08125b3d70198aa684",
+      "sha256": "4c781aa60fdf184836d33fc495d444f047190816836c66731cda7f1313147ed5"
+    },
+    "BiocParallel/unitTests/test_logging.R": {
+      "bytes": 1033,
+      "md5": "fefd1c2e8c1920cb9b668678c3cdf92f",
+      "sha256": "be7ff1a3ebaf36519d38c2bf85d586ef5d875a2e114b3de21a8998340c02cd01"
+    },
+    "BiocParallel/unitTests/test_refclass.R": {
+      "bytes": 291,
+      "md5": "ab700aad52f36fa43ebd030a45a1e1b6",
+      "sha256": "23b6bef6b949630b96d39639ac766c3fc1b78fc3d243ceb58ec67b4afccddd3f"
+    },
+    "BiocParallel/unitTests/test_rng.R": {
+      "bytes": 15012,
+      "md5": "f33c969cf49f856c3f032f5f5a9fd390",
+      "sha256": "adf08eab5ce1579bb22ed1a6599eb0be7b48159810554bcd77d7bffcf7df3101"
+    },
+    "BiocParallel/unitTests/test_script/test-sge-template.tmpl": {
+      "bytes": 718,
+      "md5": "45211502b755e72e80d401369a851e7e",
+      "sha256": "5eb92ac4879e53dee13279b515ea82c6155bb288533ec7ba16c21d71c94d164f"
+    },
+    "BiocParallel/unitTests/test_utilities.R": {
+      "bytes": 5361,
+      "md5": "3df8e4e4faabc04e132db76b6d1b292c",
+      "sha256": "0b76eadf83c0c625f98d4dd795f516806250b0911860d7ce63feaadc361d7e89"
+    },
+    "jsonlite/CITATION": {
+      "bytes": 348,
+      "md5": "085aa83cd45a6337ec98336e74dba226",
+      "sha256": "c949a1501b0e606aeeb3e5ba285722567b53b205887047ce0ba569c74450f80b"
+    },
+    "jsonlite/DESCRIPTION": {
+      "bytes": 1725,
+      "md5": "84aa6f306207eeb268a4639833f38cff",
+      "sha256": "c5f90e8bcc13fd6125bf70c0a419fe5d60508d373a01325c7f8651f256f99c44"
+    },
+    "jsonlite/INDEX": {
+      "bytes": 543,
+      "md5": "d68bd21b6dea155213df853e01c25375",
+      "sha256": "13ed1b2c4a08518ac3c871191a9bca78d0a1a9ea4c03ac0b1545a1f37a19a202"
+    },
+    "jsonlite/LICENSE": {
+      "bytes": 41,
+      "md5": "27b6128fe44dac890bf5c9dfce3a744c",
+      "sha256": "008725198f645358cbb93366529f71300cdc33586bbd0f071e5879a16bacbdb1"
+    },
+    "jsonlite/Meta/Rd.rds": {
+      "bytes": 647,
+      "md5": "0a1b3725fd8ed752727b345c3dc9880a",
+      "sha256": "ddd9132f4d2dc0561c83291d4c49858fe387de0bbc3c48eb4694e4f90cb45c3d"
+    },
+    "jsonlite/Meta/features.rds": {
+      "bytes": 122,
+      "md5": "a5ebb33b27ed46511c73164e41e04d60",
+      "sha256": "04eebe0ed07cb3a56d7c6e12d4dfd405eb443d53e3d8e6dfbb3fe39af71e0e97"
+    },
+    "jsonlite/Meta/hsearch.rds": {
+      "bytes": 665,
+      "md5": "65696fe2828aae075dabbd2e9d4b8196",
+      "sha256": "fb180ea06b9d90315e7da7e3fc4454da97689b389581b9bc8b5942aba2d9f4d2"
+    },
+    "jsonlite/Meta/links.rds": {
+      "bytes": 380,
+      "md5": "91396615519c88267d5f7a2f8f83d682",
+      "sha256": "c5cb10dccfcb1c0d639f0763345e9760bfec3df96bfd246b1a906a4399ca07b2"
+    },
+    "jsonlite/Meta/nsInfo.rds": {
+      "bytes": 656,
+      "md5": "6ca3f52a7db972fe443991ebafa135fb",
+      "sha256": "e0662a9980385f1d4f1d9d3ae3c570971dd42e7ff5382ff58da2e59d4590619f"
+    },
+    "jsonlite/Meta/package.rds": {
+      "bytes": 1393,
+      "md5": "6ca4322fc087137f1298fb99ce93c069",
+      "sha256": "1147527b137c565d6e7589168bfd4dda34ae263aae56cbe49d549a29fc56408b"
+    },
+    "jsonlite/Meta/vignette.rds": {
+      "bytes": 414,
+      "md5": "6cd8eb2bf1fedacc93f22da254bc1872",
+      "sha256": "68cd4511943aa078860e8fddb93a820caf9ecaeb83153513efca0b606acc0df6"
+    },
+    "jsonlite/NAMESPACE": {
+      "bytes": 1360,
+      "md5": "5b98144b5c0adc61181ea3e2df463ed1",
+      "sha256": "583d8b0abdde3ef3e6443313dc14900b5cc7ccce6f3fe8c177c20ad4ce3b02d6"
+    },
+    "jsonlite/NEWS": {
+      "bytes": 9633,
+      "md5": "4f0ab6af1b76c77b39aec783b0edb6b0",
+      "sha256": "21ac329514f659b9f3370dfb3ad4227e6b1a1516d9482364ea37209565e6d465"
+    },
+    "jsonlite/R/jsonlite": {
+      "bytes": 1058,
+      "md5": "d6c68f1fe41ced6e98a766a3757313da",
+      "sha256": "570ca456b280cdeb201ef5ebdf22dc8f80092e2c0c68e33c7f73340e420f3759"
+    },
+    "jsonlite/R/jsonlite.rdb": {
+      "bytes": 91882,
+      "md5": "31e15986e921ec7b411542b6151c03e6",
+      "sha256": "67df97a58ee4f282f0e5f083e58d86a7a82500eb45e7517033242b847f4f3247"
+    },
+    "jsonlite/R/jsonlite.rdx": {
+      "bytes": 1561,
+      "md5": "09783c796c667b8c70eb382eabbc5870",
+      "sha256": "3d91bf143490d9e56525a5a7ce74345c55fee6ad783b4f0bdc23e81e7bfb4dc6"
+    },
+    "jsonlite/doc/index.html": {
+      "bytes": 3469,
+      "md5": "4a3feefa7eda36247faf5fb42fc554f8",
+      "sha256": "1905312c80b511c8633d250832b4bd83539d32a61871f52283519ae60228115b"
+    },
+    "jsonlite/doc/json-aaquickstart.R": {
+      "bytes": 1787,
+      "md5": "63f88db76f35f71d39649477e5122d3a",
+      "sha256": "c5dadde23eb2f2ceadf1445d34d01358ab3dc1ecb1aafe4c7f6b6f1fca498353"
+    },
+    "jsonlite/doc/json-aaquickstart.Rmd": {
+      "bytes": 4225,
+      "md5": "4f11cd7a351291227464e5771d460802",
+      "sha256": "7d1febb5fa61cf406c18d0eb16c1ac3732b7a51ce084024faaab2054f2b9bef1"
+    },
+    "jsonlite/doc/json-aaquickstart.html": {
+      "bytes": 629277,
+      "md5": "e0aaeefff310564f6ca119716d1fb552",
+      "sha256": "27da55b4077607708cd6ed4210004f660a25df5fbce48243aaa6a72711159b5b"
+    },
+    "jsonlite/doc/json-apis.Rmd": {
+      "bytes": 13292,
+      "md5": "061b016cdd33e958ef9850d682694194",
+      "sha256": "10efdfe7e96300b45eebefadcc1fe7c8e9c6ca6f76662be576809a9241e3874f"
+    },
+    "jsonlite/doc/json-apis.html": {
+      "bytes": 638482,
+      "md5": "7ec8b5067d6517e767e5281da82af053",
+      "sha256": "0de8e949cc63a23ec05bbc99773e58f2bf8e5357dbd9de244b34dbba2138f024"
+    },
+    "jsonlite/doc/json-mapping.pdf": {
+      "bytes": 208166,
+      "md5": "1d4626d475f37293eb03c814cb36db31",
+      "sha256": "c89622f401feb06d54c1a1764aa38367e5c81e962b52055e35d17b4cc5186ed9"
+    },
+    "jsonlite/doc/json-mapping.pdf.asis": {
+      "bytes": 196,
+      "md5": "bf707572c3655753491b742bfef2fad0",
+      "sha256": "a927d095122e38e48d61d895b9b59af4b2ba76dfcbae0dad377eb60d5deedb9b"
+    },
+    "jsonlite/doc/json-opencpu.pdf": {
+      "bytes": 64127,
+      "md5": "b4b774c92a47cd87f0bf2753ac7a1cb1",
+      "sha256": "20bd9bce32a4cb802e3478873bd88f8e4049d112e7bd1276803fbba88fe0255e"
+    },
+    "jsonlite/doc/json-opencpu.pdf.asis": {
+      "bytes": 183,
+      "md5": "9f8ff63a6bfe38681c939c5a3fc79a2c",
+      "sha256": "294514a9bb29d7a24a2613a3846c344548d8c2270ede2a7082f8bd56436283dc"
+    },
+    "jsonlite/doc/json-paging.Rmd": {
+      "bytes": 4391,
+      "md5": "175948ab2636061fa12d935f0be89c75",
+      "sha256": "2e583856f81a643b72500fee11445b0e89d5cd612b14cd21e5f654c836ec93a9"
+    },
+    "jsonlite/doc/json-paging.html": {
+      "bytes": 628286,
+      "md5": "9f09566af116538317b44cc3302797fd",
+      "sha256": "3a3ec8051b15c93b671adfc1692918f393bf794024a6a0218ca092bdffee0695"
+    },
+    "jsonlite/help/AnIndex": {
+      "bytes": 597,
+      "md5": "39bde95f9f054f4f9db239349c036d58",
+      "sha256": "9d933297cf2d4333c49768e744e1069d6997074efb7ab303097cbf255e263c1d"
+    },
+    "jsonlite/help/aliases.rds": {
+      "bytes": 310,
+      "md5": "b063003dcbe174c9dc010769dd2a1dcb",
+      "sha256": "aaf45349f89b10562c838a698fdb0c05af282d9f006d95275a26010cd72f7c20"
+    },
+    "jsonlite/help/jsonlite.rdb": {
+      "bytes": 31259,
+      "md5": "4e49cbff3e4675fa74c1ebe10deb08b2",
+      "sha256": "b8273c903fd19c9e79d37023fa2a527a0d06dcaebec42477912bb6268958cca5"
+    },
+    "jsonlite/help/jsonlite.rdx": {
+      "bytes": 405,
+      "md5": "b6adfa8a8ef599e560072cbc98dba1a6",
+      "sha256": "2be60ba1231c1110e54e1828cd0cd34bc5dc7e4d88e68683a51e1a9c056c024d"
+    },
+    "jsonlite/help/paths.rds": {
+      "bytes": 271,
+      "md5": "66ce3a5e2b2d49ab2f6460733928d449",
+      "sha256": "b14673a05e2f06dd1a35a4519b9c27017fc860ae8bc9401123f663f82806894f"
+    },
+    "jsonlite/html/00Index.html": {
+      "bytes": 4319,
+      "md5": "b304e8fd8ec13fca8b021233aa6c1a8c",
+      "sha256": "4dac6e28924e38426b030540a41d86e580de86266e5bae2547b1854086d3c5ff"
+    },
+    "jsonlite/html/R.css": {
+      "bytes": 1735,
+      "md5": "3845aef6126cf18c45937f292f23508c",
+      "sha256": "7378544281fb630e3e62a6b7855b428c008332a0249156e72aac5343078654df"
+    },
+    "jsonlite/libs/jsonlite.so": {
+      "bytes": 72736,
+      "md5": "5d4146c8dfb5ab9d47a46ea704576f9e",
+      "sha256": "1cc4041932b6b232828ef022cea10647dddffa76e0179edda33fd977fb2cff68"
+    },
+    "base/CITATION": {
+      "bytes": 956,
+      "md5": "16a31abf39268631f20e1478bf64d659",
+      "sha256": "524cf28fd568c9629437abc9b8af4b4454195362b47eb0ae286ee124c7cafbef"
+    },
+    "base/DESCRIPTION": {
+      "bytes": 354,
+      "md5": "1bcb65b0925cd1b87584f4409f294538",
+      "sha256": "0c2dc6c088453aab6b06ed7bafca910bef49f69f0258eb139c6d2c6e096f114a"
+    },
+    "base/INDEX": {
+      "bytes": 24392,
+      "md5": "28f429f0ab4ec16d95dcad375d9e558b",
+      "sha256": "ecbd03726bacc1aed3a453b9533053c3f21b2ec74d40ddb733e7d8765b2e1ea9"
+    },
+    "base/Meta/Rd.rds": {
+      "bytes": 22223,
+      "md5": "19175c61fc786dddd15ee50e83a028a8",
+      "sha256": "0c78e13224cd67c4d2b8a0c55425c3576fdab5ffc250358656be234ca1844c8a"
+    },
+    "base/Meta/demo.rds": {
+      "bytes": 267,
+      "md5": "dfcac2046b5881c73d7068400745fec0",
+      "sha256": "8c31ecfe3979c1805422634cb2b2c198b41683e4bc20df9f17e10219b5771492"
+    },
+    "base/Meta/features.rds": {
+      "bytes": 122,
+      "md5": "a5ebb33b27ed46511c73164e41e04d60",
+      "sha256": "04eebe0ed07cb3a56d7c6e12d4dfd405eb443d53e3d8e6dfbb3fe39af71e0e97"
+    },
+    "base/Meta/hsearch.rds": {
+      "bytes": 22929,
+      "md5": "6d901aeec4c24f4569c8e8893540c301",
+      "sha256": "22a6d2b577b855ae643008fa29462b4f0498d91939cc2aecc81bd29c3a96f6da"
+    },
+    "base/Meta/links.rds": {
+      "bytes": 13342,
+      "md5": "821f42b2b9fe67709a941cc7044b3816",
+      "sha256": "d12e8f1057acb0866d3468fcfc3f14c61e0dfded850548a74396fc6f6b9fc9d7"
+    },
+    "base/Meta/package.rds": {
+      "bytes": 545,
+      "md5": "f532fa456d2848b9bb6754b5695ddf44",
+      "sha256": "48c9ee94203df421318b37d25ee04cd893508c31a4a80e877a13182e6614acc7"
+    },
+    "base/R/Rprofile": {
+      "bytes": 7281,
+      "md5": "29374348051bf9e3113bd3b837a7baee",
+      "sha256": "d199b174a5c8ae0f801b1d185a71b67316f94467ac9f0491202236c62d579b39"
+    },
+    "base/R/base": {
+      "bytes": 5152,
+      "md5": "9b4f588968d004b9c880f60c3582d144",
+      "sha256": "39295a8fba63f427ded3e51efee0e2ef7d538894aac53b8b5aa886b72c452e34"
+    },
+    "base/R/base.rdb": {
+      "bytes": 1075217,
+      "md5": "53d9775d0da0875437b90f50335e8bf4",
+      "sha256": "ab31bacc5038257ea7636814f3a5427d6ab1193853f8fb181997633a9206f4e6"
+    },
+    "base/R/base.rdx": {
+      "bytes": 13788,
+      "md5": "4abd7b746d7765f8b6780cf54729d639",
+      "sha256": "1dbaa7a59a00b44517fe212f79b7db4fd831ae310ae2ad52786106fd4d69d2e8"
+    },
+    "base/demo/error.catching.R": {
+      "bytes": 1179,
+      "md5": "a88806975a3ff173ebff51f49a0df268",
+      "sha256": "d987a8269eb86813184067ecfdc385ec1f6f913dfd895fa5504f28267333bc6d"
+    },
+    "base/demo/is.things.R": {
+      "bytes": 4798,
+      "md5": "44ea373fc2ba058e38fe0178104a9b47",
+      "sha256": "d3e9233a628fb7a4ea936912ad9c52a0e6155fad70dac0624d33b5571b6de486"
+    },
+    "base/demo/recursion.R": {
+      "bytes": 2115,
+      "md5": "809d6a746712decb49df61b5920af9e8",
+      "sha256": "2fcadfd04d45a34a9db08ae46c92b991d9c41562f6db735946ec345704c292fd"
+    },
+    "base/demo/scoping.R": {
+      "bytes": 1560,
+      "md5": "b55aea6b1d80ec0eee2386cea662357d",
+      "sha256": "9c1663673f9e27fd597acadf5622eeeb050fe7664041536cbbce787681dc8bdd"
+    },
+    "base/help/AnIndex": {
+      "bytes": 35015,
+      "md5": "5ca8bd88e95d8a3703c1443d9c3f8bde",
+      "sha256": "3147fa116491b76b5e240c43ba84019cfa7014463f3fb3f1bf7f393ef4e82e6c"
+    },
+    "base/help/aliases.rds": {
+      "bytes": 12507,
+      "md5": "49e0f2110c1c75e38c1f989893a5191e",
+      "sha256": "e09b33dda5b80862a6a77753284322eca5bded3a14322d7ed96884c4baf472ee"
+    },
+    "base/help/base.rdb": {
+      "bytes": 2314077,
+      "md5": "085e6b0a97005de23d0f4403d3226d05",
+      "sha256": "de11c0b0a04f4419928dd9bd8d2ccdab5a2fc95b7ab1c92729ffd43e9b2115b5"
+    },
+    "base/help/base.rdx": {
+      "bytes": 9153,
+      "md5": "203035182467be51d466dd67b2db3b26",
+      "sha256": "03abe7fdeefd245178c0641ed7f1b70a26babc6e2a30ce823a082106e844a2b6"
+    },
+    "base/help/paths.rds": {
+      "bytes": 3229,
+      "md5": "58dc1c66a50cc3b16e87db6c6add2b7c",
+      "sha256": "c9df02951459a88901922e31a3c0dcc60582890c7e3838ddf30481fd32b5eb13"
+    },
+    "base/html/00Index.html": {
+      "bytes": 150962,
+      "md5": "8301b6dcb56629a063fcfee447a6f81b",
+      "sha256": "dc3be3e1fa1fd0366694cb4eb592f4d3ded070a16a17a82c119edc846480e1e3"
+    },
+    "base/html/R.css": {
+      "bytes": 1735,
+      "md5": "3845aef6126cf18c45937f292f23508c",
+      "sha256": "7378544281fb630e3e62a6b7855b428c008332a0249156e72aac5343078654df"
+    },
+    "stats/COPYRIGHTS.modreg": {
+      "bytes": 1552,
+      "md5": "083fb4b0a50233a7742a750d01619ad9",
+      "sha256": "eb1b2482d36fac732e3ac428281d2b2ed5381a565a0dc596653e6f17556f6285"
+    },
+    "stats/DESCRIPTION": {
+      "bytes": 476,
+      "md5": "277465f8bd1d9704cef5153191e6a8af",
+      "sha256": "7880b522be8830c0cb81b9d46bf979f0f376e61e1d014541a9321fe77f08cebe"
+    },
+    "stats/INDEX": {
+      "bytes": 18908,
+      "md5": "c64c197fbb29d2bac449201b3d9e9c49",
+      "sha256": "0f661d1e062d03efaabfc82dc5600b82776f685e34db41cd644333906433b9c4"
+    },
+    "stats/Meta/Rd.rds": {
+      "bytes": 13033,
+      "md5": "3d8c97a9417ac47ce22635dd1ac6e80a",
+      "sha256": "e63dc9fab7f30d51f568412468fda75303eb210282c4c3d24ca7a3c010450739"
+    },
+    "stats/Meta/demo.rds": {
+      "bytes": 286,
+      "md5": "e70e91066449c2d0ab2bb092fdeb3578",
+      "sha256": "5fa8ad5beda1a62f128b6344187f1db2fa5f58d7cc565bec89014e5399bd4ef4"
+    },
+    "stats/Meta/features.rds": {
+      "bytes": 122,
+      "md5": "a5ebb33b27ed46511c73164e41e04d60",
+      "sha256": "04eebe0ed07cb3a56d7c6e12d4dfd405eb443d53e3d8e6dfbb3fe39af71e0e97"
+    },
+    "stats/Meta/hsearch.rds": {
+      "bytes": 13119,
+      "md5": "94ce25166a94401e6080986493ad09e3",
+      "sha256": "c883f38c2f0dac5b94e96bb54d3ccdcfb46625b6d4f6103cfcbb5cdb307071fb"
+    },
+    "stats/Meta/links.rds": {
+      "bytes": 6541,
+      "md5": "a8a12dd4ef516539d109f7f28d8a5a73",
+      "sha256": "30c14d3a208babc8e2ba45459744077413e2cd3f37153fc5bf88e7c459e92132"
+    },
+    "stats/Meta/nsInfo.rds": {
+      "bytes": 4455,
+      "md5": "d3a7342cf30a1a511e8900b31aa09835",
+      "sha256": "798f5a5e6ce87c67e4e458d3e0877d506e3586091ff625c226d45a81fa295301"
+    },
+    "stats/Meta/package.rds": {
+      "bytes": 705,
+      "md5": "5aa47d776758fd8f0aef65f73363ee90",
+      "sha256": "d38c9347e7d3d3e8c6ff615a71ec72f4648c254d8614f8ef0c2ef19dcc4b5cb6"
+    },
+    "stats/NAMESPACE": {
+      "bytes": 16903,
+      "md5": "39197c8aff82a3d7f47aac086fc8e4ab",
+      "sha256": "5468efbb6babc9e736110b4741858f6427350c2d56260ad2b98276397772a7a6"
+    },
+    "stats/R/stats": {
+      "bytes": 1058,
+      "md5": "d6c68f1fe41ced6e98a766a3757313da",
+      "sha256": "570ca456b280cdeb201ef5ebdf22dc8f80092e2c0c68e33c7f73340e420f3759"
+    },
+    "stats/R/stats.rdb": {
+      "bytes": 1650084,
+      "md5": "99673ad5a8d0275cc67c429432243732",
+      "sha256": "c6cafbbfb5b9c9b4d362394428bca730c745a2e44ba77c9efa689599a73753f1"
+    },
+    "stats/R/stats.rdx": {
+      "bytes": 11062,
+      "md5": "7e317276929c8b4e3876194f7e25cce6",
+      "sha256": "0b2a4b662a887e4f4fc3215c7c8d45ef7a376aaebc555b9dd910a597bb5e3665"
+    },
+    "stats/SOURCES.ts": {
+      "bytes": 550,
+      "md5": "15f47f0933a50f2a6e29b43987a3bae2",
+      "sha256": "ba3ddb1f9cfe06df987fc7d0373dd0b327bd5c791958afcde4cfb74fdc99c6cb"
+    },
+    "stats/demo/glm.vr.R": {
+      "bytes": 744,
+      "md5": "3bcf2349e5fc3c6ee2d0c76e38187ccc",
+      "sha256": "b9a50ee1f858add826d26dbb1a0cdffccf2498e4a443a37fd75e12a3e4c07628"
+    },
+    "stats/demo/lm.glm.R": {
+      "bytes": 4993,
+      "md5": "f6648fb625b64ca54383450c05c96a0a",
+      "sha256": "f4ca64d3d172b3b61da9a2bf080af975af978767e169473a2fcbc6ab7cfc24c4"
+    },
+    "stats/demo/nlm.R": {
+      "bytes": 3250,
+      "md5": "2d94648dc663ec721999e0fb465c6d7d",
+      "sha256": "7735dd765cdb2d80ea41b223046c450bbce1b800f5730742c45013d6c058fa55"
+    },
+    "stats/demo/smooth.R": {
+      "bytes": 1282,
+      "md5": "4625df9e45793a149aa95cf29c27e91e",
+      "sha256": "d49084978d038f3ba9802ebe148fa1d49e2f0930dfc359781d9c738f5aa778ed"
+    },
+    "stats/help/AnIndex": {
+      "bytes": 16210,
+      "md5": "696bb4e8b13ee0341efcd97e0d5f2c65",
+      "sha256": "383c469bbeebb906877f8c746880a259b85c70ca05a90e6b572f2420bab12ba2"
+    },
+    "stats/help/aliases.rds": {
+      "bytes": 5402,
+      "md5": "651539bec4ba60e3e9a2b46b663348c7",
+      "sha256": "bd714e085a0a481950e404dc1f19f12cc2641a54b523554dc76753d3e5fb9df4"
+    },
+    "stats/help/paths.rds": {
+      "bytes": 2469,
+      "md5": "d2399cc83d0e7c956abd3ff81161b480",
+      "sha256": "cfd17009fa2405fdb9261191be069f3946ab460beb18081c63db817edefdb73f"
+    },
+    "stats/help/stats.rdb": {
+      "bytes": 1602811,
+      "md5": "5c1223515ba0cf2e1e40a6a6551505af",
+      "sha256": "71839c3ac3cecb73401107eea10dba66bc8483d1a91817e79d87195066507f03"
+    },
+    "stats/help/stats.rdx": {
+      "bytes": 6615,
+      "md5": "dddc709facb2f61721f20fae065bba41",
+      "sha256": "102ba6caa98640fbf9ba879971c85874cd7e19ec838180f85fdca22d2ef94b3d"
+    },
+    "stats/html/00Index.html": {
+      "bytes": 73219,
+      "md5": "617a328ddde53e3ad69ddafee7f9fc01",
+      "sha256": "2024b25e86c3329cbf27d713837ef03a711b94898087cbcb92962b47da0a6826"
+    },
+    "stats/html/R.css": {
+      "bytes": 1735,
+      "md5": "3845aef6126cf18c45937f292f23508c",
+      "sha256": "7378544281fb630e3e62a6b7855b428c008332a0249156e72aac5343078654df"
+    },
+    "stats/libs/stats.so": {
+      "bytes": 756352,
+      "md5": "9f8c3def17fe1c1d271779f0b547d1c8",
+      "sha256": "e82401b25c0c637b1214bc3ed92a822e8c73735a260e4f62c231a4c33e49201f"
+    }
+  },
+  "conda_artifacts": [
+    {
+      "name": "font-ttf-dejavu-sans-mono",
+      "version": "2.37",
+      "build_string": "hab24e00_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-dejavu-sans-mono-2.37-hab24e00_0.tar.bz2",
+      "sha256": "58d7f40d2940dd0a8aa28651239adbf5613254df0f75789919c4e6762054403b",
+      "md5": "0c96522c6bdaed4b1566d11387caaf45",
+      "size": 397370,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "font-ttf-inconsolata",
+      "version": "3.000",
+      "build_string": "h77eed37_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-inconsolata-3.000-h77eed37_0.tar.bz2",
+      "sha256": "c52a29fdac682c20d252facc50f01e7c2e7ceac52aa9817aaf0bb83f7559ec5c",
+      "md5": "34893075a5c9e55cdafac56607368fc6",
+      "size": 96530,
+      "license": "OFL-1.1"
+    },
+    {
+      "name": "font-ttf-source-code-pro",
+      "version": "2.038",
+      "build_string": "h77eed37_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-source-code-pro-2.038-h77eed37_0.tar.bz2",
+      "sha256": "00925c8c055a2275614b4d983e1df637245e19058d79fc7dd1a93b8d9fb4b139",
+      "md5": "4d59c254e01d9cde7957100457e2d5fb",
+      "size": 700814,
+      "license": "OFL-1.1"
+    },
+    {
+      "name": "font-ttf-ubuntu",
+      "version": "0.83",
+      "build_string": "h77eed37_4",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/font-ttf-ubuntu-0.83-h77eed37_4.conda",
+      "sha256": "a7384ac883b1acf492fd1aef27431f0f1a647bbb8b5709a1bfab11b0a765f5e5",
+      "md5": "1df978a6efeb98fa80b96f2860b9b280",
+      "size": 1619009,
+      "license": "Ubuntu-font-1.0"
+    },
+    {
+      "name": "libstdcxx-devel_linux-64",
+      "version": "16.2.0",
+      "build_string": "h86e191b_107",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/libstdcxx-devel_linux-64-16.2.0-h86e191b_107.conda",
+      "sha256": "ebbad84bdebd8a9964020d74dcce0f211f1431878c66326f6115dcb59e4c3469",
+      "md5": "a713d3c09518a9fc8f603ac0e157263c",
+      "size": 23329491,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "libgcc-devel_linux-64",
+      "version": "16.2.0",
+      "build_string": "he3ce08f_107",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/libgcc-devel_linux-64-16.2.0-he3ce08f_107.conda",
+      "sha256": "f1e7465f6b53f89b325e441c30ad7b19407b051eca556b6d0386ec05513b8e76",
+      "md5": "f689d67c3e828fe80ff290d15f361bc5",
+      "size": 3099665,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "_r-mutex",
+      "version": "1.0.1",
+      "build_string": "anacondar_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/_r-mutex-1.0.1-anacondar_1.tar.bz2",
+      "sha256": "e58f9eeb416b92b550e824bcb1b9fb1958dee69abfe3089dfd1a9173e3a0528a",
+      "md5": "19f9db5f4f1b7f5ef5f6d67207f25f38",
+      "size": 3566,
+      "license": "BSD"
+    },
+    {
+      "name": "kernel-headers_linux-64",
+      "version": "6.12.0",
+      "build_string": "he073ed8_6",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/kernel-headers_linux-64-6.12.0-he073ed8_6.conda",
+      "sha256": "73b11f31db6c9ebe63d900334fa4f46859aa1ddd8f37cfa5f25a043e0a59253c",
+      "md5": "ad5a27ffc9350af2624927dd79edf2be",
+      "size": 1539218,
+      "license": "LGPL-2.0-or-later AND LGPL-2.0-or-later WITH exceptions AND GPL-2.0-or-later"
+    },
+    {
+      "name": "tzdata",
+      "version": "2026e",
+      "build_string": "h5d301ff_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/tzdata-2026e-h5d301ff_0.conda",
+      "sha256": "2b7ca858879f183ce2dcc65b300f48a0133d5430550f35b23d80d405a0788dbf",
+      "md5": "abccc3810d2b97e570dee487f2b46e38",
+      "size": 119208,
+      "license": "LicenseRef-Public-Domain"
+    },
+    {
+      "name": "ca-certificates",
+      "version": "2026.11.20",
+      "build_string": "hbd8a1cb_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/ca-certificates-2026.11.20-hbd8a1cb_0.conda",
+      "sha256": "8c104262bf331b14478e36c6cedd63b558d4b7ff96f218742a91878353edeed1",
+      "md5": "05f63e1cbcb57e737619f989a2b8c8b3",
+      "size": 123617,
+      "license": "ISC"
+    },
+    {
+      "name": "python_abi",
+      "version": "3.13",
+      "build_string": "9_cp313",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/python_abi-3.13-9_cp313.conda",
+      "sha256": "9dc0cb6a20ebc7e9bcd8c6868f2bec083c114b0ba20b7118405c036533d5c522",
+      "md5": "c5abc97af551bc12d71305852392f75c",
+      "size": 6769,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "fonts-conda-forge",
+      "version": "1",
+      "build_string": "hc364b38_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/fonts-conda-forge-1-hc364b38_1.conda",
+      "sha256": "54eea8469786bc2291cc40bca5f46438d3e062a399e8f53f013b6a9f50e98333",
+      "md5": "a7970cd949a077b7cb9696379d338681",
+      "size": 4059,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "sysroot_linux-64",
+      "version": "2.39",
+      "build_string": "hc4b9eeb_6",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/sysroot_linux-64-2.39-hc4b9eeb_6.conda",
+      "sha256": "7d235e4337f122f3439d0196e1c1c6e715a5b88fcbf24f944510186c84168e45",
+      "md5": "bc073c887526f93b09b8ca490192790b",
+      "size": 42049621,
+      "license": "LGPL-2.0-or-later AND LGPL-2.0-or-later WITH exceptions AND GPL-2.0-or-later"
+    },
+    {
+      "name": "fonts-conda-ecosystem",
+      "version": "1",
+      "build_string": "0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/fonts-conda-ecosystem-1-0.tar.bz2",
+      "sha256": "a997f2f1921bb9c9d76e6fa2f6b408b7fa549edd349a77639c9fe7a23ea93e61",
+      "md5": "fee5683a3f04bd15cbd8318b096a27ab",
+      "size": 3667,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "libgomp",
+      "version": "16.2.0",
+      "build_string": "he0feb66_7",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.2.0-he0feb66_7.conda",
+      "sha256": "92a0bb350c7be6a4eedcb4e111c60aefd176018e6b1c009a6e025dbe9bbcd758",
+      "md5": "d904c7ddd95e026254b4b80808ee9e12",
+      "size": 640566,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "libzlib",
+      "version": "1.3.2",
+      "build_string": "h25fd6f3_3",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libzlib-1.3.2-h25fd6f3_3.conda",
+      "sha256": "eb8a0db0aa570124f7d2a93d7c7f596e3390df5e047818d873baad32985fc736",
+      "md5": "0de0122d9570a8ab637c6b73db268389",
+      "size": 63713,
+      "license": "Zlib"
+    },
+    {
+      "name": "ld_impl_linux-64",
+      "version": "2.46.1",
+      "build_string": "bootstrap_ha15bf96_3",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/ld_impl_linux-64-2.46.1-bootstrap_ha15bf96_3.conda",
+      "sha256": "c3111ef2fcc5372d3c9fc36116f571107f7cd5de94a0f443a803fc037a5aeea7",
+      "md5": "e82d33173910cc8da8da4e51d732ff3e",
+      "size": 745094,
+      "license": "GPL-3.0-only"
+    },
+    {
+      "name": "_openmp_mutex",
+      "version": "4.5",
+      "build_string": "20_gnu",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda",
+      "sha256": "1dd3fffd892081df9726d7eb7e0dea6198962ba775bd88842135a4ddb4deb3c9",
+      "md5": "a9f577daf3de00bca7c3c76c0ecbd1de",
+      "size": 28948,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "zstd",
+      "version": "1.6.0",
+      "build_string": "h5c3369b_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/zstd-1.6.0-h5c3369b_0.conda",
+      "sha256": "9be09472e95d66a2785b4cea74e7705b3da1e31202d5fcf6127aaa4d8557eb61",
+      "md5": "8002e3b2017e23ae83c2952332582a29",
+      "size": 507257,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "binutils_impl_linux-64",
+      "version": "2.46.1",
+      "build_string": "bootstrap_h59bd682_3",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/binutils_impl_linux-64-2.46.1-bootstrap_h59bd682_3.conda",
+      "sha256": "25fda232057382eae721adf516d236b34cd40449f54e386501af2c5b34dfeb7e",
+      "md5": "c4b991a2e723a54a64391c729951e5c7",
+      "size": 3653596,
+      "license": "GPL-3.0-only"
+    },
+    {
+      "name": "libgcc",
+      "version": "16.2.0",
+      "build_string": "ha9f2e26_7",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.2.0-ha9f2e26_7.conda",
+      "sha256": "e031634c3a928f9594eba868bc46ef5230d6571a364a0c63215b06c4563bfcea",
+      "md5": "735629b400b70eeab21a2ba8f5b1c2ce",
+      "size": 1058444,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "xorg-libxau",
+      "version": "1.0.12",
+      "build_string": "h7cc23a3_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libxau-1.0.12-h7cc23a3_2.conda",
+      "sha256": "3ec065b94554dc48a4ca582a960a5484bc166b26e83ce0954653e08d17e8bd53",
+      "md5": "da33efee1a93603d92e06d4a2b68def6",
+      "size": 18793,
+      "license": "MIT"
+    },
+    {
+      "name": "xorg-libxdmcp",
+      "version": "1.1.5",
+      "build_string": "h7cc23a3_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libxdmcp-1.1.5-h7cc23a3_2.conda",
+      "sha256": "8a095df9bc1d2e50f2504ce8858a047ae29ea634aad6cc0b43298c63361da6d9",
+      "md5": "eabfc45786244de252090cf8d55128a8",
+      "size": 22606,
+      "license": "MIT"
+    },
+    {
+      "name": "oniguruma",
+      "version": "6.9.10",
+      "build_string": "hebe6cf0_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/oniguruma-6.9.10-hebe6cf0_1.conda",
+      "sha256": "098de630b10d3276d52b075360fa8492574ac3f60ff098a8f32cc1738274f1dd",
+      "md5": "d0d628a0259bb9cbcd73f792b0b61387",
+      "size": 281251,
+      "license": "BSD-2-Clause"
+    },
+    {
+      "name": "xorg-libice",
+      "version": "1.1.2",
+      "build_string": "h280c20c_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libice-1.1.2-h280c20c_0.conda",
+      "sha256": "49b532d1df875c6749d9078b56a76f3f5db49a5abe0ca620b593ed474ef0ebf1",
+      "md5": "85c9442aec283b4e464fa9ecc484a2f3",
+      "size": 62517,
+      "license": "MIT"
+    },
+    {
+      "name": "yaml",
+      "version": "0.2.7",
+      "build_string": "hebe6cf0_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/yaml-0.2.7-hebe6cf0_0.conda",
+      "sha256": "ddd9a2d5f0f792d3c030125a37ba5ce6e118277136b26f0f3a544956a069637a",
+      "md5": "5023d532a3077306e516472a5906bf33",
+      "size": 85688,
+      "license": "MIT"
+    },
+    {
+      "name": "libsqlite",
+      "version": "3.53.4",
+      "build_string": "h0737f62_102",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libsqlite-3.53.4-h0737f62_102.conda",
+      "sha256": "0f6e60634de2b55da15772fe65485965fd9b61afcce0d749c1446f625babba30",
+      "md5": "59ec6dc9fa87a6687c00969d4dcfcd97",
+      "size": 969522,
+      "license": "blessing"
+    },
+    {
+      "name": "libmpdec",
+      "version": "4.0.0",
+      "build_string": "hb03c661_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libmpdec-4.0.0-hb03c661_2.conda",
+      "sha256": "46820b4a835e175940ae20bec00fdddaff804cda27a1408ab1b95e77a2196437",
+      "md5": "fcfed1dc5053eb1901b66e7b1fc32588",
+      "size": 92759,
+      "license": "BSD-2-Clause"
+    },
+    {
+      "name": "libev",
+      "version": "4.33",
+      "build_string": "h280c20c_3",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libev-4.33-h280c20c_3.conda",
+      "sha256": "e4418f68d01a6307c4431b585c71b584f40189877364e542ee87deb777f5e85b",
+      "md5": "7bc31538d6e3fb349e897353969237ec",
+      "size": 43220,
+      "license": "BSD-2-Clause OR GPL-2.0-or-later"
+    },
+    {
+      "name": "fribidi",
+      "version": "1.0.18",
+      "build_string": "h7cc23a3_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/fribidi-1.0.18-h7cc23a3_0.conda",
+      "sha256": "6cabdf62dad4973ef0fe8b0d80c4b5b5d76ac9249da91f26f663cb44acdcc6a1",
+      "md5": "a14a9f11f543b9a5c03ae6a5c2245b0a",
+      "size": 64767,
+      "license": "LGPL-2.1-or-later"
+    },
+    {
+      "name": "keyutils",
+      "version": "1.6.3",
+      "build_string": "h7cc23a3_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/keyutils-1.6.3-h7cc23a3_1.conda",
+      "sha256": "dd053c96dcb0dcfd59422aefea9d2fe937a190167f34fba7893ec1e10a7e8963",
+      "md5": "ba55d1b89fd7775e67de8291029b4059",
+      "size": 135295,
+      "license": "LGPL-2.1-or-later"
+    },
+    {
+      "name": "pthread-stubs",
+      "version": "0.4",
+      "build_string": "h7cc23a3_1004",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/pthread-stubs-0.4-h7cc23a3_1004.conda",
+      "sha256": "4a44fd00ea73b79ca2c89b0727b9ccf61c506ead71e67a9abfa4c590042b5a4a",
+      "md5": "bb66b610707b811e3c65181a6431e7a8",
+      "size": 9630,
+      "license": "MIT"
+    },
+    {
+      "name": "openssl",
+      "version": "3.6.5",
+      "build_string": "h781a0a9_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/openssl-3.6.5-h781a0a9_0.conda",
+      "sha256": "9c1533f1cf784f0e250919c0c9762d0b0e6bc727a79290ffb7cea1ceca1d038c",
+      "md5": "5a51a2ea653f120240b1a9bf76e0aae9",
+      "size": 3195299,
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "ncurses",
+      "version": "6.6",
+      "build_string": "hdb14827_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/ncurses-6.6-hdb14827_1.conda",
+      "sha256": "5d46557214ed184381dafe835b7c94a474a1c3b307a08a250b1ea4779b44ffb3",
+      "md5": "ee6c0cd80a60961a1f48aa3e0b91f986",
+      "size": 911196,
+      "license": "X11 AND BSD-3-Clause"
+    },
+    {
+      "name": "libwebp-base",
+      "version": "1.6.0",
+      "build_string": "hd42ef1d_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libwebp-base-1.6.0-hd42ef1d_1.conda",
+      "sha256": "8415001414f488c85b72b9d8cc2071dfb3981a47bc3c8eb56ef91a57d12eae7f",
+      "md5": "9332b53d0ea93c5d39e33be03a0c611a",
+      "size": 428430,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "bzip2",
+      "version": "1.0.8",
+      "build_string": "hda65f42_10",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/bzip2-1.0.8-hda65f42_10.conda",
+      "sha256": "1a0d382c515ebf55f8ee1f38c8b81bc95af5c2acc42ad53b66bc5df932032f96",
+      "md5": "e675fabcf81499adc7edf58124fb1e01",
+      "size": 257808,
+      "license": "bzip2-1.0.6"
+    },
+    {
+      "name": "make",
+      "version": "4.4.1",
+      "build_string": "h1114479_4",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/make-4.4.1-h1114479_4.conda",
+      "sha256": "d6a81e5c142d7be6a992f618097351e7996f81a6295045df3f9b4f498e1066a8",
+      "md5": "538c2493de55d1fe2d90e0adc23d4948",
+      "size": 553374,
+      "license": "GPL-3.0-or-later"
+    },
+    {
+      "name": "sed",
+      "version": "4.10",
+      "build_string": "h529d415_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/sed-4.10-h529d415_1.conda",
+      "sha256": "802e1e1f65de064db9a075407b8e11660dbb3c791fd36631905473200260881d",
+      "md5": "7c1a88403067ca3f6c95e651ce721cf6",
+      "size": 268834,
+      "license": "GPL-3.0-only"
+    },
+    {
+      "name": "liblzma",
+      "version": "5.8.3",
+      "build_string": "hb03c661_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/liblzma-5.8.3-hb03c661_1.conda",
+      "sha256": "9787df8c22a59c9a70d3e5a10db9ad663485e75e9ccc3f09bd092cb7b95e0dab",
+      "md5": "1390b7c5ac0b1d8e447bc5efa6d3c8c2",
+      "size": 112995,
+      "license": "0BSD"
+    },
+    {
+      "name": "tk",
+      "version": "8.6.13",
+      "build_string": "noxft_h1df4ec4_4",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/tk-8.6.13-noxft_h1df4ec4_4.conda",
+      "sha256": "a1a241d172c1ccab067ba245206dd048bc3c2d1b84504b53c9468e99adfc16a1",
+      "md5": "676a2f9b1c4fcf57b70aa5c65f6c60d0",
+      "size": 3566806,
+      "license": "TCL"
+    },
+    {
+      "name": "libdeflate",
+      "version": "1.26",
+      "build_string": "h351257e_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libdeflate-1.26-h351257e_0.conda",
+      "sha256": "f437f68abb1fa1dededd082a0c2800bec40495e01cf9ec46f4e693e34d60b644",
+      "md5": "d0c17fc12939a990f0865b7a14b49cfe",
+      "size": 74338,
+      "license": "MIT"
+    },
+    {
+      "name": "libjpeg-turbo",
+      "version": "3.2.1",
+      "build_string": "h7cc23a3_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libjpeg-turbo-3.2.1-h7cc23a3_0.conda",
+      "sha256": "2f7d092a3212884825c43814575225fde8a9190611bc0e38c55e0dae45e329ac",
+      "md5": "5fd2b2218f7c28c71e95738a4fffaf78",
+      "size": 653905,
+      "license": "IJG AND BSD-3-Clause AND Zlib"
+    },
+    {
+      "name": "c-ares",
+      "version": "1.34.9",
+      "build_string": "hebe6cf0_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/c-ares-1.34.9-hebe6cf0_0.conda",
+      "sha256": "bd95dd25b80b5c4faf5349542377bf89b2794e23d0f7aa7f1c431e4f3b633f3c",
+      "md5": "78b505af04bf7a87ca957ef0cb5946f5",
+      "size": 233759,
+      "license": "MIT"
+    },
+    {
+      "name": "libgfortran5",
+      "version": "16.2.0",
+      "build_string": "h6b99dfc_7",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgfortran5-16.2.0-h6b99dfc_7.conda",
+      "sha256": "04dbab12c925b92977bb835dd2f5eda413607afa79f95a554e5a04b07a380322",
+      "md5": "7719ed7be38ad8c492c4bd5cc2bce0c4",
+      "size": 2528180,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "libiconv",
+      "version": "1.18",
+      "build_string": "h0cb94f2_3",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libiconv-1.18-h0cb94f2_3.conda",
+      "sha256": "f943117edb9cd4d9c61cc972eee5a34291dc55ea7a6e9e38da104995841cbcb6",
+      "md5": "f92233bf33e24a25668bb2119e2c51f9",
+      "size": 789471,
+      "license": "LGPL-2.1-only"
+    },
+    {
+      "name": "libffi",
+      "version": "3.4.6",
+      "build_string": "h2dba641_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libffi-3.4.6-h2dba641_1.conda",
+      "sha256": "764432d32db45466e87f10621db5b74363a9f847d2b8b1f9743746cd160f06ab",
+      "md5": "ede4673863426c0883c0063d853bbd85",
+      "size": 57433,
+      "license": "MIT"
+    },
+    {
+      "name": "libuuid",
+      "version": "2.42.4",
+      "build_string": "hcfc3c73_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libuuid-2.42.4-hcfc3c73_1.conda",
+      "sha256": "0e2e8f2daa9306e67f046e31092d637431d8cf0a26c407ab22401d108c2d4631",
+      "md5": "d852293faea3c04a6e896b908b43aded",
+      "size": 36134,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "libpng",
+      "version": "1.6.59",
+      "build_string": "h922cc85_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libpng-1.6.59-h922cc85_0.conda",
+      "sha256": "c7381be8ef713501f6cd2f5ad473e401f2edeaec3c46788296b8dbf0de165e15",
+      "md5": "8c9caf742a485ac688ffa88bbadbf0be",
+      "size": 316872,
+      "license": "zlib-acknowledgement"
+    },
+    {
+      "name": "libexpat",
+      "version": "2.11.0",
+      "build_string": "hd2095e1_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libexpat-2.11.0-hd2095e1_0.conda",
+      "sha256": "f81a13d80aa62aa6cba1ab54cce5262eea4f2a05979a0c35d0fe979f0ea94600",
+      "md5": "47c5c4a042f288a54654ebe79bafd1b3",
+      "size": 83976,
+      "license": "MIT"
+    },
+    {
+      "name": "libstdcxx",
+      "version": "16.2.0",
+      "build_string": "h934c35e_7",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-16.2.0-h934c35e_7.conda",
+      "sha256": "fa7018298629fc429971fffd6ecba3d27a7b02e4e890d6a93ea01ffebe8cb745",
+      "md5": "9b6707e0caca917fa6ea9ee473f37a5d",
+      "size": 6615436,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "libgcc-ng",
+      "version": "16.2.0",
+      "build_string": "h69a702a_7",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgcc-ng-16.2.0-h69a702a_7.conda",
+      "sha256": "03b54d7008de080a17cc2174b0e4acd6d06e1c981b2eb19846f46d8f59966034",
+      "md5": "2005515ac9340f816fb2ac7e83afe553",
+      "size": 28616,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "jq",
+      "version": "1.8.2",
+      "build_string": "h280c20c_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/jq-1.8.2-h280c20c_1.conda",
+      "sha256": "f14c52155ba14ccb41fdd6f71d74b21153c35e131185434da7334cf25b3eef46",
+      "md5": "6ec056e539486e84f0c7acef6b5863f9",
+      "size": 317374,
+      "license": "MIT"
+    },
+    {
+      "name": "libxcb",
+      "version": "1.17.0",
+      "build_string": "hb83e432_3",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libxcb-1.17.0-hb83e432_3.conda",
+      "sha256": "38021f35547021762c04860d1c9f2d3186b83e090e5f1773216045de06cf10cc",
+      "md5": "661d9e1392a1b672d19d76df3a1feb07",
+      "size": 398900,
+      "license": "MIT"
+    },
+    {
+      "name": "libssh2",
+      "version": "1.11.1",
+      "build_string": "h6154650_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libssh2-1.11.1-h6154650_1.conda",
+      "sha256": "7e463000fa1cba3f3a6597b776f6ab301d425a96e3bc20d0d9d76a3b9f237aa3",
+      "md5": "5c526561e1d2a2e071941174eae84557",
+      "size": 306045,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "libedit",
+      "version": "3.1.20260512",
+      "build_string": "pl5321h373387f_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libedit-3.1.20260512-pl5321h373387f_0.conda",
+      "sha256": "45301f14f4eb66da57cfaf2d265f3eeee73f8b07e99614ee3afc5b26eea91126",
+      "md5": "27dbd7e2984b8fe48e069379636ccfdd",
+      "size": 135877,
+      "license": "BSD-2-Clause"
+    },
+    {
+      "name": "readline",
+      "version": "8.3",
+      "build_string": "hd6e31c0_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/readline-8.3-hd6e31c0_1.conda",
+      "sha256": "01b3fe073a66e321970d09e04b388708f8cbdca5cdfbfcb7c9eeb470ad10383d",
+      "md5": "69c01c781e7c8190bbdaf79e3848c5ca",
+      "size": 348899,
+      "license": "GPL-3.0-only"
+    },
+    {
+      "name": "pcre2",
+      "version": "10.45",
+      "build_string": "hc749103_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/pcre2-10.45-hc749103_0.conda",
+      "sha256": "27c4014f616326240dcce17b5f3baca3953b6bc5f245ceb49c3fa1e6320571eb",
+      "md5": "b90bece58b4c2bf25969b70f3be42d25",
+      "size": 1197308,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "bwidget",
+      "version": "1.10.1",
+      "build_string": "hfc2019e_3",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/bwidget-1.10.1-hfc2019e_3.conda",
+      "sha256": "5451e5d9abe192438f9efe8c0737c6ac0ddd6cfb932cb88e2ef2f88e97fc3c3a",
+      "md5": "38d3e0382f3f10344ac30772dec58035",
+      "size": 134624,
+      "license": "TCL"
+    },
+    {
+      "name": "libgfortran",
+      "version": "16.2.0",
+      "build_string": "h69a702a_7",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgfortran-16.2.0-h69a702a_7.conda",
+      "sha256": "9682ae4dd11487e10b904b3cb3ab6379cad25233d45fdfdf90d54349df244494",
+      "md5": "3a8d285f5f22138ef826ad54cf267e73",
+      "size": 28571,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "xorg-libsm",
+      "version": "1.2.6",
+      "build_string": "h0d788c3_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libsm-1.2.6-h0d788c3_1.conda",
+      "sha256": "ef907caee0665cf3b0f775602cc50e388e3bade8ce22ecade0873ff26604b2fd",
+      "md5": "aa7459ed9ad086ba11dda843d764b33d",
+      "size": 30739,
+      "license": "MIT"
+    },
+    {
+      "name": "libfreetype6",
+      "version": "2.14.3",
+      "build_string": "h5e6c136_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libfreetype6-2.14.3-h5e6c136_2.conda",
+      "sha256": "ec607dd5445dd17ff6bf8b7fe6832e5504c226dd91d3aaea7ba83569808b0ce4",
+      "md5": "b72a266a9317036fd0464cb98b027cd0",
+      "size": 387671,
+      "license": "GPL-2.0-only OR FTL"
+    },
+    {
+      "name": "graphite2",
+      "version": "1.3.15",
+      "build_string": "h54a6638_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/graphite2-1.3.15-h54a6638_1.conda",
+      "sha256": "7fa3b6a9c081fa3e545573152a788d061a0a0ba57df7251cc0f4f75225fc93e7",
+      "md5": "f9fe2984587fa8235a6af6004760cd18",
+      "size": 102835,
+      "license": "LGPL-2.0-or-later"
+    },
+    {
+      "name": "lerc",
+      "version": "4.3.0",
+      "build_string": "he78707d_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/lerc-4.3.0-he78707d_0.conda",
+      "sha256": "467aa52e9ba7a438f17944909e1904399eab863778ab501cf271e30cfa4bc6f3",
+      "md5": "78908f9592dbe2cebd57082bf8c57000",
+      "size": 269911,
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "libnghttp2",
+      "version": "1.71.0",
+      "build_string": "hc5e5977_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libnghttp2-1.71.0-hc5e5977_0.conda",
+      "sha256": "a4386712ad6d5bc18943b198407c39e2f8ae2fa9c6418bb37bba96f1d382f109",
+      "md5": "726df214814a8b06135a6a674bc54589",
+      "size": 822778,
+      "license": "MIT"
+    },
+    {
+      "name": "libsanitizer",
+      "version": "16.2.0",
+      "build_string": "h3048135_7",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libsanitizer-16.2.0-h3048135_7.conda",
+      "sha256": "e383569c331239308a8663facb76208fc0e141131ff3d17c1c2e50f34716a5a9",
+      "md5": "9cdd9af432fa4eb62094aaf6211425bf",
+      "size": 8115383,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "pixman",
+      "version": "0.46.4",
+      "build_string": "h54a6638_3",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/pixman-0.46.4-h54a6638_3.conda",
+      "sha256": "829d8288764282de5a9f7b9169acb75cc7dc0b6c3fe2535cfe87dea3436bbc5d",
+      "md5": "0ee5bb30034b081a1386c1e2c98ab0a7",
+      "size": 376704,
+      "license": "MIT"
+    },
+    {
+      "name": "libstdcxx-ng",
+      "version": "16.2.0",
+      "build_string": "hdf11a46_7",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libstdcxx-ng-16.2.0-hdf11a46_7.conda",
+      "sha256": "337f481db36cc357884f05f404ccd1b3a7e0fc1ee48ec5c884e4281d213bc863",
+      "md5": "25a23bde5e26d548374f3e02b4669670",
+      "size": 28665,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "xorg-libx11",
+      "version": "1.8.14",
+      "build_string": "hb83e432_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libx11-1.8.14-hb83e432_0.conda",
+      "sha256": "1815dc9900bf3a4678caeb343bccbbc74cd5e5a5ff3f6e0a2c01c5e19cd9d30b",
+      "md5": "e7752792cb214013a34e265cc0838352",
+      "size": 846774,
+      "license": "MIT"
+    },
+    {
+      "name": "krb5",
+      "version": "1.22.2",
+      "build_string": "hbc21106_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/krb5-1.22.2-hbc21106_2.conda",
+      "sha256": "2a5c38c85e63df84c4e69ee71439841ce570d259ae3060627bb9a49a938d66f4",
+      "md5": "53318d715316929a574f83591308b1f8",
+      "size": 1394333,
+      "license": "MIT"
+    },
+    {
+      "name": "python",
+      "version": "3.13.9",
+      "build_string": "h2b335a9_100_cp313",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/python-3.13.9-h2b335a9_100_cp313.conda",
+      "sha256": "317ee7a38f4cc97336a2aedf9c79e445adf11daa0d082422afa63babcd5117e4",
+      "md5": "78ba5c3a7aecc68ab3a9f396d3b69d06",
+      "size": 37323303,
+      "license": "Python-2.0"
+    },
+    {
+      "name": "libglib",
+      "version": "2.84.3",
+      "build_string": "hf39c6af_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libglib-2.84.3-hf39c6af_0.conda",
+      "sha256": "e1ad3d9ddaa18f95ff5d244587fd1a37aca6401707f85a37f7d9b5002fcf16d0",
+      "md5": "467f23819b1ea2b89c3fc94d65082301",
+      "size": 3961899,
+      "license": "LGPL-2.1-or-later"
+    },
+    {
+      "name": "libopenblas",
+      "version": "0.3.34",
+      "build_string": "pthreads_hf13c14d_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libopenblas-0.3.34-pthreads_hf13c14d_2.conda",
+      "sha256": "69a722751e14eab2eb3bfdcb9acb1187afbd962b0c49b48d829341e0f6787f60",
+      "md5": "7e19fcd73d7f0997d3cb3326d2586a86",
+      "size": 6845411,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "libgfortran-ng",
+      "version": "16.2.0",
+      "build_string": "h69a702a_7",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libgfortran-ng-16.2.0-h69a702a_7.conda",
+      "sha256": "d5c80029e15b2e4c404a9a7189b607be566c7ea6142d43291c81648958ffe1f0",
+      "md5": "a31f744c0c83d31dacf9c01b2e3c12a2",
+      "size": 28630,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "libfreetype",
+      "version": "2.14.3",
+      "build_string": "ha770c72_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libfreetype-2.14.3-ha770c72_2.conda",
+      "sha256": "fb12ecb46c30d18d928c0e8fc346ab13b5f6fc8a9cacae4f2f4bb188782586f5",
+      "md5": "f8054e759d0ddddaf34a5c8fedc900a1",
+      "size": 8407,
+      "license": "GPL-2.0-only OR FTL"
+    },
+    {
+      "name": "libtiff",
+      "version": "4.7.2",
+      "build_string": "h0787c44_3",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libtiff-4.7.2-h0787c44_3.conda",
+      "sha256": "827e8f977a27cac6edae7323d6ab3e875944536fff7cc7f0aaf31c33ed797e1c",
+      "md5": "81fd170303b2109de54818f123a2f104",
+      "size": 459552,
+      "license": "HPND"
+    },
+    {
+      "name": "gcc_impl_linux-64",
+      "version": "16.2.0",
+      "build_string": "h9891192_7",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/gcc_impl_linux-64-16.2.0-h9891192_7.conda",
+      "sha256": "14acaa661e4c4ef6c65606612b8b08f8f079c6a9e6da3ffcb77056685c675651",
+      "md5": "f548b09900fed2701931f8cf925d8b9b",
+      "size": 86085260,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "icu",
+      "version": "75.1",
+      "build_string": "he02047a_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/icu-75.1-he02047a_0.conda",
+      "sha256": "71e750d509f5fa3421087ba88ef9a7b9be11c53174af3aa4d06aff4c18b38e8e",
+      "md5": "8b189310083baabfb622af68fd9d3ae3",
+      "size": 12129203,
+      "license": "MIT"
+    },
+    {
+      "name": "xorg-libxt",
+      "version": "1.3.1",
+      "build_string": "h7cc23a3_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libxt-1.3.1-h7cc23a3_1.conda",
+      "sha256": "dff31677674be86f98ee929a796edf2cf7c78bf38610b122a63af9af752d5bf7",
+      "md5": "2121765de9c261e2a95ab9fc6efabefb",
+      "size": 384261,
+      "license": "MIT"
+    },
+    {
+      "name": "tktable",
+      "version": "2.10",
+      "build_string": "h0eb2ad0_11",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/tktable-2.10-h0eb2ad0_11.conda",
+      "sha256": "14096a4de75555f72db8e2b9a76e202623169de1a81330684dedb3be70010537",
+      "md5": "25d73f1e53349312f316ad82b78b5a7f",
+      "size": 103903,
+      "license": "TCL"
+    },
+    {
+      "name": "xorg-libxrender",
+      "version": "0.9.13",
+      "build_string": "h7cc23a3_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libxrender-0.9.13-h7cc23a3_0.conda",
+      "sha256": "008d610d6ec1d021ad678024afd5dcf534ff84d9c1e9d2877ff36d112c89896f",
+      "md5": "7249ce52789c3680e889e7335a2e1c3e",
+      "size": 34604,
+      "license": "MIT"
+    },
+    {
+      "name": "xorg-libxext",
+      "version": "1.3.7",
+      "build_string": "h7cc23a3_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/xorg-libxext-1.3.7-h7cc23a3_1.conda",
+      "sha256": "aa9bbe8b278aacc194e280ff5037f9f9a1f2c5b33ed97de8e7f01cfbe90dda43",
+      "md5": "e5b6b28536b81b3f4cb20db4668a4642",
+      "size": 53124,
+      "license": "MIT"
+    },
+    {
+      "name": "pyyaml",
+      "version": "6.0.3",
+      "build_string": "py313h2af15c8_4",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/pyyaml-6.0.3-py313h2af15c8_4.conda",
+      "sha256": "5b3069e458084884d65d98069563b3ff183ff8fed8ced6fd528826d8c55e9e0b",
+      "md5": "4e259239fcdf16586df0a951c443800a",
+      "size": 226459,
+      "license": "MIT"
+    },
+    {
+      "name": "libblas",
+      "version": "3.11.0",
+      "build_string": "12_h4a7cf45_openblas",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libblas-3.11.0-12_h4a7cf45_openblas.conda",
+      "sha256": "6a6263c3d4a484dbac4ae7a8191be5f868c0574bbc7faa42b258bb59dc6d5fa2",
+      "md5": "d718330824f78deef9ca46fe62a33820",
+      "size": 18102,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "freetype",
+      "version": "2.14.3",
+      "build_string": "ha770c72_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/freetype-2.14.3-ha770c72_2.conda",
+      "sha256": "612a8e0c1a6ecae23da54d81ef395f6ebb5c8e4468ec2611593ebce75876a4e0",
+      "md5": "2d0ea23b23603e07ca47f23f949f67b6",
+      "size": 175239,
+      "license": "GPL-2.0-only OR FTL"
+    },
+    {
+      "name": "fontconfig",
+      "version": "2.18.4",
+      "build_string": "h4db4eae_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/fontconfig-2.18.4-h4db4eae_0.conda",
+      "sha256": "0bc4c652727b3f9002d6a04c58823a3afc48ecd8c09b1ce5b2760bb5978d192e",
+      "md5": "794ed3b23b32d04f9cb91e4e0df140dd",
+      "size": 298277,
+      "license": "MIT"
+    },
+    {
+      "name": "gfortran_impl_linux-64",
+      "version": "16.2.0",
+      "build_string": "hf930d89_7",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/gfortran_impl_linux-64-16.2.0-hf930d89_7.conda",
+      "sha256": "263277d04b6d7cc8cb02f73977ff6ae77bbb0b14f8b355667bc337f3fa454ef3",
+      "md5": "b8fa9e9457b9e75f2bf85ad8017fa1d7",
+      "size": 21139940,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "gxx_impl_linux-64",
+      "version": "16.2.0",
+      "build_string": "h0d273dc_7",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/gxx_impl_linux-64-16.2.0-h0d273dc_7.conda",
+      "sha256": "f873532a86ce9073a7255dec909472c2a271a57db938f383b630a3caa0b47709",
+      "md5": "ea011fbfe6ce5b3a74a8e34fc9c8481a",
+      "size": 16987505,
+      "license": "GPL-3.0-only WITH GCC-exception-3.1"
+    },
+    {
+      "name": "libxml2",
+      "version": "2.13.9",
+      "build_string": "h04c0eec_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libxml2-2.13.9-h04c0eec_0.conda",
+      "sha256": "5d12e993894cb8e9f209e2e6bef9c90fa2b7a339a1f2ab133014b71db81f5d88",
+      "md5": "35eeb0a2add53b1e50218ed230fa6a02",
+      "size": 697033,
+      "license": "MIT"
+    },
+    {
+      "name": "libpsl",
+      "version": "0.23.1",
+      "build_string": "hb13e988_3",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libpsl-0.23.1-hb13e988_3.conda",
+      "sha256": "9a3d2028b192108768a0109b3c4dd4b742bc757277e4be1a046a7a3280314a7d",
+      "md5": "5e72cd09dd1a4b9ba9aa32c026714b68",
+      "size": 72955,
+      "license": "MIT"
+    },
+    {
+      "name": "liblapack",
+      "version": "3.11.0",
+      "build_string": "12_h47877c9_openblas",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/liblapack-3.11.0-12_h47877c9_openblas.conda",
+      "sha256": "f048e68a22fbdd927b8a7e007c3da19c6f1d2c08a9e4f6065af68f463c369f19",
+      "md5": "fdb860223496082e2b4922f00fd9233f",
+      "size": 18085,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "cairo",
+      "version": "1.18.4",
+      "build_string": "h3394656_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/cairo-1.18.4-h3394656_0.conda",
+      "sha256": "3bd6a391ad60e471de76c0e9db34986c4b5058587fbf2efa5a7f54645e28c2c7",
+      "md5": "09262e66b19567aff4f592fb53b28760",
+      "size": 978114,
+      "license": "LGPL-2.1-only or MPL-1.1"
+    },
+    {
+      "name": "libcurl",
+      "version": "8.23.0",
+      "build_string": "h4c5f8ca_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/libcurl-8.23.0-h4c5f8ca_1.conda",
+      "sha256": "470718f438e3498039079d33bedfaa1fa2d404d054fc47f5d600512b112c4ebe",
+      "md5": "fc79598577ebe7c6fedf8b75f84ed870",
+      "size": 507046,
+      "license": "curl"
+    },
+    {
+      "name": "harfbuzz",
+      "version": "11.4.5",
+      "build_string": "h15599e2_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/harfbuzz-11.4.5-h15599e2_0.conda",
+      "sha256": "9d0d74858e8f8b76f6d3bf11a7390e6eb18eb743dd6e5fd7c4e9822634556f6d",
+      "md5": "1276ae4aa3832a449fcb4253c30da4bc",
+      "size": 2402438,
+      "license": "MIT"
+    },
+    {
+      "name": "curl",
+      "version": "8.23.0",
+      "build_string": "h4c5f8ca_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/curl-8.23.0-h4c5f8ca_1.conda",
+      "sha256": "ff5e4cca3ee2f6279b31479bfe376bc02729b939e0a9180346a4ebdb50975e6a",
+      "md5": "e35916446e25ea2e50f56d987882e3fa",
+      "size": 197865,
+      "license": "curl"
+    },
+    {
+      "name": "pango",
+      "version": "1.56.4",
+      "build_string": "hadf4263_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/pango-1.56.4-hadf4263_0.conda",
+      "sha256": "3613774ad27e48503a3a6a9d72017087ea70f1426f6e5541dbdb59a3b626eaaf",
+      "md5": "79f71230c069a287efe3a8614069ddf1",
+      "size": 455420,
+      "license": "LGPL-2.1-or-later"
+    },
+    {
+      "name": "r-base",
+      "version": "4.2.3",
+      "build_string": "h2d83a99_19",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-base-4.2.3-h2d83a99_19.conda",
+      "sha256": "d10c75706ec0bde07cc999df45125e3827895b52d65dc126f5b51b48c69952ff",
+      "md5": "f8de08e95778697a9a4921b7b047a424",
+      "size": 25134434,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "r-bitops",
+      "version": "1.0_7",
+      "build_string": "r42h57805ef_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-bitops-1.0_7-r42h57805ef_2.conda",
+      "sha256": "d1c382ed8219c22ee506232d90955092a3f49d911acc70726da467a725b7056a",
+      "md5": "c6f7eaedad3682b5d82088d89c3be035",
+      "size": 44434,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "r-sys",
+      "version": "3.4.2",
+      "build_string": "r42h57805ef_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-sys-3.4.2-r42h57805ef_1.conda",
+      "sha256": "7cae166289b9ca1f37bf69ce6c332f9dcbf9523c3740a60908a098347573c8f2",
+      "md5": "3fd09c0862884f7d32ddb490df556701",
+      "size": 48786,
+      "license": "MIT"
+    },
+    {
+      "name": "r-fastmap",
+      "version": "1.2.0",
+      "build_string": "r42ha18555a_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-fastmap-1.2.0-r42ha18555a_0.conda",
+      "sha256": "76378c5fc247cf0a860551ffd09c0710e8facb64893996e176411f715fdb224d",
+      "md5": "5e0e7df5fe616ddf85ada76922779811",
+      "size": 72807,
+      "license": "MIT"
+    },
+    {
+      "name": "r-glue",
+      "version": "1.7.0",
+      "build_string": "r42h57805ef_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-glue-1.7.0-r42h57805ef_0.conda",
+      "sha256": "6a46e5f90589568336ee9f6eb5e0837f5563c96c360624ff749794e4e451211c",
+      "md5": "eab803a28d66337ae3732b04c5f5604f",
+      "size": 155566,
+      "license": "MIT"
+    },
+    {
+      "name": "r-cli",
+      "version": "3.6.3",
+      "build_string": "r42ha18555a_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-cli-3.6.3-r42ha18555a_0.conda",
+      "sha256": "5a5b773f0931247e6bfd755d234a624de455a7cf8b880fc94124c2af49a9132d",
+      "md5": "93fc8055b8aee751e201604a02d7d06f",
+      "size": 1258035,
+      "license": "MIT"
+    },
+    {
+      "name": "r-rlang",
+      "version": "1.1.4",
+      "build_string": "r42ha18555a_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rlang-1.1.4-r42ha18555a_0.conda",
+      "sha256": "c86dddcf8b7f006c7e0324f98be65d2246949a7ad1587f0bf561affffa883d12",
+      "md5": "ab6364a17b32268b82c46f09695a9cc9",
+      "size": 1533442,
+      "license": "GPL-3.0-only"
+    },
+    {
+      "name": "r-bit",
+      "version": "4.0.5",
+      "build_string": "r42h57805ef_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-bit-4.0.5-r42h57805ef_1.conda",
+      "sha256": "d13c4826603889374041309b392772ca5986a8524de9352ea3c0c4f9ba2758e6",
+      "md5": "4ccc4000f0768acfe453595cd8e55560",
+      "size": 1095195,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "r-mime",
+      "version": "0.12",
+      "build_string": "r42h57805ef_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-mime-0.12-r42h57805ef_2.conda",
+      "sha256": "b9adfb8892caafd4181ec176342b67f405187078855860485c41fbf46b0e6d70",
+      "md5": "befffa58ea2ce9a56476c88f41f57282",
+      "size": 52874,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "r-curl",
+      "version": "5.1.0",
+      "build_string": "r42hf9611b0_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-curl-5.1.0-r42hf9611b0_0.conda",
+      "sha256": "89756650e23c65bc8f0c15c4e4a70745aa297a80825f7817c7e513dd4a1366c0",
+      "md5": "e6fe2344ef3db318300971fa3fe20446",
+      "size": 451280,
+      "license": "MIT"
+    },
+    {
+      "name": "r-rcpp",
+      "version": "1.0.12",
+      "build_string": "r42h7df8631_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rcpp-1.0.12-r42h7df8631_0.conda",
+      "sha256": "5374c8193ce5b10bdc7c0a7d49582f16244f825b5fbc93115527ff5d562ea1fb",
+      "md5": "096448d673973c0e45b9d803da251971",
+      "size": 2008620,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "r-xml",
+      "version": "3.99_0.17",
+      "build_string": "r42h75ea78e_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-xml-3.99_0.17-r42h75ea78e_0.conda",
+      "sha256": "77f57b2d82e50adbd6f9700e13989ebfea0b980bd18376584c7e3dd5fe6074d1",
+      "md5": "b5b4e2d1a12bf9b33e962616d7575300",
+      "size": 1733694,
+      "license": "BSD-2-Clause"
+    },
+    {
+      "name": "r-png",
+      "version": "0.1_8",
+      "build_string": "r42h81d01c5_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-png-0.1_8-r42h81d01c5_1.conda",
+      "sha256": "79085f0b03ed10f9b81d4fa34163d86b114a3b2751ce0c8b202ecf6c3102d550",
+      "md5": "928b61a3ec772a52a92f05251c16d3f9",
+      "size": 60057,
+      "license": "GPL-2.0-only OR GPL-3.0-only"
+    },
+    {
+      "name": "r-lattice",
+      "version": "0.22_6",
+      "build_string": "r42h57805ef_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-lattice-0.22_6-r42h57805ef_0.conda",
+      "sha256": "95ff7fa829b46aa1cbc164a1fb39534c05f45fff3b1e05f1f2540679efcceb98",
+      "md5": "93cee3961cc5277443a3e437f6991010",
+      "size": 1358490,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "r-matrixstats",
+      "version": "1.3.0",
+      "build_string": "r42h57805ef_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-matrixstats-1.3.0-r42h57805ef_0.conda",
+      "sha256": "5f944a95f098bca06d2a3d240dcb9101bf4c76a048fa63f678586dd6f1053869",
+      "md5": "f657f9a6ae93ec6fe3ec4f5bd97e35ad",
+      "size": 474280,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "r-jsonlite",
+      "version": "1.8.8",
+      "build_string": "r42h57805ef_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-jsonlite-1.8.8-r42h57805ef_0.conda",
+      "sha256": "ce52d5d71aa4540b820ed5cac4de48551b7f1cb9cb245b1bd55bbafcf669185d",
+      "md5": "d0b27ba963de139270a7b53f897afdf6",
+      "size": 634855,
+      "license": "MIT"
+    },
+    {
+      "name": "r-rcurl",
+      "version": "1.98_1.14",
+      "build_string": "r42hf9611b0_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rcurl-1.98_1.14-r42hf9611b0_0.conda",
+      "sha256": "dcfd8ace10fd675896f0557a2846df6853ca15814723a1e07deded9685b2710b",
+      "md5": "df1d68c3203a192ad7a2a73829b723df",
+      "size": 817778,
+      "license": "BSD-3-Clause"
+    },
+    {
+      "name": "r-askpass",
+      "version": "1.2.0",
+      "build_string": "r42h57805ef_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-askpass-1.2.0-r42h57805ef_0.conda",
+      "sha256": "0cc8fb93d881cf825a6c2ceebd309aad9da15c2786c82e88bec55f42df783cd3",
+      "md5": "ed72932727c35b0ab14b9b99b3c2aee3",
+      "size": 31452,
+      "license": "MIT"
+    },
+    {
+      "name": "r-cachem",
+      "version": "1.1.0",
+      "build_string": "r42hb1dbf0f_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-cachem-1.1.0-r42hb1dbf0f_0.conda",
+      "sha256": "2b3153061a622456f8719b2ed6f9650dab3bb96f21c37e95b8c738ab914b1d02",
+      "md5": "05cce57cbccd64df905864c9703e5b9c",
+      "size": 75073,
+      "license": "MIT"
+    },
+    {
+      "name": "r-bit64",
+      "version": "4.0.5",
+      "build_string": "r42h57805ef_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-bit64-4.0.5-r42h57805ef_2.conda",
+      "sha256": "b23aa9cff76f39f8f9b63f3ecb7b596095002f9837e1942eeecbea877a41076d",
+      "md5": "f1a2bf52456654df3204bb392cca9c44",
+      "size": 488651,
+      "license": "GPL-2.0-only"
+    },
+    {
+      "name": "r-locfit",
+      "version": "1.5_9.9",
+      "build_string": "r42h57805ef_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-locfit-1.5_9.9-r42h57805ef_0.conda",
+      "sha256": "4ad5c49811698a351d9141d81d633f07c6c7ba7394363e38f48e6dafa3c6e344",
+      "md5": "b200543f6bfab16dd4ee734d7d3f46ee",
+      "size": 549099,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "r-matrix",
+      "version": "1.6_5",
+      "build_string": "r42h316c678_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-matrix-1.6_5-r42h316c678_0.conda",
+      "sha256": "0fe3272b45710b8b53f171916b83b6d050547205ac0637cffdf88595f6e4330f",
+      "md5": "4f52f9c56146c8692503a7d2057ba7ba",
+      "size": 3930038,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "r-nlme",
+      "version": "3.1_165",
+      "build_string": "r42hbcb9c34_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-nlme-3.1_165-r42hbcb9c34_0.conda",
+      "sha256": "6ece5fa8f5fd1c5cd1725b97ea40e20aaa31fb792541353e1b41d76879e38d25",
+      "md5": "a83fa459c53c4674ee394b80b7b2fbd5",
+      "size": 2305565,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "r-openssl",
+      "version": "2.2.0",
+      "build_string": "r42hd7d0243_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-openssl-2.2.0-r42hd7d0243_0.conda",
+      "sha256": "dcd9a51ffcba872965dfb3e4c644a2986be0fc1565aff93098f2e94d1032ac3f",
+      "md5": "9b4e444f1f13873b9727fba6651608ae",
+      "size": 688899,
+      "license": "MIT"
+    },
+    {
+      "name": "r-survival",
+      "version": "3.7_0",
+      "build_string": "r42hb1dbf0f_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-survival-3.7_0-r42hb1dbf0f_0.conda",
+      "sha256": "3035fadd8139762bdb98038cbd6259038fccdf8c952291d0549b7bcb960f6035",
+      "md5": "d932e792e0f6428bd0a6e115496e7567",
+      "size": 6339751,
+      "license": "LGPL-2.0-or-later"
+    },
+    {
+      "name": "r-mgcv",
+      "version": "1.9_1",
+      "build_string": "r42h316c678_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-mgcv-1.9_1-r42h316c678_0.conda",
+      "sha256": "0f2805372fd1c939a61e3181daf15d338291e7315c46bee8574bc43e431b3aa0",
+      "md5": "5c3d738118f5948f6cc29ccb63d6e2ff",
+      "size": 3281494,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "tomlkit",
+      "version": "0.15.2",
+      "build_string": "pyh5ded981_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/tomlkit-0.15.2-pyh5ded981_0.conda",
+      "sha256": "e6aa9e1c4d4e229280ef5446ebbc99e7b65c874deb47f83be6a751ba20332cc8",
+      "md5": "eadfe340211fea481536d602af9ace99",
+      "size": 51412,
+      "license": "MIT"
+    },
+    {
+      "name": "xmltodict",
+      "version": "1.0.4",
+      "build_string": "pyhcf101f3_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/xmltodict-1.0.4-pyhcf101f3_0.conda",
+      "sha256": "7588e77a5d3885145e693d8b98493952f6efac8f3fabb1c218cd0cbd1a739fad",
+      "md5": "0f02dbcae61967ced21fea829a8ee927",
+      "size": 20673,
+      "license": "MIT"
+    },
+    {
+      "name": "argcomplete",
+      "version": "3.8.0",
+      "build_string": "pyh5ded981_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/argcomplete-3.8.0-pyh5ded981_0.conda",
+      "sha256": "5a190fe3b0560426d7ad99d9c436468407f924e0b8a2948adeaaa10ef9d0f1cc",
+      "md5": "6a707db1d8274daa74faf2174443baf8",
+      "size": 48707,
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "r-formatr",
+      "version": "1.14",
+      "build_string": "r42hc72bb7e_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-formatr-1.14-r42hc72bb7e_1.conda",
+      "sha256": "44d7f69e1cb13b3289014429f1e58a0bbbc73135530c5ae33dfd67caf63677dc",
+      "md5": "5f3a9262f18e0eb806d688f110938ca9",
+      "size": 165570,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "r-plogr",
+      "version": "0.2.0",
+      "build_string": "r42hc72bb7e_1005",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-plogr-0.2.0-r42hc72bb7e_1005.conda",
+      "sha256": "835e3efc3f49b4efca4d9b5cc28c9a2da24794737ca513acdf9cd2ccb93075b6",
+      "md5": "a5e3af4a9dd9498cbbaac8ce73cdc877",
+      "size": 22259,
+      "license": "MIT"
+    },
+    {
+      "name": "r-pkgconfig",
+      "version": "2.0.3",
+      "build_string": "r42hc72bb7e_3",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-pkgconfig-2.0.3-r42hc72bb7e_3.conda",
+      "sha256": "928cd5897492d83f367d065ed2e7dc155c361668fd8d9dcb3648dfed7434035b",
+      "md5": "469b66f84a5d234689b423c9821b188c",
+      "size": 26347,
+      "license": "MIT"
+    },
+    {
+      "name": "r-r6",
+      "version": "2.5.1",
+      "build_string": "r42hc72bb7e_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-r6-2.5.1-r42hc72bb7e_2.conda",
+      "sha256": "beb6ab49fa3bf0934eb66e35778f60ef9477de5674097763785eb58c4fa1b768",
+      "md5": "1473a12b55128f8ac776ae5595a4d0cb",
+      "size": 90504,
+      "license": "MIT"
+    },
+    {
+      "name": "r-futile.options",
+      "version": "1.0.1",
+      "build_string": "r42hc72bb7e_1004",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-futile.options-1.0.1-r42hc72bb7e_1004.conda",
+      "sha256": "fddf1323d2dbc058663d32bc52eab9e6c2826f37c7ee488ecf2370bbf2d02c67",
+      "md5": "7c630b9ab8098aa41937b5e061d7ae35",
+      "size": 28833,
+      "license": "LGPL-3.0-only"
+    },
+    {
+      "name": "r-crayon",
+      "version": "1.5.3",
+      "build_string": "r42hc72bb7e_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-crayon-1.5.3-r42hc72bb7e_0.conda",
+      "sha256": "98c9fc4994cd4264454f4c4f06a7377ac818382f379f33eaaed8f705d8ddc847",
+      "md5": "4a74a6114bbea1ad8d488e99b83df3da",
+      "size": 168029,
+      "license": "MIT"
+    },
+    {
+      "name": "r-cpp11",
+      "version": "0.5.2",
+      "build_string": "r42hc72bb7e_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-cpp11-0.5.2-r42hc72bb7e_0.conda",
+      "sha256": "1f1da442c5e51409126dceeb832fb02e664783368bcd759dfdb4409b291d73b0",
+      "md5": "b5301b69519771c1ab4e4d4175a4d798",
+      "size": 234891,
+      "license": "MIT"
+    },
+    {
+      "name": "r-codetools",
+      "version": "0.2_20",
+      "build_string": "r42hc72bb7e_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-codetools-0.2_20-r42hc72bb7e_0.conda",
+      "sha256": "40d5f261a720bb2c995fca4b2a4fbba148b4098d09db638d1bf013472b95e23f",
+      "md5": "a9e9276ab95d053b9db56159cfeda2c9",
+      "size": 108412,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "r-snow",
+      "version": "0.4_4",
+      "build_string": "r42hc72bb7e_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-snow-0.4_4-r42hc72bb7e_2.conda",
+      "sha256": "4bc05c9eb1eab50042f6a41a29d57efa59f6319cdbe038ce336288f67bca6d25",
+      "md5": "97cc50b630391cbc89ea70425ebb6ade",
+      "size": 115100,
+      "license": "GPL-2.0-or-later"
+    },
+    {
+      "name": "r-bh",
+      "version": "1.84.0_0",
+      "build_string": "r42hc72bb7e_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-bh-1.84.0_0-r42hc72bb7e_0.conda",
+      "sha256": "6b67c1ed285c0c07db7bf2d3e6b1f647a284d0f8642f73472b97f2b8b9be7c6f",
+      "md5": "b76de87dcae12f856e0f2ca5892cf5c9",
+      "size": 11409802,
+      "license": "BSL-1.0"
+    },
+    {
+      "name": "r-xtable",
+      "version": "1.8_4",
+      "build_string": "r42hc72bb7e_5",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-xtable-1.8_4-r42hc72bb7e_5.conda",
+      "sha256": "bbb59f5accadfde3c6121952d611e712b1fe97cbfe853f4865ed0497c54c8367",
+      "md5": "07daad79fd80a6a8483dc4a6a2f9479e",
+      "size": 698187,
+      "license": "GPL (>= 2)"
+    },
+    {
+      "name": "r-dbi",
+      "version": "1.2.3",
+      "build_string": "r42hc72bb7e_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-dbi-1.2.3-r42hc72bb7e_0.conda",
+      "sha256": "d3be0f83aa522c618f520c9c6d3dee8a897938176b27ce8f3307ac7998dd0ad4",
+      "md5": "b283bb5431a4b960cfa3f82043d1437b",
+      "size": 844806,
+      "license": "LGPL-2.1-or-later"
+    },
+    {
+      "name": "r-lifecycle",
+      "version": "1.0.4",
+      "build_string": "r42hc72bb7e_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-lifecycle-1.0.4-r42hc72bb7e_0.conda",
+      "sha256": "9d0ea3f231634ffb06f32076881d6b8d3fe1b86b6a55de0583dc282375bf16f5",
+      "md5": "7d00a412d44005a8714c192589143b81",
+      "size": 122453,
+      "license": "MIT"
+    },
+    {
+      "name": "r-memoise",
+      "version": "2.0.1",
+      "build_string": "r42hc72bb7e_2",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-memoise-2.0.1-r42hc72bb7e_2.conda",
+      "sha256": "d900dbfbc84d78ebddeba39d8481d8e1be8cc78fa6de2b4fb469096f30d94401",
+      "md5": "b463525f1d20873104e8d738c8e28b5e",
+      "size": 56230,
+      "license": "MIT"
+    },
+    {
+      "name": "yq",
+      "version": "4.4.5",
+      "build_string": "pyh5ded981_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/yq-4.4.5-pyh5ded981_0.conda",
+      "sha256": "231379d391eccb9640343c25e8f5bf9b283e44d552b87d5128cdadead3628bc8",
+      "md5": "5bac2e2561ba113d10ed7cfebbd74a6d",
+      "size": 39176,
+      "license": "Apache-2.0"
+    },
+    {
+      "name": "r-lambda.r",
+      "version": "1.2.4",
+      "build_string": "r42hc72bb7e_3",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-lambda.r-1.2.4-r42hc72bb7e_3.conda",
+      "sha256": "644451b721a81c8db53db3862ed493940ec70635cc8d329b3c6bfaeb0eb7b063",
+      "md5": "cec65435c9d1160da986502241f119c5",
+      "size": 119803,
+      "license": "LGPL-3.0-only"
+    },
+    {
+      "name": "r-httr",
+      "version": "1.4.7",
+      "build_string": "r42hc72bb7e_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-httr-1.4.7-r42hc72bb7e_0.conda",
+      "sha256": "a459c6574aaccd5102b66893165f3346fed4387102ed43e43cb7a79c61f71a19",
+      "md5": "5ea781f852e922b927ed46fa7e188e45",
+      "size": 470954,
+      "license": "MIT"
+    },
+    {
+      "name": "r-futile.logger",
+      "version": "1.4.3",
+      "build_string": "r42hc72bb7e_1005",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-futile.logger-1.4.3-r42hc72bb7e_1005.conda",
+      "sha256": "013629ed80359ce66ec316f59977557509173ac8f53fe19f0816fc6c43c55da5",
+      "md5": "fdc799d2053fc494c4a234698c349326",
+      "size": 104828,
+      "license": "LGPL-3.0-only"
+    },
+    {
+      "name": "bioconductor-zlibbioc",
+      "version": "1.44.0",
+      "build_string": "r42ha9d7317_2",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/linux-64/bioconductor-zlibbioc-1.44.0-r42ha9d7317_2.tar.bz2",
+      "sha256": "dd0317994953da6f235a9f1fd4ef19269d7b17554d7b14694d08f28d289aeac5",
+      "md5": "0fb14b59c4a4b146ff76e18c28150f97",
+      "size": 75071,
+      "license": "Artistic-2.0 + file LICENSE"
+    },
+    {
+      "name": "bioconductor-limma",
+      "version": "3.54.0",
+      "build_string": "r42ha9d7317_1",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/linux-64/bioconductor-limma-3.54.0-r42ha9d7317_1.tar.bz2",
+      "sha256": "c89fbcf765cef7c0e56db171c4720e7aee5db9208d247fc99f12cc7e94df1886",
+      "md5": "a2a57936b3c5eea515f5c81c9307e604",
+      "size": 2923561,
+      "license": "GPL (>=2)"
+    },
+    {
+      "name": "bioconductor-biocparallel",
+      "version": "1.32.5",
+      "build_string": "r42hf17093f_1",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/linux-64/bioconductor-biocparallel-1.32.5-r42hf17093f_1.tar.bz2",
+      "sha256": "a737f6e2c882f454929c6951822a62cd01187bbeb8b6956088acc08bf9e3cca5",
+      "md5": "4b8d5c357472319d1ac790f0c1864586",
+      "size": 1675731,
+      "license": "GPL-2 | GPL-3"
+    },
+    {
+      "name": "bioconductor-edger",
+      "version": "3.40.0",
+      "build_string": "r42hf17093f_1",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/linux-64/bioconductor-edger-3.40.0-r42hf17093f_1.tar.bz2",
+      "sha256": "c76c3934f566e8a3da54fb680d3514e38cc211b4bbb4bf18f67de815b6f78fa2",
+      "md5": "c66879ced187792e149bc9d0b3cba32d",
+      "size": 2365289,
+      "license": "GPL (>=2)"
+    },
+    {
+      "name": "bioconductor-biocgenerics",
+      "version": "0.44.0",
+      "build_string": "r42hdfd78af_0",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/noarch/bioconductor-biocgenerics-0.44.0-r42hdfd78af_0.tar.bz2",
+      "sha256": "f1e16109488d9a491d93d29fe1ca373b0277547d5c6e8f19198bf2078e907c95",
+      "md5": "ad7705e81b15e89b8aac79e3c7e0c596",
+      "size": 664539,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "bioconductor-data-packages",
+      "version": "20260207",
+      "build_string": "hdfd78af_2",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/noarch/bioconductor-data-packages-20260207-hdfd78af_2.conda",
+      "sha256": "d1279a54c16c32c50898ccacabc348705d8fa663eb44606bb93f0c67e65f4167",
+      "md5": "286072edd53079c8ca99790edd7c3766",
+      "size": 272395,
+      "license": "MIT"
+    },
+    {
+      "name": "bioconductor-genomeinfodbdata",
+      "version": "1.2.9",
+      "build_string": "r42hdfd78af_0",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/noarch/bioconductor-genomeinfodbdata-1.2.9-r42hdfd78af_0.tar.bz2",
+      "sha256": "5c26eb35e4e7306ccff72d2999dcf4817c754fa92a434770c59a63bfd8429197",
+      "md5": "4af93b040f3a44af5804ab44066ee7cd",
+      "size": 7918,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "r-vctrs",
+      "version": "0.6.5",
+      "build_string": "r42ha503ecb_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-vctrs-0.6.5-r42ha503ecb_0.conda",
+      "sha256": "13c366205c81f6278892290dcd6b00d3b5e66bd8b67195969d68fdb5277a1bee",
+      "md5": "5689030c60302fb5bb7a48b54c11dbe8",
+      "size": 1241438,
+      "license": "MIT"
+    },
+    {
+      "name": "bioconductor-s4vectors",
+      "version": "0.36.0",
+      "build_string": "r42ha9d7317_1",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/linux-64/bioconductor-s4vectors-0.36.0-r42ha9d7317_1.tar.bz2",
+      "sha256": "5fe73d3ab54a8f915b142f5b52460d3c72fce7235a393f1a05c44efe76ac391a",
+      "md5": "4ff37e41e059c0fef1c61706dbd9b711",
+      "size": 2287633,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "bioconductor-biobase",
+      "version": "2.58.0",
+      "build_string": "r42ha9d7317_1",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/linux-64/bioconductor-biobase-2.58.0-r42ha9d7317_1.tar.bz2",
+      "sha256": "e28a1b9c9e86a3b218a4aa6e6c3d56c00482fcad82ecfc27b084a99dbcc866ef",
+      "md5": "8f466258daed48876021958b5fa66686",
+      "size": 2508886,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "bioconductor-iranges",
+      "version": "2.32.0",
+      "build_string": "r42ha9d7317_1",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/linux-64/bioconductor-iranges-2.32.0-r42ha9d7317_1.tar.bz2",
+      "sha256": "3d829a9f3e05526ea03e2410a1d8822905b3b5dbf30bb7b8842dc9666a20eab0",
+      "md5": "0ede4ac5865e2cbe0edacb6d5a2b4f76",
+      "size": 2523961,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "bioconductor-xvector",
+      "version": "0.38.0",
+      "build_string": "r42ha9d7317_1",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/linux-64/bioconductor-xvector-0.38.0-r42ha9d7317_1.tar.bz2",
+      "sha256": "cb8597807fa22fa5a20326199e03f5ea212bcf9baa7cd4dd653119c6918310e5",
+      "md5": "eb5ece9b227b55a9c20ab165a9f97087",
+      "size": 733756,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "r-blob",
+      "version": "1.2.4",
+      "build_string": "r42hc72bb7e_1",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/noarch/r-blob-1.2.4-r42hc72bb7e_1.conda",
+      "sha256": "8a2c2adacc208419e38c4c156e4bbbc26b87afbce676eaba293bf755866ed0d9",
+      "md5": "3c6f866c45c42158ff15bd8237aa68d1",
+      "size": 66164,
+      "license": "GPL-3.0-only"
+    },
+    {
+      "name": "bioconductor-genomeinfodb",
+      "version": "1.34.9",
+      "build_string": "r42hdfd78af_0",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/noarch/bioconductor-genomeinfodb-1.34.9-r42hdfd78af_0.tar.bz2",
+      "sha256": "059b6a6b9b64eafc9127a2687feb0befd9963fd6708adbbc58bbafd464d4c25f",
+      "md5": "10961a4cf078c3e368caa1465a45feca",
+      "size": 4275249,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "r-rsqlite",
+      "version": "2.3.4",
+      "build_string": "r42ha503ecb_0",
+      "channel": "conda-forge",
+      "url": "https://conda.anaconda.org/conda-forge/linux-64/r-rsqlite-2.3.4-r42ha503ecb_0.conda",
+      "sha256": "30d45cc3dc89e9d785bc2294b8837208e7b99e583bfe74c54313e94d28d05580",
+      "md5": "b2fe420afd78168c561084cf4c35eef3",
+      "size": 1236723,
+      "license": "LGPL-2.1-or-later"
+    },
+    {
+      "name": "bioconductor-biostrings",
+      "version": "2.66.0",
+      "build_string": "r42ha9d7317_1",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/linux-64/bioconductor-biostrings-2.66.0-r42ha9d7317_1.tar.bz2",
+      "sha256": "8090dd3506c4f47fe5b86e6a47eb15947d3c36897b1123235d834c84e27d419f",
+      "md5": "42ec86503c7e99250a649a289e42931b",
+      "size": 14246271,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "bioconductor-keggrest",
+      "version": "1.38.0",
+      "build_string": "r42hdfd78af_0",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/noarch/bioconductor-keggrest-1.38.0-r42hdfd78af_0.tar.bz2",
+      "sha256": "dd3d3201b0d641f126086f5ccd9ac743edd9bb55b967fd839e88dd0089ae4c6f",
+      "md5": "0bfca4c24d7e3d77fd0c425343dab7fe",
+      "size": 199486,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "bioconductor-annotationdbi",
+      "version": "1.60.0",
+      "build_string": "r42hdfd78af_0",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/noarch/bioconductor-annotationdbi-1.60.0-r42hdfd78af_0.tar.bz2",
+      "sha256": "ab272bccc76c8ac3b503a03b501a9f7cf15f5c0260240505e8aca545414b6316",
+      "md5": "c99dc80c410ee2cb813e59eb3c022b00",
+      "size": 5163263,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "bioconductor-annotate",
+      "version": "1.76.0",
+      "build_string": "r42hdfd78af_0",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/noarch/bioconductor-annotate-1.76.0-r42hdfd78af_0.tar.bz2",
+      "sha256": "77cd5f9bf92a4718f0b1526955eb9b31a73a416ec4328997c3eab22f4aa7766f",
+      "md5": "c4ff237ef3e3833c2ceabb53978a3850",
+      "size": 1804345,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "bioconductor-genefilter",
+      "version": "1.80.0",
+      "build_string": "r42ha1e849b_1",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/linux-64/bioconductor-genefilter-1.80.0-r42ha1e849b_1.tar.bz2",
+      "sha256": "106e6ebb8545cee18645fa33611aab6f8a1e621f629add49f6a6ecf90b8151ed",
+      "md5": "357c1b03e559ea846ffeaba2a7cd39f3",
+      "size": 1146417,
+      "license": "Artistic-2.0"
+    },
+    {
+      "name": "bioconductor-sva",
+      "version": "3.46.0",
+      "build_string": "r42ha9d7317_1",
+      "channel": "bioconda",
+      "url": "https://conda.anaconda.org/bioconda/linux-64/bioconductor-sva-3.46.0-r42ha9d7317_1.tar.bz2",
+      "sha256": "86092defa9fbe64efe1f8836638c702fb8eab24d64bf9ffc0f6283c98786cd33",
+      "md5": "b5c2e45fdf6446a6503c1428d15e339b",
+      "size": 498173,
+      "license": "Artistic-2.0"
+    }
+  ],
+  "file_guard_scope": "Exact bytes of declared core package files including sva native library and R base/stats. Transitive loaded package files are fingerprinted before/after. This is not complete host or linked system-library attestation."
+}
