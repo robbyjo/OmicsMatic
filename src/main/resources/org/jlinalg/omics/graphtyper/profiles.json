@@ -1,0 +1,3047 @@
+{
+  "schema_version": 1,
+  "scope": "Original edition-specific SNP/indel joint calling; native primitive quality kernels and full-record audits are separate. No phasing, imputation, somatic driver calling, structural-variant pipeline or exact author recipe is inferred.",
+  "profiles": {
+    "graphtyper-v2.7.5-ddc58a70": {
+      "tag": "v2.7.5",
+      "source_commit": "ddc58a70349ecf303845c5995d1e9c964cf99ed7",
+      "legacy": false,
+      "source_files": {
+        ".clang-format": {
+          "bytes": 2056,
+          "sha256": "493a87f1c74d7f474bafe78662b38beb1d52c25288938410d64ffeba928b8453"
+        },
+        ".clang-tidy": {
+          "bytes": 735,
+          "sha256": "5754edf7930902f4c80e9c12a5a389828ff3fd16b53e1a39606433703b509268"
+        },
+        ".editorconfig": {
+          "bytes": 475,
+          "sha256": "e596ccdde009e93a1b007ee715df56ea507d4c63bb9a0ec5dd67a6efb3fb3498"
+        },
+        ".github/workflows/ci_linux.yaml": {
+          "bytes": 3797,
+          "sha256": "f5e07dd60a90149a6b7a35e05434b7211ad5f15641fb24c7d09405b81c2e909d"
+        },
+        ".github/workflows/clang-format.yaml": {
+          "bytes": 1925,
+          "sha256": "b4d7e9b9536da7cab58d682298b9e63076a0880ee76c9d8dcf93680998dee421"
+        },
+        ".gitignore": {
+          "bytes": 837,
+          "sha256": "36878ba935262e7a5b94d07e4a02eabc8e760786d4a1d768bae265adb91f726a"
+        },
+        ".gitmodules": {
+          "bytes": 723,
+          "sha256": "c6d4836799010608856293efae2d116ab02eed1fdf757ae2b6e0b77a87342242"
+        },
+        "CMakeLists.txt": {
+          "bytes": 13193,
+          "sha256": "944861a516a32a8d384a74b76bfb5b82fb490fdaedf647ebfd9cc591356d1979"
+        },
+        "CODE_OF_CONDUCT.md": {
+          "bytes": 3224,
+          "sha256": "72296f6a2a3e0297d43160c05502d8ac42666e22e9d67e4ee32dfe74ca52eec0"
+        },
+        "LICENSE": {
+          "bytes": 1078,
+          "sha256": "81d4958fb44ba27206acb77d1362fc9ada8ac83403410c632eee35357afac082"
+        },
+        "README.md": {
+          "bytes": 4546,
+          "sha256": "da25760dc84f0890a8369b2674857cab72ab73e67906f32f6dff1daa53645c16"
+        },
+        "docs/Doxyfile.in": {
+          "bytes": 63526,
+          "sha256": "7f814eb81f48960e12e0f431d8a7d7c12b1c78a624f150e4244232f48a2941bb"
+        },
+        "include/graphtyper/constants.hpp.in": {
+          "bytes": 4019,
+          "sha256": "fef6e7a37c8805ec05b7dfe5813b9f98260eac26a0a88cd5044511d299ecde46"
+        },
+        "include/graphtyper/graph/absolute_position.hpp": {
+          "bytes": 944,
+          "sha256": "973cc00b1603a89bc6112abb3f2f89c5dcf8775719eee85acd37fd4a30149c99"
+        },
+        "include/graphtyper/graph/alt.hpp": {
+          "bytes": 972,
+          "sha256": "b27db614016899ede1103038df7c5c42131de7b43da2e913d53611c59dacf343"
+        },
+        "include/graphtyper/graph/alu_sequences.hpp": {
+          "bytes": 24762,
+          "sha256": "34f8fb303f342c09bdd36010fe21fb4852652c4d4f89043f7a121dd00390f481"
+        },
+        "include/graphtyper/graph/constructor.hpp": {
+          "bytes": 793,
+          "sha256": "4d66f04480fc00c42a2dbacac86e84376395b4394d79d4100b18b50e437e3b89"
+        },
+        "include/graphtyper/graph/genomic_region.hpp": {
+          "bytes": 1636,
+          "sha256": "850092a9458489a2600c32ebb2bc20c16f122e5f9b0afcf9efe8af0bef912aa4"
+        },
+        "include/graphtyper/graph/genotype.hpp": {
+          "bytes": 382,
+          "sha256": "6d891b27cb7b98376cc61613e5c2f4b1d728062ce4173a24b2bf8179f78ec8f2"
+        },
+        "include/graphtyper/graph/graph.hpp": {
+          "bytes": 5924,
+          "sha256": "1eb65be5dc49e58455b48435fa92e8ae755168d140601e9c3660f9873be5b22d"
+        },
+        "include/graphtyper/graph/graph_serialization.hpp": {
+          "bytes": 270,
+          "sha256": "c51f669c8d738a02a88b29325dc5e096108099d7abae87e3a96f8f792e7f48ad"
+        },
+        "include/graphtyper/graph/graph_utils.hpp": {
+          "bytes": 2743,
+          "sha256": "d4163a9185156dadf19a91ab8223a147b4aeaf0fbcb61873093d9aeccc29083d"
+        },
+        "include/graphtyper/graph/haplotype.hpp": {
+          "bytes": 4275,
+          "sha256": "352fc4cecb2b8ae7b1b32a81991919d84023c1accfd6615bf27dfbe8b9eda3b2"
+        },
+        "include/graphtyper/graph/haplotype_calls.hpp": {
+          "bytes": 1241,
+          "sha256": "fabc5ad35714188cfb9eae6166acc2198ee8b92d357e83638533cc36b8a696d4"
+        },
+        "include/graphtyper/graph/haplotype_extractor.hpp": {
+          "bytes": 1315,
+          "sha256": "ff2042e40ea8c425e229f3b868412e0ee6423096da083b6588f8c262bae7330c"
+        },
+        "include/graphtyper/graph/label.hpp": {
+          "bytes": 799,
+          "sha256": "c6161a63b8d583b5437497e7140f47225e65d32841e70c17e739129b9e732ba9"
+        },
+        "include/graphtyper/graph/location.hpp": {
+          "bytes": 621,
+          "sha256": "c334500df29c91395c9e8bf6495383b12daea863440eced2d2950b530cedaa47"
+        },
+        "include/graphtyper/graph/log_table.hpp": {
+          "bytes": 22786,
+          "sha256": "a265fd6a071fba83e37f8a028ad9cf1c4f92ed3da17dd017b882a02445ab2ee6"
+        },
+        "include/graphtyper/graph/node.hpp": {
+          "bytes": 1529,
+          "sha256": "9d404bb8c29ebe8d6b77c46344236e4c7067732587478c4c02001f065994d661"
+        },
+        "include/graphtyper/graph/read_strand.hpp": {
+          "bytes": 562,
+          "sha256": "32cb659eeb6e3a460d7db4f3a7f1ca7240de22d1b3f5db90103978acd35f5d4d"
+        },
+        "include/graphtyper/graph/ref.hpp": {
+          "bytes": 499,
+          "sha256": "47b2360eb0b6cf6a3878faca78582eb244082565ae52b3f685ee2176844c92a8"
+        },
+        "include/graphtyper/graph/reference_depth.hpp": {
+          "bytes": 1303,
+          "sha256": "316e02e63439aec964daca6ea8a1f15e2fd3eac8e01a1809d1b1c90867a6dc2b"
+        },
+        "include/graphtyper/graph/sequence_extractor.hpp": {
+          "bytes": 160,
+          "sha256": "fe8324178c69c629e19cdc08634074627d73a4a0d8aa358fea70fc32ac8bb845"
+        },
+        "include/graphtyper/graph/snp_event.hpp": {
+          "bytes": 636,
+          "sha256": "b6203c8d47df4d7a4fe881ed5e815ae94b72a58d9ead4e5d9cb1c1a8fe3a9222"
+        },
+        "include/graphtyper/graph/sv.hpp": {
+          "bytes": 1556,
+          "sha256": "64cfc0c2c0d1b2a91bb25d0bee6e86abb49cd52585c5d8f658ea9c62c0d584b4"
+        },
+        "include/graphtyper/graph/var_record.hpp": {
+          "bytes": 1100,
+          "sha256": "2ecaaabe33173c8e82f579a99459c25df350eced3033e16ff9426b6e6e829012"
+        },
+        "include/graphtyper/index/index.hpp": {
+          "bytes": 1395,
+          "sha256": "e33efba6b2102c1637457a65efece9876f815b73e68573137ad3a6a5f962b45a"
+        },
+        "include/graphtyper/index/index_entry.hpp": {
+          "bytes": 1021,
+          "sha256": "ba142558aa61261125c27ccc4fb0b84da61bcc02265d46a0607c28977fbc9bad"
+        },
+        "include/graphtyper/index/indexer.hpp": {
+          "bytes": 375,
+          "sha256": "b7bf67e69ec124889c8904f06dac89b17006217cf529564866f0b12742ac4f0a"
+        },
+        "include/graphtyper/index/kmer_label.hpp": {
+          "bytes": 1092,
+          "sha256": "a7c2fcd6b09d5a6a722084bf0d1d028af38b7c4c7803273d25c2eaa7aa64bd62"
+        },
+        "include/graphtyper/index/ph_index.hpp": {
+          "bytes": 1100,
+          "sha256": "678c4e36d8e0851e1c06a72db19ce524ba2ad75611b6c5117bdcec4cf609cc3b"
+        },
+        "include/graphtyper/typer/alignment.hpp": {
+          "bytes": 1870,
+          "sha256": "556b43d910893acd6ff9c45b7c5bce8e410dea9f975040ce3c9f09d081411f32"
+        },
+        "include/graphtyper/typer/binned_pl.hpp": {
+          "bytes": 3582,
+          "sha256": "33d6bed93b380ddf31e28194bb18316da44a1912df60148872ded34a21bdcc74"
+        },
+        "include/graphtyper/typer/bucket.hpp": {
+          "bytes": 2382,
+          "sha256": "97edebf4dbb34ed8e459380eb6d5f0040514197cc109f033615f9351745d84b6"
+        },
+        "include/graphtyper/typer/caller.hpp": {
+          "bytes": 1876,
+          "sha256": "1113fb6d3ff3e465d88383105e3dc8181c143b954c43d3c85c41cf4ccbfe2ebd"
+        },
+        "include/graphtyper/typer/event.hpp": {
+          "bytes": 3945,
+          "sha256": "7ed65793190004d3b8f673ae15550b666c8b839b339619993e556c90eaa3d413"
+        },
+        "include/graphtyper/typer/genotype_paths.hpp": {
+          "bytes": 3598,
+          "sha256": "65bb367a4e9a319ed8848eca265503556c953b6755f3179c483549cced84022c"
+        },
+        "include/graphtyper/typer/logistic_constants.hpp": {
+          "bytes": 2877,
+          "sha256": "3fa7ed9b69c9d2fe626c4d0f6820b91ef9e6481604aa70fead05250fbeed24ad"
+        },
+        "include/graphtyper/typer/path.hpp": {
+          "bytes": 2274,
+          "sha256": "3a68da4786d6caab31a1ba5c7832c998f929e09bf3e1f8d2f31e39d6f4a4d4b6"
+        },
+        "include/graphtyper/typer/primers.hpp": {
+          "bytes": 787,
+          "sha256": "5f369ac29b6e2d6f40e6870aa89a2ada1bbb09e30fd36653acf1b39cbcf8fad1"
+        },
+        "include/graphtyper/typer/read.hpp": {
+          "bytes": 2019,
+          "sha256": "d1357f65bdca17c740ebae1b74a315a1713afe987b5507b1030558fb825e7d04"
+        },
+        "include/graphtyper/typer/read_stats.hpp": {
+          "bytes": 630,
+          "sha256": "86d62ddcfbfd201ad2b18cf1a4c18a0ed54e28963e92b8b85d63078a1316ff65"
+        },
+        "include/graphtyper/typer/sample_call.hpp": {
+          "bytes": 2110,
+          "sha256": "d179061a6052aabe02903d0c6be1b17d48efc70624c5dfb881be4d87232fb8d3"
+        },
+        "include/graphtyper/typer/segment.hpp": {
+          "bytes": 835,
+          "sha256": "1a2a661512ff0a3739205a9e85c0961a925b9a6c79fa1718f2d53ae3abf66c47"
+        },
+        "include/graphtyper/typer/segment_calling.hpp": {
+          "bytes": 381,
+          "sha256": "9bb111854e00441052ce9a12119a42871d8f4e4a9ac1f05ccebfbb5a0175c74c"
+        },
+        "include/graphtyper/typer/var_stats.hpp": {
+          "bytes": 3356,
+          "sha256": "c70b14e0c8a353a1d9af6785eccd64d49006401265a92831d7b7b4240ae8964a"
+        },
+        "include/graphtyper/typer/variant.hpp": {
+          "bytes": 3743,
+          "sha256": "a1b68548bb6db4297f09f2d844e4829141b690d28f4aa2240209ac4e827d0380"
+        },
+        "include/graphtyper/typer/variant_call.hpp": {
+          "bytes": 141,
+          "sha256": "a24250bdcdc9c2e648fa2ec1cd5e65b691569cdeb55d1803f262d291c71e2ab3"
+        },
+        "include/graphtyper/typer/variant_candidate.hpp": {
+          "bytes": 1665,
+          "sha256": "7a46b4a695343ed871337539027e09b4341db66f3bf360b6cc3679c76852f798"
+        },
+        "include/graphtyper/typer/variant_map.hpp": {
+          "bytes": 2200,
+          "sha256": "508dd34cf43a6a09da553a24b2c0075f74dca52876daaf6ce84b33c01ed2358c"
+        },
+        "include/graphtyper/typer/variant_support.hpp": {
+          "bytes": 1455,
+          "sha256": "55a8ed8eba877027e403ea53fc2527bff89ccc565f00c3bab559059c730c0cb4"
+        },
+        "include/graphtyper/typer/vcf.hpp": {
+          "bytes": 3395,
+          "sha256": "c690e57f4d9e59cdd4e590ee66a3e926e766690c119853aaf14e51e9ae789158"
+        },
+        "include/graphtyper/typer/vcf_operations.hpp": {
+          "bytes": 1304,
+          "sha256": "5b2fa4ea0f77cc9eadccda7755d5cc3d395914a187e57b32a333b7b14d379479"
+        },
+        "include/graphtyper/typer/vcf_writer.hpp": {
+          "bytes": 2238,
+          "sha256": "a9361632d995c427a515c611a9bee066afd181620581cb255953ff0e08f64012"
+        },
+        "include/graphtyper/utilities/bamshrink.hpp": {
+          "bytes": 1254,
+          "sha256": "47d7607c6bf08595a21932080c4b7565c174a6d0eb8c1444463f679005d8414f"
+        },
+        "include/graphtyper/utilities/bgzf_stream.hpp": {
+          "bytes": 4384,
+          "sha256": "47aba2db96dd824f2cc44fc0605265d002610586cbd9b0dd2ddfa5d0facf1632"
+        },
+        "include/graphtyper/utilities/filesystem.hpp": {
+          "bytes": 463,
+          "sha256": "532541e9d1dcfbed6a52ace71e9824a8518e687c669966f784bddcbaf0329c70"
+        },
+        "include/graphtyper/utilities/genotype.hpp": {
+          "bytes": 1938,
+          "sha256": "fe43304c4ff25e0b2494651ea32b0984baa7494e40852c22634151ebcaaf33d4"
+        },
+        "include/graphtyper/utilities/genotype_camou.hpp": {
+          "bytes": 423,
+          "sha256": "67d1c44da7c214bfc26dda1c457ca6745862cea196d636cb7c45850cdef0717b"
+        },
+        "include/graphtyper/utilities/genotype_hla.hpp": {
+          "bytes": 710,
+          "sha256": "3741ebd0ff917bc1e7d85950f6c2edbbc5ac52e6d4ff8c2ccf778d2ed6635bbc"
+        },
+        "include/graphtyper/utilities/genotype_lr.hpp": {
+          "bytes": 353,
+          "sha256": "8a897d2a31e52f36c88510d233ca4fe37e332259e7fb09bb65db5708f5f178a4"
+        },
+        "include/graphtyper/utilities/genotype_sv.hpp": {
+          "bytes": 872,
+          "sha256": "4101afdc915ba850deb301652e4b269795ecb43852ae27f55d9ae6cae0fb762e"
+        },
+        "include/graphtyper/utilities/graph_help_functions.hpp": {
+          "bytes": 682,
+          "sha256": "369781cd176316038c9731dc9f81662157e3e97a623326566f245f4d99183d2a"
+        },
+        "include/graphtyper/utilities/gzstream.hpp": {
+          "bytes": 6816,
+          "sha256": "a342342096791814354d9bc21883bd559be6875862841ffb4f4c9a4cd28c6aed"
+        },
+        "include/graphtyper/utilities/hash_seqan.hpp": {
+          "bytes": 454,
+          "sha256": "01013a2f6e8e87ed9e11d2d4ad8582cd703204709775bdf8d03dc93b3c0ec2c3"
+        },
+        "include/graphtyper/utilities/hts_parallel_reader.hpp": {
+          "bytes": 3454,
+          "sha256": "d3aefedd97b32a68b602d175bacad058502c45b8d275abc511212705c952bb29"
+        },
+        "include/graphtyper/utilities/hts_reader.hpp": {
+          "bytes": 1970,
+          "sha256": "1c52363972b7fa328e86986ca62145fa29de21208b4cc72ee87e3a9b283caf87"
+        },
+        "include/graphtyper/utilities/hts_record.hpp": {
+          "bytes": 1024,
+          "sha256": "a24a712f13e1858d2802fa1e81802bde675576a560ee83a8c0c4bee79df65bda"
+        },
+        "include/graphtyper/utilities/hts_store.hpp": {
+          "bytes": 761,
+          "sha256": "d96ded72dd12f294b936e83c35d83f22e90c88753545440298d4917d9678277f"
+        },
+        "include/graphtyper/utilities/hts_utils.hpp": {
+          "bytes": 3058,
+          "sha256": "88eb2474ad59a270d89d89c72453a0a6ce910947c3fc67accd48436ec34c7973"
+        },
+        "include/graphtyper/utilities/hts_writer.hpp": {
+          "bytes": 524,
+          "sha256": "3575bc459b776e96c3d500f7a4e7c69896922505f68f63f215ecd400a4fe03fe"
+        },
+        "include/graphtyper/utilities/io.hpp": {
+          "bytes": 1011,
+          "sha256": "4bec635ec82ade980a5030cf98d2fc2c7717ae3c29ea0248fa0d9088dd18d264"
+        },
+        "include/graphtyper/utilities/kmer_help_functions.hpp": {
+          "bytes": 1319,
+          "sha256": "d78dfb0133f70674d04973ecdef2a46ecf2d3c1e5e63069e9f4b593ebc864246"
+        },
+        "include/graphtyper/utilities/logging.hpp": {
+          "bytes": 3216,
+          "sha256": "0059476042750e9152ebf34a7e1f4b642da99a46ec26e12b94b3f5e3a0fdad83"
+        },
+        "include/graphtyper/utilities/options.hpp": {
+          "bytes": 4237,
+          "sha256": "a122518bb54e94480d975a7b6fb516eab13309dab315a02dcda94533e16fc65f"
+        },
+        "include/graphtyper/utilities/sam_reader.hpp": {
+          "bytes": 1090,
+          "sha256": "b23d1ac6adcf6e1c222b50cfad5aa40ba835939b5cb4971e2a943853793fbc59"
+        },
+        "include/graphtyper/utilities/sequence_operations.hpp": {
+          "bytes": 2173,
+          "sha256": "44c5c65b3df299cb64543639c983e6abd0eebe5a09144fbf56e794b8185519ab"
+        },
+        "include/graphtyper/utilities/string.hpp": {
+          "bytes": 2885,
+          "sha256": "95697f755bbf21a889afbd4154ae519f9e784836e8a6fa30f4d5a5edd9de2e19"
+        },
+        "include/graphtyper/utilities/system.hpp": {
+          "bytes": 577,
+          "sha256": "7555994055fe9199b72cbfed8b4c9840574b9ae9bbff1e398bfd65175da7b896"
+        },
+        "include/graphtyper/utilities/type_conversions.hpp": {
+          "bytes": 2338,
+          "sha256": "a316bb7d6ac32c7bc11c1b64a5bae3e6b3944387fced29bfaa1b41d669405475"
+        },
+        "include/popvcf/encode.hpp": {
+          "bytes": 7810,
+          "sha256": "f9dee5255ef24bf5baa0da8098980b56ab6db6207ef289c5b8b7d5b69f6706e5"
+        },
+        "include/popvcf/sequence_utils.hpp": {
+          "bytes": 3164,
+          "sha256": "fb9096080c94fa752fdc2517ba1a8f5b1c3abd8f08ed624fdda559c2b77e4f07"
+        },
+        "src/CMakeLists.txt": {
+          "bytes": 1989,
+          "sha256": "bd33de431f76d6aef55bdd530a20738d3d0fdbdac88c1dd4bf87aaff2c7cfa06"
+        },
+        "src/graph/absolute_position.cpp": {
+          "bytes": 2220,
+          "sha256": "667613adac0bfec081e26ce2c23cb0872a8e6931bfa704823df747498eb7a17a"
+        },
+        "src/graph/alt.cpp": {
+          "bytes": 3818,
+          "sha256": "e3e30fa92af4309f4559c4e1a31765a88428f8c9bea8db9688e8c987c34d76f3"
+        },
+        "src/graph/constructor.cpp": {
+          "bytes": 60953,
+          "sha256": "701eb2614128d2519131b01a4f517a9794232cd00c7af9229711404bcc5c07bb"
+        },
+        "src/graph/genomic_region.cpp": {
+          "bytes": 7133,
+          "sha256": "a976ca302a42f2023603b2632e486b6ed441cf60cba4c77c5fd9fbb0ea18ba5b"
+        },
+        "src/graph/genotype.cpp": {
+          "bytes": 905,
+          "sha256": "efdf31b61615d250bfe5ca2a41cafa05215cdd14585a6f16e3c93953e9561af9"
+        },
+        "src/graph/graph.cpp": {
+          "bytes": 67662,
+          "sha256": "4caa021bfbfcae6aad4f0cd03ca7cb0ff9b1437cac30b08f3dce2daafb87d8b5"
+        },
+        "src/graph/graph_serialization.cpp": {
+          "bytes": 1714,
+          "sha256": "e565c889f70c287e6cbe4b4a92e76f9ff7d6652f23882843413d21e240b28b93"
+        },
+        "src/graph/haplotype.cpp": {
+          "bytes": 19119,
+          "sha256": "ba6cb177bca6fa759bd6a127e03d71a77945323e6e63875cebd14ba8d8a55503"
+        },
+        "src/graph/haplotype_calls.cpp": {
+          "bytes": 3461,
+          "sha256": "7112ea48018bff8d8a651cb1e109895d6c0f9c21dee85849ddab71497ff2033e"
+        },
+        "src/graph/haplotype_extractor.cpp": {
+          "bytes": 14576,
+          "sha256": "8a0a31cdba4b14be83fc8f1a8eec2a421721bf33e2f26c06f9d8f83272c8fa79"
+        },
+        "src/graph/label.cpp": {
+          "bytes": 1470,
+          "sha256": "a5503d68634dc063873ccaa959bfccb3573cd220aea3af550ea56f1003be7551"
+        },
+        "src/graph/read_strand.cpp": {
+          "bytes": 1420,
+          "sha256": "8f19e93dd4fd4cb29852e329693c56cf1b6661406bd36458116417b303e187cb"
+        },
+        "src/graph/ref.cpp": {
+          "bytes": 604,
+          "sha256": "9b0e8db98e08fba539a2b7ab033dc168585855a0a9b93786011bb2b8763eaf1f"
+        },
+        "src/graph/ref_node.cpp": {
+          "bytes": 1361,
+          "sha256": "2228df1c6f81e99f372572bd803b190952b9ec35cb9d86f50a5f5231fbb60489"
+        },
+        "src/graph/reference_depth.cpp": {
+          "bytes": 7311,
+          "sha256": "9674dd36b55993d193fc47dfcbba72ea7cb9e04f499925a51b1e0bfcd9df3979"
+        },
+        "src/graph/sequence_extractor.cpp": {
+          "bytes": 908,
+          "sha256": "97d7cd7b7a406f827106d7d7890dcc66d528d8043fdf08437f1926d7957419af"
+        },
+        "src/graph/snp_event.cpp": {
+          "bytes": 1101,
+          "sha256": "32d01d8dbd59832971759b5e0f50d3c9b365b994947185d3e4def40c9a5142f4"
+        },
+        "src/graph/sv.cpp": {
+          "bytes": 21383,
+          "sha256": "8c24ea4ed01d82749bb1646966124ece3c43c9ddcddd7cb8e4947e61bbddf8c7"
+        },
+        "src/graph/var_node.cpp": {
+          "bytes": 1906,
+          "sha256": "52a8b946d5b7d17ed7d286477c39a4e8bb034203f283c81549ec78e7244fdd9b"
+        },
+        "src/graph/var_record.cpp": {
+          "bytes": 13381,
+          "sha256": "c2d5256a21fd12249c424eab2f8b2407ac8776dfaadcc56eb5f9697d5a076f40"
+        },
+        "src/index/index_entry.cpp": {
+          "bytes": 962,
+          "sha256": "efd1fe6b8b3240644201c132d91876f3604282044e910ebff45501dabc773c0e"
+        },
+        "src/index/indexer.cpp": {
+          "bytes": 8953,
+          "sha256": "f0824f2f71742513e339b30cbe4034233202249c29ad8215ac17bf730d15e234"
+        },
+        "src/index/kmer_label.cpp": {
+          "bytes": 1362,
+          "sha256": "c0eead89275d5deff99dab69eb25240f441abfa094f97b86eda55180006db9bd"
+        },
+        "src/index/ph_index.cpp": {
+          "bytes": 6408,
+          "sha256": "2ccf7e5f001c9b2a3b3c5ef092fdcbbbf636ecf448913545f2eb3919bace7bb2"
+        },
+        "src/main.cpp": {
+          "bytes": 57219,
+          "sha256": "931d74fdedfb1abf0f27a829e7d28ab2009c7bf09fb946f9405d0a79d638fd8d"
+        },
+        "src/typer/alignment.cpp": {
+          "bytes": 16359,
+          "sha256": "a00ceb47083dddeed45bef798173a53e6a729e77d66dec5552b31e4eadcb1a66"
+        },
+        "src/typer/bucket.cpp": {
+          "bytes": 8379,
+          "sha256": "ac932bdf4e9a289512997480eea3519352a16a73449a21ae0bc3068a05436208"
+        },
+        "src/typer/caller.cpp": {
+          "bytes": 117774,
+          "sha256": "478d4f540eccb0abe44f1bd8c5048c7694cbd867719b16c4c009a896f6e0e9e5"
+        },
+        "src/typer/event.cpp": {
+          "bytes": 11538,
+          "sha256": "3f551abc9655d9b5def769357921254771d8d7f63b9a0168bce8615ead4a594c"
+        },
+        "src/typer/genotype_paths.cpp": {
+          "bytes": 36405,
+          "sha256": "5a28018b0d4aeec29d5e88b3d7c0b778c063a811e327930de8a027f8ada67d81"
+        },
+        "src/typer/path.cpp": {
+          "bytes": 4587,
+          "sha256": "e30dbc299ba365e86e6be0c440c7a102fa3d2247dbec45d25d5c5d068e7faa37"
+        },
+        "src/typer/primers.cpp": {
+          "bytes": 4629,
+          "sha256": "37e4a1a2adc043208b06fece22d5b3094b3bac2895d9c45ece658e2b4c6307ac"
+        },
+        "src/typer/read.cpp": {
+          "bytes": 3661,
+          "sha256": "43da797d2d50d9e39f4595ae32e98d4a45f1dd11a75387d82b89c48d40fb3e9f"
+        },
+        "src/typer/sample_call.cpp": {
+          "bytes": 11268,
+          "sha256": "8dea847db41a3a5a75bc8e90214258621ec31b5a8c1afa216737b2cbdcdcd29f"
+        },
+        "src/typer/segment.cpp": {
+          "bytes": 6440,
+          "sha256": "4d1accc6574d0424f6b9edf1554e4d584746d059927b4fef66b1177fa7a93fdd"
+        },
+        "src/typer/segment_calling.cpp": {
+          "bytes": 29341,
+          "sha256": "2bf6c84af394b9d00b6b803a7c2ad3ae20b3f1564a315509d419dcbf02aaa9b4"
+        },
+        "src/typer/var_stats.cpp": {
+          "bytes": 13012,
+          "sha256": "4f083f8f7eb94e37baf84fb29f6ad01a59fb3176fb8b7b808d0588c28866e01a"
+        },
+        "src/typer/variant.cpp": {
+          "bytes": 63363,
+          "sha256": "50e4211545073fd35898555c7ac161f7fb388dcdc973421381779dc06351f2f6"
+        },
+        "src/typer/variant_candidate.cpp": {
+          "bytes": 3172,
+          "sha256": "4f91680c7769a4111f7a3eeecd6a828211de796d58bea51c3f0c54ecf30fd9d3"
+        },
+        "src/typer/variant_map.cpp": {
+          "bytes": 22491,
+          "sha256": "c42c980a6fd3b4f7255ded4cdb371f10beeefc2af0c860957d5f3d1c0c206f04"
+        },
+        "src/typer/variant_support.cpp": {
+          "bytes": 3299,
+          "sha256": "d9faa78a68d7aec0a60d7d3c8b1d656ba816e6c7b89f024c1abe7fca75fba793"
+        },
+        "src/typer/vcf.cpp": {
+          "bytes": 62910,
+          "sha256": "23a4340d6606337921f635d48c68b57469891b487792e07e43ce74405b89700b"
+        },
+        "src/typer/vcf_operations.cpp": {
+          "bytes": 33289,
+          "sha256": "2ae7c77ea0e653a59d45b9c20d22501dbf441fbb39a88dd3e71cb7ec9120d027"
+        },
+        "src/typer/vcf_writer.cpp": {
+          "bytes": 22518,
+          "sha256": "1bf8ed477edd4682e32f3ef867f31fd1fd7141d943daf9c3104be60127acf97e"
+        },
+        "src/utilities/bamshrink.cpp": {
+          "bytes": 38149,
+          "sha256": "d47a2e324b4b1127c23c9864210d10f6407df3e8413b59fe0adb83bdc25b5289"
+        },
+        "src/utilities/genotype.cpp": {
+          "bytes": 26357,
+          "sha256": "88703cb8346eaf120335af6757968e989da05ab86197196168173d4125a68519"
+        },
+        "src/utilities/genotype_camou.cpp": {
+          "bytes": 10998,
+          "sha256": "1f84361cec1b3a1b9fa793eba4f6de99e449b43398c5515c7516be1848254760"
+        },
+        "src/utilities/genotype_hla.cpp": {
+          "bytes": 22295,
+          "sha256": "66579bae9a6f4be8dfe8a3a07400dfa639570d9e4180deb65e7c33780f549b51"
+        },
+        "src/utilities/genotype_lr.cpp": {
+          "bytes": 6228,
+          "sha256": "2f9175bb13f927b098f05f12af493cbc6583233478c4ef2d4550c3e34176a365"
+        },
+        "src/utilities/genotype_sv.cpp": {
+          "bytes": 6688,
+          "sha256": "3769fdf7258ef16abdcc0f5c9c7fc179393c0da65abdbe3b5e77b6aafdf6929f"
+        },
+        "src/utilities/hash_seqan.cpp": {
+          "bytes": 693,
+          "sha256": "0d9c23564ede509a7e67be5f8999923f2b4031a85c3f785518e5017b53454387"
+        },
+        "src/utilities/hts_parallel_reader.cpp": {
+          "bytes": 39361,
+          "sha256": "c944b832ca55276f3d5c33d10be76d67e2d34124ec4429e22a6fe13339dd74a3"
+        },
+        "src/utilities/hts_reader.cpp": {
+          "bytes": 9867,
+          "sha256": "7864b22101bd5913fa901b11f1d71366d005b832c981587a6ba6ccc9790bb592"
+        },
+        "src/utilities/hts_writer.cpp": {
+          "bytes": 1397,
+          "sha256": "95531b7ce0ff41855f1713b628bd902f48d49a7cc7d842a437309cc7e51d5da3"
+        },
+        "src/utilities/io.cpp": {
+          "bytes": 7287,
+          "sha256": "34ad0087a7ac75b9915b7f581b500ca782c6843dfc5dd92009c5028cdaf40248"
+        },
+        "src/utilities/kmer_help_functions.cpp": {
+          "bytes": 4792,
+          "sha256": "4c449fb76e2c9915ba5cc2d6542d6b4ddd940955b5573023f6cb5d56c3c7fad1"
+        },
+        "src/utilities/options.cpp": {
+          "bytes": 296,
+          "sha256": "0edb1cb7fae44db2305aadd120992ca8054c9557d04226606570eb7878bb73a7"
+        },
+        "src/utilities/sam_reader.cpp": {
+          "bytes": 4080,
+          "sha256": "e0dd0e54adb1e4d39ae9f65ca49e1f19bfddadc7a7efbb956b3033470d41d080"
+        },
+        "src/utilities/system.cpp": {
+          "bytes": 4905,
+          "sha256": "fff8c1c44083e520c01211ea2ac189bb4e27633802480a693abdc19f86f6f2c3"
+        },
+        "src/utilities/type_conversions.cpp": {
+          "bytes": 8545,
+          "sha256": "56f3349696236ce5ed9e30ee0afab7126b55ed5fa2f7e13631ccadd0495d8bdf"
+        },
+        "test/CMakeLists.txt": {
+          "bytes": 1734,
+          "sha256": "d008b22522fc89477d8a371e03092d54ddafcb46546c9bb4a079540fa80c5b38"
+        },
+        "test/data/reference/index_test.fa": {
+          "bytes": 1512,
+          "sha256": "e0b04d7f40c878333fb6e2ea92c30f05d898547e52dc420d3b1b8c1f14ca98a8"
+        },
+        "test/data/reference/index_test.fa.fai": {
+          "bytes": 204,
+          "sha256": "4ff3ae11036d55f59290d5911c77c5f59751da9e519b8d5b1cf76a1f85b33f58"
+        },
+        "test/data/reference/index_test.vcf": {
+          "bytes": 786,
+          "sha256": "9a17e38de281bc79e8c26e8978649685af1253e7b77203383ed671e836d1049b"
+        },
+        "test/data/reference/index_test.vcf.gz": {
+          "bytes": 370,
+          "sha256": "255368303e2c8a831270931dcfb05c83880a4f95bbfff91a5bcca9997fb10cf1"
+        },
+        "test/data/reference/index_test.vcf.gz.tbi": {
+          "bytes": 262,
+          "sha256": "98b2e1e5ef34a6827a9daea3d1180df3a011cc9e55adfa33d38542c1bc1efe80"
+        },
+        "test/data/reference/indexz.vcf.gz": {
+          "bytes": 184,
+          "sha256": "b946b38c5f9495c3cda4d01342395bc2aa32e0bbef6a8b0043188ddb9009cec3"
+        },
+        "test/data/reference/indexz.vcf.gz.tbi": {
+          "bytes": 158,
+          "sha256": "fef04cf8a89029871ec2514b89079cfdbed03bd634a655d3198454e0226034e1"
+        },
+        "test/data/reference/test.bam.csi": {
+          "bytes": 121,
+          "sha256": "e7784dabd8c8ead30c5f02bbde730c3667f2230de93510a512f7f25a38602272"
+        },
+        "test/data/reference/test.cram": {
+          "bytes": 101748,
+          "sha256": "32694b1c7b8865b74256b6b1077f686d76ae8b9f758ba88b364fdfe5d0421976"
+        },
+        "test/data/reference/test.cram.crai": {
+          "bytes": 59,
+          "sha256": "9756ec6a1a19884ad6289a2488e821a29de7c7be2a9327a1f8431f5ea6647a97"
+        },
+        "test/data/reference/test.sam": {
+          "bytes": 559523,
+          "sha256": "d5b86b85bf94c37eabca9a7ccb35ed79a1a9d3eda357ff39987496c9aa176445"
+        },
+        "test/data/reference/test_write.cram": {
+          "bytes": 137878,
+          "sha256": "a9579523218b980066969317bb8e8e5aa72eb40fbb71155221e7df7ee2365b0c"
+        },
+        "test/graph/test_constructor.cpp": {
+          "bytes": 20461,
+          "sha256": "9da1a3de0f75e73b6e190c57b48819682c6c2ba36a35acb667bb356304c35c56"
+        },
+        "test/graph/test_genomic_region.cpp": {
+          "bytes": 1794,
+          "sha256": "d9e364b3fcb3e2cea0b2475ba81d3a454cf18cf65bbf2a3388ea6a8b35dd2e86"
+        },
+        "test/graph/test_graph.cpp": {
+          "bytes": 84110,
+          "sha256": "7afd5a95c3a67dee2945b3327346a6ae6b04302a54925998782f64441e38fa35"
+        },
+        "test/graph/test_haplotypes.cpp": {
+          "bytes": 1114,
+          "sha256": "e2c8958c99ae9e7b920156669b737b21c22087ea8d35b2e3e024ef5830133618"
+        },
+        "test/help_functions.hpp": {
+          "bytes": 2202,
+          "sha256": "8dee114cad2118b7e78b0dec2408a58154f54cd4e617171e1e69402e34ac1823"
+        },
+        "test/index/test_index.cpp": {
+          "bytes": 16828,
+          "sha256": "a5fa77f1128dafd6b1795511b0a92d07e6f3b5789b8cadc966c6ce727b38947c"
+        },
+        "test/test.cpp": {
+          "bytes": 113,
+          "sha256": "fa3042f994b5dd365a31081c396c5ec67943725e6fc491fe1bef7a1fc3ef6753"
+        },
+        "test/test.hpp": {
+          "bytes": 453,
+          "sha256": "e9c249dc60b2cf7bd771afd2b4b0d0f280bc2255a5a8447b3c5e808b1a2260ff"
+        },
+        "test/typer/test_genotype_path.cpp": {
+          "bytes": 4278,
+          "sha256": "ffef3daefbfd38dc195702621fb1c1a873f8a3e8cd12d0262d6c5b4b9f0b8a7f"
+        },
+        "test/typer/test_gyper_aligner.cpp": {
+          "bytes": 3439,
+          "sha256": "f613d36f9e8cb561c8b03a993a85635eeb5701a52df2515fc3b3c4b9ffe2b4ff"
+        },
+        "test/typer/test_path.cpp": {
+          "bytes": 4231,
+          "sha256": "51c0d931fd9ec0fef992e065e8deba37b5250e08012459a7d41ccbd45da8a3e2"
+        },
+        "test/typer/test_variant.cpp": {
+          "bytes": 228,
+          "sha256": "e0438501d5a16f01dfd4268d8655998755836731c96a72360d67a346951e4b5d"
+        },
+        "test/typer/test_vcf.cpp": {
+          "bytes": 2204,
+          "sha256": "dfe2b83d348b6ea8d1b5f3928478d62770dcf477aaad53e50a4ab2cc752145f6"
+        },
+        "test/typer/test_vcf_io.cpp": {
+          "bytes": 955,
+          "sha256": "9285cc009bdfea34c31bdf25f3b079d8ab1e86558501c2896686ea83b7ec3d53"
+        },
+        "test/utilities/test_kmer_help_functions.cpp": {
+          "bytes": 4622,
+          "sha256": "420d5b28e241cbb55ee528e47062bcb7e8a71025ff3191ddc3a03c6b2d91a2ba"
+        },
+        "test/utilities/test_utilities.cpp": {
+          "bytes": 6840,
+          "sha256": "931ab4d3642ae48b4dc25a6bf3469770a894f20bf57bda6b57813bd0110c37e1"
+        }
+      },
+      "original_binary": {
+        "bytes": 6156680,
+        "sha256": "6506767190937dcb43db3976c18f3a2d2b15fb37f7569bfdc7ec05b0d65eeae0"
+      },
+      "licence": "MIT",
+      "pipeline_commit": null,
+      "pipeline_files": {},
+      "final_roles": [
+        "genotypes",
+        "input_sites"
+      ],
+      "internal_version": "2.7.5",
+      "scientific_source_modified": false,
+      "author_recipe_qualified": false,
+      "original_helper_binaries": {}
+    },
+    "graphtyper-v2.7.1-ffb1ab2b": {
+      "tag": "v2.7.1",
+      "source_commit": "ffb1ab2bea804973f197784783707dd46d7d5087",
+      "legacy": false,
+      "source_files": {
+        ".gitignore": {
+          "bytes": 832,
+          "sha256": "dcb632aa00fc4a0e5441d05205b62930de3b73146e2a9dbcc3b549259c89acab"
+        },
+        ".gitmodules": {
+          "bytes": 642,
+          "sha256": "693226bf1294ac361c40c00a3883aa748880e2d3da451868d3c1656262054097"
+        },
+        ".travis.yml": {
+          "bytes": 294,
+          "sha256": "aa1c5404d6de0e32d3959d81219e7b4ec0ff2291b94a6f72669910d9f139f62a"
+        },
+        "CMakeLists.txt": {
+          "bytes": 8017,
+          "sha256": "b620b848ae73057038da10f6d3175fdcea0100c42034109321ec0f11c000e68b"
+        },
+        "CODE_OF_CONDUCT.md": {
+          "bytes": 3224,
+          "sha256": "72296f6a2a3e0297d43160c05502d8ac42666e22e9d67e4ee32dfe74ca52eec0"
+        },
+        "LICENSE": {
+          "bytes": 1078,
+          "sha256": "81d4958fb44ba27206acb77d1362fc9ada8ac83403410c632eee35357afac082"
+        },
+        "README.md": {
+          "bytes": 4188,
+          "sha256": "ce109284f293cc091e65362eed03c04d29fa59dc30ccafc7d1f833ddef9281e3"
+        },
+        "docs/Doxyfile.in": {
+          "bytes": 63526,
+          "sha256": "7f814eb81f48960e12e0f431d8a7d7c12b1c78a624f150e4244232f48a2941bb"
+        },
+        "include/graphtyper/constants.hpp.in": {
+          "bytes": 4019,
+          "sha256": "fef6e7a37c8805ec05b7dfe5813b9f98260eac26a0a88cd5044511d299ecde46"
+        },
+        "include/graphtyper/graph/absolute_position.hpp": {
+          "bytes": 988,
+          "sha256": "832bdb9e5021d37358e6134d9155ccc3b19e5bc59fc54d259df25af6f48acc28"
+        },
+        "include/graphtyper/graph/alt.hpp": {
+          "bytes": 973,
+          "sha256": "6e606dd2c6b7599420a336c1033bdb13e46c4f410403e84e2876876d34ce11f8"
+        },
+        "include/graphtyper/graph/alu_sequences.hpp": {
+          "bytes": 24724,
+          "sha256": "f393bde95e1733dfc7b4aeba17f6073817d549d4567d922deeb6c36ccb9d7ac2"
+        },
+        "include/graphtyper/graph/constructor.hpp": {
+          "bytes": 784,
+          "sha256": "193892affed755570eff94460eb79e198d029fd428c0fb5fa529991ca3d1172e"
+        },
+        "include/graphtyper/graph/genomic_region.hpp": {
+          "bytes": 1536,
+          "sha256": "42e506142db7232cf531db8a93dc46a714389e83c43cc9e825f4dd5235922d8d"
+        },
+        "include/graphtyper/graph/genotype.hpp": {
+          "bytes": 411,
+          "sha256": "21ffb607fd0210933b9206d6cb4807eea324043276f14bdbe30258fd46daa9e0"
+        },
+        "include/graphtyper/graph/graph.hpp": {
+          "bytes": 5814,
+          "sha256": "88120e906a5ecfa8a5cfa0ab6db0c0f8a6638decdbbbb1331969f9067f0b74ef"
+        },
+        "include/graphtyper/graph/graph_serialization.hpp": {
+          "bytes": 271,
+          "sha256": "c341bc038090ffba7e37c8ff436ffa9a38c6de0b26d4c458ec629244fe751a4a"
+        },
+        "include/graphtyper/graph/graph_utils.hpp": {
+          "bytes": 2551,
+          "sha256": "ae9733704b440476d79227943083b5f39fd56d6bab8c1a392739ae1081cf19ee"
+        },
+        "include/graphtyper/graph/haplotype.hpp": {
+          "bytes": 4403,
+          "sha256": "bb40bef5ddb7fd3c6da01a538fe9431588bc9f877bd4cf85678a114b26e0a286"
+        },
+        "include/graphtyper/graph/haplotype_calls.hpp": {
+          "bytes": 1283,
+          "sha256": "e753b826cb9eff771fcd613599c8cf08899b56ce580fab6f0ad8b85ad340bfbe"
+        },
+        "include/graphtyper/graph/haplotype_extractor.hpp": {
+          "bytes": 1182,
+          "sha256": "20cb3c86bee824c5eb40949f7bd9af8421473f8732b2511df7f88d0ec52ca2f1"
+        },
+        "include/graphtyper/graph/label.hpp": {
+          "bytes": 829,
+          "sha256": "a6ab7838c4a5aa9b822497fd7ebaab6968692935f88055bba31b0c3dd5e02132"
+        },
+        "include/graphtyper/graph/location.hpp": {
+          "bytes": 656,
+          "sha256": "d0ac04a497e9ea478a4f44cb3d0597ca2d7fdf8383d26b255baa7be721603ec1"
+        },
+        "include/graphtyper/graph/log_table.hpp": {
+          "bytes": 23753,
+          "sha256": "511ce25372a62444f0b17c6710242b7d76f5c082c7cecd8e78e3fd7bc02e449c"
+        },
+        "include/graphtyper/graph/node.hpp": {
+          "bytes": 1563,
+          "sha256": "a26f2da93c99943f0669976b7139a9b48a578f39bc42fd50c02c873d4e513490"
+        },
+        "include/graphtyper/graph/read_strand.hpp": {
+          "bytes": 592,
+          "sha256": "5db9a90c2e420f71ed09a77a3e6d34695c1b657fd4141b9c1d4cdc3936c65423"
+        },
+        "include/graphtyper/graph/ref.hpp": {
+          "bytes": 501,
+          "sha256": "616aae2ccf15430c597c01cb3837da16c8185951105eba60b5c240351a58782d"
+        },
+        "include/graphtyper/graph/reference_depth.hpp": {
+          "bytes": 1351,
+          "sha256": "ce23a5bec028d37e22024b709cb6890b3e0ac0e6c1ac81790b4495281fa6e7a0"
+        },
+        "include/graphtyper/graph/sequence_extractor.hpp": {
+          "bytes": 158,
+          "sha256": "499b33a423da131e21f6916ea00e6db1adbb5acb30d723f8846eac02268488db"
+        },
+        "include/graphtyper/graph/snp_event.hpp": {
+          "bytes": 665,
+          "sha256": "ad0806e42654293e49bf7a20edaf2dc56893e9c55cc534b554e0a0d14af95b87"
+        },
+        "include/graphtyper/graph/sv.hpp": {
+          "bytes": 1564,
+          "sha256": "683cf135dee70a0e2b9b37fa65d7426951b52868d764540ac8022a6b6023df82"
+        },
+        "include/graphtyper/graph/var_record.hpp": {
+          "bytes": 1103,
+          "sha256": "ad823c3563c99416b11072fdb716a12178c146a2ed600b968aeda2c28031662e"
+        },
+        "include/graphtyper/index/index.hpp": {
+          "bytes": 1344,
+          "sha256": "8454a6d7aa2b056b7edd9f148eb4666059b136ea140719e48d5772ec28053824"
+        },
+        "include/graphtyper/index/index_entry.hpp": {
+          "bytes": 1027,
+          "sha256": "8cb7e01bcb928bdbc1987401884433654a40fc4cc0041809e8869e6e454498f2"
+        },
+        "include/graphtyper/index/indexer.hpp": {
+          "bytes": 377,
+          "sha256": "c5b60e78961146d59b8938fa50b1cfe490bce8919465832c278a70f5927a1ac2"
+        },
+        "include/graphtyper/index/kmer_label.hpp": {
+          "bytes": 1111,
+          "sha256": "ca4d1f1e1c5b832dc306f8983178399bfa6c05ed74c3e68c97f9fd065ca41359"
+        },
+        "include/graphtyper/index/ph_index.hpp": {
+          "bytes": 1103,
+          "sha256": "1f53077dfc1cfccd9c39f789b4c207d1fb0ae4ccfd4b9e1f500acf2dd8ddc957"
+        },
+        "include/graphtyper/typer/alignment.hpp": {
+          "bytes": 1705,
+          "sha256": "d17f6b90ece2f18bd27cb6ac5178cd97aec7b8abcbad09391c00b87adea62657"
+        },
+        "include/graphtyper/typer/bucket.hpp": {
+          "bytes": 2129,
+          "sha256": "7e03272ecf750cb72dc5ceb39d94e28a75e6935149b69ca52c4efa7b07657031"
+        },
+        "include/graphtyper/typer/caller.hpp": {
+          "bytes": 1742,
+          "sha256": "5dfe26c32e4f98dd75cddf131852ade1eedff458fb2339a208d14634ed3d982e"
+        },
+        "include/graphtyper/typer/event.hpp": {
+          "bytes": 4102,
+          "sha256": "39c0fe6ec1ae86fce05a01a014501e3761908243aecdf50b2eaddab1b594dbce"
+        },
+        "include/graphtyper/typer/genotype_paths.hpp": {
+          "bytes": 3525,
+          "sha256": "a1222afdc7390d1588427b7a6756a6402938e6f1d80aae9470bbed40703942e0"
+        },
+        "include/graphtyper/typer/logistic_constants.hpp": {
+          "bytes": 2981,
+          "sha256": "24194803e85d1d1e3a88bb4956854dc6b7be701068b84cfddaea27428695677e"
+        },
+        "include/graphtyper/typer/path.hpp": {
+          "bytes": 1962,
+          "sha256": "82b196bfa311d8de6988c369925c9f233a294b10f98018d410c0926f5c111ba8"
+        },
+        "include/graphtyper/typer/primers.hpp": {
+          "bytes": 790,
+          "sha256": "585b4af32f795a63ca85fa7f5fec9114e3d2c3c43a26e9568c485cfd482c7951"
+        },
+        "include/graphtyper/typer/read.hpp": {
+          "bytes": 1962,
+          "sha256": "8c7218513c5ba5ac87048a6f4c2578f2afa617ed5a3f7e954afdf29698d45196"
+        },
+        "include/graphtyper/typer/read_stats.hpp": {
+          "bytes": 641,
+          "sha256": "221744499ae9178c09d71c49b315e886e15caf5e03954fc8b93ca4eb91a8f803"
+        },
+        "include/graphtyper/typer/sample_call.hpp": {
+          "bytes": 2115,
+          "sha256": "e720bf6a1ae71938fe362249e09849b113564d7941018712ee3d0343e1b2e4e9"
+        },
+        "include/graphtyper/typer/segment.hpp": {
+          "bytes": 838,
+          "sha256": "b9744188411e71a87600b6cadb6163744ada6c8276713f84f80e2292dc22e416"
+        },
+        "include/graphtyper/typer/segment_calling.hpp": {
+          "bytes": 385,
+          "sha256": "1fe96361b9cd49360cc3a79cdc1eef775d9652c7ef68ae9559fe30c5baf07615"
+        },
+        "include/graphtyper/typer/var_stats.hpp": {
+          "bytes": 3390,
+          "sha256": "b736a88c47aeb9ab18bdb2af337c57ec55349e00742e292edca182b79a0ffb8a"
+        },
+        "include/graphtyper/typer/variant.hpp": {
+          "bytes": 3711,
+          "sha256": "4fd5480525f56c027d4c6eb305156be89403d99b3d2e4ee4143ed9ca6ef0bc0c"
+        },
+        "include/graphtyper/typer/variant_call.hpp": {
+          "bytes": 143,
+          "sha256": "249f8df973220a903b799250a42bbdd85af1b0179d4e1d9c5c34e7790654ba54"
+        },
+        "include/graphtyper/typer/variant_candidate.hpp": {
+          "bytes": 1699,
+          "sha256": "4f4c121df5940babe2bfab7634e0caeb8d212a9039fae6c07eaaa4179820665c"
+        },
+        "include/graphtyper/typer/variant_map.hpp": {
+          "bytes": 2234,
+          "sha256": "8ba5ce53663d2412593ca9a1601bc6ec41d59f1ac70e5bc1d5e8eca76f356cd7"
+        },
+        "include/graphtyper/typer/variant_support.hpp": {
+          "bytes": 1472,
+          "sha256": "ab7203d469034ac59532fc2b81705bb57e17098071475ab6bd0a038ef4dd44ce"
+        },
+        "include/graphtyper/typer/vcf.hpp": {
+          "bytes": 3481,
+          "sha256": "278f7e651c367e40b9d6a1e715937ecf1cb7eb9fe5843ceb40b26d99994307f5"
+        },
+        "include/graphtyper/typer/vcf_operations.hpp": {
+          "bytes": 1372,
+          "sha256": "712dbd0de6499b276877bf2fe749de1e9f85a6fb2c4753e2c5343cf8f0e289b5"
+        },
+        "include/graphtyper/typer/vcf_writer.hpp": {
+          "bytes": 2421,
+          "sha256": "39306ec01539c2bd4b43da02cfaea37adaf28d5e63f0fc0868a40f3a9dda15ae"
+        },
+        "include/graphtyper/utilities/bamshrink.hpp": {
+          "bytes": 1184,
+          "sha256": "004562f1ec4da6b71a6742e1c66f477e257be2446244e96b85ab7e1a945956a4"
+        },
+        "include/graphtyper/utilities/bgzf_stream.hpp": {
+          "bytes": 2761,
+          "sha256": "bf2494d63840015bb3b26576ef148a29f92e1ab9ba757414a9762b7883d131a7"
+        },
+        "include/graphtyper/utilities/genotype.hpp": {
+          "bytes": 1610,
+          "sha256": "32ae153a0191a04b9d661c946c599d0311ece01d232c2608d214cd6c1b76217d"
+        },
+        "include/graphtyper/utilities/genotype_camou.hpp": {
+          "bytes": 405,
+          "sha256": "6c0052117626ecc793a61a8b7ef5ec7e45410a448040c5f0736ea1ebfe3c8ef8"
+        },
+        "include/graphtyper/utilities/genotype_hla.hpp": {
+          "bytes": 664,
+          "sha256": "e5934d8f84cceccdfc9d8396e576afcd7f6a1162b602793ae83dea3913d6ee9a"
+        },
+        "include/graphtyper/utilities/genotype_lr.hpp": {
+          "bytes": 335,
+          "sha256": "7ac1e11e0db86fed4a4118b659bf708db74220276b46e1233c0c906d02297d1b"
+        },
+        "include/graphtyper/utilities/genotype_sv.hpp": {
+          "bytes": 844,
+          "sha256": "ad70af6452b47b0da3ab16b507401e46b98e66f39fa3d91bdf961f2d7decc044"
+        },
+        "include/graphtyper/utilities/graph_help_functions.hpp": {
+          "bytes": 776,
+          "sha256": "194df79edb712654afc09ee691d94203910777a47a70f1257d026945dffd76b2"
+        },
+        "include/graphtyper/utilities/gzstream.hpp": {
+          "bytes": 7246,
+          "sha256": "9e8d776b2673dd8b64febc99357657fe1fceda2459c8d5ca55c5b87f93fa7a49"
+        },
+        "include/graphtyper/utilities/hash_seqan.hpp": {
+          "bytes": 464,
+          "sha256": "d5130b081ae2bd604af40c4ccf78f636133bef8c662797b8fd17aca6fe3a5146"
+        },
+        "include/graphtyper/utilities/hts_parallel_reader.hpp": {
+          "bytes": 3769,
+          "sha256": "bcd20042a1f61014dc35610a8f3992f0f42af0dc41697e79b701a9d39ebdc3b6"
+        },
+        "include/graphtyper/utilities/hts_reader.hpp": {
+          "bytes": 1860,
+          "sha256": "2f1d7a6f8c68d753a77ff9851883f01c082cf43918717e6597f234230ec29f50"
+        },
+        "include/graphtyper/utilities/hts_record.hpp": {
+          "bytes": 1015,
+          "sha256": "b9d0d0a6482d5a697464dd39f7da46586aeafc3e01c5b06e7dcb005ccb1b04bc"
+        },
+        "include/graphtyper/utilities/hts_store.hpp": {
+          "bytes": 758,
+          "sha256": "f86563b038d9d57c18ac41a7c106ed881b0ee29cbdfd7cf6e6edaa01e1911fe1"
+        },
+        "include/graphtyper/utilities/hts_utils.hpp": {
+          "bytes": 3046,
+          "sha256": "1bcb4839f513dced5fcc61e4e6537796a45f31c79d6b870a45984b44adfb3b8d"
+        },
+        "include/graphtyper/utilities/hts_writer.hpp": {
+          "bytes": 527,
+          "sha256": "72e565637a878cca2a372edd18c4db57cca861840a8cbadd347d01fb931cb316"
+        },
+        "include/graphtyper/utilities/io.hpp": {
+          "bytes": 1005,
+          "sha256": "f6a1dd555b5a547327ac42497ae8b4c574582a747a7b55bf5d0997d0352faee4"
+        },
+        "include/graphtyper/utilities/kmer_help_functions.hpp": {
+          "bytes": 1242,
+          "sha256": "b11fb2381a256efe2a02670ddf403a181ebe9d408e15f7b4a3e46d82d078a83d"
+        },
+        "include/graphtyper/utilities/options.hpp": {
+          "bytes": 3897,
+          "sha256": "b53593124658a6f5435474001b86f9a861f96e81e4a12a9571cd8a1c0f7df0db"
+        },
+        "include/graphtyper/utilities/sam_reader.hpp": {
+          "bytes": 1073,
+          "sha256": "8ae98dc53509cc05e195c9b489ec33f46d83c0eecd32a114dc03ca0b59fe021e"
+        },
+        "include/graphtyper/utilities/sequence_operations.hpp": {
+          "bytes": 2149,
+          "sha256": "eff2f5da627c8c1729d99106524ac76cda607b40b8d753cfaa8b1596751bdaae"
+        },
+        "include/graphtyper/utilities/system.hpp": {
+          "bytes": 579,
+          "sha256": "67309847569b1b6beb8f95526a4a25d9b66bc7869a63418855d908bb4ba7d3f0"
+        },
+        "include/graphtyper/utilities/type_conversions.hpp": {
+          "bytes": 2341,
+          "sha256": "2ee09ec039a8280830fa43fb449ea2f47b458aa45ef5eec185cab7361d7ad73f"
+        },
+        "src/CMakeLists.txt": {
+          "bytes": 1989,
+          "sha256": "bd33de431f76d6aef55bdd530a20738d3d0fdbdac88c1dd4bf87aaff2c7cfa06"
+        },
+        "src/graph/absolute_position.cpp": {
+          "bytes": 2271,
+          "sha256": "c57dd919bf44e28a6a1c5460fd7378680e4ae6b8a2a3597e2689202e8cda91ab"
+        },
+        "src/graph/alt.cpp": {
+          "bytes": 3840,
+          "sha256": "038a23fff49e6a7ba22710b27fbfe83aa7350289f2d1a1be8633b2cce81bcec1"
+        },
+        "src/graph/constructor.cpp": {
+          "bytes": 63939,
+          "sha256": "137668f40210847ba96c5ab78271b37454abbe9cd18caf14da8e8d0b39e2e699"
+        },
+        "src/graph/genomic_region.cpp": {
+          "bytes": 6735,
+          "sha256": "5c46742afa00a328c5ed24dcb7d2e1e0f0ca5411b4e2918f198880793502fb89"
+        },
+        "src/graph/genotype.cpp": {
+          "bytes": 1142,
+          "sha256": "564600d38e2f7bb242a27b60a168c44a74a8080667b70f5a16f4a66416c8f142"
+        },
+        "src/graph/graph.cpp": {
+          "bytes": 68585,
+          "sha256": "8de85eb9d0de2985f4bf6ae427b3d5a66b9fb25445e54b641d3b24547ab4db62"
+        },
+        "src/graph/graph_serialization.cpp": {
+          "bytes": 1792,
+          "sha256": "a220615347db71f1b3d4e29d9b09a8c0cebc2da2abfdbf9ff8461fa154d19127"
+        },
+        "src/graph/haplotype.cpp": {
+          "bytes": 18996,
+          "sha256": "fdf5ad7d49c2ab33bdfb627966ed823db47e47f79bd3b882c5fdbe906f8a0b8a"
+        },
+        "src/graph/haplotype_calls.cpp": {
+          "bytes": 3523,
+          "sha256": "fd1ab6b122054de64902fa5088f9fa2575f5a19c5b55dd55fc30eefa27d48383"
+        },
+        "src/graph/haplotype_extractor.cpp": {
+          "bytes": 14580,
+          "sha256": "db5e4292b3d5f2ad0f3c3748e1a0bb3307dfb6d85e3e57150f98152b62ea74bd"
+        },
+        "src/graph/label.cpp": {
+          "bytes": 1583,
+          "sha256": "2c2c6b6c64dfb2d9a45c2d31283881df51eb64e38fa8c6aecf3d8dfdaa1a9550"
+        },
+        "src/graph/read_strand.cpp": {
+          "bytes": 1637,
+          "sha256": "d5a3e4647cdfa94d06e4662d225eefb9bbe85331e4438279036a672ec4d00db2"
+        },
+        "src/graph/ref.cpp": {
+          "bytes": 615,
+          "sha256": "122514cd3ff3a7a22bd83ec867dd4fdc93d5e53fef7b1a391d0c381161c822b8"
+        },
+        "src/graph/ref_node.cpp": {
+          "bytes": 1573,
+          "sha256": "aa1014f3dae0522c313327008c2d9ddbe4d6a61549a12707a2b5538023dd9c90"
+        },
+        "src/graph/reference_depth.cpp": {
+          "bytes": 7370,
+          "sha256": "012f94984c3db4b76c597914754a0d4509c18b16ddd5d51a95ed66e1536c5559"
+        },
+        "src/graph/sequence_extractor.cpp": {
+          "bytes": 911,
+          "sha256": "90a1f30f0b20c672029b1999cbd1fe6844fba0d10fbb33efa413e1d8537ccb33"
+        },
+        "src/graph/snp_event.cpp": {
+          "bytes": 1316,
+          "sha256": "596f0faf2f50be087e45a70e7a9d210b4e1fb5d68f6b819258039ad68716e8b0"
+        },
+        "src/graph/sv.cpp": {
+          "bytes": 22326,
+          "sha256": "9def4a643182ef4decc217c899676e1ddd776b4070eea09e48045db97074714a"
+        },
+        "src/graph/var_node.cpp": {
+          "bytes": 2137,
+          "sha256": "77ebba6c418833ecc5416091dac74a799fa2e118bbe6db70d74bb35aa3cbb642"
+        },
+        "src/graph/var_record.cpp": {
+          "bytes": 13019,
+          "sha256": "994b40e7f31f9ed0aa0da9b1bc73de677d210d0e9ae27ace5a2ced4d06018994"
+        },
+        "src/index/index_entry.cpp": {
+          "bytes": 932,
+          "sha256": "67aff3aef920009f57b9f4fdf5d06ae6e68f28bc1b505059df582c0b35776572"
+        },
+        "src/index/indexer.cpp": {
+          "bytes": 10297,
+          "sha256": "c30dc8cb79d774e95637018a2e17caac3cce20281c71d4c9ec02b94327eb13bb"
+        },
+        "src/index/kmer_label.cpp": {
+          "bytes": 1603,
+          "sha256": "b13d4cf7b547c62d83d93b409a4eb5944f9e3cf3845af983e2418e9f131cf25a"
+        },
+        "src/index/ph_index.cpp": {
+          "bytes": 6329,
+          "sha256": "810906bb9f6038a16bdde432f3c92aadb8b92ae2ab357ff91949425c1c3fada1"
+        },
+        "src/main.cpp": {
+          "bytes": 55441,
+          "sha256": "a12200f6824f553d5f0c8ac7ff532e2f5000fe64f4c0820b82c207fb4fc70161"
+        },
+        "src/typer/alignment.cpp": {
+          "bytes": 16353,
+          "sha256": "90f9825d706f30dbed7be71c2b0b72013db0bc558a59dd8a5c6ac2bc6d9fe7a2"
+        },
+        "src/typer/bucket.cpp": {
+          "bytes": 7440,
+          "sha256": "3f9eadd9d5a9f0d805960d6fa434de2e13d3612e312144af429a9d60bcbb58d1"
+        },
+        "src/typer/caller.cpp": {
+          "bytes": 116112,
+          "sha256": "46d44c5f4707d8cd1baa9cad012b9b2e346200af50e6a1ed6abd6b2e7ffef9dc"
+        },
+        "src/typer/event.cpp": {
+          "bytes": 10369,
+          "sha256": "ed953431f68db9a9cf7dd89d6b66380d1d218a5da7a31856e5183e903902826a"
+        },
+        "src/typer/genotype_paths.cpp": {
+          "bytes": 37965,
+          "sha256": "bfa197539997c107e659762882cc70f993ac45df25477b56fbec604d3cfaf4d9"
+        },
+        "src/typer/path.cpp": {
+          "bytes": 4148,
+          "sha256": "19fb39d79cf1a3d6801de93fa196be60a3560caa42e996d0f044de721fde1247"
+        },
+        "src/typer/primers.cpp": {
+          "bytes": 4616,
+          "sha256": "d22c2e21e7939bd8932fd85644414e057a46355981c99730d7ecf1fb43476085"
+        },
+        "src/typer/read.cpp": {
+          "bytes": 3592,
+          "sha256": "dc52cf6828366ede9f740984af81a452d79e6fbe2f6d4fc6a8141aa008b61104"
+        },
+        "src/typer/sample_call.cpp": {
+          "bytes": 11440,
+          "sha256": "4257674381d782c90e3b84421e7707efd8ab33269f62ebd5200f6acb4de2cde2"
+        },
+        "src/typer/segment.cpp": {
+          "bytes": 6528,
+          "sha256": "aaae3bb1bc6f31770287add87e3e88f1d36966ae3931d43585730bb57ac454f3"
+        },
+        "src/typer/segment_calling.cpp": {
+          "bytes": 29281,
+          "sha256": "717a6a0fdebe6bfe0f66ad312abe9c7f2bf4f75aede9d4dc72b7e4e47bbac68c"
+        },
+        "src/typer/var_stats.cpp": {
+          "bytes": 13242,
+          "sha256": "0b86448f956f8e3bbdaf6ef387a0fcffe4ea3a83a61f4ef0f17c0b92e965c1f0"
+        },
+        "src/typer/variant.cpp": {
+          "bytes": 63128,
+          "sha256": "30e37cc620b0051e4c095d0fe1586ff3c06c34ae539a050047316ce4848c7928"
+        },
+        "src/typer/variant_candidate.cpp": {
+          "bytes": 3165,
+          "sha256": "982e4f35d7cc444f8679e875a673e4baf37a220c4eac983bc44fa7bc323c3bf8"
+        },
+        "src/typer/variant_map.cpp": {
+          "bytes": 22804,
+          "sha256": "2929f4df6df559b76b6d7a9adf594d1bd23e9747299ad95247dc4bed9d1435e3"
+        },
+        "src/typer/variant_support.cpp": {
+          "bytes": 2949,
+          "sha256": "2eaf2faeaeb141738e4b747895976cf06e37dd88797a35ba878658d1032cc3ee"
+        },
+        "src/typer/vcf.cpp": {
+          "bytes": 64432,
+          "sha256": "325ff358502f0da33fe7967dc3535bad6652dcf747e8e05fbc9c9944f6b952af"
+        },
+        "src/typer/vcf_operations.cpp": {
+          "bytes": 34423,
+          "sha256": "5851087f9d6a6761f28394c6446db91f1484c369069b964c86e4c7728baf6400"
+        },
+        "src/typer/vcf_writer.cpp": {
+          "bytes": 23332,
+          "sha256": "7623f327f66fdcf73439d3ba736ae3ed328986ec39462e868f3d7481e75807d5"
+        },
+        "src/utilities/bamshrink.cpp": {
+          "bytes": 38087,
+          "sha256": "539bfb0c6d979f714402bcc102d74d6d726fd658f7dc1dce6872fa88d2826787"
+        },
+        "src/utilities/genotype.cpp": {
+          "bytes": 26696,
+          "sha256": "b947905a5d8190f09fe1871a6b7899021c4b790bea90d2b102c8193f432f55a4"
+        },
+        "src/utilities/genotype_camou.cpp": {
+          "bytes": 11250,
+          "sha256": "bd848007eb8881d7f9360602c092085ae10f3b5e08aa7a8a4147a1cd22ddcdf4"
+        },
+        "src/utilities/genotype_hla.cpp": {
+          "bytes": 18416,
+          "sha256": "b77ac17502143ede5770eb9dbdd1a7ad5b9a0acb46454805d211a772f597f202"
+        },
+        "src/utilities/genotype_lr.cpp": {
+          "bytes": 7328,
+          "sha256": "519534382a7bd532a44c8b3e15fa75c67cdf0e16b90c8f3b14fcea7535460573"
+        },
+        "src/utilities/genotype_sv.cpp": {
+          "bytes": 7756,
+          "sha256": "defc23996daf49471f6b8eca220ebe991d42cc8e38290c2662c53f87b95d090a"
+        },
+        "src/utilities/hash_seqan.cpp": {
+          "bytes": 1123,
+          "sha256": "d28ea70daffc48b581b223702c9a777f884649a7efaf81bd16d5fe147681b871"
+        },
+        "src/utilities/hts_parallel_reader.cpp": {
+          "bytes": 40236,
+          "sha256": "77826bc3a6087c9eea22cf653545c94ddc169102a0e355a54f88c3714261e0c4"
+        },
+        "src/utilities/hts_reader.cpp": {
+          "bytes": 9777,
+          "sha256": "032571c1208c284a76387704c9ed56df07a0ff95d69d2a2222102ff2128dfa58"
+        },
+        "src/utilities/hts_writer.cpp": {
+          "bytes": 1403,
+          "sha256": "2acd94182cd465a020f1b5d3105ad20f64f0fc1930f18f289ce68ce931a36392"
+        },
+        "src/utilities/io.cpp": {
+          "bytes": 7513,
+          "sha256": "91f9332b1b4fec990ccbfe8c52ca4af71beafb1fa2672451839b6cd80a097187"
+        },
+        "src/utilities/kmer_help_functions.cpp": {
+          "bytes": 4786,
+          "sha256": "513e6f5991f92698d7bee9ba76de279f0625ebb7f11f051150d5e5a44df645f5"
+        },
+        "src/utilities/options.cpp": {
+          "bytes": 298,
+          "sha256": "6d0134d3448866993dc7d820070b127594c77d4b23c43f767f772e16c5dfad3e"
+        },
+        "src/utilities/sam_reader.cpp": {
+          "bytes": 4156,
+          "sha256": "c51e2f36622e8d989867fdb9b1ad0914822c37549f03e771e11b1592f8d4aa97"
+        },
+        "src/utilities/system.cpp": {
+          "bytes": 5038,
+          "sha256": "d44d2ffdd50af73dfc7e6a1c243816bf4c22ede3d10a53407798ae2b8359d11d"
+        },
+        "src/utilities/type_conversions.cpp": {
+          "bytes": 8643,
+          "sha256": "c64ff76b63b683e3939e8fd84266cb54151e06cf4a7d7059747070f0e06f5392"
+        },
+        "test/CMakeLists.txt": {
+          "bytes": 1734,
+          "sha256": "d008b22522fc89477d8a371e03092d54ddafcb46546c9bb4a079540fa80c5b38"
+        },
+        "test/data/reference/index_test.fa": {
+          "bytes": 1512,
+          "sha256": "e0b04d7f40c878333fb6e2ea92c30f05d898547e52dc420d3b1b8c1f14ca98a8"
+        },
+        "test/data/reference/index_test.fa.fai": {
+          "bytes": 204,
+          "sha256": "4ff3ae11036d55f59290d5911c77c5f59751da9e519b8d5b1cf76a1f85b33f58"
+        },
+        "test/data/reference/index_test.vcf": {
+          "bytes": 786,
+          "sha256": "9a17e38de281bc79e8c26e8978649685af1253e7b77203383ed671e836d1049b"
+        },
+        "test/data/reference/index_test.vcf.gz": {
+          "bytes": 370,
+          "sha256": "255368303e2c8a831270931dcfb05c83880a4f95bbfff91a5bcca9997fb10cf1"
+        },
+        "test/data/reference/index_test.vcf.gz.tbi": {
+          "bytes": 262,
+          "sha256": "98b2e1e5ef34a6827a9daea3d1180df3a011cc9e55adfa33d38542c1bc1efe80"
+        },
+        "test/data/reference/indexz.vcf.gz": {
+          "bytes": 184,
+          "sha256": "b946b38c5f9495c3cda4d01342395bc2aa32e0bbef6a8b0043188ddb9009cec3"
+        },
+        "test/data/reference/indexz.vcf.gz.tbi": {
+          "bytes": 158,
+          "sha256": "fef04cf8a89029871ec2514b89079cfdbed03bd634a655d3198454e0226034e1"
+        },
+        "test/data/reference/test.bam.csi": {
+          "bytes": 121,
+          "sha256": "e7784dabd8c8ead30c5f02bbde730c3667f2230de93510a512f7f25a38602272"
+        },
+        "test/data/reference/test.cram": {
+          "bytes": 101748,
+          "sha256": "32694b1c7b8865b74256b6b1077f686d76ae8b9f758ba88b364fdfe5d0421976"
+        },
+        "test/data/reference/test.cram.crai": {
+          "bytes": 59,
+          "sha256": "9756ec6a1a19884ad6289a2488e821a29de7c7be2a9327a1f8431f5ea6647a97"
+        },
+        "test/data/reference/test.sam": {
+          "bytes": 559523,
+          "sha256": "d5b86b85bf94c37eabca9a7ccb35ed79a1a9d3eda357ff39987496c9aa176445"
+        },
+        "test/data/reference/test_write.cram": {
+          "bytes": 137878,
+          "sha256": "a9579523218b980066969317bb8e8e5aa72eb40fbb71155221e7df7ee2365b0c"
+        },
+        "test/graph/test_constructor.cpp": {
+          "bytes": 20503,
+          "sha256": "7ff493f7c77225b5accef199d6a15d8893ccca5b8c7fb6ed07f25dc426e73b5b"
+        },
+        "test/graph/test_genomic_region.cpp": {
+          "bytes": 1821,
+          "sha256": "994d68f9cf069181ee1dde1c3d9558243125e340a2988a20ee7acc715e56fe12"
+        },
+        "test/graph/test_graph.cpp": {
+          "bytes": 83945,
+          "sha256": "5ca65b6b3131f5b12f565a0faa5d666a0ed9ceefd67c419d3121d7d62c043551"
+        },
+        "test/graph/test_haplotypes.cpp": {
+          "bytes": 1107,
+          "sha256": "25c919f943deb042c2fee925696c004d233cb1bf5eb14699f67a145c7214da82"
+        },
+        "test/help_functions.hpp": {
+          "bytes": 2065,
+          "sha256": "85e202da7a2d42871ec826fc7c7120d25933493bac37faa2fdef38598b312f19"
+        },
+        "test/index/test_index.cpp": {
+          "bytes": 16911,
+          "sha256": "48072e8634679f499eb0f5afc35a1e65f333dcfa9601e63b829d8d0ac1679775"
+        },
+        "test/test.cpp": {
+          "bytes": 992,
+          "sha256": "a8f36c0c59271ce1acd1d3fdef2e74701109ed7c510111637aae05842113fece"
+        },
+        "test/test.hpp": {
+          "bytes": 437,
+          "sha256": "770f7340c440a87973ad4093eb3d4eda0832f643a93356d3f4e34c59d8c0ebd5"
+        },
+        "test/typer/test_genotype_path.cpp": {
+          "bytes": 4272,
+          "sha256": "06a54c6864b0783ded1f56cc39f66bb4f8b42e3b062a3852152a2996f4f604f6"
+        },
+        "test/typer/test_gyper_aligner.cpp": {
+          "bytes": 3435,
+          "sha256": "4171ca7f766f8b9d25ab9da55212d5ef7fe2d7d524119d65a3b04f758a2fd144"
+        },
+        "test/typer/test_path.cpp": {
+          "bytes": 4225,
+          "sha256": "bb7d3544b3da65a21ff780426bd8f02f52a477ad15ad7344d0d78e000cc81051"
+        },
+        "test/typer/test_variant.cpp": {
+          "bytes": 221,
+          "sha256": "64b06b69350b5547cbb05de314bb2ffdee1117fbf2434478dd8e9df50f0c9d9a"
+        },
+        "test/typer/test_vcf.cpp": {
+          "bytes": 2188,
+          "sha256": "ac76dfffcbb0bd9e76d68b41d77aff6a998a5051d89e8780a32954852b2e30c1"
+        },
+        "test/typer/test_vcf_io.cpp": {
+          "bytes": 949,
+          "sha256": "8d5673e4e7099fd186dd8e5bff75b9a38ea184547cf7591309b0f1534304fd18"
+        },
+        "test/utilities/test_kmer_help_functions.cpp": {
+          "bytes": 4734,
+          "sha256": "8d0be1a952bb1b7c35650208b997141a650421529bd9110075ad4c704237f21a"
+        },
+        "test/utilities/test_utilities.cpp": {
+          "bytes": 7630,
+          "sha256": "2704b20b042804dac872a115424c5887833a41e5262762344c70f2874463b62a"
+        }
+      },
+      "original_binary": {
+        "bytes": 31684920,
+        "sha256": "05135dbee891ea443488203078e23d4aca6cc79e23bbc84e0d3d607b5fc50cc1"
+      },
+      "licence": "MIT",
+      "pipeline_commit": null,
+      "pipeline_files": {},
+      "final_roles": [
+        "genotypes",
+        "input_sites"
+      ],
+      "internal_version": "2.7.1",
+      "scientific_source_modified": false,
+      "author_recipe_qualified": false,
+      "original_helper_binaries": {}
+    },
+    "graphtyper-v2.0-beta-b9c603e8": {
+      "tag": "v2.0-beta",
+      "source_commit": "b9c603e827a4f7da65cde142dc9c8205b7d0546e",
+      "legacy": true,
+      "source_files": {
+        ".gitignore": {
+          "bytes": 867,
+          "sha256": "4e242d6aa6c14c66ff83909b2cf8ca719b48adcf4e7d283d1356038826b7f0da"
+        },
+        ".gitmodules": {
+          "bytes": 912,
+          "sha256": "907d6bb1b38f3e4e5a8d72d19c608db6f3f2ea272658506374bd395d3bffdac4"
+        },
+        ".travis.yml": {
+          "bytes": 412,
+          "sha256": "e5abaa0e42a35e6fab0ed720bed203ed093b10274c0c9dcf15fbc65fa000ca62"
+        },
+        "CMakeLists.txt": {
+          "bytes": 8749,
+          "sha256": "5efef542166726241105948c1cb84c15fc5d22ae6ba28f148166b46562ac8675"
+        },
+        "CODE_OF_CONDUCT.md": {
+          "bytes": 3224,
+          "sha256": "72296f6a2a3e0297d43160c05502d8ac42666e22e9d67e4ee32dfe74ca52eec0"
+        },
+        "LICENSE": {
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        "README.md": {
+          "bytes": 6857,
+          "sha256": "bab62ba1b57d26d57ccbde90e5f420090f1725784ae0e7e931989d8e2cfe688d"
+        },
+        "docs/Doxyfile.in": {
+          "bytes": 63526,
+          "sha256": "7f814eb81f48960e12e0f431d8a7d7c12b1c78a624f150e4244232f48a2941bb"
+        },
+        "include/graphtyper.hpp": {
+          "bytes": 2426,
+          "sha256": "c3ca71346b6de001990da32c136bfeedbb5a1d3d16596f11baa1b5c62d4a2c01"
+        },
+        "include/graphtyper/constants.hpp.in": {
+          "bytes": 1222,
+          "sha256": "cef7c743744ee9eb50847285b83b3329af153f99797f880319fc8c362c44ca72"
+        },
+        "include/graphtyper/graph/absolute_position.hpp": {
+          "bytes": 599,
+          "sha256": "2d6b7a2c8d63a89d571aaf6d02c56a6fbff42e629b6223cfa730fc2981132c75"
+        },
+        "include/graphtyper/graph/alu_sequences.hpp": {
+          "bytes": 24724,
+          "sha256": "f393bde95e1733dfc7b4aeba17f6073817d549d4567d922deeb6c36ccb9d7ac2"
+        },
+        "include/graphtyper/graph/constructor.hpp": {
+          "bytes": 459,
+          "sha256": "f33a20071b3bccbe8b2ef776edb7445564cdfec243be822b45a3c22233005ff3"
+        },
+        "include/graphtyper/graph/genomic_region.hpp": {
+          "bytes": 1591,
+          "sha256": "aaa2ff040d0c6fbd2116a895625535a2c456794f61ef391911848edd1ef36971"
+        },
+        "include/graphtyper/graph/genotype.hpp": {
+          "bytes": 411,
+          "sha256": "21ffb607fd0210933b9206d6cb4807eea324043276f14bdbe30258fd46daa9e0"
+        },
+        "include/graphtyper/graph/graph.hpp": {
+          "bytes": 6260,
+          "sha256": "aa8421207c39b864f6958501af87bdcf9e629ca851b91bbf4d2ccae8fbf61195"
+        },
+        "include/graphtyper/graph/graph_serialization.hpp": {
+          "bytes": 271,
+          "sha256": "c341bc038090ffba7e37c8ff436ffa9a38c6de0b26d4c458ec629244fe751a4a"
+        },
+        "include/graphtyper/graph/graph_utils.hpp": {
+          "bytes": 2551,
+          "sha256": "ae9733704b440476d79227943083b5f39fd56d6bab8c1a392739ae1081cf19ee"
+        },
+        "include/graphtyper/graph/haplotype.hpp": {
+          "bytes": 4737,
+          "sha256": "71e93a430f2db67236f85e3f9c0fd4c56981246243d208a56c189f64fa0614da"
+        },
+        "include/graphtyper/graph/haplotype_calls.hpp": {
+          "bytes": 1135,
+          "sha256": "25a667794543e1304c3d0659c6747c41df422715f6f946d887061c03160f0f76"
+        },
+        "include/graphtyper/graph/haplotype_extractor.hpp": {
+          "bytes": 934,
+          "sha256": "00cd8c5c2e7eba8077ca5e62395ca4c1cf862a812e1095320ce03cc480c9fda9"
+        },
+        "include/graphtyper/graph/label.hpp": {
+          "bytes": 745,
+          "sha256": "d8c32c583170c882c561250e767dc83a55a958eac88b76b3074ec8b85be8e67a"
+        },
+        "include/graphtyper/graph/location.hpp": {
+          "bytes": 656,
+          "sha256": "d0ac04a497e9ea478a4f44cb3d0597ca2d7fdf8383d26b255baa7be721603ec1"
+        },
+        "include/graphtyper/graph/log_table.hpp": {
+          "bytes": 23753,
+          "sha256": "511ce25372a62444f0b17c6710242b7d76f5c082c7cecd8e78e3fd7bc02e449c"
+        },
+        "include/graphtyper/graph/node.hpp": {
+          "bytes": 1190,
+          "sha256": "dd3a258a339006cd57b1a5b03a2429fb75fa493c5e8c0d23e61a4d11e61d3ac7"
+        },
+        "include/graphtyper/graph/reference_depth.hpp": {
+          "bytes": 2071,
+          "sha256": "25b9cb8c2d3b169542881be4c82ba03b3fe567dc082ca09644d579bea71a3f07"
+        },
+        "include/graphtyper/graph/sequence_extractor.hpp": {
+          "bytes": 158,
+          "sha256": "499b33a423da131e21f6916ea00e6db1adbb5acb30d723f8846eac02268488db"
+        },
+        "include/graphtyper/graph/sv.hpp": {
+          "bytes": 1455,
+          "sha256": "05fdec62cc9bc27c5e68aa97a127f0f1f387a3b8d7b9d01ef7c866d22d659adf"
+        },
+        "include/graphtyper/graph/var_record.hpp": {
+          "bytes": 774,
+          "sha256": "7d144dde8475b654981decf1be942fa004f960a505422c21fbbf45aca6479bfc"
+        },
+        "include/graphtyper/index/index.hpp": {
+          "bytes": 1344,
+          "sha256": "8454a6d7aa2b056b7edd9f148eb4666059b136ea140719e48d5772ec28053824"
+        },
+        "include/graphtyper/index/index_entry.hpp": {
+          "bytes": 1614,
+          "sha256": "cc97b5ce6bfa83435a65b946a311befb48834eb1e078fcbd5be8f498f1f98d88"
+        },
+        "include/graphtyper/index/indexer.hpp": {
+          "bytes": 675,
+          "sha256": "3be2a454607049a468fbced01938606dcd971388b1bb5e979615cf79b6052dfe"
+        },
+        "include/graphtyper/index/kmer_label.hpp": {
+          "bytes": 2291,
+          "sha256": "92242eafd253431ef74c660b64138385fac5d25872ecb54275bc08befb5c0927"
+        },
+        "include/graphtyper/index/mem_index.hpp": {
+          "bytes": 957,
+          "sha256": "13d0ed84cd715aa17b4f0b50f6a9f3292348be65395d034fd745d9e443ab41cb"
+        },
+        "include/graphtyper/index/rocksdb.hpp": {
+          "bytes": 864,
+          "sha256": "c4a01301de7b38ca1a0127d79341b11ace7b7d42e6a35f87207e6031772b52ec"
+        },
+        "include/graphtyper/typer/alignment.hpp": {
+          "bytes": 832,
+          "sha256": "0c0b4445c79356a0560cf9415b57c842505b35abae5831e82089c10bea7eba5e"
+        },
+        "include/graphtyper/typer/caller.hpp": {
+          "bytes": 663,
+          "sha256": "bd79c0ba5f6d2f7077558aded137528cf8d40249465aaebe54a735dfa797f8d4"
+        },
+        "include/graphtyper/typer/discovery.hpp": {
+          "bytes": 481,
+          "sha256": "43f19065c8b38e3b3336785ed67472f210ca74f70a3982475448c274a4e6dd65"
+        },
+        "include/graphtyper/typer/genotype_paths.hpp": {
+          "bytes": 3367,
+          "sha256": "edb06d02239af19d04495cebdb0d8d6ea2e95d7a67d0f90c0df5988ef8f51344"
+        },
+        "include/graphtyper/typer/graph_swapper.hpp": {
+          "bytes": 221,
+          "sha256": "e4d614b3c72066bc01f567ef603de518bf2297a095d9144dc7b1f120aa36f393"
+        },
+        "include/graphtyper/typer/path.hpp": {
+          "bytes": 1882,
+          "sha256": "4c4675e8e8a17adbcbd9603cd42623269175ed7b895fbffbbf2ab379e25c8e85"
+        },
+        "include/graphtyper/typer/read_stats.hpp": {
+          "bytes": 641,
+          "sha256": "221744499ae9178c09d71c49b315e886e15caf5e03954fc8b93ca4eb91a8f803"
+        },
+        "include/graphtyper/typer/sample_call.hpp": {
+          "bytes": 1654,
+          "sha256": "cc27bca89d5742814e4da7d16150cb31a190aeff42ae713532f4eafd08bcc319"
+        },
+        "include/graphtyper/typer/segment.hpp": {
+          "bytes": 838,
+          "sha256": "b9744188411e71a87600b6cadb6163744ada6c8276713f84f80e2292dc22e416"
+        },
+        "include/graphtyper/typer/segment_calling.hpp": {
+          "bytes": 385,
+          "sha256": "1fe96361b9cd49360cc3a79cdc1eef775d9652c7ef68ae9559fe30c5baf07615"
+        },
+        "include/graphtyper/typer/var_stats.hpp": {
+          "bytes": 2601,
+          "sha256": "6b2ac9fca1c14f089d08deb9ea33b7e4b7452fe8d94199b4615994d51b8dcc93"
+        },
+        "include/graphtyper/typer/variant.hpp": {
+          "bytes": 2752,
+          "sha256": "1ce002387c38c72453557a5037613ab0f129b02018e4bcc8e275cd8c77c1f2d6"
+        },
+        "include/graphtyper/typer/variant_candidate.hpp": {
+          "bytes": 1922,
+          "sha256": "3d3710613efe644dac4bcf06d39e970f0eac41f13aa8e21ba66944c9c881548d"
+        },
+        "include/graphtyper/typer/variant_map.hpp": {
+          "bytes": 1937,
+          "sha256": "0ee6ff59d928a81da7854d6386f036bce6fd0f4d9cac7092658b3a6e9e682aff"
+        },
+        "include/graphtyper/typer/variant_support.hpp": {
+          "bytes": 1176,
+          "sha256": "5483cf933f89d5ac0c6c3c949b7ed443b02a8d44c7f5ae2ba58652f55e1938c8"
+        },
+        "include/graphtyper/typer/vcf.hpp": {
+          "bytes": 3358,
+          "sha256": "cfbfca89ae0b758f97b881ded29c23e0d07f695e7daff516f0301a4aa0dac32e"
+        },
+        "include/graphtyper/typer/vcf_operations.hpp": {
+          "bytes": 509,
+          "sha256": "b1311bce6627e8629315d496ed40144720aca006c80bfca3f15230b5e33ea2b4"
+        },
+        "include/graphtyper/typer/vcf_writer.hpp": {
+          "bytes": 2813,
+          "sha256": "914daf076f1d6c6564526be170e304a3210b89f824822a611dd66d885b46a33e"
+        },
+        "include/graphtyper/utilities/adapter_removal.hpp": {
+          "bytes": 1305,
+          "sha256": "af402d99b67f2fa41d363edb1e45203d578be4f3ff60061c54d4cd3452ea0e6b"
+        },
+        "include/graphtyper/utilities/adapter_remover.hpp": {
+          "bytes": 168,
+          "sha256": "d82117c3357e50bceb57a5cd8120b6b0f23882a7fad29bdc0fab129f6f7d4ca9"
+        },
+        "include/graphtyper/utilities/bgzf_stream.hpp": {
+          "bytes": 1882,
+          "sha256": "4502d70ba87a7044a4f3a817bc84de4888f2411edff153eaa4464ac277fc209f"
+        },
+        "include/graphtyper/utilities/graph_help_functions.hpp": {
+          "bytes": 591,
+          "sha256": "a356ddefcc711e589f61d27beae20f456c4c23dcb5020e71d8c064b62b3179e9"
+        },
+        "include/graphtyper/utilities/hash_seqan.hpp": {
+          "bytes": 1165,
+          "sha256": "aa4283c163e298ca53811f1d7876ffdce778f17509a25d886fc4486af0b42099"
+        },
+        "include/graphtyper/utilities/io.hpp": {
+          "bytes": 926,
+          "sha256": "28561dc313bdb4324169d143f9ace5f1ace716b6227b24229a9335e2d63b9a16"
+        },
+        "include/graphtyper/utilities/kmer_help_functions.hpp": {
+          "bytes": 1405,
+          "sha256": "ae673a537b34eade0be54d2f05d785d8a036654c7400a26f08f97fb6a5be0f07"
+        },
+        "include/graphtyper/utilities/options.hpp": {
+          "bytes": 3266,
+          "sha256": "c73e0da96f9694692b3c6ce9737e7434e64230d02e6edb5284d243b827485a05"
+        },
+        "include/graphtyper/utilities/sam_reader.hpp": {
+          "bytes": 1153,
+          "sha256": "7ca217c210746c10af2554bac5261ecacf0a332019c4cda0f5e7259db055ee41"
+        },
+        "include/graphtyper/utilities/sequence_operations.hpp": {
+          "bytes": 2215,
+          "sha256": "39dc8f18d07e7c22123af3882841d3ee0dc9577f391a7697675c1b9e450a96a4"
+        },
+        "include/graphtyper/utilities/type_conversions.hpp": {
+          "bytes": 2422,
+          "sha256": "d09021ab29b21e92c9d622c215795806c93f8986744770eda9e6d629a2a74ac3"
+        },
+        "include/graphtyper/utilities/vcf_help_functions.hpp": {
+          "bytes": 328,
+          "sha256": "63819602e221a00fc926cf37f6f9d5cecbeae054a2d15b5d1eac8100fc9eb7bf"
+        },
+        "src/CMakeLists.txt": {
+          "bytes": 2003,
+          "sha256": "32ea9f13933b09f3bea4e5d364b71c739725a7ab4069bc5a55b730cb25af07f4"
+        },
+        "src/graph/absolute_position.cpp": {
+          "bytes": 2419,
+          "sha256": "97dce32ac93ff4dee9acae55a5a6c26537b4247258e60e60a06cedcfa8b33a86"
+        },
+        "src/graph/constructor.cpp": {
+          "bytes": 66067,
+          "sha256": "36602729ab8044810ac3a58151862bef911f6d40b4e7a4e60864ada3e02de9e2"
+        },
+        "src/graph/genomic_region.cpp": {
+          "bytes": 6551,
+          "sha256": "b4db3f0d5036490d3717ddd4cad969acf5b72be76d2bf717ac1f9ac130b81874"
+        },
+        "src/graph/genotype.cpp": {
+          "bytes": 1008,
+          "sha256": "61d740ba6eab85d2ce8de4c38fb6af0f8d5ec6b5d8fc1ea526a051d77fbc1145"
+        },
+        "src/graph/graph.cpp": {
+          "bytes": 64673,
+          "sha256": "202e7ed83d5982e24468875caaa2117571a98aec96f42a44458bd3da3519400e"
+        },
+        "src/graph/graph_serialization.cpp": {
+          "bytes": 1761,
+          "sha256": "db084f2c643153e1b0c4b634d3ae88f7b7fddf47df70f65ac5a9cde1b4f2858b"
+        },
+        "src/graph/haplotype.cpp": {
+          "bytes": 23458,
+          "sha256": "5a01ca22bc0baeda430f0273d44e7a1ab0155d3bd0098da4d5b4d5f97fd051e8"
+        },
+        "src/graph/haplotype_calls.cpp": {
+          "bytes": 1944,
+          "sha256": "02d352e0d8411eb34ec9036edae73a7f86ef7ad8f9d275d38a3d04dc9a93c059"
+        },
+        "src/graph/haplotype_extractor.cpp": {
+          "bytes": 12154,
+          "sha256": "9e9f49975020e29ee8fa3062c8aa040037af0e48b08e15de5c52f8bfaddf5c77"
+        },
+        "src/graph/label.cpp": {
+          "bytes": 1337,
+          "sha256": "71069c7e6774455ba7055076ad58d8d1b6d95d42531e0b29330219f195a00dec"
+        },
+        "src/graph/ref_node.cpp": {
+          "bytes": 1552,
+          "sha256": "b35ce31e8a64bd4c3d7059394f4167ed094b8fb0c6a82671066263eca62d6b4f"
+        },
+        "src/graph/reference_depth.cpp": {
+          "bytes": 8131,
+          "sha256": "42670cf2ded916dd158e2a7cbad4c9657d989092b521fa27a1e70a74a949171a"
+        },
+        "src/graph/sequence_extractor.cpp": {
+          "bytes": 911,
+          "sha256": "90a1f30f0b20c672029b1999cbd1fe6844fba0d10fbb33efa413e1d8537ccb33"
+        },
+        "src/graph/sv.cpp": {
+          "bytes": 20676,
+          "sha256": "6e1fdb73c2576f065436f9e083738614db0afa1b3d85566afcecfd7678dc4371"
+        },
+        "src/graph/var_node.cpp": {
+          "bytes": 1371,
+          "sha256": "3c1677c698fb316f6808faf32dd163e4e201b73bdc5cdb2a6c4bff878d83c806"
+        },
+        "src/graph/var_record.cpp": {
+          "bytes": 8424,
+          "sha256": "8cb3e19618de36bdbf9e2f2471407edc8bc8d6aada34157ef9042f7d366a1eb5"
+        },
+        "src/index/indexer.cpp": {
+          "bytes": 8380,
+          "sha256": "898630abec9dade0b6c2bf7e68165e28a5fe656fc587d0bdb5862ad558237ad9"
+        },
+        "src/index/mem_index.cpp": {
+          "bytes": 5036,
+          "sha256": "e9eb764d61524b7950cc2685616e7a82e58c0421588853eec8145aaa29678317"
+        },
+        "src/index/rocksdb.cpp": {
+          "bytes": 11670,
+          "sha256": "4628cb274e8bd21a67a551e234996f5826f88d712247ed4cc3961b90d0328064"
+        },
+        "src/main.cpp": {
+          "bytes": 48048,
+          "sha256": "6964ff4d42bd7af1054eb13cb2663160fbe377636b3d50ecfca6c927d595f9ec"
+        },
+        "src/paw.cpp": {
+          "bytes": 49,
+          "sha256": "2eaeeefc6fc2e03aafbfa1dc96a3b23f794231dfc640f2fb21c1b8025b72960f"
+        },
+        "src/typer/alignment.cpp": {
+          "bytes": 22212,
+          "sha256": "77f2f8e089628dfaa856c6b77526d60b08079ebbf85a63bff94bec6a91d4d01b"
+        },
+        "src/typer/caller.cpp": {
+          "bytes": 18825,
+          "sha256": "ed894cac36865daa8bb7262888444470c6302f0fa5b2a93b44772d541a9cbcf2"
+        },
+        "src/typer/discovery.cpp": {
+          "bytes": 1333,
+          "sha256": "0735208ed4d471b990ad13b5ac10ed28432dd5c0d5e52f7e9dfb170c9bcbc0a6"
+        },
+        "src/typer/genotype_paths.cpp": {
+          "bytes": 38009,
+          "sha256": "038947ea24d704ce3621376968713de00d93110897b3b73c471053bf1d258d00"
+        },
+        "src/typer/graph_swapper.cpp": {
+          "bytes": 344,
+          "sha256": "b0a01aded50c19527ab44d8a90f1a1f955ead6704d86b4061f22550eecaf92e1"
+        },
+        "src/typer/path.cpp": {
+          "bytes": 3444,
+          "sha256": "60ad66194b5c88f9cd9ce8fbfdf26a1cd1609ea9062279668fc569fdad117a87"
+        },
+        "src/typer/sample_call.cpp": {
+          "bytes": 10150,
+          "sha256": "35fa95827e6ef7c830a8ba3604f7d776f0aba46f3a66f0e2bc454c41b2113faf"
+        },
+        "src/typer/segment.cpp": {
+          "bytes": 6528,
+          "sha256": "aaae3bb1bc6f31770287add87e3e88f1d36966ae3931d43585730bb57ac454f3"
+        },
+        "src/typer/segment_calling.cpp": {
+          "bytes": 28961,
+          "sha256": "5d7fd410422e301fcbd4b1373c6f0478cadca497261eac5bad482b04815c883c"
+        },
+        "src/typer/var_stats.cpp": {
+          "bytes": 6793,
+          "sha256": "73e04e81c22ab4fadf2ede9ebfaa3cce918dc3f1bd8d78d4af12e63e23593f9f"
+        },
+        "src/typer/variant.cpp": {
+          "bytes": 48374,
+          "sha256": "39229b1e1367ea8618c3f7a165799571c4ee36845d9abf48cb2030df8ecc63cc"
+        },
+        "src/typer/variant_candidate.cpp": {
+          "bytes": 2121,
+          "sha256": "a2e5b696b423d5a218f4d7187923af561123062e1ed7413c7f9fdbc67276f216"
+        },
+        "src/typer/variant_map.cpp": {
+          "bytes": 25153,
+          "sha256": "c0e79d8f42db4ecdf3cd8882d367f88b37bd3cbc3b660f820b68e04cf1d440d1"
+        },
+        "src/typer/variant_support.cpp": {
+          "bytes": 1336,
+          "sha256": "6642bf76bdec3f90a63a0af479c62836a9d59ec679ee281b0bec39de8245816f"
+        },
+        "src/typer/vcf.cpp": {
+          "bytes": 45952,
+          "sha256": "03cf0a60ebe2b49c38e9a73c55a2c8d2bb3bc1f26a9f474ba036cba5e40d4fe2"
+        },
+        "src/typer/vcf_operations.cpp": {
+          "bytes": 21214,
+          "sha256": "35c1d6773ce6194fae12615dd6d231def6f9c474ac965b3c110ff0efa15d0ef8"
+        },
+        "src/typer/vcf_writer.cpp": {
+          "bytes": 20552,
+          "sha256": "4e6e1c42595b1800ef16842ce9bdf3a398eb5d5058ca0df830b5f3c9db656f0a"
+        },
+        "src/utilities/adapter_removal.cpp": {
+          "bytes": 24097,
+          "sha256": "816145c4751abbd76b0135228d3040c6ac637fd892c37456dfc361cbdc8446f9"
+        },
+        "src/utilities/io.cpp": {
+          "bytes": 6127,
+          "sha256": "b574215b0ee2fec8c83fa1ba389c482d526209d353f69306b6fac302ee123ceb"
+        },
+        "src/utilities/kmer_help_functions.cpp": {
+          "bytes": 4657,
+          "sha256": "c96b6945ad23ec69eed3f4fa4874ba5f3acf00c3d9bd0042337448ce8f09cc45"
+        },
+        "src/utilities/options.cpp": {
+          "bytes": 386,
+          "sha256": "7fa6284474f0bece056a0c5bdbedb3340dee9efdc57816aa2668dea530b8549e"
+        },
+        "src/utilities/sam_reader.cpp": {
+          "bytes": 8230,
+          "sha256": "2b1bfdd8eb3e6a8e0fbd51283687d8c63facf34e5a816a115485ea8e5b242da3"
+        },
+        "src/utilities/type_conversions.cpp": {
+          "bytes": 6916,
+          "sha256": "92bda0f1df45033406e21afa9212b79ca6a367f6756c0d2acaab98de14fa239d"
+        },
+        "test/CMakeLists.txt": {
+          "bytes": 448,
+          "sha256": "bc52424d5c0e634a5e07b579718b084bfd9d98121542981700995ba3b14e7210"
+        },
+        "test/catch/CMakeLists.txt": {
+          "bytes": 641,
+          "sha256": "bc64d7d3c048f766780917fb002acb28ee85e0d10d1b28f828cae9ab71d81b3c"
+        },
+        "test/data/reference/index_test.fa": {
+          "bytes": 1249,
+          "sha256": "3983806766c584c0c8b46882dee84e06b55b7262bd34f6e13a3eb9d2c6252e2b"
+        },
+        "test/data/reference/index_test.fa.fai": {
+          "bytes": 145,
+          "sha256": "22be96060402d0ff5a92c52781feff803f46319ae636fd3bedac93018085bdc9"
+        },
+        "test/data/reference/index_test.vcf": {
+          "bytes": 458,
+          "sha256": "ae8a2a5147b090031ef6141b69b1089ad9efbecf8122c022a1ea298a0764f753"
+        },
+        "test/data/reference/index_test.vcf.gz": {
+          "bytes": 286,
+          "sha256": "7ff8e9586f5f0b94fac1d6b833a40d0faea444a87641aba35eb7e5b1e8e468c7"
+        },
+        "test/data/reference/index_test.vcf.gz.tbi": {
+          "bytes": 223,
+          "sha256": "be10c74e0810e72f6850e94f683a9a66ded71e82d471836353e89645f588193b"
+        },
+        "test/data/reference/index_test_b37.fa": {
+          "bytes": 140,
+          "sha256": "6f7e271185e96c9ea9b12c33753428c667c653ff9f597facb1df7b6bf0074fed"
+        },
+        "test/data/reference/index_test_b37.fa.fai": {
+          "bytes": 27,
+          "sha256": "547370e0b86e124874cc1716b1acf055e289166043e44d66cd383d0a0ae819f0"
+        },
+        "test/data/reference/index_test_b37.vcf": {
+          "bytes": 79,
+          "sha256": "de7699a0ef64f3d45ea66fef801283c943528dd162f1ecf53f076920b0eb53b1"
+        },
+        "test/data/reference/index_test_b37.vcf.gz": {
+          "bytes": 135,
+          "sha256": "c8a445d8705c6737b722392199ac1dd9533f18fb855ac576ed8f8bcec6e18e67"
+        },
+        "test/data/reference/index_test_b37.vcf.gz.tbi": {
+          "bytes": 100,
+          "sha256": "56420336b3a6675ba64fc4a18d448d7b292c21a15baaf60c809561747592e0e0"
+        },
+        "test/data/reference/indexz.vcf.gz": {
+          "bytes": 184,
+          "sha256": "b946b38c5f9495c3cda4d01342395bc2aa32e0bbef6a8b0043188ddb9009cec3"
+        },
+        "test/data/reference/indexz.vcf.gz.tbi": {
+          "bytes": 158,
+          "sha256": "fef04cf8a89029871ec2514b89079cfdbed03bd634a655d3198454e0226034e1"
+        },
+        "test/data/reference/reference.fa": {
+          "bytes": 87,
+          "sha256": "19f9afe9004dd3619564a27776c17b78bbd64b97f6139f52aaf825a84b211462"
+        },
+        "test/data/reference/reference.fa.fai": {
+          "bytes": 50,
+          "sha256": "a13ef06f2ec8146a7526a8de48247d84e3abf267b4e66e9ebb7321852a3f61dd"
+        },
+        "test/data/reference/test.bam.csi": {
+          "bytes": 121,
+          "sha256": "e7784dabd8c8ead30c5f02bbde730c3667f2230de93510a512f7f25a38602272"
+        },
+        "test/data/reference/test.cram": {
+          "bytes": 101748,
+          "sha256": "32694b1c7b8865b74256b6b1077f686d76ae8b9f758ba88b364fdfe5d0421976"
+        },
+        "test/data/reference/test.cram.crai": {
+          "bytes": 59,
+          "sha256": "9756ec6a1a19884ad6289a2488e821a29de7c7be2a9327a1f8431f5ea6647a97"
+        },
+        "test/data/reference/test.sam": {
+          "bytes": 559523,
+          "sha256": "d5b86b85bf94c37eabca9a7ccb35ed79a1a9d3eda357ff39987496c9aa176445"
+        },
+        "test/data/reference/test_write.cram": {
+          "bytes": 137878,
+          "sha256": "a9579523218b980066969317bb8e8e5aa72eb40fbb71155221e7df7ee2365b0c"
+        },
+        "test/graph/CMakeLists.txt": {
+          "bytes": 365,
+          "sha256": "81be1d12affe227e6aff6aca722a618a8bf59b018bedca0cbae02675128960af"
+        },
+        "test/graph/test_constructor.cpp": {
+          "bytes": 18719,
+          "sha256": "5056cf96f30faba74fbcb858db8f1bba90789f7a61970dc735adf6d593ea9db7"
+        },
+        "test/graph/test_genomic_region.cpp": {
+          "bytes": 1533,
+          "sha256": "ae67c52783ccb8f16e34d74936c6d24019a1e1da120d1bce506783cb7c45afc0"
+        },
+        "test/graph/test_graph.cpp": {
+          "bytes": 59043,
+          "sha256": "a5bb5d04e98341f13b6bc56f262fb5794d0bb5c8fcceaf64bc7e7fd0dc7ca5af"
+        },
+        "test/graph/test_haplotypes.cpp": {
+          "bytes": 1139,
+          "sha256": "30b0a24fb9e2d5a26586cdb47c91ea0d791080e61108cb339052a8420d21cfb7"
+        },
+        "test/index/CMakeLists.txt": {
+          "bytes": 294,
+          "sha256": "eda3f0d159eb4c29ef17f9815e6c42011124620a6886996be173fa3caf7fd817"
+        },
+        "test/index/test_index.cpp": {
+          "bytes": 14114,
+          "sha256": "1483483d0121a44a73aac219b6fe499f8ef32a6aa70572cd2053d4380928047d"
+        },
+        "test/test.cpp": {
+          "bytes": 48,
+          "sha256": "dcea72f0dfe11d2ab30bba949e8ee6259594635d12be331e8fc593527ab0edc5"
+        },
+        "test/typer/CMakeLists.txt": {
+          "bytes": 377,
+          "sha256": "1432db5ed09881f822d98dd6f7b3099d24f55474bd62790f467d7eb2cdcf0e86"
+        },
+        "test/typer/test_genotype_path.cpp": {
+          "bytes": 4353,
+          "sha256": "11b0db5a9a125e82922997d62c269162df243744faadb346c223fb8071903441"
+        },
+        "test/typer/test_graph_swapping.cpp": {
+          "bytes": 3419,
+          "sha256": "b727c0307d1f261a4d32db7f87ce3fe52dedb9d1084142ec5ad58fd6f74ec777"
+        },
+        "test/typer/test_gyper_aligner.cpp": {
+          "bytes": 3435,
+          "sha256": "4171ca7f766f8b9d25ab9da55212d5ef7fe2d7d524119d65a3b04f758a2fd144"
+        },
+        "test/typer/test_path.cpp": {
+          "bytes": 4013,
+          "sha256": "4d5bea94e74ec40382945bfd3bc308e801e072aa90cd9f1a92ed4e1104ad27eb"
+        },
+        "test/typer/test_variant.cpp": {
+          "bytes": 221,
+          "sha256": "64b06b69350b5547cbb05de314bb2ffdee1117fbf2434478dd8e9df50f0c9d9a"
+        },
+        "test/typer/test_vcf.cpp": {
+          "bytes": 2398,
+          "sha256": "6fd319d08d897277a9426cc8f7cf32bd98942c3853f572ebe217bee8f8009ffd"
+        },
+        "test/typer/test_vcf_io.cpp": {
+          "bytes": 954,
+          "sha256": "cf9542c537c4f66ddc094729a1562eecec45d9b52a4e72d94ee47dfd25b97961"
+        },
+        "test/utilities/CMakeLists.txt": {
+          "bytes": 380,
+          "sha256": "2f6dbc9f0602697f98894a6722554988d969b5eb1edb472eb153c39f052d31b1"
+        },
+        "test/utilities/test_adapter_removal.cpp": {
+          "bytes": 7743,
+          "sha256": "a80aa213cce5340441dfa5c687c039cab93c5dffa2a2229f7ddfb79bb4d33c7c"
+        },
+        "test/utilities/test_kmer_help_functions.cpp": {
+          "bytes": 4734,
+          "sha256": "935571f06136d4305786cbfcff6636edd7d9c4ed903ac67ee75e65ec6bc35673"
+        },
+        "test/utilities/test_utilities.cpp": {
+          "bytes": 6959,
+          "sha256": "feaf7ce88c92ddd61c9a462c9172121acaa49c86c0ff1ec2a11c6c8a1bf48e07"
+        },
+        "utilities/cmake_modules/FindLz4.cmake": {
+          "bytes": 965,
+          "sha256": "e35eac14caca2ad83d2fd30407236d5b0d73c1ad70ce84193c420a1bf78de357"
+        },
+        "utilities/cmake_modules/FindSeqAn.cmake": {
+          "bytes": 15504,
+          "sha256": "a9fe616582e5023cb86b2d1e44070740eb99e3a4aecf4898da5952da1bf8da85"
+        },
+        "utilities/cmake_modules/FindZStd.cmake": {
+          "bytes": 729,
+          "sha256": "7a6c08627d00bf638cf024181392ab1229d0a41aeb0a4dcce525af12cc03c62c"
+        },
+        "utilities/cmake_modules/Findrocksdb.cmake": {
+          "bytes": 4272,
+          "sha256": "a8893184c48a533f0a55f943ab1a3ea7744615a6fb05962e55ae50e628cc441a"
+        },
+        "utilities/cmake_modules/Findsnappy.cmake": {
+          "bytes": 1298,
+          "sha256": "c88267ee305fd668cf3e987889234b4f540c8c4c28e2f397c7d36ae84e2c8876"
+        }
+      },
+      "original_binary": {
+        "bytes": 76322256,
+        "sha256": "65657e5e49cf3d7e6de2995be41f4a6ddbaf051a75b0130da7a18f9af1d7d2db"
+      },
+      "licence": "GPL-3.0",
+      "pipeline_commit": "00b4a0ae52cc56f50825b8a138e654a4dbfea427",
+      "pipeline_files": {
+        ".gitignore": {
+          "bytes": 208,
+          "sha256": "9f8f0a77a4bfab501dafcc57da5eb2f039ed219f28c53e48d21ad674794315f6"
+        },
+        "LICENSE": {
+          "bytes": 35141,
+          "sha256": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2"
+        },
+        "README.md": {
+          "bytes": 2767,
+          "sha256": "0ea33c285b74c25be33495108d803a494cad69bb06ff41c990a5eb6d4f8d5b26"
+        },
+        "call_script.sh": {
+          "bytes": 6927,
+          "sha256": "948f8f3067f62f68807d5a0a4197176291de26d9cfb4b87282e74996e298b185"
+        },
+        "config.sh": {
+          "bytes": 4019,
+          "sha256": "6271bf41cef6a36acf59c0b73b1e2669da2209313abaed843e7d5e7fd44653bb"
+        },
+        "make_graphtyper_pipeline.sh": {
+          "bytes": 1369,
+          "sha256": "ffcdaa35c1ea1914a55c8488cd35e4b3d86bbb1b104136a2f60974ba1f5e47b2"
+        },
+        "make_graphtyper_sv_pipeline.sh": {
+          "bytes": 2369,
+          "sha256": "20494856b026747048a7c3f1d44d5a22ca104e475307238b8211f090c82de5e9"
+        },
+        "node_script.sh": {
+          "bytes": 4973,
+          "sha256": "54f71901a3b7283ae37ecbb6a16ed9515f6a9011f9c6b807ee515f475baaeee8"
+        },
+        "pipelines.make": {
+          "bytes": 283,
+          "sha256": "47fd4c833ef75fd30fa6d0ef612948206d1b37a9a4ae1a350549d7c6a01fe1c1"
+        },
+        "sv_node_script.sh": {
+          "bytes": 5685,
+          "sha256": "e0f762a341adc56b6a2021d9442cdb79b8f596876e1ad8d761f09081c78faf8f"
+        },
+        "test/SAMP1.bam": {
+          "bytes": 229681,
+          "sha256": "474b87aac05fa3be2f5ea6f79d36f70ae623dd212e74f73c0e4c6195b33e306e"
+        },
+        "test/SAMP1.bam.bai": {
+          "bytes": 96,
+          "sha256": "304c6e68eb3548ab493e5abf74fcf43d07858df2182b71434da5518d6ea81f96"
+        },
+        "test/SAMP2.bam": {
+          "bytes": 231350,
+          "sha256": "519de418b002be546a66cd337e1f41a48e1012f92de820b0f3d75e16f0791695"
+        },
+        "test/SAMP2.bam.bai": {
+          "bytes": 96,
+          "sha256": "678532b8065f56e26b5659781951ded3ccb67504a090edfe9ff538fe7b8298a5"
+        },
+        "test/SAMP3.bam": {
+          "bytes": 231623,
+          "sha256": "855c2ab4061b13334997180f4ec7e28b560d893bd44acab361249d2c64695870"
+        },
+        "test/SAMP3.bam.bai": {
+          "bytes": 96,
+          "sha256": "6df0fee806e521e1b194ecec29df2cdd94180288203eb782fad44d36318e2452"
+        },
+        "test/SAMP4.bam": {
+          "bytes": 230239,
+          "sha256": "90f2391835d5f60709627b98441bcccdb1dab6c34d6d798b958b2376c77a2aca"
+        },
+        "test/SAMP4.bam.bai": {
+          "bytes": 96,
+          "sha256": "6065e7913d2ae2d6b837cafad5435cc78e48af7fa62fa56b112cbf1cf4f3da45"
+        },
+        "test/bamlist": {
+          "bytes": 60,
+          "sha256": "19135771f50fcac709fd366d080153b709c543a4d6e2a97d8e221e259d9d02ee"
+        },
+        "test/expected.vcf.gz": {
+          "bytes": 5021,
+          "sha256": "b1f7ad6866f45231605372d89134d171fec069307012b6e38a1efa3ada5c9e9a"
+        },
+        "test/expected.vcf.gz.tbi": {
+          "bytes": 104,
+          "sha256": "c7399f8878bd5774a70cf77a8335d9b8b8ec4db348bb544a674b939bdabd6519"
+        },
+        "test/reference.fa": {
+          "bytes": 10171,
+          "sha256": "288317364f15c829dd0e2ab26ee5c57e81b8f54d2701438a93d5df2e51d98da2"
+        },
+        "test/reference.fa.fai": {
+          "bytes": 17,
+          "sha256": "5f12b32d565a81150597383d2e6add1e56c9b815e13d69397ac75f1287f3a487"
+        },
+        "test_config.sh": {
+          "bytes": 3723,
+          "sha256": "8aadeffe95cb35df896250922bb25ad11dd7173f3857476fdc333242a3f16b73"
+        },
+        "test_sv/README.md": {
+          "bytes": 1231,
+          "sha256": "f9bcf0481348c7b7e6dc9b88d07001735c762ecd9bdccfc30dcea673e7bdde5e"
+        },
+        "test_sv/SAMP1.bam": {
+          "bytes": 2173155,
+          "sha256": "10e41d3ab5e3d4e556401f4542934b2044d9f9bed2101c57770d8d22b07b08cb"
+        },
+        "test_sv/SAMP1.bam.bai": {
+          "bytes": 376,
+          "sha256": "de952b47215bd564b45827c1179e113a823e5daee22d03f9948914a002425871"
+        },
+        "test_sv/SAMP2.bam": {
+          "bytes": 3317279,
+          "sha256": "b6577c742839ab7139b840b171190fd12ceeacb28facc539080f98cd7a3191ff"
+        },
+        "test_sv/SAMP2.bam.bai": {
+          "bytes": 448,
+          "sha256": "164391c707442bf172d95d7bf7bd74ff3b9c8d9e9f0c8521bf1c226648e37af6"
+        },
+        "test_sv/SAMP3.bam": {
+          "bytes": 2174131,
+          "sha256": "8d0fc069975020fbf68b11f32b26546e3f7a7b13e97574363894c87a58c17981"
+        },
+        "test_sv/SAMP3.bam.bai": {
+          "bytes": 448,
+          "sha256": "4c5e2e4525009e75074edf1152684a3c79df333ad81c7e7f714fe90f36498429"
+        },
+        "test_sv/SAMP4.bam": {
+          "bytes": 3751602,
+          "sha256": "4032834569e2ba1b3ab91fa0845762525fb925209d19c3669e8277926538a047"
+        },
+        "test_sv/SAMP4.bam.bai": {
+          "bytes": 448,
+          "sha256": "2d6a4368ca727744829e51efd97573c32c51b61c33e8e50061ff6e5d4f23daca"
+        },
+        "test_sv/clean.sh": {
+          "bytes": 120,
+          "sha256": "f280cce8c3ae566489ad1d6ceab4f62d706817e91031828e39e82ece58b9b9ea"
+        },
+        "test_sv/expected_b9c603e.vcf": {
+          "bytes": 13946,
+          "sha256": "2261f13a72797360adb80eb1b3f34eb720db94b60194da49a4258acc81b5791d"
+        },
+        "test_sv/reference.fa": {
+          "bytes": 102699,
+          "sha256": "c8f0b989ae0da6e71759dcea9cf025a4c4187fa62c64a2d5cfefc010ccdcbfa1"
+        },
+        "test_sv/reference.fa.fai": {
+          "bytes": 43,
+          "sha256": "69ca2591dfea12fa941016f7bf2d7a466f6aa1d0ef6f4889a16a2d1b12cc3e52"
+        },
+        "test_sv/svs.vcf.gz": {
+          "bytes": 1214,
+          "sha256": "bdf2ccb6b1a553ecd89605201de5a065ad7ee513e6924ad71c8499a45ddb0158"
+        },
+        "test_sv/svs.vcf.gz.tbi": {
+          "bytes": 148,
+          "sha256": "a8b5c7b09bef66ec2ce28aef67795ff3dd19e7cf2e8226c6420fdb5520fb55e1"
+        }
+      },
+      "final_roles": [
+        "results",
+        "haps",
+        "hap_calls"
+      ],
+      "internal_version": "2.0(b9c603e)",
+      "scientific_source_modified": false,
+      "author_recipe_qualified": false,
+      "original_helper_binaries": {
+        "parallel": {
+          "bytes": 451517,
+          "sha256": "b477ffcc80b743cd916c083fa0f6e0fafff2da8c0abbe4f1f203f04df2640b67"
+        },
+        "tabix": {
+          "bytes": 809456,
+          "sha256": "95dd2b279d9a7b7e6d1d38118be41afe870bdcfebab0da7c5e5a0a77c87e1f5d"
+        },
+        "bcftools": {
+          "bytes": 1149840,
+          "sha256": "e5f10c99745c55212035683e150e8e31eb0f82425de4cae4ab7a3258183b2cdb"
+        },
+        "samtools": {
+          "bytes": 664992,
+          "sha256": "e795122c091f1795179a57904087dbacc3106c90e8b2f65ec86c6714586b6861"
+        }
+      }
+    },
+    "graphtyper-v1.4-ebd4855d": {
+      "tag": "v1.4",
+      "source_commit": "ebd4855d08fbe1ddaa36d4bc0cebe5ba4bb27f73",
+      "legacy": true,
+      "source_files": {
+        ".gitignore": {
+          "bytes": 867,
+          "sha256": "4e242d6aa6c14c66ff83909b2cf8ca719b48adcf4e7d283d1356038826b7f0da"
+        },
+        ".gitmodules": {
+          "bytes": 912,
+          "sha256": "907d6bb1b38f3e4e5a8d72d19c608db6f3f2ea272658506374bd395d3bffdac4"
+        },
+        ".travis.yml": {
+          "bytes": 412,
+          "sha256": "e5abaa0e42a35e6fab0ed720bed203ed093b10274c0c9dcf15fbc65fa000ca62"
+        },
+        "CMakeLists.txt": {
+          "bytes": 8749,
+          "sha256": "f5e1687b18d6dc4f566755794d0f402e1a3d68878036e10d1b39db0420bcda72"
+        },
+        "CODE_OF_CONDUCT.md": {
+          "bytes": 3224,
+          "sha256": "72296f6a2a3e0297d43160c05502d8ac42666e22e9d67e4ee32dfe74ca52eec0"
+        },
+        "LICENSE": {
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        },
+        "README.md": {
+          "bytes": 6857,
+          "sha256": "bab62ba1b57d26d57ccbde90e5f420090f1725784ae0e7e931989d8e2cfe688d"
+        },
+        "docs/Doxyfile.in": {
+          "bytes": 63526,
+          "sha256": "7f814eb81f48960e12e0f431d8a7d7c12b1c78a624f150e4244232f48a2941bb"
+        },
+        "include/graphtyper.hpp": {
+          "bytes": 2426,
+          "sha256": "c3ca71346b6de001990da32c136bfeedbb5a1d3d16596f11baa1b5c62d4a2c01"
+        },
+        "include/graphtyper/constants.hpp.in": {
+          "bytes": 1222,
+          "sha256": "cef7c743744ee9eb50847285b83b3329af153f99797f880319fc8c362c44ca72"
+        },
+        "include/graphtyper/graph/absolute_position.hpp": {
+          "bytes": 2778,
+          "sha256": "c9ff828745c9eaf8f6cc42a37389d12fa2c325c9511a3290d9d6ff00f98124a3"
+        },
+        "include/graphtyper/graph/alu_sequences.hpp": {
+          "bytes": 24724,
+          "sha256": "f393bde95e1733dfc7b4aeba17f6073817d549d4567d922deeb6c36ccb9d7ac2"
+        },
+        "include/graphtyper/graph/constructor.hpp": {
+          "bytes": 418,
+          "sha256": "b8935486dcd188ce4d3dbd07ca3861bb91ca33152495ac88dcadc3edb2e5ba26"
+        },
+        "include/graphtyper/graph/genomic_region.hpp": {
+          "bytes": 1591,
+          "sha256": "aaa2ff040d0c6fbd2116a895625535a2c456794f61ef391911848edd1ef36971"
+        },
+        "include/graphtyper/graph/genotype.hpp": {
+          "bytes": 411,
+          "sha256": "21ffb607fd0210933b9206d6cb4807eea324043276f14bdbe30258fd46daa9e0"
+        },
+        "include/graphtyper/graph/graph.hpp": {
+          "bytes": 6004,
+          "sha256": "625f92e5f05565afc62e34b0d5acc0dd7df369ed734eabf7ec21d95b72ffc5a0"
+        },
+        "include/graphtyper/graph/graph_serialization.hpp": {
+          "bytes": 271,
+          "sha256": "c341bc038090ffba7e37c8ff436ffa9a38c6de0b26d4c458ec629244fe751a4a"
+        },
+        "include/graphtyper/graph/graph_utils.hpp": {
+          "bytes": 2551,
+          "sha256": "ae9733704b440476d79227943083b5f39fd56d6bab8c1a392739ae1081cf19ee"
+        },
+        "include/graphtyper/graph/haplotype.hpp": {
+          "bytes": 4783,
+          "sha256": "d999298c487ab79ce9a30631f6a5afee98b827c1191abba05fed1b0cbb56b134"
+        },
+        "include/graphtyper/graph/haplotype_calls.hpp": {
+          "bytes": 1135,
+          "sha256": "25a667794543e1304c3d0659c6747c41df422715f6f946d887061c03160f0f76"
+        },
+        "include/graphtyper/graph/haplotype_extractor.hpp": {
+          "bytes": 934,
+          "sha256": "00cd8c5c2e7eba8077ca5e62395ca4c1cf862a812e1095320ce03cc480c9fda9"
+        },
+        "include/graphtyper/graph/label.hpp": {
+          "bytes": 745,
+          "sha256": "d8c32c583170c882c561250e767dc83a55a958eac88b76b3074ec8b85be8e67a"
+        },
+        "include/graphtyper/graph/location.hpp": {
+          "bytes": 656,
+          "sha256": "d0ac04a497e9ea478a4f44cb3d0597ca2d7fdf8383d26b255baa7be721603ec1"
+        },
+        "include/graphtyper/graph/log_table.hpp": {
+          "bytes": 23753,
+          "sha256": "511ce25372a62444f0b17c6710242b7d76f5c082c7cecd8e78e3fd7bc02e449c"
+        },
+        "include/graphtyper/graph/node.hpp": {
+          "bytes": 1190,
+          "sha256": "dd3a258a339006cd57b1a5b03a2429fb75fa493c5e8c0d23e61a4d11e61d3ac7"
+        },
+        "include/graphtyper/graph/reference_depth.hpp": {
+          "bytes": 1953,
+          "sha256": "703f38b3ecd6b8dee8363a39ada6ba0868944be3e860e5b979046e26cf6f94c8"
+        },
+        "include/graphtyper/graph/sequence_extractor.hpp": {
+          "bytes": 158,
+          "sha256": "499b33a423da131e21f6916ea00e6db1adbb5acb30d723f8846eac02268488db"
+        },
+        "include/graphtyper/graph/sv.hpp": {
+          "bytes": 886,
+          "sha256": "c1844a6ad5bf48cd02a3797bd16033271099da3e89df008c9b82b548853b53b5"
+        },
+        "include/graphtyper/graph/var_record.hpp": {
+          "bytes": 774,
+          "sha256": "7d144dde8475b654981decf1be942fa004f960a505422c21fbbf45aca6479bfc"
+        },
+        "include/graphtyper/index/index.hpp": {
+          "bytes": 1344,
+          "sha256": "8454a6d7aa2b056b7edd9f148eb4666059b136ea140719e48d5772ec28053824"
+        },
+        "include/graphtyper/index/index_entry.hpp": {
+          "bytes": 1614,
+          "sha256": "cc97b5ce6bfa83435a65b946a311befb48834eb1e078fcbd5be8f498f1f98d88"
+        },
+        "include/graphtyper/index/indexer.hpp": {
+          "bytes": 675,
+          "sha256": "3be2a454607049a468fbced01938606dcd971388b1bb5e979615cf79b6052dfe"
+        },
+        "include/graphtyper/index/kmer_label.hpp": {
+          "bytes": 2291,
+          "sha256": "92242eafd253431ef74c660b64138385fac5d25872ecb54275bc08befb5c0927"
+        },
+        "include/graphtyper/index/mem_index.hpp": {
+          "bytes": 885,
+          "sha256": "cec368248a90de2ffa2162c6e94e80ab8fa6f5fbcab56018199ad96611843900"
+        },
+        "include/graphtyper/index/rocksdb.hpp": {
+          "bytes": 864,
+          "sha256": "c4a01301de7b38ca1a0127d79341b11ace7b7d42e6a35f87207e6031772b52ec"
+        },
+        "include/graphtyper/typer/alignment.hpp": {
+          "bytes": 1029,
+          "sha256": "4005d448a7ba344739dae0b3762401031f1b6d7775e15b96925d10154946d4f1"
+        },
+        "include/graphtyper/typer/caller.hpp": {
+          "bytes": 663,
+          "sha256": "bd79c0ba5f6d2f7077558aded137528cf8d40249465aaebe54a735dfa797f8d4"
+        },
+        "include/graphtyper/typer/discovery.hpp": {
+          "bytes": 481,
+          "sha256": "43f19065c8b38e3b3336785ed67472f210ca74f70a3982475448c274a4e6dd65"
+        },
+        "include/graphtyper/typer/genotype_paths.hpp": {
+          "bytes": 3145,
+          "sha256": "9e551094212d93d456111ee419486a4e34053ab9fa3b1c2ed21bf2d0bae89a99"
+        },
+        "include/graphtyper/typer/graph_swapper.hpp": {
+          "bytes": 221,
+          "sha256": "e4d614b3c72066bc01f567ef603de518bf2297a095d9144dc7b1f120aa36f393"
+        },
+        "include/graphtyper/typer/path.hpp": {
+          "bytes": 1846,
+          "sha256": "054448411d3ead15b2b668f5c2a5f1271a6497cda39232b7a8fe5b12a8a86fcb"
+        },
+        "include/graphtyper/typer/read_stats.hpp": {
+          "bytes": 641,
+          "sha256": "221744499ae9178c09d71c49b315e886e15caf5e03954fc8b93ca4eb91a8f803"
+        },
+        "include/graphtyper/typer/sample_call.hpp": {
+          "bytes": 1377,
+          "sha256": "31cdf373ce880d945b9698a951e2d00070e9c105c5bfef3497cfc355f4f3ade1"
+        },
+        "include/graphtyper/typer/segment.hpp": {
+          "bytes": 838,
+          "sha256": "b9744188411e71a87600b6cadb6163744ada6c8276713f84f80e2292dc22e416"
+        },
+        "include/graphtyper/typer/segment_calling.hpp": {
+          "bytes": 385,
+          "sha256": "1fe96361b9cd49360cc3a79cdc1eef775d9652c7ef68ae9559fe30c5baf07615"
+        },
+        "include/graphtyper/typer/var_stats.hpp": {
+          "bytes": 2601,
+          "sha256": "6b2ac9fca1c14f089d08deb9ea33b7e4b7452fe8d94199b4615994d51b8dcc93"
+        },
+        "include/graphtyper/typer/variant.hpp": {
+          "bytes": 2749,
+          "sha256": "55d506312fb4964f1b473ba4aac59b882fb5867e0d2df4c7bff743635222cf96"
+        },
+        "include/graphtyper/typer/variant_candidate.hpp": {
+          "bytes": 1922,
+          "sha256": "3d3710613efe644dac4bcf06d39e970f0eac41f13aa8e21ba66944c9c881548d"
+        },
+        "include/graphtyper/typer/variant_map.hpp": {
+          "bytes": 1937,
+          "sha256": "0ee6ff59d928a81da7854d6386f036bce6fd0f4d9cac7092658b3a6e9e682aff"
+        },
+        "include/graphtyper/typer/variant_support.hpp": {
+          "bytes": 1175,
+          "sha256": "a9a5cef07d29e2b424e9357acfa326cd94487a777dbcfedfc736cdad6aad0c3e"
+        },
+        "include/graphtyper/typer/vcf.hpp": {
+          "bytes": 3312,
+          "sha256": "ece297f36f3036316ee0d22644d7c80da9e3a46a0eb03507b416f1f13d66ebd6"
+        },
+        "include/graphtyper/typer/vcf_operations.hpp": {
+          "bytes": 509,
+          "sha256": "b1311bce6627e8629315d496ed40144720aca006c80bfca3f15230b5e33ea2b4"
+        },
+        "include/graphtyper/typer/vcf_writer.hpp": {
+          "bytes": 2813,
+          "sha256": "914daf076f1d6c6564526be170e304a3210b89f824822a611dd66d885b46a33e"
+        },
+        "include/graphtyper/utilities/adapter_removal.hpp": {
+          "bytes": 1305,
+          "sha256": "af402d99b67f2fa41d363edb1e45203d578be4f3ff60061c54d4cd3452ea0e6b"
+        },
+        "include/graphtyper/utilities/adapter_remover.hpp": {
+          "bytes": 168,
+          "sha256": "d82117c3357e50bceb57a5cd8120b6b0f23882a7fad29bdc0fab129f6f7d4ca9"
+        },
+        "include/graphtyper/utilities/bgzf_stream.hpp": {
+          "bytes": 1882,
+          "sha256": "4502d70ba87a7044a4f3a817bc84de4888f2411edff153eaa4464ac277fc209f"
+        },
+        "include/graphtyper/utilities/graph_help_functions.hpp": {
+          "bytes": 559,
+          "sha256": "e7a63104db380d4d79e782e3b0756998abed92cf88df76d4ffa359362a879fca"
+        },
+        "include/graphtyper/utilities/hash_seqan.hpp": {
+          "bytes": 1165,
+          "sha256": "aa4283c163e298ca53811f1d7876ffdce778f17509a25d886fc4486af0b42099"
+        },
+        "include/graphtyper/utilities/io.hpp": {
+          "bytes": 926,
+          "sha256": "28561dc313bdb4324169d143f9ace5f1ace716b6227b24229a9335e2d63b9a16"
+        },
+        "include/graphtyper/utilities/kmer_help_functions.hpp": {
+          "bytes": 1118,
+          "sha256": "f7aae0ef188f2aa1a47900a265b9930b3103ca8bda8c2c0d4ae48f0fe26260f5"
+        },
+        "include/graphtyper/utilities/options.hpp": {
+          "bytes": 3303,
+          "sha256": "0b91ccdff0ddcadb9a8009f4c55b9ee916d89884d0f457275d98f3e26f687449"
+        },
+        "include/graphtyper/utilities/sam_reader.hpp": {
+          "bytes": 1153,
+          "sha256": "7ca217c210746c10af2554bac5261ecacf0a332019c4cda0f5e7259db055ee41"
+        },
+        "include/graphtyper/utilities/sequence_operations.hpp": {
+          "bytes": 2215,
+          "sha256": "39dc8f18d07e7c22123af3882841d3ee0dc9577f391a7697675c1b9e450a96a4"
+        },
+        "include/graphtyper/utilities/type_conversions.hpp": {
+          "bytes": 2422,
+          "sha256": "d09021ab29b21e92c9d622c215795806c93f8986744770eda9e6d629a2a74ac3"
+        },
+        "include/graphtyper/utilities/vcf_help_functions.hpp": {
+          "bytes": 328,
+          "sha256": "63819602e221a00fc926cf37f6f9d5cecbeae054a2d15b5d1eac8100fc9eb7bf"
+        },
+        "src/CMakeLists.txt": {
+          "bytes": 2003,
+          "sha256": "32ea9f13933b09f3bea4e5d364b71c739725a7ab4069bc5a55b730cb25af07f4"
+        },
+        "src/graph/absolute_position.cpp": {
+          "bytes": 1610,
+          "sha256": "9660ef42ea3d3236ee58d0728dfcd45839e81b0ab272123889a335362b83a08d"
+        },
+        "src/graph/constructor.cpp": {
+          "bytes": 38859,
+          "sha256": "0dcead5d913130244f34232b63f591cb2daf893ca6b68631d3868fe41efeb96b"
+        },
+        "src/graph/genomic_region.cpp": {
+          "bytes": 6550,
+          "sha256": "8caf3a6a1b6502de06f817432aaac19c35cb65c94c2120ca2ecaef25fd3f4945"
+        },
+        "src/graph/genotype.cpp": {
+          "bytes": 1008,
+          "sha256": "61d740ba6eab85d2ce8de4c38fb6af0f8d5ec6b5d8fc1ea526a051d77fbc1145"
+        },
+        "src/graph/graph.cpp": {
+          "bytes": 64280,
+          "sha256": "f5958b064c4320acb643115da993744ef03ac0c0b6a5283ba9066907cf60e67f"
+        },
+        "src/graph/graph_serialization.cpp": {
+          "bytes": 1675,
+          "sha256": "f4704625ced3bf02ddbf23c7e5131d7bb96a30162eb5252b6c2844aaeb620afd"
+        },
+        "src/graph/haplotype.cpp": {
+          "bytes": 22898,
+          "sha256": "21e33ce978930cd93f8cbfd5d37e8d115d2a8408b02667902f78054c16e7dbb4"
+        },
+        "src/graph/haplotype_calls.cpp": {
+          "bytes": 1944,
+          "sha256": "02d352e0d8411eb34ec9036edae73a7f86ef7ad8f9d275d38a3d04dc9a93c059"
+        },
+        "src/graph/haplotype_extractor.cpp": {
+          "bytes": 12153,
+          "sha256": "ba8a57debeb521881d2d97d24bd40a12f9471a35295c610188a959ff3ed571d2"
+        },
+        "src/graph/label.cpp": {
+          "bytes": 1337,
+          "sha256": "71069c7e6774455ba7055076ad58d8d1b6d95d42531e0b29330219f195a00dec"
+        },
+        "src/graph/ref_node.cpp": {
+          "bytes": 1552,
+          "sha256": "b35ce31e8a64bd4c3d7059394f4167ed094b8fb0c6a82671066263eca62d6b4f"
+        },
+        "src/graph/reference_depth.cpp": {
+          "bytes": 7433,
+          "sha256": "a0322116e962a8b91087a7b8856affabb8c58e0dc26f9b19a60e1dc1566220ba"
+        },
+        "src/graph/sequence_extractor.cpp": {
+          "bytes": 911,
+          "sha256": "90a1f30f0b20c672029b1999cbd1fe6844fba0d10fbb33efa413e1d8537ccb33"
+        },
+        "src/graph/sv.cpp": {
+          "bytes": 1237,
+          "sha256": "5f8407ab47c5d1cbc952d05fe6120b018a7f7faff798da9fe09fbc6e7237e43b"
+        },
+        "src/graph/var_node.cpp": {
+          "bytes": 1371,
+          "sha256": "3c1677c698fb316f6808faf32dd163e4e201b73bdc5cdb2a6c4bff878d83c806"
+        },
+        "src/graph/var_record.cpp": {
+          "bytes": 8424,
+          "sha256": "8cb3e19618de36bdbf9e2f2471407edc8bc8d6aada34157ef9042f7d366a1eb5"
+        },
+        "src/index/indexer.cpp": {
+          "bytes": 8380,
+          "sha256": "898630abec9dade0b6c2bf7e68165e28a5fe656fc587d0bdb5862ad558237ad9"
+        },
+        "src/index/mem_index.cpp": {
+          "bytes": 4189,
+          "sha256": "5df6f6af412d40f1ff3cb0f625cade9dc2c5e94acfcc2a92094e04baadcc47c6"
+        },
+        "src/index/rocksdb.cpp": {
+          "bytes": 11670,
+          "sha256": "4628cb274e8bd21a67a551e234996f5826f88d712247ed4cc3961b90d0328064"
+        },
+        "src/main.cpp": {
+          "bytes": 47465,
+          "sha256": "3d1c002e8f6cd7346a1ae36efbd0d372ec6122eb309df6b1c62db7601e19416f"
+        },
+        "src/paw.cpp": {
+          "bytes": 49,
+          "sha256": "2eaeeefc6fc2e03aafbfa1dc96a3b23f794231dfc640f2fb21c1b8025b72960f"
+        },
+        "src/typer/alignment.cpp": {
+          "bytes": 22608,
+          "sha256": "6c3e056eef455da8822a72a9f90cb572ba76f5d516f37003b2a2486f160c4e44"
+        },
+        "src/typer/caller.cpp": {
+          "bytes": 18725,
+          "sha256": "0297895d6df1ee4f54975a79ebe5d5e697295c7d967152e8a8b36d785c7e685d"
+        },
+        "src/typer/discovery.cpp": {
+          "bytes": 1333,
+          "sha256": "0735208ed4d471b990ad13b5ac10ed28432dd5c0d5e52f7e9dfb170c9bcbc0a6"
+        },
+        "src/typer/genotype_paths.cpp": {
+          "bytes": 31755,
+          "sha256": "f79d0291518d6abf9b59fdc569664bf068e59fe50a17727d03c04d46f2687539"
+        },
+        "src/typer/graph_swapper.cpp": {
+          "bytes": 344,
+          "sha256": "b0a01aded50c19527ab44d8a90f1a1f955ead6704d86b4061f22550eecaf92e1"
+        },
+        "src/typer/path.cpp": {
+          "bytes": 3212,
+          "sha256": "26ef413cd9a1cb209ec9f1fa6089c62bad1f2bd8ded5f3388caf39b011f9c118"
+        },
+        "src/typer/sample_call.cpp": {
+          "bytes": 6292,
+          "sha256": "50fe07c1d22fdefc8681b0729cabe7ec86087869ce61bcef74c21cb0acc955cd"
+        },
+        "src/typer/segment.cpp": {
+          "bytes": 6528,
+          "sha256": "aaae3bb1bc6f31770287add87e3e88f1d36966ae3931d43585730bb57ac454f3"
+        },
+        "src/typer/segment_calling.cpp": {
+          "bytes": 28961,
+          "sha256": "5d7fd410422e301fcbd4b1373c6f0478cadca497261eac5bad482b04815c883c"
+        },
+        "src/typer/var_stats.cpp": {
+          "bytes": 6793,
+          "sha256": "73e04e81c22ab4fadf2ede9ebfaa3cce918dc3f1bd8d78d4af12e63e23593f9f"
+        },
+        "src/typer/variant.cpp": {
+          "bytes": 48850,
+          "sha256": "5d7a2d310043bd1793ff9993024d951b20355e7b2dbe04ba13ff1e7eb1c4c98a"
+        },
+        "src/typer/variant_candidate.cpp": {
+          "bytes": 2121,
+          "sha256": "a2e5b696b423d5a218f4d7187923af561123062e1ed7413c7f9fdbc67276f216"
+        },
+        "src/typer/variant_map.cpp": {
+          "bytes": 25011,
+          "sha256": "e57c07acb42070479e0aae7c5ea63146034a7b190227b1373f2b74d058bc0c6d"
+        },
+        "src/typer/variant_support.cpp": {
+          "bytes": 1336,
+          "sha256": "6642bf76bdec3f90a63a0af479c62836a9d59ec679ee281b0bec39de8245816f"
+        },
+        "src/typer/vcf.cpp": {
+          "bytes": 48159,
+          "sha256": "488074bc960381f18cf65c8f1db6829a9999c20c88e4996262d7a74faa77d112"
+        },
+        "src/typer/vcf_operations.cpp": {
+          "bytes": 20781,
+          "sha256": "c4bb3a969d44c0caf53b4ea9cb326189652389325ce4483ced9736c1ee78f195"
+        },
+        "src/typer/vcf_writer.cpp": {
+          "bytes": 19124,
+          "sha256": "247e1b7f2c553c675937a9374cf79546faf071c2fd5f07257a28fe964bce4022"
+        },
+        "src/utilities/adapter_removal.cpp": {
+          "bytes": 24097,
+          "sha256": "816145c4751abbd76b0135228d3040c6ac637fd892c37456dfc361cbdc8446f9"
+        },
+        "src/utilities/io.cpp": {
+          "bytes": 6176,
+          "sha256": "252156d5b34816902f799777d068de6e736992b20cd464949edac62a440b8580"
+        },
+        "src/utilities/kmer_help_functions.cpp": {
+          "bytes": 4212,
+          "sha256": "64f5d8395a84bb653f862472b5aa09f14556d98b40790eef10c988e986837243"
+        },
+        "src/utilities/options.cpp": {
+          "bytes": 386,
+          "sha256": "7fa6284474f0bece056a0c5bdbedb3340dee9efdc57816aa2668dea530b8549e"
+        },
+        "src/utilities/sam_reader.cpp": {
+          "bytes": 5615,
+          "sha256": "06bd24320f93a8412139b63e7ebc380d4016e75aa8db17ac7d7b4c3f3e7c8765"
+        },
+        "src/utilities/type_conversions.cpp": {
+          "bytes": 6916,
+          "sha256": "92bda0f1df45033406e21afa9212b79ca6a367f6756c0d2acaab98de14fa239d"
+        },
+        "test/CMakeLists.txt": {
+          "bytes": 448,
+          "sha256": "bc52424d5c0e634a5e07b579718b084bfd9d98121542981700995ba3b14e7210"
+        },
+        "test/catch/CMakeLists.txt": {
+          "bytes": 641,
+          "sha256": "bc64d7d3c048f766780917fb002acb28ee85e0d10d1b28f828cae9ab71d81b3c"
+        },
+        "test/data/reference/index_test.fa": {
+          "bytes": 1162,
+          "sha256": "537994430c7c99a9912769d0a1bbc3e887d7df77067a1320548c49e73d7d2b61"
+        },
+        "test/data/reference/index_test.fa.fai": {
+          "bytes": 126,
+          "sha256": "01d0cb033b1cc59df2089a985eb57f8348926c44f6d5ea3ca7d62e9806461341"
+        },
+        "test/data/reference/index_test.vcf": {
+          "bytes": 375,
+          "sha256": "b42fd613c24b1ee71c1ab8912b32c55a443928122cb7c7ca7b9d1917313310b3"
+        },
+        "test/data/reference/index_test.vcf.gz": {
+          "bytes": 265,
+          "sha256": "9ec29356f7a71a06080f99c3be1b290a11e9a1d743a87f2997680e9b0ac4e1f1"
+        },
+        "test/data/reference/index_test.vcf.gz.tbi": {
+          "bytes": 207,
+          "sha256": "6b6d352ea329ffa222d28a3df5bbbc34eac775f730929ce80497076807c4ee72"
+        },
+        "test/data/reference/index_test_b37.fa": {
+          "bytes": 140,
+          "sha256": "6f7e271185e96c9ea9b12c33753428c667c653ff9f597facb1df7b6bf0074fed"
+        },
+        "test/data/reference/index_test_b37.fa.fai": {
+          "bytes": 27,
+          "sha256": "547370e0b86e124874cc1716b1acf055e289166043e44d66cd383d0a0ae819f0"
+        },
+        "test/data/reference/index_test_b37.vcf": {
+          "bytes": 79,
+          "sha256": "de7699a0ef64f3d45ea66fef801283c943528dd162f1ecf53f076920b0eb53b1"
+        },
+        "test/data/reference/index_test_b37.vcf.gz": {
+          "bytes": 135,
+          "sha256": "c8a445d8705c6737b722392199ac1dd9533f18fb855ac576ed8f8bcec6e18e67"
+        },
+        "test/data/reference/index_test_b37.vcf.gz.tbi": {
+          "bytes": 100,
+          "sha256": "56420336b3a6675ba64fc4a18d448d7b292c21a15baaf60c809561747592e0e0"
+        },
+        "test/data/reference/indexz.vcf.gz": {
+          "bytes": 184,
+          "sha256": "b946b38c5f9495c3cda4d01342395bc2aa32e0bbef6a8b0043188ddb9009cec3"
+        },
+        "test/data/reference/indexz.vcf.gz.tbi": {
+          "bytes": 158,
+          "sha256": "fef04cf8a89029871ec2514b89079cfdbed03bd634a655d3198454e0226034e1"
+        },
+        "test/data/reference/reference.fa": {
+          "bytes": 87,
+          "sha256": "19f9afe9004dd3619564a27776c17b78bbd64b97f6139f52aaf825a84b211462"
+        },
+        "test/data/reference/reference.fa.fai": {
+          "bytes": 50,
+          "sha256": "a13ef06f2ec8146a7526a8de48247d84e3abf267b4e66e9ebb7321852a3f61dd"
+        },
+        "test/data/reference/test.bam.csi": {
+          "bytes": 121,
+          "sha256": "e7784dabd8c8ead30c5f02bbde730c3667f2230de93510a512f7f25a38602272"
+        },
+        "test/data/reference/test.cram": {
+          "bytes": 101748,
+          "sha256": "32694b1c7b8865b74256b6b1077f686d76ae8b9f758ba88b364fdfe5d0421976"
+        },
+        "test/data/reference/test.cram.crai": {
+          "bytes": 59,
+          "sha256": "9756ec6a1a19884ad6289a2488e821a29de7c7be2a9327a1f8431f5ea6647a97"
+        },
+        "test/data/reference/test.sam": {
+          "bytes": 559523,
+          "sha256": "d5b86b85bf94c37eabca9a7ccb35ed79a1a9d3eda357ff39987496c9aa176445"
+        },
+        "test/data/reference/test_write.cram": {
+          "bytes": 137878,
+          "sha256": "a9579523218b980066969317bb8e8e5aa72eb40fbb71155221e7df7ee2365b0c"
+        },
+        "test/graph/CMakeLists.txt": {
+          "bytes": 365,
+          "sha256": "81be1d12affe227e6aff6aca722a618a8bf59b018bedca0cbae02675128960af"
+        },
+        "test/graph/test_constructor.cpp": {
+          "bytes": 16916,
+          "sha256": "dc69939acccbe1cd07367f0cb851996b935d520eba1bf7261704380cacd896e4"
+        },
+        "test/graph/test_genomic_region.cpp": {
+          "bytes": 1761,
+          "sha256": "467011c361bff65a71f05cf5905143321c84fb80178a2d91de26e927041b1b84"
+        },
+        "test/graph/test_graph.cpp": {
+          "bytes": 57406,
+          "sha256": "47fa9cbd95c41c57821e9c88845c3c7c21c513d07cde69c132364df08ed4f63a"
+        },
+        "test/graph/test_haplotypes.cpp": {
+          "bytes": 1139,
+          "sha256": "30b0a24fb9e2d5a26586cdb47c91ea0d791080e61108cb339052a8420d21cfb7"
+        },
+        "test/index/CMakeLists.txt": {
+          "bytes": 294,
+          "sha256": "eda3f0d159eb4c29ef17f9815e6c42011124620a6886996be173fa3caf7fd817"
+        },
+        "test/index/test_index.cpp": {
+          "bytes": 14005,
+          "sha256": "1f236da669d42a5c03cb58eae0af008ef9211ee219996717dd5b427020e795bf"
+        },
+        "test/test.cpp": {
+          "bytes": 48,
+          "sha256": "dcea72f0dfe11d2ab30bba949e8ee6259594635d12be331e8fc593527ab0edc5"
+        },
+        "test/typer/CMakeLists.txt": {
+          "bytes": 377,
+          "sha256": "1432db5ed09881f822d98dd6f7b3099d24f55474bd62790f467d7eb2cdcf0e86"
+        },
+        "test/typer/test_genotype_path.cpp": {
+          "bytes": 4353,
+          "sha256": "11b0db5a9a125e82922997d62c269162df243744faadb346c223fb8071903441"
+        },
+        "test/typer/test_graph_swapping.cpp": {
+          "bytes": 3419,
+          "sha256": "b727c0307d1f261a4d32db7f87ce3fe52dedb9d1084142ec5ad58fd6f74ec777"
+        },
+        "test/typer/test_gyper_aligner.cpp": {
+          "bytes": 3435,
+          "sha256": "4171ca7f766f8b9d25ab9da55212d5ef7fe2d7d524119d65a3b04f758a2fd144"
+        },
+        "test/typer/test_path.cpp": {
+          "bytes": 4013,
+          "sha256": "4d5bea94e74ec40382945bfd3bc308e801e072aa90cd9f1a92ed4e1104ad27eb"
+        },
+        "test/typer/test_variant.cpp": {
+          "bytes": 221,
+          "sha256": "64b06b69350b5547cbb05de314bb2ffdee1117fbf2434478dd8e9df50f0c9d9a"
+        },
+        "test/typer/test_vcf.cpp": {
+          "bytes": 2398,
+          "sha256": "6fd319d08d897277a9426cc8f7cf32bd98942c3853f572ebe217bee8f8009ffd"
+        },
+        "test/typer/test_vcf_io.cpp": {
+          "bytes": 954,
+          "sha256": "cf9542c537c4f66ddc094729a1562eecec45d9b52a4e72d94ee47dfd25b97961"
+        },
+        "test/utilities/CMakeLists.txt": {
+          "bytes": 380,
+          "sha256": "2f6dbc9f0602697f98894a6722554988d969b5eb1edb472eb153c39f052d31b1"
+        },
+        "test/utilities/test_adapter_removal.cpp": {
+          "bytes": 7743,
+          "sha256": "a80aa213cce5340441dfa5c687c039cab93c5dffa2a2229f7ddfb79bb4d33c7c"
+        },
+        "test/utilities/test_kmer_help_functions.cpp": {
+          "bytes": 4734,
+          "sha256": "935571f06136d4305786cbfcff6636edd7d9c4ed903ac67ee75e65ec6bc35673"
+        },
+        "test/utilities/test_utilities.cpp": {
+          "bytes": 6959,
+          "sha256": "feaf7ce88c92ddd61c9a462c9172121acaa49c86c0ff1ec2a11c6c8a1bf48e07"
+        },
+        "utilities/cmake_modules/FindLz4.cmake": {
+          "bytes": 965,
+          "sha256": "e35eac14caca2ad83d2fd30407236d5b0d73c1ad70ce84193c420a1bf78de357"
+        },
+        "utilities/cmake_modules/FindSeqAn.cmake": {
+          "bytes": 15504,
+          "sha256": "a9fe616582e5023cb86b2d1e44070740eb99e3a4aecf4898da5952da1bf8da85"
+        },
+        "utilities/cmake_modules/FindZStd.cmake": {
+          "bytes": 729,
+          "sha256": "7a6c08627d00bf638cf024181392ab1229d0a41aeb0a4dcce525af12cc03c62c"
+        },
+        "utilities/cmake_modules/Findrocksdb.cmake": {
+          "bytes": 4272,
+          "sha256": "a8893184c48a533f0a55f943ab1a3ea7744615a6fb05962e55ae50e628cc441a"
+        },
+        "utilities/cmake_modules/Findsnappy.cmake": {
+          "bytes": 1298,
+          "sha256": "c88267ee305fd668cf3e987889234b4f540c8c4c28e2f397c7d36ae84e2c8876"
+        }
+      },
+      "original_binary": {
+        "bytes": 85908456,
+        "sha256": "55cc267597df7f0e90171665216c4f5cf02536cda998aa29f12242c3a8f93d7d"
+      },
+      "licence": "GPL-3.0",
+      "pipeline_commit": "e7ec5ab56a1086ca00cbc88a0e75cf060f960c8e",
+      "pipeline_files": {
+        ".gitignore": {
+          "bytes": 44,
+          "sha256": "9da1e8a0d1f14d739b4074e147387a243c8e3240d027cef9f0d77fdfb9de559d"
+        },
+        "LICENSE": {
+          "bytes": 35141,
+          "sha256": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2"
+        },
+        "Makefile": {
+          "bytes": 283,
+          "sha256": "47fd4c833ef75fd30fa6d0ef612948206d1b37a9a4ae1a350549d7c6a01fe1c1"
+        },
+        "README.md": {
+          "bytes": 2364,
+          "sha256": "d0cc3f1d02e18d5ad72923a3ab2badfde8f61ad3622988b3629043faa26fb354"
+        },
+        "call_script.sh": {
+          "bytes": 4635,
+          "sha256": "3ebb972679289b57bfdfa9016797f02361b46dd1faf5ce58f0d5e0b72ac3baa1"
+        },
+        "config.sh": {
+          "bytes": 3867,
+          "sha256": "92311655212a43b2390641374a20725a3e0ffeb5b04979223aac3ad1c9a46d33"
+        },
+        "make_graphtyper_pipeline.sh": {
+          "bytes": 1198,
+          "sha256": "5c18d795df9043d90c5aef3a03379493f014cf6d42b5d8e8c6a46d4d598eaba1"
+        },
+        "node_script.sh": {
+          "bytes": 4005,
+          "sha256": "87cf925bee7be140083888e308074812910da4b25c4791c3c4ffe49244763704"
+        },
+        "test/SAMP1.bam": {
+          "bytes": 229681,
+          "sha256": "474b87aac05fa3be2f5ea6f79d36f70ae623dd212e74f73c0e4c6195b33e306e"
+        },
+        "test/SAMP1.bam.bai": {
+          "bytes": 96,
+          "sha256": "304c6e68eb3548ab493e5abf74fcf43d07858df2182b71434da5518d6ea81f96"
+        },
+        "test/SAMP2.bam": {
+          "bytes": 231350,
+          "sha256": "519de418b002be546a66cd337e1f41a48e1012f92de820b0f3d75e16f0791695"
+        },
+        "test/SAMP2.bam.bai": {
+          "bytes": 96,
+          "sha256": "678532b8065f56e26b5659781951ded3ccb67504a090edfe9ff538fe7b8298a5"
+        },
+        "test/SAMP3.bam": {
+          "bytes": 231623,
+          "sha256": "855c2ab4061b13334997180f4ec7e28b560d893bd44acab361249d2c64695870"
+        },
+        "test/SAMP3.bam.bai": {
+          "bytes": 96,
+          "sha256": "6df0fee806e521e1b194ecec29df2cdd94180288203eb782fad44d36318e2452"
+        },
+        "test/SAMP4.bam": {
+          "bytes": 230239,
+          "sha256": "90f2391835d5f60709627b98441bcccdb1dab6c34d6d798b958b2376c77a2aca"
+        },
+        "test/SAMP4.bam.bai": {
+          "bytes": 96,
+          "sha256": "6065e7913d2ae2d6b837cafad5435cc78e48af7fa62fa56b112cbf1cf4f3da45"
+        },
+        "test/bamlist": {
+          "bytes": 60,
+          "sha256": "19135771f50fcac709fd366d080153b709c543a4d6e2a97d8e221e259d9d02ee"
+        },
+        "test/expected.vcf.gz": {
+          "bytes": 4329,
+          "sha256": "d97580f2c78c6e748a7beaf2796692668e090cb87b4cf2839124619150a0d08d"
+        },
+        "test/expected.vcf.gz.tbi": {
+          "bytes": 104,
+          "sha256": "c7399f8878bd5774a70cf77a8335d9b8b8ec4db348bb544a674b939bdabd6519"
+        },
+        "test/reference.fa": {
+          "bytes": 10171,
+          "sha256": "288317364f15c829dd0e2ab26ee5c57e81b8f54d2701438a93d5df2e51d98da2"
+        },
+        "test/reference.fa.fai": {
+          "bytes": 17,
+          "sha256": "5f12b32d565a81150597383d2e6add1e56c9b815e13d69397ac75f1287f3a487"
+        },
+        "test_config.sh": {
+          "bytes": 3723,
+          "sha256": "8aadeffe95cb35df896250922bb25ad11dd7173f3857476fdc333242a3f16b73"
+        }
+      },
+      "final_roles": [
+        "results"
+      ],
+      "internal_version": "1.3",
+      "scientific_source_modified": false,
+      "author_recipe_qualified": false,
+      "build_compatibility_flags": [
+        "-std=c++11",
+        "-include cstdint",
+        "-include array"
+      ],
+      "build_completion": {
+        "bytes": 572,
+        "sha256": "ce1dde8ae48f5a9cbea8f196de8d78ef8d7334608f2ee90afa56943730146251"
+      },
+      "original_helper_binaries": {
+        "parallel": {
+          "bytes": 451517,
+          "sha256": "b477ffcc80b743cd916c083fa0f6e0fafff2da8c0abbe4f1f203f04df2640b67"
+        },
+        "tabix": {
+          "bytes": 809456,
+          "sha256": "95dd2b279d9a7b7e6d1d38118be41afe870bdcfebab0da7c5e5a0a77c87e1f5d"
+        },
+        "bcftools": {
+          "bytes": 1149840,
+          "sha256": "e5f10c99745c55212035683e150e8e31eb0f82425de4cae4ab7a3258183b2cdb"
+        },
+        "samtools": {
+          "bytes": 664992,
+          "sha256": "e795122c091f1795179a57904087dbacc3106c90e8b2f65ec86c6714586b6861"
+        }
+      }
+    }
+  }
+}

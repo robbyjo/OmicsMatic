@@ -33,6 +33,10 @@ regression checks, explicit runtime setup and complete saved-input replay.
 The source-built [velocyto counting workflows](docs/velocyto-tools.md) add original
 spliced/unspliced counts from supplied BAMs, native Java preparation and exact
 S+U matrices, explicit integer-overflow checks and complete fresh replay.
+The source-built [GraphTyper workflows](docs/graphtyper-tools.md) add original
+edition-specific joint SNP/indel calling, native Java quality and complete
+reference/read/VCF audits, explicit initialization and legacy merge policies,
+and fresh replay of captured BAM/CRAM inputs.
 The current source build provides the exact-edition
 [nf-core ChIP-seq commands](docs/literature/NFCORE_CHIPSEQ_COMMANDS.md).
 It also provides original-edition [CrossMap BED, VCF and BigWig conversion](docs/literature/CROSSMAP_WORKFLOWS.md), with separate runtime setup and portable result verification.

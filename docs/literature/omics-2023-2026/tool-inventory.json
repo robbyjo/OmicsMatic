@@ -29262,9 +29262,9 @@
     "name": "Graphtyper",
     "pattern": "(?<![A-Za-z0-9_])(?:Graphtyper2?)(?![A-Za-z0-9_])",
     "role": "Graph-based genotyping",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/GraphtyperToolsCli.java",
+    "coverage_note": "Original GraphTyper v1.4 tag (internally 1.3), v2.0-beta, v2.7.1 and v2.7.5 joint SNP/indel calling from an actual RG/SM-backed aligned-read cohort and compatible indexed reference. Modern integrated discovery, discovery-with-prior and genotype-only modes remain distinct; exact legacy scripts use explicit original-node-no-sort or original-slices-sorted merge policy, with v1.4 discovery/prior modes only. Native Java complete reference/read/index/VCF/REF/GT audits and separately tested raw modern quality kernels accompany captured source/runtime/JAR/input binding and fresh original calling replay. Modern BAM/CRAM and multiple declared targets are qualified; legacy BAM/read-length/human-namespace constraints remain explicit. Original beta no-sort hap-call indexing failure is rejected, never salvaged. Native primitive arithmetic is not the complete HQ filter. Exact author recipes, unsupported reference namespaces, phasing, imputation, somatic driver calling, structural-variant pipelines and whole-paper reproduction remain outside this scope.",
     "paper_count": 4,
     "papers": [
       "P116",
@@ -29272,10 +29272,48 @@
       "P149",
       "P152"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/GraphtyperToolsCli.java",
+    "implementation_scope": "Original GraphTyper v1.4 tag (internally 1.3), v2.0-beta, v2.7.1 and v2.7.5 joint SNP/indel calling from an actual RG/SM-backed aligned-read cohort and compatible indexed reference. Modern integrated discovery, discovery-with-prior and genotype-only modes remain distinct; exact legacy scripts use explicit original-node-no-sort or original-slices-sorted merge policy, with v1.4 discovery/prior modes only. Native Java complete reference/read/index/VCF/REF/GT audits and separately tested raw modern quality kernels accompany captured source/runtime/JAR/input binding and fresh original calling replay. Modern BAM/CRAM and multiple declared targets are qualified; legacy BAM/read-length/human-namespace constraints remain explicit. Original beta no-sort hap-call indexing failure is rejected, never salvaged. Native primitive arithmetic is not the complete HQ filter. Exact author recipes, unsupported reference namespaces, phasing, imputation, somatic driver calling, structural-variant pipelines and whole-paper reproduction remain outside this scope.",
+    "validation_note": "Fourteen complete original-calling captures and fresh replays with independent original comparisons across four source editions, explicit initialization and legacy merge policies, BAM/CRAM and multiple targets; 25 native/contract tests per OS, 712 independent original-C++ quality oracles and 12 packaged prerequisite/data/capacity/tamper/source-failure refusals. See docs/literature/graphtyper-validation/QUALIFICATION.json.",
+    "paper_role_qualification": {
+      "P116": {
+        "paper_id": "P116",
+        "source_role": "joint-small-variant-calling-in-sequenced-lupus-cohort",
+        "reported_version": "2.7.5",
+        "runtime_scope": "ORIGINAL_V2_7_5_JOINT_SMALL_VARIANT_CALLING_WITH_EXPLICIT_INITIALIZATION_MERGE_POLICY_AND_NATIVE_FULL_RECORD_AUDITS",
+        "remaining_scope": "Methods identify v2.7.5 while code availability gives only the broader v2 label. Author binary, command flags, priors, graph/reference preparation and actual cohort data are unestablished. The reported information criterion is not automatically reinterpreted as an AAScore cutoff.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P132": {
+        "paper_id": "P132",
+        "source_role": "germline-WGS-joint-genotyping-before-CH-GWAS-imputation",
+        "reported_version": "1.4",
+        "runtime_scope": "ORIGINAL_V1_4_TAG_INTERNAL_1_3_JOINT_SMALL_VARIANT_CALLING_WITH_EXPLICIT_INITIALIZATION_MERGE_POLICY_AND_NATIVE_FULL_RECORD_AUDITS",
+        "remaining_scope": "This role is germline genotype preparation for association analysis, distinct from calling somatic CH mutations. The official v1.4 tag exists at ebd4855d but declares internal version1.3 and provides no release binary; preserve both identities. Exact author pipeline, sample/ancestry definitions, phasing/imputation and original runtime remain unestablished.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P149": {
+        "paper_id": "P149",
+        "source_role": "multicohort-SNP-indel-joint-calling-before-migraine-imputation",
+        "reported_version": "2.0-beta",
+        "runtime_scope": "ORIGINAL_V2_0_BETA_JOINT_SMALL_VARIANT_CALLING_WITH_EXPLICIT_INITIALIZATION_MERGE_POLICY_AND_NATIVE_FULL_RECORD_AUDITS",
+        "remaining_scope": "The automatic nearby-version field was null; code availability supplies v2.0-beta. This legacy source is GPLv3 while newer releases use MIT terms. Keep that source/version distinction, separate cohort preparation and reported quality filters; no equivalence to a newer genotype subcommand, exact author files or imputation pipeline is established.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P152": {
+        "paper_id": "P152",
+        "source_role": "UKB-WGS-pipeline-calling-and-imported-GraphTyper-HQ-definition",
+        "reported_version": "2.7.1",
+        "runtime_scope": "ORIGINAL_V2_7_1_JOINT_SMALL_VARIANT_CALLING_WITH_EXPLICIT_INITIALIZATION_MERGE_POLICY_AND_NATIVE_FULL_RECORD_AUDITS",
+        "remaining_scope": "The exact division of GATK/GraphTyper operations, priors, flags and referenced HQ recipe is not inferred. Native finite unrounded quality-score arithmetic is not the complete support/penalty/HQ procedure and cannot be reconstructed exactly from rounded INFO fields. Preserve the paper's unusual reported HWE exclusion direction rather than silently changing it; actual author inputs, GATK4.0.12 and the complete downstream analysis remain separate.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    }
   },
   {
     "id": "hicpro",

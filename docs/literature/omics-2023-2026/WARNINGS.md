@@ -1,3 +1,13 @@
+# Current GraphTyper joint-calling checkpoint
+
+250 papers, 453 named labels, 492 providers and 2,734 observations; 1,840 reviewed / 894 pending uses. 176 scoped families: 34 native +142 upstream. GraphTyper adds one scoped upstream joint-calling family and four reviewed source roles, with no new observations or extra native-family credit. 247 labels remain missing. The full goal remains active.
+
+**Warnings and required actions:** WARNINGS AND REQUIRED ACTION: require COMPLETED.json and exact-producer fresh replay; inspect every original log, warning and native reference/alignment/index/VCF audit. Missing/forbidden prerequisites produce SKIP3 and skip dependent analysis: supply/install where permitted and retry NEW paths. Invalid/changed source, reference, indexes, samples, data or runtime, failed calling/QC, cancellation or capacity exhaustion produce FAIL2 with no complete result. Preserve all attempts and exact producing JARs. Do not repair sample/contig identities, silently reinterpret reported HQ criteria, reconstruct raw quality features from rounded VCF values, or substitute sorted merge for a failing no-sort policy without an explicit choice. The v1.4 internal version and fixed human header lengths remain retained. Cell Ranger stays excluded; MaxQuant stays pending with runtime analyses skipped. Literature HTMLs remain withheld from Pages.
+
+See [workflow guide](../../graphtyper-tools.md), [all four source roles](../graphtyper-source-audit/ROLES.json) and [qualification](../graphtyper-validation/QUALIFICATION.json). Earlier checkpoints below are historical.
+
+---
+
 # Current velocyto counting checkpoint
 
 250 papers, 453 named labels, 492 providers and 2,734 observations; 1,836 reviewed / 898 pending uses. 175 scoped families: 34 native +141 upstream. Velocyto adds one scoped upstream counting family and four reviewed source roles, with no new observations or extra native-family credit. 248 labels remain missing. The full goal remains active.
