@@ -1,3 +1,13 @@
+# Current native MatrixEQTL additive checkpoint
+
+250 frozen papers; 453 named labels and 492 provider definitions; 177 scoped families (35 native, 142 upstream), 1,844 individually reviewed uses and 890 pending uses. MatrixEQTL adds one bounded native additive family by replacing an earlier method-overlap label; the missing-label count remains 247. Four primary-paper roles are reviewed without claiming whole-paper reproduction. This is source-build qualification, not a released binary, website deployment or completion of the full goal.
+
+**Warnings and required actions:** Require analysis-status.json result_admitted=true and inspect WARNINGS.md. SKIP3: supply the named permitted prerequisite or allow execution and retry NEW output; dependent work is skipped. FAIL2: fix the named input, integrity, numerical, cancellation or capacity cause and retry NEW output; no partial result admitted. Native analysis needs no R installation. Keep producing JARs, captured inputs and failed attempts. Package BH is not author permutation FDR; stratum populations, counted allele, PEER/PC preparation and block-permutation plans must be explicit.
+
+See [workflow guide](../../matrixeqtl-native.md), [all four source roles](../matrixeqtl-source-audit/ROLES.json) and [qualification](../matrixeqtl-validation/QUALIFICATION.json). Earlier checkpoints below are historical.
+
+---
+
 # Current GraphTyper joint-calling checkpoint
 
 250 papers, 453 named labels, 492 providers and 2,734 observations; 1,840 reviewed / 894 pending uses. 176 scoped families: 34 native +142 upstream. GraphTyper adds one scoped upstream joint-calling family and four reviewed source roles, with no new observations or extra native-family credit. 247 labels remain missing. The full goal remains active.

@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "tool_id": "matrixeqtl",
+  "roles": [
+    {
+      "paper_id": "P169",
+      "source_role": "Additive cis expression-QTL analysis in two separately prepared colon-expression cohorts, followed by separate META/SMR tools.",
+      "reported_version": "2.3",
+      "runtime_scope": "Native 2.3 additive association, explicit covariates or caller-prepared residuals, complete ordered SNP/gene positions and declared cis distance.",
+      "remaining_scope": "The paper reports 367 GTEx and 223 SOCCS samples, a 0.5 Mb lead-locus variant restriction, MAF >0.01 and gene associations within 1 Mb. PEER/age/sex/batch preparation, cohort membership, locus/MAF restriction, META1.7 and SMR1.3.1 are separate and not reproduced.",
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P185",
+      "source_role": "Additive methylation-QTL model with five genotype PCs, ten methylation PCs, sex and SentrixID batch; cis 500 kb.",
+      "reported_version": "2.3",
+      "runtime_scope": "Native 2.3 additive association with caller-encoded numeric covariates, inclusive cis interval, complete pair denominator and separate source BH FDR.",
+      "remaining_scope": "The original automatic version field remains null; primary text explicitly supplies 2.3. The developmental-stage signal is represented through methylation PC1 rather than an additional stage covariate. PC estimation, factor encoding, study membership and downstream EnsDb annotation are separate.",
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P213",
+      "source_role": "Sex- and cell-type-stratified SNP-gene coefficient and SE extraction for subsequent sex-difference tests and filtering.",
+      "reported_version": null,
+      "runtime_scope": "Explicit independent stratum inputs to the native 2.3 additive kernel; beta and separately derived SE, independently checked against ordinary/full GLS regression. The paper does not identify a MatrixEQTL version.",
+      "remaining_scope": "This is not evidence that the paper used version2.3 or the LINEAR_CROSS model. Cell aggregation, stratum membership, chromosome testing families, lead selection, two-sample Z tests and distributional consistency filtering remain separate. The source leaves its pi0 threshold as literal X; no threshold is invented.",
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P219",
+      "source_role": "Additive cis/trans skin methylation-QTL association followed by a study-specific block-permutation FDR analysis.",
+      "reported_version": "2.3",
+      "runtime_scope": "Native 2.3 additive cis/trans association, separate nominal thresholds, total pair counts and per-feature minimum p-values on each explicitly supplied observed or permuted dataset.",
+      "remaining_scope": "The study describes cis <1 Mb and trans >1 Mb or different chromosomes; the exact 1 Mb boundary is unspecified, whereas package behavior is inclusive. Dosage orientation must already represent the intended effect allele. Twin/zygosity block permutations, per-CpG best-hit aggregation and author empirical FDR are not replaced by BH. The reported study-wide significance thresholds are not general defaults. GoDMC preparation and 394-female-twin cohort reproduction remain separate.",
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false
+    }
+  ],
+  "new_family_credit": 1,
+  "whole_paper_reproduced": false
+}

@@ -25,6 +25,8 @@ public final class JLinAlgCli {
     static int run(String[] arguments, PrintStream output,
             PrintStream errorOutput) {
         try {
+            if (arguments.length > 0 && arguments[0].equals("matrixeqtl-native"))
+                return MatrixEqtlNativeCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("study"))
                 return StudyCli.run(Arrays.copyOfRange(
                     arguments, 1, arguments.length), output, errorOutput);
@@ -650,6 +652,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar wasp-tools --help
               java -jar omicsmatic-<version>.jar popcorn-tools --help
               java -jar omicsmatic-<version>.jar graphtyper-tools --help
+              java -jar omicsmatic-<version>.jar matrixeqtl-native --help
               java -jar omicsmatic-<version>.jar velocyto-tools --help
               java -jar omicsmatic-<version>.jar allcools-posterior --help
               java -jar omicsmatic-<version>.jar contact-insulation --help

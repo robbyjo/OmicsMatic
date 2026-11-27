@@ -27,6 +27,9 @@ Read the [release scope](docs/release-0.4.1.md) and
 Build from source with `./gradlew check executableJar` (`gradlew.bat` on Windows).
 The executable is `build/cli/omicsmatic-0.4.1.jar`.
 See [runtime setup](docs/runtime-requirements.md).
+The source-built [native Matrix eQTL additive workflow](docs/matrixeqtl-native.md)
+adds FP64 Java association scans with explicit cis/trans testing families,
+source imputation and BH behavior, derived SE, and complete saved-input replay.
 The source-built [Popcorn workflows](docs/popcorn-tools.md) add original
 cross-population GWAS covariance scores and correlation fitting, native Java
 regression checks, explicit runtime setup and complete saved-input replay.
