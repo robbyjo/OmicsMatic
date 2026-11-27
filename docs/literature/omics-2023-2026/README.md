@@ -1,3 +1,13 @@
+# Current RFMix workflow checkpoint
+
+250 papers, 453 named labels, 492 providers and 2,733 observations; 1,825 reviewed / 908 pending uses. 172 scoped families: 34 native + 138 upstream. RFMix adds one scoped original-v2 upstream family; 251 labels remain missing. The full goal remains active.
+
+**Warnings and required actions:** SIS-dependent analysis SKIPPED: inspect original logs and output audits; require exact-producer fresh replay before using MSP/FB/Q. P041 reports v1.5.4, whose original runtime remains unavailable/skipped; v2 is not a substitute. Supply a permitted provenance-backed v1.5.4 archive or retain that skip. P142 version remains unreported. P229 reported 0.2 cM windows differ from inspected current 50/5 SNP defaults: declare actual settings and never infer author equivalence. Missing/forbidden prerequisites produce SKIP3; install only where permitted or supply the named input/runtime/helper/index. Invalid/changed data, runtime, producer, model/QC, cancellation or resource exhaustion produce FAIL2 with no complete result; preserve attempts, correct the cause and retry NEW paths. Original upstream academic-use terms apply. Cell Ranger remains excluded; MaxQuant remains pending with runtime analyses skipped. ConstructASCATFiles/PREASCAT code-use permission remains pending. Literature HTMLs remain withheld from Pages.
+
+See [RFMix workflow guide](../../rfmix-tools.md) and [qualification](../rfmix-validation/QUALIFICATION.json). Earlier checkpoints below are historical.
+
+---
+
 # Current supplementary PDF evidence checkpoint
 
 250 papers, 453 named tool labels, 492 providers and 2,733 observations; 1,821 reviewed / 912 pending uses. 171 scoped families remain: 34 native + 137 upstream. ConstructASCATFiles and PREASCAT are now canonical supplement-backed observations; neither receives implementation credit. 252 labels remain missing. The full goal remains active.

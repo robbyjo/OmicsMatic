@@ -106,7 +106,8 @@ class RfmixOutputAuditTest {
     @Test void nativeSourceDomainRefusesDuplicateIdentityAndInvalidMap() {
         var c = contract(false, false);
         assertThrows(IllegalArgumentException.class, () -> new Contract("22", List.of("Q", "Q"), c.references(), c.retainedLoci(), 1, 0, false, false));
-        assertThrows(IllegalArgumentException.class, () -> markerIndices(List.of(new Locus(1, -.5)), .1));
+        assertEquals(List.of(0), markerIndices(List.of(new Locus(1, -.5)), .1));
+        assertThrows(IllegalArgumentException.class, () -> markerIndices(List.of(new Locus(1, Double.NEGATIVE_INFINITY)), .1));
         assertThrows(IllegalArgumentException.class, () -> markerIndices(List.of(new Locus(1, .2), new Locus(2, .1)), .1));
     }
     @Test void longLineAndByteCapsFailBeforeReturningAReport() throws Exception {

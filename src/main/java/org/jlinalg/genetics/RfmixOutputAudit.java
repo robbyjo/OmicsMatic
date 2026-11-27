@@ -54,13 +54,13 @@ public final class RfmixOutputAudit {
             Set<String> ids = new HashSet<>();
             for (String id : querySamples) if (!identifier(id) || !ids.add(id)) throw new IllegalArgumentException("Invalid/duplicate query identity");
             for (Reference reference : references)
-                if (!identifier(reference.sample) || !identifier(reference.population) || !ids.add(reference.sample))
+                if (!identifier(reference.sample) || !populationLabel(reference.population) || !ids.add(reference.sample))
                     throw new IllegalArgumentException("Invalid/duplicate/overlapping reference identity");
             long previous = 0;
-            double mapPrevious = -1;
+            double mapPrevious = Double.NEGATIVE_INFINITY;
             for (Locus locus : retainedLoci) {
                 if (locus.position <= previous || !Double.isFinite(locus.geneticCm) || !Float.isFinite((float) locus.geneticCm)
-                        || locus.geneticCm < mapPrevious || locus.geneticCm < 0)
+                        || locus.geneticCm < mapPrevious)
                     throw new IllegalArgumentException("Retained loci must have increasing positive coordinates and finite nondecreasing cM");
                 previous = locus.position;
                 mapPrevious = locus.geneticCm;
@@ -101,10 +101,10 @@ public final class RfmixOutputAudit {
     public static List<Integer> markerIndices(List<Locus> loci, double spacing) {
         if (loci.isEmpty() || !Double.isFinite(spacing) || spacing <= 0 || spacing > Integer.MAX_VALUE)
             throw new IllegalArgumentException("Invalid CRF grid source domain");
-        double previous = -1;
+        double previous = Double.NEGATIVE_INFINITY;
         for (Locus locus : loci) {
-            if (!Double.isFinite(locus.geneticCm) || !Float.isFinite((float) locus.geneticCm) || locus.geneticCm < 0 || locus.geneticCm < previous)
-                throw new IllegalArgumentException("CRF grid requires finite nonnegative nondecreasing genetic positions");
+            if (!Double.isFinite(locus.geneticCm) || !Float.isFinite((float) locus.geneticCm) || locus.geneticCm < previous)
+                throw new IllegalArgumentException("CRF grid requires finite nondecreasing genetic positions");
             previous = locus.geneticCm;
         }
         List<Integer> result = new ArrayList<>();
@@ -285,6 +285,9 @@ public final class RfmixOutputAudit {
 
     private static boolean identifier(String value) {
         return value != null && !value.isEmpty() && value.chars().noneMatch(c -> Character.isWhitespace(c) || Character.isISOControl(c));
+    }
+    private static boolean populationLabel(String value) {
+        return value != null && !value.isEmpty() && value.chars().noneMatch(Character::isISOControl);
     }
     private static List<String> haplotypes(List<String> samples) {
         List<String> result = new ArrayList<>();

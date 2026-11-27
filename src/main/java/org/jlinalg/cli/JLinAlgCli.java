@@ -142,6 +142,8 @@ public final class JLinAlgCli {
                 return DiffbindToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("ascat-tools"))
                 return AscatToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("rfmix-tools"))
+                return RfmixToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("ascat-objective"))
                 return AscatObjectiveCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("merqury-tools"))
@@ -633,6 +635,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar merqury-tools --help
               java -jar omicsmatic-<version>.jar diffbind-tools --help
               java -jar omicsmatic-<version>.jar ascat-tools --help
+              java -jar omicsmatic-<version>.jar rfmix-tools --help
               java -jar omicsmatic-<version>.jar allcools-posterior --help
               java -jar omicsmatic-<version>.jar contact-insulation --help
               java -jar omicsmatic-<version>.jar diann-tools --help

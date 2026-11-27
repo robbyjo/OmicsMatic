@@ -15309,12 +15309,60 @@
         "matched_text": "RFMIX ",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "1.5.4",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-all-primary-RFMix-contexts",
         "evidence_paragraph_sha256": "bc1c6dc9a6179fcf15d189bf5d014b8580519f7c1f6ab821cdc58fe6abf79133",
-        "use_summary": "Local ancestry inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10733150/ (section: Methods / Ancestry inference)"
+        "use_summary": "Used RFMix1.5.4 local ancestry to retain genomic regions where both haplotypes were Indigenous Australian or Papuan and mask other ancestry; used estimates to verify global ancestry and support ancestry-specific demographic analyses.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10733150/ (section: Methods / Ancestry inference)",
+        "implementation_scope_note": "Original RFMix v2.03-r0 (09599c19) phased local ancestry, source-pinned private runtime binding, complete immutable VCF/gzip/BCF+CSI inputs, explicit source model units/options, independent complete sample/locus/filter/map census, guarded original inference, complete MSP/FB/Q checks and fresh saved-input binary/numerical replay. SIS bytes remain retained but SIS-dependent analysis is skipped because the original writer does not certify final-iteration probabilities. No extra native-family credit. Legacy v1.5.4, exact author revisions/reference panels, masking/tract dating and whole-paper reproduction remain separate. SIS-dependent analysis SKIPPED: inspect original logs and output audits; require exact-producer fresh replay before using MSP/FB/Q. P041 reports v1.5.4, whose original runtime remains unavailable/skipped; v2 is not a substitute. Supply a permitted provenance-backed v1.5.4 archive or retain that skip. P142 version remains unreported. P229 reported 0.2 cM windows differ from inspected current 50/5 SNP defaults: declare actual settings and never infer author equivalence. Missing/forbidden prerequisites produce SKIP3; install only where permitted or supply the named input/runtime/helper/index. Invalid/changed data, runtime, producer, model/QC, cancellation or resource exhaustion produce FAIL2 with no complete result; preserve attempts, correct the cause and retry NEW paths. Original upstream academic-use terms apply. Cell Ranger remains excluded; MaxQuant remains pending with runtime analyses skipped. ConstructASCATFiles/PREASCAT code-use permission remains pending. Literature HTMLs remain withheld from Pages.",
+        "supporting_evidence": [
+          {
+            "paper_id": "P041",
+            "pmcid": "PMC10733150",
+            "doi": "10.1038/s41586-023-06831-w",
+            "paragraph_index": 24,
+            "section": "Relationship to PNG",
+            "paragraph_sha256": "d425f8074369a2caa5df2302084a109a2837ed04f720f6df282be5d80f14add0"
+          },
+          {
+            "paper_id": "P041",
+            "pmcid": "PMC10733150",
+            "doi": "10.1038/s41586-023-06831-w",
+            "paragraph_index": 54,
+            "section": "Methods / Ancestry inference",
+            "paragraph_sha256": "0351fb16dbe68ea997ed06600b741838185c97cf7b480cc24a15a8bcca5059ae"
+          },
+          {
+            "paper_id": "P041",
+            "pmcid": "PMC10733150",
+            "doi": "10.1038/s41586-023-06831-w",
+            "paragraph_index": 55,
+            "section": "Methods / Ancestry inference",
+            "paragraph_sha256": "bc1c6dc9a6179fcf15d189bf5d014b8580519f7c1f6ab821cdc58fe6abf79133"
+          },
+          {
+            "paper_id": "P041",
+            "pmcid": "PMC10733150",
+            "doi": "10.1038/s41586-023-06831-w",
+            "paragraph_index": 84,
+            "section": "Methods / Historic autosomal effective population size and isolation",
+            "paragraph_sha256": "75145ad8d180edc354f1d8bcc77b485d75f7bc59a20aa8bd2bc139a30cb6b2a6"
+          }
+        ],
+        "source_role_qualification": {
+          "paper_id": "P041",
+          "reported_version": "1.5.4",
+          "selected_runtime_version": "v2.03-r0",
+          "selected_runtime_commit": "09599c19c69f81571c7a7aab4cd2d847a9e0633a",
+          "source_role_review": "complete-main-text-contexts; supplementary-details-open",
+          "runtime_scope": "SKIP3_LEGACY_1_5_4_UNAVAILABLE",
+          "reported_version_implemented": false,
+          "exact_author_recipe_qualified": false,
+          "whole_paper_reproduced": false,
+          "remaining_scope": "Exact original1.5.4 runtime and Supplementary Note2 reference-panel/parameter recipe remain pending; downstream ancestry-specific IBDNe details also reference Supplementary Note6. The original legacy download page redirected to a Google login during retrieval. Obtain a permitted original1.5.4 archive/provenance or retain that legacy analysis skipped; v2 is not a replacement. No author mask endpoint/overlap conventions are inferred.",
+          "sis_dependent_analysis": "SKIPPED_ORIGINAL_WRITER_FINAL_ITERATION_UNQUALIFIED"
+        }
       },
       {
         "tool_id": "shapeit",
@@ -54342,12 +54390,36 @@
         "matched_text": "RFMix",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-all-primary-RFMix-contexts",
         "evidence_paragraph_sha256": "d7fcc88a137e3615106601dd4509289f1c2c4e3fb0d7a3f6ab50f4150144bccb",
-        "use_summary": "Local ancestry inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632132/ (section: Methods / Estimation of genetic ancestry proportions)"
+        "use_summary": "Ran RFMix separately by chromosome with three reference groups of92 individuals each (European, African and Native American), using TOPMed SNPs with MAF>0.05. Averaged per-locus local ancestry to obtain chromosome-level African ancestry for association with mosaic chromosomal alterations.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10632132/ (section: Methods / Estimation of genetic ancestry proportions)",
+        "implementation_scope_note": "Original RFMix v2.03-r0 (09599c19) phased local ancestry, source-pinned private runtime binding, complete immutable VCF/gzip/BCF+CSI inputs, explicit source model units/options, independent complete sample/locus/filter/map census, guarded original inference, complete MSP/FB/Q checks and fresh saved-input binary/numerical replay. SIS bytes remain retained but SIS-dependent analysis is skipped because the original writer does not certify final-iteration probabilities. No extra native-family credit. Legacy v1.5.4, exact author revisions/reference panels, masking/tract dating and whole-paper reproduction remain separate. SIS-dependent analysis SKIPPED: inspect original logs and output audits; require exact-producer fresh replay before using MSP/FB/Q. P041 reports v1.5.4, whose original runtime remains unavailable/skipped; v2 is not a substitute. Supply a permitted provenance-backed v1.5.4 archive or retain that skip. P142 version remains unreported. P229 reported 0.2 cM windows differ from inspected current 50/5 SNP defaults: declare actual settings and never infer author equivalence. Missing/forbidden prerequisites produce SKIP3; install only where permitted or supply the named input/runtime/helper/index. Invalid/changed data, runtime, producer, model/QC, cancellation or resource exhaustion produce FAIL2 with no complete result; preserve attempts, correct the cause and retry NEW paths. Original upstream academic-use terms apply. Cell Ranger remains excluded; MaxQuant remains pending with runtime analyses skipped. ConstructASCATFiles/PREASCAT code-use permission remains pending. Literature HTMLs remain withheld from Pages.",
+        "supporting_evidence": [
+          {
+            "paper_id": "P142",
+            "pmcid": "PMC10632132",
+            "doi": "10.1038/s41588-023-01553-1",
+            "paragraph_index": 28,
+            "section": "Methods / Estimation of genetic ancestry proportions",
+            "paragraph_sha256": "d7fcc88a137e3615106601dd4509289f1c2c4e3fb0d7a3f6ab50f4150144bccb"
+          }
+        ],
+        "source_role_qualification": {
+          "paper_id": "P142",
+          "reported_version": null,
+          "selected_runtime_version": "v2.03-r0",
+          "selected_runtime_commit": "09599c19c69f81571c7a7aab4cd2d847a9e0633a",
+          "source_role_review": "complete-main-text-contexts; supplementary-details-open",
+          "runtime_scope": "SCOPED_ORIGINAL_V2_WORKFLOW_AVAILABLE_AUTHOR_EQUIVALENCE_UNESTABLISHED",
+          "reported_version_implemented": null,
+          "exact_author_recipe_qualified": false,
+          "whole_paper_reproduced": false,
+          "remaining_scope": "RFMix version and command options are unreported in the reviewed main text. This source role specifies chromosome-level averaging across loci; it is not proof of length-weighted global proportions or of a particular v2 profile. Original reference membership, phasing and full author execution remain pending.",
+          "sis_dependent_analysis": "SKIPPED_ORIGINAL_WRITER_FINAL_ITERATION_UNQUALIFIED"
+        }
       },
       {
         "tool_id": "vep",
@@ -69316,12 +69388,68 @@
         "matched_text": "RFMix",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-all-primary-RFMix-contexts",
         "evidence_paragraph_sha256": "18615c2586de00d81901688c0f5271ebab3e27a4644ce0ba53fb4047c28328a0",
-        "use_summary": "Local ancestry inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13504326/ (section: Methods / Data processing / MHIB dataset)"
+        "use_summary": "Used RFMix v2 genetic-ancestry estimates during MHIB cohort curation to exclude participants whose inferred ancestry disagreed with self-reported ethnicity. RFMix was explicitly excluded from the Diet Network performance benchmark; introductory/discussion comparisons are separate from this curation role.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13504326/ (section: Methods / Data processing / MHIB dataset)",
+        "implementation_scope_note": "Original RFMix v2.03-r0 (09599c19) phased local ancestry, source-pinned private runtime binding, complete immutable VCF/gzip/BCF+CSI inputs, explicit source model units/options, independent complete sample/locus/filter/map census, guarded original inference, complete MSP/FB/Q checks and fresh saved-input binary/numerical replay. SIS bytes remain retained but SIS-dependent analysis is skipped because the original writer does not certify final-iteration probabilities. No extra native-family credit. Legacy v1.5.4, exact author revisions/reference panels, masking/tract dating and whole-paper reproduction remain separate. SIS-dependent analysis SKIPPED: inspect original logs and output audits; require exact-producer fresh replay before using MSP/FB/Q. P041 reports v1.5.4, whose original runtime remains unavailable/skipped; v2 is not a substitute. Supply a permitted provenance-backed v1.5.4 archive or retain that skip. P142 version remains unreported. P229 reported 0.2 cM windows differ from inspected current 50/5 SNP defaults: declare actual settings and never infer author equivalence. Missing/forbidden prerequisites produce SKIP3; install only where permitted or supply the named input/runtime/helper/index. Invalid/changed data, runtime, producer, model/QC, cancellation or resource exhaustion produce FAIL2 with no complete result; preserve attempts, correct the cause and retry NEW paths. Original upstream academic-use terms apply. Cell Ranger remains excluded; MaxQuant remains pending with runtime analyses skipped. ConstructASCATFiles/PREASCAT code-use permission remains pending. Literature HTMLs remain withheld from Pages.",
+        "supporting_evidence": [
+          {
+            "paper_id": "P184",
+            "pmcid": "PMC13504326",
+            "doi": "10.1016/j.ajhg.2026.06.003",
+            "paragraph_index": 3,
+            "section": "Introduction",
+            "paragraph_sha256": "ea6881cd754b3d83bac10f4e3d87982e035cb714c56ea8513b0c7c638f4e101a"
+          },
+          {
+            "paper_id": "P184",
+            "pmcid": "PMC13504326",
+            "doi": "10.1016/j.ajhg.2026.06.003",
+            "paragraph_index": 16,
+            "section": "Methods / Data processing / MHIB dataset",
+            "paragraph_sha256": "18615c2586de00d81901688c0f5271ebab3e27a4644ce0ba53fb4047c28328a0"
+          },
+          {
+            "paper_id": "P184",
+            "pmcid": "PMC13504326",
+            "doi": "10.1016/j.ajhg.2026.06.003",
+            "paragraph_index": 47,
+            "section": "Results / Benchmarking Diet Network against existing methods",
+            "paragraph_sha256": "ae5af9a668d5f6eda8b30561225fbd1dc40a197bde8073f5331844372d4945fc"
+          },
+          {
+            "paper_id": "P184",
+            "pmcid": "PMC13504326",
+            "doi": "10.1016/j.ajhg.2026.06.003",
+            "paragraph_index": 75,
+            "section": "Discussion",
+            "paragraph_sha256": "48fa8cc3aae61f1a0a62c8a1a7c6239e1188d786de063f181622b6ff89593d56"
+          },
+          {
+            "paper_id": "P184",
+            "pmcid": "PMC13504326",
+            "doi": "10.1016/j.ajhg.2026.06.003",
+            "paragraph_index": 84,
+            "section": "Discussion",
+            "paragraph_sha256": "8d038ee7352e1fb844ca69d8e61c2702d7ee410c24e3f387f0a2454c325cc856"
+          }
+        ],
+        "source_role_qualification": {
+          "paper_id": "P184",
+          "reported_version": "2",
+          "selected_runtime_version": "v2.03-r0",
+          "selected_runtime_commit": "09599c19c69f81571c7a7aab4cd2d847a9e0633a",
+          "source_role_review": "complete-main-text-contexts; supplementary-details-open",
+          "runtime_scope": "SCOPED_ORIGINAL_V2_WORKFLOW_AVAILABLE_AUTHOR_EQUIVALENCE_UNESTABLISHED",
+          "reported_version_implemented": null,
+          "exact_author_recipe_qualified": false,
+          "whole_paper_reproduced": false,
+          "remaining_scope": "MethodsS4.2 must be retrieved/reviewed for exact curation details and runtime options. The105-person North African subgroup was identified with PCA, not attributed to RFMix. Do not present excluded local-ancestry methods as members of the Diet Network benchmark. Exact v2 revision and full author recipe remain unreported/unqualified.",
+          "sis_dependent_analysis": "SKIPPED_ORIGINAL_WRITER_FINAL_ITERATION_UNQUALIFIED"
+        }
       },
       {
         "tool_id": "shapeit",
@@ -83556,12 +83684,52 @@
         "matched_text": "RFMix",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "2",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-all-primary-RFMix-contexts",
         "evidence_paragraph_sha256": "614700c746820b11000d1236cdff8d054496307514b9ffc73bb8b232c95947a6",
-        "use_summary": "Local ancestry inference.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13078719/ (section: Subjects and methods / Local ancestry inference with RFMix v.2)"
+        "use_summary": "Used RFMix v2 local ancestry on Eagle-phased Omani genotypes and phased1000Genomes GRCh38 references, reporting10 EM iterations,10 admixture generations and default0.2cM windows. Reused ancestry output for excess-ancestry summaries, MultiWaver2.0 tract dating and ABC summary statistics.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13078719/ (section: Subjects and methods / Local ancestry inference with RFMix v.2)",
+        "implementation_scope_note": "Original RFMix v2.03-r0 (09599c19) phased local ancestry, source-pinned private runtime binding, complete immutable VCF/gzip/BCF+CSI inputs, explicit source model units/options, independent complete sample/locus/filter/map census, guarded original inference, complete MSP/FB/Q checks and fresh saved-input binary/numerical replay. SIS bytes remain retained but SIS-dependent analysis is skipped because the original writer does not certify final-iteration probabilities. No extra native-family credit. Legacy v1.5.4, exact author revisions/reference panels, masking/tract dating and whole-paper reproduction remain separate. SIS-dependent analysis SKIPPED: inspect original logs and output audits; require exact-producer fresh replay before using MSP/FB/Q. P041 reports v1.5.4, whose original runtime remains unavailable/skipped; v2 is not a substitute. Supply a permitted provenance-backed v1.5.4 archive or retain that skip. P142 version remains unreported. P229 reported 0.2 cM windows differ from inspected current 50/5 SNP defaults: declare actual settings and never infer author equivalence. Missing/forbidden prerequisites produce SKIP3; install only where permitted or supply the named input/runtime/helper/index. Invalid/changed data, runtime, producer, model/QC, cancellation or resource exhaustion produce FAIL2 with no complete result; preserve attempts, correct the cause and retry NEW paths. Original upstream academic-use terms apply. Cell Ranger remains excluded; MaxQuant remains pending with runtime analyses skipped. ConstructASCATFiles/PREASCAT code-use permission remains pending. Literature HTMLs remain withheld from Pages.",
+        "supporting_evidence": [
+          {
+            "paper_id": "P229",
+            "pmcid": "PMC13078719",
+            "doi": "10.1016/j.ajhg.2026.02.023",
+            "paragraph_index": 12,
+            "section": "Subjects and methods / Local ancestry inference with RFMix v.2",
+            "paragraph_sha256": "614700c746820b11000d1236cdff8d054496307514b9ffc73bb8b232c95947a6"
+          },
+          {
+            "paper_id": "P229",
+            "pmcid": "PMC13078719",
+            "doi": "10.1016/j.ajhg.2026.02.023",
+            "paragraph_index": 16,
+            "section": "Subjects and methods / Admixture dating",
+            "paragraph_sha256": "5cb32911508c4c2f9e7b295bbcf24f70f7f46686074f60dc3d547c6d0c154b1e"
+          },
+          {
+            "paper_id": "P229",
+            "pmcid": "PMC13078719",
+            "doi": "10.1016/j.ajhg.2026.02.023",
+            "paragraph_index": 18,
+            "section": "Subjects and methods / Inferring the selection coefficient and initial AFR ancestry",
+            "paragraph_sha256": "40b684130e04d97a870ba55c069bdf826f21c024b7f7514a792d9a9b3e475769"
+          }
+        ],
+        "source_role_qualification": {
+          "paper_id": "P229",
+          "reported_version": "2",
+          "selected_runtime_version": "v2.03-r0",
+          "selected_runtime_commit": "09599c19c69f81571c7a7aab4cd2d847a9e0633a",
+          "source_role_review": "complete-main-text-contexts; supplementary-details-open",
+          "runtime_scope": "SCOPED_ORIGINAL_V2_WORKFLOW_AVAILABLE_AUTHOR_EQUIVALENCE_UNESTABLISHED",
+          "reported_version_implemented": null,
+          "exact_author_recipe_qualified": false,
+          "whole_paper_reproduced": false,
+          "remaining_scope": "Exact v2 revision and complete author command/reference inputs remain unreported. The inspected v2.03-r0 source initializes RF-window50 and CRF-spacing5 as SNP-count settings; the paper describes default0.2cM windows. Preserve this discrepancy and require explicit options; do not silently equate the inspected current defaults with the reported author defaults. Downstream MultiWaver/ABC analyses are distinct.",
+          "sis_dependent_analysis": "SKIPPED_ORIGINAL_WRITER_FINAL_ITERATION_UNQUALIFIED"
+        }
       },
       {
         "tool_id": "samtools",
