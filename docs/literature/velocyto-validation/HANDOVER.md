@@ -97,3 +97,20 @@ or worktree retirement is part of this feature. Finish every feature with
 verified task-local cleanup, exact recovery, measured disk change and retained
 evidence/runtime checks. Literature HTMLs remain withheld from Pages, and this
 feature publishes no release/tag.
+
+## Publication and cleanup completion
+
+Feature commit `8d602099f07c112dea3653e4be75076990169782` is on GitHub main; all 52 feature files
+passed full hosted-byte readback. See `COMPLETION.json`. Verified stale compiler
+outputs were removed after publication: 61770 files / 2129597742 logical bytes.
+The measured volume-free-space change after creating the deduplicated recovery
+archive and deleting the compiler outputs was 1931399168 bytes. The private recovery ZIP
+and exact per-path/blob manifest remain in
+`build/tool-audit-899/cleanup-plan-Windows-1`. All five producing JARs, all 2930
+pinned private evidence files and every effective runtime root/node/symlink
+target remain retained. A fresh post-cleanup original Counter API uint64 replay
+of the 65,536-molecule control, including complete native count/export checks,
+passed. Source, canonical catalog and every retained private byte were checked
+again; all 18 foreign worktrees and 51 tracked edits were preserved. No jobs
+were stopped, no worktrees/branch refs removed and no release published.
+The full 250-paper goal remains active.
