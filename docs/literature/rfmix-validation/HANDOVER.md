@@ -1,0 +1,40 @@
+# Continue the 250-paper implementation goal
+
+RFMix now has one scoped upstream workflow family. Feature commit: `2a05970b01111db64ebee229cd9acd10d62762ad`. All 35 public feature files received complete hosted byte readback. The goal remains active: **250 papers, 453 labels, 492 providers, 2,733 observations, 1,825 reviewed/908 pending uses, 172 scoped families (34 native + 138 upstream), and 251 missing labels**. Keep the frozen 2023-10-23..2026-10-23 cohort. The registry is not a discovery ceiling.
+
+## Completed and qualified
+
+Use the source-built `rfmix-tools` command and [workflow guide](../../rfmix-tools.md). [QUALIFICATION.json](QUALIFICATION.json) seals the original v2.03-r0 source profile, producing JAR, source context and 2,939 protected private files. Eight actual captures and eight fresh original replays cover five two/three-population model cases, gzip, indexed BCF, and reference-order/population-label/negative-map/filter selection. All five model outputs match the retained direct-original baselines. Preserve the 536 truth-state mismatches among 96,000 haplotype states; no input, output, probability or threshold was repaired. These checks do not establish biological accuracy, statistical convergence or author-recipe equivalence.
+
+There are 36 native tests per OS, packaged Windows metadata/platform checks, source/runtime/helper/input/resource refusal controls, and no owned live children after cleanup. The post-cleanup 36-test run and fresh indexed-BCF replay pass. The current effective registry is `docs/literature/rfmix-catalog-admission/REGISTRY.json` (492 providers), rather than the 425-definition base registry. Canonical admission preserves the exact predecessor archive/checksums, all 2,729 unrelated observations and all 1,821 prior reviews. Historical source/component seals remain unchanged.
+
+## Warnings and immediate follow-up
+
+**SIS-dependent analysis is SKIPPED.** The original unclosed iteration streams do not certify final-iteration probabilities. Keep every original SIS byte and warning. **P041's v1.5.4 remains skipped/unimplemented; v2 is not a substitute.** Obtain a permitted original archive with provenance or retain the skip. P142's version stays unreported and its per-locus averaging is distinct from assuming Q weights. P184 used ancestry for cohort curation and excluded RFMix from the Diet Network benchmark; Methods S4.2 remains to be reviewed. P229 reports 10 EM iterations, 10 generations and 0.2 cM windows; inspected current defaults are 50/5 SNPs. Exact author revisions, reference panels, supplementary recipes, masking and dating remain open.
+
+**Fix and qualify short-interval argument formatting next.** Source inspection after the eight-case qualification found that the original `rfmix.cpp` splits `--analyze-range` at the first hyphen. Java currently serializes a small positive range start such as `0.0001` as `1.0E-4`, so that exponent hyphen can be mistaken for the interval delimiter. Existing qualified cases use a null range. This remains an unqualified interval path: do not claim interval-mode equivalence. Preserve this qualification and all failed evidence; create a new formatting-fix qualification with plain decimal Mbp arguments, boundary tests, actual original restricted-range captures/replays, and checks against the source's printed effective bp range. Do not refresh this historical producing-JAR seal. Then continue the full cohort implementation goal.
+
+Cell Ranger remains excluded. MaxQuant runtime remains skipped; MaxQuant/Andromeda/MaxDIA remain pending. Latest iDEP is still an open user request: inspect the current source/license and preserve the literal historical iDEP.96 and its legacy source audit. ConstructASCATFiles/PREASCAT permission remains pending. Accepted private academic terms for FIMO, GATK 3.8, SCENIC+, IMPUTE2 and DIA-NN persist; do not repeat approval prompts. RFMix's basic academic-only scope fits existing research authorization.
+
+Missing or forbidden prerequisites produce prominent SKIP3 and skip the dependent analysis, with exact recovery steps. Invalid or changed input, source, runtime, producer, capture, model/QC, cancellation or resources produce FAIL2 with no complete result. Preserve attempts and retry NEW paths after correction. Binding itself installs nothing; eligible private downloads/installs remain authorized where the environment permits them. Keep original upstream source/binaries, papers and raw traces private. Literature HTML reports remain withheld from Pages. No release or tag was created.
+
+## Next implementation priorities
+
+After the interval fix, continue source screening across the full cohort and prioritize impact. Higher-frequency missing labels include GraphPad Prism (47 papers), FACSDiva (17), bcl2fastq and Space Ranger (10 each), and MaxQuant and nf-core (6 each). Do not infer proprietary permission or repeat MaxQuant registration questions. Reconcile nf-core's umbrella label with existing named pipeline adapters before awarding credit. Open workflow candidates with four papers each include Azimuth, GraphTyper, HiC-Pro, Juicer, pbmm2, Popcorn, velocyto and WASP. Compare exact source roles, existing overlap and native Java feasibility before choosing. Continue Methods/supplement discovery beyond registered labels.
+
+## Retained state and recovery
+
+The active checkout is `D:/projects/JLinAlg/build/fu-1`, branch `codex/rfmix-workflow-20261127`. Evidence is under `build/rfmix-894`. Keep all four producing JARs. The qualified producer is `build/rfmix-894/project-build-Windows-4/project-build/cli/omicsmatic-0.4.1.jar`, SHA256 `758a886a2dd348cf956e5ca1e05bd47d32578e2096fee5dbbeedd9e42a84202d`. Original source is `build/rfmix-892/original-v2-source-intake-1/source`; the prior native component/evidence is `build/rfmix-893`. Original XML cache: `D:/projects/JLinAlg/build/literature-review/xml`.
+
+In WSL `JLinAlg-Omics-SAIGE-20261026`, original RFMix is `/opt/omicsmatic-rfmix203r0-20261126-1/prefix-6/bin/rfmix`. Isolated Ubuntu-packaged BCFtools 1.19/HTSlib 1.19+ds is under `/opt/omicsmatic-rfmix-bcftools119-20261127-1/usr`; do not inject its library environment into RFMix. Main binding/captures are `build/rfmix-894/qualification-Linux-4`. Failed/mutation controls are retained, including an intentionally invalidated private runtime copy. Do not use those bindings for analysis. All launched build/qualification sessions are terminal.
+
+Verify retained evidence and current canonical source roles with:
+
+```console
+python -B tools/literature/verify_rfmix_workflows.py --private build/rfmix-894 --xml-cache D:/projects/JLinAlg/build/literature-review/xml --upstream-source build/rfmix-892/original-v2-source-intake-1/source
+python -B tools/literature/rfmix_catalog.py --xml-cache D:/projects/JLinAlg/build/literature-review/xml --upstream-source build/rfmix-892/original-v2-source-intake-1/source
+```
+
+The first command checks retained evidence; it does not run new inference unless explicitly invoked with `--execute-replays` and a NEW Linux scratch root. Metadata-only checks do not re-read original papers. If later code changes, use the exact archived matching context for historical checks rather than refreshing seals.
+
+Cleanup removed verified stale compiler/resource/cache copies after publication. Exact recovery ZIP/plan: `build/rfmix-894/cleanup-plan-Windows-1`. Measured receipt: `build/rfmix-894/cleanup-Windows-2/RECEIPT.json`; the first cleanup controller failed before deletion because of PowerShell 5 encoding syntax and its diagnostic is retained. [COMPLETION.json](COMPLETION.json) records removed paths/byte totals, recovery identity and observed free-space change. Keep scientific inputs, outputs, failures, focused test classes/fixtures, original archives, source contexts, required runtimes and all 19 worktrees. The 18 foreign worktrees' 51 tracked edits, HEADs and statuses remain unchanged. No worktree or unrelated process was removed/stopped. Perform verified task-local cleanup for every subsequent feature.
