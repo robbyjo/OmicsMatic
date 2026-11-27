@@ -30,6 +30,9 @@ See [runtime setup](docs/runtime-requirements.md).
 The source-built [native Matrix eQTL additive workflow](docs/matrixeqtl-native.md)
 adds FP64 Java association scans with explicit cis/trans testing families,
 source imputation and BH behavior, derived SE, and complete saved-input replay.
+The source-built [FlashPCA workflows](docs/flashpca-tools.md) add original
+edition-specific genetic PCA with complete Java genotype/output checks and
+fresh replay, preserving the editions' different PC score conventions.
 The source-built [Popcorn workflows](docs/popcorn-tools.md) add original
 cross-population GWAS covariance scores and correlation fitting, native Java
 regression checks, explicit runtime setup and complete saved-input replay.

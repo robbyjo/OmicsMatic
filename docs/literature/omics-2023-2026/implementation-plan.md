@@ -1,3 +1,20 @@
+# Current original FlashPCA genetic-PCA checkpoint
+
+250 frozen papers; 453 labels and 492 provider definitions; 178 scoped families (35 native, 143 upstream), 1,848 individually reviewed uses and 886 pending uses. FlashPCA replaces an earlier generic method-overlap label with one original-runtime family; 247 labels remain missing. Four distinct primary roles and cited method families are reviewed. Only P240 explicitly reports2.0; other exact author versions remain unresolved. This is source-build qualification, not a released binary, website deployment or completion of the full goal.
+
+**Warnings and required actions:** Require COMPLETED.json and successful fresh flashpca-tools --verify; inspect WARNINGS.md, input/output audits, original logs and failures. SKIP3: supply or install the named permitted prerequisite, then retry NEW paths; dependent analysis is skipped. FAIL2: fix the named source/runtime/input, numerical, capacity or cancellation cause and retry NEW paths; no partial result admitted. Commands install nothing. Official static downloads crashed on the qualified host; tested unchanged-source builds are separate private runtimes. Native matrix residual checks are not a formal global top-k certificate. Preserve producing JARs, bindings, source, inputs and failed attempts.
+
+See [workflow guide](../../flashpca-tools.md), [all four source roles](../flashpca-source-audit/ROLES.json) and [qualification](../flashpca-validation/QUALIFICATION.json). Earlier checkpoints below are historical.
+
+| Paper | Reviewed use | Reported version |
+| --- | --- | --- |
+| P023 | FlashPCA2 computes twenty rare-variant PCs from a uniformly sampled rare-variant panel (MAC >20, MAF <1%) for the All of Us burden analysis; sixteen supplied common PCs are separate. | None |
+| P115 | FlashPCA generates twenty genetic PCs for a 337,129-person UK Biobank ancestry subset; the PCs and genotyping-array covariates enter downstream PLINK2 GWAS models. | None |
+| P118 | FlashPCA computes twenty PCs plus eigenvalues, loadings and variance explained for 337,126 unrelated white British UK Biobank participants using 68,619 LD-pruned common SNPs. | None |
+| P240 | FlashPCA2.0 computes ATLAS genetic PCs after genotype QC; the source explicitly describes MAF <15% and HWE p>0.001, followed by a separate K-nearest-neighbor ancestry assignment using 1000 Genomes. | 2.0 |
+
+---
+
 # Current native MatrixEQTL additive checkpoint
 
 250 frozen papers; 453 named labels and 492 provider definitions; 177 scoped families (35 native, 142 upstream), 1,844 individually reviewed uses and 890 pending uses. MatrixEQTL adds one bounded native additive family by replacing an earlier method-overlap label; the missing-label count remains 247. Four primary-paper roles are reviewed without claiming whole-paper reproduction. This is source-build qualification, not a released binary, website deployment or completion of the full goal.

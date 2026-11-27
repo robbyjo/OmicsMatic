@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "tool_id": "flashpca",
+  "roles": [
+    {
+      "paper_id": "P023",
+      "source_role": "Twenty rare-variant genetic PCs for an All of Us LoF burden analysis; sixteen common-variant PCs were supplied separately by the release.",
+      "reported_version": null,
+      "runtime_scope": "Explicit selected original major-2 PCA profile on the actual supplied BED/BIM/FAM rare-variant sample/marker population, with twenty requested components and complete source scaling/output checks.",
+      "remaining_scope": "The paper does not report the exact software patch, seed, random-panel membership or sampling fraction. The supplied sixteen common PCs are not recomputed by this FlashPCA task. The reported phenotype filtering, 213,787 sequenced participants with MCH, latest-visit selection, LoF annotation and downstream burden analysis remain separate.",
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P115",
+      "source_role": "Twenty genetic PCs on 337,129 white British UK Biobank individuals as GWAS covariates.",
+      "reported_version": null,
+      "runtime_scope": "Separately tested original legacy 1.2.6 and modern 2.0 profiles preserve different scales/score conventions; the caller must select an edition explicitly. A 2014 method citation does not prove the exact executed author binary.",
+      "remaining_scope": "Exact author software edition/patch and supplementary sample/marker QC are unresolved. PLINK2 logistic/linear GWAS, phenotype imputation, array coding, phenotype populations and METASOFT heterogeneity are separate; a generic Java PCA is not substituted for the original runtime.",
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P118",
+      "source_role": "Twenty genotype PCs, eigenvalues, SNP loadings and variance explained from a specifically QC-filtered 68,619-SNP array panel.",
+      "reported_version": null,
+      "runtime_scope": "Explicit original major-2 source profile with complete PCs, eigenvectors, eigenvalues, A1 loadings, SNP moments and trace-based PVE; exact author patch is not recovered from its method citation.",
+      "remaining_scope": "The source separately describes sample QC, MAF >=0.1% and HWE >1e-6, exclusion of 20,567 structural/MHC-region SNPs, common-MAF >5%, missingness <0.002 and LD r2<0.1 in 1,000-SNP windows. Actual membership and these preparations remain caller responsibilities; no author filter/sample population or downstream GWAS is reproduced.",
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P240",
+      "source_role": "Genetic PCs on a prepared ATLAS genotype panel for subsequent ancestry assignment and association preparation.",
+      "reported_version": "2.0",
+      "runtime_scope": "Original unchanged v2.0 source-built PCA on caller-prepared BED/BIM/FAM genotypes, with exact sample/variant/A1 population and complete numeric output audits.",
+      "remaining_scope": "The MAF <15% wording is preserved rather than inverted to a conventional lower MAF filter. The PC count, actual panel membership, lift-over, missingness/strand-ambiguity QC and 1000 Genomes/KNN ancestry labels are not inferred. Phecode mapping and exclusion of ambiguous ancestry or absent phenotypes remain separate.",
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false
+    }
+  ],
+  "new_family_credit": 1,
+  "whole_paper_reproduced": false
+}

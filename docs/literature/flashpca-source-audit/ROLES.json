@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "tool_id": "flashpca",
+  "roles": [
+    {
+      "reported_version": null,
+      "reported_family": "FlashPCA2 by explicit name and 2017 citation",
+      "source_role": "Twenty rare-variant genetic PCs for an All of Us LoF burden analysis; sixteen common-variant PCs were supplied separately by the release.",
+      "use_summary": "FlashPCA2 computes twenty rare-variant PCs from a uniformly sampled rare-variant panel (MAC >20, MAF <1%) for the All of Us burden analysis; sixteen supplied common PCs are separate.",
+      "runtime_scope": "Explicit selected original major-2 PCA profile on the actual supplied BED/BIM/FAM rare-variant sample/marker population, with twenty requested components and complete source scaling/output checks.",
+      "remaining_scope": "The paper does not report the exact software patch, seed, random-panel membership or sampling fraction. The supplied sixteen common PCs are not recomputed by this FlashPCA task. The reported phenotype filtering, 213,787 sequenced participants with MCH, latest-visit selection, LoF annotation and downstream burden analysis remain separate.",
+      "paper_id": "P023",
+      "raw_observation_preserved": {
+        "tool_id": "flashpca",
+        "tool": "FlashPCA",
+        "analysis_role": "Genetic principal components",
+        "evidence_section": "Methods / LoF burden test in the All of Us cohort",
+        "evidence_paragraph_index": 76,
+        "matched_text": "FlashPCA2",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "22b33de5ba8b157ac4f1ef0516757f59c092ba060919731b55f789a576061129",
+        "use_summary": "Genetic principal components.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12893915/ (section: Methods / LoF burden test in the All of Us cohort)"
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P023",
+          "pmcid": "PMC12893915",
+          "doi": "10.1038/s41586-025-09866-3",
+          "paragraph_index": 76,
+          "section": "Methods / LoF burden test in the All of Us cohort",
+          "paragraph_sha256": "22b33de5ba8b157ac4f1ef0516757f59c092ba060919731b55f789a576061129"
+        }
+      ],
+      "method_citation": {
+        "paper_id": "P023",
+        "reference_id": "R81",
+        "reference_sha256": "af73ac1ec7151a933495834dd4e38b4a64880d68f0be91b42e3a0c71ec8c273d",
+        "method_family": "FlashPCA2 / 2017",
+        "exact_author_patch_established": false
+      },
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    },
+    {
+      "reported_version": null,
+      "reported_family": "FlashPCA method cited to the 2014 paper; exact executed edition remains unreported",
+      "source_role": "Twenty genetic PCs on 337,129 white British UK Biobank individuals as GWAS covariates.",
+      "use_summary": "FlashPCA generates twenty genetic PCs for a 337,129-person UK Biobank ancestry subset; the PCs and genotyping-array covariates enter downstream PLINK2 GWAS models.",
+      "runtime_scope": "Separately tested original legacy 1.2.6 and modern 2.0 profiles preserve different scales/score conventions; the caller must select an edition explicitly. A 2014 method citation does not prove the exact executed author binary.",
+      "remaining_scope": "Exact author software edition/patch and supplementary sample/marker QC are unresolved. PLINK2 logistic/linear GWAS, phenotype imputation, array coding, phenotype populations and METASOFT heterogeneity are separate; a generic Java PCA is not substituted for the original runtime.",
+      "paper_id": "P115",
+      "raw_observation_preserved": {
+        "tool_id": "flashpca",
+        "tool": "FlashPCA",
+        "analysis_role": "Genetic principal components",
+        "evidence_section": "Methods / GWASs on observed or imputed phenotypes",
+        "evidence_paragraph_index": 41,
+        "matched_text": "flashPCA",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "6a6c9fd5be7adaf36a4d4b1aa12cd1c503ba195fb59ce467bca951c97634536f",
+        "use_summary": "Genetic principal components.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703686/ (section: Methods / GWASs on observed or imputed phenotypes)"
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P115",
+          "pmcid": "PMC10703686",
+          "doi": "10.1038/s41588-023-01559-9",
+          "paragraph_index": 41,
+          "section": "Methods / GWASs on observed or imputed phenotypes",
+          "paragraph_sha256": "6a6c9fd5be7adaf36a4d4b1aa12cd1c503ba195fb59ce467bca951c97634536f"
+        }
+      ],
+      "method_citation": {
+        "paper_id": "P115",
+        "reference_id": "CR86",
+        "reference_sha256": "fb9eecf2a265d39e99e3bb9d12fb397176acea7c6fecf5a4d40fab14eadc2c9e",
+        "method_family": "FlashPCA / 2014",
+        "exact_author_patch_established": false
+      },
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    },
+    {
+      "reported_version": null,
+      "reported_family": "Generic FlashPCA name with the 2017 FlashPCA2 method citation",
+      "source_role": "Twenty genotype PCs, eigenvalues, SNP loadings and variance explained from a specifically QC-filtered 68,619-SNP array panel.",
+      "use_summary": "FlashPCA computes twenty PCs plus eigenvalues, loadings and variance explained for 337,126 unrelated white British UK Biobank participants using 68,619 LD-pruned common SNPs.",
+      "runtime_scope": "Explicit original major-2 source profile with complete PCs, eigenvectors, eigenvalues, A1 loadings, SNP moments and trace-based PVE; exact author patch is not recovered from its method citation.",
+      "remaining_scope": "The source separately describes sample QC, MAF >=0.1% and HWE >1e-6, exclusion of 20,567 structural/MHC-region SNPs, common-MAF >5%, missingness <0.002 and LD r2<0.1 in 1,000-SNP windows. Actual membership and these preparations remain caller responsibilities; no author filter/sample population or downstream GWAS is reproduced.",
+      "paper_id": "P118",
+      "raw_observation_preserved": {
+        "tool_id": "flashpca",
+        "tool": "FlashPCA",
+        "analysis_role": "Genetic principal components",
+        "evidence_section": "Methods / Details of GWAS analysis",
+        "evidence_paragraph_index": 43,
+        "matched_text": "FlashPCA",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "4e12b77a26d9e06adf2722e34d40f712cd5ccd6343ac0d772fd6cc19fec0bcf5",
+        "use_summary": "Genetic principal components.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703681/ (section: Methods / Details of GWAS analysis)"
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P118",
+          "pmcid": "PMC10703681",
+          "doi": "10.1038/s41588-023-01558-w",
+          "paragraph_index": 43,
+          "section": "Methods / Details of GWAS analysis",
+          "paragraph_sha256": "4e12b77a26d9e06adf2722e34d40f712cd5ccd6343ac0d772fd6cc19fec0bcf5"
+        }
+      ],
+      "method_citation": {
+        "paper_id": "P118",
+        "reference_id": "CR40",
+        "reference_sha256": "0c240c1c9ded2630f4cd7f1c82bb945935b7c106d116255a391382ec61f63a25",
+        "method_family": "FlashPCA2 / 2017",
+        "exact_author_patch_established": false
+      },
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    },
+    {
+      "reported_version": "2.0",
+      "reported_family": "Explicit FlashPCA 2.0, followed immediately by reference36 in source XML",
+      "source_role": "Genetic PCs on a prepared ATLAS genotype panel for subsequent ancestry assignment and association preparation.",
+      "use_summary": "FlashPCA2.0 computes ATLAS genetic PCs after genotype QC; the source explicitly describes MAF <15% and HWE p>0.001, followed by a separate K-nearest-neighbor ancestry assignment using 1000 Genomes.",
+      "runtime_scope": "Original unchanged v2.0 source-built PCA on caller-prepared BED/BIM/FAM genotypes, with exact sample/variant/A1 population and complete numeric output audits.",
+      "remaining_scope": "The MAF <15% wording is preserved rather than inverted to a conventional lower MAF filter. The PC count, actual panel membership, lift-over, missingness/strand-ambiguity QC and 1000 Genomes/KNN ancestry labels are not inferred. Phecode mapping and exclusion of ambiguous ancestry or absent phenotypes remain separate.",
+      "paper_id": "P240",
+      "raw_observation_preserved": {
+        "tool_id": "flashpca",
+        "tool": "FlashPCA",
+        "analysis_role": "Genetic principal components",
+        "evidence_section": "Subjects and methods / Genetic and phenotypic data collection and preprocessing",
+        "evidence_paragraph_index": 11,
+        "matched_text": "FlashPCA 2",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "10fe4417fc031cf3821f806fd64b7c6de0171097433e4515535b0fc0aacba806",
+        "use_summary": "Genetic principal components.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13087405/ (section: Subjects and methods / Genetic and phenotypic data collection and preprocessing)"
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P240",
+          "pmcid": "PMC13087405",
+          "doi": "10.1016/j.ajhg.2026.02.011",
+          "paragraph_index": 11,
+          "section": "Subjects and methods / Genetic and phenotypic data collection and preprocessing",
+          "paragraph_sha256": "10fe4417fc031cf3821f806fd64b7c6de0171097433e4515535b0fc0aacba806"
+        }
+      ],
+      "method_citation": {
+        "paper_id": "P240",
+        "reference_id": "bib36",
+        "reference_sha256": "e732741eeaab864dade51fe0cb820ba0a5ad5d88968bcf33b433882dd8e48679",
+        "method_family": "FlashPCA2 / 2017",
+        "exact_author_patch_established": false
+      },
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    }
+  ],
+  "raw_article_text_published": false,
+  "whole_goal_complete": false
+}

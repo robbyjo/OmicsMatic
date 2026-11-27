@@ -27479,9 +27479,9 @@
     "name": "FlashPCA",
     "pattern": "(?<![A-Za-z0-9_])(?:FlashPCA\\s*2?)(?![A-Za-z0-9_])",
     "role": "Genetic principal components",
-    "current_coverage": "method-overlap",
-    "existing_source": "src/main/java/org/jlinalg/cli/ConfounderCli.java",
-    "coverage_note": "Related native method; upstream software options and numerical equivalence require separate validation.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/FlashpcaToolsCli.java",
+    "coverage_note": "Original unchanged-source FlashPCA1.2.6/2.0 linear genotype PCA from the complete supplied SNP-major BED/BIM/FAM population. Legacy Eigen/SVD, HIGH/LOW memory and explicit/automatic transpose remain distinct from modern online SNP blocks, BINOM/BINOM2 and covariance divisors. Java audits every genotype and all source sample/variant/A1 numeric tables, moments, eigenvector covariance residuals, score/loadings identities and full trace/PVE. Source-built runtime/producer binding and complete fresh original replay accompany independent full-SVD controls. Edition-specific six/fifteen-digit precision, PC scaling, monomorphic handling and modern seed behavior remain explicit. No caller QC/MAF/HWE/LD/region filters, rare-panel sampling, ancestry labels, author patch recovery or whole-paper/biobank deployment is inferred.",
     "paper_count": 4,
     "papers": [
       "P023",
@@ -27489,10 +27489,48 @@
       "P118",
       "P240"
     ],
-    "implementation_status": "method-overlap",
-    "implementation_source": "src/main/java/org/jlinalg/cli/ConfounderCli.java",
-    "implementation_scope": "Related native method; upstream software options and numerical equivalence require separate validation.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/FlashpcaToolsCli.java",
+    "implementation_scope": "Original unchanged-source FlashPCA1.2.6/2.0 linear genotype PCA from the complete supplied SNP-major BED/BIM/FAM population. Legacy Eigen/SVD, HIGH/LOW memory and explicit/automatic transpose remain distinct from modern online SNP blocks, BINOM/BINOM2 and covariance divisors. Java audits every genotype and all source sample/variant/A1 numeric tables, moments, eigenvector covariance residuals, score/loadings identities and full trace/PVE. Source-built runtime/producer binding and complete fresh original replay accompany independent full-SVD controls. Edition-specific six/fifteen-digit precision, PC scaling, monomorphic handling and modern seed behavior remain explicit. No caller QC/MAF/HWE/LD/region filters, rare-panel sampling, ancestry labels, author patch recovery or whole-paper/biobank deployment is inferred.",
+    "validation_note": "Fourteen component/contract tests pass; seven complete original PCA captures and fresh replays across both editions include explicit standardization/divisor, memory, algorithm and transpose branches. Four independent complete R-SVD cases compare twenty full eigenvalue/vector/loading/score/PVE quantities. Ten packaged SKIP3/FAIL2 refusals admit no partial result. Complete original static-download crashes and source-build provenance remain retained. See docs/literature/flashpca-validation/QUALIFICATION.json.",
+    "paper_role_qualification": {
+      "P023": {
+        "paper_id": "P023",
+        "source_role": "Twenty rare-variant genetic PCs for an All of Us LoF burden analysis; sixteen common-variant PCs were supplied separately by the release.",
+        "reported_version": null,
+        "runtime_scope": "Explicit selected original major-2 PCA profile on the actual supplied BED/BIM/FAM rare-variant sample/marker population, with twenty requested components and complete source scaling/output checks.",
+        "remaining_scope": "The paper does not report the exact software patch, seed, random-panel membership or sampling fraction. The supplied sixteen common PCs are not recomputed by this FlashPCA task. The reported phenotype filtering, 213,787 sequenced participants with MCH, latest-visit selection, LoF annotation and downstream burden analysis remain separate.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P115": {
+        "paper_id": "P115",
+        "source_role": "Twenty genetic PCs on 337,129 white British UK Biobank individuals as GWAS covariates.",
+        "reported_version": null,
+        "runtime_scope": "Separately tested original legacy 1.2.6 and modern 2.0 profiles preserve different scales/score conventions; the caller must select an edition explicitly. A 2014 method citation does not prove the exact executed author binary.",
+        "remaining_scope": "Exact author software edition/patch and supplementary sample/marker QC are unresolved. PLINK2 logistic/linear GWAS, phenotype imputation, array coding, phenotype populations and METASOFT heterogeneity are separate; a generic Java PCA is not substituted for the original runtime.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P118": {
+        "paper_id": "P118",
+        "source_role": "Twenty genotype PCs, eigenvalues, SNP loadings and variance explained from a specifically QC-filtered 68,619-SNP array panel.",
+        "reported_version": null,
+        "runtime_scope": "Explicit original major-2 source profile with complete PCs, eigenvectors, eigenvalues, A1 loadings, SNP moments and trace-based PVE; exact author patch is not recovered from its method citation.",
+        "remaining_scope": "The source separately describes sample QC, MAF >=0.1% and HWE >1e-6, exclusion of 20,567 structural/MHC-region SNPs, common-MAF >5%, missingness <0.002 and LD r2<0.1 in 1,000-SNP windows. Actual membership and these preparations remain caller responsibilities; no author filter/sample population or downstream GWAS is reproduced.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      },
+      "P240": {
+        "paper_id": "P240",
+        "source_role": "Genetic PCs on a prepared ATLAS genotype panel for subsequent ancestry assignment and association preparation.",
+        "reported_version": "2.0",
+        "runtime_scope": "Original unchanged v2.0 source-built PCA on caller-prepared BED/BIM/FAM genotypes, with exact sample/variant/A1 population and complete numeric output audits.",
+        "remaining_scope": "The MAF <15% wording is preserved rather than inverted to a conventional lower MAF filter. The PC count, actual panel membership, lift-over, missingness/strand-ambiguity QC and 1000 Genomes/KNN ancestry labels are not inferred. Phecode mapping and exclusion of ambiguous ancestry or absent phenotypes remain separate.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false
+      }
+    }
   },
   {
     "id": "dragen",
