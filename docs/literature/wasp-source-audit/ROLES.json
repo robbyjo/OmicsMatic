@@ -1,0 +1,164 @@
+{
+  "schema_version": 1,
+  "roles": [
+    {
+      "source_role": "modified-WASP-Hornet",
+      "reported_version": null,
+      "use_summary": "Applied the paper-linked Hornet modification of WASP to retain stable allele-swapped remapping positions in hybrid-species expression analysis.",
+      "runtime_scope": "FULL_HORNET_PIPELINE_PENDING_NATIVE_ALLELE_COMPONENT_AVAILABLE",
+      "remaining_scope": "Full Hornet mapper/filter pipeline, exact author revision, species-specific references and variant preparation remain distinct from standalone WASP.",
+      "paper_id": "P007",
+      "pmcid": "PMC13668659",
+      "doi": "10.1038/s41586-026-11053-x",
+      "raw_observation_preserved": {
+        "tool_id": "wasp",
+        "tool": "WASP",
+        "analysis_role": "Allele-swapped read remapping for allelic mapping-bias filtering",
+        "evidence_section": "Methods / Identification of gene expression differences",
+        "evidence_paragraph_index": 88,
+        "matched_text": "WASP",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "c521a5e0e4b40b666a83fdc436e5f47a2abe1d8c63b7a0ff93160aad98faa0d4",
+        "use_summary": "Used a modified WASP pipeline to retain reads mapping to the same position after in silico allele swapping in cross-species hybrid-cell allele-specific expression analysis; indel-overlapping reads were discarded separately.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13668659/ (section: Methods / Identification of gene expression differences)",
+        "implementation_scope_note": "Allele-specific remapping/filtering is still missing. Ordinary STAR two-pass alignment does not implement this bias control or the study variant-selection logic."
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P007",
+          "pmcid": "PMC13668659",
+          "doi": "10.1038/s41586-026-11053-x",
+          "paragraph_index": 88,
+          "section": "Methods / Identification of gene expression differences",
+          "paragraph_sha256": "c521a5e0e4b40b666a83fdc436e5f47a2abe1d8c63b7a0ff93160aad98faa0d4"
+        }
+      ],
+      "already_reviewed": true,
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "source_role": "STARsolo-built-in-WASP",
+      "reported_version": "STARsolo 2.7.10a; standalone WASP version unreported",
+      "use_summary": "Used the built-in STARsolo WASP mode with a prepared sample VCF, then selected unique proper pairs passing that filter in barcode/UMI-aware RNA processing.",
+      "runtime_scope": "STARSOLO_BUILT_IN_MODE_PENDING",
+      "remaining_scope": "STARsolo2.7.10a barcode/UMI/whitelist configuration, vW filtering and complete post-QC VCF recipe remain outside the standalone WASP/BWA adapter.",
+      "paper_id": "P073",
+      "pmcid": "PMC11631754",
+      "doi": "10.1038/s41588-024-02019-8",
+      "raw_observation_preserved": {
+        "tool_id": "wasp",
+        "tool": "WASP",
+        "analysis_role": "Allele-swapped read remapping for allelic mapping-bias filtering",
+        "evidence_section": "Methods / Quantification of mRNA AS",
+        "evidence_paragraph_index": 36,
+        "matched_text": "WASP",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "usage-summary-reviewed; paper-wide-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "individually-reviewed-paragraph",
+        "evidence_paragraph_sha256": "9f6c246887074018f9ce6843b74ec7bf793ec92d6333afe27f1e3cb73c305c53",
+        "use_summary": "Applied STARsolo waspOutputMode using each sample's post-QC VCF to reduce allelic mapping bias before retaining unique proper pairs that passed WASP filtering.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11631754/ (section: Methods / Quantification of mRNA AS)",
+        "implementation_scope_note": "The typed bulk STAR adapter does not expose WASP or infer a suitable sample VCF. Variant alignment, allele swapping/filter validation and barcode/UMI context remain missing."
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P073",
+          "pmcid": "PMC11631754",
+          "doi": "10.1038/s41588-024-02019-8",
+          "paragraph_index": 36,
+          "section": "Methods / Quantification of mRNA AS",
+          "paragraph_sha256": "9f6c246887074018f9ce6843b74ec7bf793ec92d6333afe27f1e3cb73c305c53"
+        }
+      ],
+      "already_reviewed": true,
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "source_role": "explicitly-omitted-for-sQTL",
+      "reported_version": null,
+      "use_summary": "Explicitly omitted the GTEx WASP and z-score filters when preparing the study sQTL analysis; this mention does not describe running WASP for that step.",
+      "runtime_scope": "OMITTED_STEP_NO_WASP_RUNTIME_REQUIRED",
+      "remaining_scope": "This omission applies to the stated sQTL filtering step. It does not establish whole-paper non-use or reproduce the remaining sQTL pipeline.",
+      "paper_id": "P157",
+      "pmcid": "PMC11525184",
+      "doi": "10.1038/s41588-024-01896-3",
+      "raw_observation_preserved": {
+        "tool_id": "wasp",
+        "tool": "WASP",
+        "analysis_role": "Allele-swapped read remapping for allelic mapping-bias filtering",
+        "evidence_section": "Methods / eQTL and sQTL fine-mapping",
+        "evidence_paragraph_index": 44,
+        "matched_text": "WASP",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "e27cb6d5f08ec56dde49eb50f7da4c6cb4738db661b73f0c51bd6c7e5d949722",
+        "use_summary": "Allele-swapped read remapping for allelic mapping-bias filtering.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11525184/ (section: Methods / eQTL and sQTL fine-mapping)"
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P157",
+          "pmcid": "PMC11525184",
+          "doi": "10.1038/s41588-024-01896-3",
+          "paragraph_index": 44,
+          "section": "Methods / eQTL and sQTL fine-mapping",
+          "paragraph_sha256": "e27cb6d5f08ec56dde49eb50f7da4c6cb4738db661b73f0c51bd6c7e5d949722"
+        }
+      ],
+      "already_reviewed": false,
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "source_role": "standalone-WASP-remapping",
+      "reported_version": "0.3.4 with updates as of 2023-02-09",
+      "use_summary": "Removed allelic mapping bias from donor/cell-type pseudobulk ATAC BAMs using WASP0.3.4; remapped with BWA-mem0.7.17 -M -I250,150 as the authors stated approximation of Cell Ranger alignment.",
+      "runtime_scope": "SCOPED_ORIGINAL_STANDALONE_MAPPING_AVAILABLE_AUTHOR_RECIPE_UNQUALIFIED",
+      "remaining_scope": "The selected official WASP commit is the latest before2023-02-10, not proof of the author revision. Exact donor/cell-type BAMs, genotype/reference preparation, variant mode, settings and downstream caQTL analysis remain unqualified. Cell Ranger is excluded by the user and is not substituted into remapping.",
+      "paper_id": "P187",
+      "pmcid": "PMC12805840",
+      "doi": "10.1016/j.ajhg.2025.11.009",
+      "raw_observation_preserved": {
+        "tool_id": "wasp",
+        "tool": "WASP",
+        "analysis_role": "Allele-swapped read remapping for allelic mapping-bias filtering",
+        "evidence_section": "Material and methods / Mapping caQTL",
+        "evidence_paragraph_index": 18,
+        "matched_text": "WASP",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": "0.3.4",
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "45cd41caa4c044909016b52cd2262f086615e118d7fdefd3ef3579494d047f3d",
+        "use_summary": "Allele-swapped read remapping for allelic mapping-bias filtering.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12805840/ (section: Material and methods / Mapping caQTL)"
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P187",
+          "pmcid": "PMC12805840",
+          "doi": "10.1016/j.ajhg.2025.11.009",
+          "paragraph_index": 18,
+          "section": "Material and methods / Mapping caQTL",
+          "paragraph_sha256": "45cd41caa4c044909016b52cd2262f086615e118d7fdefd3ef3579494d047f3d"
+        }
+      ],
+      "already_reviewed": false,
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false
+    }
+  ],
+  "source_text_published": false
+}

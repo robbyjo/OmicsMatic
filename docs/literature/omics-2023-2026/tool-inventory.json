@@ -26664,9 +26664,9 @@
     "name": "WASP",
     "pattern": "(?-i:(?<![A-Za-z0-9_])WASP(?![A-Za-z0-9_]))",
     "role": "Allele-swapped read remapping for allelic mapping-bias filtering",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "Named allelic mapping-bias method remains missing; bulk STAR alignment and gene counts do not implement the required variant-aware filtering.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/WaspToolsCli.java",
+    "coverage_note": "Original standalone WASP0.3.4 mapping at d3b8447f with original BWA0.7.17: source/runtime/JAR-bound private execution, complete captured BAM/reference/variant inputs, text and explicit HDF sample/contig modes, checked original VCF-to-HDF conversion, original allele FASTQs/remapping/filtering, retained-original merge, optional seeded paired duplicate removal, final indexed BAM, native complete-population QC and fresh saved-input replay. Native helpers receive no separate family credit. Hornet, STARsolo built-in WASP, CHT, exact author recipes and whole-paper reproduction remain separate.",
     "paper_count": 4,
     "papers": [
       "P007",
@@ -26674,10 +26674,52 @@
       "P157",
       "P187"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Named allelic mapping-bias method remains missing; bulk STAR alignment and gene counts do not implement the required variant-aware filtering.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/WaspToolsCli.java",
+    "implementation_scope": "Original standalone WASP0.3.4 mapping at d3b8447f with original BWA0.7.17: source/runtime/JAR-bound private execution, complete captured BAM/reference/variant inputs, text and explicit HDF sample/contig modes, checked original VCF-to-HDF conversion, original allele FASTQs/remapping/filtering, retained-original merge, optional seeded paired duplicate removal, final indexed BAM, native complete-population QC and fresh saved-input replay. Native helpers receive no separate family credit. Hornet, STARsolo built-in WASP, CHT, exact author recipes and whole-paper reproduction remain separate.",
+    "validation_note": "Actual original workflow captures and fresh replays, independent complete original-source comparisons, 355 native/regression tests per OS, and prominent packaged prerequisite/data/tamper refusals. See docs/literature/wasp-validation/QUALIFICATION.json.",
+    "paper_role_qualification": {
+      "P007": {
+        "paper_id": "P007",
+        "source_role": "modified-WASP-Hornet",
+        "reported_version": null,
+        "runtime_scope": "FULL_HORNET_PIPELINE_PENDING_NATIVE_ALLELE_COMPONENT_AVAILABLE",
+        "remaining_scope": "Full Hornet mapper/filter pipeline, exact author revision, species-specific references and variant preparation remain distinct from standalone WASP.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false,
+        "already_reviewed_preserved": true
+      },
+      "P073": {
+        "paper_id": "P073",
+        "source_role": "STARsolo-built-in-WASP",
+        "reported_version": "STARsolo 2.7.10a; standalone WASP version unreported",
+        "runtime_scope": "STARSOLO_BUILT_IN_MODE_PENDING",
+        "remaining_scope": "STARsolo2.7.10a barcode/UMI/whitelist configuration, vW filtering and complete post-QC VCF recipe remain outside the standalone WASP/BWA adapter.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false,
+        "already_reviewed_preserved": true
+      },
+      "P157": {
+        "paper_id": "P157",
+        "source_role": "explicitly-omitted-for-sQTL",
+        "reported_version": null,
+        "runtime_scope": "OMITTED_STEP_NO_WASP_RUNTIME_REQUIRED",
+        "remaining_scope": "This omission applies to the stated sQTL filtering step. It does not establish whole-paper non-use or reproduce the remaining sQTL pipeline.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false,
+        "already_reviewed_preserved": false
+      },
+      "P187": {
+        "paper_id": "P187",
+        "source_role": "standalone-WASP-remapping",
+        "reported_version": "0.3.4 with updates as of 2023-02-09",
+        "runtime_scope": "SCOPED_ORIGINAL_STANDALONE_MAPPING_AVAILABLE_AUTHOR_RECIPE_UNQUALIFIED",
+        "remaining_scope": "The selected official WASP commit is the latest before2023-02-10, not proof of the author revision. Exact donor/cell-type BAMs, genotype/reference preparation, variant mode, settings and downstream caQTL analysis remain unqualified. Cell Ranger is excluded by the user and is not substituted into remapping.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false,
+        "already_reviewed_preserved": false
+      }
+    }
   },
   {
     "id": "chimerax",

@@ -35052,6 +35052,62 @@
         "remaining_scope": "Exact v2 revision and complete author command/reference inputs remain unreported. The inspected v2.03-r0 source initializes RF-window50 and CRF-spacing5 as SNP-count settings; the paper describes default0.2cM windows. Preserve this discrepancy and require explicit options; do not silently equate the inspected current defaults with the reported author defaults. Downstream MultiWaver/ABC analyses are distinct.",
         "sis_dependent_analysis": "SKIPPED_ORIGINAL_WRITER_FINAL_ITERATION_UNQUALIFIED"
       }
+    },
+    {
+      "pmcid": "PMC11525184",
+      "doi": "10.1038/s41588-024-01896-3",
+      "tool_id": "wasp",
+      "evidence_paragraph_sha256": "e27cb6d5f08ec56dde49eb50f7da4c6cb4738db661b73f0c51bd6c7e5d949722",
+      "use_summary": "Explicitly omitted the GTEx WASP and z-score filters when preparing the study sQTL analysis; this mention does not describe running WASP for that step.",
+      "implementation_scope_note": "The stated sQTL step omitted WASP; no WASP execution is claimed or required for that omitted step. This omission applies to the stated sQTL filtering step. It does not establish whole-paper non-use or reproduce the remaining sQTL pipeline. WARNINGS AND REQUIRED ACTION: inspect all original logs and input/output audits, require completion plus exact-producer fresh replay, and retain every attempt. Missing/forbidden prerequisites produce SKIP3 and skip dependent analysis; supply/install the named software or input only where permitted and retry NEW paths. Invalid/changed bytes, QC/native disagreement, cancellation or resource exhaustion produce FAIL2 and no complete result. Native BAM audits retain records/maps in JVM memory; declared capacities do not reserve heap or establish whole-genome scale. Source quality/orientation conventions, unordered paired CIGAR comparison and partial-GT masking remain explicit; lossy converter truncation and retained wrong-chromosome matches fail admission. Empty final BAM skips downstream analysis. RFMix SIS-dependent analysis remains SKIPPED; legacy RFMix1.5.4 remains unavailable and v2 is not a substitute. Cell Ranger remains excluded; MaxQuant remains pending with runtime analyses skipped. ConstructASCATFiles/PREASCAT permission remains pending. Literature HTMLs remain withheld from Pages.",
+      "supporting_evidence": [
+        {
+          "paper_id": "P157",
+          "pmcid": "PMC11525184",
+          "doi": "10.1038/s41588-024-01896-3",
+          "paragraph_index": 44,
+          "section": "Methods / eQTL and sQTL fine-mapping",
+          "paragraph_sha256": "e27cb6d5f08ec56dde49eb50f7da4c6cb4738db661b73f0c51bd6c7e5d949722"
+        }
+      ],
+      "source_role_qualification": {
+        "paper_id": "P157",
+        "source_role": "explicitly-omitted-for-sQTL",
+        "reported_version": null,
+        "runtime_scope": "OMITTED_STEP_NO_WASP_RUNTIME_REQUIRED",
+        "remaining_scope": "This omission applies to the stated sQTL filtering step. It does not establish whole-paper non-use or reproduce the remaining sQTL pipeline.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false,
+        "already_reviewed_preserved": false
+      }
+    },
+    {
+      "pmcid": "PMC12805840",
+      "doi": "10.1016/j.ajhg.2025.11.009",
+      "tool_id": "wasp",
+      "evidence_paragraph_sha256": "45cd41caa4c044909016b52cd2262f086615e118d7fdefd3ef3579494d047f3d",
+      "use_summary": "Removed allelic mapping bias from donor/cell-type pseudobulk ATAC BAMs using WASP0.3.4; remapped with BWA-mem0.7.17 -M -I250,150 as the authors stated approximation of Cell Ranger alignment.",
+      "implementation_scope_note": "Original standalone WASP0.3.4 mapping at d3b8447f with original BWA0.7.17: source/runtime/JAR-bound private execution, complete captured BAM/reference/variant inputs, text and explicit HDF sample/contig modes, checked original VCF-to-HDF conversion, original allele FASTQs/remapping/filtering, retained-original merge, optional seeded paired duplicate removal, final indexed BAM, native complete-population QC and fresh saved-input replay. Native helpers receive no separate family credit. Hornet, STARsolo built-in WASP, CHT, exact author recipes and whole-paper reproduction remain separate. The selected official WASP commit is the latest before2023-02-10, not proof of the author revision. Exact donor/cell-type BAMs, genotype/reference preparation, variant mode, settings and downstream caQTL analysis remain unqualified. Cell Ranger is excluded by the user and is not substituted into remapping. WARNINGS AND REQUIRED ACTION: inspect all original logs and input/output audits, require completion plus exact-producer fresh replay, and retain every attempt. Missing/forbidden prerequisites produce SKIP3 and skip dependent analysis; supply/install the named software or input only where permitted and retry NEW paths. Invalid/changed bytes, QC/native disagreement, cancellation or resource exhaustion produce FAIL2 and no complete result. Native BAM audits retain records/maps in JVM memory; declared capacities do not reserve heap or establish whole-genome scale. Source quality/orientation conventions, unordered paired CIGAR comparison and partial-GT masking remain explicit; lossy converter truncation and retained wrong-chromosome matches fail admission. Empty final BAM skips downstream analysis. RFMix SIS-dependent analysis remains SKIPPED; legacy RFMix1.5.4 remains unavailable and v2 is not a substitute. Cell Ranger remains excluded; MaxQuant remains pending with runtime analyses skipped. ConstructASCATFiles/PREASCAT permission remains pending. Literature HTMLs remain withheld from Pages.",
+      "supporting_evidence": [
+        {
+          "paper_id": "P187",
+          "pmcid": "PMC12805840",
+          "doi": "10.1016/j.ajhg.2025.11.009",
+          "paragraph_index": 18,
+          "section": "Material and methods / Mapping caQTL",
+          "paragraph_sha256": "45cd41caa4c044909016b52cd2262f086615e118d7fdefd3ef3579494d047f3d"
+        }
+      ],
+      "source_role_qualification": {
+        "paper_id": "P187",
+        "source_role": "standalone-WASP-remapping",
+        "reported_version": "0.3.4 with updates as of 2023-02-09",
+        "runtime_scope": "SCOPED_ORIGINAL_STANDALONE_MAPPING_AVAILABLE_AUTHOR_RECIPE_UNQUALIFIED",
+        "remaining_scope": "The selected official WASP commit is the latest before2023-02-10, not proof of the author revision. Exact donor/cell-type BAMs, genotype/reference preparation, variant mode, settings and downstream caQTL analysis remain unqualified. Cell Ranger is excluded by the user and is not substituted into remapping.",
+        "exact_author_recipe_qualified": false,
+        "whole_paper_reproduced": false,
+        "already_reviewed_preserved": false
+      }
     }
   ]
 }

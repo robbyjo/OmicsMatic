@@ -1,3 +1,20 @@
+# Current standalone WASP workflow checkpoint
+
+250 papers, 453 named labels, 492 providers and 2,733 observations; 1,827 reviewed / 906 pending uses. 173 scoped families: 34 native + 139 upstream. WASP adds one scoped original mapping family; 250 labels remain missing. The full goal remains active.
+
+**Warnings and required actions:** WARNINGS AND REQUIRED ACTION: inspect all original logs and input/output audits, require completion plus exact-producer fresh replay, and retain every attempt. Missing/forbidden prerequisites produce SKIP3 and skip dependent analysis; supply/install the named software or input only where permitted and retry NEW paths. Invalid/changed bytes, QC/native disagreement, cancellation or resource exhaustion produce FAIL2 and no complete result. Native BAM audits retain records/maps in JVM memory; declared capacities do not reserve heap or establish whole-genome scale. Source quality/orientation conventions, unordered paired CIGAR comparison and partial-GT masking remain explicit; lossy converter truncation and retained wrong-chromosome matches fail admission. Empty final BAM skips downstream analysis. RFMix SIS-dependent analysis remains SKIPPED; legacy RFMix1.5.4 remains unavailable and v2 is not a substitute. Cell Ranger remains excluded; MaxQuant remains pending with runtime analyses skipped. ConstructASCATFiles/PREASCAT permission remains pending. Literature HTMLs remain withheld from Pages.
+
+See [WASP workflow guide](../../wasp-tools.md), [source roles](../wasp-source-audit/ROLES.json) and [qualification](../wasp-validation/QUALIFICATION.json). Earlier checkpoints below are historical.
+
+| Paper | Reviewed interpretation | Runtime scope |
+| --- | --- | --- |
+| P007 | Applied the paper-linked Hornet modification of WASP to retain stable allele-swapped remapping positions in hybrid-species expression analysis. | FULL_HORNET_PIPELINE_PENDING_NATIVE_ALLELE_COMPONENT_AVAILABLE |
+| P073 | Used the built-in STARsolo WASP mode with a prepared sample VCF, then selected unique proper pairs passing that filter in barcode/UMI-aware RNA processing. | STARSOLO_BUILT_IN_MODE_PENDING |
+| P157 | Explicitly omitted the GTEx WASP and z-score filters when preparing the study sQTL analysis; this mention does not describe running WASP for that step. | OMITTED_STEP_NO_WASP_RUNTIME_REQUIRED |
+| P187 | Removed allelic mapping bias from donor/cell-type pseudobulk ATAC BAMs using WASP0.3.4; remapped with BWA-mem0.7.17 -M -I250,150 as the authors stated approximation of Cell Ranger alignment. | SCOPED_ORIGINAL_STANDALONE_MAPPING_AVAILABLE_AUTHOR_RECIPE_UNQUALIFIED |
+
+---
+
 # Current RFMix workflow checkpoint
 
 250 papers, 453 named labels, 492 providers and 2,733 observations; 1,825 reviewed / 908 pending uses. 172 scoped families: 34 native + 138 upstream. RFMix adds one scoped original-v2 upstream family; 251 labels remain missing. The full goal remains active.
