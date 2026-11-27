@@ -1,3 +1,13 @@
+# Current SVA and ComBat source corrections
+
+250 frozen papers; 453 labels and 492 provider definitions; 178 scoped families (35 native, 143 upstream), 1,854 reviewed uses and 880 pending uses. There are 2,734 observations and 247 missing labels. Six SVA/ComBat observations are individually reviewed. P206 is removed as a retrotransposon false positive; the previously missed P086 ComBat_seq spelling is recovered. This correction adds zero implementation credit. The full implementation goal remains open.
+
+**Warnings and required actions:** P086 names ComBat_seq but attributes it to DESeq2 and describes transformed/z-scored inputs. Preserve the discrepancy; obtain actual count inputs and author command before analysis. Do not round, invert or substitute continuous ComBat. P128 needs longitudinal subject-aware harmonization, not ordinary ComBat. P185 does not identify its SVA function/count estimator. Missing/forbidden prerequisites: SKIP3 and skip dependent analysis; supply the named permitted source/runtime/input and retry NEW paths. Changed/invalid evidence or failed analysis: FAIL2, no partial result admitted; fix the named cause and retain failed evidence. No new runtime is installed or analysis admitted by this source audit.
+
+See [source decisions and next implementation work](../sva-combat-source-audit/HANDOVER.md). Earlier checkpoints below are historical.
+
+---
+
 # Current original FlashPCA genetic-PCA checkpoint
 
 250 frozen papers; 453 labels and 492 provider definitions; 178 scoped families (35 native, 143 upstream), 1,848 individually reviewed uses and 886 pending uses. FlashPCA replaces an earlier generic method-overlap label with one original-runtime family; 247 labels remain missing. Four distinct primary roles and cited method families are reviewed. Only P240 explicitly reports2.0; other exact author versions remain unresolved. This is source-build qualification, not a released binary, website deployment or completion of the full goal.

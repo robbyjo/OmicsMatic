@@ -1,0 +1,255 @@
+{
+  "schema_version": 1,
+  "roles": [
+    {
+      "paper_id": "P086",
+      "tool_id": "combat",
+      "reported_family": "ComBat_seq negative-binomial count batch adjustment",
+      "reviewed_reported_version": null,
+      "use_summary": "Names ComBat_seq for cross-laboratory transcriptome batch adjustment. The paper attributes it to DESeq2 and describes transformed/z-scored data; the actual function is supplied by sva and expects counts.",
+      "remaining_scope": "Do not run ComBat_seq on the described VST/z-scores or reinterpret them as counts. Actual author input units, namespace, package version and command remain unresolved. This is a recovered named use, not a qualified analysis.",
+      "raw_observation_preserved": {
+        "tool_id": "combat",
+        "tool": "ComBat",
+        "analysis_role": "Batch-effect adjustment",
+        "evidence_section": "Methods / Transcriptome comparison",
+        "evidence_paragraph_index": 36,
+        "matched_text": "ComBat_seq",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "b36ac0ba8ef1107c38979b92a976bdfca0d2fd184c24740571263f5250e0991c",
+        "use_summary": "Batch-effect adjustment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12807868/ (section: Methods / Transcriptome comparison)"
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P086",
+          "pmcid": "PMC12807868",
+          "doi": "10.1038/s41588-025-02419-4",
+          "paragraph_index": 36,
+          "section": "Methods / Transcriptome comparison",
+          "paragraph_sha256": "b36ac0ba8ef1107c38979b92a976bdfca0d2fd184c24740571263f5250e0991c"
+        }
+      ],
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    },
+    {
+      "paper_id": "P108",
+      "tool_id": "combat",
+      "reported_family": "Continuous-data ComBat in sva",
+      "reviewed_reported_version": "sva 3.46.0",
+      "use_summary": "Uses ComBat from sva 3.46.0 to remove collection-site effects from continuous variance-stabilized gene and isoform expression in the adult brain reference panel.",
+      "remaining_scope": "HCP 200 gene/175 isoform factors and age, age-squared, sex and genotype-PC removal are later separate adjustments. Exact ComBat flags/design and complete author inputs remain unresolved; neither HCP nor this package mention establishes SVA factor estimation.",
+      "raw_observation_preserved": {
+        "tool_id": "combat",
+        "tool": "ComBat",
+        "analysis_role": "Batch-effect adjustment",
+        "evidence_section": "Methods / Adult brain reference panel processing and model training",
+        "evidence_paragraph_index": 51,
+        "matched_text": "ComBat",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "a6b9a13816c441d5f6a6eaaa7ff1d33391502003ff0c6ffd8a70cfccdf40459a",
+        "use_summary": "Batch-effect adjustment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703692/ (section: Methods / Adult brain reference panel processing and model training)"
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P108",
+          "pmcid": "PMC10703692",
+          "doi": "10.1038/s41588-023-01560-2",
+          "paragraph_index": 51,
+          "section": "Methods / Adult brain reference panel processing and model training",
+          "paragraph_sha256": "a6b9a13816c441d5f6a6eaaa7ff1d33391502003ff0c6ffd8a70cfccdf40459a"
+        }
+      ],
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    },
+    {
+      "paper_id": "P108",
+      "tool_id": "sva",
+      "reported_family": "Package providing continuous ComBat",
+      "reviewed_reported_version": "3.46.0",
+      "use_summary": "Uses the sva 3.46.0 package as the provider of ComBat site-batch correction; the paragraph separately describes HCP latent factors.",
+      "remaining_scope": "No independent sva(), svaseq() or num.sv() execution is established by this package mention. Retain two named labels while recognizing one ComBat operation.",
+      "raw_observation_preserved": {
+        "tool_id": "sva",
+        "tool": "sva",
+        "analysis_role": "Latent confounder adjustment",
+        "evidence_section": "Methods / Adult brain reference panel processing and model training",
+        "evidence_paragraph_index": 51,
+        "matched_text": "sva",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": "3.46.0",
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "a6b9a13816c441d5f6a6eaaa7ff1d33391502003ff0c6ffd8a70cfccdf40459a",
+        "use_summary": "Latent confounder adjustment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10703692/ (section: Methods / Adult brain reference panel processing and model training)"
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P108",
+          "pmcid": "PMC10703692",
+          "doi": "10.1038/s41588-023-01560-2",
+          "paragraph_index": 51,
+          "section": "Methods / Adult brain reference panel processing and model training",
+          "paragraph_sha256": "a6b9a13816c441d5f6a6eaaa7ff1d33391502003ff0c6ffd8a70cfccdf40459a"
+        }
+      ],
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    },
+    {
+      "paper_id": "P128",
+      "tool_id": "combat",
+      "reported_family": "Longitudinal ComBat mixed model",
+      "reviewed_reported_version": null,
+      "use_summary": "Uses longitudinal ComBat to harmonize repeated hippocampal volumes while preserving age, sex, race/ethnicity and diagnostic status.",
+      "remaining_scope": "The cited Beer et al. longitudinal model uses subject dependence and differs from ordinary cross-sectional ComBat. Exact author package/commit, subject/time/random-effect specification and other settings are unknown. Existing continuous native ComBat does not qualify this operation.",
+      "raw_observation_preserved": {
+        "tool_id": "combat",
+        "tool": "ComBat",
+        "analysis_role": "Batch-effect adjustment",
+        "evidence_section": "Methods / AD-related traits / Neuroimaging data",
+        "evidence_paragraph_index": 49,
+        "matched_text": "ComBat",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "174cd3e5c93434aa0fea524f30f163db29640db68d3805b73be37d061f3cbd4c",
+        "use_summary": "Batch-effect adjustment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13553296/ (section: Methods / AD-related traits / Neuroimaging data)"
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P128",
+          "pmcid": "PMC13553296",
+          "doi": "10.1038/s41588-026-02722-8",
+          "paragraph_index": 49,
+          "section": "Methods / AD-related traits / Neuroimaging data",
+          "paragraph_sha256": "174cd3e5c93434aa0fea524f30f163db29640db68d3805b73be37d061f3cbd4c"
+        }
+      ],
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    },
+    {
+      "paper_id": "P176",
+      "tool_id": "sva",
+      "reported_family": "svaseq from linked author source",
+      "reviewed_reported_version": null,
+      "use_summary": "Uses surrogate-variable adjustment in RNA-seq. The linked author script calls svaseq on DESeq2-normalized counts with a genotype full model and intercept-only null model, then includes SV covariates in differential expression.",
+      "remaining_scope": "Author package version, full inputs and complete executable recipe are unresolved. Normalized counts for svaseq are distinct from raw counts required by ComBat_seq. The author script has no license declaration in the inspected tree and was read only, never executed or redistributed. Generic Java SVA and its random number generator are not asserted equivalent.",
+      "raw_observation_preserved": {
+        "tool_id": "sva",
+        "tool": "sva",
+        "analysis_role": "Latent confounder adjustment",
+        "evidence_section": "Subjects, material, and methods / RNA-sequencing analysis",
+        "evidence_paragraph_index": 28,
+        "matched_text": "Surrogate Variable Analysis",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "b99e39ad6a595b6999dffeacbd5fd4bab2a641ef13abc112e335e859d1371636",
+        "use_summary": "Latent confounder adjustment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12824618/ (section: Subjects, material, and methods / RNA-sequencing analysis)"
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P176",
+          "pmcid": "PMC12824618",
+          "doi": "10.1016/j.ajhg.2025.12.002",
+          "paragraph_index": 28,
+          "section": "Subjects, material, and methods / RNA-sequencing analysis",
+          "paragraph_sha256": "b99e39ad6a595b6999dffeacbd5fd4bab2a641ef13abc112e335e859d1371636"
+        }
+      ],
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    },
+    {
+      "paper_id": "P185",
+      "tool_id": "sva",
+      "reported_family": "Unspecified SVA screening on methylation M-values",
+      "reviewed_reported_version": "3.46.0",
+      "use_summary": "Uses SVA 3.46.0 in the cartilage methylation analysis and reports no significant surrogate variables after accounting for batch.",
+      "remaining_scope": "The exact SVA entry point, factor-count procedure, design, seed and permutation settings are unreported. Do not infer num.sv, Leek, BE, a fixed factor count or the independent reproduction of the reported outcome.",
+      "raw_observation_preserved": {
+        "tool_id": "sva",
+        "tool": "sva",
+        "analysis_role": "Latent confounder adjustment",
+        "evidence_section": "Methods / Differential methylation and differential methylated region analyses",
+        "evidence_paragraph_index": 9,
+        "matched_text": "SVA",
+        "extraction_score": 15,
+        "usage_context": "analysis-method-description",
+        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "version_reported_near_name": null,
+        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_paragraph_sha256": "17f4c0d584dfa6a28594ca6c0f3b48391eceb3294c6b63815e289cddd4baf5e1",
+        "use_summary": "Latent confounder adjustment.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11639090/ (section: Methods / Differential methylation and differential methylated region analyses)"
+      },
+      "primary_anchors": [
+        {
+          "paper_id": "P185",
+          "pmcid": "PMC11639090",
+          "doi": "10.1016/j.ajhg.2024.10.017",
+          "paragraph_index": 9,
+          "section": "Methods / Differential methylation and differential methylated region analyses",
+          "paragraph_sha256": "17f4c0d584dfa6a28594ca6c0f3b48391eceb3294c6b63815e289cddd4baf5e1"
+        }
+      ],
+      "exact_author_recipe_qualified": false,
+      "whole_paper_reproduced": false,
+      "source_audit_admits_runtime": false
+    }
+  ],
+  "excluded_observation": {
+    "paper_id": "P206",
+    "tool_id": "sva",
+    "reason": "SVA retrotransposon insertions are variant annotation targets; remove false software use.",
+    "raw_observation_preserved": {
+      "tool_id": "sva",
+      "tool": "sva",
+      "analysis_role": "Latent confounder adjustment",
+      "evidence_section": "Methods / ClinVar and LOVD variant extraction and annotation",
+      "evidence_paragraph_index": 5,
+      "matched_text": "SVA",
+      "extraction_score": 15,
+      "usage_context": "analysis-method-description",
+      "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+      "version_reported_near_name": null,
+      "evidence_selection": "highest-scored-eligible-method-sentence",
+      "evidence_paragraph_sha256": "cd66d2a6e2d84bf6f868b1d7ab3d597621595458f9307be7978cccb844ee699b",
+      "use_summary": "Latent confounder adjustment.",
+      "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11568752/ (section: Methods / ClinVar and LOVD variant extraction and annotation)"
+    }
+  },
+  "longitudinal_method_reference": {
+    "paper_id": "P128",
+    "reference_id": "CR109",
+    "reference_sha256": "ace4f52f483cec06e05ea427735e5921200fcbcce39a3121b5e3ef8fa18a0cab"
+  },
+  "new_family_credit": 0,
+  "whole_goal_complete": false
+}
