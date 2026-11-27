@@ -77,3 +77,23 @@ Finish each feature with verified task-local cleanup after requested publication
 Preserve active jobs, required runtimes, unique edits and all scientific evidence.
 Use the cleanup receipts and completion record for removed paths, recovery and
 measured space; keep the active continuation checkout and all branch refs.
+
+## Publication and cleanup closure
+
+Feature commit `a6422db8d1f8391883a8afae50c0b65ede675bee` was pushed to GitHub main and all47 files
+were verified by full hosted readback. Cleanup removed60638 redundant
+build/header files (2104271282 logical bytes), retaining byte-exact recovery, all
+scientific inputs/results/failures, five producing JARs and bound runtimes.
+Post-cleanup355 native tests and a fresh paired-VCF original-runtime replay
+passed. All9,208 private qualification files and5,380 predecessor private files
+remain byte-identical. See `COMPLETION.json` and the private cleanup receipts for
+measured free-space changes and recovery paths. All18 foreign worktrees and51
+tracked foreign edits remain unchanged. The full250-paper goal remains active.
+
+The first post-cleanup check refused replay because an effective runtime directory
+link reached the HDF5 headers. All111 header files and saved directory modes were
+restored byte-exactly from verified recovery, without refreshing any binding
+seal. The failed check and original receipt remain retained and are superseded
+by cleanup-Linux-2/RECEIPT.json and the successful postcleanup-Linux-2 replay.
+Future cleanup must protect effective inventory roots and nodes, including
+resolved directory links; explicit binding-request roots/files are insufficient.
