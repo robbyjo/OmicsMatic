@@ -70,3 +70,19 @@ Nonforce main publication is authorized; recheck remote state and preserve all
 other worktrees/edits. Mandatory verified temporary-file cleanup follows validation
 and publication; keep scientific evidence, runtimes, branch refs and active jobs.
 Record measured recovery and post-cleanup verification before reporting completion.
+
+## Publication and cleanup completion
+
+Feature commit `08ead4130c81bcdfa26120d4229c0052d3a13333` is on GitHub main; all 52 feature files
+passed full hosted-byte readback. See `COMPLETION.json`. Verified stale compiler
+outputs were removed after publication: 24633 files /850171768 logical bytes.
+The measured volume-free-space change after creating the recovery archive and
+deleting the compiler outputs was 308391936 bytes. The private recovery ZIP
+and its exact manifest remain in `build/popcorn-898/cleanup-plan-Windows-1`.
+Both producing JARs, all 1,473 pinned private evidence files and all runtime
+effective roots/nodes/symlink targets remain retained. A fresh post-cleanup
+original1.1 effect score-to-fit replay, including the complete native WLS check,
+passed. Source, canonical catalog and every retained private byte were checked
+again; all 18 foreign worktrees and 51 tracked edits were preserved. No jobs
+were stopped, no worktrees/branch refs removed and no release published.
+The full 250-paper goal remains active.
