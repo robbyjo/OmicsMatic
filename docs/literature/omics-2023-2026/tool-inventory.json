@@ -31432,19 +31432,19 @@
     "name": "ComBat",
     "pattern": "(?<![A-Za-z0-9_])(?:ComBat(?:[-_ ]seq)?)(?![A-Za-z0-9_])",
     "role": "Batch-effect adjustment",
-    "current_coverage": "method-overlap",
-    "existing_source": "src/main/java/org/jlinalg/cli/ConfounderCli.java",
-    "coverage_note": "Source correction only, with zero new native/upstream family credit. Continuous sva::ComBat, count-model sva::ComBat_seq, svaseq and longitudinal mixed-model ComBat are distinct operations. Existing native confounder methods remain method-overlap; no original-runtime, numerical equivalence, author recipe or whole-paper qualification is inferred.",
+    "current_coverage": "native-subset-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/ComBatNativeCli.java",
+    "coverage_note": "Current native continuous ComBat, sva3.46.0 rules, implementation revision2. Parametric/nonparametric, mean-only, reference-batch and numeric keep-design operations retain signed stopping, global missing-data sample variance, constant/numerically-zero row exclusion, unavailable-variance likelihood sums and complete zero-times-missing batch-product propagation. Every native result file is freshly recomputed from captured literal inputs. Native conditioning/capacity guards and explicit Java encoding of derived R NA/NaN remain disclosed. Counts, longitudinal mixed models, SVA factor estimation, exact author inputs/flags and whole-paper reproduction remain separate/unqualified.",
     "paper_count": 3,
     "papers": [
       "P086",
       "P108",
       "P128"
     ],
-    "implementation_status": "method-overlap",
-    "implementation_source": "src/main/java/org/jlinalg/cli/ConfounderCli.java",
-    "implementation_scope": "Source correction only, with zero new native/upstream family credit. Continuous sva::ComBat, count-model sva::ComBat_seq, svaseq and longitudinal mixed-model ComBat are distinct operations. Existing native confounder methods remain method-overlap; no original-runtime, numerical equivalence, author recipe or whole-paper qualification is inferred.",
-    "validation_note": "Full250 primary-source census: six positive observations, one excluded false positive and one recovered underscore spelling. No source/runtime/numerical analysis or new implementation is qualified. See docs/literature/sva-combat-source-audit/QUALIFICATION.json",
+    "implementation_status": "native-subset-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/ComBatNativeCli.java",
+    "implementation_scope": "Current native continuous ComBat, sva3.46.0 rules, implementation revision2. Parametric/nonparametric, mean-only, reference-batch and numeric keep-design operations retain signed stopping, global missing-data sample variance, constant/numerically-zero row exclusion, unavailable-variance likelihood sums and complete zero-times-missing batch-product propagation. Every native result file is freshly recomputed from captured literal inputs. Native conditioning/capacity guards and explicit Java encoding of derived R NA/NaN remain disclosed. Counts, longitudinal mixed models, SVA factor estimation, exact author inputs/flags and whole-paper reproduction remain separate/unqualified.",
+    "validation_note": "Current revision2:21 tests;16 complete original finite R cases and both full undefined masks per host;29519 finite adjusted/posterior values per host;32 native captures,33 full recomputations and26 refusals across Windows/Linux. Missing-variance R NA versus Java NaN encoding is explicit; no undefined result is admitted. No extra family/source-review credit. See docs/literature/combat346-revision2-validation/QUALIFICATION.json",
     "paper_role_qualification": {
       "P086": {
         "paper_id": "P086",
@@ -31453,7 +31453,10 @@
         "reviewed_reported_version": null,
         "remaining_scope": "Do not run ComBat_seq on the described VST/z-scores or reinterpret them as counts. Actual author input units, namespace, package version and command remain unresolved. This is a recovered named use, not a qualified analysis.",
         "exact_author_recipe_qualified": false,
-        "whole_paper_reproduced": false
+        "whole_paper_reproduced": false,
+        "selected_project_profile": null,
+        "operation_available_from_this_profile": false,
+        "implementation_revision": null
       },
       "P108": {
         "paper_id": "P108",
@@ -31462,7 +31465,10 @@
         "reviewed_reported_version": "sva 3.46.0",
         "remaining_scope": "HCP 200 gene/175 isoform factors and age, age-squared, sex and genotype-PC removal are later separate adjustments. Exact ComBat flags/design and complete author inputs remain unresolved; neither HCP nor this package mention establishes SVA factor estimation.",
         "exact_author_recipe_qualified": false,
-        "whole_paper_reproduced": false
+        "whole_paper_reproduced": false,
+        "selected_project_profile": "sva-3.46.0-continuous-ComBat",
+        "operation_available_from_this_profile": true,
+        "implementation_revision": 2
       },
       "P128": {
         "paper_id": "P128",
@@ -31471,9 +31477,15 @@
         "reviewed_reported_version": null,
         "remaining_scope": "The cited Beer et al. longitudinal model uses subject dependence and differs from ordinary cross-sectional ComBat. Exact author package/commit, subject/time/random-effect specification and other settings are unknown. Existing continuous native ComBat does not qualify this operation.",
         "exact_author_recipe_qualified": false,
-        "whole_paper_reproduced": false
+        "whole_paper_reproduced": false,
+        "selected_project_profile": null,
+        "operation_available_from_this_profile": false,
+        "implementation_revision": null
       }
-    }
+    },
+    "current_documentation": "docs/combat-native.md",
+    "implementation_revision": 2,
+    "current_qualification": "docs/literature/combat346-revision2-validation/QUALIFICATION.json"
   },
   {
     "id": "muscat",

@@ -1,3 +1,27 @@
+# Current native ComBat revision2
+
+250 frozen papers; 453 labels and 492 provider definitions; 179 scoped families (36 native, 143 upstream), 1,854 reviewed uses and 880 pending uses. There are 2,734 observations and 247 missing labels. The continuous-ComBat addition contributes one total native family. This forward correction adds zero extra families or reviews and gives zero extra credit to its sva provider label. Current revision2 matches16 complete finite R controls and both complete source undefined masks on Windows/Linux. The full implementation goal remains open.
+
+Current native continuous ComBat, sva3.46.0 rules, implementation revision2. Parametric/nonparametric, mean-only, reference-batch and numeric keep-design operations retain signed stopping, global missing-data sample variance, constant/numerically-zero row exclusion, unavailable-variance likelihood sums and complete zero-times-missing batch-product propagation. Every native result file is freshly recomputed from captured literal inputs. Native conditioning/capacity guards and explicit Java encoding of derived R NA/NaN remain disclosed. Counts, longitudinal mixed models, SVA factor estimation, exact author inputs/flags and whole-paper reproduction remain separate/unqualified.
+
+**Warnings and required actions:** Build current source and use combat-native; no R runtime is needed. Require exit0 and analysis-status.json result_admitted=true, inspect WARNINGS.md and freshly --verify into NEW paths. SKIP3 skips missing/forbidden prerequisites or unsupported models; supply/select the named permitted prerequisite/profile and retry NEW paths. FAIL2 admits no partial result; retain failed inputs/raw outputs, fix the named input/order/design, numerical, convergence, integrity, cancellation or capacity cause and retry NEW paths. Supplied NA stays NA; derived R NA/NaN share Java Double.NaN and export as NaN, with the complete source nonfinite mask retained and refused. Do not substitute this model for P086 ComBat_seq or P128 longitudinal ComBat, infer P185 SVA settings, stabilize undefined likelihoods or refresh old seals. Version1 source/qualifications remain historical and have matching retained source/producer contexts.
+
+See [current command](../../combat-native.md) and [qualification and handover](../combat346-revision2-validation/HANDOVER.md). Earlier checkpoints below are historical.
+
+---
+
+# Current native continuous ComBat checkpoint
+
+250 frozen papers; 453 labels and 492 provider definitions; 179 scoped families (36 native, 143 upstream), 1,854 reviewed uses and 880 pending uses. There are 2,734 observations and 247 missing labels. One native continuous-ComBat family replaces a method-overlap classification; there are zero additional source reviews. P108 names ComBat and its sva provider for the same operation, with zero extra namespace credit. Count-based ComBat_seq, longitudinal ComBat, SVA factor procedures and the full implementation goal remain open.
+
+Native Java continuous ComBat following sva3.46.0 rules, with explicit parametric/nonparametric, mean-only, reference-batch and numeric keep-design settings. Original signed stopping, global missing-data sample variance, constant-row handling and direct likelihood underflow are retained. Complete literal inputs, every result file and exact defining code/profile support fresh native recomputation. Conditioning and explicit caller capacities may refuse inputs an R implementation could fit. This is one scoped continuous-ComBat family; ComBat_seq, longitudinal mixed models and surrogate-variable estimation remain separate and unqualified by this profile. Exact author flags/data and whole-paper reproduction are not established.
+
+**Warnings and required actions:** Build current source and use combat-native with declared continuous units. Require exit0 and analysis-status.json result_admitted=true, inspect WARNINGS.md, then freshly --verify into NEW output. SKIP3 skips missing/forbidden prerequisites or unsupported requested models; restore/select the named permitted prerequisite/profile and retry NEW paths. FAIL2 admits no partial result; retain diagnostics and raw undefined output, correct the named input/design, integrity, numerical, convergence, cancellation or capacity cause and retry NEW paths. No R runtime is needed. Do not stabilize undefined likelihoods, reinterpret input units, or substitute this model for P086 ComBat_seq or P128 longitudinal ComBat. P185 does not specify its SVA function/count estimator.
+
+See [native command and complete example](../../combat-native.md) and [qualification](../combat346-validation/QUALIFICATION.json). Earlier checkpoints below are historical.
+
+---
+
 # Current SVA and ComBat source corrections
 
 250 frozen papers; 453 labels and 492 provider definitions; 178 scoped families (35 native, 143 upstream), 1,854 reviewed uses and 880 pending uses. There are 2,734 observations and 247 missing labels. Six SVA/ComBat observations are individually reviewed. P206 is removed as a retrotransposon false positive; the previously missed P086 ComBat_seq spelling is recovered. This correction adds zero implementation credit. The full implementation goal remains open.

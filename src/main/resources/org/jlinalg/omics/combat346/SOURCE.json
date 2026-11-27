@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "profile": "sva-3.46.0-continuous-ComBat",
+  "provider": "Native Java implementation of the continuous ComBat equations and source rules; no upstream R code included",
+  "upstream_package": "sva",
+  "upstream_version": "3.46.0",
+  "upstream_license_declaration": "Artistic-2.0",
+  "original_archive": {
+    "url": "https://bioconductor.org/packages/3.16/bioc/src/contrib/sva_3.46.0.tar.gz",
+    "identity": {
+      "bytes": 441140,
+      "sha256": "6f08aab3ee29cbe6481797b6bb507f351be25e4f0fc9e72588c8fb9d093f2b30"
+    }
+  },
+  "original_used_source_files": {
+    "ComBat.R": {
+      "url": "https://raw.githubusercontent.com/bioc/sva/RELEASE_3_16/R/ComBat.R",
+      "identity": {
+        "bytes": 12193,
+        "sha256": "a9a82161198fd172eeda8a675a12073915e285e608eb1c33583d40495549e223"
+      }
+    },
+    "helper.R": {
+      "url": "https://raw.githubusercontent.com/bioc/sva/RELEASE_3_16/R/helper.R",
+      "identity": {
+        "bytes": 4247,
+        "sha256": "82fb13a3b273a4e81f5c681bd8e90549e4c1c664e0df9976b3e2892983accb0d"
+      }
+    }
+  },
+  "source_conventions": [
+    "original 1e-4 tolerance and signed relative-change denominator",
+    "global missing-data branch uses sample residual variance",
+    "direct original nonparametric likelihood arithmetic; preserve undefined values",
+    "first-occurrence levels correspond to explicitly supplying those factor levels in R",
+    "zero within-batch variance rows retained without adjustment; effect placeholders are not estimated"
+  ],
+  "nonparametric_transcendentals": "Java StrictMath pow/exp for deterministic original-formula evaluation; reference agreement is numerical, not R-libm bitwise identity",
+  "native_conditioning_and_capacity_guards": true,
+  "original_source_modified": false,
+  "upstream_source_published": false,
+  "full_sva_package_qualified": false,
+  "combat_seq_qualified": false,
+  "longitudinal_combat_qualified": false,
+  "whole_paper_reproduced": false,
+  "implementation_revision": 2,
+  "missing_variance_propagation": "Unavailable R sample variances remain missing in original likelihood sums; the complete batch-design product preserves zero times missing/NaN propagation",
+  "zero_variance_screen": "Uniform represented constants and numerically zero sample variances both retain the original row",
+  "undefined_representation": "Supplied NA remains NA. Java Double.NaN represents derived R NA and NaN; derived undefined output cells export as NaN. The full nonfinite mask and refusal outcome are compared, without claiming R payload/token identity."
+}

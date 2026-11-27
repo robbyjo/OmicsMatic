@@ -1,3 +1,53 @@
+# Current checkpoint: native ComBat revision2 (2026-11-27)
+
+The full 250-paper goal remains active. **179 scoped families (36 native,143
+upstream),1,854 reviewed uses,880 pending uses and247 missing labels** remain
+the current totals. There are453 labels,492 definitions and2,734 observations.
+
+Read [the current handover](combat346-revision2-validation/HANDOVER.md) and
+[qualification](combat346-revision2-validation/QUALIFICATION.json). Native
+`combat-native` needs no R runtime. It contributes one total family; revision2
+and the sva provider label receive no extra credit.21 regressions,16 complete
+finite R cases per host and both full source undefined masks pass on
+Windows/Linux, with32 captures,33 fresh native checks and26 expected refusals.
+
+**Warnings/actions:** require admitted status,WARNINGS.md and fresh --verify.
+SKIP3 skips named missing/forbidden prerequisites or unsupported models; FAIL2
+admits no partial result. Correct the named cause and retry NEW paths. Derived
+R NA/NaN export as Java NaN; original input NA remains NA. Count-based,
+longitudinal and SVA factor procedures remain separate/pending. P086 actual
+inputs/command and P185 exact entry point are unresolved. No release,literature
+Pages deployment or paper reproduction is qualified. Keep earlier version1
+contexts/producers and all original evidence,runtimes,worktrees and refs.
+
+Earlier entries below describe historical checkpoints.
+
+---
+
+# Current checkpoint: native continuous ComBat (2026-11-27)
+
+The full 250-paper goal remains active. Current totals: **179 scoped families
+(36 native, 143 upstream), 1,854 reviewed uses, 880 pending uses and 247 missing
+labels**; 453 labels, 492 provider definitions and 2,734 observations.
+
+Read [the current native ComBat handover](combat346-validation/HANDOVER.md) and
+[qualification](combat346-validation/QUALIFICATION.json). `combat-native` adds
+one source-bound continuous-ComBat family, with no extra credit for its sva
+provider label. It needs no R runtime. Twenty-one tests, 14 complete original-R
+cases on each of Windows/Linux and fresh native recomputation pass.
+
+**Warnings/actions:** require admitted status, WARNINGS.md and fresh verification.
+SKIP3 skips missing/forbidden prerequisites or unsupported models; FAIL2 admits
+no partial result. Correct the named cause and retry NEW paths. ComBat_seq,
+longitudinal ComBat and original SVA factor procedures remain separate/pending.
+P086 actual inputs/command and P185 exact SVA entry point remain unresolved.
+No author study, released binary or literature Pages deployment is qualified.
+Keep all original inputs, evidence, producers, runtimes, worktrees and refs.
+
+Earlier entries below describe their historical checkpoints.
+
+---
+
 # Current toolbox handover
 
 **Current Popcorn checkpoint:** [qualification, warnings and next work](popcorn-validation/HANDOVER.md).

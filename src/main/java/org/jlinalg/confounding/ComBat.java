@@ -12,7 +12,9 @@ import java.util.Map;
 
 /**
  * Empirical-Bayes ComBat for normalized continuous feature-by-sample data.
- * The equations and edge-case behavior follow Bioconductor sva 3.60.0.
+ * The original API retains its existing numerical conventions. Use
+ * {@link #adjustSva346(double[][], String[], double[][], Options)} for the
+ * separately source-bound sva 3.46.0 stopping, missing-data and likelihood rules.
  */
 public final class ComBat {
     private ComBat() { }
@@ -29,7 +31,11 @@ public final class ComBat {
         public static Options defaults() { return new Options(true, false, null, 1e-4, 10000); }
     }
 
-    /** Adjusted matrix and fitted location/scale effects (batch by feature). */
+    /**
+     * Adjusted matrix and fitted location/scale effects (batch by feature).
+     * Unadjusted features retain their original data; their gamma=0/delta=1
+     * entries are placeholders, not estimated posterior effects.
+     */
     public record Result(double[][] adjusted, double[][] gamma, double[][] delta,
                          List<String> batches, boolean meanOnly,
                          int[] unadjustedFeatures) {
@@ -38,6 +44,40 @@ public final class ComBat {
 
     public static Result adjust(double[][] data, String[] batch, double[][] covariates,
             Options options) {
+        return adjust(data, batch, covariates, options, false, () -> { });
+    }
+
+    /**
+     * Continuous-data ComBat following the original sva 3.46.0 R functions.
+     * This is not ComBat_seq or longitudinal ComBat. Batch levels use first
+     * occurrence order, equivalent to passing that explicit factor-level order
+     * to R. Missing values use Double.NaN and remain missing. Original undefined
+     * nonparametric likelihood ratios remain NaN; callers must not admit these
+     * as successful finite adjustments. The iteration limit is a caller capacity
+     * guard: reaching it throws rather than returning an unconverged result.
+     *
+     * @param options convergenceTolerance must equal the original 1e-4
+     * @return adjusted data and batch-by-feature posterior location/scale
+     */
+    public static Result adjustSva346(double[][] data, String[] batch, double[][] covariates,
+            Options options) {
+        return adjustSva346(data, batch, covariates, options, () -> {
+            if (Thread.currentThread().isInterrupted())
+                throw new java.util.concurrent.CancellationException("Native ComBat cancelled; no complete result");
+        });
+    }
+
+    /** Same source-specific fit with a caller-owned cancellation/capacity check. */
+    public static Result adjustSva346(double[][] data, String[] batch, double[][] covariates,
+            Options options, Runnable checkpoint) {
+        if (options == null || options.convergenceTolerance() != 1e-4)
+            throw new IllegalArgumentException("sva 3.46.0 ComBat requires its original convergence tolerance 1e-4");
+        return adjust(data, batch, covariates, options, true, java.util.Objects.requireNonNull(checkpoint));
+    }
+
+    private static Result adjust(double[][] data, String[] batch, double[][] covariates,
+            Options options, boolean original346, Runnable checkpoint) {
+        checkpoint.run();
         int samples = validate(data, batch);
         if (covariates != null) ConfounderMath.validateDesign(covariates, samples, "covariates");
         LinkedHashMap<String, List<Integer>> groups = groups(batch);
@@ -51,11 +91,18 @@ public final class ComBat {
         boolean meanOnly = options.meanOnly() || groups.values().stream().anyMatch(g -> g.size() == 1);
         boolean[] unadjusted = new boolean[features];
         for (int f = 0; f < features; f++) for (List<Integer> group : groups.values()) {
-            if (group.size() > 1 && variance(data[f], group) == 0.0) unadjusted[f] = true;
+            checkpoint.run();
+            boolean hasMissing = false;
+            if (original346) for (int j : group) hasMissing |= Double.isNaN(data[f][j]);
+            if (group.size() > 1 && !hasMissing && (original346
+                    ? uniform(data[f], group) || variance(data[f], group) == 0.0
+                    : variance(data[f], group) == 0.0)) unadjusted[f] = true;
         }
         List<Integer> keep = new ArrayList<>();
         List<Integer> excluded = new ArrayList<>();
         for (int f = 0; f < features; f++) (unadjusted[f] ? excluded : keep).add(f);
+        if (original346 && keep.size() < 2)
+            throw new IllegalArgumentException("sva 3.46.0 ComBat cannot fit empirical priors with fewer than two adjustable features");
         if (keep.isEmpty()) return new Result(ConfounderMath.copy(data),
             new double[batchCount][features], ones(batchCount, features), levels,
             meanOnly, excluded.stream().mapToInt(Integer::intValue).toArray());
@@ -73,8 +120,10 @@ public final class ComBat {
                 "nonparametric ComBat requires at least two adjustable features");
         double[][] values = new double[retained][];
         for (int i = 0; i < retained; i++) values[i] = data[keep.get(i)].clone();
+        boolean originalMissing = original346 && Arrays.stream(values)
+            .anyMatch(row -> Arrays.stream(row).anyMatch(Double::isNaN));
         double[][] beta = new double[retained][design[0].length];
-        for (int f = 0; f < retained; f++) beta[f] = leastSquares(design, values[f]);
+        for (int f = 0; f < retained; f++) { checkpoint.run(); beta[f] = leastSquares(design, values[f]); }
         int[] batchSizes = groups.values().stream().mapToInt(List::size).toArray();
 
         double[] grandMean = new double[retained];
@@ -91,6 +140,7 @@ public final class ComBat {
         }
         double[] pooledVariance = new double[retained];
         for (int f = 0; f < retained; f++) {
+            checkpoint.run();
             List<Integer> selected = reference >= 0 ? groups.get(levels.get(reference)) : null;
             if (selected == null) {
                 int count = 0;
@@ -98,14 +148,14 @@ public final class ComBat {
                     double fitted = dot(design[j], beta[f]);
                     pooledVariance[f] += square(values[f][j] - fitted); count++;
                 }
-                pooledVariance[f] /= count;
+                pooledVariance[f] /= originalMissing ? count - 1.0 : count;
             } else {
                 int count = 0;
                 for (int j : selected) if (Double.isFinite(values[f][j])) {
                     double fitted = dot(design[j], beta[f]);
                     pooledVariance[f] += square(values[f][j] - fitted); count++;
                 }
-                pooledVariance[f] /= count;
+                pooledVariance[f] /= originalMissing ? count - 1.0 : count;
             }
             if (!(pooledVariance[f] > 0.0) || !Double.isFinite(pooledVariance[f]))
                 throw new IllegalArgumentException("ComBat pooled variance is not positive for feature " + keep.get(f));
@@ -148,11 +198,11 @@ public final class ComBat {
                 } else {
                     iterateParametric(standardized, group, gammaHat[bIndex], deltaHat[bIndex],
                         gammaBar[bIndex], t2[bIndex], aPrior[bIndex], bPrior[bIndex],
-                        options, gammaStar[bIndex], deltaStar[bIndex]);
+                        options, gammaStar[bIndex], deltaStar[bIndex], original346, checkpoint);
                 }
             } else {
                 nonparametric(standardized, group, gammaHat[bIndex], deltaHat[bIndex],
-                    meanOnly, gammaStar[bIndex], deltaStar[bIndex]);
+                    meanOnly, gammaStar[bIndex], deltaStar[bIndex], original346, checkpoint);
             }
             bIndex++;
         }
@@ -164,9 +214,16 @@ public final class ComBat {
         double[][] adjustedKept = ConfounderMath.copy(standardized);
         bIndex = 0;
         for (List<Integer> group : groups.values()) {
-            for (int f = 0; f < retained; f++) for (int j : group) if (Double.isFinite(adjustedKept[f][j]))
-                adjustedKept[f][j] = (adjustedKept[f][j] - gammaStar[bIndex][f])
-                    / Math.sqrt(deltaStar[bIndex][f]);
+            for (int f = 0; f < retained; f++) for (int j : group) if (Double.isFinite(adjustedKept[f][j])) {
+                double location = gammaStar[bIndex][f];
+                if (original346) {
+                    location = 0.0;
+                    // R's full batch-design product propagates 0*NA/NaN. Do not
+                    // replace it by selecting just the nonzero coefficient.
+                    for (int b = 0; b < batchCount; b++) location += batchDesign[j][b] * gammaStar[b][f];
+                }
+                adjustedKept[f][j] = (adjustedKept[f][j] - location) / Math.sqrt(deltaStar[bIndex][f]);
+            }
             bIndex++;
         }
         for (int f = 0; f < retained; f++) for (int j = 0; j < samples; j++)
@@ -189,21 +246,30 @@ public final class ComBat {
 
     private static void iterateParametric(double[][] s, List<Integer> group,
             double[] gammaHat, double[] deltaHat, double gammaBar, double t2,
-            double a, double b, Options options, double[] gammaOut, double[] deltaOut) {
+            double a, double b, Options options, double[] gammaOut, double[] deltaOut,
+            boolean original346, Runnable checkpoint) {
         int features = s.length;
         double[] oldGamma = gammaHat.clone(), oldDelta = deltaHat.clone();
         for (int iteration = 0; iteration < options.maximumIterations(); iteration++) {
+            checkpoint.run();
             double change = 0.0;
             for (int f = 0; f < features; f++) {
                 int count = 0;
+                if ((f & 63) == 0) checkpoint.run();
                 for (int j : group) if (Double.isFinite(s[f][j])) count++;
                 gammaOut[f] = postMean(gammaHat[f], gammaBar, count, oldDelta[f], t2);
                 double sum = 0.0;
                 for (int j : group) if (Double.isFinite(s[f][j])) sum += square(s[f][j] - gammaOut[f]);
                 deltaOut[f] = (0.5 * sum + b) / (count / 2.0 + a - 1.0);
-                change = Math.max(change, relative(gammaOut[f], oldGamma[f]));
-                change = Math.max(change, relative(deltaOut[f], oldDelta[f]));
+                change = Math.max(change, original346
+                    ? Math.abs(gammaOut[f] - oldGamma[f]) / oldGamma[f]
+                    : relative(gammaOut[f], oldGamma[f]));
+                change = Math.max(change, original346
+                    ? Math.abs(deltaOut[f] - oldDelta[f]) / oldDelta[f]
+                    : relative(deltaOut[f], oldDelta[f]));
             }
+            if (original346 && Double.isNaN(change))
+                throw new IllegalArgumentException("sva 3.46.0 ComBat iteration has an undefined original relative change");
             if (change <= options.convergenceTolerance()) return;
             System.arraycopy(gammaOut, 0, oldGamma, 0, features);
             System.arraycopy(deltaOut, 0, oldDelta, 0, features);
@@ -213,9 +279,32 @@ public final class ComBat {
 
     private static void nonparametric(double[][] s, List<Integer> group,
             double[] gammaHat, double[] deltaHat, boolean meanOnly,
-            double[] gammaOut, double[] deltaOut) {
+            double[] gammaOut, double[] deltaOut, boolean original346, Runnable checkpoint) {
         int features = s.length;
         for (int target = 0; target < features; target++) {
+            checkpoint.run();
+            if (original346) {
+                int observed = 0;
+                for (int j : group) if (Double.isFinite(s[target][j])) observed++;
+                double denominator = 0.0, gammaNumerator = 0.0, deltaNumerator = 0.0;
+                for (int candidate = 0; candidate < features; candidate++) if (candidate != target) {
+                    if ((candidate & 63) == 0) checkpoint.run();
+                    double variance = meanOnly ? 1.0 : deltaHat[candidate], sum = 0.0;
+                    for (int j : group) if (Double.isFinite(s[target][j]))
+                        sum += square(s[target][j] - gammaHat[candidate]);
+                    double likelihood = 1.0 / StrictMath.pow(2.0 * Math.PI * variance, observed / 2.0)
+                        * StrictMath.exp(-sum / (2.0 * variance));
+                    // An unavailable sample variance is R NA, not the numeric
+                    // NaN likelihood which the original helper replaces by 0.
+                    if (Double.isNaN(likelihood) && !Double.isNaN(variance)) likelihood = 0.0;
+                    denominator += likelihood;
+                    gammaNumerator += gammaHat[candidate] * likelihood;
+                    deltaNumerator += variance * likelihood;
+                }
+                gammaOut[target] = gammaNumerator / denominator;
+                deltaOut[target] = deltaNumerator / denominator;
+                continue;
+            }
             double maxLog = Double.NEGATIVE_INFINITY;
             double[] logLikelihood = new double[features];
             for (int candidate = 0; candidate < features; candidate++) {
@@ -306,6 +395,7 @@ public final class ComBat {
         return result;
     }
     private static double variance(double[] row, List<Integer> indices) { double mean = 0; int n = 0; for (int i : indices) if (Double.isFinite(row[i])) { mean += row[i]; n++; } mean /= n; double ss = 0; for (int i : indices) if (Double.isFinite(row[i])) ss += square(row[i] - mean); return ss / (n - 1.0); }
+    private static boolean uniform(double[] row, List<Integer> indices) { double first = row[indices.get(0)]; for (int i : indices) if (row[i] != first) return false; return true; }
     private static double mean(double[] x) { return Arrays.stream(x).average().orElseThrow(); }
     private static double sampleVariance(double[] x) { double m = mean(x), ss = 0; for (double v : x) ss += square(v - m); return ss / (x.length - 1.0); }
     private static double postMean(double estimate, double mean, int n, double variance, double t2) { return (t2 * n * estimate + variance * mean) / (t2 * n + variance); }
