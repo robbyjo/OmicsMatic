@@ -1,5 +1,16 @@
 # Current toolbox handover
 
+**Current Popcorn checkpoint:** [qualification, warnings and next work](popcorn-validation/HANDOVER.md).
+The full250 primary-text audit identifies five Popcorn paper roles and 25 contexts,
+including one recovered uppercase observation. Original two-population score/fit
+workflows and the native Java regression stage are qualified with 31 tests per OS,
+nine captures/fresh replays and 13 packaged refusal controls. Current totals are
+**174 scoped families (34 native/140 upstream), 1,832 reviewed/902 pending uses,
+2,734 observations, 453 named labels and 492 providers**; 249 labels remain missing.
+The effective registry is `popcorn-catalog-admission/REGISTRY.json`. Publication
+and mandatory cleanup receipts are tracked separately in the Popcorn checkpoint.
+The full goal remains active. Entries below are historical checkpoints.
+
 **Current cytometry catalog admission:** [44 roles, bounded native coverage, warnings and next work](CYTOMETRY_CATALOG_CHECKPOINT_2026-11-24.md).
 One native FlowJo family and 41 new reviews are admitted; three prior reviews are enriched. Totals are **158 scoped families (30 native/128 upstream), 1,755 reviewed/969 pending uses, 2,724 observations and 250 papers**. FACSDiva stays missing. Raw source captures, unrelated observations and prior review identities are preserved; both hosts pass source/transaction checks, and all 44 roles pass preview/installed desktop/mobile checks.
 

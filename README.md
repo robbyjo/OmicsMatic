@@ -27,6 +27,9 @@ Read the [release scope](docs/release-0.4.1.md) and
 Build from source with `./gradlew check executableJar` (`gradlew.bat` on Windows).
 The executable is `build/cli/omicsmatic-0.4.1.jar`.
 See [runtime setup](docs/runtime-requirements.md).
+The source-built [Popcorn workflows](docs/popcorn-tools.md) add original
+cross-population GWAS covariance scores and correlation fitting, native Java
+regression checks, explicit runtime setup and complete saved-input replay.
 The current source build provides the exact-edition
 [nf-core ChIP-seq commands](docs/literature/NFCORE_CHIPSEQ_COMMANDS.md).
 It also provides original-edition [CrossMap BED, VCF and BigWig conversion](docs/literature/CROSSMAP_WORKFLOWS.md), with separate runtime setup and portable result verification.

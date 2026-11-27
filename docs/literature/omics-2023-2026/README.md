@@ -1,3 +1,13 @@
+# Current Popcorn workflow checkpoint
+
+250 papers, 453 named labels, 492 providers and 2,734 observations; 1,832 reviewed / 902 pending uses. 174 scoped families: 34 native +140 upstream. Popcorn adds one scoped hybrid upstream family and five reviewed source roles, including one recovered uppercase observation. 249 labels remain missing. The full goal remains active.
+
+**Warnings and required actions:** WARNINGS AND REQUIRED ACTION: inspect original logs, full input/output audits and failure files. Require completed capture plus exact-producer fresh replay. Missing/forbidden prerequisites produce SKIP3 and skip dependent analysis: supply/install only where permitted and retry NEW paths. Invalid/changed data/source/runtime, failed model/QC, cancellation or capacity exhaustion produce FAIL2 with no complete result. Preserve all attempts. Do not clamp rho, repair identifiers, change score M, collapse effect/impact mode or substitute a null-zero test/bootstrap for original null-one/jackknife. Reference compute requires explicit single-chromosome ordered consistent panels. Keep exact JARs and effective runtime roots/symlink targets. Literature HTMLs remain withheld from Pages. RFMix SIS-dependent work remains skipped, Cell Ranger excluded and MaxQuant pending with runtime analyses skipped.
+
+See [workflow guide](../../popcorn-tools.md), [all five source roles](../popcorn-source-audit/ROLES.json) and [qualification](../popcorn-validation/QUALIFICATION.json). Earlier checkpoints below are historical.
+
+---
+
 # Current standalone WASP workflow checkpoint
 
 250 papers, 453 named labels, 492 providers and 2,733 observations; 1,827 reviewed / 906 pending uses. 173 scoped families: 34 native + 139 upstream. WASP adds one scoped original mapping family; 250 labels remain missing. The full goal remains active.
