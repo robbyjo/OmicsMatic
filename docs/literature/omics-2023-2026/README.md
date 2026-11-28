@@ -1,3 +1,15 @@
+# Current native CADD consequence hierarchy
+
+250 frozen papers;453 named labels and492 provider definitions;186 scoped families(37 native,149 upstream),1940 reviewed uses and801 pending uses across2741 observations;246 missing labels. This native CADD hierarchy expansion earns zero additional family, source-review or observation credit. Full implementation and review remain open.
+
+Existing CADD1.6 lookup, preparation, calibration and complete linear-model components remain qualified. A new native Java library implements original consequence-tier selection, literal consecutive groups, first ties, GPS borrowing and all-annotation score propagation, with complete-stream capacities and explicit nonfinite counts. All168 original option/input cases retain116 successes and52 refusals with byte-identical output on Windows and Linux. The native linear, hierarchy and PHRED chain matches all published fields in both full original examples,30 annotation rows with every original feature. Full raw-VCF annotation/prediction, other CADD releases, clinical interpretation and author-specific recipes remain separately unqualified. No additional family, observation or review credit.
+
+**Warnings and required actions:** Read docs/cadd-consequence-hierarchy.md and the native linear-model numerical envelope. Supply complete source-scored annotation rows in original order and explicit whole-stream/group capacities. Nonfinite rows remain unassessable. FAIL2 admits no complete result, including any already-written prefix: retain diagnostics, correct the named cause and retry NEW output. SKIP3 skips dependent analysis when exact permitted prerequisites are missing. Never reduce rows/models/references, relax runtime guards or restart live/indeterminate jobs. The entire official GRCh38 annotation archive is checksum-verified; full extraction, resource binding and actual workflow execution remain pending. Preserve its active installation and original archive/parts. Cell Ranger remains excluded; MaxQuant remains pending with runtime skipped.
+
+See [guide](../../cadd-consequence-hierarchy.md), [qualification](../cadd-hierarchy-validation/QUALIFICATION.json) and [handover](../cadd-hierarchy-validation/HANDOVER.md). Earlier checkpoints below are historical.
+
+---
+
 # Current original pbmm2 mapping workflows
 
 250 frozen papers;453 named labels and492 provider definitions;186 scoped families(37 native,149 upstream),1940 reviewed uses and801 pending uses across2741 observations;246 missing labels. pbmm2 adds one scoped upstream family and four source-role reviews, with no duplicate native-family or recovered-observation credit. Full implementation and source-semantic review remain open.
