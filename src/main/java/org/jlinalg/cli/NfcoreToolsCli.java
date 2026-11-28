@@ -13,7 +13,9 @@ public final class NfcoreToolsCli {
         if (args.length > 0 && java.util.Set.of("--source-profiles", "--inspect-source", "--export-source-setup").contains(args[0]))
             return NfcoreSourceToolsCli.run(args, output, error);
         if (args.length == 0 || args.length == 1 && args[0].equals("--help")) {
-            output.writeBytes(("nfcore-tools ATACSEQ-1.2.1 --help\n"
+            output.writeBytes(("nfcore-tools RNASPLICE-1.0.4 --help\n"
+                +"  Complete original FASTQ graph, typed new inputs and selected source-output contracts.\n"
+                +"nfcore-tools ATACSEQ-1.2.1 --help\n"
                 +"  Exact original ATAC source workflow, explicit local references and selected output contracts.\n"
                 +"nfcore-tools CHIPSEQ-1.2.1 --help\n"
                 +"  Exact original ChIP-seq1.2.1 workflow and five selected source-output checks.\n"
@@ -31,6 +33,7 @@ public final class NfcoreToolsCli {
         }
         String[] tail = Arrays.copyOfRange(args, 1, args.length);
         return switch (args[0]) {
+            case "RNASPLICE-1.0.4" -> NfcoreRnasplice104ToolsCli.run(tail, output, error);
             case "ATACSEQ-1.2.1" -> NfcoreAtacseq121Cli.run(tail, output, error);
             case "CHIPSEQ-1.2.1" -> NfcoreChipseqToolsCli.run(tail, output, error);
             case "CHIPSEQ-2.0.0" -> NfcoreChipseq200ToolsCli.run(tail, output, error);

@@ -1,0 +1,539 @@
+{
+  "schema_version": 1,
+  "pipeline_profile": "nf-core/rnasplice-1.0.4",
+  "source_commit": "1d0494ae3402d1a46e0adadad24f81a0ff855c77",
+  "source_files": 206,
+  "module_declarations": 75,
+  "images": {
+    "https://depot.galaxyproject.org/singularity/bedtools:2.30.0--hc088bd4_0": {
+      "pin": {
+        "bytes": 31862784,
+        "sha256": "02b1a77b0f1c443db408e291f6babb1649985b4088cdc3dbf68b003a6b55902c"
+      },
+      "modules": [
+        "modules/local/bedtools_genomecov.nf"
+      ],
+      "process_names": [
+        "BEDTOOLS_GENOMECOV"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/bioconductor-dexseq:1.36.0--r40_0": {
+      "pin": {
+        "bytes": 379363328,
+        "sha256": "ca586bf06a83d1b82857af2863ef9fc34cfe8a9665be18f085871b6b7978b2ce"
+      },
+      "modules": [
+        "modules/local/dexseq_dtu.nf",
+        "modules/local/dexseq_exon.nf"
+      ],
+      "process_names": [
+        "DEXSEQ_DTU",
+        "DEXSEQ_EXON"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/bioconductor-drimseq:1.18.0--r40_0": {
+      "pin": {
+        "bytes": 332476416,
+        "sha256": "59da69ec198e22eee8e86faf519e2c46f88fc0a48dfd354d240ab7f5112f6541"
+      },
+      "modules": [
+        "modules/local/drimseq_filter.nf"
+      ],
+      "process_names": [
+        "DRIMSEQ_FILTER"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/bioconductor-stager:1.12.0--r40_0": {
+      "pin": {
+        "bytes": 276824064,
+        "sha256": "05bcb3ac452984dfd989b666b192a62ea2f9ebfbeb103c4cdfa987cc7ac64ff0"
+      },
+      "modules": [
+        "modules/local/stager.nf"
+      ],
+      "process_names": [
+        "STAGER"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/bioconductor-tximeta:1.8.0--r40_0": {
+      "pin": {
+        "bytes": 381890560,
+        "sha256": "a00cb435035037dec47287b4b970d6ea022b30f0d7c152ef2dcbad76bd9bee71"
+      },
+      "modules": [
+        "modules/local/tximport.nf"
+      ],
+      "process_names": [
+        "TXIMPORT"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0": {
+      "pin": {
+        "bytes": 293392384,
+        "sha256": "20c596671fe25d241eb2491b705bbda4f7678703117550084f9ec5a62acb8231"
+      },
+      "modules": [
+        "modules/nf-core/fastqc/main.nf"
+      ],
+      "process_names": [
+        "FASTQC"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/gffread:0.12.1--h8b12597_0": {
+      "pin": {
+        "bytes": 16977920,
+        "sha256": "6ae18b4d67ba4bb3e355dd3e67c0c9425178d205266cf4b587cf9ba007c56f40"
+      },
+      "modules": [
+        "modules/local/gffread_tx2gene.nf",
+        "modules/nf-core/gffread/main.nf"
+      ],
+      "process_names": [
+        "GFFREAD",
+        "GFFREAD_TX2GENE"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/gffread:0.12.7--hdcf5f25_3": {
+      "pin": {
+        "bytes": 11071488,
+        "sha256": "4da30a777ac043a13c36bb96b5dba0c12628758654fc1967c350ba84ba8db9d3"
+      },
+      "modules": [
+        "modules/local/gtf_2_gff3.nf"
+      ],
+      "process_names": [
+        "GTF_2_GFF3"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/htseq:2.0.2--py310ha14a713_0": {
+      "pin": {
+        "bytes": 108900352,
+        "sha256": "826e9e7fd9c51668f14ffff0dc1b3726943685d076d3322984c78f006dcd592f"
+      },
+      "modules": [
+        "modules/local/dexseq_annotation.nf",
+        "modules/local/dexseq_count.nf"
+      ],
+      "process_names": [
+        "DEXSEQ_ANNOTATION",
+        "DEXSEQ_COUNT"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/misopy:0.5.4--py27h9801fc8_5": {
+      "pin": {
+        "bytes": 259162112,
+        "sha256": "7d4b2b68fcf4329f78a704ba0f0f092272df5c07745e6a7d1fafafdc21940f41"
+      },
+      "modules": [
+        "modules/local/miso_index.nf",
+        "modules/local/miso_run.nf",
+        "modules/local/miso_sashimi.nf"
+      ],
+      "process_names": [
+        "MISO_INDEX",
+        "MISO_RUN",
+        "MISO_SASHIMI"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:1df389393721fc66f3fd8778ad938ac711951107-0": {
+      "pin": {
+        "bytes": 28336159,
+        "sha256": "cda488b4f463f5b09f9701e8174a9ba2daf947c57a5bd3a6c32620f3bce120f1"
+      },
+      "modules": [
+        "modules/nf-core/star/align/main.nf",
+        "modules/nf-core/star/genomegenerate/main.nf"
+      ],
+      "process_names": [
+        "STAR_ALIGN",
+        "STAR_GENOMEGENERATE"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:59cdd445419f14abac76b31dd0d71217994cbcc9-0": {
+      "pin": {
+        "bytes": 38260767,
+        "sha256": "b77917c728996f9983090c9be39dc08f45a7e2c12411385be086603677cd6d44"
+      },
+      "modules": [
+        "modules/local/star_align_igenomes.nf",
+        "modules/local/star_genomegenerate_igenomes.nf"
+      ],
+      "process_names": [
+        "STAR_ALIGN_IGENOMES",
+        "STAR_GENOMEGENERATE_IGENOMES"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/mulled-v2-419bd7f10b2b902489ac63bbaafc7db76f8e0ae1:709335c37934db1b481054cbec637c6e5b5971cb-0": {
+      "pin": {
+        "bytes": 280948767,
+        "sha256": "552a768e359074d150428dbb68d6da63ca3b03e0a62cdb7302a557b0e9ae0e5f"
+      },
+      "modules": [
+        "modules/local/edger_exon.nf"
+      ],
+      "process_names": [
+        "EDGER_EXON"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/mulled-v2-8ea76ff0a6a4c7e5c818fd4281abf918f92eeeae:121e48ab4817ec619c157a346458efca1ccf3c0a-0": {
+      "pin": {
+        "bytes": 321888256,
+        "sha256": "2b67386f3acde777859d3c9495a7813808b2c59407c8cffe9be5d4354682071d"
+      },
+      "modules": [
+        "modules/local/rmats_post.nf",
+        "modules/local/rmats_post_single.nf",
+        "modules/local/rmats_prep.nf",
+        "modules/local/rmats_prep_single.nf"
+      ],
+      "process_names": [
+        "RMATS_POST",
+        "RMATS_POST_SINGLE",
+        "RMATS_PREP",
+        "RMATS_PREP_SINGLE"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/mulled-v2-cf0123ef83b3c38c13e3b0696a3f285d3f20f15b:64aad4a4e144878400649e71f42105311be7ed87-0": {
+      "pin": {
+        "bytes": 332591135,
+        "sha256": "1478d3512efdb057b5af74513cbc5fa50bfb19c3fc7568f811c216c09fc363e0"
+      },
+      "modules": [
+        "modules/nf-core/rsem/preparereference/main.nf"
+      ],
+      "process_names": [
+        "MAKE_TRANSCRIPTS_FASTA"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/multiqc:1.17--pyhdfd78af_0": {
+      "pin": {
+        "bytes": 162852864,
+        "sha256": "6813828ea1a700bbd70c220ebcc25ca6c68337c3d5ecf94a261e01e864efc70d"
+      },
+      "modules": [
+        "modules/nf-core/custom/dumpsoftwareversions/main.nf"
+      ],
+      "process_names": [
+        "CUSTOM_DUMPSOFTWAREVERSIONS"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/multiqc:1.18--pyhdfd78af_0": {
+      "pin": {
+        "bytes": 164036608,
+        "sha256": "e1b16911199abb434fb94834b812ecf55538beaf97c8037940baddd547758bb9"
+      },
+      "modules": [
+        "modules/nf-core/multiqc/main.nf"
+      ],
+      "process_names": [
+        "MULTIQC"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/parsimonious:0.10.0": {
+      "pin": {
+        "bytes": 65400832,
+        "sha256": "a92f56a5ef9d36265fac7e7618bc7b331d2361fa06a72b86d7682574dde21406"
+      },
+      "modules": [
+        "modules/local/miso_settings.nf"
+      ],
+      "process_names": [
+        "MISO_SETTINGS"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/python:3.9--1": {
+      "pin": {
+        "bytes": 62779423,
+        "sha256": "05a1258beecd105efe98d178f56101fafe7ab5e97f85356b0069804a8c70a2b4"
+      },
+      "modules": [
+        "modules/local/contrastsheet_check.nf",
+        "modules/local/gtf_gene_filter.nf",
+        "modules/local/samplesheet_check.nf",
+        "modules/local/suppa_clustergroups.nf"
+      ],
+      "process_names": [
+        "CLUSTERGROUPS_IOE",
+        "CLUSTERGROUPS_IOI",
+        "CONTRASTSHEET_CHECK",
+        "GTF_GENE_FILTER",
+        "SAMPLESHEET_CHECK"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/r-base:3.4.2": {
+      "pin": {
+        "bytes": 119074847,
+        "sha256": "85822b8222d3d1e1a4d4d019f1dc23d15013f876e1ab5e412f2e6a53e9b05969"
+      },
+      "modules": [
+        "modules/local/suppa_split_files.nf"
+      ],
+      "process_names": [
+        "SPLIT_FILES_IOE",
+        "SPLIT_FILES_IOI",
+        "SPLIT_FILES_TPM"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/salmon:1.10.1--h7e5ed60_0": {
+      "pin": {
+        "bytes": 61378560,
+        "sha256": "15d1e5d23d0473be814d53ff2dfa02af5cab9473c6338789acf0df45f8e5af73"
+      },
+      "modules": [
+        "modules/nf-core/salmon/index/main.nf",
+        "modules/nf-core/salmon/quant/main.nf"
+      ],
+      "process_names": [
+        "SALMON_INDEX",
+        "SALMON_QUANT_SALMON",
+        "SALMON_QUANT_STAR"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/samtools:1.16.1--h6899075_1": {
+      "pin": {
+        "bytes": 22667264,
+        "sha256": "814950965a595bc3daea8063e9f4bb66c18faad48873564a37a2bbfd1dcbbff9"
+      },
+      "modules": [
+        "modules/nf-core/custom/getchromsizes/main.nf"
+      ],
+      "process_names": [
+        "CUSTOM_GETCHROMSIZES"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/samtools:1.17--h00cdaf9_0": {
+      "pin": {
+        "bytes": 22634496,
+        "sha256": "de1e9b85acbac78efa29d1caeff54f49432578c7659c6fc0a02c2829815a7c19"
+      },
+      "modules": [
+        "modules/nf-core/samtools/flagstat/main.nf",
+        "modules/nf-core/samtools/idxstats/main.nf",
+        "modules/nf-core/samtools/index/main.nf",
+        "modules/nf-core/samtools/sort/main.nf",
+        "modules/nf-core/samtools/stats/main.nf"
+      ],
+      "process_names": [
+        "SAMTOOLS_FLAGSTAT",
+        "SAMTOOLS_IDXSTATS",
+        "SAMTOOLS_INDEX",
+        "SAMTOOLS_SORT",
+        "SAMTOOLS_STATS"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/sed:4.7.0": {
+      "pin": {
+        "bytes": 12283935,
+        "sha256": "b8e5860033b9817ad1e8317dc202d73fe3a7bbb9da832e47ecd51f440d74c8d7"
+      },
+      "modules": [
+        "modules/local/create_bamlist.nf",
+        "modules/local/create_bamlist_single.nf"
+      ],
+      "process_names": [
+        "CREATE_BAMLIST",
+        "CREATE_BAMLIST_SINGLE"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/subread:2.0.1--hed695b0_0": {
+      "pin": {
+        "bytes": 32555008,
+        "sha256": "1bd69927f63948a81f4e025ddf19d07152be072b856c40307374f7983c8764e7"
+      },
+      "modules": [
+        "modules/local/flattengtf.nf",
+        "modules/nf-core/subread/featurecounts/main.nf"
+      ],
+      "process_names": [
+        "SUBREAD_FEATURECOUNTS",
+        "SUBREAD_FLATTENGTF"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0": {
+      "pin": {
+        "bytes": 393015296,
+        "sha256": "bd986dc703728f491188c7ad6dc5b53ed3fae9061c71f1b0a371d93e2340d46f"
+      },
+      "modules": [
+        "modules/local/suppa_clusterevents.nf",
+        "modules/local/suppa_diffsplice.nf",
+        "modules/local/suppa_generateevents.nf",
+        "modules/local/suppa_psiperevent.nf",
+        "modules/local/suppa_psiperisoform.nf"
+      ],
+      "process_names": [
+        "CLUSTEREVENTS_IOE",
+        "CLUSTEREVENTS_IOI",
+        "DIFFSPLICE_IOE",
+        "DIFFSPLICE_IOI",
+        "GENERATE_EVENTS_IOE",
+        "GENERATE_EVENTS_IOI",
+        "PSIPEREVENT",
+        "PSIPERISOFORM"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/trim-galore:0.6.7--hdfd78af_0": {
+      "pin": {
+        "bytes": 327593984,
+        "sha256": "526f7e04a16e94866211896322b3805587f19c9a4b4c0ed5c4726c83676b092d"
+      },
+      "modules": [
+        "modules/nf-core/trimgalore/main.nf"
+      ],
+      "process_names": [
+        "TRIMGALORE"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/ubuntu:20.04": {
+      "pin": {
+        "bytes": 27750400,
+        "sha256": "ee8bfca03fcadf02e118b3bd5bc9deb9b800a99a857acb1c09ccaca8dab34cca"
+      },
+      "modules": [
+        "modules/local/preprocess_transcripts_fasta_gencode.nf",
+        "modules/nf-core/cat/fastq/main.nf",
+        "modules/nf-core/gunzip/main.nf",
+        "modules/nf-core/untar/main.nf"
+      ],
+      "process_names": [
+        "CAT_FASTQ",
+        "GUNZIP_FASTA",
+        "GUNZIP_GFF",
+        "GUNZIP_GFF_DEXSEQ",
+        "GUNZIP_GTF",
+        "GUNZIP_SUPPA_TPM",
+        "GUNZIP_TRANSCRIPT_FASTA",
+        "PREPROCESS_TRANSCRIPTS_FASTA_GENCODE",
+        "UNTAR",
+        "UNTAR_SALMON_INDEX",
+        "UNTAR_STAR_INDEX"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/ucsc-bedclip:377--h0b8a92a_2": {
+      "pin": {
+        "bytes": 24039424,
+        "sha256": "f9d090f5bdd7782ff23e365f744bd07c391a89b56e576e8df3efd7f702e78d09"
+      },
+      "modules": [
+        "modules/nf-core/ucsc/bedclip/main.nf"
+      ],
+      "process_names": [
+        "UCSC_BEDCLIP"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/ucsc-bedgraphtobigwig:377--h446ed27_1": {
+      "pin": {
+        "bytes": 22679552,
+        "sha256": "ead76ded529a84c66f8c129989a8ee6a022a2be1eb58d49a95feadec5e57dbb3"
+      },
+      "modules": [
+        "modules/nf-core/ucsc/bedgraphtobigwig/main.nf"
+      ],
+      "process_names": [
+        "UCSC_BEDGRAPHTOBIGWIG"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/umi_tools:1.1.4--py38hbff2b2d_1": {
+      "pin": {
+        "bytes": 158052352,
+        "sha256": "76960c831738e8ba2197e5762769d80239eb6b7617b2169c8994bc9508826034"
+      },
+      "modules": [
+        "modules/nf-core/umitools/extract/main.nf"
+      ],
+      "process_names": [
+        "UMITOOLS_EXTRACT"
+      ]
+    }
+  },
+  "aliases": {
+    "BEDTOOLS_GENOMECOV": "https://depot.galaxyproject.org/singularity/bedtools:2.30.0--hc088bd4_0",
+    "CAT_FASTQ": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "CLUSTEREVENTS_IOE": "https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0",
+    "CLUSTEREVENTS_IOI": "https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0",
+    "CLUSTERGROUPS_IOE": "https://depot.galaxyproject.org/singularity/python:3.9--1",
+    "CLUSTERGROUPS_IOI": "https://depot.galaxyproject.org/singularity/python:3.9--1",
+    "CONTRASTSHEET_CHECK": "https://depot.galaxyproject.org/singularity/python:3.9--1",
+    "CREATE_BAMLIST": "https://depot.galaxyproject.org/singularity/sed:4.7.0",
+    "CREATE_BAMLIST_SINGLE": "https://depot.galaxyproject.org/singularity/sed:4.7.0",
+    "CUSTOM_DUMPSOFTWAREVERSIONS": "https://depot.galaxyproject.org/singularity/multiqc:1.17--pyhdfd78af_0",
+    "CUSTOM_GETCHROMSIZES": "https://depot.galaxyproject.org/singularity/samtools:1.16.1--h6899075_1",
+    "DEXSEQ_ANNOTATION": "https://depot.galaxyproject.org/singularity/htseq:2.0.2--py310ha14a713_0",
+    "DEXSEQ_COUNT": "https://depot.galaxyproject.org/singularity/htseq:2.0.2--py310ha14a713_0",
+    "DEXSEQ_DTU": "https://depot.galaxyproject.org/singularity/bioconductor-dexseq:1.36.0--r40_0",
+    "DEXSEQ_EXON": "https://depot.galaxyproject.org/singularity/bioconductor-dexseq:1.36.0--r40_0",
+    "DIFFSPLICE_IOE": "https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0",
+    "DIFFSPLICE_IOI": "https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0",
+    "DRIMSEQ_FILTER": "https://depot.galaxyproject.org/singularity/bioconductor-drimseq:1.18.0--r40_0",
+    "EDGER_EXON": "https://depot.galaxyproject.org/singularity/mulled-v2-419bd7f10b2b902489ac63bbaafc7db76f8e0ae1:709335c37934db1b481054cbec637c6e5b5971cb-0",
+    "FASTQC": "https://depot.galaxyproject.org/singularity/fastqc:0.12.1--hdfd78af_0",
+    "GENERATE_EVENTS_IOE": "https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0",
+    "GENERATE_EVENTS_IOI": "https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0",
+    "GFFREAD": "https://depot.galaxyproject.org/singularity/gffread:0.12.1--h8b12597_0",
+    "GFFREAD_TX2GENE": "https://depot.galaxyproject.org/singularity/gffread:0.12.1--h8b12597_0",
+    "GTF_2_GFF3": "https://depot.galaxyproject.org/singularity/gffread:0.12.7--hdcf5f25_3",
+    "GTF_GENE_FILTER": "https://depot.galaxyproject.org/singularity/python:3.9--1",
+    "GUNZIP_FASTA": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "GUNZIP_GFF": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "GUNZIP_GFF_DEXSEQ": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "GUNZIP_GTF": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "GUNZIP_SUPPA_TPM": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "GUNZIP_TRANSCRIPT_FASTA": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "MAKE_TRANSCRIPTS_FASTA": "https://depot.galaxyproject.org/singularity/mulled-v2-cf0123ef83b3c38c13e3b0696a3f285d3f20f15b:64aad4a4e144878400649e71f42105311be7ed87-0",
+    "MISO_INDEX": "https://depot.galaxyproject.org/singularity/misopy:0.5.4--py27h9801fc8_5",
+    "MISO_RUN": "https://depot.galaxyproject.org/singularity/misopy:0.5.4--py27h9801fc8_5",
+    "MISO_SASHIMI": "https://depot.galaxyproject.org/singularity/misopy:0.5.4--py27h9801fc8_5",
+    "MISO_SETTINGS": "https://depot.galaxyproject.org/singularity/parsimonious:0.10.0",
+    "MULTIQC": "https://depot.galaxyproject.org/singularity/multiqc:1.18--pyhdfd78af_0",
+    "PREPROCESS_TRANSCRIPTS_FASTA_GENCODE": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "PSIPEREVENT": "https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0",
+    "PSIPERISOFORM": "https://depot.galaxyproject.org/singularity/suppa:2.3--py36_0",
+    "RMATS_POST": "https://depot.galaxyproject.org/singularity/mulled-v2-8ea76ff0a6a4c7e5c818fd4281abf918f92eeeae:121e48ab4817ec619c157a346458efca1ccf3c0a-0",
+    "RMATS_POST_SINGLE": "https://depot.galaxyproject.org/singularity/mulled-v2-8ea76ff0a6a4c7e5c818fd4281abf918f92eeeae:121e48ab4817ec619c157a346458efca1ccf3c0a-0",
+    "RMATS_PREP": "https://depot.galaxyproject.org/singularity/mulled-v2-8ea76ff0a6a4c7e5c818fd4281abf918f92eeeae:121e48ab4817ec619c157a346458efca1ccf3c0a-0",
+    "RMATS_PREP_SINGLE": "https://depot.galaxyproject.org/singularity/mulled-v2-8ea76ff0a6a4c7e5c818fd4281abf918f92eeeae:121e48ab4817ec619c157a346458efca1ccf3c0a-0",
+    "SALMON_INDEX": "https://depot.galaxyproject.org/singularity/salmon:1.10.1--h7e5ed60_0",
+    "SALMON_QUANT_SALMON": "https://depot.galaxyproject.org/singularity/salmon:1.10.1--h7e5ed60_0",
+    "SALMON_QUANT_STAR": "https://depot.galaxyproject.org/singularity/salmon:1.10.1--h7e5ed60_0",
+    "SAMPLESHEET_CHECK": "https://depot.galaxyproject.org/singularity/python:3.9--1",
+    "SAMTOOLS_FLAGSTAT": "https://depot.galaxyproject.org/singularity/samtools:1.17--h00cdaf9_0",
+    "SAMTOOLS_IDXSTATS": "https://depot.galaxyproject.org/singularity/samtools:1.17--h00cdaf9_0",
+    "SAMTOOLS_INDEX": "https://depot.galaxyproject.org/singularity/samtools:1.17--h00cdaf9_0",
+    "SAMTOOLS_SORT": "https://depot.galaxyproject.org/singularity/samtools:1.17--h00cdaf9_0",
+    "SAMTOOLS_STATS": "https://depot.galaxyproject.org/singularity/samtools:1.17--h00cdaf9_0",
+    "SPLIT_FILES_IOE": "https://depot.galaxyproject.org/singularity/r-base:3.4.2",
+    "SPLIT_FILES_IOI": "https://depot.galaxyproject.org/singularity/r-base:3.4.2",
+    "SPLIT_FILES_TPM": "https://depot.galaxyproject.org/singularity/r-base:3.4.2",
+    "STAGER": "https://depot.galaxyproject.org/singularity/bioconductor-stager:1.12.0--r40_0",
+    "STAR_ALIGN": "https://depot.galaxyproject.org/singularity/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:1df389393721fc66f3fd8778ad938ac711951107-0",
+    "STAR_ALIGN_IGENOMES": "https://depot.galaxyproject.org/singularity/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:59cdd445419f14abac76b31dd0d71217994cbcc9-0",
+    "STAR_GENOMEGENERATE": "https://depot.galaxyproject.org/singularity/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:1df389393721fc66f3fd8778ad938ac711951107-0",
+    "STAR_GENOMEGENERATE_IGENOMES": "https://depot.galaxyproject.org/singularity/mulled-v2-1fa26d1ce03c295fe2fdcf85831a92fbcbd7e8c2:59cdd445419f14abac76b31dd0d71217994cbcc9-0",
+    "SUBREAD_FEATURECOUNTS": "https://depot.galaxyproject.org/singularity/subread:2.0.1--hed695b0_0",
+    "SUBREAD_FLATTENGTF": "https://depot.galaxyproject.org/singularity/subread:2.0.1--hed695b0_0",
+    "TRIMGALORE": "https://depot.galaxyproject.org/singularity/trim-galore:0.6.7--hdfd78af_0",
+    "TXIMPORT": "https://depot.galaxyproject.org/singularity/bioconductor-tximeta:1.8.0--r40_0",
+    "UCSC_BEDCLIP": "https://depot.galaxyproject.org/singularity/ucsc-bedclip:377--h0b8a92a_2",
+    "UCSC_BEDGRAPHTOBIGWIG": "https://depot.galaxyproject.org/singularity/ucsc-bedgraphtobigwig:377--h446ed27_1",
+    "UMITOOLS_EXTRACT": "https://depot.galaxyproject.org/singularity/umi_tools:1.1.4--py38hbff2b2d_1",
+    "UNTAR": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "UNTAR_SALMON_INDEX": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "UNTAR_STAR_INDEX": "https://depot.galaxyproject.org/singularity/ubuntu:20.04"
+  },
+  "image_provenance": {
+    "original_intake": {
+      "bytes": 12701,
+      "sha256": "b48c0d67797f52c65890aa1706a92a3b7b1da6c46608f263972ba42b16989b62"
+    },
+    "complete_import_graph": {
+      "bytes": 42002,
+      "sha256": "0d1dd9145f044b992e709aaac97d3dc5f3f9adb104214b66de7914fa16b4dd5f"
+    },
+    "complete_original_execution": {
+      "bytes": 8839,
+      "sha256": "ffd3dc8107b36363dfca3ad0e56e364a6a8fde064afae7052f3e4c9f8d4e945c"
+    },
+    "private_runtimes_and_images_redistributed": false
+  },
+  "biological_accuracy_certified": false
+}

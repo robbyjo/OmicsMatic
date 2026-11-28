@@ -1,4 +1,21 @@
-# Current checkpoint: native rMATS result selection (2026-11-27)
+# Current checkpoint: typed RNA-splicing execution adapter (2026-11-27)
+
+181 scoped families (36 native, 145 upstream), 1,864 reviewed uses and 870 pending
+uses remain current. A complete original rnasplice1.0.4 FASTQ adapter now accepts
+new explicit cohorts, with selected native source-output contracts. The full
+unpaired control, independent source-table checks, saved Windows/Linux replay,
+56 tests and failure controls pass. A paired source-order mismatch is correctly
+refused; no paired result is readmitted. This adds zero whole-family credit.
+See [handover](nfcore-rnasplice104-validation/HANDOVER.md),
+[qualification](nfcore-rnasplice104-validation/QUALIFICATION.json) and
+[guide](../nfcore-rnasplice104.md). Other RNA numerical contracts, a positive
+new-wrapper paired control and the full 250-paper goal remain pending/active.
+Publication, preservation and mandatory cleanup closure are recorded in this
+checkpoint's COMPLETED.json when present. Earlier checkpoints are historical.
+
+---
+
+# Historical checkpoint: native rMATS result selection (2026-11-27)
 
 181 scoped families (36 native, 145 upstream), 1,864 reviewed uses and 870
 pending uses remain current. Native Java positional table import and exact
@@ -47,7 +64,7 @@ when present. Earlier checkpoints below are historical.
 
 # Historical checkpoint: original nf-validation execution component (2026-11-27)
 
-181 scoped families (36 native, 145 upstream), 1,858 reviewed uses and 876 pending uses remain current. This adds a qualified offline Nextflow/plugin component and zero family credit. See [current handover](nfcore-validation/HANDOVER.md), [qualification](nfcore-validation/QUALIFICATION.json) and [guide](NFCORE_VALIDATION_BRIDGE.md). The separate full original rnasplice test remains unqualified until its complete task and scientific-output audit finishes. Follow its current state; preserve active jobs and do not restart RUNNING sessions. Publication/cleanup closure is recorded in nfcore-validation/COMPLETED.json when present. The full250-paper goal remains active. Earlier checkpoints below are historical.
+181 scoped families (36 native, 145 upstream), 1,858 reviewed uses and 876 pending uses remain current. This adds a qualified offline Nextflow/plugin component and zero family credit. See [current handover](nfcore-validation/HANDOVER.md), [qualification](nfcore-validation/QUALIFICATION.json) and [guide](NFCORE_VALIDATION_BRIDGE.md). The separate full original rnasplice test remains unqualified until its complete task and scientific-output audit finishes. Follow its current state; preserve active jobs and do not restart RUNNING sessions. Publication/cleanup closure is recorded in nfcore-validation/COMPLETED.json when present. The full 250-paper goal remains active. Earlier checkpoints below are historical.
 
 ---
 
@@ -139,7 +156,7 @@ Earlier entries below describe their historical checkpoints.
 # Current toolbox handover
 
 **Current Popcorn checkpoint:** [qualification, warnings and next work](popcorn-validation/HANDOVER.md).
-The full250 primary-text audit identifies five Popcorn paper roles and 25 contexts,
+The full 250 primary-text audit identifies five Popcorn paper roles and 25 contexts,
 including one recovered uppercase observation. Original two-population score/fit
 workflows and the native Java regression stage are qualified with 31 tests per OS,
 nine captures/fresh replays and 13 packaged refusal controls. Current totals are

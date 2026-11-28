@@ -45,6 +45,11 @@ reference/read/VCF audits, explicit initialization and legacy merge policies,
 and fresh replay of captured BAM/CRAM inputs.
 The current source build provides the exact-edition
 [nf-core ChIP-seq commands](docs/literature/NFCORE_CHIPSEQ_COMMANDS.md).
+The source-built [RNA-splicing adapter](docs/nfcore-rnasplice104.md) accepts complete
+new cohorts for original rnasplice1.0.4, with explicit rMATS model/pairing, native
+streamed result checks and portable saved verification. Read its selected
+scientific scope, paired-order limitations and prerequisite/error actions.
+
 It also provides original-edition [CrossMap BED, VCF and BigWig conversion](docs/literature/CROSSMAP_WORKFLOWS.md), with separate runtime setup and portable result verification.
 The source-built [GEMMA workflows](docs/literature/GEMMA_WORKFLOWS.md) add Java
 kinship and original univariate association fitting, with explicit sample/QC
