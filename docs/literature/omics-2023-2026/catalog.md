@@ -1,3 +1,15 @@
+# Current native CADD score-component workflows
+
+250 frozen papers;453 named labels and492 provider definitions;184 scoped families(37 native,147 upstream),1924 reviewed uses and814 pending uses across2738 observations;247 missing labels. Four genuine CADD observations missed by the original extractor were recovered from primary results/discussion sections, without changing the paper cohort. CADD adds one scoped native component family and18 new reviews, and expands one existing review without duplicate credit. Full implementation and semantic review remain open.
+
+Native Java CADD1.6 score components: complete SHA256-bound local BGZF/tabix six-column tables, literal per-allele lookup with every hit from the first explicitly matching table, opt-in original VCF2vepVCF representation and its original-variant ledger, and complete declared conversion-table raw-to-PHRED calibration. Full original GRCh37/GRCh38 conversion tables and complete six-variant upstream examples were compared with unchanged original source, alongside full synthetic controls. All original fields, duplicate observations/hits, absent scores and nonfinite states are retained; saved verification recomputes every ledger using captured query candidates without external tables. This is one scoped native component family, not complete CADD prediction. Genome-wide reference intake is active and separately unqualified. Raw-score generation, CADD1.4/1.7, CADD-SV, dbNSFP/VEP integration, clinical cutoffs and whole-paper recipes remain unqualified.
+
+**Warnings and required actions:** Use cadd-tools only with complete explicit permitted source data and exact assembly/version labels. Require exit0, results_admitted=true and fresh --verify; read WARNINGS.md, analysis-status.json and all counts. SKIP3 skips dependent analysis: restore the named exact permitted input/resource or retain skip. FAIL2 admits no complete result: preserve diagnostics, fix the named data/hash/index/schema/capacity cause and retry NEW output. Unmatched, source-omitted or nonfinite alleles remain unassessable; never fill with zero/benign scores, alias contigs, swap alleles, change releases, reduce data to pass or replace CADD-SV with SNV PHRED conversion. Cell Ranger remains excluded; MaxQuant remains pending with runtime skipped. No release or literature Pages deployment is admitted.
+
+See [guide](../../cadd-tools.md), [source roles](../cadd-source-audit/ROLES.json) and [handover](../cadd-validation/HANDOVER.md). Earlier checkpoints below are historical.
+
+---
+
 # Current source-bound VEP105 and native CSQ workflows
 
 250 frozen papers; 453 labels and 492 provider definitions; 183 scoped families (36 native, 147 upstream), 1,906 reviewed uses and 828 pending uses. There are 2,734 observations and 247 missing labels. VEP adds one scoped family and 37 new source reviews, and expands one existing review without duplicate credit. The full implementation and semantic-review goal remains open.
