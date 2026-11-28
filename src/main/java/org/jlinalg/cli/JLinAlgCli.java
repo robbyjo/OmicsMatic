@@ -150,6 +150,8 @@ public final class JLinAlgCli {
                 return NfcoreToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("nfcore-hic210-tools"))
                 return NfcoreHic210ToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("pbmm2-tools"))
+                return Pbmm2ToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("nfcore-validation-tools"))
                 return NfcoreValidationToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("rmats-results"))
@@ -664,6 +666,7 @@ public final class JLinAlgCli {
               java -jar omicsmatic-<version>.jar cytometry-tools --help
               java -jar omicsmatic-<version>.jar nfcore-tools --help
               java -jar omicsmatic-<version>.jar nfcore-hic210-tools --help
+              java -jar omicsmatic-<version>.jar pbmm2-tools --help
               java -jar omicsmatic-<version>.jar nfcore-validation-tools --help
               java -jar omicsmatic-<version>.jar gemma-tools --help
               java -jar omicsmatic-<version>.jar metaxcan-tools --help

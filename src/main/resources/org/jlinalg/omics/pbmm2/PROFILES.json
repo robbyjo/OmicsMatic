@@ -1,0 +1,899 @@
+{
+  "schema_version": 1,
+  "versions": {
+    "1.13.1": {
+      "source_commit": "4f18ea9e92bca313161d2d529ff20f8230cc4039",
+      "public_source_archive": {
+        "bytes": 6387861,
+        "sha256": "986aba82ce8eada46f8ea525a7f674695abab2cbacf90cd333735fcc78936594"
+      },
+      "original_package": {
+        "bytes": 1876301,
+        "sha256": "3f2b39a6dd5fd9bbd198db8e0c1a630e02686d6413ff2a58cd8555e006ede21d"
+      },
+      "executable": {
+        "bytes": 5053912,
+        "sha256": "c760a3ba14e23a21ced58f4ce37eb3e4d80b0b2501db9e7c07444ba74cc2a04b"
+      },
+      "literal_multi_version_output": "pbmm2 1.13.1\n\nUsing:\n  pbmm2    : 1.13.1 (commit v1.13.1)\n  pbbam    : 2.5.0 (commit v2.5.0)\n  pbcopper : 2.4.0 (commit v2.4.0)\n  boost    : 1.81\n  htslib   : 1.17\n  minimap2 : 2.26\n  zlib     : 1.2.13\n",
+      "literal_bam_version": "1.13.1 (commit v1.13.1)",
+      "source_code_complete_for_this_binary": false,
+      "original_public_cram_controls": {
+        "tests": 109,
+        "passed": 109,
+        "failed": 0,
+        "skipped": 0,
+        "runner_profile": "All unmodified source-declared cases through explicitly selected public Cram0.7, not the inaccessible private pbtestutils develop runner.",
+        "execution_profile": "Native Linux original exact Bioconda binary; image-carrier parity remains a separate check."
+      },
+      "source_release_notice": "Original package is the explicitly selected Bioconda research-use binary, not a claim of SMRT Link binary identity.",
+      "public_pbmm2_source_update_status": "Public matching program snapshot, with floating library dependency wraps; exact bundled dependency source closure not established."
+    },
+    "1.17.0": {
+      "source_commit": "d3e292e701d35d1458abf878107cef6a6828bbbe",
+      "public_source_archive": {
+        "bytes": 4497793,
+        "sha256": "357ab7875ae446d22c8ec41ad91f3ae4da5ec69bd8707fe4f62505430332fa2d"
+      },
+      "original_package": {
+        "bytes": 2017738,
+        "sha256": "66f42214c9a77b109a68df18ccc5b3edb19a9a355f5549cc0d584b440e59e782"
+      },
+      "executable": {
+        "bytes": 5420248,
+        "sha256": "c3af04a29d932bc507eb99414b725b7c90a92c8dd9ee26aeadcd548ea3e8e324"
+      },
+      "literal_multi_version_output": "pbmm2 1.17.0\n\nUsing:\n  pbmm2    : 1.17.0 (commit v1.17.0)\n  pbbam    : 2.8.0 (commit v2.8.0)\n  pbcopper : 2.7.0 (commit v2.7.0)\n  boost    : 1.81\n  htslib   : 1.17\n  minimap2 : 2.26\n  zlib     : 1.2.13\n",
+      "literal_bam_version": "1.17.0 (commit v1.17.0)",
+      "source_code_complete_for_this_binary": false,
+      "original_public_cram_controls": {
+        "tests": 109,
+        "passed": 106,
+        "failed": 3,
+        "skipped": 0,
+        "runner_profile": "All unmodified source-declared cases through explicitly selected public Cram0.7, not the inaccessible private pbtestutils develop runner.",
+        "execution_profile": "Native Linux original exact Bioconda binary; image-carrier parity remains a separate check."
+      },
+      "source_release_notice": "The release notes document HiFi DP-threshold removal after1.13.1 and no corresponding public source updates for recent binaries. Three legacy public source tests expect7reads11994bases; the original1.17.0 binary produces9reads14102bases on the complete same fixture. All failures and actual outputs are retained. Do not report full source-suite conformance or version equivalence.",
+      "public_pbmm2_source_update_status": "Public program snapshot is not complete current binary source; the maintainer explicitly reports no corresponding source updates for newer binaries."
+    }
+  },
+  "source_option_definitions": {
+    "1.13.1": [
+      {
+        "names": [
+          "c",
+          "min-concordance-perc"
+        ],
+        "type": "double",
+        "default": 0,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "x",
+          "min-id-perc"
+        ],
+        "type": "double",
+        "default": 0,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "y",
+          "min-gap-comp-id-perc"
+        ],
+        "type": "double",
+        "default": 70,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "l",
+          "min-length"
+        ],
+        "type": "int",
+        "default": 50,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "sample"
+        ],
+        "type": "string",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "preset"
+        ],
+        "type": "string",
+        "default": "CCS",
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "chunk-size"
+        ],
+        "type": "int",
+        "default": 100,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "k"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "w"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "o",
+          "gap-open-1"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "O",
+          "gap-open-2"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "e",
+          "gap-extend-1"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "E",
+          "gap-extend-2"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "A"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "B"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "z"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "Z"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "r"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "G"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "C"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "no-splice-flank"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "median-filter"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "sort"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "sort-threads-perc"
+        ],
+        "type": "int",
+        "default": 25,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "J",
+          "sort-threads"
+        ],
+        "type": "int",
+        "default": 0,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "m",
+          "sort-memory"
+        ],
+        "type": "string",
+        "default": "768M",
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "sort-memory-tc"
+        ],
+        "type": "string",
+        "default": "4G",
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "u",
+          "no-kmer-compression"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "zmw"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "hqregion"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "strip"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "split-by-sample"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "rg"
+        ],
+        "type": "string",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "pbi"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "L",
+          "lj-min-ratio"
+        ],
+        "type": "float",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "no-bai"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "no-rmt"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "unmapped"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "N",
+          "best-n"
+        ],
+        "type": "int",
+        "default": 0,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "collapse-homopolymers"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "g"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "bam-index"
+        ],
+        "type": "string",
+        "default": "BAI",
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "enforced-mapping"
+        ],
+        "type": "string",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "max-secondary-alns"
+        ],
+        "type": "int",
+        "default": 5,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "report-json"
+        ],
+        "type": "string",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "short-sa-cigar"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "preset"
+        ],
+        "type": "string",
+        "default": "CCS",
+        "source": "src/IndexSettings.cpp"
+      },
+      {
+        "names": [
+          "k"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/IndexSettings.cpp"
+      },
+      {
+        "names": [
+          "w"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/IndexSettings.cpp"
+      },
+      {
+        "names": [
+          "u",
+          "no-kmer-compression"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/IndexSettings.cpp"
+      }
+    ],
+    "1.17.0": [
+      {
+        "names": [
+          "c",
+          "min-concordance-perc"
+        ],
+        "type": "double",
+        "default": 0,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "x",
+          "min-id-perc"
+        ],
+        "type": "double",
+        "default": 0,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "y",
+          "min-gap-comp-id-perc"
+        ],
+        "type": "double",
+        "default": 70,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "l",
+          "min-length"
+        ],
+        "type": "int",
+        "default": 50,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "sample"
+        ],
+        "type": "string",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "preset"
+        ],
+        "type": "string",
+        "default": "CCS",
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "chunk-size"
+        ],
+        "type": "int",
+        "default": 100,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "k"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "w"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "o",
+          "gap-open-1"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "O",
+          "gap-open-2"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "e",
+          "gap-extend-1"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "E",
+          "gap-extend-2"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "A"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "B"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "z"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "Z"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "r"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "G"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "C"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "no-splice-flank"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "median-filter"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "sort"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "sort-threads-perc"
+        ],
+        "type": "int",
+        "default": 25,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "J",
+          "sort-threads"
+        ],
+        "type": "int",
+        "default": 0,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "m",
+          "sort-memory"
+        ],
+        "type": "string",
+        "default": "768M",
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "sort-memory-tc"
+        ],
+        "type": "string",
+        "default": "4G",
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "u",
+          "no-kmer-compression"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "zmw"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "hqregion"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "strip"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "split-by-sample"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "rg"
+        ],
+        "type": "string",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "pbi"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "L",
+          "lj-min-ratio"
+        ],
+        "type": "float",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "no-bai"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "no-rmt"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "unmapped"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "N",
+          "best-n"
+        ],
+        "type": "int",
+        "default": 0,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "collapse-homopolymers"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "g"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "bam-index"
+        ],
+        "type": "string",
+        "default": "BAI",
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "enforced-mapping"
+        ],
+        "type": "string",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "max-secondary-alns"
+        ],
+        "type": "int",
+        "default": 5,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "report-json"
+        ],
+        "type": "string",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "short-sa-cigar"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/AlignSettings.cpp"
+      },
+      {
+        "names": [
+          "preset"
+        ],
+        "type": "string",
+        "default": "CCS",
+        "source": "src/IndexSettings.cpp"
+      },
+      {
+        "names": [
+          "k"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/IndexSettings.cpp"
+      },
+      {
+        "names": [
+          "w"
+        ],
+        "type": "int",
+        "default": -1,
+        "source": "src/IndexSettings.cpp"
+      },
+      {
+        "names": [
+          "u",
+          "no-kmer-compression"
+        ],
+        "type": "bool",
+        "default": false,
+        "source": "src/IndexSettings.cpp"
+      }
+    ]
+  },
+  "image_uri": "https://depot.galaxyproject.org/singularity/samtools:1.15.1--h1170115_0",
+  "backend": "Apptainer1.5.5-1 complete original350-entry managed inventory",
+  "native_arithmetic_reference": "Public pbcopper2.3.0 CigarOpsCalculator and public pbmm2 concordance; newer bundled dependency source equivalence not claimed. Complete original BAM comparisons gate actual tagged values.",
+  "whole_paper_reproduced": false
+}

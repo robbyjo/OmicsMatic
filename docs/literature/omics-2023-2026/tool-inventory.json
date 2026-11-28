@@ -32250,9 +32250,9 @@
     "name": "pbmm2",
     "pattern": "(?<![A-Za-z0-9_])(?:pbmm2)(?![A-Za-z0-9_])",
     "role": "PacBio read alignment",
-    "current_coverage": "missing",
-    "existing_source": null,
-    "coverage_note": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/Pbmm2ToolsCli.java",
+    "coverage_note": "Exact original pbmm21.13.1/1.17.0 INDEX/ALIGN workflows over complete explicit regular-file input roots, source presets/options and native BAM/FASTA/FASTQ/FOFN/XML/JSON inputs. Literal resource locators and identifiers are retained through owned original-path namespaces; every output is captured. Native Java checks complete output BAM CIGAR arithmetic and available identity/concordance tags, with portable verification and whole-input replay. Full109-case controls per edition retain three1.17 legacy expectation failures; all500 native/container BAMs match in record order and all29808 records/tags. No complete newer binary/source closure, private-runner/C++-suite, independent all-tag/reference-fit/index-construction, methylation/variant or whole-paper accuracy claim. P214 TableS5 parameters and unresolved author references/recipes remain separate.",
     "paper_count": 4,
     "papers": [
       "P171",
@@ -32260,10 +32260,111 @@
       "P232",
       "P248"
     ],
-    "implementation_status": "missing",
-    "implementation_source": null,
-    "implementation_scope": "Additional software identified during full-text/code-link completeness review; integration and independent validation pending.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/Pbmm2ToolsCli.java",
+    "implementation_scope": "Exact original pbmm21.13.1/1.17.0 INDEX/ALIGN workflows over complete explicit regular-file input roots, source presets/options and native BAM/FASTA/FASTQ/FOFN/XML/JSON inputs. Literal resource locators and identifiers are retained through owned original-path namespaces; every output is captured. Native Java checks complete output BAM CIGAR arithmetic and available identity/concordance tags, with portable verification and whole-input replay. Full109-case controls per edition retain three1.17 legacy expectation failures; all500 native/container BAMs match in record order and all29808 records/tags. No complete newer binary/source closure, private-runner/C++-suite, independent all-tag/reference-fit/index-construction, methylation/variant or whole-paper accuracy claim. P214 TableS5 parameters and unresolved author references/recipes remain separate.",
+    "validation_note": "14 passing Java contracts; all109 unmodified functional cases per edition; original1.17 three legacy failures retained; full500-BAM native/container equality;28608 mapped native arithmetic records/28992 float tags; full native-format typed workflows, replay, portable Windows/Linux verification and refrozen corruption refusal. Qualification remains scoped; see docs/literature/pbmm2-validation/QUALIFICATION.json",
+    "current_qualification": "docs/literature/pbmm2-validation/QUALIFICATION.json",
+    "paper_role_qualification": {
+      "P171": {
+        "paper_id": "P171",
+        "pmcid": "PMC13447107",
+        "doi": "10.1038/s41588-026-02678-9",
+        "tool_id": "pbmm2",
+        "runtime": "pbmm2 1.17.0 in the primary paragraph; preserve the original null near-name extraction",
+        "primary_anchors": [
+          {
+            "paragraph_index": 38,
+            "section": "Methods / Genome annotation",
+            "paragraph_sha256": "6c4a67905e58e8f7dd9e1527cd037ee386a8fc14fad221e417c53887d6d7c6f0",
+            "matching_text_sha256": "38a291881d0cf6c20d702343308fe416aa59eb4299bd942eb7ab80b3ed35f20d"
+          }
+        ],
+        "use_summary": "Redundant wheat IsoSeq isoforms were mapped to the soft-masked genome with pbmm2 1.17.0 before a separate IsoSeq 4.3 collapse step.",
+        "implementation_scope_note": "IsoSeq collapse, GMAP/StringTie processing and TransDecoder are separate operations. The exact whole wheat reference and author mapping/collapse settings are not reproduced by an adapter control. This source-role audit does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "runtime_mapping_backend_available": true
+      },
+      "P214": {
+        "paper_id": "P214",
+        "pmcid": "PMC13277683",
+        "doi": "10.1016/j.ajhg.2026.04.001",
+        "tool_id": "pbmm2",
+        "runtime": "pbmm2 1.17.0; distinct human long-read and methylation-tagged read contexts",
+        "primary_anchors": [
+          {
+            "paragraph_index": 9,
+            "section": "Material and methods / HiFi lrGS (HiFi sequencing)",
+            "paragraph_sha256": "e9fd004791b874738b6d491b0fc29645d548d0cc65a2f4f19d0723ff2d4fc42c",
+            "matching_text_sha256": "e9fd004791b874738b6d491b0fc29645d548d0cc65a2f4f19d0723ff2d4fc42c"
+          },
+          {
+            "paragraph_index": 11,
+            "section": "Material and methods / Detection of imprinting-related methylation signatures using HiFi",
+            "paragraph_sha256": "934371d121577ed890485764285c86b14e17649a6de7b3fda14bfa0f21275482",
+            "matching_text_sha256": "934371d121577ed890485764285c86b14e17649a6de7b3fda14bfa0f21275482"
+          }
+        ],
+        "use_summary": "Human HiFi long-read genome reads were mapped to GRCh38 with pbmm2 1.17.0. A separate paragraph describes mapping 5mC-tagged ccs reads to hg38 with the same edition.",
+        "implementation_scope_note": "Keep both primary contexts. Source Table S5 parameters have not been inspected here. WhatsHap, variant/CNV/repeat callers and pb-CpG-tools are distinct downstream operations; its reported editions differ between contexts. Capturing MM/ML tags does not independently certify methylation interpretation. This source-role audit does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": "1.17.0",
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "runtime_mapping_backend_available": true
+      },
+      "P232": {
+        "paper_id": "P232",
+        "pmcid": "PMC11339624",
+        "doi": "10.1016/j.ajhg.2024.06.011",
+        "tool_id": "pbmm2",
+        "runtime": "Unreported pbmm2 edition; exact JAG1 reference/preset unresolved",
+        "primary_anchors": [
+          {
+            "paragraph_index": 16,
+            "section": "Material and methods / Bioinformatic analysis",
+            "paragraph_sha256": "73ad2e9389940894db0bab9d359ac7e9dc1dccbdc869ef23ba66f7ca00a3e3cb",
+            "matching_text_sha256": "4a357ab5273471dac39ec4eea9af062ca7597057c97165589bdfb4d2480007a0"
+          }
+        ],
+        "use_summary": "pbmm2 was used for JAG1 sequence mapping in the source-described NM_000214.3 and Hg38/GRCh38 target context.",
+        "implementation_scope_note": "Do not infer a whole-genome versus transcript target, release or preset from this wording. Lima, read-depth filtering, annotation, control selection and membrane-expression experiments are separate. The exact author target and mapping recipe remain unresolved. This source-role audit does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "runtime_mapping_backend_available": true
+      },
+      "P248": {
+        "paper_id": "P248",
+        "pmcid": "PMC13447089",
+        "doi": "10.1038/s41588-026-02682-z",
+        "tool_id": "pbmm2",
+        "runtime": "pbmm2 1.13.1; PBSV branch",
+        "primary_anchors": [
+          {
+            "paragraph_index": 50,
+            "section": "Methods / SV-based graph pangenome construction and SV genotyping",
+            "paragraph_sha256": "06d71b99b7cdb469bb26e7fa149125d0b811a8a1a971755eb2135c1ac3720e92",
+            "matching_text_sha256": "da32bf15340ad044f6897331afc6d9a70abbb91ffd19af609d2373e6a93db2b6"
+          }
+        ],
+        "use_summary": "The PBSV structural-variant branch used pbmm2 1.13.1 with long-read data from the reported 125 HiFi and eight CLR accessions against CLv4.0.",
+        "implementation_scope_note": "Minimap2 2.28 serves other caller branches. Source PASS, read-depth and variant-length filters are downstream caller/author operations. Full accession inputs, the complete CLv4.0 reference and the author PBSV recipe remain unqualified. This source-role audit does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": "1.13.1",
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "runtime_mapping_backend_available": true
+      }
+    }
   },
   {
     "id": "celltypist",

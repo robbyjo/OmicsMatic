@@ -1,3 +1,15 @@
+# Current original pbmm2 mapping workflows
+
+250 frozen papers;453 named labels and492 provider definitions;186 scoped families(37 native,149 upstream),1940 reviewed uses and801 pending uses across2741 observations;246 missing labels. pbmm2 adds one scoped upstream family and four source-role reviews, with no duplicate native-family or recovered-observation credit. Full implementation and source-semantic review remain open.
+
+Exact original pbmm21.13.1/1.17.0 INDEX/ALIGN workflows over complete explicit regular-file input roots, source presets/options and native BAM/FASTA/FASTQ/FOFN/XML/JSON inputs. Literal resource locators and identifiers are retained through owned original-path namespaces; every output is captured. Native Java checks complete output BAM CIGAR arithmetic and available identity/concordance tags, with portable verification and whole-input replay. Full109-case controls per edition retain three1.17 legacy expectation failures; all500 native/container BAMs match in record order and all29808 records/tags. No complete newer binary/source closure, private-runner/C++-suite, independent all-tag/reference-fit/index-construction, methylation/variant or whole-paper accuracy claim. P214 TableS5 parameters and unresolved author references/recipes remain separate.
+
+**Warnings and required actions:** Require COMPLETED.json and successful --verify; read version warnings and original process diagnostics. SKIP3 skips analysis until exact permitted prerequisites/capabilities exist: install separately where allowed or keep skipped. FAIL2 admits no result: retain every failure, correct the named source/input/runtime/process/numerical/capacity cause and use NEW paths. Never restart a live or indeterminate job, subset a reference/read population, repair identifiers/alleles, change an original expected result or substitute an edition. Symbolic links are explicitly skipped by this snapshot profile. Cell Ranger remains excluded; MaxQuant is pending with runtime skipped. Full CADD annotation is separately pending and its live transfer must be preserved. No release or literature Pages deployment is requested.
+
+See [guide](../../pbmm2.md), [primary roles](../pbmm2-source-audit/ROLES.json) and [qualification](../pbmm2-validation/QUALIFICATION.json). Earlier checkpoints below are historical.
+
+---
+
 # Current native CADD linear model component
 
 250 frozen papers;453 named labels and492 provider definitions;185 scoped families(37 native,148 upstream),1936 reviewed uses and805 pending uses across2741 observations;247 missing labels. This expands the already counted CADD family with a native linear-model operation and earns zero new family, observation or source-review credit. Full implementation and source-semantic review remain open.

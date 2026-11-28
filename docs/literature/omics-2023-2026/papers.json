@@ -66348,12 +66348,14 @@
         "matched_text": "pbmm2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-expanded-primary-source-census",
         "evidence_paragraph_sha256": "6c4a67905e58e8f7dd9e1527cd037ee386a8fc14fad221e417c53887d6d7c6f0",
-        "use_summary": "PacBio read alignment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447107/ (section: Methods / Genome annotation)"
+        "use_summary": "Redundant wheat IsoSeq isoforms were mapped to the soft-masked genome with pbmm2 1.17.0 before a separate IsoSeq 4.3 collapse step.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447107/ (section: Methods / Genome annotation)",
+        "implementation_scope_note": "IsoSeq collapse, GMAP/StringTie processing and TransDecoder are separate operations. The exact whole wheat reference and author mapping/collapse settings are not reproduced by an adapter control. This source-role audit does not establish an executed author recipe or whole-paper reproduction.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "plink",
@@ -79232,12 +79234,21 @@
         "matched_text": "pbmm2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "1.17.0",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-expanded-primary-source-census",
         "evidence_paragraph_sha256": "e9fd004791b874738b6d491b0fc29645d548d0cc65a2f4f19d0723ff2d4fc42c",
-        "use_summary": "PacBio read alignment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13277683/ (section: Material and methods / HiFi lrGS (HiFi sequencing))"
+        "use_summary": "Human HiFi long-read genome reads were mapped to GRCh38 with pbmm2 1.17.0. A separate paragraph describes mapping 5mC-tagged ccs reads to hg38 with the same edition.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13277683/ (section: Material and methods / HiFi lrGS (HiFi sequencing))",
+        "implementation_scope_note": "Keep both primary contexts. Source Table S5 parameters have not been inspected here. WhatsHap, variant/CNV/repeat callers and pb-CpG-tools are distinct downstream operations; its reported editions differ between contexts. Capturing MM/ML tags does not independently certify methylation interpretation. This source-role audit does not establish an executed author recipe or whole-paper reproduction.",
+        "supporting_evidence": [
+          {
+            "paragraph_index": 11,
+            "section": "Material and methods / Detection of imprinting-related methylation signatures using HiFi",
+            "paragraph_sha256": "934371d121577ed890485764285c86b14e17649a6de7b3fda14bfa0f21275482",
+            "matching_text_sha256": "934371d121577ed890485764285c86b14e17649a6de7b3fda14bfa0f21275482"
+          }
+        ]
       },
       {
         "tool_id": "whatshap",
@@ -85934,12 +85945,14 @@
         "matched_text": "pbmm2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": null,
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-expanded-primary-source-census",
         "evidence_paragraph_sha256": "73ad2e9389940894db0bab9d359ac7e9dc1dccbdc869ef23ba66f7ca00a3e3cb",
-        "use_summary": "PacBio read alignment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11339624/ (section: Material and methods / Bioinformatic analysis)"
+        "use_summary": "pbmm2 was used for JAG1 sequence mapping in the source-described NM_000214.3 and Hg38/GRCh38 target context.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11339624/ (section: Material and methods / Bioinformatic analysis)",
+        "implementation_scope_note": "Do not infer a whole-genome versus transcript target, release or preset from this wording. Lima, read-depth filtering, annotation, control selection and membrane-expression experiments are separate. The exact author target and mapping recipe remain unresolved. This source-role audit does not establish an executed author recipe or whole-paper reproduction.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "pymol",
@@ -90078,12 +90091,14 @@
         "matched_text": "pbmm2",
         "extraction_score": 15,
         "usage_context": "analysis-method-description",
-        "review_status": "source-evidence-extracted; semantic-completeness-review-open",
+        "review_status": "individually-reviewed-primary-source-roles; whole-paper-method-review-open",
         "version_reported_near_name": "1.13.1",
-        "evidence_selection": "highest-scored-eligible-method-sentence",
+        "evidence_selection": "individually-reviewed-expanded-primary-source-census",
         "evidence_paragraph_sha256": "06d71b99b7cdb469bb26e7fa149125d0b811a8a1a971755eb2135c1ac3720e92",
-        "use_summary": "PacBio read alignment.",
-        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / SV-based graph pangenome construction and SV genotyping)"
+        "use_summary": "The PBSV structural-variant branch used pbmm2 1.13.1 with long-read data from the reported 125 HiFi and eight CLR accessions against CLv4.0.",
+        "evidence_locator": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13447089/ (section: Methods / SV-based graph pangenome construction and SV genotyping)",
+        "implementation_scope_note": "Minimap2 2.28 serves other caller branches. Source PASS, read-depth and variant-length filters are downstream caller/author operations. Full accession inputs, the complete CLv4.0 reference and the author PBSV recipe remain unqualified. This source-role audit does not establish an executed author recipe or whole-paper reproduction.",
+        "supporting_evidence": []
       },
       {
         "tool_id": "picard",
