@@ -15523,7 +15523,7 @@
     "role": "Variant deleteriousness annotation",
     "current_coverage": "native-subset-validated",
     "existing_source": "src/main/java/org/jlinalg/cli/CaddToolsCli.java",
-    "coverage_note": "Native Java CADD1.6 score components: complete SHA256-bound local BGZF/tabix six-column tables, literal per-allele lookup with every hit from the first explicitly matching table, opt-in original VCF2vepVCF representation and its original-variant ledger, and complete declared conversion-table raw-to-PHRED calibration. Full original GRCh37/GRCh38 conversion tables and complete six-variant upstream examples were compared with unchanged original source, alongside full synthetic controls. All original fields, duplicate observations/hits, absent scores and nonfinite states are retained; saved verification recomputes every ledger using captured query candidates without external tables. This is one scoped native component family, not complete CADD prediction. Genome-wide reference intake is active and separately unqualified. Raw-score generation, CADD1.4/1.7, CADD-SV, dbNSFP/VEP integration, clinical cutoffs and whole-paper recipes remain unqualified.",
+    "coverage_note": "Existing complete CADD1.6 native lookup/preparation/calibration components remain qualified. A new Java library component evaluates both complete original linear models after complete original annotation and feature imputation, preserving float32 scaling and exposing an explicit FP64 accumulation envelope. Both full original annotated examples, all model features, every source annotation row and dense/edge/failure controls are retained; published fields match after unchanged original hierarchy/calibration. This is a model operation, not complete raw-VCF prediction. External model/assembly/order must be bound by the caller; licensed parameters remain private. Full original annotation/reference workflow, other CADD releases, CADD-SV, dbNSFP/VEP author recipes and clinical masks remain separately unqualified. No extra family or review credit is earned.",
     "paper_count": 19,
     "papers": [
       "P072",
@@ -15548,9 +15548,9 @@
     ],
     "implementation_status": "native-subset-validated",
     "implementation_source": "src/main/java/org/jlinalg/cli/CaddToolsCli.java",
-    "implementation_scope": "Native Java CADD1.6 score components: complete SHA256-bound local BGZF/tabix six-column tables, literal per-allele lookup with every hit from the first explicitly matching table, opt-in original VCF2vepVCF representation and its original-variant ledger, and complete declared conversion-table raw-to-PHRED calibration. Full original GRCh37/GRCh38 conversion tables and complete six-variant upstream examples were compared with unchanged original source, alongside full synthetic controls. All original fields, duplicate observations/hits, absent scores and nonfinite states are retained; saved verification recomputes every ledger using captured query candidates without external tables. This is one scoped native component family, not complete CADD prediction. Genome-wide reference intake is active and separately unqualified. Raw-score generation, CADD1.4/1.7, CADD-SV, dbNSFP/VEP integration, clinical cutoffs and whole-paper recipes remain unqualified.",
-    "validation_note": "19 contract tests;89358 whole-conversion-table probes and9 full original/synthetic lookup cases on each host; byte-identical results and cross-host saved verifications;15 packaged negative controls. Complete genome-wide reference and model prediction remain separately unqualified; see docs/literature/cadd-validation/QUALIFICATION.json",
-    "current_qualification": "docs/literature/cadd-validation/QUALIFICATION.json",
+    "implementation_scope": "Existing complete CADD1.6 native lookup/preparation/calibration components remain qualified. A new Java library component evaluates both complete original linear models after complete original annotation and feature imputation, preserving float32 scaling and exposing an explicit FP64 accumulation envelope. Both full original annotated examples, all model features, every source annotation row and dense/edge/failure controls are retained; published fields match after unchanged original hierarchy/calibration. This is a model operation, not complete raw-VCF prediction. External model/assembly/order must be bound by the caller; licensed parameters remain private. Full original annotation/reference workflow, other CADD releases, CADD-SV, dbNSFP/VEP author recipes and clinical masks remain separately unqualified. No extra family or review credit is earned.",
+    "validation_note": "10 passing Java contracts;8252 complete feature rows and8487186 bit-identical scaled values per host; all30 published annotation rows retain every field through source hierarchy/calibration;12 real-model numerical failure controls. Native FP64 decisions retain explicit numerical envelopes. Full raw-VCF prediction remains unqualified.",
+    "current_qualification": "docs/literature/cadd-linear-validation/QUALIFICATION.json",
     "paper_role_qualification": {
       "P072": {
         "paper_id": "P072",
@@ -16098,7 +16098,11 @@
         "exact_author_recipe_qualified": false,
         "prediction_model_qualified": false
       }
-    }
+    },
+    "additional_implementation_sources": [
+      "src/main/java/org/jlinalg/genetics/CaddLinearScoring.java"
+    ],
+    "prior_qualified_components": "docs/literature/cadd-validation/QUALIFICATION.json"
   },
   {
     "id": "fuma",

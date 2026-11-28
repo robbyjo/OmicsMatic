@@ -1,3 +1,15 @@
+# Current native CADD linear model component
+
+250 frozen papers;453 named labels and492 provider definitions;185 scoped families(37 native,148 upstream),1936 reviewed uses and805 pending uses across2741 observations;247 missing labels. This expands the already counted CADD family with a native linear-model operation and earns zero new family, observation or source-review credit. Full implementation and source-semantic review remain open.
+
+Existing complete CADD1.6 native lookup/preparation/calibration components remain qualified. A new Java library component evaluates both complete original linear models after complete original annotation and feature imputation, preserving float32 scaling and exposing an explicit FP64 accumulation envelope. Both full original annotated examples, all model features, every source annotation row and dense/edge/failure controls are retained; published fields match after unchanged original hierarchy/calibration. This is a model operation, not complete raw-VCF prediction. External model/assembly/order must be bound by the caller; licensed parameters remain private. Full original annotation/reference workflow, other CADD releases, CADD-SV, dbNSFP/VEP author recipes and clinical masks remain separately unqualified. No extra family or review credit is earned.
+
+**Warnings and required actions:** For native linear scoring supply the complete exact original assembly-specific model and feature vector in source order, never inferred zeros or shortened data. Read the model guide and numerical envelope; do not infer a probability or clinical class. Nonfinite data and overflow return no complete prediction; workflows must surface FAIL2. Missing exact permitted prerequisites require SKIP3 and skipped dependent analysis. The full original annotation archive is still downloading; do not run an incomplete raw-VCF workflow, restart live/indeterminate transfers, relax source/runtime guards or reduce models/references/input to pass. Preserve diagnostics and retry NEW output after correcting a named cause. Cell Ranger remains excluded; MaxQuant remains pending with runtime skipped.
+
+See [guide](../../cadd-linear-scoring.md), [qualification](../cadd-linear-validation/QUALIFICATION.json) and [handover](../cadd-linear-validation/HANDOVER.md). Earlier checkpoints below are historical.
+
+---
+
 # Current original SpliceAI prediction workflows
 
 250 frozen papers;453 named labels and492 provider definitions;185 scoped families(37 native,148 upstream),1936 reviewed uses and805 pending uses across2741 observations;247 missing labels. Three genuine SpliceAI applications missed by the original extractor were recovered without changing the paper cohort. SpliceAI adds one scoped upstream family and12 new reviews, and expands one existing review without duplicate credit. Full implementation and semantic review remain open.
