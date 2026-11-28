@@ -34,6 +34,11 @@ def verify(root, private=None):
         relative = Path(name)
         require(not relative.is_absolute() and '..' not in relative.parts, 'Invalid source member')
         require(pin(root / relative) == expected, 'Changed qualified source: ' + name)
+    dispatcher = q['global_dispatcher']
+    require(dispatcher['path'] == 'src/main/java/org/jlinalg/cli/JLinAlgCli.java', 'Dispatcher source binding differs')
+    current_dispatch = (root / dispatcher['path']).read_text(encoding='utf-8')
+    route = 'if (arguments.length > 0 && arguments[0].equals("nfcore-hic210-tools"))\n                return NfcoreHic210ToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);'
+    require(route in current_dispatch.replace('\r\n', '\n'), 'Required Hi-C command dispatch is absent or changed')
     profile = read(root / 'src/main/resources/org/jlinalg/omics/nfcore-hic210/SOURCE-PROFILE.json')
     images = read(root / 'src/main/resources/org/jlinalg/omics/nfcore-hic210/IMAGES.json')
     require(profile['source_commit'] == images['source_commit'] == 'fe4ac656317d24c37e81e7940a526ed9ea812f8e', 'Original source revision differs')
@@ -51,6 +56,8 @@ def verify(root, private=None):
             require(pin(private / relative) == expected, 'Changed retained evidence: ' + name)
         build = read(private / 'project-build-Windows-4/COMPLETED.json')
         require(build['producer'] == q['producer'] and build['totals'] == q['packaged_tests'], 'Actual packaged producer/tests differ')
+        producing_sources = read(private / 'project-build-Windows-4/SOURCES.json')['files']
+        require(producing_sources[dispatcher['path']] == dispatcher['producing_source_pin'], 'Frozen producer dispatcher source changed')
         compatibility = read(private / 'baseline-compatibility-1/COMPLETED.json')
         require(compatibility['changed'] == ['org/jlinalg/cli/JLinAlgCli.class'] and compatibility['unchanged'] == 21483, 'Pre-existing packaged classes changed')
         for name, count in [('original-completion-1/trace.tsv', 38), ('typed-verification-1/portable-session/engine/attempts/000001/trace.tsv', q['new_cohort']['tasks'])]:
