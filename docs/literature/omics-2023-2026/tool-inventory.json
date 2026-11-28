@@ -3566,9 +3566,9 @@
     "name": "Ensembl VEP",
     "pattern": "(?<![A-Za-z0-9_])(?:Ensembl Variant Effect Predictor|Variant Effect Predictor|\\bVEP\\b)(?![A-Za-z0-9_])",
     "role": "Variant consequence annotation",
-    "current_coverage": "existing-adapter",
-    "existing_source": "src/main/java/org/jlinalg/cli/VariantFollowupCli.java",
-    "coverage_note": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled.",
+    "current_coverage": "upstream-adapter-validated",
+    "existing_source": "src/main/java/org/jlinalg/cli/VepToolsCli.java",
+    "coverage_note": "Original Ensembl VEP105.0/API105 on its exact private Linux x86_64 host/runtime closure: complete supplied GTF/GFF or whole original Ensembl105 human GRCh38 indexed cache/primary-assembly FASTA; explicit transcript selection, HGVS, canonical/MANE/SIFT/PolyPhen/frequency/regulatory and local VCF/BED/BigWig options within the closed request. Native Java retains every literal VCF/CSQ field, genotype and variant-allele-gene group, with original API105 consequence facts. GTF/GFF source basenames, all multiple consequences, blank summary assignments and missing impacts remain preserved. Whole resources and complete inputs/results are retained; saved verification recomputes all five native ledgers without Perl or cache deserialization. Native components add no duplicate family credit. The older LOFTEE host profile is unchanged. Other editions, RefSeq/merged caches, arbitrary plugins, author masks/transcript fallbacks and complete paper workflows remain separately unqualified.",
     "paper_count": 38,
     "papers": [
       "P023",
@@ -3610,10 +3610,1085 @@
       "P234",
       "P243"
     ],
-    "implementation_status": "existing-adapter",
-    "implementation_source": "src/main/java/org/jlinalg/cli/VariantFollowupCli.java",
-    "implementation_scope": "Scope limited to the existing adapter, lookup or export; upstream software is not bundled.",
-    "validation_note": "Existing overlap/adapters require paper-specific option checks; missing integrations remain pending."
+    "implementation_status": "upstream-adapter-validated",
+    "implementation_source": "src/main/java/org/jlinalg/cli/VepToolsCli.java",
+    "implementation_scope": "Original Ensembl VEP105.0/API105 on its exact private Linux x86_64 host/runtime closure: complete supplied GTF/GFF or whole original Ensembl105 human GRCh38 indexed cache/primary-assembly FASTA; explicit transcript selection, HGVS, canonical/MANE/SIFT/PolyPhen/frequency/regulatory and local VCF/BED/BigWig options within the closed request. Native Java retains every literal VCF/CSQ field, genotype and variant-allele-gene group, with original API105 consequence facts. GTF/GFF source basenames, all multiple consequences, blank summary assignments and missing impacts remain preserved. Whole resources and complete inputs/results are retained; saved verification recomputes all five native ledgers without Perl or cache deserialization. Native components add no duplicate family credit. The older LOFTEE host profile is unchanged. Other editions, RefSeq/merged caches, arbitrary plugins, author masks/transcript fallbacks and complete paper workflows remain separately unqualified.",
+    "validation_note": "24 contract tests;16 complete original synthetic GTF/GFF/custom comparisons; complete human-cache105 source controls;16 full native imports and3 original saved verifications on each host;9 prerequisite/integrity/REF/process/capacity/semantic refusals; original source facts and1600 rank/impact pairs; see docs/literature/vep-validation/QUALIFICATION.json",
+    "current_qualification": "docs/literature/vep-validation/QUALIFICATION.json",
+    "paper_role_qualification": {
+      "P023": {
+        "paper_id": "P023",
+        "pmcid": "PMC12893915",
+        "doi": "10.1038/s41586-025-09866-3",
+        "tool_id": "vep",
+        "runtime": "Unreported edition; VEP with LOFTEE",
+        "primary_anchors": [
+          {
+            "paragraph_index": 76,
+            "section": "Methods / LoF burden test in the All of Us cohort",
+            "paragraph_sha256": "22b33de5ba8b157ac4f1ef0516757f59c092ba060919731b55f789a576061129",
+            "matching_text_sha256": "8052e8bb2495b1b9f4d6d19430a958752c7b2ef4a1c0a3246de7e2d6278ea23e"
+          }
+        ],
+        "use_summary": "VEP and LOFTEE supplied high-confidence loss-of-function annotations for All of Us mean-corpuscular-hemoglobin burden analyses using variants below1% minor-allele frequency.",
+        "implementation_scope_note": "The allele-frequency threshold, gene masks and burden models are downstream author steps; the binary and data editions are unreported. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P041": {
+        "paper_id": "P041",
+        "pmcid": "PMC10733150",
+        "doi": "10.1038/s41586-023-06831-w",
+        "tool_id": "vep",
+        "runtime": "Unreported VEP edition; GENCODE37/GRCh38.p13",
+        "primary_anchors": [
+          {
+            "paragraph_index": 61,
+            "section": "Methods / Genomic variation",
+            "paragraph_sha256": "46e0358433788e7d349160f9ecf085a1ffed14fc18a502c19cc8439561ecea44",
+            "matching_text_sha256": "db23aba11331c18db1cd76692167126ed90f07d31b0034def001796a50195cd1"
+          },
+          {
+            "paragraph_index": 64,
+            "section": "Methods / Genomic variation",
+            "paragraph_sha256": "d59e334ce981ba872002d1710316fe7aa88c40f1114210982670b4c3226d768c",
+            "matching_text_sha256": "1e3e32dc016f359af484d346b1f3daa57764399d7f1adb687f619b24321db37b"
+          }
+        ],
+        "use_summary": "VEP annotated nonsynonymous variants using SIFT and PolyPhen and a custom ClinVar VCF with CLNSIG, CLNREVSTAT and CLNDN, with coding-only output. SIFT below0.05 informed per-person homozygous-nonreference deleterious counts.",
+        "implementation_scope_note": "The reported custom resource is ClinVar20200210; a separate ClinVar20230514 comparison is not substituted for it. Source command typography and GENCODE37 do not identify the VEP binary edition. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P042": {
+        "paper_id": "P042",
+        "pmcid": "PMC12851938",
+        "doi": "10.1038/s41586-025-09812-3",
+        "tool_id": "vep",
+        "runtime": "VEP112",
+        "primary_anchors": [
+          {
+            "paragraph_index": 42,
+            "section": "Methods / Genomic analysis and interpretation",
+            "paragraph_sha256": "8c8107a4b7b62968a75304f09da16c03e6f74777a6e966e557786a2bbbafc7e6",
+            "matching_text_sha256": "7f6cbf50625cc8b51e314ce97965f8d04fb2f20c0093216c6347d8f07b28780c"
+          }
+        ],
+        "use_summary": "VEP release112 annotated germline and somatic variants before separate bcftools and manual browser review.",
+        "implementation_scope_note": "The qualified105 core does not establish112 equivalence or reproduce manual variant review. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P056": {
+        "paper_id": "P056",
+        "pmcid": "PMC12804087",
+        "doi": "10.1038/s41586-025-09762-w",
+        "tool_id": "vep",
+        "runtime": "Multiple species/branches; VEP112 in human INCISE",
+        "primary_anchors": [
+          {
+            "paragraph_index": 43,
+            "section": "Methods / Hybridization capture sequencing variant calling and filtering",
+            "paragraph_sha256": "8029fc42d1b42471725968129b1e8dcdddec30c3b3af5b3f540c30458c279fbd",
+            "matching_text_sha256": "f980335830c5e851504a97a6a42373f297ff7ad345494d82cfc7d62275b1bbba"
+          },
+          {
+            "paragraph_index": 46,
+            "section": "Methods / Targeted amplicon sequencing variant calling and filtering",
+            "paragraph_sha256": "1ce0d87c76d168220e2d9908b186cef3e57db1a769852bf0c4caccf720ef47b1",
+            "matching_text_sha256": "274b2b13c39796191cfedf9ac37f4d1dbca7b3ede00635194ce35a823ef21417"
+          },
+          {
+            "paragraph_index": 54,
+            "section": "Methods / INCISE adenoma tissue processing and DNA sequencing",
+            "paragraph_sha256": "0b3c503dccf440245f908fbb98e94ec29c2cdba1c9f306c800633d8b361b1f02",
+            "matching_text_sha256": "1f489ae37b3b074034d762a8dc0dbd8ecf78eee8561204b1074d1b7e23f79204"
+          }
+        ],
+        "use_summary": "Mouse hybrid-capture variants used Ensembl gene build96 and canonical transcripts; a separate amplicon branch used GRCm39. Human INCISE variants were reannotated through vcf2maf1.6.22 and VEP112.",
+        "implementation_scope_note": "Mouse gene-build96, GRCm39 and human VEP112 are distinct branch/resource statements. The unspecified mouse VEP editions are not inferred from them. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P103": {
+        "paper_id": "P103",
+        "pmcid": "PMC12695638",
+        "doi": "10.1038/s41588-025-02400-1",
+        "tool_id": "vep",
+        "runtime": "Unreported binary; GRCh38 and GRCh37 RefSeq/custom annotations",
+        "primary_anchors": [
+          {
+            "paragraph_index": 24,
+            "section": "Methods / Human variation data",
+            "paragraph_sha256": "3451b4555c2b662867e32af05138b9099e5b76718a9879551825eaf5dfd23463",
+            "matching_text_sha256": "be568b87f35d71312b5cf48111b9e91fc636879bded574edc90da9b05e65f53b"
+          },
+          {
+            "paragraph_index": 26,
+            "section": "Methods / Human variation data / SDD metacohort",
+            "paragraph_sha256": "0a2b1052520324eca1f4b58f0a78c8adcb1c62e742e2de940b1c7f73171cfb30",
+            "matching_text_sha256": "d49a2d5ced10d47737de2c4e89ad37eaee163706402f51eb73dd46a18fe62984"
+          },
+          {
+            "paragraph_index": 27,
+            "section": "Methods / Human variation data / Autism spectrum and unaffected siblings metacohort",
+            "paragraph_sha256": "88e82674ee05f5809c76c8fc188fd5e4766d28e0f5fc1900021bb05e07f4edae",
+            "matching_text_sha256": "f0ae970401b1a57b4a10b0ceb4277e5ec85457ca991da9c0c4cb0ca94588dd8d"
+          },
+          {
+            "paragraph_index": 28,
+            "section": "Methods / Human variation data / DDD cohort",
+            "paragraph_sha256": "97563d61336840dc0e7edbbf57d65758b43db7cfd8d38f716ca38a238f771f2c",
+            "matching_text_sha256": "38ce7325b37a1276f77c132b6c26200bf67267e1a6ca8bc9a9f23c79566a57db"
+          }
+        ],
+        "use_summary": "UK Biobank human variants used GRCh38 RefSeq and a custom NCBI GenBank annotation; SDD/SPARK/SCC/DDD branches used GRCh37 RefSeq and custom assembly mapping.",
+        "implementation_scope_note": "RefSeq, custom gene models, assembly mapping and branch-specific QC are not reproduced by the Ensembl105 GRCh38 cache profile. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P107": {
+        "paper_id": "P107",
+        "pmcid": "PMC13649558",
+        "doi": "10.1038/s41588-026-02713-9",
+        "tool_id": "vep",
+        "runtime": "VEP112",
+        "primary_anchors": [
+          {
+            "paragraph_index": 22,
+            "section": "Methods / Pathway analysis",
+            "paragraph_sha256": "9dd47e15762e7e52cd3ee8d305da7a21f156a081d8582baa73e891255f224d7f",
+            "matching_text_sha256": "de11771d5b5130da2656f388acb5b6080e27f8f1236809bb7e517bae15f5b1e1"
+          }
+        ],
+        "use_summary": "VEP112 assigned rs identifiers before Picard LiftoverVcf3.1.1 conversion to GRCh37 and removal of variants without assigned rsIDs or successful lifts. FUMA/MAGMA followed separately.",
+        "implementation_scope_note": "Identifier assignment, liftover and filtering are separate steps. The adapter preserves literal input identifiers and does not infer or perform these author transformations. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P116": {
+        "paper_id": "P116",
+        "pmcid": "PMC12695626",
+        "doi": "10.1038/s41588-025-02398-6",
+        "tool_id": "vep",
+        "runtime": "VEP100 in code availability",
+        "primary_anchors": [
+          {
+            "paragraph_index": 27,
+            "section": "Methods / Whole-genome sequencing / Sample preparation",
+            "paragraph_sha256": "f6efcfbf05a96497d3839e7d09da95530a68a1f015a7b418f0b1d9b78dc24b1d",
+            "matching_text_sha256": "8fa9711018904725a01a1ea23a1216f28eeed5f65d897fd681dd129e51888055"
+          },
+          {
+            "paragraph_index": 45,
+            "section": "Code availability",
+            "paragraph_sha256": "e04f92478c2e47e2c6da4c3596f501548430be08f2f659df572d9b934a71a1c6",
+            "matching_text_sha256": "e04f92478c2e47e2c6da4c3596f501548430be08f2f659df572d9b934a71a1c6"
+          },
+          {
+            "paragraph_index": 51,
+            "section": "Associated Data / Data Availability Statement",
+            "paragraph_sha256": "e04f92478c2e47e2c6da4c3596f501548430be08f2f659df572d9b934a71a1c6",
+            "matching_text_sha256": "e04f92478c2e47e2c6da4c3596f501548430be08f2f659df572d9b934a71a1c6"
+          }
+        ],
+        "use_summary": "VEP supplied variant consequences; the code-availability statement identifies version100.",
+        "implementation_scope_note": "The source version statement is retained even where the selected nearby-name extractor did not capture it;105 is not substituted for100. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P120": {
+        "paper_id": "P120",
+        "pmcid": "PMC12695664",
+        "doi": "10.1038/s41588-025-02410-z",
+        "tool_id": "vep",
+        "runtime": "Unreported edition",
+        "primary_anchors": [
+          {
+            "paragraph_index": 28,
+            "section": "Methods / Gene mapping",
+            "paragraph_sha256": "0876f6544d61b4752c7b0ec8d16ad276cd0c944edc68c1e52fa429f14cef05a7",
+            "matching_text_sha256": "e3ad29bd77d1d65e9e42d322954155c56930da0d4296f42ff2339941d1ba5edd"
+          }
+        ],
+        "use_summary": "VEP annotated coding effects of lead variants and high-LD proxies as one of five gene-mapping strategies.",
+        "implementation_scope_note": "Proxy selection at linkage-disequilibrium r-squared above0.8 and integration of the other four mapping strategies are not VEP consequence prediction. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P127": {
+        "paper_id": "P127",
+        "pmcid": "PMC12695653",
+        "doi": "10.1038/s41588-025-02390-0",
+        "tool_id": "vep",
+        "runtime": "Unreported edition; canonical protein-coding transcripts",
+        "primary_anchors": [
+          {
+            "paragraph_index": 71,
+            "section": "Methods / Variant annotations and gene sets",
+            "paragraph_sha256": "e424463e81684b340414d29586065cc12b43a0995a37c446e4f8400bd01d8942",
+            "matching_text_sha256": "e073f879e38fe201ca086024a47b8eccc15b5cfc9b3347727308a07ca8a7533a"
+          }
+        ],
+        "use_summary": "VEP classified canonical protein-coding transcript effects, including six reported loss-of-function consequences. SIFT, PolyPhen HDIV/HVAR, LRT and MutationTaster contributed missense masks.",
+        "implementation_scope_note": "The six-term author mask, predictor combination, allele-frequency bins and gene tests are distinct downstream definitions, not a universal VEP/LOFTEE loss-of-function rule. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P132": {
+        "paper_id": "P132",
+        "pmcid": "PMC10703693",
+        "doi": "10.1038/s41588-023-01555-z",
+        "tool_id": "vep",
+        "runtime": "VEP100 explicitly in CHIP branch; other branches unspecified",
+        "primary_anchors": [
+          {
+            "paragraph_index": 10,
+            "section": "Results / Association of mosaic somatic mutations with CH",
+            "paragraph_sha256": "e39a46a73e39694e53e27fc46a639c856a9f5a2d6f08e569cefd0409bdcd5422",
+            "matching_text_sha256": "e2cf653000bf9a03c51ef6506f85afd4fcd74e48679981bd0ca2c413a4857c15"
+          },
+          {
+            "paragraph_index": 15,
+            "section": "Results / CH GWAS meta-analysis in ISL and UKB",
+            "paragraph_sha256": "ffc550b299e087fd27f13645c38cbba10568125e03b5adfb15cd14be572f8c86",
+            "matching_text_sha256": "ba3b885b1b954a756678dee985e8d5fed55b140c6fcf428410c0e78dc3f2fb35"
+          },
+          {
+            "paragraph_index": 42,
+            "section": "Methods / WGS for CH case definition / Definition of CPLD-CH",
+            "paragraph_sha256": "520fd328c50dd37bdce2d6fbeb2a01d9f9301f72bc11584e3aacb56c976d5f63",
+            "matching_text_sha256": "955f956029bcc0f47b1abafef1819cd59b841220ef642d231a53be18d203bdb8"
+          },
+          {
+            "paragraph_index": 44,
+            "section": "Methods / WGS for CH case definition / Definition of CPLD-CH",
+            "paragraph_sha256": "ee088eddc5837d9ca2d08f020bbe7756e514a43e6779a45595ac5a00377099da",
+            "matching_text_sha256": "493ee706e98ab70ac5e4388041452c986b98f9f5d886029e8ab7986fb9425b93"
+          },
+          {
+            "paragraph_index": 51,
+            "section": "Methods / Somatic genetics / Gene-based somatic mutation burden testing",
+            "paragraph_sha256": "e3549e78118c5f971c8dc9bbd99f4efd60ef3aeabf80f543654e934d25d8b1a1",
+            "matching_text_sha256": "00c5439a7bf1199265fe7c8bd3bc78211ebb8973420600f51833b19f013f333c"
+          }
+        ],
+        "use_summary": "VEP consequence impacts contributed HIGH/MODERATE classifications and gene masks in clonal-hematopoiesis analyses; the CHIP branch explicitly reports VEP100.",
+        "implementation_scope_note": "Other branches do not thereby acquire version100. Strelka calls, variant-allele-frequency/germline/binomial filtering and SKAT-O are separate. Maximum impact does not identify a global VEP --pick operation. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P136": {
+        "paper_id": "P136",
+        "pmcid": "PMC11525193",
+        "doi": "10.1038/s41588-024-01913-5",
+        "tool_id": "vep",
+        "runtime": "VEP87; explicit --pick",
+        "primary_anchors": [
+          {
+            "paragraph_index": 32,
+            "section": "Methods / Variant annotation",
+            "paragraph_sha256": "64300dd8381e32e24872eb9f0246d299cfd46fb93ecc7aeb33d14dac6e1118ff",
+            "matching_text_sha256": "e233d58e52009234acd017af3e519f4975f01d8275dd82fff803ffb38239303c"
+          },
+          {
+            "paragraph_index": 38,
+            "section": "Methods / Estimation of enrichment and PPI",
+            "paragraph_sha256": "debdc026c84ab8b49cc55e8cb380cbafb97df5d03f7dc1b499258b666df792dd",
+            "matching_text_sha256": "debdc026c84ab8b49cc55e8cb380cbafb97df5d03f7dc1b499258b666df792dd"
+          }
+        ],
+        "use_summary": "VEP87 used --pick for prioritised transcript consequences, with canonical-transcript and rsID annotations. The authors described a chromosome-position-reference-alternate fallback identifier.",
+        "implementation_scope_note": "The fallback identifier is an explicit author step, not a permitted silent repair. Protein-interaction impact enrichment is downstream;105 does not establish87 equivalence. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": "87",
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P142": {
+        "paper_id": "P142",
+        "pmcid": "PMC10632132",
+        "doi": "10.1038/s41588-023-01553-1",
+        "tool_id": "vep",
+        "runtime": "VEP within TOPMedF8 WGSA0.8/WGSAParsr6.3.8; GENCODE29",
+        "primary_anchors": [
+          {
+            "paragraph_index": 35,
+            "section": "Methods / Association analyses",
+            "paragraph_sha256": "00d07ab417100578b9a81dc9ce6c0f8151765543561af4ae073b32aad4457ee0",
+            "matching_text_sha256": "6c0de0c982a92e9e7b4b58b9605e76cb1d253395a88d193bb65472db72b6105e"
+          }
+        ],
+        "use_summary": "VEP-derived GENCODE29 gene consequences were accessed through the TOPMedF8 WGSA and WGSAParsr BigQuery annotation workflow.",
+        "implementation_scope_note": "The named host/data editions do not identify a standalone VEP binary or establish equivalence to this local Ensembl105 cache. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P143": {
+        "paper_id": "P143",
+        "pmcid": "PMC11525181",
+        "doi": "10.1038/s41588-024-01883-8",
+        "tool_id": "vep",
+        "runtime": "Unreported edition",
+        "primary_anchors": [
+          {
+            "paragraph_index": 60,
+            "section": "Methods / The MHC Hammer pipeline / Filters implemented for somatic HLA mutations",
+            "paragraph_sha256": "9695db38a515964674b7c1530029eaf5a09e1c86f9863a18abd91ff1348bb488",
+            "matching_text_sha256": "12b333aa5f6ed8175e46546375f12f48c3b423104e119fcde17e1ac0ccccf4b8"
+          }
+        ],
+        "use_summary": "VEP consequences identified damaging HLA variants using reported stop-gained, frameshift, start-lost and stop-lost classes.",
+        "implementation_scope_note": "GATK PASS, read/sample/gene filters and the selected damaging-class mask remain author operations rather than an automatic clinical-pathogenicity result. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P145": {
+        "paper_id": "P145",
+        "pmcid": "PMC13553309",
+        "doi": "10.1038/s41588-026-02709-5",
+        "tool_id": "vep",
+        "runtime": "VEP98",
+        "primary_anchors": [
+          {
+            "paragraph_index": 44,
+            "section": "Methods / WES data",
+            "paragraph_sha256": "303659f3cf174aa0883308b59d7fe0b4702c647fed7e38c3de00a7e4dd53734a",
+            "matching_text_sha256": "86bb7c5fac306c0efd711ba16cf515f6f650a931ecbead77c78a39ff938300ce"
+          }
+        ],
+        "use_summary": "VEP98 annotated PLCG2 exome variants after separate bcftools1.10 multiallelic splitting, left alignment and quality control.",
+        "implementation_scope_note": "Those representation changes, validation and gnomAD comparisons are not inferred or silently performed by the105 adapter. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": "98",
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P149": {
+        "paper_id": "P149",
+        "pmcid": "PMC10632135",
+        "doi": "10.1038/s41588-023-01538-0",
+        "tool_id": "vep",
+        "runtime": "VEP100 in code availability; protein-coding RefSeq",
+        "primary_anchors": [
+          {
+            "paragraph_index": 37,
+            "section": "Methods / Genotyping and whole-genome sequencing / Iceland",
+            "paragraph_sha256": "0be9e0140bef66125f84260fca002fe1b617fa6226ea43aca2c58d4b2c21023b",
+            "matching_text_sha256": "df1a1d0bf55cd09f422505641174f4498fa4a1f8e8a051c7bae0449bbe6d38fc"
+          },
+          {
+            "paragraph_index": 49,
+            "section": "Methods / Association testing and meta-analysis",
+            "paragraph_sha256": "f714f01d65bac0f69916c990c554f04cc51695391e2636f5bb266fd85bc05673",
+            "matching_text_sha256": "af8283e8920f3cf9f25fba9a06c7c196567af20d5012b7039920464e924410e2"
+          },
+          {
+            "paragraph_index": 53,
+            "section": "Methods / Functional data and colocalization analysis",
+            "paragraph_sha256": "75e519f9c5cc1776920c7b90759af64d3fcde4733535b59ea60876d1ea965683",
+            "matching_text_sha256": "b859d401601fb0a44b64abbd8234c8ce634674b199e3c90d59e9f23bb850ebbe"
+          },
+          {
+            "paragraph_index": 63,
+            "section": "Code availability",
+            "paragraph_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19",
+            "matching_text_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19"
+          },
+          {
+            "paragraph_index": 70,
+            "section": "Associated Data / Data Availability Statement",
+            "paragraph_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19",
+            "matching_text_sha256": "8c072952e3715972bb354ae4fa3e2a7d0340039acf7dad748ca1dd61fa594a19"
+          }
+        ],
+        "use_summary": "VEP classified protein-coding RefSeq consequences with six reported loss-of-function terms; code availability specifies VEP100.",
+        "implementation_scope_note": "Separately listed Ensembl87 is not reinterpreted as VEP87. A citation number following VEP is not a software version. The Ensembl105 cache does not supply the author RefSeq recipe. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P151": {
+        "paper_id": "P151",
+        "pmcid": "PMC13447110",
+        "doi": "10.1038/s41588-026-02681-0",
+        "tool_id": "vep",
+        "runtime": "VEP99.2",
+        "primary_anchors": [
+          {
+            "paragraph_index": 57,
+            "section": "Methods / multiCOGS",
+            "paragraph_sha256": "cf54c8212e3efbed5761a3ce27ba22b2b9b1277cdcbe5dd297755f66af991ffd",
+            "matching_text_sha256": "cda3e12e9eaa337daf510d4f3e44fca0cbebb68c9917824f47f030e0cdb152a7"
+          }
+        ],
+        "use_summary": "VEP99.2 supplied protein-coding SNP annotations for multiCOGS analyses.",
+        "implementation_scope_note": "Ensembl GRCh38 transcription-start-site release88 for virtual promoters is a separate resource, not the VEP99.2 cache edition. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": "99.2",
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P152": {
+        "paper_id": "P152",
+        "pmcid": "PMC11549045",
+        "doi": "10.1038/s41588-024-01930-4",
+        "tool_id": "vep",
+        "runtime": "Unreported binary; MANE/APPRIS/Ensembl transcript selection",
+        "primary_anchors": [
+          {
+            "paragraph_index": 38,
+            "section": "Methods / Gene and variant annotation",
+            "paragraph_sha256": "7236e7815734828697af30d67f15be648b7c11b3c12bfa702cc0ebafc05c5a31",
+            "matching_text_sha256": "ed6d885b59f7452a037207b8f04d6293b19dc84bf87fd7ead5b1df85e179ec06"
+          }
+        ],
+        "use_summary": "VEP classified canonical protein-coding transcripts, prioritising MANE and then APPRIS/Ensembl tags, for six-term loss-of-function and dbNSFP missense masks.",
+        "implementation_scope_note": "Ensembl100 gene-region coordinates do not alone identify the VEP binary. The exact per-gene transcript fallback and downstream masks require their own author recipe. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P154": {
+        "paper_id": "P154",
+        "pmcid": "PMC11525182",
+        "doi": "10.1038/s41588-024-01919-z",
+        "tool_id": "vep",
+        "runtime": "Unreported edition; DeepRVAT input annotations",
+        "primary_anchors": [
+          {
+            "paragraph_index": 11,
+            "section": "Results / DeepRVAT improves RVAT yield and replication in UKBB",
+            "paragraph_sha256": "721971f89d07a782ce804028bc4a07638045f70e703d290ee06678f83717f85f",
+            "matching_text_sha256": "bb9f6f4fa23c08f06a5b3ce81d95d2b5760ce9a5c34861a326c317c3bef2d186"
+          },
+          {
+            "paragraph_index": 39,
+            "section": "Methods / Alternative RVAT methods / Burden tests and SKAT",
+            "paragraph_sha256": "e0437d717c99ce7400dd6ae5e32cf6caabb4aa47ec5d14b78afc80f9d6f0c7f6",
+            "matching_text_sha256": "b2ed52664cfffb579a7ec938c4ca5155abba3fdf3dd37710f63917a2de34eee3"
+          }
+        ],
+        "use_summary": "VEP consequences annotated12.7 million variants for DeepRVAT and supplied loss-of-function/missense classes for burden and SKAT comparisons.",
+        "implementation_scope_note": "The six-term mask, additional predictors, neural model, and gene tests are separate. The adapter does not claim training or reproducing DeepRVAT. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P157": {
+        "paper_id": "P157",
+        "pmcid": "PMC11525184",
+        "doi": "10.1038/s41588-024-01896-3",
+        "tool_id": "vep",
+        "runtime": "VEP108; variant–gene annotation unit",
+        "primary_anchors": [
+          {
+            "paragraph_index": 60,
+            "section": "Methods / Functional enrichment",
+            "paragraph_sha256": "342ae5c7591d738fb3d3a5f5feb930164e7ef06bd647ff2c3034044d68c0ebea",
+            "matching_text_sha256": "342ae5c7591d738fb3d3a5f5feb930164e7ef06bd647ff2c3034044d68c0ebea"
+          },
+          {
+            "paragraph_index": 71,
+            "section": "Code availability",
+            "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98",
+            "matching_text_sha256": "1b48f310b51fd98748959692aedee39180e459cbd7f3f7abdb984cb001ece042"
+          },
+          {
+            "paragraph_index": 79,
+            "section": "Associated Data / Data Availability Statement",
+            "paragraph_sha256": "0b0cc3122806c5d4f9a36985a6f22667adb18baa3db9827cf03f6a7476bedc98",
+            "matching_text_sha256": "1b48f310b51fd98748959692aedee39180e459cbd7f3f7abdb984cb001ece042"
+          }
+        ],
+        "use_summary": "VEP108 supplied variant–gene annotations retaining multiple consequences instead of reducing each variant to a globally most-severe or canonical transcript annotation.",
+        "implementation_scope_note": "The native ledgers retain all variant–allele–gene groups. UniProt BED intersections are separate;105 is not substituted for the reported108 runtime. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P159": {
+        "paper_id": "P159",
+        "pmcid": "PMC11525179",
+        "doi": "10.1038/s41588-024-01910-8",
+        "tool_id": "vep",
+        "runtime": "VEP94.5 with LOFTEE",
+        "primary_anchors": [
+          {
+            "paragraph_index": 35,
+            "section": "Methods / Variant filtering and annotation / Variant annotation",
+            "paragraph_sha256": "1bbc32e462f006981cf64996c746cc4e35264c62f30de950ec700ed95d79f0b5",
+            "matching_text_sha256": "9071b6675463bf5790eedc42553a6686303ae7f34836341888c3ce3e3866712a"
+          }
+        ],
+        "use_summary": "VEP94.5 and LOFTEE supplied canonical-transcript loss-of-function, functional and synonymous classes with explicit high-/low-confidence and SpliceAI cutoffs.",
+        "implementation_scope_note": "Those author-specific classes and cutoffs do not define a universal loss-of-function mask. The qualified core and older separately guarded LOFTEE workflow do not establish94.5 equivalence. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": "94.5",
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P168": {
+        "paper_id": "P168",
+        "pmcid": "PMC13447103",
+        "doi": "10.1038/s41588-026-02697-6",
+        "tool_id": "vep",
+        "runtime": "VEP111",
+        "primary_anchors": [
+          {
+            "paragraph_index": 48,
+            "section": "Methods / Statistical analysis",
+            "paragraph_sha256": "4d6f40b33b6dbdf14b7a04b8d35142826d02c073e7eacfe0290289a7860ce70c",
+            "matching_text_sha256": "0ed005abdc25c0438213633a12c1894de601bc3c2ce70c306a0a0c55607943b8"
+          }
+        ],
+        "use_summary": "VEP111 annotated variant and gene features used in a random-forest model of cis-pQTL replication.",
+        "implementation_scope_note": "The replication features/model and111 annotation edition are not recreated by105 consequence extraction. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": "111",
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P175": {
+        "paper_id": "P175",
+        "pmcid": "PMC13504339",
+        "doi": "10.1016/j.ajhg.2026.07.002",
+        "tool_id": "vep",
+        "runtime": "Unreported binary; GRCh38/hg38 annotations and plugins",
+        "primary_anchors": [
+          {
+            "paragraph_index": 4,
+            "section": "Introduction",
+            "paragraph_sha256": "9d67a7757d8f0bd7a8f5f38ece9f0dfff3fb4709cf07753e67774d5f0eff175e",
+            "matching_text_sha256": "7682dd177942b6cb947a1da87a080afb59276b68aeff0347be11386f6887529e"
+          },
+          {
+            "paragraph_index": 13,
+            "section": "Material and methods / Annotation of candidate variants and identification of causal variants through LD analyses, VEP, and GTEx",
+            "paragraph_sha256": "555d49bcc772c9dda407cc74e6f4b3d6a66acbad2165a6f346fc686761980a94",
+            "matching_text_sha256": "f87cc6e4f5fe0e50e541bfcc7203586217be3606d9a40a81f1ce90257fbb8722"
+          },
+          {
+            "paragraph_index": 30,
+            "section": "Results / Functional annotations of candidate variants using Ensembl VEP and GTEx",
+            "paragraph_sha256": "ec6fa7a14a5afc348b94252faa7bda05cfb783a3fe81e310e78443da8cbc518a",
+            "matching_text_sha256": "63c969952885e2515235c1af7465e56a2157c348f0062d158ef7bd006b27b5c4"
+          },
+          {
+            "paragraph_index": 32,
+            "section": "Results / Functional annotations of candidate variants using Ensembl VEP and GTEx",
+            "paragraph_sha256": "cd5cd641ebe3671928c32cd6282e7c491d9abf724276428653e11e9d71e70977",
+            "matching_text_sha256": "cd5cd641ebe3671928c32cd6282e7c491d9abf724276428653e11e9d71e70977"
+          },
+          {
+            "paragraph_index": 42,
+            "section": "Discussion / Linking functional and clinical impact to selection-targeted loci",
+            "paragraph_sha256": "d6409fff2d47ea9873527eda0831f41c890c40b6f60609ccfd9aff3ce9bed74a",
+            "matching_text_sha256": "d6409fff2d47ea9873527eda0831f41c890c40b6f60609ccfd9aff3ce9bed74a"
+          }
+        ],
+        "use_summary": "VEP annotated candidate and LD-linked GRCh38/hg38 variants with named CADD, EVE, Downstream, MaxEntScan, NearestGene, DisGeNET and PHENOTYPES integrations.",
+        "implementation_scope_note": "Plugin and predictor resources require separate exact qualification; arbitrary plugins are skipped, not silently omitted. GTEx eQTL annotation is a separate source. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P176": {
+        "paper_id": "P176",
+        "pmcid": "PMC12824618",
+        "doi": "10.1016/j.ajhg.2025.12.002",
+        "tool_id": "vep",
+        "runtime": "VEP110; GRCh37",
+        "primary_anchors": [
+          {
+            "paragraph_index": 16,
+            "section": "Subjects, material, and methods / Whole-exome sequencing",
+            "paragraph_sha256": "9c34e8d7a1ec32cb029bfd323fa091e6779210382156409f2523d963004eb42d",
+            "matching_text_sha256": "bf1a38a8227c93506f5080ed43c9a93d1b692a7e83ed74e438d08f83ea8e03c0"
+          }
+        ],
+        "use_summary": "VEP110 annotated GRCh37 exome variants after GATK processing and quality control.",
+        "implementation_scope_note": "The Ensembl105 GRCh38 cache does not substitute for either the110 binary or GRCh37 resources. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P179": {
+        "paper_id": "P179",
+        "pmcid": "PMC10806739",
+        "doi": "10.1016/j.ajhg.2023.11.008",
+        "tool_id": "vep",
+        "runtime": "VEP109; SNV branch",
+        "primary_anchors": [
+          {
+            "paragraph_index": 5,
+            "section": "Subjects and methods / Genetic analysis",
+            "paragraph_sha256": "d695147bc6f96c7bb213509561d1eec7442dd7b77eea2d9bf7ebf9843cd5cd2f",
+            "matching_text_sha256": "9913dba322a344447555700e8aa9283226db068aef04f9688ad113a29d779270"
+          }
+        ],
+        "use_summary": "VEP109 annotated SNVs before a reported minor-allele-frequency filter.",
+        "implementation_scope_note": "The separately described GRCh37 CNV interval pipeline and manual IGV/DECIPHER review do not by themselves identify the SNV annotation assembly or reproduce its workflow. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": "109",
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P180": {
+        "paper_id": "P180",
+        "pmcid": "PMC11739871",
+        "doi": "10.1016/j.ajhg.2024.10.022",
+        "tool_id": "vep",
+        "runtime": "Unreported VEP edition through Vcftomaf",
+        "primary_anchors": [
+          {
+            "paragraph_index": 29,
+            "section": "Material and methods / Variant annotation",
+            "paragraph_sha256": "ac6d586c7232061a9b69d5044f991907d6e2c4e74b9276d83856e821dc0da00f",
+            "matching_text_sha256": "38d66a73fe1b834100ea8019b21d46e22237ed64671ef0fe9bbb13c9baa033dc"
+          }
+        ],
+        "use_summary": "VEP consequences were accessed through Vcftomaf VCF-to-MAF conversion and used in seven author loss-of-function MAF categories before maftools analysis.",
+        "implementation_scope_note": "The source category spelling Nonstop_Mutations is retained as reported, not silently corrected or declared a universal VEP category. MAF conversion and downstream analyses are separate. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P192": {
+        "paper_id": "P192",
+        "pmcid": "PMC11568758",
+        "doi": "10.1016/j.ajhg.2024.10.001",
+        "tool_id": "vep",
+        "runtime": "Unreported edition; transcript-specific SIFT",
+        "primary_anchors": [
+          {
+            "paragraph_index": 37,
+            "section": "Results / Identification of an abdominal obesity GWAS missense variant within a unique adipocyte marker gene",
+            "paragraph_sha256": "a1753100f03f4434030ca478d8d3bb501cc04db514336a14d133d744f0b3a95c",
+            "matching_text_sha256": "a2bca88a524e17cd3fc514eac11fde8eb1af5804f245ee2d5b69d5dd4fe3029b"
+          }
+        ],
+        "use_summary": "VEP supplied transcript-specific SIFT annotations for the TBX15 rs10494217 missense variant. PANTHER and the paper-named CADD-SV score were separate prediction evidence.",
+        "implementation_scope_note": "Preserve the reported predictor names rather than rewriting them as PolyPhen or a different CADD product. This expands an existing reviewed use and earns no duplicate source-review count. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": true,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P194": {
+        "paper_id": "P194",
+        "pmcid": "PMC13504349",
+        "doi": "10.1016/j.ajhg.2026.05.013",
+        "tool_id": "vep",
+        "runtime": "VEP105/GENCODE39; BRaVa annotations",
+        "primary_anchors": [
+          {
+            "paragraph_index": 10,
+            "section": "Methods / Variant consequence annotation",
+            "paragraph_sha256": "4dd2fea53a74ce8159b72f6ca742e9e59dfccc3bf76d5276e1cee4aa3f053f35",
+            "matching_text_sha256": "757dee40f9ddf54495a07278ba467b7d19393ba5790cf983e5862e7ffb8b89e0"
+          }
+        ],
+        "use_summary": "VEP105 annotated variants with LOFTEE1.04_GRCh38, dbNSFP4.3, CADD1.6 and REVEL resources; SpliceAI1.3 used GENCODE39. bcftools +split-vep selected protein-coding MANE Select transcripts, otherwise a gene-specific GENCODE canonical fallback.",
+        "implementation_scope_note": "This is the reported105 core edition, but the complete plugin/data set and per-gene bcftools fallback are separate. VEP global --pick is not substituted for that fallback. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": true
+      },
+      "P199": {
+        "paper_id": "P199",
+        "pmcid": "PMC12739644",
+        "doi": "10.1016/j.ajhg.2025.10.001",
+        "tool_id": "vep",
+        "runtime": "VEP85/GRCh37/GENCODE19",
+        "primary_anchors": [
+          {
+            "paragraph_index": 26,
+            "section": "Material and methods / Real data applications",
+            "paragraph_sha256": "d47cbc667ef0ef7a8feb06eb106d634be2542895228044c03a1b751fad2c3df3",
+            "matching_text_sha256": "7aa3d6ac7abc25eae5de7d632966705a23bb02c695d54f0abf61bbd59eb964c8"
+          }
+        ],
+        "use_summary": "VEP85 with GRCh37/GENCODE19 consequences separated HIGH/MODERATE from LOW/MODIFIER variants for regional enrichment analysis.",
+        "implementation_scope_note": "The region definition, enrichment model and85 annotation resource are not reproduced by105 consequence extraction. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P200": {
+        "paper_id": "P200",
+        "pmcid": "PMC13393102",
+        "doi": "10.1016/j.ajhg.2026.05.011",
+        "tool_id": "vep",
+        "runtime": "Unreported edition",
+        "primary_anchors": [
+          {
+            "paragraph_index": 15,
+            "section": "Subjects and methods / Variant consequences",
+            "paragraph_sha256": "7c47797fbebee2389682618eae00a8f468242533f948a356bc87cb6e6b7d963e",
+            "matching_text_sha256": "460927faa899b8559eeb6b9597beb5e90614125c93ad38ada9d993b62be849e6"
+          }
+        ],
+        "use_summary": "VEP consequences annotated significant and clumped index SNPs.",
+        "implementation_scope_note": "Association significance, clumping and annotation are separate steps; unreported binary/data editions remain unresolved. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P204": {
+        "paper_id": "P204",
+        "pmcid": "PMC12808971",
+        "doi": "10.1016/j.ajhg.2025.09.012",
+        "tool_id": "vep",
+        "runtime": "VEP109.3; any transcript within each gene",
+        "primary_anchors": [
+          {
+            "paragraph_index": 2,
+            "section": "Introduction",
+            "paragraph_sha256": "c346f22655cef98265d0632b119fc904f78d23322bd4a0ec7ca25923e19abe76",
+            "matching_text_sha256": "9ceacf097c7c6f0389f72aa9c321b531bd0ad8efccbecbb7fdc76be819a93d62"
+          },
+          {
+            "paragraph_index": 33,
+            "section": "Material and methods / Preparation of UKB data / Whole-exome sequencing data",
+            "paragraph_sha256": "a1caeaf182d001dfaa1b30f60d2658b5480b530a2ee7a399ea2ccf33b4efe5a0",
+            "matching_text_sha256": "ae1df71b5248fa48634aad530be4c84bc2743c9be1a3f7a44b0440b8a68d7a49"
+          },
+          {
+            "paragraph_index": 45,
+            "section": "Results / COAST-SS substantially accelerates genome-wide analyses",
+            "paragraph_sha256": "d58f7cfe97e0e331c362c5999d96925edb89f3eb39bf65d89b6bdddfcb469671",
+            "matching_text_sha256": "61c49316d861ec826fce315986b797048a09010d5f86f5bff047e2c637644c29"
+          },
+          {
+            "paragraph_index": 46,
+            "section": "Results / Alternate annotation and weighting schemes provide consistent results",
+            "paragraph_sha256": "a61f9dad2d8ee000beac0fd05803b9cb3f7f7afd87544c11e7006b6263039f71",
+            "matching_text_sha256": "3293a92da64e179987d8e5ea9e7d54960322eb4c51c246038204bce1660355b5"
+          }
+        ],
+        "use_summary": "VEP109.3 annotated any transcript of a gene, with four protein-truncating terms, a broader missense class, SIFT/PolyPhen qualitative masks and exclusion of LOFTEE low-confidence calls. Consequence reduction was at the variant–gene unit.",
+        "implementation_scope_note": "Global per-variant picking would lose gene-specific effects. Quantitative dbNSFP4.4 alternatives and author mask definitions remain distinct; the105 core does not qualify109.3 or its plugins. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": "109.3",
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P206": {
+        "paper_id": "P206",
+        "pmcid": "PMC11568752",
+        "doi": "10.1016/j.ajhg.2024.09.002",
+        "tool_id": "vep",
+        "runtime": "Unreported edition; APC nonstructural variants",
+        "primary_anchors": [
+          {
+            "paragraph_index": 5,
+            "section": "Methods / ClinVar and LOVD variant extraction and annotation",
+            "paragraph_sha256": "cd66d2a6e2d84bf6f868b1d7ab3d597621595458f9307be7978cccb844ee699b",
+            "matching_text_sha256": "fa157d2932607664138aae16a4bbf9b9cdfef6ce24bfb096963ea4ef63c2767a"
+          },
+          {
+            "paragraph_index": 8,
+            "section": "Methods / Predictive data (PVS1, PP3, BP1, BP4, and BP7)",
+            "paragraph_sha256": "4c586bd3f0849d65dd9161654d8aaf8f483f4897114aa34a216706fc13766458",
+            "matching_text_sha256": "1d589181316c3bc2883109c5e034a60d62fe4ae6bf27611148abe19321f60764"
+          }
+        ],
+        "use_summary": "VEP annotated APC nonstructural variants and hosted named SpliceAI/MaxEntScan integrations for specific clinical variant-interpretation criteria.",
+        "implementation_scope_note": "Variants above50 bases were separately checked with Mutalyzer. Position-specific clinical criteria and thresholds are author interpretations, not automatic VEP pathogenicity classifications. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P210": {
+        "paper_id": "P210",
+        "pmcid": "PMC13277689",
+        "doi": "10.1016/j.ajhg.2026.04.005",
+        "tool_id": "vep",
+        "runtime": "VEP105/GENCODE39; BRaVa annotations",
+        "primary_anchors": [
+          {
+            "paragraph_index": 18,
+            "section": "Methods / Variant annotation",
+            "paragraph_sha256": "f98490f9d82ada57e55183590446194de62f14d04a82ea48b6fddcc434b109b0",
+            "matching_text_sha256": "03d271544440227a580a13b500acd5d4d734b3246c08f07a69d3aeedaa29831a"
+          }
+        ],
+        "use_summary": "VEP105/GENCODE39 annotations included LOFTEE1.04, dbNSFP4.3 with CADD1.6/REVEL and SpliceAI1.3. MANE Select transcripts were preferred with a gene-specific GENCODE canonical fallback.",
+        "implementation_scope_note": "The reported105 core is available within its declared scope. Plugins, prediction data and downstream transcript fallback remain separate; a flattened citation suffix is not treated as a REVEL version. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": "105",
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": true
+      },
+      "P220": {
+        "paper_id": "P220",
+        "pmcid": "PMC12696503",
+        "doi": "10.1016/j.ajhg.2025.08.013",
+        "tool_id": "vep",
+        "runtime": "VEP105/GENCODE39; BRaVa annotations",
+        "primary_anchors": [
+          {
+            "paragraph_index": 14,
+            "section": "Material and methods / Variant consequence annotation",
+            "paragraph_sha256": "3559c0474d7a63fd54a28fa3004e5a9aa7df69074de24d73aea2b73164db61de",
+            "matching_text_sha256": "22264166b2f19a4c4acef5c7d83f6a6a8c119afff3405224a17d7a6b45be6c46"
+          }
+        ],
+        "use_summary": "VEP105/GENCODE39 annotated variants with LOFTEE, dbNSFP4.3 CADD1.6/REVEL and SpliceAI1.3. bcftools +split-vep selected protein-coding MANE Select transcripts or gene-specific canonical fallback.",
+        "implementation_scope_note": "The BRaVa resource, plugins and bcftools fallback are not established by a105 core run or replaced by global --pick. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": true
+      },
+      "P227": {
+        "paper_id": "P227",
+        "pmcid": "PMC11339615",
+        "doi": "10.1016/j.ajhg.2024.06.017",
+        "tool_id": "vep",
+        "runtime": "VEP97.3; structural-variant gene interpretation",
+        "primary_anchors": [
+          {
+            "paragraph_index": 22,
+            "section": "Subjects and methods / Genetic variant enrichment calculations",
+            "paragraph_sha256": "f856d4c74e850f0b53d4712ca905a1fe50a448665c7fa914564cef13946bf6cd",
+            "matching_text_sha256": "a4236cf15097337cbb1fce02886b5879d0c1f29bb82cc73aedaad4f3e7d239cf"
+          },
+          {
+            "paragraph_index": 25,
+            "section": "Subjects and methods / Identifying misexpression-associated and control rare SVs",
+            "paragraph_sha256": "3e037b5072d2c43e6c7dd4d5589583a226108e9e3232638f816ad3fa1797c4b3",
+            "matching_text_sha256": "2d47535927c9198c0fba26eccedece75d650d058ec99781a3678d87c20b38ca9"
+          },
+          {
+            "paragraph_index": 41,
+            "section": "Results / Rare SVs are associated with gene misexpression",
+            "paragraph_sha256": "34e9f8cfbc6fc66217e8e4898b67f29c323389a0cfc816d48d55d277e117a47a",
+            "matching_text_sha256": "34e9f8cfbc6fc66217e8e4898b67f29c323389a0cfc816d48d55d277e117a47a"
+          },
+          {
+            "paragraph_index": 46,
+            "section": "Results / Rare deletions, duplications, and inversions are associated with gene misexpression",
+            "paragraph_sha256": "22759c3117f457fca8b7255fea458fe0fb1941918f792b02936736a2e28fea78",
+            "matching_text_sha256": "c2c93857dc32d49ed58d7146e60dac1e7292810791b2414a63a4eec88f5306b6"
+          },
+          {
+            "paragraph_index": 47,
+            "section": "Results / Properties and regulatory features of misexpression-associated SVs",
+            "paragraph_sha256": "072c6c43ac7da94106ebb19303ad0c9b21ff13d370001bf0833400c99e7fb268",
+            "matching_text_sha256": "072c6c43ac7da94106ebb19303ad0c9b21ff13d370001bf0833400c99e7fb268"
+          },
+          {
+            "paragraph_index": 53,
+            "section": "Results / Deletions and duplications lead to chimeric misexpression via transcriptional readthrough",
+            "paragraph_sha256": "f1be86ebcce68948a4b4400c7a83b7a50d7c31845d91230767309181f3ac4515",
+            "matching_text_sha256": "5d7ff492a1ea8d52cc10df670b74ef0954f3e783d927ba5855235abc5493756e"
+          }
+        ],
+        "use_summary": "VEP97.3 annotated structural variants by their most-severe consequence on the queried gene. Without a consequence on that gene, the authors considered regulatory/intergenic classes and a defined no-predicted-effect category.",
+        "implementation_scope_note": "The source-specific fallback, plus/minus200-kilobase window and manual tandem-duplication confirmation are separate. A missing native annotation is unassessable unless an independently qualified author rule establishes otherwise. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P231": {
+        "paper_id": "P231",
+        "pmcid": "PMC13087467",
+        "doi": "10.1016/j.ajhg.2026.02.020",
+        "tool_id": "vep",
+        "runtime": "VEP109.3 hosting UTRAnnotator comparison",
+        "primary_anchors": [
+          {
+            "paragraph_index": 11,
+            "section": "Material and methods / 5ULTRA score training and test datasets",
+            "paragraph_sha256": "1458daeaefea57dccb245e0dd6c7eee1536941b784dc585c8c0897aa6d8b32f4",
+            "matching_text_sha256": "d40d969d52a7acf6f5228c696e5595121562f1d00b9d5a1157c22f1a264efe39"
+          }
+        ],
+        "use_summary": "VEP109.3 hosted the UTRAnnotator comparison; the study separately used HGMD Professional2025.1 and ClinVar/CADD resources.",
+        "implementation_scope_note": "The core profile does not qualify UTRAnnotator. Registered HGMD training data are not downloaded or inferred from this source review. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": "109.3",
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P232": {
+        "paper_id": "P232",
+        "pmcid": "PMC11339624",
+        "doi": "10.1016/j.ajhg.2024.06.011",
+        "tool_id": "vep",
+        "runtime": "Unreported edition",
+        "primary_anchors": [
+          {
+            "paragraph_index": 16,
+            "section": "Material and methods / Bioinformatic analysis",
+            "paragraph_sha256": "73ad2e9389940894db0bab9d359ac7e9dc1dccbdc869ef23ba66f7ca00a3e3cb",
+            "matching_text_sha256": "4a357ab5273471dac39ec4eea9af062ca7597057c97165589bdfb4d2480007a0"
+          }
+        ],
+        "use_summary": "VEP supplied JAG1 amino-acid and CADD annotations alongside separately described alignment, depth and experimental filters.",
+        "implementation_scope_note": "pbmm2, GATK DepthOfCoverage and experimental interpretation remain separate; unreported VEP/predictor editions are unresolved. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P234": {
+        "paper_id": "P234",
+        "pmcid": "PMC13087463",
+        "doi": "10.1016/j.ajhg.2026.02.022",
+        "tool_id": "vep",
+        "runtime": "VEP114",
+        "primary_anchors": [
+          {
+            "paragraph_index": 29,
+            "section": "Methods / PIP-weighted variant annotations",
+            "paragraph_sha256": "e3c7c88567095b9b34355278f65a2638582f97944e8794fde5df7196eb094476",
+            "matching_text_sha256": "537180f13366587bd34d4f1ea36c902e0359ffa76e9600455d48eddf1970496f"
+          }
+        ],
+        "use_summary": "VEP114 consequence indicators were combined with posterior inclusion probabilities across credible sets for annotation probabilities and logistic enrichment analyses.",
+        "implementation_scope_note": "The PIP-weighted probability aggregation and enrichment model are downstream analyses;105 does not qualify114 or recreate those computations. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      },
+      "P243": {
+        "paper_id": "P243",
+        "pmcid": "PMC11267522",
+        "doi": "10.1016/j.ajhg.2024.05.017",
+        "tool_id": "vep",
+        "runtime": "Unreported edition",
+        "primary_anchors": [
+          {
+            "paragraph_index": 15,
+            "section": "Subjects and methods / Association analyses",
+            "paragraph_sha256": "47882f1b93ed98fa390b13ac8d8978af645c82a0d3284293691f776717c8c17c",
+            "matching_text_sha256": "47882f1b93ed98fa390b13ac8d8978af645c82a0d3284293691f776717c8c17c"
+          }
+        ],
+        "use_summary": "VEP annotated lead markers in the reported association analyses.",
+        "implementation_scope_note": "The separate1000 Genomes frequency-discordance filter is not inferred as a VEP option; binary/data editions are unreported. Source review does not establish an executed author recipe or whole-paper reproduction.",
+        "reported_version_preserved": null,
+        "qualified_author_recipe": false,
+        "whole_paper_reproduced": false,
+        "source_review_already_counted": false,
+        "exact_author_recipe_qualified": false,
+        "source_core_edition_105_reported": false
+      }
+    }
   },
   {
     "id": "picard",

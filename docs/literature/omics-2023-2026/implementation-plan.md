@@ -1,3 +1,15 @@
+# Current source-bound VEP105 and native CSQ workflows
+
+250 frozen papers; 453 labels and 492 provider definitions; 183 scoped families (36 native, 147 upstream), 1,906 reviewed uses and 828 pending uses. There are 2,734 observations and 247 missing labels. VEP adds one scoped family and 37 new source reviews, and expands one existing review without duplicate credit. The full implementation and semantic-review goal remains open.
+
+Original Ensembl VEP105.0/API105 on its exact private Linux x86_64 host/runtime closure: complete supplied GTF/GFF or whole original Ensembl105 human GRCh38 indexed cache/primary-assembly FASTA; explicit transcript selection, HGVS, canonical/MANE/SIFT/PolyPhen/frequency/regulatory and local VCF/BED/BigWig options within the closed request. Native Java retains every literal VCF/CSQ field, genotype and variant-allele-gene group, with original API105 consequence facts. GTF/GFF source basenames, all multiple consequences, blank summary assignments and missing impacts remain preserved. Whole resources and complete inputs/results are retained; saved verification recomputes all five native ledgers without Perl or cache deserialization. Native components add no duplicate family credit. The older LOFTEE host profile is unchanged. Other editions, RefSeq/merged caches, arbitrary plugins, author masks/transcript fallbacks and complete paper workflows remain separately unqualified.
+
+**Warnings and required actions:** Use vep-tools with explicit complete inputs and exact permitted original prerequisites, or portable native CSQ extraction. Require exit0, results_admitted=true and a fresh --verify; read WARNINGS.md, analysis-status.json and every original log/warning. SKIP3 skips dependent analysis: restore the named exact permitted prerequisite or retain skip. FAIL2 admits no complete result: preserve diagnostics, correct the named input/REF/integrity/process/capacity cause and retry NEW paths. Do not swap alleles, infer missing ALLELE_NUM/IMPACT, replace versions/caches, reduce data to pass, or treat absent annotation as benign. Cell Ranger stays excluded; MaxQuant stays pending with runtime skipped. No release or literature Pages deployment is admitted.
+
+See [guide](../../vep-tools.md), [source roles](../vep-source-audit/ROLES.json) and [handover](../vep-validation/HANDOVER.md). Earlier checkpoints below are historical.
+
+---
+
 # Current source-bound WGCNA workflows
 
 250 frozen papers; 453 labels and 492 provider definitions; 182 scoped families (36 native,146 upstream), 1,869 reviewed uses and 865 pending uses. There are 2,734 observations and 247 missing labels. This adds one WGCNA family and five source reviews; native components do not earn duplicate family credit. The full implementation and semantic-review goal remains open.
