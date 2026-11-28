@@ -1,0 +1,237 @@
+{
+  "pipeline_profile": "nf-core/hic-2.1.0",
+  "source_commit": "fe4ac656317d24c37e81e7940a526ed9ea812f8e",
+  "images": {
+    "https://depot.galaxyproject.org/singularity/bowtie2:2.4.4--py39hbb4e92a_0": {
+      "pin": {
+        "bytes": 101011456,
+        "sha256": "0253385e88faa333ea077872423adfc72ab73086c893894f52bc37e3c72c363f"
+      },
+      "modules": [
+        "modules/nf-core/bowtie2/build/main.nf"
+      ],
+      "process_names": [
+        "BOWTIE2_BUILD"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/cooler:0.8.11--pyh3252c3a_0": {
+      "pin": {
+        "bytes": 193179648,
+        "sha256": "edeb194654401f38443c145187acf1dd77d9763c48b4c89d43ccd354fc40173f"
+      },
+      "modules": [
+        "modules/nf-core/cooler/balance/main.nf",
+        "modules/nf-core/cooler/cload/main.nf",
+        "modules/nf-core/cooler/dump/main.nf",
+        "modules/nf-core/cooler/makebins/main.nf",
+        "modules/nf-core/cooler/zoomify/main.nf"
+      ],
+      "process_names": [
+        "COOLER_BALANCE",
+        "COOLER_CLOAD",
+        "COOLER_DUMP",
+        "COOLER_MAKEBINS",
+        "COOLER_ZOOMIFY"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/cooltools:0.5.1--py37h37892f8_0": {
+      "pin": {
+        "bytes": 304447488,
+        "sha256": "976484426cadc742156d518ce7008c1938cf2a5936d702f418d8d470903e0ef3"
+      },
+      "modules": [
+        "modules/local/cooltools/insulation.nf"
+      ],
+      "process_names": [
+        "COOLTOOLS_INSULATION"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/fastqc:0.11.9--0": {
+      "pin": {
+        "bytes": 265252864,
+        "sha256": "56303eba371672d61c9a497702c207e4e47a9c8766d1edc3d9d75351f00332f5"
+      },
+      "modules": [
+        "modules/nf-core/fastqc/main.nf"
+      ],
+      "process_names": [
+        "FASTQC"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/hicexplorer:3.7.2--pyhdfd78af_1": {
+      "pin": {
+        "bytes": 314630144,
+        "sha256": "4ab1598c87d55a8254f56b5849d44768770b49a8885e3da46913f4055b2531a2"
+      },
+      "modules": [
+        "modules/local/hicexplorer/hicFindTADs.nf",
+        "modules/local/hicexplorer/hicPlotDistVsCounts.nf"
+      ],
+      "process_names": [
+        "HIC_FIND_TADS",
+        "HIC_PLOT_DIST_VS_COUNTS"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/mulled-v2-ac74a7f02cebcfcc07d8e8d1d750af9c83b4d45a:a0ffedb52808e102887f6ce600d092675bf3528a-0": {
+      "pin": {
+        "bytes": 101077023,
+        "sha256": "4e9b04842480980aab393af3445a26d61cbed01552f7dcc3757a5c1e5fd20360"
+      },
+      "modules": [
+        "modules/nf-core/bowtie2/align/main.nf"
+      ],
+      "process_names": [
+        "BOWTIE2_ALIGN",
+        "BOWTIE2_ALIGN_TRIMMED"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/mulled-v2-c6ff206325681cbb9c9ef890bb8de554172c0483:713df51cd897ceb893b9a6e6420f527d83c2ed95-0": {
+      "pin": {
+        "bytes": 184795167,
+        "sha256": "7674a6260b9fd645f8132c75c1be896f6dd1dae2f8d24258aab80d006be41d2b"
+      },
+      "modules": [
+        "modules/local/hicpro/combine_mates.nf",
+        "modules/local/hicpro/get_restriction_fragments.nf",
+        "modules/local/hicpro/get_valid_interaction.nf",
+        "modules/local/hicpro/get_valid_interaction_dnase.nf",
+        "modules/local/hicpro/merge_stats.nf",
+        "modules/local/hicpro/run_ice.nf"
+      ],
+      "process_names": [
+        "COMBINE_MATES",
+        "GET_RESTRICTION_FRAGMENTS",
+        "GET_VALID_INTERACTION",
+        "GET_VALID_INTERACTION_DNASE",
+        "ICE_NORMALIZATION",
+        "MERGE_STATS"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/mulled-v2-c81d8d6b6acf4714ffaae1a274527a41958443f6:cc7ea58b8cefc76bed985dcfe261cb276ed9e0cf-0": {
+      "pin": {
+        "bytes": 279978015,
+        "sha256": "98c183fcb70bcd924f4e47f957743a48f45a295333f1fcdf9022904c56e3b487"
+      },
+      "modules": [
+        "modules/local/cooltools/eigscis.nf"
+      ],
+      "process_names": [
+        "COOLTOOLS_EIGSCIS"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/multiqc:1.14--pyhdfd78af_0": {
+      "pin": {
+        "bytes": 160858112,
+        "sha256": "a4d924126c43574b8043d4aa5eef091d45e0cf8a0502a752a76be7919de8c54e"
+      },
+      "modules": [
+        "modules/local/multiqc.nf",
+        "modules/nf-core/custom/dumpsoftwareversions/main.nf"
+      ],
+      "process_names": [
+        "CUSTOM_DUMPSOFTWAREVERSIONS",
+        "MULTIQC"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/pairix:0.3.7--py36h30a8e3e_3": {
+      "pin": {
+        "bytes": 81100800,
+        "sha256": "90105edbdacad9edba107f1fea220a714deac3c2de27f88668a37567fbd89745"
+      },
+      "modules": [
+        "modules/local/hicpro/hicpro2pairs.nf"
+      ],
+      "process_names": [
+        "HICPRO2PAIRS"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/python:3.8.3": {
+      "pin": {
+        "bytes": 91611167,
+        "sha256": "0b1b3e6a30482c791d96cb022f2f7b20cead7446efe4c2cf11b65a7a2baeb55c"
+      },
+      "modules": [
+        "modules/local/samplesheet_check.nf"
+      ],
+      "process_names": [
+        "SAMPLESHEET_CHECK"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/samtools:1.15.1--h1170115_0": {
+      "pin": {
+        "bytes": 22114304,
+        "sha256": "8934a4bfde1c80b16ea7b679b97816e77c34fe89fc0cbc7fe33054379378557b"
+      },
+      "modules": [
+        "modules/local/hicpro/bowtie2_merge.nf",
+        "modules/local/hicpro/dnase_mapping_stats.nf"
+      ],
+      "process_names": [
+        "MAPPING_STATS_DNASE",
+        "MERGE_BOWTIE2"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/samtools:1.16.1--h6899075_1": {
+      "pin": {
+        "bytes": 22667264,
+        "sha256": "814950965a595bc3daea8063e9f4bb66c18faad48873564a37a2bbfd1dcbbff9"
+      },
+      "modules": [
+        "modules/nf-core/custom/getchromsizes/main.nf"
+      ],
+      "process_names": [
+        "CUSTOM_GETCHROMSIZES"
+      ]
+    },
+    "https://depot.galaxyproject.org/singularity/ubuntu:20.04": {
+      "pin": {
+        "bytes": 27750400,
+        "sha256": "ee8bfca03fcadf02e118b3bd5bc9deb9b800a99a857acb1c09ccaca8dab34cca"
+      },
+      "modules": [
+        "modules/local/split_cooler_dump.nf",
+        "modules/local/hicpro/build_contact_maps.nf",
+        "modules/local/hicpro/merge_valid_interaction.nf",
+        "modules/local/hicpro/trim_reads.nf"
+      ],
+      "process_names": [
+        "BUILD_CONTACT_MAPS",
+        "MERGE_VALID_INTERACTION",
+        "SPLIT_COOLER_DUMP",
+        "TRIM_READS"
+      ]
+    }
+  },
+  "aliases": {
+    "MULTIQC": "https://depot.galaxyproject.org/singularity/multiqc:1.14--pyhdfd78af_0",
+    "CUSTOM_DUMPSOFTWAREVERSIONS": "https://depot.galaxyproject.org/singularity/multiqc:1.14--pyhdfd78af_0",
+    "SAMPLESHEET_CHECK": "https://depot.galaxyproject.org/singularity/python:3.8.3",
+    "SPLIT_COOLER_DUMP": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "BUILD_CONTACT_MAPS": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "MERGE_VALID_INTERACTION": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "TRIM_READS": "https://depot.galaxyproject.org/singularity/ubuntu:20.04",
+    "COOLTOOLS_EIGSCIS": "https://depot.galaxyproject.org/singularity/mulled-v2-c81d8d6b6acf4714ffaae1a274527a41958443f6:cc7ea58b8cefc76bed985dcfe261cb276ed9e0cf-0",
+    "COOLTOOLS_INSULATION": "https://depot.galaxyproject.org/singularity/cooltools:0.5.1--py37h37892f8_0",
+    "HIC_FIND_TADS": "https://depot.galaxyproject.org/singularity/hicexplorer:3.7.2--pyhdfd78af_1",
+    "HIC_PLOT_DIST_VS_COUNTS": "https://depot.galaxyproject.org/singularity/hicexplorer:3.7.2--pyhdfd78af_1",
+    "MERGE_BOWTIE2": "https://depot.galaxyproject.org/singularity/samtools:1.15.1--h1170115_0",
+    "MAPPING_STATS_DNASE": "https://depot.galaxyproject.org/singularity/samtools:1.15.1--h1170115_0",
+    "COMBINE_MATES": "https://depot.galaxyproject.org/singularity/mulled-v2-c6ff206325681cbb9c9ef890bb8de554172c0483:713df51cd897ceb893b9a6e6420f527d83c2ed95-0",
+    "GET_RESTRICTION_FRAGMENTS": "https://depot.galaxyproject.org/singularity/mulled-v2-c6ff206325681cbb9c9ef890bb8de554172c0483:713df51cd897ceb893b9a6e6420f527d83c2ed95-0",
+    "GET_VALID_INTERACTION": "https://depot.galaxyproject.org/singularity/mulled-v2-c6ff206325681cbb9c9ef890bb8de554172c0483:713df51cd897ceb893b9a6e6420f527d83c2ed95-0",
+    "GET_VALID_INTERACTION_DNASE": "https://depot.galaxyproject.org/singularity/mulled-v2-c6ff206325681cbb9c9ef890bb8de554172c0483:713df51cd897ceb893b9a6e6420f527d83c2ed95-0",
+    "MERGE_STATS": "https://depot.galaxyproject.org/singularity/mulled-v2-c6ff206325681cbb9c9ef890bb8de554172c0483:713df51cd897ceb893b9a6e6420f527d83c2ed95-0",
+    "ICE_NORMALIZATION": "https://depot.galaxyproject.org/singularity/mulled-v2-c6ff206325681cbb9c9ef890bb8de554172c0483:713df51cd897ceb893b9a6e6420f527d83c2ed95-0",
+    "HICPRO2PAIRS": "https://depot.galaxyproject.org/singularity/pairix:0.3.7--py36h30a8e3e_3",
+    "FASTQC": "https://depot.galaxyproject.org/singularity/fastqc:0.11.9--0",
+    "BOWTIE2_ALIGN": "https://depot.galaxyproject.org/singularity/mulled-v2-ac74a7f02cebcfcc07d8e8d1d750af9c83b4d45a:a0ffedb52808e102887f6ce600d092675bf3528a-0",
+    "BOWTIE2_BUILD": "https://depot.galaxyproject.org/singularity/bowtie2:2.4.4--py39hbb4e92a_0",
+    "COOLER_BALANCE": "https://depot.galaxyproject.org/singularity/cooler:0.8.11--pyh3252c3a_0",
+    "COOLER_CLOAD": "https://depot.galaxyproject.org/singularity/cooler:0.8.11--pyh3252c3a_0",
+    "COOLER_DUMP": "https://depot.galaxyproject.org/singularity/cooler:0.8.11--pyh3252c3a_0",
+    "COOLER_MAKEBINS": "https://depot.galaxyproject.org/singularity/cooler:0.8.11--pyh3252c3a_0",
+    "COOLER_ZOOMIFY": "https://depot.galaxyproject.org/singularity/cooler:0.8.11--pyh3252c3a_0",
+    "CUSTOM_GETCHROMSIZES": "https://depot.galaxyproject.org/singularity/samtools:1.16.1--h6899075_1",
+    "BOWTIE2_ALIGN_TRIMMED": "https://depot.galaxyproject.org/singularity/mulled-v2-ac74a7f02cebcfcc07d8e8d1d750af9c83b4d45a:a0ffedb52808e102887f6ce600d092675bf3528a-0"
+  }
+}
