@@ -114,6 +114,8 @@ public final class JLinAlgCli {
                 return LimmaWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("sva-tools"))
                 return SvaWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
+            if (arguments.length > 0 && arguments[0].equals("wgcna-tools"))
+                return WgcnaToolsCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("tensorqtl-tools"))
                 return TensorQtlWorkflowCli.run(Arrays.copyOfRange(arguments, 1, arguments.length), output, errorOutput);
             if (arguments.length > 0 && arguments[0].equals("skat-tools"))

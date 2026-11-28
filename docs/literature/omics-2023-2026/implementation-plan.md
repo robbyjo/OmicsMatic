@@ -1,3 +1,15 @@
+# Current source-bound WGCNA workflows
+
+250 frozen papers; 453 labels and 492 provider definitions; 182 scoped families (36 native,146 upstream), 1,869 reviewed uses and 865 pending uses. There are 2,734 observations and 247 missing labels. This adds one WGCNA family and five source reviews; native components do not earn duplicate family credit. The full implementation and semantic-review goal remains open.
+
+Original R WGCNA1.72-1 on the explicit private R4.2.3 Linux profile: prepared one-block network fitting, module labels/eigengenes, signedKME, adjacency, intramodularConnectivity and rankPvalue including original qvalue calls/errors. Native Java implements the scoped deterministic rankPvalue p-values and source intramodularConnectivity rules. The adapter checks exact versions, 214 files in five core packages and eight original body/formal guards before/after execution. It retains original objects/TOMs/RNG/warnings and complete inputs/results. Native results are recomputed during R-free verification; original R captures receive integrity/intake/structure checks without independent refitting or RDS decoding. The full135-sample/3600-probe original liver control is not an author-paper reproduction. PyWGCNA, hdWGCNA, referenced robust rWGCNA, sample-QC recipes and manual module edits remain distinct.
+
+**Warnings and required actions:** Use wgcna-tools with explicit prepared inputs and exact permitted runtime bindings for original R, or the qualified native operations. Read WARNINGS.md, analysis-status.json, worker/report.json and original console/warnings. Require exit0, results_admitted=true and fresh --verify. SKIP3 skips dependent analysis: restore the named exact permitted prerequisite or retain the skip. FAIL2 admits no complete result: preserve evidence, correct the named data/model/process/integrity/capacity cause and retry NEW paths. Do not infer author arguments/editions, replace qvalue with BH, repair missingness or reduce data to pass. An original qvalue pi0 failure remains a failure. Cell Ranger stays excluded; MaxQuant runtime stays skipped/pending. No whole-paper result, release or literature Pages deployment is admitted.
+
+See [guide](../../wgcna-tools.md), [source roles](../wgcna-source-audit/ROLES.json) and [handover](../wgcna-validation/HANDOVER.md). Earlier checkpoints below are historical.
+
+---
+
 # Current nf-core source-use reviews
 
 250 frozen papers; 453 labels and 492 provider definitions; 181 scoped families (36 native, 145 upstream), 1,864 reviewed uses and 870 pending uses. There are 2,734 observations and 247 missing labels. This checkpoint adds six source reviews and zero tool-family credit. The full 250-paper implementation and semantic-review goal remains open.

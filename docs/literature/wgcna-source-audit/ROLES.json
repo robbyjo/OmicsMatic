@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "roles": [
+    {
+      "paper_id": "P059",
+      "pmcid": "PMC10719114",
+      "doi": "10.1038/s41586-023-06812-z",
+      "tool_id": "wgcna",
+      "runtime": "R-WGCNA; edition unreported",
+      "primary_anchors": [
+        {
+          "paragraph_index": 128,
+          "section": "Methods / scRNA-seq / Defining transcription factor co-expression gene modules",
+          "paragraph_sha256": "7e53c81325a5fbd6cc0c10b50e08f16c3cb3b543f3b2f24e0a48bf7641259ef5",
+          "matching_text_sha256": "bdf4176ab88125ec861ac5e476c6a769ba84105fbd17b344048c51588eef38ec"
+        }
+      ],
+      "use_summary": "R WGCNA defined transcription-factor coexpression modules from average subclass-level expression of 534 marker TF genes, with power6, signed TOM and detectCutHeight0.998. Grey and neuron-enriched genes were excluded; modules were then manually split/reordered for visualization.",
+      "implementation_scope_note": "The WGCNA edition and complete author network options are unreported. The typed original adapter supports the named network operations, but does not infer the author recipe or reproduce the subsequent filtering/manual module edits. Source review alone does not qualify an executed author recipe or whole paper.",
+      "reported_version_preserved": null,
+      "qualified_author_recipe": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P062",
+      "pmcid": "PMC13668712",
+      "doi": "10.1038/s41586-026-10964-z",
+      "tool_id": "wgcna",
+      "runtime": "PyWGCNA2.2.1; R execution not established",
+      "primary_anchors": [
+        {
+          "paragraph_index": 2,
+          "section": "Main",
+          "paragraph_sha256": "3c658a55e7838b2d689c417429753d81abd8114e3e5f06683e9897243d45ca6d",
+          "matching_text_sha256": "3c658a55e7838b2d689c417429753d81abd8114e3e5f06683e9897243d45ca6d"
+        },
+        {
+          "paragraph_index": 9,
+          "section": "snRNA-seq reveals Erbb4 in ERENs",
+          "paragraph_sha256": "08e4e2c8a5d86a5948c9cfd25fc03960bc410d19e5ca0973888a43f5d2c8cd5b",
+          "matching_text_sha256": "253b30ea03409c43d14873dfda35e32420f13067bfcb4504aec2148395605c83"
+        },
+        {
+          "paragraph_index": 41,
+          "section": "Methods / Python packages for data analysis",
+          "paragraph_sha256": "fc94f72e4021ea383417332ae0708c3b1a9e051c304f71add3b322564f8d0502",
+          "matching_text_sha256": "fc94f72e4021ea383417332ae0708c3b1a9e051c304f71add3b322564f8d0502"
+        },
+        {
+          "paragraph_index": 43,
+          "section": "Methods / snRNA-seq analysis",
+          "paragraph_sha256": "fdf34b81ceb66604bbc42478f2d06eb90c29805d1215bf9ec6862d0afe7f7af9",
+          "matching_text_sha256": "ba654d9bb09966733d8e0d46310012dfa72c2e3a461db9ea74699f69add86596"
+        },
+        {
+          "paragraph_index": 86,
+          "section": "Code availability",
+          "paragraph_sha256": "1ca6cca00935944376bd63348cbc84b6966c995082d835d43c9d209f1a171d49",
+          "matching_text_sha256": "1ca6cca00935944376bd63348cbc84b6966c995082d835d43c9d209f1a171d49"
+        },
+        {
+          "paragraph_index": 91,
+          "section": "Associated Data / Data Availability Statement",
+          "paragraph_sha256": "1ca6cca00935944376bd63348cbc84b6966c995082d835d43c9d209f1a171d49",
+          "matching_text_sha256": "1ca6cca00935944376bd63348cbc84b6966c995082d835d43c9d209f1a171d49"
+        }
+      ],
+      "use_summary": "The article describes WGCNA coexpression modules in results, but its Python package list, snRNA-seq Methods and code-availability statements identify Python pyWGCNA2.2.1 and the PyWGCNA Quick Start. Scanpy/Pearson-residual and SysVI processing are separate steps.",
+      "implementation_scope_note": "The actual named execution host is PyWGCNA2.2.1. R WGCNA1.72-1 and its Java components do not substitute for this Python workflow; this paper earns no R-WGCNA execution credit. The existing separate PyWGCNA definition is preserved. Source review alone does not qualify an executed author recipe or whole paper.",
+      "reported_version_preserved": null,
+      "qualified_author_recipe": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P089",
+      "pmcid": "PMC10703697",
+      "doi": "10.1038/s41588-023-01561-1",
+      "tool_id": "wgcna",
+      "runtime": "R-WGCNA1.72-1 rankPvalue",
+      "primary_anchors": [
+        {
+          "paragraph_index": 35,
+          "section": "Methods / Identification of potential ER gene pairs in the B cell lymphoma genome",
+          "paragraph_sha256": "36612708de141706413681cbcc52e60ebd98f5b46f9d22dc8fd0adbf6d1d66ea",
+          "matching_text_sha256": "b4a9987ad117955aa34a48eee6c498949754af26bd8f4210ef6e71846858d259"
+        }
+      ],
+      "use_summary": "WGCNA1.72-1 rankPvalue evaluated consistently high/low ranks for 19,676 candidate gene pairs across three rankings: mean gene-A expression, mean gene-B expression and Spearman correlation across 11 DLBCL cell lines. The source describes a CLT rank test; it does not report WGCNA network fitting here.",
+      "implementation_scope_note": "Native rankPvalue is limited to explicit calculateQvalue=FALSE and supported deterministic ties/missingness/weights; original R preserves original qvalue calls and errors. Source defaults cannot be treated as reported author arguments. Pair construction, TAD membership, mutations and hypermutation filters remain separate. Source review alone does not qualify an executed author recipe or whole paper.",
+      "reported_version_preserved": "1.72-1",
+      "qualified_author_recipe": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P108",
+      "pmcid": "PMC10703692",
+      "doi": "10.1038/s41588-023-01560-2",
+      "tool_id": "wgcna",
+      "runtime": "WGCNA sample-connectivity QC; edition/complete recipe unreported",
+      "primary_anchors": [
+        {
+          "paragraph_index": 51,
+          "section": "Methods / Adult brain reference panel processing and model training",
+          "paragraph_sha256": "a6b9a13816c441d5f6a6eaaa7ff1d33391502003ff0c6ffd8a70cfccdf40459a",
+          "matching_text_sha256": "da0de14e76ed5697292f7d8b590f6d8fde6943088082474284311dd2ceb9a4ba"
+        },
+        {
+          "paragraph_index": 55,
+          "section": "Methods / Statistics and reproducibility",
+          "paragraph_sha256": "5bf78c49c3df97fb9db8a0e41e55e1b6e3c12ae48494febf58675fad3d6069bb",
+          "matching_text_sha256": "5bf78c49c3df97fb9db8a0e41e55e1b6e3c12ae48494febf58675fad3d6069bb"
+        }
+      ],
+      "use_summary": "WGCNA network-connectivity scores identified adult-brain reference samples below -3 for removal; the reported final panel has 2,115 samples. The study separately describes DESeq2 VST, sva ComBat and further model adjustments.",
+      "implementation_scope_note": "The exact sample-network construction, normalization, correlation and power recipe is not specified by the named context. The prepared gene/module connectivity component does not establish this sample-QC recipe, and the adapter does not infer or perform the -3 filtering. Gene and isoform panel processing remain distinct. Source review alone does not qualify an executed author recipe or whole paper.",
+      "reported_version_preserved": null,
+      "qualified_author_recipe": false,
+      "whole_paper_reproduced": false
+    },
+    {
+      "paper_id": "P182",
+      "pmcid": "PMC11639091",
+      "doi": "10.1016/j.ajhg.2024.10.019",
+      "tool_id": "wgcna",
+      "runtime": "robust rWGCNA variant plus named R-WGCNA functions; edition unreported",
+      "primary_anchors": [
+        {
+          "paragraph_index": 26,
+          "section": "Methods / Construction of weighted gene co-expression network and module identification in osteoarthritis cartilage",
+          "paragraph_sha256": "1f4c67c73250a9a215087f71e76600207a2a92bee70d68adaf9c854ef782d5e8",
+          "matching_text_sha256": "8ee868cd627ac33499a38d94d104f6d57abd367d4c189f7942959ee603d7f49c"
+        }
+      ],
+      "use_summary": "The osteoarthritis-cartilage analysis describes a signed, power7 network (scale-free R-squared0.88) using a previously described robust rWGCNA variant, module eigengenes, biweight midcorrelation, WGCNA signedKME and intramodularConnectivity. limma batch removal is an upstream step.",
+      "implementation_scope_note": "The original adapter supports declared Pearson/bicor network, signedKME and connectivity calls. A standard bicor network is not admitted as the complete referenced robust rWGCNA recipe; supplementary/predecessor details and author inputs are still required. Source review alone does not qualify an executed author recipe or whole paper.",
+      "reported_version_preserved": null,
+      "qualified_author_recipe": false,
+      "whole_paper_reproduced": false
+    }
+  ],
+  "new_source_reviews": 5,
+  "source_audit_admits_runtime": false,
+  "whole_goal_complete": false
+}
